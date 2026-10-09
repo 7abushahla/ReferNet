@@ -4,8 +4,8 @@ Nothing in `raw/`, `interim/` or `processed/` is committed: the datasets are lar
 
 | Folder | Contents |
 |---|---|
-| `raw/midv2020/` | MIDV-2020 from `ftp://smartengines.com/midv-2020/dataset/`: `templates.tar` (0.86 GB), `photo.tar` (4.0 GB), `scan_upright.tar` (1.15 GB). Clips optional. CC BY-SA 2.5. |
-| `raw/sidtd/` | SIDTD from `http://datasets.cvc.uab.es/SIDTD/`: `templates.zip` (1.27 GB) and the split files `split_shot.zip`, `split_kfold.zip`, `split_normal.zip`. CC BY-SA. |
+| `raw/midv2020/` | Optional (`WITH_MIDV=1`). Real photos and scans of the same 10 designs from `ftp://smartengines.com/midv-2020/dataset/`: `photo.tar` (4.0 GB), `scan_upright.tar` (1.15 GB). Not needed for Protocols A and B, because SIDTD already contains the MIDV-2020 templates. CC BY-SA 2.5. |
+| `raw/sidtd/` | SIDTD ([github.com/Oriolrt/SIDTD_Dataset](https://github.com/Oriolrt/SIDTD_Dataset)), files from `http://datasets.cvc.uab.es/SIDTD/`: `templates.zip` (1.27 GB: the 1,000 MIDV-2020 genuine templates plus 1,222 generated forgeries, crop-and-replace and inpaint-and-rewrite, with annotations), `few_shot_split_templates.zip` (official 6/4 nationality split), `kfold_split_templates.zip`. SIDTD is MIDV-2020 plus generated forgeries, so it counts as one source. Repository licence CC BY 4.0; the MIDV-2020 images keep CC BY-SA 2.5. |
 | `raw/fantasyid/` | FantasyID from Zenodo record 17063366: `FantasyID.tgz` (2.6 GB). CC BY 4.0. The validation part (record 17063494) needs a non-commercial agreement and is not used. |
 | `raw/idnet/` | Optional. IDNet-2025 from Hugging Face `cactuslab/IDNet-2025`, two to four EU country archives only. |
 | `interim/` | Unified records (`records.parquet`), rectified pages, FantasyID layout annotations. |
