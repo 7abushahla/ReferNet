@@ -1,0 +1,16 @@
+# Pin exact versions once the cluster environment is built (day 3).
+torch
+torchvision
+mmengine
+mmcv
+mmsegmentation
+opencd            # Open-CD, install from source: https://github.com/likyoo/open-cd
+opencv-python
+numpy
+pandas
+pyarrow
+scikit-learn
+pyyaml
+tqdm
+matplotlib
+pytest

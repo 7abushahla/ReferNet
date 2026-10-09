@@ -15,10 +15,13 @@ proposal/main.pdf
 *.zip
 
 # Data and training outputs (never commit datasets or checkpoints)
-data/
-datasets/
-runs/
+data/raw/*
+data/interim/*
+data/processed/*
+!data/**/.gitkeep
 checkpoints/
+slurm/logs/*
+!slurm/logs/.gitkeep
 *.pth
 *.pt
 *.ckpt

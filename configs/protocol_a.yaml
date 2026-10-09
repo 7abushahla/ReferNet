@@ -1,0 +1,27 @@
+# Protocol A: unseen design within a dataset (SIDTD nationality hold-out, split_shot)
+protocol: A
+data:
+  split: data/processed/splits/protocol_a.csv
+  canvas: [512, 800]
+  reference: design_median      # design_median | masked_exemplar
+  wrong_design_fraction: 0.1
+model:
+  framework: changerex          # Open-CD
+  backbone: resnet18            # resnet18 | resnet50 | resnest50 | mit_b1
+  fusion: difference            # single | stacked | difference | attention
+  init: levir                   # levir | imagenet | scratch
+  transfer: full                # frozen | partial | full | scratch
+train:
+  epochs: 40
+  batch_size: 8
+  lr_backbone: 1.0e-4
+  lr_new: 1.0e-3
+  mask_loss_weight: 3.0
+  amp: true
+  seeds: [42, 43, 44]
+augment:
+  affine_px: 8
+  jpeg_quality: [60, 100]
+  photometric: true
+eval:
+  metrics: [accuracy, auc, eer, apcer_bpcer1, apcer_bpcer5, pixel_f1, referral_miss1, referral_miss5]

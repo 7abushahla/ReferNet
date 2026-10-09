@@ -6,13 +6,37 @@ Reference-conditioned detection of altered travel documents on designs never see
 
 ## Layout
 
-| Folder | Contents |
-|---|---|
-| `paper/` | The submission in the award's required structure (title page with Arabic and English titles, both abstracts, eleven sections). LuaLaTeX, Overleaf-ready via `latexmkrc`. `build.sh` makes the PDF, `wordcount.sh` checks the 4,000 to 8,000-word and 250-word abstract rules, `to_docx.sh` makes the Word file. |
-| `proposal/` | The full research proposal (`main.tex`, `build.sh`, pdfLaTeX) and the design package `DESIGN.md`: problem, state of the art, novelty, data pipeline, the two protocols, architecture, configuration grid, day plan. Figures and their generator, `figures/gen/make_figures.py`. |
-| `evidence/` | The literature and evidence sweeps behind every claim, with source URLs: GDRFA's stated problems, the three novelty sweeps, the dataset engineering brief, the state-of-the-art brief, the two-input architecture brief. |
+```
+refer-or-clear/
+├── paper/          award submission (LuaLaTeX, Overleaf-ready): build.sh, wordcount.sh, to_docx.sh
+├── proposal/       full proposal and DESIGN.md (the plan every folder below implements)
+├── evidence/       literature and evidence sweeps with source URLs
+├── data/           raw/ interim/ processed/ (not committed; see data/README.md)
+├── scripts/        download_datasets.sh, prepare_data.py, run_trufor_baseline.py
+├── src/refer_or_clear/
+│   ├── data/       records, rectify, references (design median, zone mask), forgeries, pairs, splits, dataset
+│   ├── models/     build (ChangerEx via Open-CD), fusion (single, stacked, difference, attention), heads
+│   ├── losses.py   metrics.py   train.py   evaluate.py
+├── configs/        protocol_a.yaml, protocol_b.yaml (grid axes overridden on the command line)
+├── experiments/    E1 to E9, one folder each, with the command and NOTES.md
+├── results/        runs/ tables/ figures/ (small final outputs the paper cites)
+├── slurm/          train_array.sh (48-task array: 4 backbones x 4 fusions x 3 seeds)
+├── notebooks/      exploration only
+└── tests/
+```
 
-The implementation code (data loader, references and zone masks, Open-CD models, training and evaluation) goes in `code/` when work starts; datasets and checkpoints stay out of git (see `.gitignore`).
+Code files are placeholders: each states what it must do and where in `proposal/DESIGN.md` that is specified, and raises `NotImplementedError` until written. Datasets, checkpoints and logs never enter git.
+
+## Workflow
+
+```
+bash scripts/download_datasets.sh          # about 10 GB into data/raw
+python scripts/prepare_data.py             # records, rectification, references, pairs, splits
+pip install -e .                           # the refer_or_clear package
+sbatch --array=0-47 slurm/train_array.sh configs/protocol_a.yaml   # E1
+sbatch --array=0-47 slurm/train_array.sh configs/protocol_b.yaml   # E2
+python scripts/run_trufor_baseline.py      # Protocol B anchor
+```
 
 ## Build
 

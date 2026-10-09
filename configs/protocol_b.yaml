@@ -1,0 +1,29 @@
+# Protocol B: train on all 10 MIDV designs, test zero-shot on FantasyID's official test split
+protocol: B
+data:
+  split: data/processed/splits/protocol_b.csv
+  canvas: [512, 800]
+  reference: design_median
+  wrong_design_fraction: 0.1
+  report_subsets: [all, text, face, arabic_design]
+  calibration_cards: [0, 10]     # for the Arabic design (E3)
+model:
+  framework: changerex
+  backbone: resnet18
+  fusion: difference
+  init: levir
+  transfer: full
+train:
+  epochs: 40
+  batch_size: 8
+  lr_backbone: 1.0e-4
+  lr_new: 1.0e-3
+  mask_loss_weight: 3.0
+  amp: true
+  seeds: [42, 43, 44]
+augment:
+  affine_px: 8
+  jpeg_quality: [60, 100]
+  photometric: true
+eval:
+  metrics: [auc, hter, fnr_at_fpr10, eer, apcer_bpcer5, pixel_f1, referral_miss1, referral_miss5]
