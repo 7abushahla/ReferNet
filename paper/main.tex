@@ -1,0 +1,336 @@
+% =====================================================================
+% GDRFA Dubai Scientific Research Award, second cycle (deadline 15 Oct 2026)
+% Submission template following the official "Proposed Research Structure"
+% and "Research Preparation & Formatting Requirements":
+%   https://researchaward.gdrfad.gov.ae/guide-en.html  (read 10 Oct 2026)
+%
+% Rules from the guide (do not break):
+%   * Length 4,000 to 8,000 words INCLUDING body, tables, figures,
+%     appendices and references.            -> check with: bash wordcount.sh
+%   * Upload MS Word file plus PDF.          -> bash build.sh ; bash to_docx.sh
+%   * First page: title in both languages, researcher name(s), workplace,
+%     job title, academic degree, email, contact number.
+%   * Arabic abstract within 250 words; English abstract within 250 words.
+%   * Language: English (Arabic allowed). Original, unpublished, not
+%     submitted to another award this cycle.
+%   * Structure (sections may be adjusted): 1 Title page, 2 Arabic abstract,
+%     3 English abstract, 4 Introduction, 5 Research problem, significance
+%     and objectives, 6 Theoretical and conceptual framework and literature
+%     review, 7 Methodology and procedures, 8 Results, discussion and
+%     analysis, 9 Conclusions and recommendations, 10 References,
+%     11 Appendices (if any).
+%
+% Build: LuaLaTeX + BibTeX (babel handles Arabic). Self-contained for Overleaf: references.bib and figures/ live in this folder.
+%
+%
+% Placeholders: \todo{...} prints grey italic guidance in the PDF.
+% Set \showguidancefalse below to hide all guidance before submitting.
+% =====================================================================
+\documentclass[12pt,a4paper]{article}
+
+% ---------- Page and spacing ----------
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
+
+% ---------- Content packages ----------
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\setlist{itemsep=0.25em, topsep=0.3em}
+\usepackage{caption}
+\captionsetup{font=small, labelfont=bf}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{pdflscape}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{cite}
+\usepackage{orcidlink}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{xurl}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% ---------- Fonts and languages (LuaLaTeX + babel; Arabic direction stays local) ----------
+\usepackage[english, bidi=basic]{babel}
+\babelprovide[import]{arabic}
+\babelfont{rm}{TeX Gyre Termes}
+\babelfont[arabic]{rm}[Renderer=HarfBuzz, Scale=1.05]{Amiri}
+
+
+% ---------- Headings: numbered as in the guide ----------
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.5em}
+\titlespacing*{\subsection}{0pt}{0.9em}{0.3em}
+
+% ---------- Running header ----------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small GDRFA Dubai Scientific Research Award, second cycle}
+\fancyhead[R]{\small Digital Innovation Award}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ---------- Guidance placeholders ----------
+\newif\ifshowguidance
+\showguidancetrue   % set to \showguidancefalse before submission
+\newcommand{\todo}[1]{\ifshowguidance\leavevmode{\color{gray}\itshape [#1]}\fi}
+
+% ---------- Submission data (edit here once) ----------
+\newcommand{\titleEN}{Refer or Clear: Reference-Conditioned Detection of Altered Travel Documents on Designs Never Seen}
+\newcommand{\titleAR}{الإحالة أو التمرير: كشف التلاعب في وثائق السفر بالاستناد إلى مرجع التصميم، على تصاميم لم يسبق للنموذج رؤيتها}
+\newcommand{\awardcategory}{Digital Innovation Award}
+\newcommand{\awardtheme}{Artificial Intelligence: smart innovations and advanced data analytics}
+
+\begin{document}
+
+% =====================================================================
+% 1. TITLE PAGE AND SUBMISSION DATA
+% =====================================================================
+\thispagestyle{empty}
+\begin{center}
+\singlespacing
+{\normalsize\bfseries GDRFA Dubai Scientific Research Award, Second Cycle}\\[0.2em]
+{\small \awardcategory}\\[1.2em]
+
+{\large\bfseries \titleEN\par}
+\vspace{0.8em}
+\begin{otherlanguage}{arabic}
+{\large\bfseries \titleAR\par}
+\end{otherlanguage}
+\vspace{0.4em}
+\end{center}
+
+{\small
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}L{2.7cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+ & \textbf{Researcher 1} & \textbf{Researcher 2} \\
+\midrule
+Name & Hamza A. Abushahla \orcidlink{0009-0003-6247-6776} & Ariel Justine N. Panopio \orcidlink{0009-0000-8168-6478} \\
+Workplace & Computer Science and Engineering, American University of Sharjah & Computer Science and Engineering, American University of Sharjah \\
+Job title & \todo{job title} & \todo{job title} \\
+Academic degree & \todo{degree} & \todo{degree} \\
+Email & b00090279@aus.edu & b00088568@aus.edu \\
+Contact number & \todo{+971 ...} & \todo{+971 ...} \\
+\midrule
+ & \textbf{Researcher 3} & \textbf{Researcher 4} \\
+\midrule
+Name & \todo{name} & Mohamed I. AlHajri \orcidlink{0000-0003-1480-8054} \\
+Workplace & \todo{workplace} & Computer Science and Engineering, American University of Sharjah \\
+Job title & \todo{job title} & \todo{job title} \\
+Academic degree & \todo{degree} & \todo{degree} \\
+Email & \todo{email} & mialhajri@aus.edu \\
+Contact number & \todo{+971 ...} & \todo{+971 ...} \\
+\bottomrule
+\end{tabularx}
+
+\vspace{0.3em}
+\begin{tabularx}{\textwidth}{@{}L{2.7cm}X@{}}
+\toprule
+Award category & \awardcategory \\
+Theme & \awardtheme \\
+Language & English \\
+Word count & \todo{from wordcount.sh or Overleaf; 4,000 to 8,000 including tables, figures, appendices and references} \\
+\bottomrule
+\end{tabularx}
+}
+
+\vspace{0.5em}
+{\footnotesize\textbf{Declaration.} This work is original, has not been published or accepted for publication in any journal or conference, and has not been submitted to another award in this cycle. The authors consent to its publication in the award's knowledge publications and electronic book.}
+
+\onehalfspacing
+\clearpage
+
+% =====================================================================
+% 2. ARABIC ABSTRACT (within 250 words)
+% =====================================================================
+\section*{\foreignlanguage{arabic}{الملخص}}
+\addcontentsline{toc}{section}{Arabic abstract}
+\todo{Arabic abstract, at most 250 words. Translate the English abstract once it is final, and have a native speaker check the terminology: travel document, forgery, first line, Document Examination Centre.}
+
+\begin{otherlanguage}{arabic}
+يعتمد ضابط الخط الأول على ثوانٍ معدودة ليقرر إحالة وثيقة السفر إلى مركز فحص الوثائق أو تمريرها.
+
+\textbf{الكلمات المفتاحية:} وثائق السفر، كشف التزوير، التعلم العميق، الشبكات التوأمية، مراقبة الحدود.
+\end{otherlanguage}
+
+% =====================================================================
+% 3. ENGLISH ABSTRACT (within 250 words)
+% =====================================================================
+\section*{Abstract}
+\addcontentsline{toc}{section}{English abstract}
+\todo{At most 250 words. Structure: context (two-line document check at Dubai's border, centre figures); gap (no vendor publishes cross-design error rates; published detectors memorize designs); method (reference-conditioned detector built on a change-detection framework, design-median reference and zone mask); data and protocols (MIDV-2020, SIDTD, FantasyID; Protocol A and B, Arabic design); key results with numbers; implication for GDRFA. Source: abstract of ../main.tex, shortened.}
+
+\textbf{Keywords:} travel documents; forgery detection; Siamese networks; change detection; border control; presentation attack detection.
+
+\clearpage
+
+% =====================================================================
+% 4. INTRODUCTION
+% =====================================================================
+\section{Introduction}
+\label{sec:intro}
+\todo{About 600 words. The two-line document check at Dubai's ports; the Document Examination Centre's own figures (20,307 examinations, 902 irregularities, 4.4\% hit rate among referrals); what the first line already operates; why the first-line decision is hard; one sentence on the approach; the structure of the paper. Source: ../main.tex Section 1, first four paragraphs and Figure 1.}
+
+% Example figure inclusion (figures are read from figures/):
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics[width=\textwidth]{fig_attacks.pdf}
+%   \caption{...}
+%   \label{fig:attacks}
+% \end{figure}
+
+% =====================================================================
+% 5. RESEARCH PROBLEM, SIGNIFICANCE AND OBJECTIVES
+% =====================================================================
+\section{Research Problem, Significance and Objectives}
+\label{sec:problem}
+
+\subsection{Research problem}
+\todo{About 200 words. The problem statement box of ../main.tex: refer-or-clear in seconds across 80+ countries' templates, with a commercial system whose behaviour on unseen designs no vendor publishes; published detectors memorize designs.}
+
+\subsection{Significance}
+\todo{About 200 words. For GDRFA: the measurement the vendor does not provide, the open dataset and protocol to repeat it on GDRFA's own template library, a new design handled by adding its specimen. For the field: first public leave-design-out benchmark of reference-conditioned detection.}
+
+\subsection{Objectives and research questions}
+\todo{The aim and RQ1 to RQ4 from ../main.tex Section 3.}
+\begin{enumerate}[label=\textbf{RQ\arabic*.}]
+  \item \todo{Loss of a single-image detector on unseen designs, and how much the reference recovers.}
+  \item \todo{Gap between Protocol A and Protocol B, and what drives it.}
+  \item \todo{Which backbone, transfer regime, reference construction and fusion carry the gain.}
+  \item \todo{Referral rate at miss budgets of 1 and 5\%.}
+\end{enumerate}
+
+\subsection{Contributions}
+\todo{The four contributions: data, benchmark, architecture, analysis (../main.tex Section 1, Contributions). Include the project-at-a-glance figure, fig\_pipeline.pdf, on a landscape page if space allows.}
+
+% =====================================================================
+% 6. THEORETICAL AND CONCEPTUAL FRAMEWORK AND LITERATURE REVIEW
+% =====================================================================
+\section{Theoretical and Conceptual Framework and Literature Review}
+\label{sec:framework}
+
+\subsection{Conceptual framework}
+\todo{About 400 words. (i) First- and second-line inspection as defined by ICAO Doc 9303 and the Schengen Handbook; (ii) detection as a referral decision: referral rate $R(t)$ and miss rate $M(t)$ at a prior $p$, with the ISO/IEC 30107-3 error vocabulary; (iii) the reference-conditioning principle: comparing against a specimen turns single-image forensics into change detection, as in differential morph detection. Include the idea figure, fig\_idea.pdf, and the referral sketch, fig\_referral.pdf.}
+
+\subsection{Literature review}
+\todo{About 900 words. Single-image detectors and why they fail across designs (IDNet, SIDTD, FantasyID, DeepID, TruFor family); industry template-based readers; learned reference-based work (CheckSim, Chen et al., Al-Ghadi et al. and the FMIDV negative result, Neitthoffer et al.); the absence of referral framing. End with the gap statement and the positioning table (Table 1 of ../main.tex). Source: ../main.tex Section 2.}
+
+% =====================================================================
+% 7. METHODOLOGY AND PROCEDURES
+% =====================================================================
+\section{Methodology and Procedures}
+\label{sec:method}
+\todo{About 1,800 words. Keep the guide's wording: study population, samples, and tools.}
+
+\subsection{Study population and samples}
+\todo{The population is identity and travel documents presented at a first-line check; the samples are the three public datasets (MIDV-2020, SIDTD, FantasyID), their sizes, designs, alteration classes, capture conditions and licences (Table 2 of ../main.tex); identity-grouped splits; no real traveller's document. Include fig\_templates.pdf.}
+
+\subsection{Tools: data preparation}
+\todo{Unified records; rectification and registration; design-median reference and zone mask; extra forgeries with the SIDTD generator; pairs and wrong-design negatives.}
+
+\subsection{Tools: proposed architecture}
+\todo{Base framework ChangerEx (Open-CD); standard variant (difference fusion) and improved variant (attention fusion); named modifications; input, output, loss, training recipe. Include the architecture figure (TikZ in ../main.tex, Figure 6) as a PDF or redraw.}
+
+\subsection{Evaluation protocols and metrics}
+\todo{Protocol A and Protocol B with the Arabic design; the comparison table (Table 3 of ../main.tex, landscape); metrics: AUC, EER, APCER at BPCER 1 and 5\%, HTER, accuracy where published, pixel F1 and IoU, referral rate.}
+
+\subsection{Experiments}
+\todo{Configuration grid and experiments E1 to E9 (Table 4 of ../main.tex).}
+
+% =====================================================================
+% 8. RESULTS, DISCUSSION AND ANALYSIS
+% =====================================================================
+\section{Results, Discussion and Analysis}
+\label{sec:results}
+\todo{About 1,500 words. Every result as a table or figure; prose says what it means. Mean $\pm$ standard deviation over three seeds.}
+
+\subsection{Protocol A: unseen design within a dataset}
+\begin{table}[H]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Protocol A (SIDTD nationality hold-out). Published rows from the SIDTD paper; our rows mean $\pm$ s.d. over three seeds.}
+\label{tab:resA}
+\begin{tabular}{llcccc}
+\toprule
+Method & Backbone & Acc. (\%) & AUC & EER (\%) & APCER@BPCER5 (\%) \\
+\midrule
+EfficientNet-B3 (published) & -- & 82.0 & 0.899 & -- & -- \\
+ResNet50 (published) & -- & 90.6 & 0.963 & -- & -- \\
+CoAARC (published) & -- & 62.8 & 0.675 & -- & -- \\
+\midrule
+Single-image (ours) & ResNet-18 & \todo{} & \todo{} & \todo{} & \todo{} \\
+Channel-stacked (ours) & ResNet-18 & \todo{} & \todo{} & \todo{} & \todo{} \\
+Difference fusion (ours) & ResNet-18 & \todo{} & \todo{} & \todo{} & \todo{} \\
+Attention fusion (ours) & ResNet-18 & \todo{} & \todo{} & \todo{} & \todo{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+\todo{Interpretation: how much of the single-image loss the reference recovers.}
+
+\subsection{Protocol B: unseen dataset, generator, capture and script}
+\begin{table}[H]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Protocol B (FantasyID official test, zero-shot). Published rows from the FantasyID paper.}
+\label{tab:resB}
+\begin{tabular}{lccccc}
+\toprule
+Method & AUC all & AUC text & AUC face & HTER (\%) & FNR@FPR10 (\%) \\
+\midrule
+TruFor (published) & 93.5 & 99.5 & 55.8 & 33.4 & 62.0 \\
+MMFusion (published) & 94.4 & 99.8 & 61.5 & 25.8 & -- \\
+TruFor (our re-run) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
+\midrule
+Single-image (ours) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
+Difference fusion (ours) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
+Attention fusion (ours) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+\todo{Interpretation, plus the Arabic design reported alone with 0 and 10 calibration cards, and the gap between protocols.}
+
+\subsection{Ablations and robustness}
+\todo{Transfer regimes, reference construction, zone mask, fusion, attention bias; wrong-design reference and misregistration sweep.}
+
+\subsection{Referral analysis}
+\todo{Measured referral curves replacing the illustrative sketch; referral rate at miss 1 and 5\% against today's practice of referring every doubtful document.}
+
+\subsection{Discussion and limitations}
+\todo{What the leave-design-out number measures and what it does not (public forgeries are composites and generative edits, the reality gap); registration failures; the 4.4\% prior is among referrals.}
+
+% =====================================================================
+% 9. CONCLUSIONS AND RECOMMENDATIONS
+% =====================================================================
+\section{Conclusions and Recommendations}
+\label{sec:conclusions}
+\todo{About 500 words. Conclusions tied to RQ1 to RQ4 and the results tables.}
+
+\subsection*{Recommendations for GDRFA Dubai}
+\todo{Each recommendation must follow from a result (evaluation criterion 7). For example: request cross-design error rates from the reader vendor using the released protocol; calibrate the threshold on the centre's own template library; pilot the detector as a referral suggestion beside the existing checks; track referral and confirmed-hit rates per design as a KPI.}
+
+% =====================================================================
+% 10. REFERENCES (IEEE style; counted in the 8,000-word limit)
+% =====================================================================
+\FloatBarrier
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+% =====================================================================
+% 11. APPENDICES (if any; counted in the 8,000-word limit)
+% =====================================================================
+\appendix
+\section{Appendix: Dataset licences and access}
+\todo{Optional. Licence and download route for each dataset, and the release terms of the derived data (CC BY-SA share-alike from MIDV-2020 and SIDTD).}
+
+\end{document}

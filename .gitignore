@@ -1,0 +1,34 @@
+# LaTeX build products
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.xdv
+paper/main.pdf
+paper/main.docx
+proposal/main.pdf
+*.zip
+
+# Data and training outputs (never commit datasets or checkpoints)
+data/
+datasets/
+runs/
+checkpoints/
+*.pth
+*.pt
+*.ckpt
+*.npz
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store

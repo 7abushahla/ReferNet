@@ -1,0 +1,3 @@
+# Overleaf (and latexmk) read this file: compile with LuaLaTeX, which the Arabic text needs.
+$pdf_mode = 4;
+$lualatex = 'lualatex -interaction=nonstopmode -synctex=1 %O %S';
