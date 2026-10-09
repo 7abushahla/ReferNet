@@ -28,6 +28,13 @@
 % =====================================================================
 \documentclass[12pt,a4paper]{article}
 
+% ---------- Engine check: the Arabic text needs LuaLaTeX ----------
+\usepackage{iftex}
+\ifluatex\else
+  \errmessage{This document must be compiled with LuaLaTeX. In Overleaf: Menu > Compiler > LuaLaTeX, then Recompile}
+  \stop
+\fi
+
 % ---------- Page and spacing ----------
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{setspace}
@@ -79,6 +86,7 @@
 \fancyhead[R]{\small Digital Innovation Award}
 \fancyfoot[C]{\small\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{14.5pt}
 
 % ---------- Guidance placeholders ----------
 \newif\ifshowguidance
