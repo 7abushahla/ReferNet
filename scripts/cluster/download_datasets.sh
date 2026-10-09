@@ -1,6 +1,6 @@
 #!/bin/bash
 # Download the public datasets into data/raw/. Sizes and sources: data/README.md.
-# Run on the cluster login node or a machine with about 15 GB free. Re-running skips existing files.
+# Run on the cluster login node with about 60 GB free (docs/data-decision.md). Re-running skips existing files.
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 RAW=data/raw
@@ -22,6 +22,18 @@ cd - >/dev/null
 # FantasyID (Zenodo)
 mkdir -p $RAW/fantasyid && cd $RAW/fantasyid
 [ -f FantasyID.tgz ] || wget -q --show-progress -O FantasyID.tgz "https://zenodo.org/records/17063366/files/FantasyID.tgz?download=1"
+cd - >/dev/null
+
+# IDNet, Zenodo release (CC0): one zip per design, 795 x 487 JPEG, 5,979 images per class.
+# Core: the published cross-type pair West Virginia / Arizona (Protocol C) and face attacks for B.
+mkdir -p $RAW/idnet && cd $RAW/idnet
+[ -f AZ.zip ] || wget -q --show-progress -O AZ.zip "https://zenodo.org/records/13852757/files/AZ.zip?download=1"   # 13.3 GB
+[ -f WV.zip ] || wget -q --show-progress -O WV.zip "https://zenodo.org/records/13854938/files/WV.zip?download=1"   # 31.6 GB
+# Optional second published pair, Greece -> Albania (WITH_IDNET_PASSPORTS=1): 8.9 + 25.6 GB.
+if [ "${WITH_IDNET_PASSPORTS:-0}" = "1" ]; then
+  [ -f GRC.zip ] || wget -q --show-progress -O GRC.zip "https://zenodo.org/records/13854938/files/GRC.zip?download=1"
+  [ -f ALB.zip ] || wget -q --show-progress -O ALB.zip "https://zenodo.org/records/13854897/files/ALB.zip?download=1"
+fi
 cd - >/dev/null
 
 # MIDV-2020 photos and scans (optional: real captures of the same 10 designs).

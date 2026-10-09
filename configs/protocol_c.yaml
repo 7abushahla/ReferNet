@@ -1,0 +1,34 @@
+# Protocol C: IDNet published cross-type pair. Train on one design (all four task folders
+# as positives), test on the other, per task, at threshold 0.5 (arXiv 2408.01690 v2, Table 14).
+# Run twice: source WV target AZ, and source AZ target WV (set data.source / data.target).
+protocol: C
+data:
+  split: data/processed/splits/protocol_c.csv
+  source: WV
+  target: AZ
+  canvas: [512, 800]            # IDNet Zenodo images are 795 x 487; resized, aspect kept by padding
+  reference: design_median      # median over the target's 4,979 non-test genuine images
+  wrong_design_fraction: 0.1
+  tasks: [fraud2_face_morphing, fraud3_face_replacement, fraud4_combined, fraud1_copy_and_move]
+  test_identities: 1000         # last 1,000 file names in sorted order, as in the paper's split
+  report_subsets: [face_morphing, portrait_substitution, mixed, text_replacement]
+model:
+  framework: changerex
+  backbone: resnet18
+  fusion: difference
+  init: levir
+  transfer: full
+train:
+  epochs: 20
+  batch_size: 8
+  lr_backbone: 1.0e-4
+  lr_new: 1.0e-3
+  mask_loss_weight: 3.0
+  amp: true
+  seeds: [42, 43, 44]
+augment:
+  affine_px: 8
+  jpeg_quality: [60, 100]
+  photometric: true
+eval:
+  metrics: [accuracy_at_0.5, auc, eer, apcer_bpcer5, pixel_f1, referral_miss1, referral_miss5]

@@ -24,7 +24,7 @@ python scripts/prepare_data.py
 # TODO: replace with the real counts once prepare_data.py exists (DESIGN.md 3.1, 3.5).
 python - <<'PY'
 from pathlib import Path
-for f in ["data/processed/splits/protocol_a.csv", "data/processed/splits/protocol_b.csv"]:
+for f in ["data/processed/splits/protocol_a.csv", "data/processed/splits/protocol_b.csv", "data/processed/splits/protocol_c.csv"]:
     assert Path(f).is_file(), f"missing {f}"
 print("[stage-data] splits present")
 PY

@@ -38,13 +38,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CLUSTER = dict(account="acc-mialhajri", partition="gpu", conda_sh="/opt/miniconda/etc/profile.d/conda.sh")
 CHOICES = dict(
-    protocols=("A", "B"),
+    protocols=("A", "B", "C"),
     backbones=("resnet18", "resnet50", "resnest50", "mit_b1"),
     fusions=("single", "stacked", "difference", "attention"),
     references=("design_median", "masked_exemplar"),
     transfers=("frozen", "partial", "full", "scratch"),
 )
-CONFIG = {"A": "configs/protocol_a.yaml", "B": "configs/protocol_b.yaml"}
+CONFIG = {"A": "configs/protocol_a.yaml", "B": "configs/protocol_b.yaml", "C": "configs/protocol_c.yaml"}
 SHORT_REF = {"design_median": "median", "masked_exemplar": "exemplar"}
 
 
