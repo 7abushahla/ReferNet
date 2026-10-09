@@ -1,0 +1,14 @@
+# Installed by scripts/cluster/setup-env.sh AFTER torch, torchvision and mmcv (which come from
+# their own indexes). Pin exact versions once the cluster environment is built (day 3).
+mmengine>=0.10
+mmsegmentation==1.2.2
+opencd @ git+https://github.com/likyoo/open-cd.git
+opencv-python-headless
+numpy<2
+pandas
+pyarrow
+scikit-learn
+pyyaml
+tqdm
+matplotlib
+pytest

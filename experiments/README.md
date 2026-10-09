@@ -1,6 +1,6 @@
 # Experiments
 
-One folder per experiment from DESIGN.md section 5. Each holds the exact command or Slurm array that produced it and a short `NOTES.md` with the date, commit hash and anything unusual.
+One folder per experiment from DESIGN.md section 5. Each holds a short `NOTES.md` with the `make_sweep.py` command, the sweep folder under `sweeps/`, the date, the commit hash and anything unusual.
 
 | ID | Experiment | Research question | Status |
 |---|---|---|---|

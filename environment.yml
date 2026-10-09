@@ -1,0 +1,15 @@
+# Mirrors scripts/cluster/setup-env.sh, which is the version actually run on the login node; keep the
+# two in sync. torch 2.1.2 cu121 because Open-CD needs mmcv 2.1 with compiled ops (see setup-env.sh).
+name: refer-or-clear
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cu121
+      - --find-links https://download.openmmlab.com/mmcv/dist/cu121/torch2.1/index.html
+      - torch==2.1.2
+      - torchvision==0.16.2
+      - mmcv==2.1.0
+      - -r requirements-train.txt

@@ -2,7 +2,7 @@
 # Download the public datasets into data/raw/. Sizes and sources: data/README.md.
 # Run on the cluster login node or a machine with about 15 GB free. Re-running skips existing files.
 set -euo pipefail
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/../.."
 RAW=data/raw
 
 echo "TODO: verify each URL on day 1 (public pages checked 8 Oct 2026)."

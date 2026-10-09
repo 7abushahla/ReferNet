@@ -12,30 +12,36 @@ refer-or-clear/
 ├── proposal/       full proposal and DESIGN.md (the plan every folder below implements)
 ├── evidence/       literature and evidence sweeps with source URLs
 ├── data/           raw/ interim/ processed/ (not committed; see data/README.md)
-├── scripts/        download_datasets.sh, prepare_data.py, run_trufor_baseline.py
+├── scripts/
+│   ├── make_sweep.py       generates SLURM launchers for a training grid (never hand-write one)
+│   ├── cluster/            setup-env.sh, stage-data.sh, download_datasets.sh, verify_gpu.sh
+│   ├── prepare_data.py     records, rectification, references, pairs, splits
+│   ├── run_trufor_baseline.py   Protocol B anchor
+│   └── check_imports.py
 ├── src/refer_or_clear/
 │   ├── data/       records, rectify, references (design median, zone mask), forgeries, pairs, splits, dataset
 │   ├── models/     build (ChangerEx via Open-CD), fusion (single, stacked, difference, attention), heads
 │   ├── losses.py   metrics.py   train.py   evaluate.py
 ├── configs/        protocol_a.yaml, protocol_b.yaml (grid axes overridden on the command line)
-├── experiments/    E1 to E9, one folder each, with the command and NOTES.md
+├── sweeps/         generated launchers, one folder per sweep, committed with their results
+├── experiments/    E1 to E9, one folder each, with notes
 ├── results/        runs/ tables/ figures/ (small final outputs the paper cites)
-├── slurm/          train_array.sh (48-task array: 4 backbones x 4 fusions x 3 seeds)
+├── docs/cluster.md the AWS SLURM cluster: setup, sweeps, storage, budget
 ├── notebooks/      exploration only
 └── tests/
 ```
 
-Code files are placeholders: each states what it must do and where in `proposal/DESIGN.md` that is specified, and raises `NotImplementedError` until written. Datasets, checkpoints and logs never enter git.
+Code files are placeholders: each states what it must do and where in `proposal/DESIGN.md` that is specified, and raises `NotImplementedError` until written. The cluster tooling (`make_sweep.py`, `scripts/cluster/`) follows the qcfs-speck repository and is ready to use. Datasets, checkpoints and logs never enter git.
 
-## Workflow
+## Workflow (cluster; details in docs/cluster.md)
 
 ```
-bash scripts/download_datasets.sh          # about 10 GB into data/raw
-python scripts/prepare_data.py             # records, rectification, references, pairs, splits
-pip install -e .                           # the refer_or_clear package
-sbatch --array=0-47 slurm/train_array.sh configs/protocol_a.yaml   # E1
-sbatch --array=0-47 slurm/train_array.sh configs/protocol_b.yaml   # E2
-python scripts/run_trufor_baseline.py      # Protocol B anchor
+ENV_PREFIX=/shared/$USER/conda/envs/refer-or-clear bash scripts/cluster/setup-env.sh   # login node, once
+bash scripts/cluster/stage-data.sh                     # login node: download about 10 GB, build data/processed
+sbatch scripts/cluster/verify_gpu.sh                   # 15-minute GPU check
+python scripts/make_sweep.py --protocols A --backbones resnet18,resnet50,resnest50,mit_b1 \
+    --fusions single,stacked,difference,attention --name E1-protocolA
+bash sweeps/E1-protocolA/submit_all.sh                 # from the repository root
 ```
 
 ## Build
