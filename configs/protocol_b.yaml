@@ -26,4 +26,4 @@ augment:
   jpeg_quality: [60, 100]
   photometric: true
 eval:
-  metrics: [auc, hter, fnr_at_fpr10, eer, apcer_bpcer5, pixel_f1, referral_miss1, referral_miss5]
+  metrics: [auc, hter, genuine_referral_at_published_point, eer, apcer_bpcer5, pixel_f1, referral_miss1, referral_miss5, transported_threshold_miss, transported_threshold_referral]

@@ -12,7 +12,7 @@ A first-line officer decides in seconds whether to clear a travel document or re
 |---|---|---|---|---|---|
 | SIDTD, Scientific Data 2024 | altered vs genuine, 10 MIDV-2020 designs | single image | few-shot: 6 nationalities train, 4 test, on cropped video clips (unbalanced partition) | ResNet50 90.6 acc / 0.963 AUC; EfficientNet-B3 82.0 / 0.899; ViT-L 91.0 / 0.969; TransFG 83.6 / 0.907; CoAARC 62.8 / 0.675. Within-design k-fold: 96 to 99 | generator and loader public |
 | IDNet, arXiv 2408.01690 v2 (2024) | six fraud types, 20 synthetic designs | single image | train on one design, test on another (Tables 14 to 20) | WV to AZ: face morph 50.6, portrait swap 71.2, mixed 71.2, text 60.9; GRC to ALB: 45.2 / 55.6 / 54.7 / 35.6; within-design 98 to 100 | data public (Zenodo, reduced), no training code |
-| FantasyID, IJCB 2025 | face swap and text inpainting on printed and captured fantasy cards | single image | pretrained forensic detectors, zero-shot; test designs absent from train | TruFor AUC 93.5 overall, 99.5 text, 55.8 face, HTER 33.4, FNR 62 at FPR 10; MMFusion 94.4 / 99.8 / 61.5, HTER 25.8 | data public |
+| FantasyID, IJCB 2025 | face swap and text inpainting on printed and captured fantasy cards | single image | pretrained forensic detectors, zero-shot; test designs absent from train | TruFor AUC 93.5 overall, 99.5 text, 55.8 face; at the published operating point (threshold set on validation so that about 10 percent of attacks pass) TruFor misses 4.9 percent of attacks and refers 62.0 percent of genuine cards (FantasyID counts bona fide as positive, so its FNR is the genuine-referral rate); MMFusion 94.4 / 99.8 / 61.5, misses 4.0, refers 47.7, HTER 25.8 | data public |
 | DeepID challenge, ICCV-W 2025 | same, plus a private set of 20K real IDs | single image | 26 teams; test includes text (FA2) and face (FA3) attacks on card templates unseen in training | Winner Sunlight (Re-MTKD/Cue-Net): F1 0.991 on fantasy cards, 0.719 on real IDs; best on real IDs UAM-Biometrics 0.788; all but one entry built on TruFor; "generalization to unseen manipulations and unseen card types remains challenging" | Sunlight weights public |
 | DocForge-Bench, arXiv 2603.01433 (2026) | zero-shot localization across 8 document datasets incl. FantasyID | single image | frozen published weights, 14 methods | best Pixel-F1 on FantasyID 0.296 (TruFor); Pixel-AUC moderate, F1 near zero: a calibration failure | benchmark public |
 | FLiD, arXiv 2605.09089 (2026) | field-localized detection on FantasyID | single image, YOLO field crops | identity-disjoint 5-fold, no unseen design | face EER 24.7, BPCER10 43.0 | public |
@@ -35,7 +35,7 @@ Method. A two-input detector. Input one is the rectified query document. Input t
 
 Not new: the architecture (Fang et al. 2023), the median-reference idea (template libraries do it by hand), the datasets.
 
-New: (1) the first learned reference-conditioned alteration detector evaluated leave-design-out on public data, with masks, against the published single-image numbers; (2) the measurement itself, which no vendor and no paper provides; (3) the referral framing, referral rate at a miss budget with the Centre's own prior, which turns a detector score into the officer's decision; (4) the released protocol, splits, references and code, so GDRFA can repeat the measurement on its own template library.
+New: (1) to our knowledge the first leave-design-out evaluation of a reference-conditioned alteration detector on public data, with masks, against the published single-image numbers (reference-based Siamese detectors themselves exist: CheckSim, Chen et al.); (2) the measurement itself, which no vendor and no paper provides; (3) the referral framing, referral rate at a miss budget with the Centre's own prior, which turns a detector score into the officer's decision; (4) the released protocol, splits, references and code, so GDRFA can repeat the measurement on its own template library.
 
 Positioning sentence for the paper: published detectors memorize designs; template libraries generalize by hand; we make the template library an input to the learned detector and measure what that buys on designs the detector has never seen.
 
@@ -47,7 +47,7 @@ Positioning sentence for the paper: published detectors memorize designs; templa
 | B: unseen source, generator, capture, script | SIDTD all 10 designs plus IDNet AZ and WV (adds face morphing and portrait substitution) | FantasyID official test: 300 genuine plus Attack-2 (face) and Attack-3 (text) on the 3 designs unseen in train-val (Chinese, Dutch, Singaporean); Attack-1 (text on the 10 train-val designs, which include Arabic) reported separately with the Arabic cards broken out; our model never trains on FantasyID, so all 13 designs are unseen to it | the only public test with printed and camera-captured cards, a different generator, face attacks, pixel masks and a document quad per image | FantasyID Table 3 (TruFor, MMFusion); DocForge-Bench Pixel-F1; DeepID FA2 and FA3 |
 | C: unseen design, published pair | IDNet WV, four attack folders as positives (about 10,000 images after balancing) | IDNet AZ, 1,000 test identities per class, per task; and the reverse | direct rerun of the published failure we cite in the introduction | IDNet Table 14 |
 
-In every protocol the reference for a test design is built from genuine images of that design that are never test samples and never training samples (leave-identity-out median for A and B; the 4,979 non-test genuine images for C). The detector never trains on a test design. The single-image baseline uses the same code with the reference input removed, so the reference is the only difference.
+In every protocol the reference for a test design is built from genuine images of that design that are never test samples and never training samples (leave-identity-out median for A and B; the 4,979 non-test genuine images for C). The detector never trains on a test design. The single-image baseline uses the same code with the reference input removed but the zone mask kept, so the reference is the only difference. Splits group each forgery with its source document and, for crop-and-replace, its donor document (provenance components).
 
 ## 5. Is there enough data?
 
@@ -61,9 +61,11 @@ Yes, for a fine-tuned ResNet-18 change detector initialized from the LEVIR check
 
 ## 6. Metrics
 
-AUC, EER, APCER at BPCER 1 and 5 percent, HTER at the FantasyID operating point, accuracy at 0.5 where the published row uses it, pixel F1 and IoU where masks exist, and the referral rate at miss budgets of 1 and 5 percent with the Centre's prior of 4.4 percent among referred documents.
+AUC, EER, APCER at BPCER 1 and 5 percent, HTER at the FantasyID operating point, accuracy at 0.5 where the published row uses it, pixel F1 and IoU where masks exist, and the referral policy: a threshold calibrated on the training source at a 5 percent miss target, frozen, with the realized miss and referral rates reported on the unseen designs; referral rate at test miss 1 and 5 percent is a secondary ROC summary. Workload is projected under assumed prevalence scenarios (0.1, 1 and 5 percent), not from the Centre's 4.4 percent ratio, which is irregularities among examinations, not prevalence.
 
 ## 7. Comparability caveats to print
+
+0. SIDTD negatives are MIDV-2020 mock documents that already carry digital editing from dataset creation ("baseline-unmodified mock"); FantasyID negatives are bona fide printed-card captures.
 
 1. SIDTD's few-shot rows are on cropped video clips; ours are on templates. The controlled comparison is our own single-image run on the same split.
 2. IDNet's Zenodo release is 795 x 487 JPEG; the paper's numbers were on the originals.

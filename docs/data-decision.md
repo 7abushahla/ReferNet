@@ -90,4 +90,4 @@ Difference from the published Protocol C setup, to state in the paper: the paper
 2. SIDTD and IDNet are digital renders; capture is tested only by FantasyID.
 3. IDNet results are on the reduced Zenodo release.
 4. Training designs are European and US; the Arabic design appears only at test.
-5. The 4.4 percent prior in the referral analysis is among documents already referred to the Document Examination Centre, not among all travellers.
+5. The Centre's 902 irregularities in 20,307 examinations is a ratio among examined documents, not a prevalence among travellers; workload projections use assumed prevalence scenarios.

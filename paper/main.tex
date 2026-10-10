@@ -294,11 +294,11 @@ Attention fusion (ours) & ResNet-18 & \todo{} & \todo{} & \todo{} & \todo{} \\
 \begin{table}[H]
 \centering\small
 \setlength{\tabcolsep}{4pt}
-\caption{Protocol B (FantasyID official test, zero-shot). Published rows from the FantasyID paper.}
+\caption{Protocol B (FantasyID official test, zero-shot). Published rows from the FantasyID paper. $^\dagger$FantasyID counts bona fide as positive: its FNR is the share of genuine cards referred at an operating point missing about 5\% of attacks.}
 \label{tab:resB}
 \begin{tabular}{lccccc}
 \toprule
-Method & AUC all & AUC text & AUC face & HTER (\%) & FNR@FPR10 (\%) \\
+Method & AUC all & AUC text & AUC face & HTER (\%) & Genuine referred (\%)$^\dagger$ \\
 \midrule
 TruFor (published) & 93.5 & 99.5 & 55.8 & 33.4 & 62.0 \\
 MMFusion (published) & 94.4 & 99.8 & 61.5 & 25.8 & -- \\
