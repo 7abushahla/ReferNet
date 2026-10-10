@@ -40,6 +40,12 @@ def load(runs: Path, protocol: str) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def md(df: pd.DataFrame) -> str:
+    cols = [str(c) for c in df.columns]
+    rows = [[f"{v:.3f}" if isinstance(v, float) else str(v) for v in r] for r in df.itertuples(index=False)]
+    return "\n".join(["| " + " | ".join(cols) + " |", "|" + "---|" * len(cols)] + ["| " + " | ".join(r) + " |" for r in rows])
+
+
 def table(df: pd.DataFrame, variant: str, cols: list[str]) -> str:
     sub = df[df.variant == variant].copy()
     if sub.empty:
@@ -72,7 +78,9 @@ def main():
     parts = [f"# Protocol {a.protocol}: {df.seed.nunique()} seed(s), {df[df.variant == 'native'].shape[0]} runs\n"]
     for variant in sorted(df.variant.unique()):
         parts += [f"\n## {variant}\n", table(df, variant, cols)]
-    parts += ["\n\n## Per run (native)\n", df[df.variant == "native"][["fusion", "reference", "seed", "val_auc", "auc", "transported_miss5", "transported_referral5", "loc_f1", "best_epoch"]].to_markdown(index=False) if hasattr(df, "to_markdown") else ""]
+    per = df[df.variant == "native"][["fusion", "reference", "seed", "val_auc", "auc", "transported_miss5",
+                                      "transported_referral5", "loc_f1", "best_epoch"]]
+    parts += ["\n\n## Per run (native)\n", md(per)]
     text = "\n".join(parts) + "\n"
     out = Path(a.out or f"results/tables/protocol_{a.protocol}.md")
     out.parent.mkdir(parents=True, exist_ok=True)
