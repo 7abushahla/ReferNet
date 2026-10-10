@@ -22,6 +22,9 @@
 %
 % Build: LuaLaTeX + BibTeX (babel handles Arabic). Self-contained for Overleaf: references.bib and figures/ live in this folder.
 %
+% Drafting status (10 Oct 2026): Sections 1 to 4 (the guide's 4 to 7) drafted from docs/paper-plan.md;
+% the English abstract drafted with placeholders for results; Sections 5 and 6 await results.
+% Spelling is American English, following the authors' IJDAR 2026 paper.
 %
 % Placeholders: \todo{...} prints grey italic guidance in the PDF.
 % Set \showguidancefalse below to hide all guidance before submitting.
@@ -57,7 +60,18 @@
 \usepackage{placeins}
 \usepackage{pdflscape}
 \usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
 \usepackage{cite}
+% \bstctlcite for IEEEtran.bst under the article class (IEEEtran_bst_HOWTO): lists of more than six authors become "et al."
+\makeatletter
+\def\bstctlcite{\@ifnextchar[{\@bstctlcite}{\@bstctlcite[@auxout]}}
+\def\@bstctlcite[#1]#2{\@bsphack
+  \@for\@citeb:=#2\do{%
+    \edef\@citeb{\expandafter\@iden\@citeb}%
+    \if@filesw\immediate\write\csname #1\endcsname{\string\citation{\@citeb}}\fi}%
+  \@esphack}
+\makeatother
 \usepackage{orcidlink}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
@@ -65,6 +79,14 @@
 \usepackage{hyperref}
 \hypersetup{hidelinks}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% Colors of the TikZ figures (architecture and system); the same palette as the proposal.
+% TikZ does not convert to Word: export these two figures to PNG before running to_docx.sh.
+\definecolor{ink}{RGB}{30,30,30}
+\definecolor{line1}{RGB}{70,110,160}
+\definecolor{line2}{RGB}{170,70,50}
+\definecolor{soft}{RGB}{235,238,243}
+\definecolor{soft2}{RGB}{247,240,236}
 
 % ---------- Fonts and languages (LuaLaTeX + babel; Arabic direction stays local) ----------
 \usepackage[english, bidi=basic]{babel}
@@ -100,6 +122,7 @@
 \newcommand{\awardtheme}{Artificial Intelligence: smart innovations and advanced data analytics}
 
 \begin{document}
+\bstctlcite{IEEEexample:BSTcontrol}
 
 % =====================================================================
 % 1. TITLE PAGE AND SUBMISSION DATA
@@ -166,7 +189,7 @@ Word count & \todo{from wordcount.sh or Overleaf; 4,000 to 8,000 including table
 \section*{الملخص}
 \end{otherlanguage}
 \addcontentsline{toc}{section}{Arabic abstract}
-\todo{Arabic abstract, at most 250 words. Translate the English abstract once it is final, and have a native speaker check the terminology: travel document, forgery, first line, Document Examination Centre.}
+\todo{Arabic abstract, at most 250 words. Translate the English abstract once it is final, and have a native speaker check the terminology: travel document, forgery, first line, Document Examination Center.}
 \medskip
 
 \begin{otherlanguage}{arabic}
@@ -181,9 +204,11 @@ Word count & \todo{from wordcount.sh or Overleaf; 4,000 to 8,000 including table
 % =====================================================================
 \section*{Abstract}
 \addcontentsline{toc}{section}{English abstract}
-\todo{At most 250 words. Structure: context (two-line document check at Dubai's border, centre figures); gap (no vendor publishes cross-design error rates; published detectors memorize designs); method (reference-conditioned detector built on a change-detection framework, design-median reference and zone mask); data and protocols (MIDV-2020, SIDTD, FantasyID; Protocol A and B, Arabic design); key results with numbers; implication for GDRFA. Source: abstract of ../main.tex, shortened.}
+\todo{Draft of 10 Oct, about 215 words before the results are filled in; keep the total within 250 words. Fill in from the results tables: the Protocol A and B gains of the reference over the single-image baseline with intervals, the realized referral rate at the transported 5\% miss threshold, and the CPU time per document.}
 
-\textbf{Keywords:} travel documents; forgery detection; Siamese networks; change detection; border control; presentation attack detection.
+Dubai's border checks travel documents in two lines: first-line officers decide within seconds whether to clear a document or refer it for closer examination, and GDRFA Dubai's Document Examination Center reported 902 irregularities in 20,307 examinations between January 2025 and June 2026, including digitally altered images. Learned forgery detectors evaluated on public benchmarks are near-perfect on the document designs they were trained on but degrade sharply on designs they were not, and because they take a single image, none can use the specimen of the presented design that the counter's template library already holds. In this study, we give the detector that specimen. We propose a reference-conditioned alteration detector that compares the presented data page with a design-median reference and a mask of its personal-data zones, built on a published change-detection network in a difference-fusion and an attention-fusion variant. We measure it against the same network without the reference under three leave-design-out protocols on public data: unseen designs within SIDTD, zero-shot transfer to the printed and photographed cards of FantasyID, and IDNet's published cross-design pair. \todo{Protocol A: AUC of the reference-conditioned model against the single-image baseline, with the interval.} \todo{Protocol B: the same on FantasyID's held-out designs.} At a threshold calibrated on the training source for a 5\% miss rate, the detector refers \todo{X}\% of genuine documents on designs it has never seen, and it processes a document in \todo{Y}~ms on an ordinary CPU. By releasing the references, masks, splits, and protocol, we provide GDRFA with a measurement it can repeat on its own template library.
+
+\textbf{Keywords:} travel documents; forgery detection; reference-conditioned detection; change detection; Siamese networks; border control.
 
 \clearpage
 
@@ -192,15 +217,30 @@ Word count & \todo{from wordcount.sh or Overleaf; 4,000 to 8,000 including table
 % =====================================================================
 \section{Introduction}
 \label{sec:intro}
-\todo{About 600 words, deployment-motivated from the first sentence: the two-line check at Dubai's ports, seconds per document at a counter with a reader and a computer; the Document Examination Centre's own figures (902 irregularities in 20,307 examinations, a ratio among examined documents, not a prevalence); what the first line already operates (readers with a template library, a new design handled by adding its specimen); why the first-line decision is hard; one sentence on the approach; the structure of the paper. Source: ../main.tex Section 1 and the paper plan Section 2, items 1 and 2.}
 
-% Example figure inclusion (figures are read from figures/):
-% \begin{figure}[htbp]
-%   \centering
-%   \includegraphics[width=\textwidth]{fig_attacks.pdf}
-%   \caption{...}
-%   \label{fig:attacks}
-% \end{figure}
+Every traveler who enters or leaves Dubai presents a travel document, checked first by a passport officer at a counter, by a smart gate, or, since September 2026, by a handheld device that reads the chip and matches the face within seconds~\cite{gdrfa2026clickandtravel}. Doubtful documents are referred for closer examination and, ultimately, to GDRFA Dubai's Document Examination Center, a forensic laboratory accredited under ISO/IEC~17025 that maintains passport specimens from more than 80 countries~\cite{gulfnews2026forgery,gulftoday2026forgery}. In 2025, the first line was reported to comprise more than 1,600 officers and the Center about 50 examiners~\cite{uaejournal2025fake}. The hardest decision thus falls where time is shortest: front-line officers ``have only seconds'' per document~\cite{frontex2023quickcheck}.
+
+Between January 2025 and June 2026, the Center conducted 20,307 technical examinations of travel documents and found 902 irregularities, ``including forged documents, manipulated data, and digitally altered images''~\cite{gulfnews2026forgery}. This ratio, about 4.4\%, is measured among examined documents; it is neither a prevalence among travelers nor a count of the altered documents that the first line clears, which are never examined. Digital alterations leave little that is visible at counter speed (Fig.~\ref{fig:attacks}): a morphed portrait resembles two people, a replaced field keeps the original font, and a rewritten date keeps the background pattern.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig_attacks.pdf}
+\caption{Digitally altered documents in the public datasets used here: (a) an IDNet license, genuine and face-morphed; (b) a MIDV-2020 mock card and its SIDTD crop-and-replace forgery; (c) a printed and photographed FantasyID card with its altered fields boxed. Panels reproduced from~\cite{guan2024idnet}, \cite{boned2024sidtd}, and~\cite{korshunov2025fantasyid}.}
+\label{fig:attacks}
+\end{figure}
+
+The first line does not work unaided. GDRFA has reported electronic passport readers at its counters and ultraviolet, infrared, chip, and hologram checks at its examination points~\cite{gulfnews2024catch}, with real-time verification against its specimen database~\cite{gulfnews2026forgery}. Commercial readers check a presented document against a stored specimen of its design~\cite{regula2023templates,smartengines2022spec}, so a new design is handled by enrolling its specimen rather than by retraining. However, we found no published error rate for such systems on a design outside their library, which is precisely the figure an operator needs before trusting a ``clear'', and field trials have found that officers both over-trust and under-trust such machines~\cite{gariup2019firstline}. Learned detectors have not closed this gap: on public benchmarks, they are near-perfect on the designs they were trained on and degrade sharply on designs they were not~\cite{boned2024sidtd,guan2024idnetarxiv,korshunov2025fantasyid,korshunov2025deepid}, and since they take a single image, none can use the specimen that the counter already holds.
+
+In this study, we make the specimen an input. We propose a reference-conditioned alteration detector that receives the presented data page together with a reference of the same design, the pixel-wise median of genuine documents of that design, and a mask of the zones where personal data legitimately differ (Fig.~\ref{fig:idea}). Built on a published change-detection network~\cite{fang2023changer}, it outputs a map of the altered regions and a refer-or-clear score. We measure it under three leave-design-out protocols on public data against the same network without the reference, read its output as a referral decision at a fixed miss budget, and time it on an ordinary CPU.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig_idea.pdf}
+\caption{The idea. (A) Detectors on the public benchmarks are near-perfect on the designs seen in training and degrade on new ones~\cite{guan2024idnetarxiv,boned2024sidtd,korshunov2025fantasyid}. (B) We train on SIDTD and IDNet and test on FantasyID, whose designs, capture, and scripts the detector has never seen. (C) The detector receives the design-median reference of the same design and scores the deviation. (D) The quantities reported. The presented card is a FantasyID card altered by us for illustration, and the map in (C) marks the regions we altered; it is not a model output.}
+\label{fig:idea}
+\end{figure}
+
+The rest of this paper is organized as follows. Section~\ref{sec:problem} states the research problem, its significance, our objectives, and our contributions. Section~\ref{sec:framework} presents the conceptual framework and reviews the literature. Section~\ref{sec:method} describes the samples, the data preparation, the proposed architecture, the evaluation protocols, and the deployment measurement. Section~\ref{sec:results} reports and discusses the results, while Section~\ref{sec:conclusions} concludes the paper with recommendations for GDRFA Dubai.
 
 % =====================================================================
 % 5. RESEARCH PROBLEM, SIGNIFICANCE AND OBJECTIVES
@@ -209,23 +249,37 @@ Word count & \todo{from wordcount.sh or Overleaf; 4,000 to 8,000 including table
 \label{sec:problem}
 
 \subsection{Research problem}
-\todo{About 200 words. Refer or clear in seconds across 80+ countries' templates; we found no published cross-design error rate for the commercial readers; the detectors evaluated in the public benchmarks take one image and collapse on unseen designs. The gap sentence from the plan: the collapse is measured in four benchmarks; the specimen the counter already uses has never been given to a learned alteration detector and measured on those benchmarks against the same detector without it.}
+The first line must refer or clear a travel document within seconds, across specimens from more than 80 countries~\cite{gulfnews2026forgery}, with readers whose error rate on unseen designs we found unpublished. Learned detectors do not fill this gap: their degradation on unseen designs has been measured on four benchmarks~\cite{boned2024sidtd,guan2024idnetarxiv,korshunov2025fantasyid,korshunov2025deepid}, yet none of the detectors evaluated there can use the specimen of the presented design. To the best of our knowledge, the remedy that the counter already uses, a specimen of the same design, has never been given to a learned alteration detector and measured on those benchmarks against the same detector without it. This study provides that measurement and reads it in the terms of the first-line decision: referrals at a fixed miss rate, and time per document.
 
 \subsection{Significance}
-\todo{About 200 words. For GDRFA: a measurement nobody publishes, a released protocol to repeat it on GDRFA's own template library, a new design handled by adding its specimen, a decision and a time budget on the counter computer. For the field: to our knowledge the first leave-design-out measurement of specimen conditioning for alteration detection on public data (reference-based detectors themselves are not new).}
+For GDRFA Dubai, the study offers three things not available today: a cross-design error rate for a detector that works as the counter already works, where a new design is handled by enrolling its specimen without new data or retraining; a released protocol for repeating the measurement on the Center's own template library without any document leaving the Center; and the decision and its cost in the first line's terms. For the field, it provides, to the best of our knowledge, the first leave-design-out measurement of specimen conditioning for alteration detection on public data, with the specimen as the only difference between the method and its baseline. Reference-based document detectors are not new~\cite{ghanmi2021checksim,chen2022domain}; measuring the reference where the single-image failure was measured is.
 
 \subsection{Objectives and research questions}
-\todo{The aim and RQ1 to RQ5 (paper plan Section 2 and 5b).}
+The aim of this study is to establish, on public data, whether conditioning a learned alteration detector on a reference of the presented document's design lets it generalize to designs it has never seen, and to report the result as a first-line referral decision with its time cost. We address five research questions:
 \begin{enumerate}[label=\textbf{RQ\arabic*.}]
-  \item \todo{Loss of a single-image detector on unseen designs, and how much the reference recovers.}
-  \item \todo{Gap between Protocol A and Protocol B, and what drives it.}
-  \item \todo{Which fusion (stacked, difference, attention) and which reference construction (design median, single specimen, with and without the zone mask) carry the gain.}
-  \item \todo{Referral rate at miss budgets of 1 and 5\%.}
-  \item \todo{Whether the detector meets a first-line time budget on an ordinary CPU, and what the reference costs in time relative to the single-image model.}
+  \item How much does a single-image detector lose on designs absent from training, and how much of that loss does the reference recover when it is the only difference?
+  \item How large is the gap between an unseen design within one source (Protocol A) and an unseen source, generator, capture, and script (Protocol B), and what drives it?
+  \item Which fusion (stacked, difference, or attention) and which reference construction (design median or single specimen, with or without the zone mask) carry the gain?
+  \item When a threshold calibrated on the training source for a 5\% miss rate is carried unchanged to unseen designs, which miss and referral rates are realized?
+  \item Does the detector meet a first-line time budget on an ordinary CPU, and what does the reference cost in time?
 \end{enumerate}
 
 \subsection{Contributions}
-\todo{Contributions C1 to C5 with their boundaries (paper plan Section 2b): the measurement, the method, the decision, the time budget, the release. Each states what it is not. Include the project-at-a-glance figure, fig\_pipeline.pdf, on a landscape page if space allows.}
+Our contributions are summarized as follows:
+\begin{itemize}
+  \item We provide, to the best of our knowledge, the first leave-design-out measurement of specimen conditioning for alteration detection on public data, under three protocols, with the reference as the only difference from a single-image baseline. It is not the first reference-based document detector~\cite{ghanmi2021checksim,chen2022domain}, and it introduces no new dataset.
+  \item We adapt a published change-detection network, ChangerEx~\cite{fang2023changer}, to identity documents through a design-median reference, a zone channel for personal-data fields, a wrong-design gate, and a referral head, in a standard and an attention-based variant. The network itself is not new.
+  \item We read the detector's score as the first-line decision through a threshold calibrated on the training source and carried unchanged to unseen designs, and we report the realized miss and referral rates and the workload under assumed prevalence scenarios, not as a measurement of workload at GDRFA.
+  \item We measure the time per document and the throughput of every variant on an ordinary CPU, with and without cached reference features; execution on the reader itself is left for future work.
+  \item We release the references, zone masks, box masks, provenance-grouped splits, protocol files, and code, so that GDRFA can repeat the measurement on its own template library. No real document is released.
+\end{itemize}
+
+\begin{figure}[p]
+\centering
+\includegraphics[angle=90, height=0.82\textheight]{fig_pipeline.pdf}
+\caption{The project at a glance: data preparation, the reference-conditioned architecture and its single-image baseline, the three protocols, and the output, an alteration map and a refer-or-clear decision at a miss budget.}
+\label{fig:pipeline}
+\end{figure}
 
 % =====================================================================
 % 6. THEORETICAL AND CONCEPTUAL FRAMEWORK AND LITERATURE REVIEW
@@ -234,63 +288,312 @@ Word count & \todo{from wordcount.sh or Overleaf; 4,000 to 8,000 including table
 \label{sec:framework}
 
 \subsection{Conceptual framework}
-\todo{About 400 words. (i) First- and second-line inspection as defined by ICAO Doc 9303 and the Schengen Handbook; (ii) detection as a referral decision: referral rate $R(t)$ and miss rate $M(t)$ at a prior $p$, with the ISO/IEC 30107-3 error vocabulary; (iii) the reference-conditioning principle: comparing against a specimen turns single-image forensics into change detection, as in differential morph detection. Include the idea figure, fig\_idea.pdf, and the referral sketch, fig\_referral.pdf.}
+Our framework rests on three principles: the levels at which travel documents are inspected, detection as a referral decision, and comparison against a reference.
+
+\textbf{Inspection levels.} Border checks separate the first-line check, applied to every traveler, from second-line checks, further checks carried out away from the first line when a doubt arises~\cite{eu2022handbook}. ICAO Doc~9303 likewise defines three levels of document inspection: a cursory examination for rapid inspection at the point of usage, an examination by trained inspectors with simple equipment, and an inspection by forensic specialists~\cite{icao9303p2}. Dubai's three tiers, first-line officers, a second line, and the Document Examination Center~\cite{thenational2024fake}, follow these levels. The first-line decision is therefore binary, made in seconds, with the reader as its only sensor, and a detector that serves it must answer the same question in the same time, on the counter's computer, without retraining for every new design.
+
+\textbf{Detection as a referral decision.} A detector serves this decision only through a threshold. Let $s$ be the detector's score for a presented document, $t$ a threshold, and $p$ the prevalence of altered documents. Referring when $s>t$ yields the referral rate
+\begin{equation}
+R(t) = (1-p)\,P(s>t \mid \text{genuine}) + p\,P(s>t \mid \text{altered})
+\label{eq:referral}
+\end{equation}
+and the miss rate $M(t) = P(s \le t \mid \text{altered})$. In the vocabulary of ISO/IEC~30107-3, which the document-forgery benchmarks adopt~\cite{iso30107,korshunov2025fantasyid}, $M(t)$ is the attack presentation classification error rate (APCER), and $P(s>t \mid \text{genuine})$ is the bona fide presentation classification error rate (BPCER). An operator sets $t$ to a miss budget and pays for it in referrals (Fig.~\ref{fig:referral}). Since $p$ is small and unknown, $R(t)$ is dominated by the genuine documents referred; we therefore calibrate $t$ on the training source, carry it unchanged to designs never seen, report the realized $M$ and $R$ there, and project workload only under assumed values of $p$.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.58\textwidth]{fig_referral.pdf}
+\caption{The referral trade-off of Eq.~\eqref{eq:referral}, sketched with a Gaussian score model at three separabilities and a prevalence of 1\%; not a result. A detector is read at a fixed miss budget (dotted line).}
+\label{fig:referral}
+\end{figure}
+
+\textbf{Comparison against a reference.} Comparing a document with a specimen turns single-image forensics into change detection: two registered images, and the question of where they differ. The same principle underlies differential morphing-attack detection, which compares a passport photograph with a trusted live capture~\cite{scherhag2020dmad,borghi2021double}, and golden-sample inspection of circuit boards~\cite{fridman2021changechip}. A single-image detector must learn both what a design looks like and how an alteration departs from it; only the first is tied to the design. A registered specimen supplies it at inference and leaves the network to learn how an altered field departs from its design, through a broken background pattern or a font that disagrees with the printed labels, which is the same function on every design. Unlike a circuit board, however, a document's personal-data fields are supposed to differ from its specimen, so we pair the reference with a zone mask that marks where difference is expected.
 
 \subsection{Literature review}
-\todo{About 1,000 words in four strands, each closing with what it lacks; then the positioning paragraph and Table 1. Sources: ../main.tex Section 2 and the paper plan Sections 2, 2b and 5.}
+We review four strands of the literature, each of which holds one side of the problem, and close each with what it lacks.
 
-\subsubsection{Single-image detectors and the measured collapse on unseen designs}
-\todo{SIDTD few-shot (82 to 91 from 97 to 100 within design; CoAARC pairs a random genuine of any design and scores worst), IDNet cross-type (35 to 71), FantasyID held-out designs (faces AUC 56 to 62; 62\% of genuine referred to miss 5\% of attacks), DeepID (0.99 to 0.72 from fantasy to real IDs), DocForge-Bench (pixel F1 0.30), the 2026 survey (APCER above 24\% for every public model). Lacks: a way to use the specimen; a referral policy; a time budget.}
+\subsubsection{Single-image detectors and their measured collapse on unseen designs}
+Four benchmarks evaluate alteration detection on designs absent from training, and every detector they evaluate degrades there. SIDTD forges the ten designs of MIDV-2020~\cite{bulatov2022midv2020} by crop-and-replace and inpainting~\cite{boned2024sidtd}; most of its baseline classifiers exceed 96\% accuracy within design on templates, whereas its few-shot models, evaluated on cropped video clips, reach 82.0\% to 91.0\% on four held-out nationalities even though each test episode supplies five labeled genuine and five labeled forged examples of the held-out nationality. IDNet trains on one synthetic design and tests on another: from West Virginia to Arizona, accuracy falls from 98\% to 100\% within design to 50.6\% on face morphing and 60.9\% on text replacement~\cite{guan2024idnetarxiv}. On FantasyID's printed and photographed cards, TruFor~\cite{guillaro2023trufor} reaches AUCs of 99.5\% and 99.9\% on two text attacks but 55.8\% on face swaps, and at a threshold set on validation data, it misses 4.9\% of the attacks while rejecting 62.0\% of the genuine cards~\cite{korshunov2025fantasyid}. In the DeepID challenge, the winner's F1-score fell from 0.991 on fantasy cards to 0.719 on 20,000 private real documents~\cite{korshunov2025deepid}. On 140 synthesized cards of unseen templates, a 2026 survey found an APCER above 24\% for every public model, GPT-5 and Gemini included, and a BPCER above 70\% for all of them at an APCER of 1\%~\cite{das2026survey}, while DocForge-Bench traced zero-shot failures to calibration rather than representation~\cite{docforge2026}. All of these detectors take a single image, except SIDTD's CoAARC, which pairs the query with a randomly drawn genuine document rather than a specimen of its own design and performs worst, at 62.8\%~\cite{boned2024sidtd}. None can use the specimen of the presented design, none reports its time per document, and, since JPEG quality alone separates the classes in SIDTD and FantasyID (Section~\ref{sec:prep}), the published rows may partly reflect compression rather than alteration.
 
 \subsubsection{Reference-conditioned detectors for documents}
-\todo{CheckSim, Chen et al., Al-Ghadi and FMIDV (reference removed, AUC 0.5), Neitthoffer et al., Nieto-Hidalgo et al. 2026 prototypes; commercial template libraries. Lacks: leave-design-out evaluation on alterations with public data; a dense map; masks.}
+Examiners and commercial readers compare a document with a stored specimen by rules written per design and publish no error rates~\cite{regula2023templates,smartengines2022spec}. Learned two-input detectors for identity documents are rarer, and each answers a different question. CheckSim measures the similarity between an aligned query and a reference model on four French document types with private data~\cite{ghanmi2021checksim}. Chen et al.\ compare a questioned document with a reference of the same template, but to detect recapture rather than altered content~\cite{chen2022domain}. Al-Ghadi et al.\ compare the guilloche pattern of a query with that of a random genuine document of the same country~\cite{alghadi2022guilloche}; when their follow-up removed the reference at test time, detection fell to an AUC near 0.5~\cite{alghadi2023fmidv}. Neitthoffer et al.\ supplied a document type's template to a recognition network and found that fusing it through attention generalized to unseen types, whereas stacking it as extra input channels did not~\cite{neitthoffer2023knowledge}. Most recently, Nieto-Hidalgo et al.\ reduced the error of presentation-attack detection on unseen countries from 26.56\% to 9.07\% by giving the model four genuine samples of the target card at inference~\cite{nietohidalgo2026zeroshot}. None of these detectors is evaluated leave-design-out on alterations with public data, none outputs a dense map of the altered region, and none reports its time per document.
 
 \subsubsection{Deployment-oriented systems}
-\todo{EdgeDoc, FLiD, the Idakto edge framework, vendor readers; DeepID container wall time. Lacks: any measured inference time or FPS; any cross-design error rate.}
+EdgeDoc combines a lightweight convolutional backbone with transformer blocks for joint detection and localization~\cite{george2025edgedoc}; FLiD classifies face and text fields with a frozen MobileNetV3-Small backbone and a head of 191K parameters~\cite{flid2026}; and Idakto's embedded framework pairs YOLOv8 segmentation with structural-similarity matching against a library of 128 issuing countries, allowing ``near real-time operation''~\cite{idakto2025embedded}. These systems are designed to be lightweight, yet we found no measured inference time, throughput, or CPU latency for any of them.
 
-\subsubsection{Where the architecture comes from: inspection and change detection}
-\todo{Remote-sensing change detection (Daudt et al. 2018; Changer 2023, Open-CD); automated optical inspection against a golden sample (ChangeChip 2021; CADNet 2025; Visual ChangeNet); differential morphing-attack detection (Scherhag et al. 2020). Lacks: application to documents; a notion of legitimate variation (fields are supposed to differ), which the zone channel supplies.}
+\subsubsection{Where the architecture comes from}
+Remote-sensing change detection compares two co-registered images with Siamese networks that subtract the features of the two inputs~\cite{daudt2018fcsiamdiff}; Changer added feature interaction between the two streams and flow-based alignment~\cite{fang2023changer}, and the Open-CD toolbox provides these networks with pretrained weights~\cite{li2025opencd}. Automated optical inspection applies the same comparison against a golden sample, for example by registering a circuit board to a defect-free reference before computing a change map~\cite{fridman2021changechip}, and differential morphing-attack detection reads it as a trusted reference and a probe~\cite{scherhag2020dmad,borghi2021double}. None of this work has been applied to identity documents, and none has a notion of legitimate variation: a board must match its golden sample everywhere, whereas a document's personal fields must differ from its specimen.
 
 \subsubsection{Positioning and the gap}
-\todo{The intersection in one paragraph, then Table 1 (positioning table from ../main.tex), then the gap sentence: the collapse is measured in four benchmarks; the specimen the counter already uses has never been given to a learned alteration detector and measured on those benchmarks against the same detector without it.}
+Table~\ref{tab:position} places this study where the four strands meet: a registered reference of the query's own design, given to a learned alteration detector with a map head, measured leave-design-out on the public benchmarks against the same detector without it, read as a referral at a miss budget, and timed on a CPU. To the best of our knowledge, no prior work combines these elements.
+
+\begin{table}[htbp]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+\caption{Positioning against the nearest prior work.}
+\label{tab:position}
+\begin{tabular}{L{2.9cm}L{2.2cm}L{2.7cm}L{2.3cm}L{1.4cm}L{1.1cm}L{1.3cm}}
+\toprule
+Work & Task & Reference input & Unseen designs & Public data & Map & Measured time \\
+\midrule
+SIDTD~\cite{boned2024sidtd} & text alteration & none; CoAARC: random genuine & 4 nationalities (five-shot) & yes & no & no \\
+IDNet~\cite{guan2024idnetarxiv} & face and text alteration & none & cross-design pairs & yes & no & no \\
+FantasyID, DeepID~\cite{korshunov2025fantasyid,korshunov2025deepid} & face and text alteration & none & held-out designs & partly & yes & no \\
+Survey test set~\cite{das2026survey} & printed alterations & none & unseen templates & no & no & no \\
+CheckSim~\cite{ghanmi2021checksim} & alteration (patches) & aligned reference model & no & no & patches & no \\
+Chen et al.~\cite{chen2022domain} & recapture & same-template reference & cross-type & no & no & no \\
+Al-Ghadi et al.~\cite{alghadi2022guilloche,alghadi2023fmidv} & guilloche copy-move & random genuine, same country & no & on request & no & no \\
+Neitthoffer et al.~\cite{neitthoffer2023knowledge} & recognition & template, by attention & unseen types & yes & n/a & no \\
+Nieto-Hidalgo et al.~\cite{nietohidalgo2026zeroshot} & presentation attacks & four genuine samples & unseen countries & partly & no & no \\
+EdgeDoc, FLiD, Idakto~\cite{george2025edgedoc,flid2026,idakto2025embedded} & alteration & none (Idakto: template matching) & EdgeDoc, via DeepID & partly & yes & no \\
+\textbf{This study} & face and text alteration & design median and zone mask & three protocols & yes, released & yes & yes, CPU \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 % =====================================================================
 % 7. METHODOLOGY AND PROCEDURES
 % =====================================================================
 \section{Methodology and Procedures}
 \label{sec:method}
-\todo{About 1,800 words. Keep the guide's wording: study population, samples, and tools.}
+Figure~\ref{fig:pipeline} summarizes the study: three public datasets are unified, rectified, and paired with a reference of the same design and a zone mask; a published change-detection network is extended into a reference-conditioned detector; every variant and its single-image baseline are trained on identical samples and evaluated under three protocols; and the detector is timed on a CPU as it would run at the counter.
 
 \subsection{Study population and samples}
-\todo{The population is identity and travel documents presented at a first-line check; the samples are SIDTD (built on MIDV-2020; baseline-unmodified mock documents plus 1,222 generated forgeries), FantasyID (printed and captured fantasy cards, 13 designs, boxes with altered flags and a document quad per image) and IDNet's Arizona and West Virginia designs from the reduced Zenodo release (face morphing, portrait substitution, text attacks); sizes, designs, alteration classes, capture conditions and licences in a table; provenance-grouped splits (source plus donor); no real traveller's document. Source: docs/data-decision.md. Include fig\_templates.pdf.}
+\label{sec:population}
+The population of interest is the identity and travel documents presented at a first-line check. Since real travelers' documents can neither be used nor released, we sample it through three public datasets that pair genuine documents with digitally altered versions of them (Table~\ref{tab:data}, Fig.~\ref{fig:templates}), chosen to test three ways in which a counter meets a design it has not seen: a new design from a familiar source, a new source with a new generator, capture, and script, and a published cross-design pair.
+
+\textbf{SIDTD.} SIDTD~\cite{boned2024sidtd} holds the 1,000 MIDV-2020~\cite{bulatov2022midv2020} templates of ten identity-card and passport designs, with 100 mock identities each, and 1,222 forgeries: crop-and-replace, which pastes a field from another document of the same design with a shift of up to 10 pixels, and inpaint-and-rewrite, which erases a field and redraws the same value in a different font. In a random sample of 80 forgeries, 78 altered a text field. Its genuine images are mock documents that already carry digital editing from the dataset's creation, which we call baseline-unmodified mock documents.
+
+\textbf{FantasyID.} FantasyID~\cite{korshunov2025fantasyid} contains 13 fictional designs in ten scripts, including Arabic, printed on PVC cards and captured with two phones and an office scanner. Its official test set holds 300 genuine captures of three held-out designs (Chinese, Dutch, and Singaporean), 150 face swaps (Attack-2) and 149 text rewrites (Attack-3) of those designs, and 786 text rewrites of its ten training designs (Attack-1). Every image carries the rectangle, value, and provenance of each field and the quadrilateral of the card.
+
+\textbf{IDNet.} IDNet~\cite{guan2024idnet,guan2024idnetarxiv} contains synthetic documents of 20 designs. We use its Arizona and West Virginia driver's licenses, each with 5,979 genuine images and as many per attack class: face morphing, portrait substitution, text replacement, and their combination. The public release stores 795~$\times$~487 JPEG images rather than the originals on which the paper's numbers were measured.
+
+Splits are grouped by provenance: a forgery stays with its source document and, for crop-and-replace, its donor, and FantasyID's three captures of a card stay together.
+
+\begin{table}[htbp]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+\caption{Public datasets used in this study (licenses in the Appendix).}
+\label{tab:data}
+\begin{tabular}{L{2.0cm}L{2.6cm}L{2.5cm}L{3.1cm}L{2.5cm}L{2.4cm}}
+\toprule
+Dataset & Designs & Images used & Alterations & Capture & Role \\
+\midrule
+SIDTD (on MIDV-2020) & 10 identity cards and passports & 1,000 genuine, 1,222 altered & crop-and-replace; inpaint-and-rewrite & digital templates & train (A, B); test (A) \\
+FantasyID & 13 fictional, 10 scripts, incl.\ Arabic & test: 300 genuine, 1,085 altered & face swap; text rewrite & printed PVC cards; two phones, a scanner & test only (B) \\
+IDNet (AZ, WV) & 2 US driver's licenses & 5,979 genuine and 5,979 per attack class, per design & face morphing; portrait substitution; text replacement; combined & synthetic; 795~$\times$~487 JPEG & train (B, C); test (C) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig_templates.pdf}
+\caption{Template diversity: (a) the twenty IDNet designs, watermarked by their authors; (b) FantasyID's Arabic design, printed and photographed. Reproduced from~\cite{guan2024idnet} and~\cite{korshunov2025fantasyid}.}
+\label{fig:templates}
+\end{figure}
 
 \subsection{Tools: data preparation}
-\todo{Unified records; rectification by homography to the 512 x 800 canvas (FantasyID ships the quad); design-median reference with the query's identity excluded; zone mask from the original field rectangles; box masks from the altered rectangles; pairs, hard negatives with a wrong-design reference; the JPEG-quality audit across classes. No forgeries are generated by us.}
+\label{sec:prep}
+Every image becomes a record of its design, identity, label, attack class, capture device, field rectangles, altered-region mask, and provenance component, and is prepared in five steps. No forgery is generated by us.
+
+\textbf{Rectification.} Each document is rectified onto a 512~$\times$~800 canvas of its design, by the homography of its annotated quadrilateral for FantasyID's photographs and by letterboxing for the flat renders of SIDTD and IDNet.
+
+\textbf{Design-median reference.} The reference of a design is the pixel-wise median over its rectified genuine documents (Fig.~\ref{fig:references}). The median removes personal content, which varies across identities, and keeps the printed design, its background pattern, headings, field labels, and borders; it is the nearest public analog of a specimen in a template library. The reference of a query never contains the query's own identity nor, for a forgery, its source or donor; for Protocol C, it is the median of the target design's 4,979 non-test genuine images.
+
+\textbf{Zone and ground-truth masks.} The zone mask of a design is the union of the original field rectangles of its genuine documents (portrait, text fields, and signature), dilated by 4 pixels. The mask of a forgery is the box of its altered region: the SIDTD field rectangle dilated by 8 pixels, IDNet's bounding boxes, and FantasyID's rectangles flagged as altered.
+
+\textbf{Pairs.} Positive pairs couple a forgery with the reference of its design, and negative pairs couple a genuine document with it. A third type couples a genuine document with the reference of a different design; labeled as a design mismatch that must be referred, it makes a failure to identify the design fail safe.
+
+\textbf{Compression control.} JPEG quality is a class label in both datasets: SIDTD stores its genuine templates at quality 92 and every forgery at 75, and FantasyID stores genuine cards at 93.5 to 95 and most attacks at 75, so the quantization table alone separates the classes in every split of Protocols A and B (Table~\ref{tab:jpeg}). The FantasyID part of this was noted in the DeepID challenge~\cite{korshunov2025deepid}; to our knowledge, the SIDTD part has not been reported. A detector trained on the native files could score perfectly without reading the document, and the shortcut would survive into the held-out designs. We therefore re-encode every canvas at quality 95, which removes the measurable block-grid trace (an 8-pixel blockiness statistic falls from an AUC of 0.971 on the raw files to 0.513 on our canvases), apply random JPEG compression to both inputs in training, and report every headline number twice: on the native canvases and on test canvases re-encoded at quality 75 for both classes. If the two differ materially, the equalized number stands.
+
+\begin{table}[htbp]
+\centering\small
+\caption{JPEG quality by class, estimated from the quantization tables, and the AUC of quality alone as a detector.}
+\label{tab:jpeg}
+\begin{tabular}{lccc}
+\toprule
+Split & Genuine quality & Altered quality & AUC of quality alone \\
+\midrule
+Protocol A: train, validation, test & 92 & 75 & 1.000 \\
+Protocol B: train, validation & 92 & 75 & 1.000 \\
+Protocol B: test, held-out designs & 93.5 & 75 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig_references.pdf}
+\caption{Design-median references computed by our pipeline: FantasyID designs from printed and photographed cards (top) and SIDTD designs from templates (bottom). Personal content averages out, leaving faint traces in the portrait and some text fields, while the printed design remains.}
+\label{fig:references}
+\end{figure}
 
 \subsection{Tools: proposed architecture}
-\todo{Base framework ChangerEx (Open-CD), a transfer from change detection; where each block comes from (Daudt et al., Changer, Neitthoffer et al., TruFor and EdgeDoc; the class is golden-reference inspection); the zone-aware single-image baseline as the controlled comparison; standard variant (difference fusion) and improved variant (attention fusion); input, output, loss, training recipe. Include the architecture figure (TikZ in ../main.tex, Figure 6) as a PDF or redraw.}
+\label{sec:arch}
+To address reference-conditioned detection, we build on ChangerEx~\cite{fang2023changer}, a Siamese change-detection network in the Open-CD toolbox~\cite{li2025opencd}, and propose a set of modifications that adapt it from remote sensing to identity documents. ChangerEx suits the task because change detection has its exact shape, two registered images and the question of where they differ, and because it aligns the two feature maps before comparing them, which absorbs the residual misregistration of a photographed card. To our knowledge, it has not been applied to documents before; the network is not our contribution, and its blocks have published sources~\cite{daudt2018fcsiamdiff,fang2023changer}. Figure~\ref{fig:arch} illustrates the two variants: one without attention (our standard architecture) and one with attention (our improved architecture).
+
+\begin{figure}[htbp]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[font=\sffamily\scriptsize, x=1cm, y=1cm,
+  blk/.style={draw=ink!70, rounded corners=2pt, align=center, minimum height=0.95cm, text width=2.15cm, inner sep=3pt, fill=soft},
+  attn/.style={blk, fill=soft2, draw=line2!80, dashed, thick},
+  outb/.style={blk, fill=white, draw=line1!80, thick, text width=1.8cm},
+  lab/.style={font=\sffamily\scriptsize, align=center},
+  arr/.style={-{Stealth[length=1.8mm]}, thick, ink!70},
+  darr/.style={arr, dashed, line2!80}]
+% inputs
+\node[inner sep=0, draw=line2!80, thick] at (0,2.4) (x) {\includegraphics[width=1.7cm]{arch_presented.png}};
+\node[lab, below=1pt of x] {query $x$};
+\node[inner sep=0, draw=ink!60] at (0,0.6) (r) {\includegraphics[width=1.7cm]{arch_reference_median.png}};
+\node[lab, below=1pt of r] {design reference $r$};
+\node[inner sep=0, draw=ink!60] at (0,-1.2) (z) {\includegraphics[width=1.7cm]{arch_zone.png}};
+\node[lab, below=1pt of z] {zone mask $z$};
+% shared encoder with feature exchange
+\node[blk] at (2.9,2.4) (ex) {encoder on $x \oplus z$\\ \scriptsize ResNet-18};
+\node[blk] at (2.9,0.6) (er) {encoder on $r \oplus z$\\ \scriptsize same weights};
+\draw[<->, dotted, thick, ink!60] (ex.south) -- node[right, font=\scriptsize]{shared} (er.north);
+\node[blk, minimum height=2.75cm, text width=1.9cm] at (5.5,1.5) (fx) {feature\\ exchange\\ \scriptsize spatial and\\ channel};
+% decoder
+\node[blk] at (8.1,1.5) (ms) {multi-scale fusion\\ \scriptsize per image};
+\node[blk] at (10.8,1.5) (fd) {align and subtract\\ \scriptsize flow alignment (FDAF)};
+\node[outb] at (13.5,1.5) (m) {alteration map $M$};
+\node[inner sep=0, draw=line1!80, thick] at (15.8,1.5) (mi) {\includegraphics[width=1.7cm]{arch_mask.png}};
+% improved variant
+\node[attn] at (8.1,3.7) (sa) {self-attention\\ \scriptsize over $f(x)$};
+\node[attn] at (10.8,3.7) (ca) {cross-attention\\ \scriptsize $Q{=}f(x)$, $K{=}V{=}f(r)$};
+% referral head
+\node[blk] at (10.8,-0.9) (gap) {global pooling\\ \scriptsize and two dense layers};
+\node[outb] at (13.5,-0.9) (sc) {score $s$\\ \scriptsize refer / clear};
+% arrows, standard path
+\draw[arr] (x) -- (ex); \draw[arr] (r) -- (er);
+\draw[arr] (z.east) -| node[pos=0.25, below, font=\scriptsize]{fourth channel of both inputs} (er.south);
+\draw[arr] (ex.east) -- (ex.east -| fx.west);
+\draw[arr] (er.east) -- (er.east -| fx.west);
+\draw[arr] (fx) -- (ms);
+\draw[arr] (ms) -- (fd);
+\draw[arr] (fd) -- (m);
+\draw[arr] (m) -- (mi);
+\draw[arr] (fd.south) -- (gap.north);
+\draw[arr] (gap) -- (sc);
+% arrows, improved path
+\draw[darr] (fx.north) |- (sa.west);
+\draw[darr] (sa) -- (ca);
+\draw[darr] (ca) -- (fd);
+\node[font=\scriptsize, text=line2, align=left, anchor=west] at (12.2,3.7) {dashed: improved\\ architecture only};
+\end{tikzpicture}}
+\caption{Proposed architecture. Solid blocks form the standard architecture: the query and the design reference, each with the zone mask as a fourth channel, pass through a shared ResNet-18 encoder with feature exchange; the decoder fuses scales per image, aligns the two feature maps by a learned flow and subtracts them, and emits the alteration map, while a referral head pools the fused features into the score. Dashed blocks form the improved architecture. The reference shown is the real design median of FantasyID's Arabic design; the query is an illustrative alteration.}
+\label{fig:arch}
+\end{figure}
+
+\textbf{Standard architecture.} The query $x$ and the reference $r$, each with the zone mask $z$ appended as a fourth channel, pass through a shared ResNet-18 encoder~\cite{he2016resnet}, and ChangerEx exchanges information between the two streams without parameters, swapping alternate columns after the second stage and alternate channels after the third and fourth. Its decoder projects each stage to a common width and fuses the scales separately for each image; flow dual-alignment fusion then predicts a flow field for each image, warps each feature map by it, and subtracts the other, so that the comparison is made after alignment, and a classifier emits the alteration map $M$ at a quarter of the input resolution. The difference is near zero on the printed design and non-zero at an altered field, on any design, while the zone channel tells the network where the content is expected to differ. A new referral head pools the fused features globally and maps them through two dense layers to a single score $s$.
+
+\textbf{Improved architecture.} Attention blocks are added without changing any tensor size, mirroring the attention path of our writer-identification architecture~\cite{abushahla2026ijdar}. Self-attention over the query's deepest features lets an altered field attend to its surroundings, and cross-attention takes the query features as queries and the reference features as keys and values~\cite{vaswani2017attention}, so that each location of the query reads what the design contains there, with the zone mask as a bias on the attention logits. This is the fusion that Neitthoffer et al.\ found to generalize where channel stacking failed~\cite{neitthoffer2023knowledge}. \todo{Confirm the insertion points and the number of heads against the implementation.}
+
+\textbf{Controlled baseline and settings.} To isolate the reference, we train four settings on identical samples: the query alone with the zone mask (B1), the query and reference stacked as input channels with the zone mask (B2), the standard architecture (B3), and the improved architecture (B4). B1 shares the code, zone channel, heads, and training data of B3 and lacks only the reference, which is therefore the only difference between the method and its baseline.
+
+\textbf{Wrong-design gate.} Before the network, each query is matched to its nearest design median by normalized cross-correlation on the static zones; a query that matches no design closely enough returns ``unknown design'', which at the counter means refer.
+
+\textbf{Training.} The encoder starts from the ChangerEx checkpoint trained on LEVIR-CD~\cite{chen2020levir}, with its first convolution extended to four channels by zero-initialized weights. That checkpoint was trained from random initialization rather than from ImageNet weights, and it was selected on the LEVIR-CD test split; we use it only as a starting point. The loss is the ChangerEx softmax cross-entropy with online hard example mining on the alteration map, weighted by three, plus the binary cross-entropy of the score. The remaining hyperparameters follow the Open-CD recipe, scaled for fine-tuning (Table~\ref{tab:train}). Training runs on NVIDIA A10G GPUs through the AUS high-performance computing infrastructure, with three random seeds per setting, and checkpoints are selected by AUC on a validation split of the source, never on a test design.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Training settings, shared by all settings and protocols.}
+\label{tab:train}
+\begin{tabular}{lL{11.2cm}}
+\toprule
+Parameter & Value \\
+\midrule
+Framework & Open-CD 1.1.0, ChangerEx with a ResNet-18 encoder \\
+Input & query and reference (RGB, 512~$\times$~800), each with the zone mask as a fourth channel \\
+Loss & $3\times$ cross-entropy with hard example mining (map) $+$ binary cross-entropy (score) \\
+Optimizer & AdamW~\cite{loshchilov2019adamw}; learning rate $10^{-4}$ (pretrained) and $5\times10^{-3}$ (new layers); weight decay 0.05; 1,000-iteration warm-up, then polynomial decay \\
+Batch size & 8, mixed precision \\
+Epochs & 40 (Protocols A and B), 20 (Protocol C); best checkpoint by source validation AUC \\
+Augmentation & geometry drawn once per pair (shift up to 8 px; alignment jitter up to 2 px with probability 0.25); photometric jitter and JPEG quality 60 to 100 drawn per image; no flips \\
+Seeds & 42, 43, 44 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Evaluation protocols and metrics}
-\todo{Protocols A, B and C (paper plan Section 3): A on SIDTD's official few-shot split (published rows measured on clips, ours on templates, stated); B zero-shot on FantasyID, headline on the three held-out designs with faces and text, Attack-1 separately with the Arabic cards broken out; C on IDNet's published West Virginia and Arizona pair, per task. Every table has three rows, text alterations, faces, all attacks; the claim rests on the first. The comparison table (Table 3 of ../main.tex, landscape); metrics: AUC, EER, APCER at BPCER 1 and 5\%, HTER at FantasyID's operating point, accuracy where published, pixel F1 and IoU on box masks, the transported referral threshold (primary) and referral at test miss 1 and 5\% (secondary).}
+\label{sec:protocols}
+We evaluate under three protocols, in the manner of the line-level and page-disjoint protocols of our writer-identification study~\cite{abushahla2026ijdar}, so that the difference between protocols is itself a result (Table~\ref{tab:protocols}). In every protocol, the detector never trains on a test design, and the reference never contains the query's identity.
 
-\subsection{Experiments}
-\todo{Settings (single plus zones, stacked, difference, attention; ResNet-18; three seeds) and experiments E1 to E10 (experiments/README.md), with the priority order: A and B with the two core settings first, then the other two settings, then C.}
+\textbf{Protocol A: unseen design within one source.} We train on six SIDTD nationalities (Albania, Spain, Estonia, Greece, Serbia, and Slovakia) and test on the other four (Azerbaijan, Finland, Latvia, and Russia), the official few-shot split of SIDTD; our models are zero-shot on the test designs. The published SIDTD rows on this split serve only as anchors, since they are five-shot models on cropped video clips that receive labeled examples of each test nationality~\cite{boned2024sidtd}; the controlled comparison is our baseline B1 on the identical split.
+
+\textbf{Protocol B: unseen source, generator, capture, and script.} We train on all ten SIDTD designs together with the face morphing and portrait substitution attacks of IDNet's Arizona and West Virginia designs, and test zero-shot on FantasyID, all of whose 13 designs are therefore unseen. The headline result is on its three held-out designs (Attack-2 and Attack-3 with their 300 genuine cards); Attack-1 forms a second result, with the Arabic cards broken out. This is the test closest to a counter meeting a design it has never seen.
+
+\textbf{Protocol C: a published cross-design pair.} We train on IDNet's West Virginia design with all four attack classes and test on Arizona per attack class, and the reverse, against Table~14 of the IDNet paper~\cite{guan2024idnetarxiv}. Following its split of 4,979 training and 1,000 test identities, we take the last 1,000 in sorted file order as the test set, since the order is not stated. IDNet trained one detector per attack class; we train one on all four, report it per class at the published threshold of 0.5, and use the public release rather than the originals.
+
+\begin{table}[htbp]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+\caption{The three evaluation protocols.}
+\label{tab:protocols}
+\begin{tabular}{L{0.9cm}L{3.2cm}L{3.9cm}L{3.3cm}L{3.6cm}}
+\toprule
+Protocol & Train & Test & Reference of a test design & Published comparison \\
+\midrule
+A & SIDTD, 6 nationalities (600 genuine, 728 altered) & SIDTD, 4 held-out nationalities (400 genuine, 494 altered) & median of the design's genuine templates, query identity excluded & SIDTD few-shot rows, as anchors~\cite{boned2024sidtd} \\
+B & SIDTD, 10 designs; IDNet AZ and WV face attacks & FantasyID, 3 held-out designs (300 genuine, 150 face swaps, 149 text rewrites); Attack-1 (786) separately & median of the design's genuine captures, query card excluded & FantasyID~\cite{korshunov2025fantasyid}; DeepID~\cite{korshunov2025deepid}; DocForge-Bench~\cite{docforge2026} \\
+C & IDNet WV, four attack classes (and the reverse) & IDNet AZ, last 1,000 identities per class & median of the target's 4,979 non-test genuine images & IDNet Table~14~\cite{guan2024idnetarxiv} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Rows and claims.} Every results table reports text alterations, face alterations, and all attacks. The claim rests on the first, since the design median carries no information inside the portrait zone by construction; face attacks are reported beside the published numbers, but no gain is claimed for them.
+
+\textbf{Metrics.} At the image level, we report AUC, the equal error rate (EER), APCER at a BPCER of 1\% and 5\%, the half total error rate (HTER) at FantasyID's operating point, and accuracy at a threshold of 0.5 where a published row uses it~\cite{iso30107}. At the pixel level, we report the F1-score and the intersection over union (IoU) against the box masks. The primary policy measure is the transported threshold, the largest threshold whose miss rate on the source validation split is at most 5\%, frozen and applied to the unseen designs, where we report the realized miss and referral rates; the referral rate at test miss rates of 1\% and 5\% summarizes the ROC curve, and workload is projected under assumed prevalence scenarios of 0.1\%, 1\%, and 5\%.
+
+\textbf{Statistics and ablations.} Each setting is reported as the mean $\pm$ standard deviation over three seeds, and the difference between the reference-conditioned model and its baseline is estimated by a paired bootstrap over provenance components, with 95\% confidence intervals. Ablations vary the reference (design median or a single genuine specimen, with or without the zone mask), present a wrong-design reference with and without the gate, sweep misregistration from 0 to 12 pixels, and recompress the query at JPEG qualities of 90, 70, and 50. The runs proceed in priority order: Protocols A and B with B1 and B3 first, which answer RQ1, RQ2, RQ4, and RQ5; then B2, B4, and the ablations (RQ3); and Protocol C last.
 
 \subsection{Deployment measurement}
-\todo{The model runs on the counter computer with the scanner as the sensor; the officer has seconds per document. Protocol: batch size one, FP32, CPU only, fixed thread count, 20 warm-ups then 200 timed documents; median and 95th percentile for pre-processing (decode, rectification, resize, zone lookup), network time with and without cached reference features, and end to end; parameters and file size; two named machines. Quantization and on-sensor execution are future work.}
+\label{sec:deploy}
+The detector is meant to run on the computer at the counter, with the reader as its only sensor, while the officer has seconds per document (Fig.~\ref{fig:system}). Each setting is therefore timed on a CPU with a batch size of one, in 32-bit floating point, with four threads: after 20 warm-up runs, we time 200 documents and report the median and 95th percentile of the pre-processing time (decoding, rectification, resizing, and zone lookup), the network time with and without cached reference features, and the end-to-end time, together with the throughput in documents per second, the number of parameters, and the file size. Caching matters because the reference of a design is fixed: its features can be computed once, when the design is enrolled, leaving only the query to be encoded at the counter. Measurements are taken on a cluster CPU node and on an ordinary desktop-class computer, both named with their processor and thread count, with ONNX Runtime as the fallback runtime. The target is under one second per document, end to end; quantization and execution on the reader itself are left for future work.
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}[font=\sffamily\small, x=1cm, y=1cm,
+  box/.style={draw=ink!60, fill=soft, rounded corners=2pt, align=center, minimum height=1.15cm, text width=3.3cm, inner sep=4pt},
+  newb/.style={box, fill=soft2, draw=line2!80, thick},
+  arr/.style={-{Stealth[length=2mm]}, thick, ink!70}]
+\node[box] at (0,2.4) (read) {document reader\\ \scriptsize existing};
+\node[box] at (4.4,2.4) (chip) {chip and rule checks\\ \scriptsize existing};
+\node[box] at (8.8,2.4) (officer) {first-line officer\\ \scriptsize refer or clear};
+\node[box] at (13.2,2.4) (centre) {second line\\ and the Center};
+\node[newb] at (4.4,0) (det) {detector\\ \scriptsize reference-conditioned};
+\node[newb] at (8.8,0) (cal) {threshold\\ \scriptsize set to a miss budget};
+\node[box] at (4.4,-2.4) (lib) {template library\\ \scriptsize existing specimens};
+\draw[arr] (read) -- (chip);
+\draw[arr] (chip) -- (officer);
+\draw[arr] (officer) -- node[above, font=\scriptsize]{refer} (centre);
+\draw[arr] (read.south) |- node[pos=0.75, above, font=\scriptsize]{page image} (det.west);
+\draw[arr] (lib) -- node[right, font=\scriptsize]{design reference} (det);
+\draw[arr] (det) -- node[above, font=\scriptsize]{score, map} (cal);
+\draw[arr] (cal) -- node[right, font=\scriptsize]{suggestion} (officer);
+\node[font=\scriptsize, text=line2, align=left, anchor=west] at (10.6,0) {shaded: new;\\ runs on the counter computer};
+\end{tikzpicture}}
+\caption{Where the detector would sit: it receives the page from the existing reader and the reference of its design from the existing template library, and a threshold set to a miss budget turns its score into a referral suggestion beside the existing checks. The officer still decides.}
+\label{fig:system}
+\end{figure}
 
 % =====================================================================
 % 8. RESULTS, DISCUSSION AND ANALYSIS
 % =====================================================================
 \section{Results, Discussion and Analysis}
 \label{sec:results}
-\todo{About 1,500 words. Every result as a table or figure; prose says what it means. Mean $\pm$ standard deviation over three seeds.}
+\todo{About 1,300 words. Every result as a table or figure; prose says what it means. Mean $\pm$ standard deviation over three seeds. Decide with the plan (Section 5, Statistics) whether the published rows stay in these tables or move to a separate literature table.}
 
 \subsection{Protocol A: unseen design within a dataset}
 \begin{table}[H]
 \centering\small
 \setlength{\tabcolsep}{4pt}
-\caption{Protocol A (SIDTD nationality hold-out). Published rows from the SIDTD paper; our rows mean $\pm$ s.d. over three seeds.}
+\caption{Protocol A (SIDTD nationality hold-out, official split). Published rows from the SIDTD paper are anchors only: five-shot prototypical networks on cropped video clips that receive labeled examples of each test nationality. Our rows are zero-shot on the test designs, on templates; mean $\pm$ s.d. over three seeds.}
 \label{tab:resA}
 \begin{tabular}{llcccc}
 \toprule
@@ -312,24 +615,24 @@ Attention fusion (ours) & ResNet-18 & \todo{} & \todo{} & \todo{} & \todo{} \\
 \subsection{Protocol B: unseen dataset, generator, capture and script}
 \begin{table}[H]
 \centering\small
-\setlength{\tabcolsep}{4pt}
-\caption{Protocol B (FantasyID official test, zero-shot). Published rows from the FantasyID paper. $^\dagger$FantasyID counts bona fide as positive: its FNR is the share of genuine cards referred at an operating point missing about 5\% of attacks.}
+\setlength{\tabcolsep}{3pt}
+\caption{Protocol B (FantasyID official test, zero-shot). Published rows from Table~3 of the FantasyID paper, where ``all'' pools the three attacks; Attack-1 rewrites text on the ten designs of FantasyID's training set, and Attack-2 (face swaps) and Attack-3 (text rewrites) are on its three held-out designs. $^\dagger$FantasyID counts bona fide as positive: its FNR is the share of genuine cards rejected at a threshold set on validation data, at which TruFor accepts 4.9\% of the test attacks.}
 \label{tab:resB}
-\begin{tabular}{lccccc}
+\begin{tabular}{lcccccc}
 \toprule
-Method & AUC all & AUC text & AUC face & HTER (\%) & Genuine referred (\%)$^\dagger$ \\
+Method & AUC all & AUC A-1 (text) & AUC A-2 (face) & AUC A-3 (text) & HTER (\%) & Genuine referred (\%)$^\dagger$ \\
 \midrule
-TruFor (published) & 93.5 & 99.5 & 55.8 & 33.4 & 62.0 \\
-MMFusion (published) & 94.4 & 99.8 & 61.5 & 25.8 & -- \\
-TruFor (our re-run) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
+TruFor (published) & 93.5 & 99.5 & 55.8 & 99.9 & 33.4 & 62.0 \\
+MMFusion (published) & 94.4 & 99.8 & 61.5 & 99.1 & 25.8 & 47.7 \\
+TruFor (our re-run) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
 \midrule
-Single image + zones (ours) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
-Difference fusion (ours) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
-Attention fusion (ours) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
+Single image + zones (ours) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
+Difference fusion (ours) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
+Attention fusion (ours) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
 \bottomrule
 \end{tabular}
 \end{table}
-\todo{Interpretation: the headline on the three held-out designs; Attack-1 on the seen designs with the Arabic cards broken out (no published counterpart at design level); faces in their own row with the reason the specimen is blind there and the live-face reference as the fix; the gap between protocols.}
+\todo{Interpretation: the headline on the three held-out designs (Attack-2 and Attack-3); Attack-1 on the ten other designs with the Arabic cards broken out (no published counterpart at design level); faces in their own row with the reason the specimen is blind there and the live-face reference as the fix; the gap between protocols.}
 
 
 \subsection{Protocol C: the published cross-type pair}
@@ -358,7 +661,7 @@ AZ $\rightarrow$ WV & Difference fusion (ours) & \todo{} & \todo{} & \todo{} & \
 \todo{Reference construction (median vs single specimen), zone mask on and off, fusion, attention bias; wrong-design reference with and without the gate; misregistration sweep 0 to 12 px; JPEG recompression at 90, 70, 50.}
 
 \subsection{Referral analysis}
-\todo{The transported policy: threshold calibrated on the source at a 5\% miss target, frozen, realized miss and referral on the unseen designs; the referral curves; prevalence scenarios at 0.1, 1 and 5\%; TruFor's published operating point (5\% missed, 62\% of genuine referred) as the comparator. No refer-everything baseline is claimed as current practice.}
+\todo{The transported policy: threshold calibrated on the source at a 5\% miss target, frozen, realized miss and referral on the unseen designs; the referral curves; prevalence scenarios at 0.1, 1 and 5\%; TruFor's published operating point (4.9\% of attacks accepted, 62\% of genuine cards rejected, at a threshold set on validation data) as the comparator. No refer-everything baseline is claimed as current practice.}
 
 \subsection{Inference time on CPU}
 \begin{table}[H]
@@ -379,7 +682,9 @@ Attention fusion & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} & \todo{}& \t
 \todo{Interpretation against the first-line budget; cost of the reference; what caching the reference features per design buys.}
 
 \subsection{Discussion and limitations}
-\todo{What the leave-design-out number measures and what it does not (two training generators; SIDTD negatives are mock documents; IDNet is the reduced release; capture tested only by FantasyID; masks are boxes); registration failures; faces; the Centre's ratio is not a prevalence; the four comparability caveats from the brief.}
+\todo{Discussion of the results: what the leave-design-out number measures, registration failures, faces, the gap between protocols.}
+
+\textbf{Limitations.} While the protocols are designed to be informative whichever way the results fall, several limitations bound what they show. First, all training forgeries come from two generators, SIDTD's and IDNet's, and capture is tested only by FantasyID, so the measurements describe robustness to a change of design, source, and capture rather than to a skilled professional forger. Second, SIDTD's genuine images are mock documents that already carry digital editing, and IDNet is used in its reduced public release. Third, the ground-truth masks are boxes, so pixel-level scores measure localization at the level of fields. Fourth, the design median is blind inside the portrait zone by construction; for face attacks, the natural second reference is the traveler's live face, as in differential morphing-attack detection~\cite{scherhag2020dmad}. Fifth, the Center's ratio of 902 irregularities in 20,307 examinations is not a prevalence, so workload is projected only under assumed scenarios. Finally, a detector that sees an RGB image cannot verify ultraviolet, infrared, or chip features, which remain the reader's task.
 
 % =====================================================================
 % 9. CONCLUSIONS AND RECOMMENDATIONS
@@ -389,7 +694,7 @@ Attention fusion & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} & \todo{}& \t
 \todo{About 450 words. Conclusions tied to RQ1 to RQ5 and the results tables.}
 
 \subsection*{Recommendations for GDRFA Dubai}
-\todo{Each recommendation must follow from a result (evaluation criterion 7). Deployment: the measured CPU time supports running the detector on the existing counter computer beside the reader; quantization and execution on the scanner itself are future work. For example: request cross-design error rates from the reader vendor using the released protocol; calibrate the threshold on the centre's own template library; pilot the detector as a referral suggestion beside the existing checks; track referral and confirmed-hit rates per design as a KPI.}
+\todo{Each recommendation must follow from a result (evaluation criterion 7). Deployment: the measured CPU time supports running the detector on the existing counter computer beside the reader; quantization and execution on the scanner itself are future work. For example: request cross-design error rates from the reader vendor using the released protocol; calibrate the threshold on the Center's own template library; pilot the detector as a referral suggestion beside the existing checks; track referral and confirmed-hit rates per design as a KPI.}
 
 % =====================================================================
 % 10. REFERENCES (IEEE style; counted in the 8,000-word limit)
@@ -402,7 +707,7 @@ Attention fusion & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} & \todo{}& \t
 % 11. APPENDICES (if any; counted in the 8,000-word limit)
 % =====================================================================
 \appendix
-\section{Appendix: Dataset licences and access}
-\todo{Optional. Licence and download route for each dataset, and the release terms of the derived data (CC BY-SA share-alike from MIDV-2020 and SIDTD).}
+\section{Appendix: Dataset licenses and access}
+All three datasets are public and are used as released. SIDTD~\cite{boned2024sidtd} is downloaded from \url{http://datasets.cvc.uab.es/SIDTD/} (templates, few-shot and k-fold splits); its genuine templates come from MIDV-2020~\cite{bulatov2022midv2020}, released under CC BY-SA~2.5. FantasyID~\cite{korshunov2025fantasyid} is Zenodo record 17063366, under CC BY~4.0. IDNet~\cite{guan2024idnet} is released on Zenodo under CC0; we use records 13852757 (Arizona) and 13854938 (West Virginia). The references, zone masks, box masks, and splits derived from MIDV-2020 and SIDTD are released under the same share-alike terms. \todo{Confirm the SIDTD data license version on the download server before submission.}
 
 \end{document}

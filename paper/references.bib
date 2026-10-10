@@ -347,11 +347,12 @@
 
 @article{chen2022domain,
   author  = {Changsheng Chen and Shuzheng Zhang and Fengbo Lan and Jiwu Huang},
-  title   = {Domain generalization for document authentication against practical recapturing attacks},
+  title   = {Domain-agnostic document authentication against practical recapturing attacks},
   journal = {IEEE Transactions on Information Forensics and Security},
   volume  = {17},
   year    = {2022},
-  note    = {arXiv:2101.01404}
+  doi     = {10.1109/TIFS.2022.3197054},
+  note    = {Preprint: arXiv:2101.01404, January 2021}
 }
 
 @inproceedings{neitthoffer2023knowledge,
@@ -487,4 +488,83 @@
   title        = {{ISO/IEC} 30107-3:2023 Information technology -- Biometric presentation attack detection -- Part 3: Testing and reporting},
   howpublished = {International Organization for Standardization},
   year         = {2023}
+}
+
+% ---------- Added 10 Oct 2026 with the draft of Sections 1 to 4 ----------
+
+@misc{guan2024idnetarxiv,
+  author       = {Hong Guan and Yancheng Wang and Lulu Xie and Soham Nag and Rajeev Goel and Niranjan Erappa Narayana Swamy and Yingzhen Yang and Chaowei Xiao and Jonathan Prisby and Ross Maciejewski and Jia Zou},
+  title        = {{IDNet}: A novel dataset for identity document analysis and fraud detection},
+  howpublished = {arXiv:2408.01690v2},
+  year         = {2024},
+  note         = {Version 2, 3 September 2024; cross-design results in Tables 14 to 20}
+}
+
+@misc{george2025edgedoc,
+  author       = {Anjith George and S{\'e}bastien Marcel},
+  title        = {{EdgeDoc}: Hybrid {CNN}-Transformer model for accurate forgery detection and localization in {ID} documents},
+  howpublished = {arXiv:2508.16284},
+  year         = {2025}
+}
+
+@inproceedings{fridman2021changechip,
+  author    = {Yehonatan Fridman and Matan Rusanovsky and Gal Oren},
+  title     = {{ChangeChip}: A reference-based unsupervised change detection for {PCB} defect detection},
+  booktitle = {Proc. IEEE Physical Assurance and Inspection of Electronics (PAINE)},
+  year      = {2021},
+  note      = {arXiv:2109.05746}
+}
+
+@article{chen2020levir,
+  author  = {Hao Chen and Zhenwei Shi},
+  title   = {A spatial-temporal attention-based method and a new dataset for remote sensing image change detection},
+  journal = {Remote Sensing},
+  volume  = {12},
+  number  = {10},
+  pages   = {1662},
+  year    = {2020},
+  doi     = {10.3390/rs12101662}
+}
+
+@inproceedings{he2016resnet,
+  author    = {Kaiming He and Xiangyu Zhang and Shaoqing Ren and Jian Sun},
+  title     = {Deep residual learning for image recognition},
+  booktitle = {Proc. IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages     = {770--778},
+  year      = {2016},
+  doi       = {10.1109/CVPR.2016.90}
+}
+
+@inproceedings{vaswani2017attention,
+  author    = {Ashish Vaswani and Noam Shazeer and Niki Parmar and Jakob Uszkoreit and Llion Jones and Aidan N. Gomez and {\L}ukasz Kaiser and Illia Polosukhin},
+  title     = {Attention is all you need},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {30},
+  pages     = {5998--6008},
+  year      = {2017}
+}
+
+@inproceedings{loshchilov2019adamw,
+  author    = {Ilya Loshchilov and Frank Hutter},
+  title     = {Decoupled weight decay regularization},
+  booktitle = {Proc. International Conference on Learning Representations (ICLR)},
+  year      = {2019}
+}
+
+@article{borghi2021double,
+  author  = {Guido Borghi and Emanuele Pancisi and Matteo Ferrara and Davide Maltoni},
+  title   = {A double {S}iamese framework for differential morphing attack detection},
+  journal = {Sensors},
+  volume  = {21},
+  number  = {10},
+  pages   = {3466},
+  year    = {2021},
+  doi     = {10.3390/s21103466}
+}
+
+% IEEE style: more than six authors are listed as the first author et al. (activated by \bstctlcite in main.tex)
+@IEEEtranBSTCTL{IEEEexample:BSTcontrol,
+  CTLuse_forced_etal       = "yes",
+  CTLmax_names_forced_etal = "6",
+  CTLnames_show_etal       = "1"
 }
