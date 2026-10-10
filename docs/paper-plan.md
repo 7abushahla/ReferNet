@@ -49,6 +49,7 @@ A paper for the GDRFA Dubai Scientific Research Award, second cycle, Digital Inn
 | Criteria | eight: scientific value; originality and novelty; theoretical framework; language and presentation; methodology; integrity and citation; data analysis and results (recommendations linked to outputs); applied and innovative impact (translation into practical solutions and policies) | official guide |
 | Submission | PDF uploaded through the researcher control panel plus the Word file; electronic nomination form and declarations; automated formal check, then the committee | official guide |
 | Reader | GDRFA evaluators, not a computer-vision program committee; the problem must be theirs, the recommendations must follow from results, the deployment story must be concrete | the criteria above |
+| 2026-10-10 | Protocol A final results | Median reference 0.83 AUC vs 0.53 control vs 0.72 specimen; attention variant 0.03 worse (ablation only); copy-move undetectable by construction; threshold transport from seen designs refers all genuines. SIDTD journal baselines not comparable (JPEG QF shortcut). See docs/results-protocol-a.md |
 
 ## 2. The claim, one chain
 
