@@ -23,9 +23,20 @@ Consequences. MIDV-2020 is not downloaded: its templates are inside SIDTD, and i
 
 ### FantasyID
 
-Thirteen fictional designs in ten scripts, including Arabic. Cards were printed on PVC and captured with two phones and a scanner. Manipulations are face swaps (InSwapper, FaceDancer) and text edits (DiffSTE, TextDiffuser2). The official test split holds 300 genuine and 1,085 manipulated images on designs absent from training. Published baselines: TruFor AUC 93.5 overall, 99.5 on text, 55.8 on faces; MMFusion AUC 94.4 overall, 61.5 on faces. The validation set with real faces is restricted and is not used.
+Thirteen fictional designs in ten scripts. Cards were printed on PVC and captured with an iPhone 15 Pro, a Huawei Mate 30 and a Kyocera office scanner (about 3,000 x 1,900 px from the phones, 2,000 x 1,250 from the scanner). Inspected on a local copy on 10 October 2026 (`~/Downloads/Datasets/FantasyID`, 938 MB, incomplete: only `test/attack/digital_3`, `test/attack/facedancer` and `examples` are present; the 300 test bona fide images, Attack-3, and the whole train-val set are missing, so the full 2.6 GB Zenodo archive is still needed).
 
-Consequences. FantasyID is the only test of capture conditions and of a forgery process unlike the training generator. The face-swap results are reported as a zero-shot attack type.
+Structure of the test set (paper Section 3.2 and the local files):
+
+| Part | Designs | Images | Manipulation |
+|---|---|---|---|
+| Attack-1 (`digital_3`) | the 10 train-val designs: Arabic, Chinese, Hindi, French, Persian, Portuguese, Russian, Turkish, Ukrainian, English (USA) | 786 (262 cards x 3 devices) | text fields rewritten with fine-tuned TextDiffuser2, SAM-extracted and alpha-blended; always 3 fields (dob, doe, a name field) |
+| Attack-2 (`facedancer`) | 3 designs unseen in train-val: Chinese (second design), Dutch, Singaporean | 137 locally (paper says 150) | face swap with FaceDancer |
+| Attack-3 | the same 3 unseen designs | 149 | text rewrite as in Attack-1 |
+| Test bona fide | the 3 unseen designs | 300 (100 cards x 3 devices) | none |
+
+Annotations: one JSON per image in VIA style with every field rectangle, its value, language and `region_provenance` in {original, altered}. Face swaps mark the `face` rectangle as altered (two per image, the portrait and the ghost image). So pixel masks are derivable for every attack, and the zone mask for every design comes from the original rectangles. `cropping_info` gives the document quadrilateral and the homography used to crop, so rectification is provided.
+
+Consequences for the protocols. (1) The Arabic design is a train-val design, not an unseen test design. The "Arabic design alone" result must therefore come from our own leave-Arabic-out split: train on the other nine train-val designs, test on the Arabic cards (25 cards x 3 devices bona fide, their Attack-1 text rewrites, and their train-val face swaps). (2) The official out-of-domain test is Attack-2 and Attack-3 plus the 300 bona fide on the three unseen designs; Attack-1 is on seen designs and is reported separately. (3) Pixel F1 is available on Protocol B.
 
 ### IDNet
 
