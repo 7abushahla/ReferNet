@@ -82,7 +82,7 @@ The paper is a deployment story told as a measurement. A detector is only useful
 **From a score to the officer's decision.**
 
 12. A score becomes a decision through a referral threshold. Calibrate it on the training source at a 5 percent miss target, freeze it, and report the realized miss and referral rates on the unseen designs: that is what an operator would see after enrolling a new design without retraining. Project workload under assumed prevalence scenarios (0.1, 1 and 5 percent), never from the Centre's ratio. Evidence: the referral curves from the saved scores. Place: results and recommendations.
-13. The decision must arrive inside the seconds the officer has. Measure inference time and throughput on a CPU, batch size one, FP32, with and without cached reference features (the library lookup), and report them beside the accuracy: pre-processing, network, end to end, FPS, parameters, file size, on a cluster CPU node and a counter-class computer. Target under one second end to end. Quantization and execution on the scanner itself are future work. Place: methodology (deployment measurement), results (timing table), discussion.
+13. The decision must arrive inside the seconds the officer has. Measure inference time and throughput on a CPU, batch size one, FP32, with and without cached reference features (the library lookup), and report them beside the accuracy: pre-processing, network, end to end, FPS, parameters, file size, on a cluster CPU node and a counter-class computer. Target under one second end to end. Quantization and execution on the scanner itself are future work. No paper in this literature reports a measured inference time: EdgeDoc, the Idakto edge framework and FLiD describe themselves as lightweight or near real-time and give no latency, FPS or CPU figure; DeepID's only runtime is container wall time on an RTX 3090; vendors claim millisecond recognition with no error rate. The timing table is therefore the first measured time budget for an identity-document alteration detector that is also evaluated on unseen designs, stated as "we found no published measurement". Place: methodology (deployment measurement), results (timing table), discussion.
 
 **What GDRFA can do with it.**
 
@@ -100,6 +100,28 @@ The paper is a deployment story told as a measurement. A detector is only useful
 | 6 Integrity and citation | literature table separate from results, every number sourced, no "first" claims |
 | 7 Analysis and results | items 12 and 13, intervals, per-design and per-attack rows, recommendations tied to results |
 | 8 Applied impact | items 1, 2, 13, 14: the operating model, the time budget, the released protocol |
+
+## 2b. Positioning, the intersection
+
+Three bodies of work each hold one side of the problem. None holds all three, and the paper sits where they meet.
+
+| Side | What it has | What it lacks | Representative work |
+|---|---|---|---|
+| The public benchmarks | leave-design-out evaluation of alteration detection, published numbers, masks, public data | every evaluated detector is single-image, or pairs a random genuine of any design (CoAARC); none can use the specimen the counter holds; none reports a referral policy or a time budget | SIDTD, IDNet, FantasyID, DeepID, DocForge-Bench, the 2026 survey |
+| Reference-conditioned detectors | a genuine reference as a second input | within design, private data, or another task (recapture, guilloche copy-move, presentation attacks); never measured on the benchmarks above; no masks on alterations; no time budget | CheckSim, Chen et al., Al-Ghadi and FMIDV, Neitthoffer et al., Nieto-Hidalgo et al. 2026 |
+| Deployment-oriented systems | lightweight architectures, edge or mobile framing, vendor readers with template libraries | no measured inference time or FPS anywhere; single-image or rule-based; no published cross-design error rate | EdgeDoc, Idakto's edge framework, FLiD, Regula and Keesing readers |
+
+Where we sit: a registered specimen of the query's own design, given to a learned alteration detector with a map head, measured leave-design-out on the public benchmarks where the single-image failure was measured, against the same detector without the specimen, with the output read as the first-line decision (referral at a miss budget) and timed on a counter-class CPU. Each of the three sides contributes one ingredient; the intersection is empty in the literature.
+
+**Contributions, stated with their boundaries.**
+
+| | Contribution | Is | Is not |
+|---|---|---|---|
+| C1 | The measurement | the first leave-design-out measurement of specimen conditioning for alteration detection on public data, with the specimen as the only difference from the baseline, on three protocols against the published rows | not the first reference-based detector (CheckSim, Chen) and not a new benchmark dataset |
+| C2 | The method | the design-median reference, the zone channel, the wrong-design gate and the referral head on a published change-detection network, in a standard and an attention variant | not a new architecture; the network is ChangerEx |
+| C3 | The decision | a referral policy calibrated on the source at a miss budget, transported to unseen designs, with realized miss and referral rates and prevalence scenarios; the first such reading for a learned document detector | not a workload saving at GDRFA and not a prevalence estimate |
+| C4 | The time budget | measured inference time and FPS on a counter-class CPU for every variant, with and without cached reference features; the first measured time for an alteration detector also evaluated on unseen designs | not an on-sensor or quantized deployment, which is future work |
+| C5 | The release | references, zone masks, box masks, provenance-grouped splits, the protocol and the code, so GDRFA can rerun the measurement on its own template library | not real documents and not a vendor evaluation |
 
 ## 3. The three protocols
 
