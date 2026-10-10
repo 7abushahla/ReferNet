@@ -29,7 +29,12 @@ cd - >/dev/null
 mkdir -p $RAW/idnet && cd $RAW/idnet
 [ -f AZ.zip ] || wget -q --show-progress -O AZ.zip "https://zenodo.org/records/13852757/files/AZ.zip?download=1"   # 13.3 GB
 [ -f WV.zip ] || wget -q --show-progress -O WV.zip "https://zenodo.org/records/13854938/files/WV.zip?download=1"   # 31.6 GB
-# Optional second published pair, Greece -> Albania (WITH_IDNET_PASSPORTS=1): 8.9 + 25.6 GB.
+# Optional second pair, Finland -> Spain (WITH_IDNET_EU=1, Table 15): 6.1 + 7.5 GB; shares designs with SIDTD.
+if [ "${WITH_IDNET_EU:-0}" = "1" ]; then
+  [ -f FIN.zip ] || wget -q --show-progress -O FIN.zip "https://zenodo.org/records/13852734/files/FIN.zip?download=1"
+  [ -f ESP.zip ] || wget -q --show-progress -O ESP.zip "https://zenodo.org/records/13852734/files/ESP.zip?download=1"
+fi
+# Optional third pair, Greece -> Albania (WITH_IDNET_PASSPORTS=1, Table 16): 8.9 + 25.6 GB.
 if [ "${WITH_IDNET_PASSPORTS:-0}" = "1" ]; then
   [ -f GRC.zip ] || wget -q --show-progress -O GRC.zip "https://zenodo.org/records/13854938/files/GRC.zip?download=1"
   [ -f ALB.zip ] || wget -q --show-progress -O ALB.zip "https://zenodo.org/records/13854897/files/ALB.zip?download=1"

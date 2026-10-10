@@ -6,10 +6,10 @@ This note fixes which public datasets the study uses, what each one is for, and 
 
 | Dataset | Role | Download | Size |
 |---|---|---|---|
-| SIDTD (built on MIDV-2020) | Training source for Protocols A and B. Protocol A test (nationality hold-out). | `templates.zip`, `few_shot_split_templates.zip`, `kfold_split_templates.zip` from `datasets.cvc.uab.es/SIDTD/` | 1.3 GB |
+| SIDTD (built on MIDV-2020) | Training source for Protocols A and B. Protocol A test (nationality hold-out). | `templates.zip`, `few_shot_split_templates.zip`, `kfold_split_templates.zip` from `datasets.cvc.uab.es/SIDTD/`; verified locally on 10 October 2026 at `~/Downloads/Datasets/SIDTD` (1,000 reals, 1,222 fakes, 10 real and 1,222 fake annotation files, the few-shot and 10-fold split CSVs, the generator repository) | 1.3 GB |
 | FantasyID | Protocol B test: unseen designs, unseen generator, printed and captured, Arabic design. | `FantasyID.tgz`, Zenodo 17063366 | 2.6 GB |
 | IDNet (Zenodo release) | Protocol C: the published cross-type pair West Virginia and Arizona, both directions. Face attacks for Protocol B training. | `AZ.zip` (Zenodo 13852757), `WV.zip` (Zenodo 13854938) | 45 GB |
-| IDNet, optional | Second published pair, Greece to Albania (the worst published numbers). | `GRC.zip`, `ALB.zip` (Zenodo 13854938, 13854897) | 35 GB |
+| IDNet, optional | Second published pair: Finland to Spain (Table 15, cheapest, shares designs with SIDTD) or Greece to Albania (Table 16, the worst published numbers). | `FIN.zip`, `ESP.zip` (13852734) or `GRC.zip`, `ALB.zip` (13854938, 13854897) | 13.6 GB or 34.5 GB |
 
 Total for the core study: about 49 GB. Nothing else is downloaded.
 
@@ -23,16 +23,19 @@ Consequences. MIDV-2020 is not downloaded: its templates are inside SIDTD, and i
 
 ### FantasyID
 
-Thirteen fictional designs in ten scripts. Cards were printed on PVC and captured with an iPhone 15 Pro, a Huawei Mate 30 and a Kyocera office scanner (about 3,000 x 1,900 px from the phones, 2,000 x 1,250 from the scanner). Inspected on a local copy on 10 October 2026 (`~/Downloads/Datasets/FantasyID`, 938 MB, incomplete: only `test/attack/digital_3`, `test/attack/facedancer` and `examples` are present; the 300 test bona fide images, Attack-3, and the whole train-val set are missing, so the full 2.6 GB Zenodo archive is still needed).
+Thirteen fictional designs in ten scripts. Cards were printed on PVC and captured with an iPhone 15 Pro, a Huawei Mate 30 and a Kyocera office scanner (about 3,000 x 1,900 px from the phones, 2,000 x 1,250 from the scanner). The complete archive (2.4 GB unpacked) was inventoried locally on 10 October 2026 at `~/Downloads/Datasets/FantasyID`; every image has a JSON beside it.
 
-Structure of the test set (paper Section 3.2 and the local files):
-
-| Part | Designs | Images | Manipulation |
+| Folder | Designs | Images | Content |
 |---|---|---|---|
-| Attack-1 (`digital_3`) | the 10 train-val designs: Arabic, Chinese, Hindi, French, Persian, Portuguese, Russian, Turkish, Ukrainian, English (USA) | 786 (262 cards x 3 devices) | text fields rewritten with fine-tuned TextDiffuser2, SAM-extracted and alpha-blended; always 3 fields (dob, doe, a name field) |
-| Attack-2 (`facedancer`) | 3 designs unseen in train-val: Chinese (second design), Dutch, Singaporean | 137 locally (paper says 150) | face swap with FaceDancer |
-| Attack-3 | the same 3 unseen designs | 149 | text rewrite as in Attack-1 |
-| Test bona fide | the 3 unseen designs | 300 (100 cards x 3 devices) | none |
+| `train/bonafide/{huawei,iphone15pro,scan}` | the 10 train-val designs: Arabic, Chinese, Hindi (indian), French, Persian, Portuguese, Russian, Turkish, Ukrainian, English (usa) | 633 (211 cards x 3 devices) | genuine captures |
+| `train/attack/digital_1` | same 10 | 633 | InSwapper face swap plus DiffSTE text rewrite |
+| `train/attack/digital_2` | same 10 | 633 | FaceDancer face swap plus TextDiffuser2 text rewrite |
+| `test/bonafide/{huawei,iphone15,scan}` | the 3 held-out designs: chinese2, netherland, singapore | 300 (100 cards x 3) | genuine captures |
+| `test/attack/digital_3` | the 10 train-val designs | 786 (262 x 3) | Attack-1: text rewrite with fine-tuned TextDiffuser2, always 3 fields (dob, doe, a name field) |
+| `test/attack/facedancer` | the 3 held-out designs | 150 | Attack-2: FaceDancer face swap |
+| `test/attack/textdiffuserft_bfei` | the 3 held-out designs | 149 | Attack-3: text rewrite as in Attack-1 |
+
+Totals match the paper: 786 plus 1,266 in train-val, 300 plus 1,085 in test. The paper's Attack-1, Attack-2, Attack-3 map to the folders `digital_3`, `facedancer`, `textdiffuserft_bfei`; DeepID's FA1, FA2, FA3 are Attack-1, Attack-3, Attack-2 respectively.
 
 Annotations: one JSON per image in VIA style with every field rectangle, its value, language and `region_provenance` in {original, altered}. Face swaps mark the `face` rectangle as altered (two per image, the portrait and the ghost image). So pixel masks are derivable for every attack, and the zone mask for every design comes from the original rectangles. `cropping_info` gives the document quadrilateral and the homography used to crop, so rectification is provided.
 
@@ -45,6 +48,8 @@ The arXiv paper (2408.01690 v2) and the BigData 2024 paper both describe 837,060
 The published storage sizes are not the Zenodo sizes. Table 1 of the paper lists South Dakota at 32 GB; the Zenodo zip is 4.9 GB. The Zenodo images are 795 x 487 JPEG files of about 118 KB (the `.png` names are JPEG data). The release is a reduced-resolution, recompressed version of what the paper describes. Counts match (5,979 per class). The sample images carry no visible "For Research Purposes" overlay.
 
 Annotation mapping, verified by file-name overlap: `fraud1_copy_and_move`, `fraud2_face_morphing`, `fraud3_face_replacement` and `fraud4_combined` reuse the original file names and are described by `*_textfieldreplacement_annotation.json`, `*_facemorph_annotation.json`, `*_facereplacement_annotation.json` and `*_combined_fraud_annotation.json`. The paper's "Text Replacement" task is therefore `fraud1_copy_and_move`. `fraud5` and `fraud6` have their own `_fake_` file names and their own JSON files. To confirm visually on the first download.
+
+Which designs, and why. The paper's cross-type experiments (arXiv v2, Section 6.3) use six designs in pairs: West Virginia and Arizona in both directions with all four tasks (Table 14), Finland to Spain (Table 15), Greece to Albania (Table 16), Arizona to Spain and Albania (Table 17), Finland to Albania and Arizona (Table 18), Greece to Spain and Arizona (Table 19), and face morphing across Arizona, Greece and Finland (Table 20); the within-design face-morphing study (Table 13) adds Nevada. We take West Virginia and Arizona because Table 14 is the only pair reported in both directions with all four tasks, it is the pair our introduction quotes, and the two designs lie outside SIDTD's design family, so Protocol C tests designs that nothing else in the study has seen. Cost: 45 GB. The cheapest second pair is Finland to Spain (Table 15, one direction, 13.6 GB); it also shares its designs with SIDTD, which allows a check of IDNet's synthetic renders against SIDTD's templates. Greece to Albania (Table 16, 34.5 GB) carries the worst published numbers. Both are optional flags in the download script.
 
 Published cross-type results (arXiv v2, Section 6.3, Tables 14 to 20; absent from the BigData version). Accuracy of a detector trained on one design and tested on another, MixFaceNet-S for face tasks and a five-layer CNN for text:
 
