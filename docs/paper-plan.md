@@ -75,7 +75,7 @@ The paper is a deployment story told as a measurement. A detector is only useful
 **The controlled measurement.**
 
 8. The reference is the only difference between method and baseline. The single-image baseline uses the same code, the same zone mask and the same training data with the reference input removed. The published single-image rows are anchors beside it, not substitutes for it. Place: methodology and every results table.
-9. Protocol A, unseen design within one source: train on six SIDTD nationalities, test on four, the official few-shot split, against the published rows (measured on cropped video frames, ours on templates, stated). Place: results.
+9. Protocol A, unseen design within one source: train on six SIDTD nationalities, test on four, the official quadruple, zero-shot on the design. The published rows are anchors only: they are 5-shot prototypical networks on cropped clips that receive five labelled forgeries of the test nationality in every episode, so they have more target information than we allow ourselves and a harder capture domain. The controlled comparison is our single-image baseline on the identical split. Place: results.
 10. Protocol B, unseen source, generator, capture and script: train on SIDTD plus IDNet's face attacks, test zero-shot on FantasyID's printed and camera-captured cards. The headline is the official held-out designs with face swaps and text rewrites; Attack-1 on the ten other designs is a second result with the Arabic cards broken out. Our model never trains on FantasyID, so all thirteen designs are unseen to it; this is the test closest to a counter meeting a design it has not seen. Place: results.
 11. Protocol C, the published pair: train on IDNet West Virginia with all four attack folders, test on Arizona per task, and the reverse, against IDNet's Table 14. This reruns the failure cited in item 4 with the reference added. Place: results, last priority.
 
@@ -159,7 +159,7 @@ Where we sit: a registered specimen of the query's own design, given to a learne
 
 | Protocol | Train | Test | Reference for a test design | Published comparison | Priority |
 |---|---|---|---|---|---|
-| A | SIDTD, 6 nationalities, 1,328 images | SIDTD, 4 held-out nationalities, 894 images | leave-identity-out median over the design's 100 genuine templates | SIDTD Table 5 few-shot rows (on clips; stated) | 1 |
+| A | SIDTD, 6 nationalities, 1,328 images | SIDTD, 4 held-out nationalities, 894 images (the official quadruple rus_aze_lva_fin; all ten published quadruples at one seed if time allows) | leave-identity-out median over the design's 100 genuine templates | SIDTD Table 5 few-shot rows as anchors only: 5-shot prototypical networks on cropped clips with labelled forgeries of the test nationality in every episode (SIDTD code audit, 10 Oct) | 1 |
 | B | SIDTD all 10 designs plus IDNet AZ and WV face attacks | FantasyID official test: 300 genuine, Attack-2 face swaps and Attack-3 text rewrites on the 3 held-out designs; Attack-1 separately with Arabic broken out | leave-identity-out median over the design's genuine captures | FantasyID Table 3; DeepID FA2 and FA3; DocForge-Bench pixel F1; our own TruFor rerun on the Arabic subset if time allows | 1 |
 | C | IDNet WV, four attack folders | IDNet AZ, last 1,000 identities per class, per task; and the reverse | median over the target's 4,979 non-test genuine images | IDNet Table 14 | 3 |
 
