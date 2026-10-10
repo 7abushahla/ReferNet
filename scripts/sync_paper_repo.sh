@@ -9,7 +9,7 @@ MSG="${1:-Sync from refer-or-clear/paper}"
 [ -d "$DST/.git" ] || { echo "paper repo not found at $DST (clone 7abushahla/GDRFA-Award-Paper)"; exit 1; }
 rsync -a --delete --exclude '.git' --exclude '.gitignore' --exclude '*.aux' --exclude '*.log' --exclude '*.out' \
   --exclude '*.bbl' --exclude '*.blg' --exclude '*.fls' --exclude '*.fdb_latexmk' --exclude '*.synctex.gz' \
-  --exclude 'main.pdf' --exclude 'main.docx' --exclude '_docx_src.tex' "$SRC/" "$DST/"
+  --exclude 'main.pdf' --exclude 'main.docx' --exclude '_docx_src.tex' --exclude 'figures/gen' "$SRC/" "$DST/"
 cd "$DST" && git add -A && { git diff --cached --quiet && echo "nothing to sync" || { git commit -qm "$MSG
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>" && git push -q && echo "pushed: $(git log --oneline -1)"; }; }
