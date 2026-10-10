@@ -13,3 +13,4 @@ One folder per experiment from DESIGN.md section 5. Each holds a short `NOTES.md
 | E7 | Referral curves and referral rate at miss 1 and 5 percent | RQ4 | not started |
 | E8 | Optional: fine-tune on FantasyID train, F1 at 0.5 (DeepID-comparable) | | optional |
 | E9 | Protocol C: IDNet WV to AZ and AZ to WV, per task, against arXiv Table 14 | RQ1 | not started |
+| E10 | CPU inference time: network, pre-processing, end to end; cached reference features; model size; two machines | RQ5 | not started |

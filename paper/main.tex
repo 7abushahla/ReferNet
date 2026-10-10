@@ -221,6 +221,7 @@ Word count & \todo{from wordcount.sh or Overleaf; 4,000 to 8,000 including table
   \item \todo{Gap between Protocol A and Protocol B, and what drives it.}
   \item \todo{Which backbone, transfer regime, reference construction and fusion carry the gain.}
   \item \todo{Referral rate at miss budgets of 1 and 5\%.}
+  \item \todo{Whether the detector meets a first-line time budget on an ordinary CPU, and what the reference costs in time relative to the single-image model.}
 \end{enumerate}
 
 \subsection{Contributions}
@@ -259,6 +260,9 @@ Word count & \todo{from wordcount.sh or Overleaf; 4,000 to 8,000 including table
 
 \subsection{Experiments}
 \todo{Configuration grid and experiments E1 to E9 (Table 4 of ../main.tex).}
+
+\subsection{Deployment measurement}
+\todo{The model runs on the counter computer with the scanner as the sensor; the officer has seconds per document. Protocol: batch size one, FP32, CPU only, fixed thread count, 20 warm-ups then 200 timed documents; median and 95th percentile for pre-processing (decode, rectification, resize, zone lookup), network time with and without cached reference features, and end to end; parameters and file size; two named machines. Quantization and on-sensor execution are future work.}
 
 % =====================================================================
 % 8. RESULTS, DISCUSSION AND ANALYSIS
@@ -318,6 +322,24 @@ Attention fusion (ours) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
 \subsection{Referral analysis}
 \todo{Measured referral curves replacing the illustrative sketch; referral rate at miss 1 and 5\% against today's practice of referring every doubtful document.}
 
+\subsection{Inference time on CPU}
+\begin{table}[H]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{End-to-end time per document on CPU (batch size one, FP32, median / p95 over 200 documents), parameters and file size. Machines named in the text.}
+\label{tab:timing}
+\begin{tabular}{lcccccc}
+\toprule
+Variant & Params (M) & Size (MB) & Pre-proc. (ms) & Network (ms) & Network, cached ref. (ms) & End to end (ms) \\
+\midrule
+Single image + zones & \todo{} & \todo{} & \todo{} & \todo{} & -- & \todo{} \\
+Difference fusion & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
+Attention fusion & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+\todo{Interpretation against the first-line budget; cost of the reference; what caching the reference features per design buys.}
+
 \subsection{Discussion and limitations}
 \todo{What the leave-design-out number measures and what it does not (public forgeries are composites and generative edits, the reality gap); registration failures; the 4.4\% prior is among referrals.}
 
@@ -329,7 +351,7 @@ Attention fusion (ours) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
 \todo{About 500 words. Conclusions tied to RQ1 to RQ4 and the results tables.}
 
 \subsection*{Recommendations for GDRFA Dubai}
-\todo{Each recommendation must follow from a result (evaluation criterion 7). For example: request cross-design error rates from the reader vendor using the released protocol; calibrate the threshold on the centre's own template library; pilot the detector as a referral suggestion beside the existing checks; track referral and confirmed-hit rates per design as a KPI.}
+\todo{Each recommendation must follow from a result (evaluation criterion 7). Deployment: the measured CPU time supports running the detector on the existing counter computer beside the reader; quantization and execution on the scanner itself are future work. For example: request cross-design error rates from the reader vendor using the released protocol; calibrate the threshold on the centre's own template library; pilot the detector as a referral suggestion beside the existing checks; track referral and confirmed-hit rates per design as a KPI.}
 
 % =====================================================================
 % 10. REFERENCES (IEEE style; counted in the 8,000-word limit)

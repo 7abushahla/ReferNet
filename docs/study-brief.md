@@ -59,6 +59,21 @@ In every protocol the reference for a test design is built from genuine images o
 
 Yes, for a fine-tuned ResNet-18 change detector initialized from the LEVIR checkpoint. Protocol A is small, but the published baselines used the same split and the result is a mean over three seeds with bootstrap intervals. Pixel masks exist for all three protocols: SIDTD and IDNet from field rectangles, FantasyID from its per-image JSON with altered-region provenance.
 
+## 5b. Deployment: CPU inference time as a result, not future work
+
+The first-line officer sees a document for a few seconds, so the detector only matters if it answers inside that budget on the counter computer, with the scanner as the only sensor. The paper therefore measures end-to-end time per document on a CPU and reports it beside the accuracy. Target: under one second per document end to end on a desktop-class CPU, batch size one, FP32, no GPU.
+
+| Measured | How |
+|---|---|
+| Network time | query plus reference forward pass; and with the reference features cached per design, which is how a template library would be used |
+| Pre-processing time | decode, rectification by homography, resize, zone-mask lookup |
+| End to end | decode to referral score, median and 95th percentile over 200 documents after 20 warm-ups |
+| Model size | parameters and file size per variant (single, stacked, difference, attention) |
+
+Hardware: the cluster's CPU nodes and one ordinary laptop or desktop, both named with core count and thread setting in the paper. ONNX Runtime export is the fallback if PyTorch CPU inference is slow. Quantization and execution on the sensor are discussed as future work, not measured.
+
+RQ5: does the reference-conditioned detector meet a first-line time budget on an ordinary CPU, and what does the reference cost in time relative to the single-image model?
+
 ## 6. Metrics
 
 AUC, EER, APCER at BPCER 1 and 5 percent, HTER at the FantasyID operating point, accuracy at 0.5 where the published row uses it, pixel F1 and IoU where masks exist, and the referral policy: a threshold calibrated on the training source at a 5 percent miss target, frozen, with the realized miss and referral rates reported on the unseen designs; referral rate at test miss 1 and 5 percent is a secondary ROC summary. Workload is projected under assumed prevalence scenarios (0.1, 1 and 5 percent), not from the Centre's 4.4 percent ratio, which is irregularities among examinations, not prevalence.
