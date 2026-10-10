@@ -120,3 +120,18 @@ Blank templates do exist for DocXPand's nine fictitious designs (SVG, generator 
 ## Blank specimens recovered from the IDNet paper (10 October 2026, afternoon)
 
 The IDNet paper figure embeds its twenty Stable Diffusion-inpainted blank templates as separate images; extracted from the PDF they come without the "FOR RESEARCH PURPOSES" overlay, at 238 to 1,334 px width (Arizona is the smallest at 238 px, West Virginia 1,013 px, the ten European designs 931 to 1,334 px). Registered to our SIDTD design medians, all ten European blanks give near-identity transforms (rotation within 0.01 degrees, scale 0.993 to 1.006, 190 to 1,316 inliers): they are the SIDTD designs. Unlike the median they carry no ghost face and no residual text. They are staged as `data/raw/idnet_templates/<design>.jpg` with `index.csv`, written by `build_specimens` as `references/<design>_specimen.jpg`, and enter the reference ablation as the "specimen" variant for Protocol A (all ten designs) and Protocol C (WV at full quality, AZ at figure resolution). The inpainted field interiors are hallucinated background, so the zone channel still marks them. Provenance is stated in the paper and the files are cited to the IDNet paper; the IDNet data release is CC0, the figure is the authors'. FantasyID has no blank, so Protocol B stays on the registered median.
+
+## SIDTD cropped clips: audit after download (10 Oct 2026)
+
+`clips_cropped.zip` (28,514,444,140 bytes, byte-exact) and `few_shot_split_clips_cropped.zip` are on the cluster under `data/raw/sidtd/`.
+
+| Check | Result |
+|---|---|
+| Forged clips | 7,214, matches the paper |
+| Genuine clips | 66,823; the paper states 68,409. The split files and the archive agree with each other: every split path exists and every image is in a split |
+| Annotations | forged clips only (7,214 JSON files) |
+| Clip split test nationalities | alb, fin, srb, svk. This differs from the template split (aze, fin, lva, rus) and is not one of the ten quadruples hard-coded in `test_fsl.py`, which ignores the CSV |
+| Forged videos | 191 in total, 16 to 32 per nationality, 28 to 48 clips per video |
+| Genuine videos | 100 identities per nationality, from MIDV-2020 |
+
+Capture confound. Genuine clips are MIDV-2020 frames; forged clips were printed on a laser printer, laminated and filmed by CVC staff on their own phones (paper, Methods). The two classes come from different capture pipelines. File size alone (bytes of the JPEG) separates them with AUC 1.000 within every nationality and 0.983 pooled; median 0.23 MB genuine vs 1.21 MB forged. Any classifier can therefore score near 1.0 on the clip protocols from capture cues without seeing the alteration, which is consistent with the near-perfect AUC reported by Talarmain et al. (ICDAR 2024) on this protocol. The episode sampler also draws support and query clips from about 19 forged videos per nationality, so query frames frequently share a video with a support frame.
