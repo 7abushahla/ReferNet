@@ -54,7 +54,7 @@ def card(name, crop=None, folder=SRC):
 
 
 def save(fig, stem):
-    fig.savefig(os.path.join(OUT, stem + ".pdf"), bbox_inches="tight")
+    fig.savefig(os.path.join(OUT, stem + ".pdf"), bbox_inches="tight", metadata={"CreationDate": None})
     if PREVIEW:
         fig.savefig(os.path.join(PREVIEW, stem + ".png"), bbox_inches="tight", dpi=110)
     plt.close(fig)
@@ -299,18 +299,26 @@ ax.legend(loc="center right", fontsize=7.5, frameon=False)
 save(fig, "fig_referral")
 print("referral done")
 
-# 4. Real design-median references (from the data stage) ------------------------------------------------
-tiles = [("fantasyid/arabic", "FantasyID, Arabic"), ("fantasyid/chinese2", "FantasyID, Chinese 2 (test)"),
-         ("fantasyid/netherland", "FantasyID, Dutch (test)"), ("fantasyid/singapore", "FantasyID, Singapore (test)"),
-         ("sidtd/alb_id", "SIDTD, Albania (train)"), ("sidtd/aze_passport", "SIDTD, Azerbaijan (test)"),
-         ("sidtd/fin_id", "SIDTD, Finland (test)"), ("sidtd/rus_internalpassport", "SIDTD, Russia (test)")]
+# 4. Reference variants on real data -----------------------------------------------------------------
+# Top: registered design medians of four FantasyID designs (data stage, commit 498c548). Bottom: two SIDTD designs,
+# each as our registered median and as the blank specimen reproduced from the IDNet paper figure
+# (data/raw/idnet_templates, generated there by inpainting one public sample per design).
+SPEC = os.path.join(REPO, "data", "raw", "idnet_templates")
+tiles = [(median_tile("fantasyid/arabic"), "FantasyID Arabic: median"),
+         (median_tile("fantasyid/chinese2"), "FantasyID Chinese 2 (test): median"),
+         (median_tile("fantasyid/netherland"), "FantasyID Dutch (test): median"),
+         (median_tile("fantasyid/singapore"), "FantasyID Singapore (test): median"),
+         (median_tile("sidtd/fin_id"), "SIDTD Finland: median"),
+         (load(os.path.join(SPEC, "fin_id.jpg")), "SIDTD Finland: blank specimen"),
+         (median_tile("sidtd/rus_internalpassport"), "SIDTD Russia: median"),
+         (load(os.path.join(SPEC, "rus_internalpassport.jpg")), "SIDTD Russia: blank specimen")]
 fig, axes = plt.subplots(2, 4, figsize=(10.5, 4.3))
-for ax, (name, lab) in zip(axes.ravel(), tiles):
-    ax.imshow(median_tile(name), aspect="auto")
+for ax, (im, lab) in zip(axes.ravel(), tiles):
+    ax.imshow(im, aspect="auto")
     ax.set_xticks([]); ax.set_yticks([])
     for s_ in ax.spines.values():
         s_.set_edgecolor("#999999"); s_.set_linewidth(0.6)
-    ax.set_title(lab, fontsize=8.5, pad=3)
+    ax.set_title(lab, fontsize=8, pad=3)
 fig.subplots_adjust(wspace=0.04, hspace=0.18, left=0.01, right=0.99, top=0.94, bottom=0.01)
 save(fig, "fig_references")
 print("references done")
