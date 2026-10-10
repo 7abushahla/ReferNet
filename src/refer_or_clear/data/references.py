@@ -21,7 +21,7 @@ import cv2
 import numpy as np
 import pandas as pd
 
-from .rectify import CANVAS_H, CANVAS_W, rect_to_canvas
+from .rectify import CANVAS_EXT, CANVAS_H, CANVAS_W, rect_to_canvas
 
 ZONE_DILATE_PX = 4
 
@@ -59,11 +59,11 @@ def build_references(records: pd.DataFrame, canvas_dir: Path, out_dir: Path) -> 
         for fold in (0, 1):
             sub = g[g.fold == fold]
             if len(sub):
-                med, cover = median_canvas([canvas_dir / f"{i}.jpg" for i in sub.image_id], valid_dir)
-                cv2.imwrite(str(out_dir / f"{tag}_fold{fold}.jpg"), med, [cv2.IMWRITE_JPEG_QUALITY, 95])
+                med, cover = median_canvas([canvas_dir / f"{i}{CANVAS_EXT}" for i in sub.image_id], valid_dir)
+                cv2.imwrite(str(out_dir / f"{tag}_fold{fold}.png"), med)
                 cv2.imwrite(str(out_dir / f"{tag}_fold{fold}_coverage.png"), cover)
-        med, cover = median_canvas([canvas_dir / f"{i}.jpg" for i in g.image_id], valid_dir)
-        cv2.imwrite(str(out_dir / f"{tag}_all.jpg"), med, [cv2.IMWRITE_JPEG_QUALITY, 95])
+        med, cover = median_canvas([canvas_dir / f"{i}{CANVAS_EXT}" for i in g.image_id], valid_dir)
+        cv2.imwrite(str(out_dir / f"{tag}_all.png"), med)
         rows.append(dict(design_id=design, n_genuine=len(g), n_identities=g.identity_id.nunique(),
                          n_components=g.component_id.nunique(), n_fold0=int((g.fold == 0).sum()),
                          n_fold1=int((g.fold == 1).sum()),
@@ -77,7 +77,7 @@ def reference_path(ref_dir: Path, design_id: str, component_id: str, kind: str =
     specimen registered to that fold. Raises when the file is missing; there is no silent fallback."""
     other = 1 - fold_of(component_id)
     tag = design_id.replace("/", "_")
-    p = ref_dir / (f"{tag}_fold{other}.jpg" if kind == "median" else f"{tag}_specimen_fold{other}.jpg")
+    p = ref_dir / (f"{tag}_fold{other}.png" if kind == "median" else f"{tag}_specimen_fold{other}.png")
     if not p.is_file():
         raise FileNotFoundError(f"reference {p} missing: design {design_id}, component {component_id}, kind {kind}")
     return p
@@ -142,7 +142,7 @@ def build_zone_masks(records: pd.DataFrame, root: Path, transforms: dict, out_di
 # --- blank specimens -------------------------------------------------------------------------
 # Twenty blank design templates reproduced from the IDNet paper figure (data/raw/idnet_templates).
 # Ten of them are the MIDV-2020 / SIDTD designs; two (AZ, WV) are the Protocol C designs. A specimen
-# is registered to the design median (SIFT + RANSAC similarity) and written as <design>_specimen.jpg,
+# is registered to the design median (SIFT + RANSAC similarity) and written as <design>_specimen.png,
 # so the reference ablation can swap the median for a true blank without touching anything else.
 
 SPECIMEN_DESIGNS = {  # design_id -> template file stem
@@ -159,13 +159,13 @@ def build_specimens(records: pd.DataFrame, templates_dir: Path, ref_dir: Path) -
     for design in sorted(records.design_id.unique()):
         stem = SPECIMEN_DESIGNS.get(design)
         tag = design.replace("/", "_")
-        median_path = ref_dir / f"{tag}_all.jpg"
+        median_path = ref_dir / f"{tag}_all.png"
         if stem is None or not (templates_dir / f"{stem}.jpg").is_file() or not median_path.is_file():
             continue
         tpl, _, _ = to_canvas(cv2.imread(str(templates_dir / f"{stem}.jpg")))
         tf = _features(tpl)
         for fold in (0, 1, "all"):
-            mp = ref_dir / (f"{tag}_fold{fold}.jpg" if fold != "all" else f"{tag}_all.jpg")
+            mp = ref_dir / (f"{tag}_fold{fold}.png" if fold != "all" else f"{tag}_all.png")
             if not mp.is_file():
                 continue
             med = cv2.imread(str(mp))
@@ -174,8 +174,8 @@ def build_specimens(records: pd.DataFrame, templates_dir: Path, ref_dir: Path) -
             if not ok:
                 raise RuntimeError(f"specimen {stem} failed to register to {mp.name} ({n} inliers)")
             spec = warp(tpl, R)
-            out = ref_dir / (f"{tag}_specimen_fold{fold}.jpg" if fold != "all" else f"{tag}_specimen.jpg")
-            cv2.imwrite(str(out), spec, [cv2.IMWRITE_JPEG_QUALITY, 95])
+            out = ref_dir / (f"{tag}_specimen_fold{fold}.png" if fold != "all" else f"{tag}_specimen.png")
+            cv2.imwrite(str(out), spec)
             rows.append(dict(design_id=design, template=stem, fold=str(fold), inliers=int(n),
                              rot_deg=round(float(np.degrees(np.arctan2(R[1, 0], R[0, 0]))), 2),
                              scale=round(float(np.hypot(R[0, 0], R[1, 0])), 3),

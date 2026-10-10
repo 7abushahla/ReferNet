@@ -22,7 +22,7 @@ import cv2
 import numpy as np
 import pandas as pd
 
-from .rectify import CANVAS_H, CANVAS_W
+from .rectify import CANVAS_EXT, CANVAS_H, CANVAS_W
 
 MIN_INLIERS = 40
 RATIO = 0.75
@@ -69,7 +69,7 @@ def register_design(design_id: str, image_ids: list[str], genuine_ids: list[str]
 
     Returns rows (image_id, applied, inliers, rot_deg, scale, shift_px, R) with R as a 3x3 list.
     """
-    imgs = {i: cv2.imread(str(canvas_dir / f"{i}.jpg")) for i in image_ids}
+    imgs = {i: cv2.imread(str(canvas_dir / f"{i}{CANVAS_EXT}")) for i in image_ids}
     feats = {i: _features(im) for i, im in imgs.items()}
     anchor = sorted(genuine_ids)[0]
     # pass 1: genuine images to the anchor, then a median

@@ -3,8 +3,8 @@
 
 Outputs under data/processed:
     records.csv, transforms.json (letterbox then registration, composed), registration.csv,
-    canvases/<image_id>.jpg, valid/<image_id>.png (only when padded or warped out of frame),
-    masks/<image_id>.png (altered only), zones/<design>.png, references/<design>_{fold0,fold1,all}.jpg,
+    canvases/<image_id>.png, valid/<image_id>.png (only when padded or warped out of frame),
+    masks/<image_id>.png (altered only), zones/<design>.png, references/<design>_{fold0,fold1,all}.png,
     splits/protocol_a.csv, splits/protocol_b.csv, counts.md
 Usage: python scripts/prepare_data.py [--data-root data] [--datasets sidtd,fantasyid] [--workers 4] [--force]
 """
@@ -23,7 +23,7 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from refer_or_clear.data.forgeries import build_masks  # noqa: E402
 from refer_or_clear.data.records import build_records, provenance_components  # noqa: E402
-from refer_or_clear.data.rectify import to_canvas  # noqa: E402
+from refer_or_clear.data.rectify import CANVAS_EXT, to_canvas  # noqa: E402
 from refer_or_clear.data.register import register_design, warp  # noqa: E402
 from refer_or_clear.data.references import build_references, build_specimens, build_zone_masks  # noqa: E402
 from refer_or_clear.data.splits import protocol_a, protocol_b  # noqa: E402
@@ -41,7 +41,7 @@ def md(df) -> str:
 
 
 def _canvas_job(args):
-    image_id, src, dst_jpg, dst_valid, R = args
+    image_id, src, dst_img, dst_valid, R = args
     img = cv2.imread(str(src), cv2.IMREAD_COLOR)
     if img is None:
         raise RuntimeError(f"cannot read {src}")
@@ -49,7 +49,7 @@ def _canvas_job(args):
     if R is not None:
         R = np.asarray(R)
         canvas, valid, T = warp(canvas, R), warp(valid, R), R @ T
-    cv2.imwrite(str(dst_jpg), canvas, [cv2.IMWRITE_JPEG_QUALITY, 95])
+    cv2.imwrite(str(dst_img), canvas)
     if dst_valid.is_file():
         dst_valid.unlink()
     if valid.min() == 0:
@@ -72,6 +72,12 @@ def main():
     raw, out = Path(a.data_root) / "raw", Path(a.data_root) / "processed"
     for d in ("canvases", "valid", "masks", "zones", "references", "splits"):
         (out / d).mkdir(parents=True, exist_ok=True)
+    stale_jpg = list((out / "canvases").glob("*.jpg")) + list((out / "references").glob("*.jpg"))
+    if stale_jpg:
+        print(f"      removing {len(stale_jpg)} JPEG canvases and references from the old pipeline")
+        for p in stale_jpg:
+            p.unlink()
+        a.force = True
 
     print("[1/7] records")
     rec = build_records(raw, tuple(a.datasets.split(",")))
@@ -83,9 +89,9 @@ def main():
     tpath, rpath = out / "transforms.json", out / "registration.csv"
     stale = a.force or not rpath.is_file()
     transforms = {} if stale else json.load(open(tpath))
-    jobs = [(r.image_id, raw / r.path, out / "canvases" / f"{r.image_id}.jpg", out / "valid" / f"{r.image_id}.png", None)
+    jobs = [(r.image_id, raw / r.path, out / "canvases" / f"{r.image_id}{CANVAS_EXT}", out / "valid" / f"{r.image_id}.png", None)
             for r in rec.itertuples(index=False)
-            if stale or r.image_id not in transforms or not (out / "canvases" / f"{r.image_id}.jpg").is_file()]
+            if stale or r.image_id not in transforms or not (out / "canvases" / f"{r.image_id}{CANVAS_EXT}").is_file()]
     with ProcessPoolExecutor(a.workers) as ex:
         for i, (image_id, T) in enumerate(ex.map(_canvas_job, jobs, chunksize=16), 1):
             transforms[image_id] = T
@@ -99,7 +105,7 @@ def main():
         with ProcessPoolExecutor(a.workers) as ex:
             reg = pd.concat(list(ex.map(_register_job, rjobs)), ignore_index=True)
         Rmap = {r.image_id: r.R for r in reg.itertuples(index=False) if r.applied}
-        jobs = [(r.image_id, raw / r.path, out / "canvases" / f"{r.image_id}.jpg", out / "valid" / f"{r.image_id}.png",
+        jobs = [(r.image_id, raw / r.path, out / "canvases" / f"{r.image_id}{CANVAS_EXT}", out / "valid" / f"{r.image_id}.png",
                  Rmap.get(r.image_id)) for r in rec.itertuples(index=False)]
         with ProcessPoolExecutor(a.workers) as ex:
             for image_id, T in ex.map(_canvas_job, jobs, chunksize=16):

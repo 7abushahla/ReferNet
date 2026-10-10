@@ -17,6 +17,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from .rectify import CANVAS_EXT
 from .references import fold_of
 
 REFERENCES = ("median", "specimen", "single")
@@ -49,13 +50,13 @@ class _RefPicker:
     def __call__(self, design_id: str, component_id: str) -> str:
         tag, ref_dir = _tag(design_id), self.root / "references"
         if self.reference == "median":
-            return _require(ref_dir / f"{tag}_fold{1 - fold_of(component_id)}.jpg")
+            return _require(ref_dir / f"{tag}_fold{1 - fold_of(component_id)}.png")
         if self.reference == "specimen":          # registered to the fold median the query never entered
-            return _require(ref_dir / f"{tag}_specimen_fold{1 - fold_of(component_id)}.jpg")
+            return _require(ref_dir / f"{tag}_specimen_fold{1 - fold_of(component_id)}.png")
         pool = sorted(i for i, c in self.genuine.get(design_id, []) if c != component_id)
         if not pool:
             raise FileNotFoundError(f"no genuine canvas of {design_id} outside component {component_id}")
-        return _require(self.root / "canvases" / f"{pool[self.rng.integers(len(pool))]}.jpg")
+        return _require(self.root / "canvases" / f"{pool[self.rng.integers(len(pool))]}{CANVAS_EXT}")
 
 
 def build_pairs(split_df: pd.DataFrame, records_df: pd.DataFrame, processed_root, reference="median",
@@ -72,7 +73,7 @@ def build_pairs(split_df: pd.DataFrame, records_df: pd.DataFrame, processed_root
         valid = root / "valid" / f"{r.image_id}.png"
         pairs.append(dict(
             image_id=r.image_id, design_id=r.design_id, component_id=comp, label=label,
-            path=_require(root / "canvases" / f"{r.image_id}.jpg"),
+            path=_require(root / "canvases" / f"{r.image_id}{CANVAS_EXT}"),
             valid_path=str(valid) if valid.is_file() else None,
             mask_path=_require(root / "masks" / f"{r.image_id}.png") if label else None,
             zone_path=_require(root / "zones" / f"{_tag(r.design_id)}.png"),

@@ -12,6 +12,7 @@ import cv2
 import numpy as np
 
 CANVAS_H, CANVAS_W = 512, 800
+CANVAS_EXT = ".png"  # lossless: nothing is re-encoded after the raw file (spec of 10 Oct 2026)
 
 
 def letterbox_transform(width: int, height: int) -> tuple[float, int, int]:

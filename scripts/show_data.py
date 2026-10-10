@@ -37,13 +37,13 @@ def grid(tiles, ncol, scale=0.4):
 
 designs = sorted(rec.design_id.unique())
 # 1. references: median over all genuine, per design
-tiles = [label(cv2.imread(str(P / "references" / f"{d.replace('/', '_')}_all.jpg")), d) for d in designs]
+tiles = [label(cv2.imread(str(P / "references" / f"{d.replace('/', '_')}_all.png")), d) for d in designs]
 cv2.imwrite(str(OUT / "data_check_references.jpg"), grid(tiles, 4), [cv2.IMWRITE_JPEG_QUALITY, 85])
 
 # 2. zone masks over the references
 tiles = []
 for d in designs:
-    ref = cv2.imread(str(P / "references" / f"{d.replace('/', '_')}_all.jpg"))
+    ref = cv2.imread(str(P / "references" / f"{d.replace('/', '_')}_all.png"))
     z = cv2.imread(str(P / "zones" / f"{d.replace('/', '_')}.png"), 0)
     ov = ref.copy()
     ov[z > 0] = (0.45 * ov[z > 0] + 0.55 * np.array([0, 200, 255])).astype(np.uint8)
@@ -58,7 +58,7 @@ picks = [rec[(rec.dataset == "sidtd") & (rec.attack_family == "text_copy")].iloc
          rec[(rec.dataset == "fantasyid") & (rec.label == 0) & (rec.path.str.startswith("fantasyid/test")) & (rec.capture == "scan")].iloc[5]]
 rows = []
 for r in picks:
-    q = cv2.imread(str(P / "canvases" / f"{r.image_id}.jpg"))
+    q = cv2.imread(str(P / "canvases" / f"{r.image_id}.png"))
     ref = cv2.imread(str(reference_path(P / "references", r.design_id, r.identity_id)))
     diff = cv2.absdiff(q, ref)
     diff = cv2.cvtColor(cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY), cv2.COLOR_GRAY2BGR)
