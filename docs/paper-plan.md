@@ -227,6 +227,8 @@ Figures: attacks and the two-line check (1), the idea across designs (2), the pr
 
 May: a leave-design-out measurement of reference conditioning on public data, with masks, against the published single-image rows and a controlled baseline; a transported referral policy and its realized rates; CPU time and throughput on named machines; a released protocol GDRFA can rerun on its own library.
 
+Scope of the claim: alterations of the printed design and the personal text fields, where a specimen of the design is the right reference. Face swaps are run under the same protocols as the published rows (FantasyID face-only; IDNet face morphing and portrait substitution), with both the single-image baseline and the reference-conditioned model, and reported in their own row beside the published numbers; no gain is claimed there, the discussion states why (the specimen is blind inside the photo box by construction) and recommends the live-face reference as the second input. IDNet's face attacks stay in training. Every results table has three rows, text alterations, faces, all attacks; the contributions rest on the first. No sentence claims the method detects forged documents in general.
+
 May not: "first Siamese reference detector" (CheckSim, Chen); "first lightweight field detector" (FLiD); any vendor failure; any real-document or traveller-population accuracy; workload savings at GDRFA; chip, UV or physical-security verification (an RGB model cannot see them); a DeepID leaderboard position (the private set is unavailable and the cohorts differ); exact pixel localization (masks are boxes).
 
 ## 8. Milestones and gates
