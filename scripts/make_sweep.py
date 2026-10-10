@@ -8,13 +8,11 @@ are how arms end up silently differing in a flag. Every launcher is generated fr
 template and its filename encodes the configuration. Edit this generator, never a
 generated file.
 
-  # E1: Protocol A main grid, every arm on its own GPU (4 x 4 x 3 = 48 jobs)
-  python scripts/make_sweep.py --protocols A --archs siamese_r18,changerex_r18 \
-      --fusions single,stacked,difference,attention --seeds 42,43,44 --name E1-protocolA
-
-  # E4: transfer regimes on one backbone, three seeds back to back per job
-  python scripts/make_sweep.py --protocols A --archs resnet18 --fusions difference \
-      --inits imagenet,scratch --group-size 3 --time 30:00:00 --name E4-transfer
+  # Protocol A (anchor): control and the two reference arms on the paper's 10 folds, one GPU per arm
+  python scripts/make_sweep.py --protocols A --archs changerex_r18 --fusions single --references median \
+      --inits levir --seeds 42 --folds 0-9 --time 6:00:00 --name A-anchor-control
+  python scripts/make_sweep.py --protocols A --archs changerex_r18 --fusions difference --references median,specimen \
+      --inits levir --seeds 42 --folds 0-9 --time 6:00:00 --name A-anchor-ref
 
 Nothing is submitted from here. Scripts are written under sweeps/<name>/ with a
 submit_all.sh beside them; inspect, then queue from the repository root:
@@ -38,13 +36,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CLUSTER = dict(account="acc-mialhajri", partition="gpu", conda_sh="/opt/miniconda/etc/profile.d/conda.sh")
 CHOICES = dict(
-    protocols=("A", "B", "C"),
+    protocols=("A", "B", "C", "D"),
     archs=("siamese_r18", "changerex_r18"),
     fusions=("single", "stacked", "difference", "attention", "attention_single"),
     references=("median", "specimen", "single"),
     inits=("imagenet", "scratch", "levir"),
 )
-CONFIG = {"A": "configs/protocol_a.yaml", "B": "configs/protocol_b.yaml", "C": "configs/protocol_c.yaml"}
+CONFIG = {"A": "configs/protocol_a.yaml", "B": "configs/protocol_b.yaml", "C": "configs/protocol_c.yaml",
+          "D": "configs/protocol_d.yaml"}
 SHORT_ARCH = {"siamese_r18": "r18", "changerex_r18": "cex"}
 
 
@@ -56,21 +55,34 @@ class Arm:
     reference: str
     init: str
     seed: int
+    fold: int | None = None
 
     @property
     def tag(self) -> str:
-        return f"{self.protocol}-{SHORT_ARCH[self.arch]}-{self.fusion}-{self.reference}-{self.init}-s{self.seed}"
+        f = f"-f{self.fold}" if self.fold is not None else ""
+        return f"{self.protocol}-{SHORT_ARCH[self.arch]}-{self.fusion}-{self.reference}-{self.init}{f}-s{self.seed}"
 
 
-def expand_arms(protocols, archs, fusions, references, inits, seeds) -> list[Arm]:
-    """The grid with seeds innermost, so a job cut short leaves whole cells."""
+def expand_arms(protocols, archs, fusions, references, inits, seeds, folds=(None,)) -> list[Arm]:
+    """The grid with seeds innermost, then folds, so a job cut short leaves whole cells."""
     for name, values in dict(protocols=protocols, archs=archs, fusions=fusions,
                              references=references, inits=inits).items():
         bad = [v for v in values if v not in CHOICES[name]]
         if bad:
             raise ValueError(f"unknown {name} {bad}; expected one of {CHOICES[name]}")
-    return [Arm(p, b, f, r, t, int(s))
-            for p, b, f, r, t, s in itertools.product(protocols, archs, fusions, references, inits, seeds)]
+    return [Arm(p, b, f, r, t, int(s), k)
+            for p, b, f, r, t, k, s in itertools.product(protocols, archs, fusions, references, inits, folds, seeds)]
+
+
+def parse_folds(s: str) -> list:
+    """'' -> [None]; '0-9' -> [0..9]; '2,5' -> [2, 5]."""
+    s = s.strip()
+    if not s:
+        return [None]
+    if "-" in s:
+        lo, hi = (int(x) for x in s.split("-"))
+        return list(range(lo, hi + 1))
+    return [int(x) for x in _csv(s)]
 
 
 def pack_jobs(arms: list[Arm], group_size: int) -> list[list[Arm]]:
@@ -123,7 +135,7 @@ mkdir -p "$TMPDIR"
 
 # The processed pairs are thousands of 512 x 800 images read every epoch: /shared (NFS, ~100 MB/s)
 # would be the bottleneck, so stage them once per job to node-local /scratch (~2.4 GB/s).
-[[ -f data/processed/splits/protocol_a.csv ]] || {{
+[[ -n "$(ls data/processed/splits/*.csv 2>/dev/null)" ]] || {{
     echo "[FATAL] data/processed missing; run scripts/cluster/stage-data.sh on the login node"; exit 1; }}
 export ROC_DATA="/scratch/$USER/roc-data"
 mkdir -p "$ROC_DATA"
@@ -158,7 +170,7 @@ else
         --fusion {fusion} \\
         --reference {reference} \\
         --init {init} \\
-        --seed {seed} \\
+        --seed {seed} \\{fold_flag}
         --data-root "$ROC_DATA" \\
         --run-dir "$RUN_DIR"{optional}; then
         DONE+=("{tag}")
@@ -197,6 +209,7 @@ def render_job(arms, *, job_name, time, mem, cpus, env, extra, suffix="") -> str
     for i, a in enumerate(arms, 1):
         text += ARM.format(index=i, total=len(arms), tag=a.tag + suffix, config=CONFIG[a.protocol], arch=a.arch,
                            fusion=a.fusion, reference=a.reference, init=a.init, seed=a.seed,
+                           fold_flag="" if a.fold is None else f"\n        --fold {a.fold} \\",
                            optional=optional)
     return text + FOOTER
 
@@ -213,6 +226,7 @@ def parse_args(argv=None):
     p.add_argument("--references", default="median", help=f"comma list from {CHOICES['references']}")
     p.add_argument("--inits", default="imagenet", help=f"comma list from {CHOICES['inits']}")
     p.add_argument("--seeds", default="42,43,44", help="comma list of seeds")
+    p.add_argument("--folds", default="", help="fold or group indices, e.g. 0-9 or 2,5 (Protocols A and B); empty for none")
     p.add_argument("--name", default="sweep", help="sweep name: output folder and job-name prefix")
     p.add_argument("--out", default=None, help="output folder (default sweeps/<name>)")
     p.add_argument("--group-size", type=int, default=1,
@@ -236,7 +250,7 @@ def write_sweep(argv=None) -> list[Path]:
     a = parse_args(argv)
     try:
         arms = expand_arms(_csv(a.protocols), _csv(a.archs), _csv(a.fusions), _csv(a.references),
-                           _csv(a.inits), [int(x) for x in _csv(a.seeds)])
+                           _csv(a.inits), [int(x) for x in _csv(a.seeds)], parse_folds(a.folds))
     except ValueError as e:
         raise SystemExit(f"[make_sweep] {e}")
     out = Path(a.out) if a.out else ROOT / "sweeps" / a.name
