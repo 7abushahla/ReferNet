@@ -142,8 +142,12 @@ class _Attention(nn.Module):
         self.to_out = _zero(nn.Linear(d, c_out))
 
     def forward(self, q, kv):
-        kv = self.to_kv(self.norm_kv(kv))
-        return self.to_out(self.attn(self.to_q(self.norm_q(q)), kv, kv, need_weights=False)[0])
+        # Attention runs in float32 even under autocast: the softmax over 1,600 tokens overflowed in
+        # float16 and produced NaN losses in the first campaign (10 Oct, jobs 37671 and 37672).
+        with torch.autocast(q.device.type, enabled=False):
+            q, kv = q.float(), kv.float()
+            kv = self.to_kv(self.norm_kv(kv))
+            return self.to_out(self.attn(self.to_q(self.norm_q(q)), kv, kv, need_weights=False)[0])
 
 
 class QueryAttention(nn.Module):
@@ -228,8 +232,8 @@ class ChangerEx(nn.Module):
         channel of the stem is part of the pretrained tensor and follows the backbone rate."""
         pre = list(self.backbone.parameters()) + list(self.decode_head.parameters())
         new = list(self.referral.parameters())
-        if self.attention is not None:
-            new += list(self.attention.parameters())
+        if self.attention is not None:   # attention modules take the lower (backbone) rate: at lr_new the
+            pre += list(self.attention.parameters())   # validation loss spiked and two runs diverged
         return pre, new
 
     def forward(self, x):
