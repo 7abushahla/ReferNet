@@ -243,7 +243,7 @@ May not: "first Siamese reference detector" (CheckSim, Chen); "first lightweight
 | 14 Oct | M4 results, discussion, conclusions and recommendations written; internal review by the supervisor | full draft; word count inside 8,000 |
 | 15 Oct | M5 Arabic abstract checked by a native speaker; Word and PDF; declarations; submission | submitted |
 
-Fallback ladder: drop Protocol C first, then the attention and stacked settings, then the second timing machine. Priority 1 (A and B with B1 and B3, 12 runs) answers RQ1, RQ2, RQ4 and RQ5 on its own.
+Fallback ladder: drop Protocol C first (it costs 12 training runs, not data: Protocol B already needs IDNet Arizona), then the attention and stacked settings, then the second timing machine. Priority 1 (A and B with B1 and B3, 12 runs) answers RQ1, RQ2, RQ4 and RQ5 on its own. Download order on the cluster: SIDTD and FantasyID (small, verified locally), then IDNet Arizona alone (13 GB, enough for Protocol B's face attacks), then West Virginia (needed only by C). If Arizona arrives late, Protocol B starts on SIDTD alone and the IDNet-augmented run follows as a second row, reported as an ablation of face attacks in training.
 
 ## 9. Risks
 
