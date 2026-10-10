@@ -159,6 +159,18 @@ Figures: attacks and the two-line check (1), the idea across designs (2), the pr
 
 **Models.** ChangerEx, ResNet-18 backbone initialized from the LEVIR checkpoint. Four settings: single image plus zones (B1), stacked six-channel plus zones (B2), difference fusion (B3, the standard variant), attention fusion (B4, the improved variant). Fallback if mmcv fails on the cluster on day 1: a ResNet-18 Siamese with stage 2 to 4 features, absolute differences and a light FPN map head, same four settings.
 
+
+**Lineage of the architecture (every block has a source; ChangerEx has not been used for documents before, and the paper says so).**
+
+| Block | Source | Note |
+|---|---|---|
+| Shared encoder, absolute feature difference | FC-Siam-diff, Daudt et al. ICIP 2018 | founding Siamese change-detection design; same reading as differential morph detection (Scherhag et al. TIFS 2020) |
+| Feature exchange between streams; flow dual-alignment fusion | Changer, Fang et al. TGRS 2023; Open-CD toolbox | remote-sensing origin; alignment fusion absorbs residual misregistration of a photographed card |
+| Page features kept beside the difference | FC-Siam-conc variant; artifacts are one-sided | our choice of which stream to keep |
+| Cross-attention, page queries the reference | Neitthoffer et al. ICDAR-W 2023 (attention worked, stacking failed); Changer's aggregation-distribution interaction | the "improved variant" of the writer-identification structure |
+| Joint score and mask heads; BCE plus 3 x (BCE plus Dice) | TruFor (CVPR 2023), EdgeDoc (DeepID 2025) | the two document-adapted DeepID detectors |
+| Zone channel, design-median reference, wrong-design gate, referral head | ours | exist because the second input is a specimen of a design, not a second observation of the same scene |
+
 **Metrics.** Image level: AUC, EER, APCER at BPCER 1 and 5 percent, HTER at FantasyID's operating point, accuracy at 0.5 where the published row uses it. Pixel level: F1 and IoU against box masks. Policy: transported threshold miss and referral (primary), referral at test miss 1 and 5 percent (secondary), prevalence scenarios. Deployment: median and p95 time per document for pre-processing, network (with and without cached reference features) and end to end, FPS, parameters, file size, on a cluster CPU node and one laptop or desktop.
 
 **Statistics.** Three seeds per setting; mean and standard deviation; paired component bootstrap for the reference-minus-baseline difference with 95 percent intervals; published rows in a separate literature table.
