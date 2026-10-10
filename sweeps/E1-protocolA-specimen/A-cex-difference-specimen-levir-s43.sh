@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=8G
 #SBATCH --time=04:00:00
-#SBATCH --job-name=E1-protocolA-A-cex-difference-specimen-levir-s43
+#SBATCH --job-name=E1-protocolA-specimen-A-cex-difference-specimen-levir-s43
 #SBATCH --output=logs/slurm/%x-%j.out
 #
 # 1 arm(s), run back to back on ONE GPU in this order:
