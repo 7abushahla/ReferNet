@@ -1,23 +1,18 @@
-# Protocol C: IDNet published cross-type pair. Train on one design (all four task folders
-# as positives), test on the other, per task, at threshold 0.5 (arXiv 2408.01690 v2, Table 14).
-# Run twice: source WV target AZ, and source AZ target WV (set data.source / data.target).
+# Protocol C: train on all 10 MIDV designs, test zero-shot on FantasyID's official test split
 protocol: C
 data:
   split: data/processed/splits/protocol_c.csv
-  source: WV
-  target: AZ
-  canvas: [512, 800]            # IDNet Zenodo images are 795 x 487; resized, aspect kept by padding
-  reference: design_median      # median over the target's 4,979 non-test genuine images
+  canvas: [512, 800]
+  reference: median
   wrong_design_fraction: 0.1
-  tasks: [fraud2_face_morphing, fraud3_face_replacement, fraud4_combined, fraud1_copy_and_move]
-  test_identities: 1000         # last 1,000 file names in sorted order, as in the paper's split
-  report_subsets: [face_morphing, portrait_substitution, mixed, text_replacement]
+  report_subsets: [all, text, face, arabic_design]
+  calibration_cards: [0, 10]     # for the Arabic design (E3)
 model:
   arch: siamese_r18
   fusion: difference
   init: imagenet
 train:
-  epochs: 20
+  epochs: 40
   patience: null                # no early stopping: every arm trains the full schedule, best-validation checkpoint evaluated
   batch_size: 8
   lr_backbone: 1.0e-4
@@ -29,7 +24,6 @@ train:
   seeds: [42, 43, 44]
 augment:
   crop: null                     # full 512 x 800 canvas; a crop could remove the altered field while keeping the label
-  canvas_jpeg_quality: 95        # every canvas re-encoded; removes the raw-file quantization-table shortcut
   affine_px: 8
   jpeg_quality: [60, 100]
   photometric: true
@@ -37,4 +31,4 @@ eval:
   test_variants: [native, equalized_qf75]   # both classes re-encoded at 75; see docs/conventions.md section 5
   score_orientation: bonafide_high          # 1 = genuine, threshold 0.5 with >= (DeepID)
   threshold_source: source_validation       # bob far_threshold rule at 5 percent miss, then frozen
-  metrics: [accuracy_at_0.5, auc, eer, apcer_bpcer5, pixel_f1, referral_miss1, referral_miss5]
+  metrics: [auc, hter, genuine_referral_at_published_point, eer, apcer_bpcer5, pixel_f1, referral_miss1, referral_miss5, transported_threshold_miss, transported_threshold_referral]

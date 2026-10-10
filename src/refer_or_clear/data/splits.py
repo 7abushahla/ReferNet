@@ -4,7 +4,7 @@ Protocol A (anchor): the SIDTD paper's ten official template folds (kfold_split_
 one split per fold; each row carries ref_group 'it<k>' so the design medians of fold k are built from that
 fold's training file only.
 
-Protocol B: every SIDTD image (plus IDNet when staged) is the training pool (90/10 by component
+Protocol C: every SIDTD image (plus IDNet when staged) is the training pool (90/10 by component
 hash); the FantasyID test release is the test set with a subset tag: 'heldout' = the 300 bona fide
 plus the face and text attacks on the three held-out designs (headline); 'attack1' = the 786 text
 rewrites on the ten train-val designs. FantasyID train bona fide images carry role 'reference_only':
@@ -92,12 +92,12 @@ def protocol_b_groups(records: pd.DataFrame) -> dict[int, pd.DataFrame]:
     return out
 
 
-def protocol_b(records: pd.DataFrame) -> pd.DataFrame:
+def protocol_c(records: pd.DataFrame) -> pd.DataFrame:
     pool = records[records.dataset.isin(["sidtd", "idnet"])].copy()
-    pool["protocol"], pool["subset"] = "B", ""
+    pool["protocol"], pool["subset"] = "C", ""
     pool["role"] = _train_val(pool)
     f = records[records.dataset == "fantasyid"].copy()
-    f["protocol"], f["role"], f["subset"] = "B", "", ""
+    f["protocol"], f["role"], f["subset"] = "C", "", ""
     is_test = f.path.str.startswith("fantasyid/test/")
     f.loc[is_test, "role"] = "test"
     f.loc[is_test & f.path.str.contains("/digital_3/"), "subset"] = "attack1"

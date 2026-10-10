@@ -54,22 +54,22 @@ def main():
     out += [f"| {r.dataset} | {r.folder} | {r.label} | {r.n} | {r['median']} | {r['min']} | {r['max']} |" for _, r in g.iterrows()]
     out += ["\n## Shortcut check per split (AUC of 'lower QF means altered'; 1.0 = compression alone separates the classes)\n",
             "| protocol | role | subset | n | median QF genuine | median QF altered | AUC(QF) | acc QF<85 |", "|---|---|---|---|---|---|---|---|"]
-    for name in ("protocol_a", "protocol_b"):
+    for name in ("protocol_a_it0", "protocol_b_g7", "protocol_c"):   # anchor fold 0, rus_aze_lva_fin group, FantasyID
         s = pd.read_csv(proc / "splits" / f"{name}.csv").fillna("").merge(rec[["image_id", "qf"]], on="image_id")
         for (role, subset), gg in s.groupby(["role", "subset"]):
             if gg.label.nunique() < 2:
                 continue
             out.append(f"| {name} | {role} | {subset or '(all)'} | {len(gg)} | {gg[gg.label==0].qf.median()} | {gg[gg.label==1].qf.median()} | "
                        f"{roc_auc_score(gg.label, -gg.qf):.3f} | {((gg.qf < 85).astype(int) == gg.label).mean():.3f} |")
-    # pixel-level trace on the Protocol B held-out test subset: raw files vs re-encoded canvases
-    s = pd.read_csv(proc / "splits" / "protocol_b.csv").fillna("")
+    # pixel-level trace on the Protocol C (FantasyID) held-out test subset: raw files vs lossless canvases
+    s = pd.read_csv(proc / "splits" / "protocol_c.csv").fillna("")
     s = s[(s.role == "test") & (s.subset == "heldout")].merge(rec[["image_id", "path"]], on="image_id")
     b_raw = [blockiness(raw / p) for p in s.path]
-    b_can = [blockiness(proc / "canvases" / f"{i}.jpg") for i in s.image_id]
-    out += ["\n## Pixel-level trace, Protocol B held-out test (n = %d)\n" % len(s),
+    b_can = [blockiness(proc / "canvases" / f"{i}.png") for i in s.image_id]
+    out += ["\n## Pixel-level trace, Protocol C (FantasyID) held-out test (n = %d)\n" % len(s),
             "| input | AUC of 8-px blockiness |", "|---|---|",
             f"| raw files (native resolution, native QF) | {sym_auc(s.label, b_raw)} |",
-            f"| canvases (letterbox 512x800, re-encoded QF 95) | {sym_auc(s.label, b_can)} |"]
+            f"| canvases (letterbox 512x800, lossless PNG) | {sym_auc(s.label, b_can)} |"]
     Path("results/tables").mkdir(parents=True, exist_ok=True)
     Path("results/tables/jpeg_audit.md").write_text("\n".join(out) + "\n")
     print("\n".join(out))

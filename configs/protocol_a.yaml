@@ -1,33 +1,36 @@
-# Protocol A: unseen design within a dataset (SIDTD nationality hold-out, split_shot)
+# Protocol A (anchor): the SIDTD paper's template 10-fold protocol (Boned et al., Scientific Data 11:1356,
+# 2024, Table 5, Composite Detection, K-fold, Balanced). Raw files, the official folds as given, accuracy
+# and ROC AUC over folds. Spec: docs/superpowers/specs/2026-10-10-sidtd-anchor-protocols-design.md
 protocol: A
 data:
-  split: data/processed/splits/protocol_a.csv
+  split: data/processed/splits/protocol_a_it{fold}.csv
+  folds: 10
   canvas: [512, 800]
-  reference: median             # median | specimen | single
-  wrong_design_fraction: 0.1
+  reference: median             # median | specimen; the control (fusion single) ignores it
+  wrong_design_fraction: 0.1    # reference arms only; the single-image control gets none (train.py)
 model:
-  arch: siamese_r18             # siamese_r18 | changerex_r18 (Open-CD)
-  fusion: difference            # single | stacked | difference | attention
-  init: imagenet                # imagenet | scratch | levir (changerex only)
+  arch: changerex_r18
+  fusion: difference
+  init: levir
 train:
   epochs: 40
-  patience: null                # no early stopping: every arm trains the full schedule, best-validation checkpoint evaluated
+  patience: null                # no early stopping: every arm trains the full schedule
+  select: accuracy              # best validation accuracy, ties by validation AUC (the paper selects on accuracy)
   batch_size: 8
   lr_backbone: 1.0e-4
-  lr_new: 1.0e-3                # new modules (ChangerEx arm overrides to 5e-3 via --extra)
+  lr_new: 1.0e-3
   weight_decay: 0.05
   warmup_iters: 1000
   mask_loss_weight: 3.0
   amp: true
-  seeds: [42, 43, 44]
+  seeds: [42]
 augment:
-  crop: null                     # full 512 x 800 canvas; a crop could remove the altered field while keeping the label
-  canvas_jpeg_quality: 95        # every canvas re-encoded; removes the raw-file quantization-table shortcut
+  crop: null                    # full 512 x 800 canvas
   affine_px: 8
-  jpeg_quality: [60, 100]
+  jpeg_quality: null            # raw files as the paper reads them: no JPEG augmentation, no re-encoding
   photometric: true
 eval:
-  test_variants: [native, equalized_qf75]   # both classes re-encoded at 75; see docs/conventions.md section 5
+  test_variants: [native, equalized_qf75]   # equalized: query and reference canvases re-encoded at 75
   score_orientation: bonafide_high          # 1 = genuine, threshold 0.5 with >= (DeepID)
-  threshold_source: source_validation       # bob far_threshold rule at 5 percent miss, then frozen
-  metrics: [accuracy, auc, eer, apcer_bpcer1, apcer_bpcer5, pixel_f1, referral_miss1, referral_miss5]
+  threshold_source: source_validation
+  metrics: [accuracy, auc, eer, pixel_f1]
