@@ -51,14 +51,24 @@ few-shot quadruple (aze, fin, lva, rus), 400 genuine and 494 altered.
 
 ## Comparison with the SIDTD few-shot baselines
 
-The SIDTD journal reports 0.90 to 0.97 AUC on the same test quadruple. Those models
-train and test on the raw files, where the JPEG quality factor alone separates the
-classes (genuine QF 92, altered QF 75, `results/tables/jpeg_audit.md`), and the quality
-factor is design-independent, so it transfers to unseen designs. Our pipeline removes
-that cue (re-encoding at QF 95, random JPEG 60 to 100 in training) and the numbers are
-not comparable. The paper must say this in one sentence next to the table and point at
-the audit; it must not claim to beat the baseline, and must not quietly drop the
-comparison.
+Corrected 10 Oct after re-reading the paper (Boned et al., Scientific Data 11:1356, Tables 4 and 5).
+The published few-shot rows (AUC 0.675 to 0.969) are the column "Source Detection, Few-shot,
+Unbalanced". Table 4 states that this partition (`unbalanced_few_shot_split`) uses Clip-cropped
+images: frames of smartphone videos of printed documents, cropped and dewarped. Our runs use
+the Templates images and the balanced `few_shot_split`. The paper reports no number on the
+template few-shot split. The published model is also a 2-way 5-shot prototypical network that
+sees five labelled genuine and five labelled forged clips of the test nationality in every
+test episode (code audit, docs/data-decision.md). The nationalities and the quadruple are the
+same; the images and the information budget are not. There is therefore no published number
+on our exact setting yet.
+
+The earlier explanation in this note, that the published rows reflect the JPEG quality-factor
+shortcut, was wrong. The quality-factor split (92 vs 75) was measured on templates only, and
+the published rows are not on templates.
+
+To obtain a direct comparison: (1) run our method on the Clip-cropped unbalanced few-shot
+partition under the published protocol, and (2) run the published prototypical network on
+our template split.
 
 ## Decisions taken from these results
 
