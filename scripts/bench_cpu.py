@@ -24,12 +24,14 @@ absent the processed canvases stand in ("input": "canvas" in the JSON).
 from __future__ import annotations
 
 import argparse
+import copy
 import os
 import platform
 import subprocess
 import sys
 import tempfile
 import time
+import warnings
 from pathlib import Path
 
 import cv2
@@ -178,6 +180,49 @@ class _Tuple(torch.nn.Module):
         return out["logit"], out["map"]
 
 
+class _SpatialExchange(torch.nn.Module):
+    """Open-CD SpatialExchange without masked assignment (every p-th column swapped)."""
+
+    def __init__(self, p):
+        super().__init__()
+        self.p = p
+
+    def forward(self, x1, x2):
+        m = (torch.arange(x1.shape[-1]) % self.p == 0).view(1, 1, 1, -1)
+        return torch.where(m, x2, x1), torch.where(m, x1, x2)
+
+
+class _ChannelExchange(_SpatialExchange):
+    """Open-CD ChannelExchange without masked assignment (every p-th channel swapped)."""
+
+    def forward(self, x1, x2):
+        m = (torch.arange(x1.shape[1]) % self.p == 0).view(1, -1, 1, 1)
+        return torch.where(m, x2, x1), torch.where(m, x1, x2)
+
+
+def _export_copy(model):
+    """Deep copy for export: InstanceNorm2d becomes the equal GroupNorm(C, C) (the exporter rejects
+    instance_norm when the traced channel size is unknown, as in FDAF) and the Open-CD exchange layers
+    become torch.where forms (their masked assignments export to an invalid graph). Same arithmetic."""
+    try:
+        from opencd.models.utils.interaction_layer import ChannelExchange, SpatialExchange
+    except ImportError:
+        ChannelExchange = SpatialExchange = ()
+    m = copy.deepcopy(model)
+    for mod in list(m.modules()):
+        for name, child in list(mod.named_children()):
+            if isinstance(child, torch.nn.InstanceNorm2d):
+                gn = torch.nn.GroupNorm(child.num_features, child.num_features, eps=child.eps, affine=child.affine)
+                if child.affine:
+                    gn.weight.data.copy_(child.weight.data), gn.bias.data.copy_(child.bias.data)
+                setattr(mod, name, gn)
+            elif isinstance(child, SpatialExchange):
+                setattr(mod, name, _SpatialExchange(child.p))
+            elif isinstance(child, ChannelExchange):
+                setattr(mod, name, _ChannelExchange(child.p))
+    return m
+
+
 def onnx_session(model, x, threads: int, path: Path):
     """(session, info) or (None, info with the reason) when onnxruntime is missing or the export fails."""
     try:
@@ -185,10 +230,12 @@ def onnx_session(model, x, threads: int, path: Path):
     except ImportError:
         return None, {"skipped": "onnxruntime not installed (pip install onnxruntime)"}
     try:
-        torch.onnx.export(_Tuple(model), x, str(path), input_names=["x"], output_names=["logit", "map"],
-                          opset_version=17, do_constant_folding=True)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            torch.onnx.export(_Tuple(_export_copy(model)), x, str(path), input_names=["x"],
+                              output_names=["logit", "map"], opset_version=17, do_constant_folding=True)
     except Exception as e:  # noqa: BLE001
-        return None, {"skipped": f"onnx export failed: {type(e).__name__}: {e}"}
+        return None, {"skipped": f"onnx export failed: {type(e).__name__}: {str(e).splitlines()[0][:300]}"}
     so = ort.SessionOptions()
     so.intra_op_num_threads = threads
     so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
