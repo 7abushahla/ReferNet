@@ -35,3 +35,7 @@ bash to_docx.sh     # pandoc -> main.docx with IEEE citations
 ## Overleaf
 
 Upload `../GDRFA-submission-overleaf.zip` with New Project > Upload Project. `latexmkrc` makes Overleaf compile with LuaLaTeX; if it does not, set Menu > Compiler > LuaLaTeX. The shell scripts do not run on Overleaf: use Menu > Word Count there (it skips the bibliography, so add the references by hand) and download the PDF; produce the Word file locally with `to_docx.sh`.
+
+## Where the manuscript lives
+
+This folder is the master copy. The paper-only repository `7abushahla/GDRFA-Award-Paper` is what Overleaf syncs with; push to it with `bash scripts/sync_paper_repo.sh "message"` from the repository root, then in Overleaf use Menu > GitHub > Pull. Edits made in Overleaf come back the other way: pull the paper repository and copy `main.tex` here before editing it again.
