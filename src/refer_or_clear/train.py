@@ -74,8 +74,9 @@ def resolve(args, cfg) -> dict:
     """The run configuration with CLI overrides applied; everything train.json records."""
     t, m = cfg.get("train", {}), cfg.get("model", {})
     init = args.init or m.get("init", "imagenet")
-    if init not in ("imagenet", "scratch"):
-        raise SystemExit(f"[train] --init {init!r} is not available for arch {args.arch}; use imagenet or scratch")
+    allowed = ("scratch", "levir") if args.arch == "changerex_r18" else ("imagenet", "scratch")
+    if init not in allowed:
+        raise SystemExit(f"[train] --init {init!r} is not available for arch {args.arch}; use one of {allowed}")
     return dict(
         tag=Path(args.run_dir).name, protocol=cfg.get("protocol"), arch=args.arch,
         fusion=args.fusion or m.get("fusion", "difference"), reference=E.reference_name(cfg, args.reference),
