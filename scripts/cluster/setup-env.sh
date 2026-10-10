@@ -7,8 +7,9 @@
 # The cluster driver is 570.86.15 (CUDA 12.8). Open-CD needs mmcv 2.x with compiled ops, and
 # OpenMMLab publishes prebuilt mmcv wheels only for older torch versions. This script therefore
 # pins the known-good Open-CD stack, torch 2.1.2 with CUDA 12.1 wheels, which a 12.8 driver runs.
-# TODO (day 3): confirm on the cluster; if a newer torch is needed, build mmcv from source on a GPU
-# node with MMCV_WITH_OPS=1.
+# Stack verified against the opencd/__init__.py version asserts and the mmcv wheel index
+# (evidence/code-audit-opencd-2026-10-10.md, A.4). If the wheel still fails on the cluster, build
+# mmcv from source on a GPU node with MMCV_WITH_OPS=1.
 
 set -euo pipefail
 

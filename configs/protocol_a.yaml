@@ -15,13 +15,19 @@ train:
   epochs: 40
   batch_size: 8
   lr_backbone: 1.0e-4
-  lr_new: 1.0e-3
+  lr_new: 5.0e-3                # Open-CD ChangerEx schedule for new modules
+  weight_decay: 0.05
+  warmup_iters: 1000
   mask_loss_weight: 3.0
   amp: true
   seeds: [42, 43, 44]
 augment:
+  canvas_jpeg_quality: 95        # every canvas re-encoded; removes the raw-file quantization-table shortcut
   affine_px: 8
   jpeg_quality: [60, 100]
   photometric: true
 eval:
+  test_variants: [native, equalized_qf75]   # both classes re-encoded at 75; see docs/conventions.md section 5
+  score_orientation: bonafide_high          # 1 = genuine, threshold 0.5 with >= (DeepID)
+  threshold_source: source_validation       # bob far_threshold rule at 5 percent miss, then frozen
   metrics: [accuracy, auc, eer, apcer_bpcer1, apcer_bpcer5, pixel_f1, referral_miss1, referral_miss5]

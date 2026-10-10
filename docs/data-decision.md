@@ -103,3 +103,7 @@ Difference from the published Protocol C setup, to state in the paper: the paper
 3. IDNet results are on the reduced Zenodo release.
 4. Training designs are European and US; the Arabic design appears only at test.
 5. The Centre's 902 irregularities in 20,307 examinations is a ratio among examined documents, not a prevalence among travellers; workload projections use assumed prevalence scenarios.
+
+## JPEG quality is a class label in both datasets (audit of 10 October 2026)
+
+`scripts/audit_jpeg.py` reads the luminance quantization table of every file. SIDTD reals are encoded at quality 92 and every SIDTD forgery at 75. FantasyID train bona fide are at 95 and train attacks at 75; test bona fide at 93.5, the held-out-design attacks at 75, and Attack-1 at 95. On every split of Protocols A and B the quantization table alone classifies every image correctly (AUC 1.000). The canvases we train on are rescaled and re-encoded at quality 95, which removes the measurable block-grid trace (blockiness AUC 0.971 on raw files, 0.513 on canvases); random JPEG recompression on both inputs stays in training and every headline number is also reported on test canvases re-encoded at a fixed quality 75 for both classes. Details and the adopted rule are in `docs/conventions.md`, Section 5.

@@ -212,16 +212,23 @@ Figures: attacks and the two-line check (1), the idea across designs (2), the pr
 
 ## 6. Training and timing recipe
 
+Every row below was checked against published code before it was fixed; the sources and the reasons are in `docs/conventions.md`, the audits in `evidence/code-audit-*.md`.
+
 | Setting | Value |
 |---|---|
-| Input | 512 x 800 RGB query, reference, zone channel |
-| Loss | BCE on the referral head plus 3 x (BCE plus Dice) on the map head |
-| Optimizer | AdamW, backbone 1e-4, new layers 1e-3, weight decay 1e-4 |
+| Framework | Open-CD 1.1.0, ChangerEx r18 config, six registered subclasses (dataset, loader, packer, preprocessor, detector, head), no edits to Open-CD; ResNet-18 Siamese in plain PyTorch only if the mmcv wheels fail on the cluster |
+| Stack | torch 2.1.2 cu121, mmcv 2.1.0 (prebuilt cu121/torch2.1 wheel), mmengine 0.10.4, mmsegmentation 1.2.2, mmdet 3.3.0 |
+| Input | 512 x 800 canvas; 8 channels, query RGB plus zone, reference RGB plus zone; ImageNet mean and std on RGB, zone channel mean 0 std 1; BN not SyncBN |
+| Initialization | LEVIR-CD ChangerEx checkpoint (trained from random init, selected on the LEVIR test split; both stated in the paper); stem padded from 3 to 4 input channels with zeros |
+| Loss | Open-CD softmax cross-entropy with OHEM on the change map (weight 3) plus BCE on the pooled referral logit (weight 1) |
+| Optimizer | AdamW, pretrained modules 1e-4, new modules 5e-3, weight decay 0.05, 1,000-iteration linear warm-up then poly decay |
 | Batch | 8, mixed precision |
-| Epochs | 40 (A, B), 20 (C); best checkpoint by source validation AUC |
-| Augmentation | affine up to 8 px, independent JPEG 60 to 100 on both inputs, photometric; alignment jitter up to 2 px with p 0.25; no flips, no crops that remove the altered field |
-| Seeds | 42, 43, 44 |
-| Timing | batch 1, FP32, CPU, 4 threads, 20 warm-ups, 200 timed documents; ONNX Runtime as the fallback runtime |
+| Epochs | 40 (A, B), 20 (C); best checkpoint by source validation AUC, never by a test design |
+| Augmentation | geometry drawn once per pair (affine up to 8 px, alignment jitter up to 2 px with p 0.25), photometric drawn per image, JPEG quality 60 to 100 drawn per image; no flips, no crops that remove the altered field |
+| Compression control | all canvases re-encoded at quality 95; every headline number reported on native canvases and on test canvases re-encoded at quality 75 for both classes (the "equalized" column); the quantization-table audit table is printed in the data section |
+| Scores | exported as bona fide probability (1 = genuine), threshold 0.5 with `>=` for the DeepID rows; miss = APCER, referral = BPCER; transported threshold chosen on the source validation split at 5 percent miss by the bob `far_threshold` rule and frozen; EER and HTER reported for FLiD and FakeIDet2 comparability only |
+| Seeds | 42, 43, 44; mean and std over seeds |
+| Timing | batch 1, FP32, CPU, 4 threads, 20 warm-ups, 200 timed documents; reference features cached per design; ONNX Runtime as the fallback runtime |
 | Cluster | account acc-mialhajri, partition gpu, A10G; `scripts/make_sweep.py` launchers; data rsynced to node-local scratch |
 
 ## 7. What the paper may and may not claim
@@ -277,6 +284,8 @@ Fallback ladder: drop Protocol C first (it costs 12 training runs, not data: Pro
 | 10 Oct | From the external dossier: polarity fix, zone-aware control, provenance components, transported threshold, prevalence scenarios, mock wording, no "first" claims, JPEG audit | dossier review note |
 | 10 Oct | Rejected from the dossier: regenerated SIDTD with a home-made split, dropping IDNet and C, replacing ChangerEx, adversarial and INT8 audits | same note |
 | 10 Oct | CPU inference time and FPS promoted to a reported result (RQ5, E10) | the first line has seconds per document; the deployment story is part of the paper |
+| 10 Oct | Conventions fixed from four code audits (SIDTD, DeepID, Open-CD, FLiD and ISO metric libraries): bona fide-high scores, bob `far_threshold` rule on the source validation split, DeepID F1 polarity, official SIDTD and FantasyID folders kept, Open-CD stack pinned | `docs/conventions.md` |
+| 10 Oct | JPEG quality is a perfect class label in SIDTD (92 vs 75) and FantasyID (95 or 93.5 vs 75) on every split; canvases re-encoded at 95, random JPEG on both inputs, every headline number also reported on quality-75 equalized test canvases | `scripts/audit_jpeg.py`, `results/tables/jpeg_audit.md` |
 
 ## 12. References
 
