@@ -49,7 +49,6 @@ A paper for the GDRFA Dubai Scientific Research Award, second cycle, Digital Inn
 | Criteria | eight: scientific value; originality and novelty; theoretical framework; language and presentation; methodology; integrity and citation; data analysis and results (recommendations linked to outputs); applied and innovative impact (translation into practical solutions and policies) | official guide |
 | Submission | PDF uploaded through the researcher control panel plus the Word file; electronic nomination form and declarations; automated formal check, then the committee | official guide |
 | Reader | GDRFA evaluators, not a computer-vision program committee; the problem must be theirs, the recommendations must follow from results, the deployment story must be concrete | the criteria above |
-| 2026-10-10 | Protocol A final results | Median reference 0.83 AUC vs 0.53 control vs 0.72 specimen; attention variant 0.03 worse (ablation only); copy-move undetectable by construction; threshold transport from seen designs refers all genuines. SIDTD journal baselines not comparable (JPEG QF shortcut). See docs/results-protocol-a.md |
 
 ## 2. The claim, one chain
 
@@ -291,6 +290,7 @@ Fallback ladder: drop Protocol C first (it costs 12 training runs, not data: Pro
 | 10 Oct | JPEG quality is a perfect class label in SIDTD (92 vs 75) and FantasyID (95 or 93.5 vs 75) on every split; canvases re-encoded at 95, random JPEG on both inputs, every headline number also reported on quality-75 equalized test canvases | `scripts/audit_jpeg.py`, `results/tables/jpeg_audit.md` |
 | 10 Oct | Registration added to the data stage: SIFT + RANSAC similarity of every image to its design, two passes, annotation-free; FantasyID captures carried up to 2.8 degrees of rotation and 24 px of shift on the canvas, which blurred every median; SIDTD transforms are sub-pixel | the reference is the method; a blurred specimen makes the difference channel useless; `data/processed/counts.md` registration table |
 | 10 Oct | Blank specimens recovered from the IDNet paper figure for the ten SIDTD designs and AZ, WV; registered to the design medians with identity transforms; added as the "specimen" reference variant (Protocols A and C); FantasyID stays on the registered median | no public forgery dataset ships blanks; IDNet built them by inpainting one public sample per design; `docs/data-decision.md` |
+| 10 Oct | Protocol A final results (18 runs): median reference 0.83 AUC vs 0.53 control vs 0.72 specimen; attention variant 0.03 worse, kept as ablation; copy-move undetectable by construction; threshold transported from seen designs refers nearly all genuines | native and QF75 agree within 0.01; SIDTD journal few-shot rows not comparable (JPEG QF shortcut); see docs/results-protocol-a.md |
 
 ## 12. References
 
