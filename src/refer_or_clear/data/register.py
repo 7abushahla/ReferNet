@@ -76,7 +76,10 @@ def register_design(design_id: str, image_ids: list[str], genuine_ids: list[str]
     stack = []
     for i in genuine_ids:
         R, n = estimate_similarity(feats[i], feats[anchor])
-        stack.append(warp(imgs[i], R) if R is not None and n >= MIN_INLIERS else imgs[i])
+        if R is not None and n >= MIN_INLIERS:        # an unregistered image would blur the target
+            stack.append(warp(imgs[i], R))
+    if not stack:
+        stack = [imgs[anchor]]
     target = np.median(np.stack(stack), axis=0).astype(np.uint8)
     target_feats = _features(target)
     # pass 2: every image to the median

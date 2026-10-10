@@ -26,39 +26,61 @@ from .rectify import CANVAS_H, CANVAS_W, rect_to_canvas
 ZONE_DILATE_PX = 4
 
 
-def fold_of(identity_id: str) -> int:
-    return int(hashlib.md5(identity_id.encode()).hexdigest(), 16) % 2
+def fold_of(key: str) -> int:
+    """Fold of a provenance component (or any key string): md5 parity. Splits and references use the
+    component id, so a crop-and-replace donor never ends up in the reference of its own forgery."""
+    return int(hashlib.md5(str(key).encode()).hexdigest(), 16) % 2
 
 
-def median_canvas(paths: list[Path]) -> np.ndarray:
-    stack = np.stack([cv2.imread(str(p)) for p in paths]).astype(np.uint8)
-    return np.median(stack, axis=0).astype(np.uint8)
+def median_canvas(paths: list[Path], valid_dir: Path | None = None) -> tuple[np.ndarray, np.ndarray]:
+    """Validity-aware per-pixel median. Padded or warped-out pixels (valid/<id>.png == 0) are excluded;
+    returns (median uint8, coverage uint8 = number of valid observations per pixel, capped at 255)."""
+    stack = np.stack([cv2.imread(str(p)) for p in paths]).astype(np.float32)
+    if valid_dir is not None:
+        for k, p in enumerate(paths):
+            v = valid_dir / f"{p.stem}.png"
+            if v.is_file():
+                stack[k][cv2.imread(str(v), cv2.IMREAD_GRAYSCALE) < 128] = np.nan
+    cover = np.minimum(np.sum(~np.isnan(stack[..., 0]), axis=0), 255).astype(np.uint8)
+    with np.errstate(all="ignore"):
+        med = np.nanmedian(stack, axis=0)
+    med = np.where(np.isnan(med), 0, med).astype(np.uint8)
+    return med, cover
 
 
 def build_references(records: pd.DataFrame, canvas_dir: Path, out_dir: Path) -> pd.DataFrame:
     out_dir.mkdir(parents=True, exist_ok=True)
     genuine = records[records.label == 0].copy()
-    genuine["fold"] = genuine.identity_id.map(fold_of)
+    genuine["fold"] = genuine.component_id.map(fold_of)
+    valid_dir = canvas_dir.parent / "valid"
     rows = []
     for design, g in genuine.groupby("design_id"):
         tag = design.replace("/", "_")
         for fold in (0, 1):
             sub = g[g.fold == fold]
             if len(sub):
-                med = median_canvas([canvas_dir / f"{i}.jpg" for i in sub.image_id])
+                med, cover = median_canvas([canvas_dir / f"{i}.jpg" for i in sub.image_id], valid_dir)
                 cv2.imwrite(str(out_dir / f"{tag}_fold{fold}.jpg"), med, [cv2.IMWRITE_JPEG_QUALITY, 95])
-        med = median_canvas([canvas_dir / f"{i}.jpg" for i in g.image_id])
+                cv2.imwrite(str(out_dir / f"{tag}_fold{fold}_coverage.png"), cover)
+        med, cover = median_canvas([canvas_dir / f"{i}.jpg" for i in g.image_id], valid_dir)
         cv2.imwrite(str(out_dir / f"{tag}_all.jpg"), med, [cv2.IMWRITE_JPEG_QUALITY, 95])
         rows.append(dict(design_id=design, n_genuine=len(g), n_identities=g.identity_id.nunique(),
-                         n_fold0=int((g.fold == 0).sum()), n_fold1=int((g.fold == 1).sum())))
+                         n_components=g.component_id.nunique(), n_fold0=int((g.fold == 0).sum()),
+                         n_fold1=int((g.fold == 1).sum()),
+                         ident_fold0=int(g[g.fold == 0].identity_id.nunique()), ident_fold1=int(g[g.fold == 1].identity_id.nunique()),
+                         min_coverage=int(cover.min())))
     return pd.DataFrame(rows)
 
 
-def reference_path(ref_dir: Path, design_id: str, query_identity: str) -> Path:
-    """The reference for a query: the median over the fold that does not contain its identity."""
-    other = 1 - fold_of(query_identity)
-    p = ref_dir / f"{design_id.replace('/', '_')}_fold{other}.jpg"
-    return p if p.is_file() else ref_dir / f"{design_id.replace('/', '_')}_all.jpg"
+def reference_path(ref_dir: Path, design_id: str, component_id: str, kind: str = "median") -> Path:
+    """The reference for a query: the fold median built without its provenance component, or the blank
+    specimen registered to that fold. Raises when the file is missing; there is no silent fallback."""
+    other = 1 - fold_of(component_id)
+    tag = design_id.replace("/", "_")
+    p = ref_dir / (f"{tag}_fold{other}.jpg" if kind == "median" else f"{tag}_specimen_fold{other}.jpg")
+    if not p.is_file():
+        raise FileNotFoundError(f"reference {p} missing: design {design_id}, component {component_id}, kind {kind}")
+    return p
 
 
 _VIA_CACHE: dict[str, dict] = {}
@@ -141,18 +163,25 @@ def build_specimens(records: pd.DataFrame, templates_dir: Path, ref_dir: Path) -
         if stem is None or not (templates_dir / f"{stem}.jpg").is_file() or not median_path.is_file():
             continue
         tpl, _, _ = to_canvas(cv2.imread(str(templates_dir / f"{stem}.jpg")))
-        med = cv2.imread(str(median_path))
-        R, n = estimate_similarity(_features(tpl), _features(med))
-        ok = R is not None and n >= MIN_INLIERS
-        spec = warp(tpl, R) if ok else tpl
-        cv2.imwrite(str(ref_dir / f"{tag}_specimen.jpg"), spec, [cv2.IMWRITE_JPEG_QUALITY, 95])
-        rows.append(dict(design_id=design, template=stem, inliers=int(n), registered=bool(ok),
-                         rot_deg=round(float(np.degrees(np.arctan2(R[1, 0], R[0, 0]))), 2) if ok else None,
-                         scale=round(float(np.hypot(R[0, 0], R[1, 0])), 3) if ok else None,
-                         mean_absdiff_to_median=round(float(cv2.absdiff(spec, med).mean()), 1)))
+        tf = _features(tpl)
+        for fold in (0, 1, "all"):
+            mp = ref_dir / (f"{tag}_fold{fold}.jpg" if fold != "all" else f"{tag}_all.jpg")
+            if not mp.is_file():
+                continue
+            med = cv2.imread(str(mp))
+            R, n = estimate_similarity(tf, _features(med))
+            ok = R is not None and n >= MIN_INLIERS
+            if not ok:
+                raise RuntimeError(f"specimen {stem} failed to register to {mp.name} ({n} inliers)")
+            spec = warp(tpl, R)
+            out = ref_dir / (f"{tag}_specimen_fold{fold}.jpg" if fold != "all" else f"{tag}_specimen.jpg")
+            cv2.imwrite(str(out), spec, [cv2.IMWRITE_JPEG_QUALITY, 95])
+            rows.append(dict(design_id=design, template=stem, fold=str(fold), inliers=int(n),
+                             rot_deg=round(float(np.degrees(np.arctan2(R[1, 0], R[0, 0]))), 2),
+                             scale=round(float(np.hypot(R[0, 0], R[1, 0])), 3),
+                             mean_absdiff_to_median=round(float(cv2.absdiff(spec, med).mean()), 1)))
     return pd.DataFrame(rows)
 
 
-def specimen_path(ref_dir: Path, design_id: str) -> Path | None:
-    p = ref_dir / f"{design_id.replace('/', '_')}_specimen.jpg"
-    return p if p.is_file() else None
+def specimen_path(ref_dir: Path, design_id: str, component_id: str) -> Path:
+    return reference_path(ref_dir, design_id, component_id, kind="specimen")
