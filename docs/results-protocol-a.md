@@ -1,3 +1,8 @@
+> **Superseded (10 Oct 2026).** These runs held out the official few-shot nationalities with re-encoded images and
+> JPEG augmentation, and the control received wrong-design pairs. Protocol A is now the SIDTD paper's template
+> 10-fold anchor (docs/superpowers/specs/2026-10-10-sidtd-anchor-protocols-design.md). The runs are kept in
+> results/superseded/2026-10-10-heldout-reencoded/.
+
 # Protocol A results (final runs, 2026-10-10)
 
 Source: `results/tables/protocol_a.md`, aggregated by `scripts/aggregate_runs.py` from the

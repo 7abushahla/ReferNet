@@ -19,7 +19,7 @@ from refer_or_clear.data.pairs import build_pairs  # noqa: E402
 from refer_or_clear.data.references import fold_of  # noqa: E402
 
 P = ROOT / "data" / "processed"
-split = pd.read_csv(P / "splits" / "protocol_a.csv")
+split = pd.read_csv(P / "splits" / "protocol_a_it0.csv", keep_default_na=False)
 records = pd.read_csv(P / "records.csv")
 
 
@@ -43,14 +43,17 @@ def check_pairs(pairs, role, reference, fraction):
         assert p["valid_path"] is None or Path(p["valid_path"]).is_file()
         assert all(k in p for k in ("subset", "attack_family", "component_id", "design_id"))
         if reference == "median":
-            fold = int(re.search(r"_fold(\d)\.jpg$", p["ref_path"]).group(1))
+            fold = int(re.search(r"_fold(\d)\.png$", p["ref_path"]).group(1))
             assert fold != fold_of(p["component_id"]), p
+            assert "_it0_fold" in p["ref_path"], p["ref_path"]
         elif reference == "specimen":
             assert "_specimen_fold" in p["ref_path"]
     if reference == "median":  # no component of the sample's fold is in the reference fold
-        comps = records[records.label == 0].groupby("design_id").component_id.apply(set)
+        train_ids = set(split[split.role == "train"].image_id)
+        g = records[(records.label == 0) & records.image_id.isin(train_ids)]
+        comps = g.groupby("design_id").component_id.apply(set)
         for p in pairs:
-            fold = int(re.search(r"_fold(\d)\.jpg$", p["ref_path"]).group(1))
+            fold = int(re.search(r"_fold(\d)\.png$", p["ref_path"]).group(1))
             same = {c for c in comps[p["design_id"]] if fold_of(c) == fold}
             assert p["component_id"] not in same
     print(f"  {role:5s} {reference:8s}: {len(pairs):5d} pairs, {len(genuine)} genuine, "
