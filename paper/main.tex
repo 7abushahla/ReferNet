@@ -237,7 +237,22 @@ Word count & \todo{from wordcount.sh or Overleaf; 4,000 to 8,000 including table
 \todo{About 400 words. (i) First- and second-line inspection as defined by ICAO Doc 9303 and the Schengen Handbook; (ii) detection as a referral decision: referral rate $R(t)$ and miss rate $M(t)$ at a prior $p$, with the ISO/IEC 30107-3 error vocabulary; (iii) the reference-conditioning principle: comparing against a specimen turns single-image forensics into change detection, as in differential morph detection. Include the idea figure, fig\_idea.pdf, and the referral sketch, fig\_referral.pdf.}
 
 \subsection{Literature review}
-\todo{About 900 words. Single-image detectors and why they fail across designs (IDNet, SIDTD, FantasyID, DeepID, TruFor family); industry template-based readers; learned reference-based work (CheckSim, Chen et al., Al-Ghadi et al. and the FMIDV negative result, Neitthoffer et al.); the absence of referral framing. End with the gap statement and the positioning table (Table 1 of ../main.tex). Source: ../main.tex Section 2.}
+\todo{About 1,000 words in four strands, each closing with what it lacks; then the positioning paragraph and Table 1. Sources: ../main.tex Section 2 and the paper plan Sections 2, 2b and 5.}
+
+\subsubsection{Single-image detectors and the measured collapse on unseen designs}
+\todo{SIDTD few-shot (82 to 91 from 97 to 100 within design; CoAARC pairs a random genuine of any design and scores worst), IDNet cross-type (35 to 71), FantasyID held-out designs (faces AUC 56 to 62; 62\% of genuine referred to miss 5\% of attacks), DeepID (0.99 to 0.72 from fantasy to real IDs), DocForge-Bench (pixel F1 0.30), the 2026 survey (APCER above 24\% for every public model). Lacks: a way to use the specimen; a referral policy; a time budget.}
+
+\subsubsection{Reference-conditioned detectors for documents}
+\todo{CheckSim, Chen et al., Al-Ghadi and FMIDV (reference removed, AUC 0.5), Neitthoffer et al., Nieto-Hidalgo et al. 2026 prototypes; commercial template libraries. Lacks: leave-design-out evaluation on alterations with public data; a dense map; masks.}
+
+\subsubsection{Deployment-oriented systems}
+\todo{EdgeDoc, FLiD, the Idakto edge framework, vendor readers; DeepID container wall time. Lacks: any measured inference time or FPS; any cross-design error rate.}
+
+\subsubsection{Where the architecture comes from: inspection and change detection}
+\todo{Remote-sensing change detection (Daudt et al. 2018; Changer 2023, Open-CD); automated optical inspection against a golden sample (ChangeChip 2021; CADNet 2025; Visual ChangeNet); differential morphing-attack detection (Scherhag et al. 2020). Lacks: application to documents; a notion of legitimate variation (fields are supposed to differ), which the zone channel supplies.}
+
+\subsubsection{Positioning and the gap}
+\todo{The intersection in one paragraph, then Table 1 (positioning table from ../main.tex), then the gap sentence: the collapse is measured in four benchmarks; the specimen the counter already uses has never been given to a learned alteration detector and measured on those benchmarks against the same detector without it.}
 
 % =====================================================================
 % 7. METHODOLOGY AND PROCEDURES

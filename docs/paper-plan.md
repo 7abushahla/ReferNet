@@ -103,13 +103,14 @@ The paper is a deployment story told as a measurement. A detector is only useful
 
 ## 2b. Positioning, the intersection
 
-Three bodies of work each hold one side of the problem. None holds all three, and the paper sits where they meet.
+Four strands of literature each hold one side of the problem, and the literature review is written strand by strand, each closing with what it lacks. None holds all four, and the paper sits where they meet.
 
 | Side | What it has | What it lacks | Representative work |
 |---|---|---|---|
 | The public benchmarks | leave-design-out evaluation of alteration detection, published numbers, masks, public data | every evaluated detector is single-image, or pairs a random genuine of any design (CoAARC); none can use the specimen the counter holds; none reports a referral policy or a time budget | SIDTD, IDNet, FantasyID, DeepID, DocForge-Bench, the 2026 survey |
 | Reference-conditioned detectors | a genuine reference as a second input | within design, private data, or another task (recapture, guilloche copy-move, presentation attacks); never measured on the benchmarks above; no masks on alterations; no time budget | CheckSim, Chen et al., Al-Ghadi and FMIDV, Neitthoffer et al., Nieto-Hidalgo et al. 2026 |
 | Deployment-oriented systems | lightweight architectures, edge or mobile framing, vendor readers with template libraries | no measured inference time or FPS anywhere; single-image or rule-based; no published cross-design error rate | EdgeDoc, Idakto's edge framework, FLiD, Regula and Keesing readers |
+| The architecture's source fields | a dense reference-versus-query comparison with alignment, proven on golden-sample inspection and bitemporal change detection; the trusted-reference reading of differential morph detection | never applied to documents; no notion of legitimate variation (a board must match everywhere, a document's fields must differ) | Daudt et al. 2018, Changer 2023, ChangeChip 2021, CADNet 2025, Visual ChangeNet, Scherhag et al. 2020 |
 
 Where we sit: a registered specimen of the query's own design, given to a learned alteration detector with a map head, measured leave-design-out on the public benchmarks where the single-image failure was measured, against the same detector without the specimen, with the output read as the first-line decision (referral at a miss budget) and timed on a counter-class CPU. Each of the three sides contributes one ingredient; the intersection is empty in the literature.
 
@@ -172,7 +173,7 @@ Every split is grouped by provenance component: a forgery stays with its source 
 | Arabic abstract, English abstract | items 1, 3, 6, 9 to 13 in 250 words each | 500 |
 | 4 Introduction | items 1, 2, one sentence on 6, the contributions, Figures 1 and 2 | 600 |
 | 5 Research problem, significance, objectives | problem statement, significance for GDRFA and the field, RQ1 to RQ5, contributions | 500 |
-| 6 Framework and literature | items 3 to 5, the referral and reference principles, the literature table | 1,000 |
+| 6 Framework and literature | the referral and reference principles; four strands (single-image benchmarks, reference-conditioned document detectors, deployment-oriented systems, the architecture's source fields: inspection and change detection), each closing with what it lacks; positioning paragraph; Table 1 | 1,100 |
 | 7 Methodology | population and samples (data table, FantasyID facts), tools (pipeline, reference, masks, architecture figure, grid), protocols and metrics (Table 3), deployment measurement | 1,600 |
 | 8 Results and discussion | Protocol A table, Protocol B table, Protocol C table if run, ablations, referral curves, timing table, discussion and limitations | 1,300 |
 | 9 Conclusions and recommendations | item 14, one recommendation per result | 450 |
