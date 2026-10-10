@@ -18,7 +18,7 @@ The data, the split files and the scoring follow the paper. Only the method diff
 |---|---|
 | Images | Raw SIDTD template files: 1,000 genuine, 1,222 forged (`templates.zip`), read as distributed. No re-encoding at any stage |
 | Split | The official 10 folds, `kfold_split_templates/split_kfold/{train,val,test}_split_SIDTD_it_{0..9}.csv`, used as given |
-| Arms | (1) control: single image, no reference; (2) median: query plus design median; (3) specimen: query plus blank specimen. All three use standard (difference) fusion |
+| Arms | (1) control: single image, no reference; (2) median: query plus design median; (3) specimen: query plus blank specimen. All three use standard (difference) fusion. The control receives no wrong-design training pairs: it ignores the reference, so those pairs would be genuine images labelled altered (amendment of 10 Oct, found while planning; the earlier control runs had them) |
 | Runs | 3 arms x 10 folds, one run per fold, seed 42: 30 runs |
 | Training recipe | The previous recipe (ChangerEx ResNet-18, LEVIR initialization, 40 epochs, no early stopping, batch 8, learning rates 1e-4 backbone and 1e-3 new layers, weight decay 0.05, 1,000 warm-up iterations, mask loss weight 3, wrong-design pairs at 10 percent for the referral head, mixed precision), with JPEG augmentation removed. Small affine shifts (8 px) and photometric jitter stay |
 | Checkpoint | Best validation accuracy in each fold, as the paper selects; ties broken by validation ROC AUC |
@@ -54,7 +54,7 @@ The data, the split files and the scoring follow the paper. Only the method diff
 
 1. Gate: validation of the control. The published Table 5 numbers are taken as reported. Pass: our control's mean AUC is at least 0.99 and mean accuracy at least 0.97, the range of the paper's ResNet50 and EfficientNet-B3. Fail: fix our pipeline before the control is used as the bridge.
 2. Diagnostic, only on suspicion: reproduction of the paper. Run only if the control fails gate 1 or a result looks inconsistent with the paper. Download the smallest released template checkpoints first, ResNet50 (0.9 GB) and EfficientNet-B3 (0.4 GB), from `http://datasets.cvc.uab.es/SIDTD/balanced_templates_SIDTD/`, and score each fold's checkpoint on that fold's test file with the paper's preprocessing (`Baseline/test_kfold_baseline.py`: resize to 299, ImageNet normalization, accuracy from argmax, ROC AUC from the softmax probability of "fake"). Agreement with Table 5 within the larger of one published standard deviation and 0.005 locates the problem in our pipeline; disagreement locates it in the data or the scoring. The other three models are scored only if these two leave the question open.
-3. Compression check (reported, not a gate). Each of our arms is also scored on a copy of each test file re-encoded at JPEG quality 75, so that genuine and forged images share one compression level. The main numbers stay on the raw files; this table is reported beside them.
+3. Compression check (reported, not a gate). Each of our arms is also scored with every test canvas, query and reference, re-encoded at JPEG quality 75 after letterboxing, so that genuine and forged inputs share one final compression level. This is the `equalized_qf75` variant already in the evaluator and in docs/conventions.md (amendment of 10 Oct: the canvas is re-encoded, not the raw file, because re-encoding the raw file would leave genuine images double-compressed and forged ones effectively single-compressed, a cue in the opposite direction). The main numbers stay on the raw files; this table is reported beside them.
 
 Protocol B starts only after gate 1 passes.
 
@@ -63,7 +63,7 @@ Protocol B starts only after gate 1 passes.
 1. Canvases written losslessly (PNG) instead of JPEG quality 95 in `scripts/prepare_data.py`; registration, references and masks rebuilt from them.
 2. JPEG augmentation and canvas re-encoding switched off in the training configuration.
 3. Split builders for the 10 official folds (from the CSV files) and the 10 nationality groups (with the identity-grouped validation set).
-4. Evaluator reports accuracy at 0.5 and ROC AUC per fold or group, and the mean and standard deviation; the equalized-test variant re-encodes raw test files at quality 75 before preprocessing.
+4. Evaluator reports accuracy at 0.5 and ROC AUC per fold or group, and the mean and standard deviation; the equalized-test variant is the existing canvas-level `equalized_qf75`.
 5. A script that scores the paper's released checkpoints with their own preprocessing, written only if the diagnostic in Section 6 is triggered.
 6. Aggregation script produces the Protocol A table in the layout of the paper's Table 5 (models as rows, accuracy and ROC AUC as columns), with our arms added as rows.
 
