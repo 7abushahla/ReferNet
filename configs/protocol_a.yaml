@@ -11,6 +11,7 @@ model:
   init: imagenet                # imagenet | scratch | levir (changerex only)
 train:
   epochs: 40
+  patience: null                # no early stopping: every arm trains the full schedule, best-validation checkpoint evaluated
   batch_size: 8
   lr_backbone: 1.0e-4
   lr_new: 1.0e-3                # new modules (ChangerEx arm overrides to 5e-3 via --extra)

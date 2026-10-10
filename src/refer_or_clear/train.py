@@ -5,7 +5,8 @@
         [--epochs N --limit K --device cpu|cuda --amp --batch-size B --workers W --crop H W]
 
 AdamW with two groups (pretrained encoder at train.lr_backbone, new modules at train.lr_new), linear warm-up
-then cosine to zero, AMP on CUDA, gradient clipping at 5, early stopping on validation AUC with patience 8.
+then cosine to zero, AMP on CUDA, gradient clipping at 5. Every arm trains the full schedule; the checkpoint
+with the best validation AUC is evaluated (train.patience in the config can re-enable early stopping).
 Writes checkpoints/<tag>/{best,last}.pt, <run-dir>/log.csv, <run-dir>/train.json, and LAST, only on success,
 <run-dir>/metrics.json (the sweep skips arms whose metrics.json exists). Scores are bona fide probabilities.
 """
@@ -29,7 +30,7 @@ from .logging_utils import CsvLogger, dump_json, git_hash
 
 LOG_COLUMNS = ["epoch", "train_loss", "bce_image", "bce_map", "dice_map", "val_loss", "val_auc", "lr", "seconds",
                "peak_mem_mb"]
-PATIENCE = 8
+PATIENCE = None   # no early stopping by default (decision of 10 Oct: identical compute for every arm)
 GRAD_CLIP = 5.0
 
 
@@ -81,6 +82,7 @@ def resolve(args, cfg) -> dict:
         tag=Path(args.run_dir).name, protocol=cfg.get("protocol"), arch=args.arch,
         fusion=args.fusion or m.get("fusion", "difference"), reference=E.reference_name(cfg, args.reference),
         init=init, seed=args.seed, epochs=int(t.get("epochs", 40) if args.epochs is None else args.epochs),
+        patience=t.get("patience"),
         batch_size=int(t.get("batch_size", 8) if args.batch_size is None else args.batch_size),
         lr_backbone=float(t.get("lr_backbone", 1e-4)), lr_new=float(t.get("lr_new", 1e-3)),
         weight_decay=float(t.get("weight_decay", 0.05)), warmup_iters=int(t.get("warmup_iters", 500)),
@@ -217,7 +219,8 @@ def main(argv=None):
             save_checkpoint(ck_dir / "best.pt", model, rc, args, epoch, val_auc, n_params)
         else:
             bad_epochs += 1
-            if val_auc is not None and bad_epochs >= PATIENCE:
+            patience = rc.get("patience") or PATIENCE
+            if patience and val_auc is not None and bad_epochs >= patience:
                 print(f"[train] early stop at epoch {epoch}; best epoch {best_epoch}")
                 break
     train_seconds = time.time() - t_start
