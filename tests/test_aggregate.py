@@ -52,6 +52,15 @@ def test_gate():
     assert not ok and "9 of 10" in msg
 
 
+def test_gate_counts_distinct_folds():
+    runs = Path(tempfile.mkdtemp())
+    for k in range(5):
+        for seed in (42, 43):
+            write(runs, f"A-cex-single-median-levir-f{k}-s{seed}", 0.995, 0.985, k)
+    ok, msg = AG.gate(AG.load(runs, "A"))
+    assert not ok and "5 of 10" in msg, msg
+
+
 def test_per_design_for_heldout():
     runs = Path(tempfile.mkdtemp())
     write(runs, "B-cex-difference-median-levir-f0-s42", 0.9, 0.9, 0, designs=("sidtd/alb_id", "sidtd/aze_passport"))
@@ -64,5 +73,6 @@ if __name__ == "__main__":
     test_superseded_runs_are_ignored()
     test_paper_table_has_published_rows_and_ours()
     test_gate()
+    test_gate_counts_distinct_folds()
     test_per_design_for_heldout()
     print("ok")

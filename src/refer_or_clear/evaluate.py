@@ -247,6 +247,11 @@ def summary_line(tag: str, val: dict | None, test: dict) -> str:
 
 
 # ----------------------------------------------------------------------------- CLI
+def checkpoint_fold(ck: dict, override=None):
+    """The fold or group index to evaluate: the override when given, else the one the checkpoint trained on."""
+    return override if override is not None else ck.get("config", {}).get("fold")
+
+
 def load_checkpoint(path, device):
     """(model, checkpoint dict): rebuilds the model from the saved CLI args and loads the weights."""
     from .models import build_model
@@ -280,7 +285,7 @@ def main(argv=None):
     model, ck = load_checkpoint(args.checkpoint, device)
     reference = args.reference or ck["args"].get("reference") or reference_name(cfg)
     seed = int(ck["args"].get("seed", 0))
-    fold = args.fold if args.fold is not None else ck.get("config", {}).get("fold")
+    fold = checkpoint_fold(ck, args.fold)
     split_df, records_df = load_split(cfg, args.data_root, fold=fold)
     t0 = time.time()
     val_pairs = role_pairs(split_df, records_df, args.data_root, "val", reference, cfg, seed, args.limit)

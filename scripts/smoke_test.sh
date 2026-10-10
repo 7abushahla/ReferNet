@@ -31,7 +31,7 @@ rm -f "$RUN_DIR/metrics.json"
 echo "[smoke] device=$DEVICE limit=$LIMIT epochs=$EPOCHS batch=$BATCH crop=($CROP) run_dir=$RUN_DIR"
 # shellcheck disable=SC2086
 "$PYTHON" -m refer_or_clear.train --config configs/protocol_a.yaml --arch siamese_r18 --fusion difference \
-    --reference median --init scratch --seed 42 --data-root "$DATA_ROOT" --run-dir "$RUN_DIR" \
+    --reference median --init scratch --seed 42 --fold 0 --data-root "$DATA_ROOT" --run-dir "$RUN_DIR" \
     --epochs "$EPOCHS" --limit "$LIMIT" --batch-size "$BATCH" --crop $CROP --device "$DEVICE" \
     --workers "$WORKERS" $AMP
 

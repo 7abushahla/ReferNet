@@ -111,9 +111,10 @@ def per_design(df: pd.DataFrame) -> str:
 
 
 def gate(df: pd.DataFrame) -> tuple[bool, str]:
-    """The control on the raw test files: all folds present, mean AUC >= 0.99 and mean accuracy >= 0.97."""
+    """The control on the raw test files: all folds present (distinct folds, not rows), mean AUC >= 0.99 and mean
+    accuracy >= 0.97."""
     s = df[(df.variant == "native") & (df.fusion == "single") & (df.reference == "median")]
-    n, auc_m, acc_m = len(s), pd.to_numeric(s.auc).mean(), pd.to_numeric(s.deepid_acc).mean()
+    n, auc_m, acc_m = s.fold.nunique(), pd.to_numeric(s.auc).mean(), pd.to_numeric(s.deepid_acc).mean()
     if n < GATE["n"]:
         return False, f"GATE FAIL: control has {n} of {GATE['n']} folds"
     fails = []

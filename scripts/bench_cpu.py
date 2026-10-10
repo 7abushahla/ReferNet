@@ -260,6 +260,7 @@ def main(argv=None):
     ap.add_argument("--reference", default=None, help="median | specimen | single (default: checkpoint args)")
     ap.add_argument("--out", default=None, help="output json (default results/timing/<tag>-<host>.json)")
     ap.add_argument("--onnx", action="store_true", help="export to ONNX and time with onnxruntime as well")
+    ap.add_argument("--fold", type=int, default=None, help="fold or group index (default: the checkpoint's)")
     args = ap.parse_args(argv)
 
     torch.set_num_threads(args.threads)
@@ -273,7 +274,7 @@ def main(argv=None):
     reference = args.reference or ck["args"].get("reference") or E.reference_name(cfg)
     seed = int(ck["args"].get("seed", 0))
 
-    split_df, records_df = E.load_split(cfg, args.data_root)
+    split_df, records_df = E.load_split(cfg, args.data_root, fold=E.checkpoint_fold(ck, args.fold))
     pairs = E.role_pairs(split_df, records_df, args.data_root, args.split, reference, cfg, seed)  # sorted by image_id
     if not pairs:
         raise SystemExit(f"[bench] no pairs in role {args.split!r}")
