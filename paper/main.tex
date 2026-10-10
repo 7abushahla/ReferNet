@@ -192,7 +192,7 @@ Word count & \todo{from wordcount.sh or Overleaf; 4,000 to 8,000 including table
 % =====================================================================
 \section{Introduction}
 \label{sec:intro}
-\todo{About 600 words. The two-line document check at Dubai's ports; the Document Examination Centre's own figures (20,307 examinations, 902 irregularities, 4.4\% hit rate among referrals); what the first line already operates; why the first-line decision is hard; one sentence on the approach; the structure of the paper. Source: ../main.tex Section 1, first four paragraphs and Figure 1.}
+\todo{About 600 words, deployment-motivated from the first sentence: the two-line check at Dubai's ports, seconds per document at a counter with a reader and a computer; the Document Examination Centre's own figures (902 irregularities in 20,307 examinations, a ratio among examined documents, not a prevalence); what the first line already operates (readers with a template library, a new design handled by adding its specimen); why the first-line decision is hard; one sentence on the approach; the structure of the paper. Source: ../main.tex Section 1 and the paper plan Section 2, items 1 and 2.}
 
 % Example figure inclusion (figures are read from figures/):
 % \begin{figure}[htbp]
@@ -209,23 +209,23 @@ Word count & \todo{from wordcount.sh or Overleaf; 4,000 to 8,000 including table
 \label{sec:problem}
 
 \subsection{Research problem}
-\todo{About 200 words. The problem statement box of ../main.tex: refer-or-clear in seconds across 80+ countries' templates, with a commercial system whose behaviour on unseen designs no vendor publishes; published detectors memorize designs.}
+\todo{About 200 words. Refer or clear in seconds across 80+ countries' templates; we found no published cross-design error rate for the commercial readers; the detectors evaluated in the public benchmarks take one image and collapse on unseen designs. The gap sentence from the plan: the collapse is measured in four benchmarks; the specimen the counter already uses has never been given to a learned alteration detector and measured on those benchmarks against the same detector without it.}
 
 \subsection{Significance}
-\todo{About 200 words. For GDRFA: the measurement the vendor does not provide, the open dataset and protocol to repeat it on GDRFA's own template library, a new design handled by adding its specimen. For the field: first public leave-design-out benchmark of reference-conditioned detection.}
+\todo{About 200 words. For GDRFA: a measurement nobody publishes, a released protocol to repeat it on GDRFA's own template library, a new design handled by adding its specimen, a decision and a time budget on the counter computer. For the field: to our knowledge the first leave-design-out measurement of specimen conditioning for alteration detection on public data (reference-based detectors themselves are not new).}
 
 \subsection{Objectives and research questions}
-\todo{The aim and RQ1 to RQ4 from ../main.tex Section 3.}
+\todo{The aim and RQ1 to RQ5 (paper plan Section 2 and 5b).}
 \begin{enumerate}[label=\textbf{RQ\arabic*.}]
   \item \todo{Loss of a single-image detector on unseen designs, and how much the reference recovers.}
   \item \todo{Gap between Protocol A and Protocol B, and what drives it.}
-  \item \todo{Which backbone, transfer regime, reference construction and fusion carry the gain.}
+  \item \todo{Which fusion (stacked, difference, attention) and which reference construction (design median, single specimen, with and without the zone mask) carry the gain.}
   \item \todo{Referral rate at miss budgets of 1 and 5\%.}
   \item \todo{Whether the detector meets a first-line time budget on an ordinary CPU, and what the reference costs in time relative to the single-image model.}
 \end{enumerate}
 
 \subsection{Contributions}
-\todo{The four contributions: data, benchmark, architecture, analysis (../main.tex Section 1, Contributions). Include the project-at-a-glance figure, fig\_pipeline.pdf, on a landscape page if space allows.}
+\todo{Contributions C1 to C5 with their boundaries (paper plan Section 2b): the measurement, the method, the decision, the time budget, the release. Each states what it is not. Include the project-at-a-glance figure, fig\_pipeline.pdf, on a landscape page if space allows.}
 
 % =====================================================================
 % 6. THEORETICAL AND CONCEPTUAL FRAMEWORK AND LITERATURE REVIEW
@@ -262,19 +262,19 @@ Word count & \todo{from wordcount.sh or Overleaf; 4,000 to 8,000 including table
 \todo{About 1,800 words. Keep the guide's wording: study population, samples, and tools.}
 
 \subsection{Study population and samples}
-\todo{The population is identity and travel documents presented at a first-line check; the samples are the three public datasets (MIDV-2020, SIDTD, FantasyID), their sizes, designs, alteration classes, capture conditions and licences (Table 2 of ../main.tex); identity-grouped splits; no real traveller's document. Include fig\_templates.pdf.}
+\todo{The population is identity and travel documents presented at a first-line check; the samples are SIDTD (built on MIDV-2020; baseline-unmodified mock documents plus 1,222 generated forgeries), FantasyID (printed and captured fantasy cards, 13 designs, boxes with altered flags and a document quad per image) and IDNet's Arizona and West Virginia designs from the reduced Zenodo release (face morphing, portrait substitution, text attacks); sizes, designs, alteration classes, capture conditions and licences in a table; provenance-grouped splits (source plus donor); no real traveller's document. Source: docs/data-decision.md. Include fig\_templates.pdf.}
 
 \subsection{Tools: data preparation}
-\todo{Unified records; rectification and registration; design-median reference and zone mask; extra forgeries with the SIDTD generator; pairs and wrong-design negatives.}
+\todo{Unified records; rectification by homography to the 512 x 800 canvas (FantasyID ships the quad); design-median reference with the query's identity excluded; zone mask from the original field rectangles; box masks from the altered rectangles; pairs, hard negatives with a wrong-design reference; the JPEG-quality audit across classes. No forgeries are generated by us.}
 
 \subsection{Tools: proposed architecture}
-\todo{Base framework ChangerEx (Open-CD); standard variant (difference fusion) and improved variant (attention fusion); named modifications; input, output, loss, training recipe. Include the architecture figure (TikZ in ../main.tex, Figure 6) as a PDF or redraw.}
+\todo{Base framework ChangerEx (Open-CD), a transfer from change detection; where each block comes from (Daudt et al., Changer, Neitthoffer et al., TruFor and EdgeDoc; the class is golden-reference inspection); the zone-aware single-image baseline as the controlled comparison; standard variant (difference fusion) and improved variant (attention fusion); input, output, loss, training recipe. Include the architecture figure (TikZ in ../main.tex, Figure 6) as a PDF or redraw.}
 
 \subsection{Evaluation protocols and metrics}
-\todo{Protocol A and Protocol B with the Arabic design; the comparison table (Table 3 of ../main.tex, landscape); metrics: AUC, EER, APCER at BPCER 1 and 5\%, HTER, accuracy where published, pixel F1 and IoU, referral rate.}
+\todo{Protocols A, B and C (paper plan Section 3): A on SIDTD's official few-shot split (published rows measured on clips, ours on templates, stated); B zero-shot on FantasyID, headline on the three held-out designs with faces and text, Attack-1 separately with the Arabic cards broken out; C on IDNet's published West Virginia and Arizona pair, per task. Every table has three rows, text alterations, faces, all attacks; the claim rests on the first. The comparison table (Table 3 of ../main.tex, landscape); metrics: AUC, EER, APCER at BPCER 1 and 5\%, HTER at FantasyID's operating point, accuracy where published, pixel F1 and IoU on box masks, the transported referral threshold (primary) and referral at test miss 1 and 5\% (secondary).}
 
 \subsection{Experiments}
-\todo{Configuration grid and experiments E1 to E9 (Table 4 of ../main.tex).}
+\todo{Settings (single plus zones, stacked, difference, attention; ResNet-18; three seeds) and experiments E1 to E10 (experiments/README.md), with the priority order: A and B with the two core settings first, then the other two settings, then C.}
 
 \subsection{Deployment measurement}
 \todo{The model runs on the counter computer with the scanner as the sensor; the officer has seconds per document. Protocol: batch size one, FP32, CPU only, fixed thread count, 20 warm-ups then 200 timed documents; median and 95th percentile for pre-processing (decode, rectification, resize, zone lookup), network time with and without cached reference features, and end to end; parameters and file size; two named machines. Quantization and on-sensor execution are future work.}
@@ -300,7 +300,7 @@ EfficientNet-B3 (published) & -- & 82.0 & 0.899 & -- & -- \\
 ResNet50 (published) & -- & 90.6 & 0.963 & -- & -- \\
 CoAARC (published) & -- & 62.8 & 0.675 & -- & -- \\
 \midrule
-Single-image (ours) & ResNet-18 & \todo{} & \todo{} & \todo{} & \todo{} \\
+Single image + zones (ours) & ResNet-18 & \todo{} & \todo{} & \todo{} & \todo{} \\
 Channel-stacked (ours) & ResNet-18 & \todo{} & \todo{} & \todo{} & \todo{} \\
 Difference fusion (ours) & ResNet-18 & \todo{} & \todo{} & \todo{} & \todo{} \\
 Attention fusion (ours) & ResNet-18 & \todo{} & \todo{} & \todo{} & \todo{} \\
@@ -323,19 +323,42 @@ TruFor (published) & 93.5 & 99.5 & 55.8 & 33.4 & 62.0 \\
 MMFusion (published) & 94.4 & 99.8 & 61.5 & 25.8 & -- \\
 TruFor (our re-run) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
 \midrule
-Single-image (ours) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
+Single image + zones (ours) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
 Difference fusion (ours) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
 Attention fusion (ours) & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} \\
 \bottomrule
 \end{tabular}
 \end{table}
-\todo{Interpretation, plus the Arabic design reported alone with 0 and 10 calibration cards, and the gap between protocols.}
+\todo{Interpretation: the headline on the three held-out designs; Attack-1 on the seen designs with the Arabic cards broken out (no published counterpart at design level); faces in their own row with the reason the specimen is blind there and the live-face reference as the fix; the gap between protocols.}
+
+
+\subsection{Protocol C: the published cross-type pair}
+\begin{table}[H]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Protocol C (IDNet, train on one design, test on the other; accuracy at threshold 0.5, per task). Published rows from the IDNet paper (arXiv 2408.01690 v2, Table 14), measured on the original images; ours on the reduced Zenodo release, one detector for all four tasks.}
+\label{tab:resC}
+\begin{tabular}{llcccc}
+\toprule
+Train $\rightarrow$ test & Method & Face morphing & Portrait subst. & Mixed & Text replacement \\
+\midrule
+WV $\rightarrow$ AZ & published (MixFaceNet-S / CNN) & 50.55 & 71.20 & 71.15 & 60.92 \\
+WV $\rightarrow$ AZ & Single image + zones (ours) & \todo{} & \todo{} & \todo{} & \todo{} \\
+WV $\rightarrow$ AZ & Difference fusion (ours) & \todo{} & \todo{} & \todo{} & \todo{} \\
+\midrule
+AZ $\rightarrow$ WV & published & 54.10 & 80.05 & 71.10 & 50.00 \\
+AZ $\rightarrow$ WV & Single image + zones (ours) & \todo{} & \todo{} & \todo{} & \todo{} \\
+AZ $\rightarrow$ WV & Difference fusion (ours) & \todo{} & \todo{} & \todo{} & \todo{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+\todo{Interpretation: text replacement is the row the claim rests on; the face tasks are reported, not claimed.}
 
 \subsection{Ablations and robustness}
-\todo{Transfer regimes, reference construction, zone mask, fusion, attention bias; wrong-design reference and misregistration sweep.}
+\todo{Reference construction (median vs single specimen), zone mask on and off, fusion, attention bias; wrong-design reference with and without the gate; misregistration sweep 0 to 12 px; JPEG recompression at 90, 70, 50.}
 
 \subsection{Referral analysis}
-\todo{Measured referral curves replacing the illustrative sketch; referral rate at miss 1 and 5\% against today's practice of referring every doubtful document.}
+\todo{The transported policy: threshold calibrated on the source at a 5\% miss target, frozen, realized miss and referral on the unseen designs; the referral curves; prevalence scenarios at 0.1, 1 and 5\%; TruFor's published operating point (5\% missed, 62\% of genuine referred) as the comparator. No refer-everything baseline is claimed as current practice.}
 
 \subsection{Inference time on CPU}
 \begin{table}[H]
@@ -356,14 +379,14 @@ Attention fusion & \todo{} & \todo{} & \todo{} & \todo{} & \todo{} & \todo{}& \t
 \todo{Interpretation against the first-line budget; cost of the reference; what caching the reference features per design buys.}
 
 \subsection{Discussion and limitations}
-\todo{What the leave-design-out number measures and what it does not (public forgeries are composites and generative edits, the reality gap); registration failures; the 4.4\% prior is among referrals.}
+\todo{What the leave-design-out number measures and what it does not (two training generators; SIDTD negatives are mock documents; IDNet is the reduced release; capture tested only by FantasyID; masks are boxes); registration failures; faces; the Centre's ratio is not a prevalence; the four comparability caveats from the brief.}
 
 % =====================================================================
 % 9. CONCLUSIONS AND RECOMMENDATIONS
 % =====================================================================
 \section{Conclusions and Recommendations}
 \label{sec:conclusions}
-\todo{About 500 words. Conclusions tied to RQ1 to RQ4 and the results tables.}
+\todo{About 450 words. Conclusions tied to RQ1 to RQ5 and the results tables.}
 
 \subsection*{Recommendations for GDRFA Dubai}
 \todo{Each recommendation must follow from a result (evaluation criterion 7). Deployment: the measured CPU time supports running the detector on the existing counter computer beside the reader; quantization and execution on the scanner itself are future work. For example: request cross-design error rates from the reader vendor using the released protocol; calibrate the threshold on the centre's own template library; pilot the detector as a referral suggestion beside the existing checks; track referral and confirmed-hit rates per design as a KPI.}
