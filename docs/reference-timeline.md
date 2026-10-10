@@ -12,30 +12,30 @@ Status words: **checked** (the number or claim was read in the source on the dat
 | Jun 2017 | Vaswani et al., Transformer (`vaswani2017attention`), arXiv 1706.03762 | NeurIPS 2017 | standard reference | standard |
 | Nov 2017 | Loshchilov and Hutter, AdamW (`loshchilov2019adamw`), arXiv 1711.05101 | ICLR 2019 | standard reference | standard |
 | Oct 2018 | Daudt, Le Saux and Boulch, FC-Siam (`daudt2018fcsiamdiff`) | ICIP 2018 | not read | from notes |
-| Nov 2018 | Gariup and Piskorski, humans and machines at the border (`gariup2019firstline`) | Int. J. Critical Infrastructure Protection 24 (2019); DOI 10.1016/j.ijcip.2018.10.005 | not read | needs PDF (claim: officers over- and under-trust machines) |
+| Nov 2018 | Gariup and Piskorski, "The challenge of detecting false documents at the border: Exploring the performance of humans, machines and their interaction" (`gariup2019firstline`) | Int. J. Critical Infrastructure Protection 24 (2019) 100 to 110; DOI 10.1016/j.ijcip.2018.10.005 (title confirmed on RePEc, 10 Oct) | abstract only: Frontex Document Challenge II, Lisbon, September 2013, 213 documents, seven inspection systems, 39 officers | needs PDF (claim: officers over- and under-trust machines) |
 | Jan 2020 | Scherhag et al., differential morphing-attack detection (`scherhag2020dmad`), arXiv 2001.01202 | IEEE TIFS 15 (2020) | evidence summary | from notes |
 | May 2020 | Chen and Shi, LEVIR-CD (`chen2020levir`) | Remote Sensing 12(10):1662 (2020) | standard reference | standard |
 | Jan 2021 | Chen, Zhang, Lan and Huang, recapture detection (`chen2022domain`), arXiv 2101.01404 | IEEE TIFS 17 (2022), DOI 10.1109/TIFS.2022.3197054; title "Domain-agnostic document authentication against practical recapturing attacks" differs from the preprint's | abstract | title and DOI corrected in the bib on 10 Oct; needs PDF |
 | May 2021 | Borghi, Pancisi, Ferrara and Maltoni (Bologna), double Siamese differential morphing-attack detection (`borghi2021double`) | Sensors 21(10):3466 (2021), DOI 10.3390/s21103466 | the published PDF, supplied by the authors on 10 Oct | checked 10 Oct (authors, venue; a trusted live image and a probe as the two inputs) |
 | Jul 2021 | Bulatov et al., MIDV-2020 (`bulatov2022midv2020`), arXiv 2107.00396 | Computer Optics 46(2) (2022) | not read | from notes |
 | Sep 2021 | Fridman, Rusanovsky and Oren, ChangeChip (`fridman2021changechip`), arXiv 2109.05746 | IEEE PAINE 2021 | evidence summary | first names and venue from notes; needs PDF |
-| Sep 2021 | Ghanmi, Nabli and Awal, CheckSim (`ghanmi2021checksim`) | ICDAR 2021 Workshops, LNCS 12916 | abstract | needs PDF (four French document types, private data) |
+| Sep 2021 | Ghanmi, Nabli and Awal, CheckSim (`ghanmi2021checksim`) | ICDAR 2021 Workshops, LNCS 12916 (Part I) | the full LNCS volume (499 pages), supplied by the authors on 10 Oct | checked 10 Oct: an aligned query is compared with "a reference image representing the document model" by Siamese and triplet networks with an optimized threshold; experiments on "four types of french identity documents" from the authors' own data set |
 | May 2022 | Smart Engines, Smart ID Engine 1.10 manual (`smartengines2022spec`) | vendor manual | not read | from notes |
 | Jun 2022 | Al-Ghadi et al., guilloche forgery detection (`alghadi2022guilloche`), arXiv 2206.10989 | peer-reviewed version not identified | not read | needs the peer-reviewed version, if one exists |
 | Sep 2022 | Fang, Li and Li, Changer (`fang2023changer`), arXiv 2209.08290 | IEEE TGRS 61 (2023) | abstract | from notes |
 | Nov 2022 | European Commission, Schengen Handbook, C(2022) 7591 (`eu2022handbook`) | official document | the official PDF, fetched 10 Oct | checked 10 Oct: "'Second-line checks' are further checks which may be carried out in a special location"; "first-line check" used throughout |
 | Dec 2022 | Guillaro et al., TruFor (`guillaro2023trufor`), arXiv 2212.10957 | CVPR 2023 | not read | from notes |
-| 2023 | Al-Ghadi et al., FMIDV (`alghadi2023fmidv`) | IEEE MMSP 2023 | not read | needs PDF (claim: AUC near 0.5 once the reference is removed) |
+| Jul 2023 | Al-Ghadi, Ming, Gomez-Krämer, Burie, Coustaty and Sidère, "Guilloche Detection for ID Authentication: A Dataset and Baselines" (`alghadi2023fmidv`) | IEEE MMSP 2023, DOI 10.1109/MMSP59012.2023.10337681 | the published PDF, supplied 10 Oct | checked 10 Oct: trained on pairs, "the testing process takes place by handling one single sample" (no reference); "AUC of both models range between 50%-56%"; FMIDV data and code public (github.com/malghadi/CheckID) |
 | 2023 | Regula, template database of 13,000 items (`regula2023templates`) | press release | not read | from notes |
-| Aug 2023 | Neitthoffer et al., unseen ID types (`neitthoffer2023knowledge`) | ICDAR 2023 Workshops, LNCS 14194 | not read | needs PDF (claim: attention fusion generalizes, channel stacking does not; CER 0.31 vs 0.81) |
+| Aug 2023 | Neitthoffer, Lemaitre, Coüasnon, Soullard and Awal, "Knowledge Integration Inside Multitask Network for Analysis of Unseen ID Types" (`neitthoffer2023knowledge`) | ICDAR 2023 Workshops (Part II), pp. 302 to 317 (title and pages confirmed on dblp, 10 Oct) | not read | needs PDF (claim: attention fusion generalizes, channel stacking does not; CER 0.31 vs 0.81) |
 | Nov 2023 | Frontex and INTERPOL, document library presentation (`frontex2023quickcheck`) | Council document WK 15744/2023, released by Statewatch 23 Apr 2024 | not read | from notes ("only seconds") |
 | Jan 2024 | Gulf News, "We will catch you" (`gulfnews2024catch`) | press | evidence summary | date is 28 Jan in the evidence and 29 Jan in the bib |
 | Jun 2024 | The National, fake passports within seconds (`thenational2024fake`) | press, 3 Jun 2024 | evidence summary | from notes (three tiers; about 1,500 officers, about 30 examiners) |
 | Jul 2024 | Li et al., Open-CD technical report (`li2025opencd`), arXiv 2407.15317 | ACM Multimedia 2025 according to the bib note | not read | to check |
-| Aug 2024 | Guan et al., IDNet (`guan2024idnetarxiv`), arXiv 2408.01690: v1 3 Aug, v2 3 Sep 2024 | Xie et al., IEEE BigData 2024 (`guan2024idnet`), which lacks the cross-design Tables 14 to 20 | arXiv v2 abstract page (10 Oct); table values from the data decision note | the cross-design numbers exist only in arXiv v2 |
-| 2024 | Boned et al., SIDTD (`boned2024sidtd`) | Scientific Data 11:1356 (2024) | article text without tables (cookie wall); SIDTD code audit 10 Oct | needs PDF (Tables 5 to 7) |
+| Aug 2024 | Guan et al., IDNet (`guan2024idnetarxiv`), arXiv 2408.01690: v1 3 Aug, v2 3 Sep 2024 | Xie et al., "IDNet: A Novel Identity Document Dataset via Few-Shot and Quality-Driven Synthetic Data Generation", IEEE BigData 2024, DOI 10.1109/BigData62323.2024.10825017 (`guan2024idnet`) | arXiv v2 abstract page; the published BigData PDF, supplied 10 Oct | checked 10 Oct: the BigData version reports within-design results (e.g. Table V, Arizona) and not the cross-design Tables 14 to 20, which exist only in arXiv v2; its author list prints "Niranjan Swamy" (bib updated) |
+| Dec 2024 | Boned, Talarmain, Ghanmi, Chiron, Biswas, Awal and Ramos Terrades, "Synthetic dataset of ID and Travel Documents" (`boned2024sidtd`) | Scientific Data 11:1356 (2024), DOI 10.1038/s41597-024-04160-9 | the published PDF, supplied 10 Oct (file dated 9 Dec 2024); SIDTD code audit 10 Oct | checked 10 Oct: Table 5 few-shot rows 82.0 ± 2.6, 90.6 ± 2.6, 91.0 ± 2.1 and CoAARC 62.8 ± 5.5, on clip-cropped instances; templates are used for composite detection under k-fold |
 | Jan 2025 | UAE Journal, 88 fake travel documents (`uaejournal2025fake`) | press, 25 Jan 2025 | evidence summary | from notes (more than 1,600 officers, about 50 examiners) |
-| Jul 2025 | Korshunov et al., FantasyID (`korshunov2025fantasyid`), arXiv 2507.20808 | IJCB 2025 | `evidence/fantasyid2025.txt`, Table 3 checked 10 Oct | checked; whether the text is the IJCB or the arXiv version is not stated |
+| Jul 2025 | Korshunov et al., FantasyID (`korshunov2025fantasyid`), arXiv 2507.20808 (v1, 28 Jul 2025) | IJCB 2025, DOI 10.1109/IJCB65343.2025.11411292 | `evidence/fantasyid2025.txt`, Table 3 checked 10 Oct; the PDF supplied on 10 Oct is arXiv v1, not the IJCB version | checked on arXiv v1; IJCB PDF still needed |
 | Aug 2025 | George and Marcel, EdgeDoc (`george2025edgedoc`), arXiv 2508.16284 | peer-reviewed version not identified | `evidence/edgedoc.txt`, checked 10 Oct (EdgeNeXt backbone, RTX 3090, BCE plus Dice) | needs the peer-reviewed version, if one exists |
 | Oct 2025 | Korshunov et al., DeepID challenge (`korshunov2025deepid`) | ICCV Workshops 2025, pp. 521 to 530 | `evidence/deepid2025.txt`, checked 10 Oct (0.991, 0.719, 0.788) | checked |
 | Nov 2025 | Ruiz, Tapia, Soto and Busch, ID-card PAD review (`ruiz2025review`), arXiv 2511.06056 | preprint | not cited in the current draft | |
@@ -58,6 +58,14 @@ Status words: **checked** (the number or claim was read in the source on the dat
 - **L3i, La Rochelle (Burie, Ming, Al-Ghadi, Coustaty):** MIDV-2020 (2021 to 2022, with Smart Engines) → guilloche verification against a reference (2022) → FMIDV (2023).
 - **Smart Engines (Bulatov, Arlazarov):** MIDV-2020 → MIDV-Holo (2023) → the Smart ID Engine.
 
-## 3. Peer-reviewed versions requested from the authors (10 Oct)
+## 3. Peer-reviewed versions requested from the authors
 
-Needed to check a number or a claim that the draft uses: SIDTD (Scientific Data 2024, Tables 5 to 7); CheckSim (ICDAR-W 2021); Neitthoffer et al. (ICDAR-W 2023); FMIDV (MMSP 2023); Chen et al. (TIFS 2022); Gariup and Piskorski (IJCIP 2019). Useful but not blocking: IDNet (BigData 2024), FantasyID (IJCB 2025), ChangeChip (PAINE 2021), Changer (TGRS 2023), and EdgeDoc's and Al-Ghadi et al.'s (2022) peer-reviewed versions if they exist.
+Received and checked on 10 Oct: SIDTD (Scientific Data 2024), CheckSim (LNCS 12916), IDNet (BigData 2024), FMIDV (MMSP 2023), Borghi et al. (Sensors 2021).
+
+Still needed, with exact titles:
+- FantasyID, IJCB 2025: "FantasyID: A dataset for detecting digital manipulations of ID-documents". The file supplied is arXiv v1.
+- Neitthoffer et al., ICDAR 2023 Workshops: "Knowledge Integration Inside Multitask Network for Analysis of Unseen ID Types".
+- Chen et al., IEEE TIFS 17 (2022): "Domain-Agnostic Document Authentication Against Practical Recapturing Attacks".
+- Gariup and Piskorski, IJCIP 24 (2019): "The challenge of detecting false documents at the border: Exploring the performance of humans, machines and their interaction".
+
+Useful but not blocking: ChangeChip (PAINE 2021), Changer (TGRS 2023), and the peer-reviewed versions of EdgeDoc and of Al-Ghadi et al. (2022), if they exist.

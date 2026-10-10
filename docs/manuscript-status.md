@@ -2,6 +2,30 @@
 
 Written with the first draft of Sections 1 to 4 (the guide's sections 4 to 7). The plan (`docs/paper-plan.md`) stays the contract; this note records what the draft changed, what in the repository is stale or inconsistent, and the decisions the authors still need to make.
 
+## 0. Update of 10 Oct, afternoon (after commit 498c548)
+
+Decisions taken in the draft. Each is reversible.
+
+1. **Cuts.**
+   - The project-at-a-glance figure (`fig_pipeline`) and the template-diversity figure (`fig_templates`) are commented out in `main.tex`; their files stay.
+   - Five citations that carried no claim of their own were removed: the duplicate Gulf Today article, the Click and Travel release, the Smart Engines manual, the Transformer and AdamW references.
+   - Sections 1 to 4 and the limitations were tightened.
+2. **Attack-1 genuine counterparts.** Attack-1, with the Arabic cards broken out, is reported twice. The first comparison is against the 300 held-out genuine cards, as published. The second is against the genuine cards of its own ten designs from FantasyID's training folder, which our model never sees. **The evaluation code must implement the second comparison.**
+3. **Published rows** stay in the results tables as anchors, below their own rule and labeled with their conditions (plan item 8). The plan's Section 5 sentence "published rows in a separate literature table" is superseded.
+4. **Arabic abstract** drafted as a translation of the English abstract, with the same placeholders; **a native speaker must check it.**
+5. **Title page:** Researcher 3, and the job titles, degrees and phone numbers of all four researchers, are still missing. Only the authors can supply them.
+
+The methodology now follows commit 498c548:
+- registration by SIFT and RANSAC (FantasyID up to 2.8 degrees and 24 px, SIDTD sub-pixel);
+- reference variants: registered median (default), the IDNet authors' blank specimens for Protocols A and C, a single genuine card, and the unregistered median as the control;
+- the wrong-design gate by registration inliers (floor 40);
+- SIDTD forgery counts 145 crop-and-replace and 1,077 inpaint-and-rewrite;
+- FMIDV's single-image test (AUC 50 to 56%), restored after checking the published PDF.
+
+`fig_references` shows registered medians and two blank specimens.
+
+Word count after these changes (build of 10:37Z, guidance hidden): 8,187 in the PDF count (23 pages), including the Arabic abstract (about 190 words) and about 480 words inside figures. That is about 7,700 in a Word-style count. Results (about 800 words of prose) and Conclusions (about 350) remain, so roughly 850 more words must go before submission; candidates are listed in Section 3 below.
+
 ## 1. What the draft changed
 
 - `paper/main.tex` (identical copy in `GDRFA-Award-Paper/main.tex`):
@@ -34,9 +58,9 @@ Written with the first draft of Sections 1 to 4 (the guide's sections 4 to 7). T
 3. The plan's "IDNet cross-type 35 to 71 percent" does not cover the pairs in the data decision note, which range from 35.56 to 80.05 (Arizona to West Virginia, portrait substitution: 80.05; Finland to Spain, face morphing: 78.80). The draft quotes the West Virginia to Arizona row (50.6 face morphing, 60.9 text), which is Protocol C's pair. The idea figure now says "51 to 71 % (IDNet, West Virginia to Arizona)".
 4. FantasyID's "AUC text 99.5" in the template was Attack-1, text on the ten training designs. Attack-3, on the held-out designs, is 99.9 for TruFor and 99.1 for MMFusion. The published "AUC all" pools all three attacks, so the headline on the held-out designs compares per attack. Fixed in the table.
 5. FantasyID's published operating point is already a threshold set on validation data (FPR 10%) and carried to the unseen test designs. Contribution C3 in the plan calls the transported threshold "the first such reading for a learned document detector". The draft makes no "first" claim for C3 and credits FantasyID's operating point.
-6. FantasyID's Attack-1 has no genuine test cards of its own ten designs: the published Attack-1 numbers pair these attacks with the genuine cards of the three held-out designs. For the Arabic breakdown we must choose the genuine counterparts. FantasyID's train-val bona fide cards are unseen by our model and could serve. **Decision needed.**
+6. FantasyID's Attack-1 has no genuine test cards of its own ten designs: the published Attack-1 numbers pair these attacks with the genuine cards of the three held-out designs. For the Arabic breakdown we must choose the genuine counterparts. FantasyID's train-val bona fide cards are unseen by our model and could serve. Decided on 10 Oct: both comparisons (Section 0).
 7. `experiments/README.md` (E3, "0 and 10 calibration cards") and `configs/protocol_b.yaml` (`calibration_cards: [0, 10]`) predate commit 7aac471, which dropped the calibration split. E4 (transfer regimes) and E8 (fine-tuning on FantasyID) are no longer in the plan, and the draft does not mention them.
-8. `paper/README.md` says that the Protocol A and B tables are pre-filled with the published rows, while the dossier review (item 9) puts published rows in a separate literature table. **Decision needed**; it is flagged in the results guidance.
+8. `paper/README.md` says that the Protocol A and B tables are pre-filled with the published rows, while the dossier review (item 9) puts published rows in a separate literature table. Decided on 10 Oct: they stay as labeled anchors (Section 0).
 9. `proposal/` (8 Oct) is superseded by the plan. Examples: "the first paired dataset", "extra forgeries with the SIDTD generator", the 4.4% prior, "refer everything as today's second line", the four-backbone grid. Nothing should be copied from it without checking the plan.
 10. The plan cites ICAO Doc 9303's inspection levels. The wording was checked on 10 Oct against the official PDF of Part 2 (Levels 1 to 3), and the draft quotes it; the Schengen Handbook's definition of second-line checks was checked the same day.
 11. The Gulf News article of 2 July 2026 names the unit "Documents Inspection Center" and gives no officer or examiner counts. The counts come from UAE Journal (25 Jan 2025: more than 1,600 officers, about 50 examiners); The National (3 Jun 2024) gave about 1,500 and about 30. The draft cites UAE Journal for the counts.
