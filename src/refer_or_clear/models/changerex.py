@@ -12,6 +12,14 @@ fusion  "difference": stock ChangerEx, query and reference through the shared ba
                       query's own zone channel; x[:, 4:] is never read. Feeding the query to both
                       branches would be wrong here: FDAF fuses warp(x0) - x1 and warp(x1) - x0, so
                       identical branches give an all-zero fused feature and an untrainable head.
+        "attention":  the improved variant, the dashed boxes of the proposal figure: at strides 16 and
+                      32 the query features pass a pre-LN self-attention block and then a cross-
+                      attention block (Q = f(x), K = V = f(r)), each residual on f(x), before the
+                      stock decode head (FDAF untouched); in the referral path the pooled global
+                      descriptor (GAP of the fused feature with max of the map) attends once over
+                      the fused local tokens ("global over local") before the two dense layers.
+                      Every output projection is zero-initialised, so at step 0 the model computes
+                      exactly what "difference" computes.
 init    "scratch":    Open-CD's own init (Kaiming convs, zero-init residual BN, N(0, 0.01) conv_seg).
         "levir":      LEVIR-CD checkpoint (audit A.3); stem.0.weight zero-padded (32,3,3,3) ->
                       (32,in_channels,3,3); the 2-class conv_seg folded to one logit as w[1]-w[0],
@@ -103,10 +111,70 @@ class ReferralHead(nn.Module):
         self.fc1 = nn.Linear(in_channels + 1, hidden)
         self.fc2 = nn.Linear(hidden, 1)
 
-    def forward(self, feat, map_logit):
+    def descriptor(self, feat, map_logit):
         pooled = feat.mean(dim=(2, 3))
         peak = map_logit.flatten(1).amax(dim=1, keepdim=True)
-        return self.fc2(F.relu(self.fc1(torch.cat([pooled, peak], dim=1)))).squeeze(1)
+        return torch.cat([pooled, peak], dim=1)
+
+    def classify(self, g):
+        return self.fc2(F.relu(self.fc1(g))).squeeze(1)
+
+    def forward(self, feat, map_logit):
+        return self.classify(self.descriptor(feat, map_logit))
+
+
+def _zero(linear):
+    nn.init.zeros_(linear.weight), nn.init.zeros_(linear.bias)
+    return linear
+
+
+class _Attention(nn.Module):
+    """Pre-LN multi-head attention between token sets: out = W_o MHA(W_q LN(q), W_kv LN(kv), W_kv LN(kv)),
+    with W_o zero-initialised so that `x + out` starts as the identity on x."""
+
+    def __init__(self, c_q, c_kv, c_out, heads=6, key_dim=32):
+        super().__init__()
+        d = heads * key_dim
+        self.norm_q, self.norm_kv = nn.LayerNorm(c_q), nn.LayerNorm(c_kv)
+        self.to_q, self.to_kv = nn.Linear(c_q, d), nn.Linear(c_kv, d)
+        self.attn = nn.MultiheadAttention(d, heads, batch_first=True)
+        self.to_out = _zero(nn.Linear(d, c_out))
+
+    def forward(self, q, kv):
+        kv = self.to_kv(self.norm_kv(kv))
+        return self.to_out(self.attn(self.to_q(self.norm_q(q)), kv, kv, need_weights=False)[0])
+
+
+class QueryAttention(nn.Module):
+    """One backbone stage of the improved variant: self-attention over the f(x) tokens, then cross-
+    attention with Q = f(x), K = V = f(r); both residual on f(x). Returns f(x) with the map shape."""
+
+    def __init__(self, c, heads=6, key_dim=32):
+        super().__init__()
+        self.self_attn = _Attention(c, c, c, heads, key_dim)
+        self.cross_attn = _Attention(c, c, c, heads, key_dim)
+
+    def forward(self, q, r):
+        b, c, h, w = q.shape
+        tq, tr = q.flatten(2).transpose(1, 2), r.flatten(2).transpose(1, 2)
+        tq = tq + self.self_attn(tq, tq)
+        tq = tq + self.cross_attn(tq, tr)
+        return tq.transpose(1, 2).reshape(b, c, h, w)
+
+
+class GlobalOverLocal(nn.Module):
+    """Referral-path cross-attention: the 129-d global descriptor (one token) attends over the fused
+    stride-4 feature, average-pooled `pool` x `pool` first (32 x 50 = 1,600 tokens at 512 x 800);
+    residual onto the descriptor, which then enters the two dense layers unchanged in width."""
+
+    def __init__(self, c_global=129, c_local=128, pool=4, heads=6, key_dim=32):
+        super().__init__()
+        self.pool = pool
+        self.attn = _Attention(c_global, c_local, c_global, heads, key_dim)
+
+    def forward(self, g, feat):
+        tokens = F.avg_pool2d(feat, self.pool).flatten(2).transpose(1, 2)
+        return g + self.attn(g.unsqueeze(1), tokens).squeeze(1)
 
 
 class ChangerEx(nn.Module):
@@ -115,8 +183,9 @@ class ChangerEx(nn.Module):
     def __init__(self, fusion="difference", in_channels=4, norm_cfg=None):
         super().__init__()
         _require_opencd()
-        if fusion not in ("difference", "single"):
-            raise ValueError(f"changerex_r18 supports fusion in {{'difference', 'single'}}, got {fusion!r}")
+        if fusion not in ("difference", "single", "attention"):
+            raise ValueError(f"changerex_r18 supports fusion in {{'difference', 'single', 'attention'}}, "
+                             f"got {fusion!r}")
         self.fusion = fusion
         self.in_channels = in_channels
         norm_cfg = norm_cfg or dict(type="BN", requires_grad=True)
@@ -129,6 +198,13 @@ class ChangerEx(nn.Module):
                 in_channels=[64, 128, 256, 512], in_index=[0, 1, 2, 3], channels=128, dropout_ratio=0.1,
                 num_classes=2, out_channels=1, threshold=0.5, norm_cfg=norm_cfg, align_corners=False)
         self.referral = ReferralHead(in_channels=128)
+        self.attention = None
+        if fusion == "attention":
+            # Built on a forked RNG stream so that the backbone, head and referral tensors receive the same
+            # draws as in the other variants (the test relies on it; the initial behaviour then matches).
+            with torch.random.fork_rng(devices=[]):
+                self.attention = nn.ModuleDict({"stage16": QueryAttention(256), "stage32": QueryAttention(512),
+                                                "global": GlobalOverLocal(129, 128)})
 
     def init_opencd_weights(self):
         """Apply Open-CD's init_cfg (mmengine does this inside the Runner; we have none)."""
@@ -147,16 +223,26 @@ class ChangerEx(nn.Module):
 
     def parameter_groups(self):
         """(pretrained params, new params) for the two learning rates: backbone and decode head come
-        from LEVIR (or Open-CD init), the referral head is ours. The zone channel of the stem is part of
-        the pretrained tensor and follows the backbone rate."""
+        from LEVIR (or Open-CD init), the referral head and the attention modules are ours. The zone
+        channel of the stem is part of the pretrained tensor and follows the backbone rate."""
         pre = list(self.backbone.parameters()) + list(self.decode_head.parameters())
-        return pre, list(self.referral.parameters())
+        new = list(self.referral.parameters())
+        if self.attention is not None:
+            new += list(self.attention.parameters())
+        return pre, new
 
     def forward(self, x):
         query, ref = self.split(x)
-        feats = self.backbone(query, ref)  # per stage: cat([f_query, f_ref]) at strides 4, 8, 16, 32
+        feats = list(self.backbone(query, ref))  # per stage: cat([f_query, f_ref]) at strides 4, 8, 16, 32
+        if self.attention is not None:
+            for i, key in ((2, "stage16"), (3, "stage32")):
+                f_q, f_r = torch.chunk(feats[i], 2, dim=1)
+                feats[i] = torch.cat([self.attention[key](f_q, f_r), f_r], dim=1)
         feat, map_logit = self.decode_head(feats)  # (B,128,H/4,W/4), (B,1,H/4,W/4)
-        return {"logit": self.referral(feat, map_logit), "map": map_logit}
+        g = self.referral.descriptor(feat, map_logit)
+        if self.attention is not None:
+            g = self.attention["global"](g, feat)
+        return {"logit": self.referral.classify(g), "map": map_logit}
 
 
 def default_levir_ckpt():
