@@ -34,3 +34,9 @@ __pycache__/
 
 # OS
 .DS_Store
+
+# smoke and sanity runs
+results/runs/smoke*/
+results/runs/sanity*/
+results/runs/*.log
+checkpoints/

@@ -3,21 +3,19 @@ protocol: B
 data:
   split: data/processed/splits/protocol_b.csv
   canvas: [512, 800]
-  reference: design_median
+  reference: median
   wrong_design_fraction: 0.1
   report_subsets: [all, text, face, arabic_design]
   calibration_cards: [0, 10]     # for the Arabic design (E3)
 model:
-  framework: changerex
-  backbone: resnet18
+  arch: siamese_r18
   fusion: difference
-  init: levir
-  transfer: full
+  init: imagenet
 train:
   epochs: 40
   batch_size: 8
   lr_backbone: 1.0e-4
-  lr_new: 5.0e-3                # Open-CD ChangerEx schedule for new modules
+  lr_new: 1.0e-3                # new modules (ChangerEx arm overrides to 5e-3 via --extra)
   weight_decay: 0.05
   warmup_iters: 1000
   mask_loss_weight: 3.0

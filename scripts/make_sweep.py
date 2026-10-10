@@ -3,18 +3,18 @@
 Generate sbatch scripts for a training sweep on the AWS SLURM cluster.
 
 Adapted from the qcfs-speck repository (scripts/make_sweep.py). A sweep is a grid,
-protocol x backbone x fusion x reference x transfer x seed, and hand-written launchers
+protocol x arch x fusion x reference x init x seed, and hand-written launchers
 are how arms end up silently differing in a flag. Every launcher is generated from one
 template and its filename encodes the configuration. Edit this generator, never a
 generated file.
 
   # E1: Protocol A main grid, every arm on its own GPU (4 x 4 x 3 = 48 jobs)
-  python scripts/make_sweep.py --protocols A --backbones resnet18,resnet50,resnest50,mit_b1 \
+  python scripts/make_sweep.py --protocols A --archs siamese_r18,changerex_r18 \
       --fusions single,stacked,difference,attention --seeds 42,43,44 --name E1-protocolA
 
   # E4: transfer regimes on one backbone, three seeds back to back per job
-  python scripts/make_sweep.py --protocols A --backbones resnet18 --fusions difference \
-      --transfers frozen,partial,full,scratch --group-size 3 --time 30:00:00 --name E4-transfer
+  python scripts/make_sweep.py --protocols A --archs resnet18 --fusions difference \
+      --inits imagenet,scratch --group-size 3 --time 30:00:00 --name E4-transfer
 
 Nothing is submitted from here. Scripts are written under sweeps/<name>/ with a
 submit_all.sh beside them; inspect, then queue from the repository root:
@@ -39,39 +39,38 @@ ROOT = Path(__file__).resolve().parents[1]
 CLUSTER = dict(account="acc-mialhajri", partition="gpu", conda_sh="/opt/miniconda/etc/profile.d/conda.sh")
 CHOICES = dict(
     protocols=("A", "B", "C"),
-    backbones=("resnet18", "resnet50", "resnest50", "mit_b1"),
+    archs=("siamese_r18", "changerex_r18"),
     fusions=("single", "stacked", "difference", "attention"),
-    references=("design_median", "masked_exemplar"),
-    transfers=("frozen", "partial", "full", "scratch"),
+    references=("median", "specimen", "single"),
+    inits=("imagenet", "scratch", "levir"),
 )
 CONFIG = {"A": "configs/protocol_a.yaml", "B": "configs/protocol_b.yaml", "C": "configs/protocol_c.yaml"}
-SHORT_REF = {"design_median": "median", "masked_exemplar": "exemplar"}
+SHORT_ARCH = {"siamese_r18": "r18", "changerex_r18": "cex"}
 
 
 @dataclass(frozen=True)
 class Arm:
     protocol: str
-    backbone: str
+    arch: str
     fusion: str
     reference: str
-    transfer: str
+    init: str
     seed: int
 
     @property
     def tag(self) -> str:
-        return (f"{self.protocol}-{self.backbone}-{self.fusion}-{SHORT_REF[self.reference]}"
-                f"-{self.transfer}-s{self.seed}")
+        return f"{self.protocol}-{SHORT_ARCH[self.arch]}-{self.fusion}-{self.reference}-{self.init}-s{self.seed}"
 
 
-def expand_arms(protocols, backbones, fusions, references, transfers, seeds) -> list[Arm]:
+def expand_arms(protocols, archs, fusions, references, inits, seeds) -> list[Arm]:
     """The grid with seeds innermost, so a job cut short leaves whole cells."""
-    for name, values in dict(protocols=protocols, backbones=backbones, fusions=fusions,
-                             references=references, transfers=transfers).items():
+    for name, values in dict(protocols=protocols, archs=archs, fusions=fusions,
+                             references=references, inits=inits).items():
         bad = [v for v in values if v not in CHOICES[name]]
         if bad:
             raise ValueError(f"unknown {name} {bad}; expected one of {CHOICES[name]}")
     return [Arm(p, b, f, r, t, int(s))
-            for p, b, f, r, t, s in itertools.product(protocols, backbones, fusions, references, transfers, seeds)]
+            for p, b, f, r, t, s in itertools.product(protocols, archs, fusions, references, inits, seeds)]
 
 
 def pack_jobs(arms: list[Arm], group_size: int) -> list[list[Arm]]:
@@ -155,10 +154,10 @@ else
     echo "[run] {tag} at $(date '+%F %T')"
     if "$ENV_PY" -u -m refer_or_clear.train \\
         --config {config} \\
-        --backbone {backbone} \\
+        --arch {arch} \\
         --fusion {fusion} \\
         --reference {reference} \\
-        --transfer {transfer} \\
+        --init {init} \\
         --seed {seed} \\
         --data-root "$ROC_DATA" \\
         --run-dir "$RUN_DIR"{optional}; then
@@ -196,8 +195,8 @@ def render_job(arms, *, job_name, time, mem, cpus, env, extra) -> str:
     text = PREAMBLE.format(n=len(arms), arm_list="\n".join(f"#   {i}. {a.tag}" for i, a in enumerate(arms, 1)),
                            job_name=job_name, time=time, mem=mem, cpus=cpus, env=env, **CLUSTER)
     for i, a in enumerate(arms, 1):
-        text += ARM.format(index=i, total=len(arms), tag=a.tag, config=CONFIG[a.protocol], backbone=a.backbone,
-                           fusion=a.fusion, reference=a.reference, transfer=a.transfer, seed=a.seed,
+        text += ARM.format(index=i, total=len(arms), tag=a.tag, config=CONFIG[a.protocol], arch=a.arch,
+                           fusion=a.fusion, reference=a.reference, init=a.init, seed=a.seed,
                            optional=optional)
     return text + FOOTER
 
@@ -209,10 +208,10 @@ def _csv(s: str) -> list[str]:
 def parse_args(argv=None):
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--protocols", default="A", help=f"comma list from {CHOICES['protocols']}")
-    p.add_argument("--backbones", default="resnet18", help=f"comma list from {CHOICES['backbones']}")
+    p.add_argument("--archs", default="siamese_r18", help=f"comma list from {CHOICES['archs']}")
     p.add_argument("--fusions", default="single,stacked,difference,attention", help=f"comma list from {CHOICES['fusions']}")
-    p.add_argument("--references", default="design_median", help=f"comma list from {CHOICES['references']}")
-    p.add_argument("--transfers", default="full", help=f"comma list from {CHOICES['transfers']}")
+    p.add_argument("--references", default="median", help=f"comma list from {CHOICES['references']}")
+    p.add_argument("--inits", default="imagenet", help=f"comma list from {CHOICES['inits']}")
     p.add_argument("--seeds", default="42,43,44", help="comma list of seeds")
     p.add_argument("--name", default="sweep", help="sweep name: output folder and job-name prefix")
     p.add_argument("--out", default=None, help="output folder (default sweeps/<name>)")
@@ -234,8 +233,8 @@ def parse_args(argv=None):
 def write_sweep(argv=None) -> list[Path]:
     a = parse_args(argv)
     try:
-        arms = expand_arms(_csv(a.protocols), _csv(a.backbones), _csv(a.fusions), _csv(a.references),
-                           _csv(a.transfers), [int(x) for x in _csv(a.seeds)])
+        arms = expand_arms(_csv(a.protocols), _csv(a.archs), _csv(a.fusions), _csv(a.references),
+                           _csv(a.inits), [int(x) for x in _csv(a.seeds)])
     except ValueError as e:
         raise SystemExit(f"[make_sweep] {e}")
     out = Path(a.out) if a.out else ROOT / "sweeps" / a.name

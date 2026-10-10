@@ -91,7 +91,8 @@ def build_model(arch="siamese_r18", fusion="difference", init="imagenet", in_cha
     if arch == "siamese_r18":
         return SiameseNet(fusion=fusion, init=init, in_channels=in_channels)
     if arch == "changerex_r18":
-        raise NotImplementedError("Open-CD adapter not built yet; see docs/implementation-plan.md section 3")
+        from .changerex import build_changerex
+        return build_changerex(fusion, init, in_channels=in_channels)
     raise ValueError(f"unknown arch {arch!r}; expected 'siamese_r18' or 'changerex_r18'")
 
 

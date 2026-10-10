@@ -19,6 +19,7 @@ conda activate "$ENV_NAME"
 [[ "$(basename "$CONDA_PREFIX")" == "$ENV_NAME" ]] || { echo "[stage-data] FATAL: wrong env" >&2; exit 1; }
 
 bash scripts/cluster/download_datasets.sh
+bash scripts/cluster/get_levir_ckpt.sh
 python scripts/prepare_data.py
 
 # TODO: replace with the real counts once prepare_data.py exists (DESIGN.md 3.1, 3.5).

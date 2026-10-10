@@ -13,16 +13,14 @@ data:
   test_identities: 1000         # last 1,000 file names in sorted order, as in the paper's split
   report_subsets: [face_morphing, portrait_substitution, mixed, text_replacement]
 model:
-  framework: changerex
-  backbone: resnet18
+  arch: siamese_r18
   fusion: difference
-  init: levir
-  transfer: full
+  init: imagenet
 train:
   epochs: 20
   batch_size: 8
   lr_backbone: 1.0e-4
-  lr_new: 5.0e-3                # Open-CD ChangerEx schedule for new modules
+  lr_new: 1.0e-3                # new modules (ChangerEx arm overrides to 5e-3 via --extra)
   weight_decay: 0.05
   warmup_iters: 1000
   mask_loss_weight: 3.0
