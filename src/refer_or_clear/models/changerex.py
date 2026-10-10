@@ -7,8 +7,11 @@ instead of SyncBN, see evidence/code-audit-opencd-2026-10-10.md A.1). `models/bu
 arch == "changerex_r18" to `build_changerex(fusion, init, in_channels)`.
 
 fusion  "difference": stock ChangerEx, query and reference through the shared backbone, FDAF fusion.
-        "single":     matched single-image control, the query is fed to both branches (the reference
-                      channels x[:, 4:] are never read), same parameters and same capacity.
+        "single":     matched single-image control: the reference branch receives a content-free
+                      canvas (RGB zeros, i.e. the ImageNet mean after normalization) carrying the
+                      query's own zone channel; x[:, 4:] is never read. Feeding the query to both
+                      branches would be wrong here: FDAF fuses warp(x0) - x1 and warp(x1) - x0, so
+                      identical branches give an all-zero fused feature and an untrainable head.
 init    "scratch":    Open-CD's own init (Kaiming convs, zero-init residual BN, N(0, 0.01) conv_seg).
         "levir":      LEVIR-CD checkpoint (audit A.3); stem.0.weight zero-padded (32,3,3,3) ->
                       (32,in_channels,3,3); the 2-class conv_seg folded to one logit as w[1]-w[0],
@@ -136,7 +139,10 @@ class ChangerEx(nn.Module):
     def split(self, x):
         c = self.in_channels
         query = x[:, :c]
-        ref = query if self.fusion == "single" else x[:, c:2 * c]
+        if self.fusion == "single":
+            ref = torch.cat([torch.zeros_like(query[:, :c - 1]), query[:, c - 1:c]], dim=1)
+        else:
+            ref = x[:, c:2 * c]
         return query, ref
 
     def forward(self, x):

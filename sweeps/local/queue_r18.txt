@@ -1,0 +1,9 @@
+A siamese_r18 difference median imagenet 42
+A siamese_r18 single median imagenet 42
+A siamese_r18 difference specimen imagenet 42
+A siamese_r18 difference median imagenet 43
+A siamese_r18 single median imagenet 43
+A siamese_r18 difference specimen imagenet 43
+A siamese_r18 difference median imagenet 44
+A siamese_r18 single median imagenet 44
+A siamese_r18 difference specimen imagenet 44
