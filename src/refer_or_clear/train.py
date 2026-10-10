@@ -6,7 +6,8 @@
 
 AdamW with two groups (pretrained encoder at train.lr_backbone, new modules at train.lr_new), linear warm-up
 then cosine to zero, AMP on CUDA, gradient clipping at 5. Every arm trains the full schedule; the checkpoint
-with the best validation AUC is evaluated (train.patience in the config can re-enable early stopping).
+chosen by train.select is evaluated: best validation accuracy with AUC breaking ties (Protocols A and B, the
+SIDTD paper's rule) or best validation AUC (train.patience in the config can re-enable early stopping).
 Writes checkpoints/<tag>/{best,last}.pt, <run-dir>/log.csv, <run-dir>/train.json, and LAST, only on success,
 <run-dir>/metrics.json (the sweep skips arms whose metrics.json exists). Scores are bona fide probabilities.
 """
@@ -28,10 +29,28 @@ from . import evaluate as E
 from . import metrics as M
 from .logging_utils import CsvLogger, dump_json, git_hash
 
-LOG_COLUMNS = ["epoch", "train_loss", "bce_image", "bce_map", "dice_map", "val_loss", "val_auc", "lr", "seconds",
+LOG_COLUMNS = ["epoch", "train_loss", "bce_image", "bce_map", "dice_map", "val_loss", "val_acc", "val_auc", "lr", "seconds",
                "peak_mem_mb"]
 PATIENCE = None   # no early stopping by default (decision of 10 Oct: identical compute for every arm)
 GRAD_CLIP = 5.0
+SINGLE_FUSIONS = ("single", "attention_single")   # ignore the reference: no wrong-design pairs for them
+
+
+def jpeg_range(rc: dict):
+    """(low, high) JPEG quality for training augmentation, or None when the config switches it off."""
+    q = rc.get("augment", {}).get("jpeg_quality")
+    return tuple(int(v) for v in q) if q else None
+
+
+def selection_key(select: str, val_acc, val_auc, val_loss, train_loss) -> tuple:
+    """Larger is better; ties keep the earlier epoch. 'accuracy': (validation accuracy, validation AUC), the SIDTD
+    paper's rule with AUC breaking ties; 'auc': (validation AUC,). Without validation metrics: -val_loss, then
+    -train_loss."""
+    if select == "accuracy" and val_acc is not None:
+        return (val_acc, val_auc if val_auc is not None else -math.inf)
+    if val_auc is not None:
+        return (val_auc,)
+    return (-val_loss,) if val_loss is not None else (-train_loss,)
 
 
 def parse_args(argv=None):
@@ -42,6 +61,7 @@ def parse_args(argv=None):
     ap.add_argument("--reference", default=None, help="median | specimen | single (default: config)")
     ap.add_argument("--init", default=None, help="imagenet | scratch (default: config model.init)")
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--fold", type=int, default=None, help="fold (Protocol A) or group (Protocol B) index")
     ap.add_argument("--data-root", default="data/processed")
     ap.add_argument("--run-dir", required=True)
     ap.add_argument("--epochs", type=int, default=None, help="default: config train.epochs")
@@ -78,9 +98,11 @@ def resolve(args, cfg) -> dict:
     allowed = ("scratch", "levir") if args.arch == "changerex_r18" else ("imagenet", "scratch")
     if init not in allowed:
         raise SystemExit(f"[train] --init {init!r} is not available for arch {args.arch}; use one of {allowed}")
+    fusion = args.fusion or m.get("fusion", "difference")
     return dict(
         tag=Path(args.run_dir).name, protocol=cfg.get("protocol"), arch=args.arch,
-        fusion=args.fusion or m.get("fusion", "difference"), reference=E.reference_name(cfg, args.reference),
+        fusion=fusion, reference=E.reference_name(cfg, args.reference), fold=args.fold,
+        select=str(t.get("select", "auc")),
         init=init, seed=args.seed, epochs=int(t.get("epochs", 40) if args.epochs is None else args.epochs),
         patience=t.get("patience"),
         batch_size=int(t.get("batch_size", 8) if args.batch_size is None else args.batch_size),
@@ -89,7 +111,8 @@ def resolve(args, cfg) -> dict:
         mask_weight=float(t.get("mask_loss_weight", 3.0)), amp=bool(args.amp), workers=args.workers,
         crop=tuple(args.crop) if args.crop else (tuple(cfg.get("augment", {}).get("crop")) if cfg.get("augment", {}).get("crop") else None),
         limit=args.limit, data_root=str(args.data_root),
-        wrong_design_fraction=float(cfg.get("data", {}).get("wrong_design_fraction", 0.1)),
+        wrong_design_fraction=0.0 if fusion in SINGLE_FUSIONS
+        else float(cfg.get("data", {}).get("wrong_design_fraction", 0.1)),
         augment=dict(cfg.get("augment", {})),
         test_variants=list(cfg.get("eval", {}).get("test_variants", ["native", "equalized_qf75"])),
     )
@@ -163,9 +186,10 @@ def main(argv=None):
     run_dir.mkdir(parents=True, exist_ok=True)
     t_start = time.time()
 
-    split_df, records_df = E.load_split(cfg, args.data_root)
+    split_df, records_df = E.load_split(cfg, args.data_root, fold=rc["fold"])
     pairs = {role: E.role_pairs(split_df, records_df, args.data_root, role, rc["reference"], cfg, rc["seed"],
-                                args.limit) for role in ("train", "val", "test")}
+                                args.limit, wrong_design_fraction=rc["wrong_design_fraction"])
+             for role in ("train", "val", "test")}
     if not pairs["train"]:
         raise SystemExit("[train] no training pairs in this split")
     for role in ("val", "test"):
@@ -173,7 +197,7 @@ def main(argv=None):
             print(f"[train] warning: no {role} pairs in this split")
     aug = rc["augment"]
     train_loader = make_loader(pairs["train"], True, rc["batch_size"], rc["workers"], crop=rc["crop"],
-                               jpeg=tuple(aug.get("jpeg_quality", (60, 100))), affine_px=aug.get("affine_px", 8),
+                               jpeg=jpeg_range(rc), affine_px=aug.get("affine_px", 8),
                                photometric=aug.get("photometric", True))
     val_loader = E.eval_loader(pairs["val"], rc["batch_size"], rc["workers"]) if pairs["val"] else None
 
@@ -192,29 +216,30 @@ def main(argv=None):
           f"{info['n_pairs']} pairs, {len(train_loader)} it/epoch x {rc['epochs']} epochs")
 
     log = CsvLogger(run_dir / "log.csv", LOG_COLUMNS)
-    best_score, best_epoch, bad_epochs = -math.inf, 0, 0
+    best_score, best_epoch, bad_epochs = None, 0, 0
     for epoch in range(1, rc["epochs"] + 1):
         t0 = time.time()
         if device.type == "cuda":
             torch.cuda.reset_peak_memory_stats(device)
         tr, n_it = train_epoch(model, train_loader, opt, sched, scaler, device, referral_loss, rc)
-        val_loss = val_auc = None
+        val_loss = val_auc = val_acc = None
         if val_loader is not None:
             vp = E.predict(model, val_loader, device, amp=rc["amp"], loss_fn=referral_loss,
                            mask_weight=rc["mask_weight"])
             val_loss, val_auc = vp["loss"], M.auc(vp["score"], vp["label"])
+            val_acc = M.deepid_acc(vp["score"], vp["label"])
         lr = opt.param_groups[-1]["lr"]
         log.log(epoch=epoch, train_loss=tr["loss"], bce_image=tr["bce_image"], bce_map=tr["bce_map"],
-                dice_map=tr["dice_map"], val_loss=val_loss, val_auc=val_auc, lr=lr, seconds=time.time() - t0,
+                dice_map=tr["dice_map"], val_loss=val_loss, val_acc=val_acc, val_auc=val_auc, lr=lr, seconds=time.time() - t0,
                 peak_mem_mb=peak_mem_mb(device))
         print(f"[epoch {epoch}/{rc['epochs']}] loss {tr['loss']:.4f} val_loss "
               f"{'na' if val_loss is None else f'{val_loss:.4f}'} val_auc "
-              f"{'na' if val_auc is None else f'{val_auc:.4f}'} lr {lr:.2e} {time.time() - t0:.0f}s "
+              f"{'na' if val_auc is None else f'{val_auc:.4f}'} val_acc {'na' if val_acc is None else f'{val_acc:.4f}'} lr {lr:.2e} {time.time() - t0:.0f}s "
               f"{peak_mem_mb(device):.0f}MB")
-        # selection: validation AUC; falls back to -val_loss (one class) or -train loss (no validation split)
-        score = val_auc if val_auc is not None else (-val_loss if val_loss is not None else -tr["loss"])
+        # selection: train.select (accuracy with AUC ties, or AUC); falls back to -val_loss, then -train loss
+        score = selection_key(rc["select"], val_acc, val_auc, val_loss, tr["loss"])
         save_checkpoint(ck_dir / "last.pt", model, rc, args, epoch, val_auc, n_params)
-        if score > best_score:
+        if best_score is None or score > best_score:
             best_score, best_epoch, bad_epochs = score, epoch, 0
             save_checkpoint(ck_dir / "best.pt", model, rc, args, epoch, val_auc, n_params)
         else:
@@ -238,7 +263,7 @@ def main(argv=None):
                             best_epoch=best_epoch, total_seconds=time.time() - t_start))
     dump_json(run_dir / "train.json", info)
     metrics = {"tag": rc["tag"], "protocol": rc["protocol"], "arch": rc["arch"], "fusion": rc["fusion"],
-               "reference": rc["reference"], "init": rc["init"], "seed": rc["seed"], "n_params": n_params,
+               "reference": rc["reference"], "init": rc["init"], "seed": rc["seed"], "fold": rc["fold"], "n_params": n_params,
                "val": val, "test": res["test"], "subsets": res["subsets"],
                "timing": {"train_seconds": train_seconds, "epochs": epoch if rc["epochs"] else 0,
                           "best_epoch": best_epoch}}

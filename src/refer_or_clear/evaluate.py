@@ -41,11 +41,17 @@ def reference_name(cfg: dict, override=None) -> str:
     return REF_ALIAS.get(r, r)
 
 
-def load_split(cfg: dict, data_root, config_path=None):
-    """(split_df, records_df): the protocol csv named in the config, resolved under data_root, and records.csv."""
+def load_split(cfg: dict, data_root, config_path=None, fold=None):
+    """(split_df, records_df): the protocol csv named in the config, resolved under data_root, and records.csv.
+    A split name with a '{fold}' placeholder (Protocols A and B) needs `fold`."""
     import pandas as pd
     root = Path(data_root)
-    split = root / "splits" / Path(cfg["data"]["split"]).name
+    name = Path(cfg["data"]["split"]).name
+    if "{fold}" in name:
+        if fold is None:
+            raise ValueError(f"split {name} needs a fold (--fold K)")
+        name = name.format(fold=int(fold))
+    split = root / "splits" / name
     if not split.is_file():
         raise FileNotFoundError(f"split csv not found at {split}")
     split_df = pd.read_csv(split, dtype={"subset": str}, keep_default_na=False)
@@ -67,12 +73,19 @@ def subsample(pairs: list[dict], limit, seed: int) -> list[dict]:
     return [pairs[i] for i in keep]
 
 
-def role_pairs(split_df, records_df, data_root, role, reference, cfg, seed, limit=None) -> list[dict]:
-    """Pairs of one role via pairs.build_pairs; wrong-design negatives only in training; [] for an absent role."""
+def role_pairs(split_df, records_df, data_root, role, reference, cfg, seed, limit=None,
+               wrong_design_fraction=None) -> list[dict]:
+    """Pairs of one role via pairs.build_pairs; wrong-design negatives only in training, at the given fraction
+    (default: the config's); [] for an absent role."""
     from .data import pairs as P
     if not (split_df.role == role).any():
         return []
-    frac = float(cfg.get("data", {}).get("wrong_design_fraction", 0.1)) if role == "train" else 0.0
+    if role != "train":
+        frac = 0.0
+    elif wrong_design_fraction is not None:
+        frac = float(wrong_design_fraction)
+    else:
+        frac = float(cfg.get("data", {}).get("wrong_design_fraction", 0.1))
     out = P.build_pairs(split_df, records_df, data_root, reference=reference, wrong_design_fraction=frac,
                         role=role, seed=seed)
     return subsample(out, limit, seed)
@@ -258,6 +271,8 @@ def main(argv=None):
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--limit", type=int, default=None, help="subsample K pairs per role")
     ap.add_argument("--out", default=None, help="output json (default <run-dir>/eval_<split>.json)")
+    ap.add_argument("--fold", type=int, default=None,
+                    help="fold or group index for Protocols A and B (default: checkpoint config)")
     args = ap.parse_args(argv)
 
     device = torch.device(args.device)
@@ -265,7 +280,8 @@ def main(argv=None):
     model, ck = load_checkpoint(args.checkpoint, device)
     reference = args.reference or ck["args"].get("reference") or reference_name(cfg)
     seed = int(ck["args"].get("seed", 0))
-    split_df, records_df = load_split(cfg, args.data_root)
+    fold = args.fold if args.fold is not None else ck.get("config", {}).get("fold")
+    split_df, records_df = load_split(cfg, args.data_root, fold=fold)
     t0 = time.time()
     val_pairs = role_pairs(split_df, records_df, args.data_root, "val", reference, cfg, seed, args.limit)
     val = val_thresholds(predict(model, eval_loader(val_pairs, args.batch_size, args.workers), device, args.amp)) \
@@ -276,7 +292,7 @@ def main(argv=None):
         if pairs else {}
     res = run(model, loaders, device, val, amp=args.amp)
     out = {"tag": Path(args.run_dir).name, "protocol": cfg.get("protocol"), "split": args.split,
-           "checkpoint": str(args.checkpoint), "epoch": ck.get("epoch"), "reference": reference,
+           "checkpoint": str(args.checkpoint), "epoch": ck.get("epoch"), "reference": reference, "fold": fold,
            "val": val, "test": res["test"], "subsets": res["subsets"], "seconds": time.time() - t0}
     path = dump_json(args.out or Path(args.run_dir) / f"eval_{args.split}.json", out)
     print(summary_line(out["tag"], val, res["test"]))
