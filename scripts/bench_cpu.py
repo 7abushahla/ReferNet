@@ -4,7 +4,8 @@ Measures, at batch size one on CPU with a fixed thread count:
   pre-processing  decode, rectification by homography, resize, zone-mask lookup
   network         query plus reference forward; and with reference features cached per design
   end to end      decode to referral score
-Reports median and p95 over --n documents after --warmup warm-ups, plus parameter count and file size.
+Reports median and p95 over --n documents after --warmup warm-ups, FPS (documents per second) from the
+median end-to-end and network-only times, plus parameter count and file size.
 Writes results/timing/<tag>-<host>.json. Quantization is out of scope here.
 """
 import argparse

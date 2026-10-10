@@ -68,6 +68,7 @@ The first-line officer sees a document for a few seconds, so the detector only m
 | Network time | query plus reference forward pass; and with the reference features cached per design, which is how a template library would be used |
 | Pre-processing time | decode, rectification by homography, resize, zone-mask lookup |
 | End to end | decode to referral score, median and 95th percentile over 200 documents after 20 warm-ups |
+| Throughput | documents per second (FPS) from the median end-to-end time, and network-only FPS with cached reference features |
 | Model size | parameters and file size per variant (single, stacked, difference, attention) |
 
 Hardware: the cluster's CPU nodes and one ordinary laptop or desktop, both named with core count and thread setting in the paper. ONNX Runtime export is the fallback if PyTorch CPU inference is slow. Quantization and execution on the sensor are discussed as future work, not measured.
