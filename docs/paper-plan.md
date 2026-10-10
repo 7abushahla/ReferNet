@@ -74,10 +74,11 @@ The paper is a deployment story told as a measurement. A detector is only useful
 
 **The controlled measurement.**
 
-8. The reference is the only difference between method and baseline. The single-image baseline uses the same code, the same zone mask and the same training data with the reference input removed. The published single-image rows are anchors beside it, not substitutes for it. Place: methodology and every results table.
-9. Protocol A, unseen design within one source: train on six SIDTD nationalities, test on four, the official quadruple, zero-shot on the design. The published rows are anchors only: they are 5-shot prototypical networks on cropped clips that receive five labelled forgeries of the test nationality in every episode, so they have more target information than we allow ourselves and a harder capture domain. The controlled comparison is our single-image baseline on the identical split. Place: results.
-10. Protocol B, unseen source, generator, capture and script: train on SIDTD plus IDNet's face attacks, test zero-shot on FantasyID's printed and camera-captured cards. The headline is the official held-out designs with face swaps and text rewrites; Attack-1 on the ten other designs is a second result with the Arabic cards broken out. Our model never trains on FantasyID, so all thirteen designs are unseen to it; this is the test closest to a counter meeting a design it has not seen. Place: results.
-11. Protocol C, the published pair: train on IDNet West Virginia with all four attack folders, test on Arizona per task, and the reverse, against IDNet's Table 14. This reruns the failure cited in item 4 with the reference added. Place: results, last priority.
+8. The reference is the only difference between method and baseline. The single-image control uses the same code, the same zone mask and the same training files with the reference input removed; it gets no wrong-design pairs, which only make sense with a reference. In Protocol A the control must land on the published single-image rows (the gate), which validates our data, split, scoring and network against prior work. Place: methodology and every results table.
+9. Protocol A, the anchor: the SIDTD paper's template 10-fold protocol used as given (raw files, the official folds, accuracy and ROC AUC over folds), every nationality seen in training. Our control is compared with the paper's five Table 5 composite-detection rows; the reference arms are compared with the validated control. Place: results, first table.
+10. Protocol B, unseen design within one source: the paper's ten held-out nationality groups, same recipe as A, mean and sd over groups and per nationality. No published number exists on templates without labelled forgeries; the comparison is the control validated in A. The paper's few-shot rows are on cropped clips with labelled forgeries of the test nationality and stay out of our tables (the clips carry a capture confound, docs/data-decision.md). Place: results.
+11. Protocol C, unseen source, generator, capture and script: train on SIDTD plus IDNet's face attacks, test zero-shot on FantasyID's printed and camera-captured cards. The headline is the official held-out designs with face swaps and text rewrites; Attack-1 on the ten other designs is a second result with the Arabic cards broken out. Our model never trains on FantasyID, so all thirteen designs are unseen to it. Place: results.
+12. Protocol D, the published pair: train on IDNet West Virginia with all four attack folders, test on Arizona per task, and the reverse, against IDNet's Table 14. This reruns the failure cited in item 4 with the reference added. Place: results, last priority.
 
 **From a score to the officer's decision.**
 
@@ -96,7 +97,7 @@ The paper is a deployment story told as a measurement. A detector is only useful
 | 2 Originality | items 4 to 6: the specimen of the same design as an input to a learned alteration detector, measured on the benchmarks where the failure was measured |
 | 3 Theoretical framework | items 1, 5, 6, 12: inspection levels, reference conditioning as change detection, the referral policy |
 | 4 Language and presentation | the award structure, tables for every result, figures 1 to 8 |
-| 5 Methodology | items 8 to 11, Section 5: controlled baseline, three protocols, provenance-grouped splits, three seeds |
+| 5 Methodology | items 8 to 12, Section 5: controlled baseline, four protocols, the paper's folds and nationality groups, one seed per fold or group |
 | 6 Integrity and citation | literature table separate from results, every number sourced, no "first" claims |
 | 7 Analysis and results | items 12 and 13, intervals, per-design and per-attack rows, recommendations tied to results |
 | 8 Applied impact | items 1, 2, 13, 14: the operating model, the time budget, the released protocol |
@@ -230,7 +231,7 @@ Every row below was checked against published code before it was fixed; the sour
 | Batch | 8, mixed precision |
 | Epochs | 40 (A, B), 20 (C); best checkpoint by source validation AUC, never by a test design |
 | Augmentation | geometry drawn once per pair (affine up to 8 px, alignment jitter up to 2 px with p 0.25), photometric drawn per image, JPEG quality 60 to 100 drawn per image; no flips, no crops that remove the altered field |
-| Compression control | all canvases re-encoded at quality 95; every headline number reported on native canvases and on test canvases re-encoded at quality 75 for both classes (the "equalized" column); the quantization-table audit table is printed in the data section |
+| Compression control | raw files read as distributed, canvases lossless (PNG), no JPEG augmentation in Protocols A and B (the paper's way); every headline number also reported with test canvases re-encoded at quality 75 for both classes (the "equalized" column); the quantization-table audit table is printed in the data section |
 | Scores | exported as bona fide probability (1 = genuine), threshold 0.5 with `>=` for the DeepID rows; miss = APCER, referral = BPCER; transported threshold chosen on the source validation split at 5 percent miss by the bob `far_threshold` rule and frozen; EER and HTER reported for FLiD and FakeIDet2 comparability only |
 | Seeds | 42, 43, 44; mean and std over seeds |
 | Timing | batch 1, FP32, CPU, 4 threads, 20 warm-ups, 200 timed documents; reference features cached per design; ONNX Runtime as the fallback runtime |
