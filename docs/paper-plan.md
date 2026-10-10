@@ -218,6 +218,8 @@ Every row below was checked against published code before it was fixed; the sour
 |---|---|
 | Framework | Open-CD 1.1.0, ChangerEx r18 config, six registered subclasses (dataset, loader, packer, preprocessor, detector, head), no edits to Open-CD; ResNet-18 Siamese in plain PyTorch only if the mmcv wheels fail on the cluster |
 | Stack | torch 2.1.2 cu121, mmcv 2.1.0 (prebuilt cu121/torch2.1 wheel), mmengine 0.10.4, mmsegmentation 1.2.2, mmdet 3.3.0 |
+| Registration | every image registered to its design (SIFT, Lowe ratio 0.75, RANSAC similarity, 3 px, two passes, floor 40 inliers); inlier count logged and used by the wrong-design gate |
+| Reference variants | registered design median (leave-identity-out, default); blank specimen (IDNet paper templates, Protocols A and C); single genuine card of another identity (the CheckID choice); unregistered median as the negative control |
 | Input | 512 x 800 canvas; 8 channels, query RGB plus zone, reference RGB plus zone; ImageNet mean and std on RGB, zone channel mean 0 std 1; BN not SyncBN |
 | Initialization | LEVIR-CD ChangerEx checkpoint (trained from random init, selected on the LEVIR test split; both stated in the paper); stem padded from 3 to 4 input channels with zeros |
 | Loss | Open-CD softmax cross-entropy with OHEM on the change map (weight 3) plus BCE on the pooled referral logit (weight 1) |
@@ -286,6 +288,8 @@ Fallback ladder: drop Protocol C first (it costs 12 training runs, not data: Pro
 | 10 Oct | CPU inference time and FPS promoted to a reported result (RQ5, E10) | the first line has seconds per document; the deployment story is part of the paper |
 | 10 Oct | Conventions fixed from four code audits (SIDTD, DeepID, Open-CD, FLiD and ISO metric libraries): bona fide-high scores, bob `far_threshold` rule on the source validation split, DeepID F1 polarity, official SIDTD and FantasyID folders kept, Open-CD stack pinned | `docs/conventions.md` |
 | 10 Oct | JPEG quality is a perfect class label in SIDTD (92 vs 75) and FantasyID (95 or 93.5 vs 75) on every split; canvases re-encoded at 95, random JPEG on both inputs, every headline number also reported on quality-75 equalized test canvases | `scripts/audit_jpeg.py`, `results/tables/jpeg_audit.md` |
+| 10 Oct | Registration added to the data stage: SIFT + RANSAC similarity of every image to its design, two passes, annotation-free; FantasyID captures carried up to 2.8 degrees of rotation and 24 px of shift on the canvas, which blurred every median; SIDTD transforms are sub-pixel | the reference is the method; a blurred specimen makes the difference channel useless; `data/processed/counts.md` registration table |
+| 10 Oct | Blank specimens recovered from the IDNet paper figure for the ten SIDTD designs and AZ, WV; registered to the design medians with identity transforms; added as the "specimen" reference variant (Protocols A and C); FantasyID stays on the registered median | no public forgery dataset ships blanks; IDNet built them by inpainting one public sample per design; `docs/data-decision.md` |
 
 ## 12. References
 

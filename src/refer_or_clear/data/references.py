@@ -115,3 +115,44 @@ def build_zone_masks(records: pd.DataFrame, root: Path, transforms: dict, out_di
         cv2.imwrite(str(out_dir / f"{design.replace('/', '_')}.png"), zone)
         rows.append(dict(design_id=design, n_fields=len(names), zone_fraction=round(float(zone.mean() / 255), 3)))
     return pd.DataFrame(rows)
+
+
+# --- blank specimens -------------------------------------------------------------------------
+# Twenty blank design templates reproduced from the IDNet paper figure (data/raw/idnet_templates).
+# Ten of them are the MIDV-2020 / SIDTD designs; two (AZ, WV) are the Protocol C designs. A specimen
+# is registered to the design median (SIFT + RANSAC similarity) and written as <design>_specimen.jpg,
+# so the reference ablation can swap the median for a true blank without touching anything else.
+
+SPECIMEN_DESIGNS = {  # design_id -> template file stem
+    **{f"sidtd/{d}": d for d in ("alb_id", "aze_passport", "esp_id", "est_id", "fin_id", "grc_passport",
+                                 "lva_passport", "rus_internalpassport", "srb_passport", "svk_id")},
+    "idnet/AZ": "us_az_dl", "idnet/WV": "us_wv_dl",
+}
+
+
+def build_specimens(records: pd.DataFrame, templates_dir: Path, ref_dir: Path) -> pd.DataFrame:
+    from .rectify import to_canvas
+    from .register import MIN_INLIERS, _features, estimate_similarity, warp
+    rows = []
+    for design in sorted(records.design_id.unique()):
+        stem = SPECIMEN_DESIGNS.get(design)
+        tag = design.replace("/", "_")
+        median_path = ref_dir / f"{tag}_all.jpg"
+        if stem is None or not (templates_dir / f"{stem}.jpg").is_file() or not median_path.is_file():
+            continue
+        tpl, _, _ = to_canvas(cv2.imread(str(templates_dir / f"{stem}.jpg")))
+        med = cv2.imread(str(median_path))
+        R, n = estimate_similarity(_features(tpl), _features(med))
+        ok = R is not None and n >= MIN_INLIERS
+        spec = warp(tpl, R) if ok else tpl
+        cv2.imwrite(str(ref_dir / f"{tag}_specimen.jpg"), spec, [cv2.IMWRITE_JPEG_QUALITY, 95])
+        rows.append(dict(design_id=design, template=stem, inliers=int(n), registered=bool(ok),
+                         rot_deg=round(float(np.degrees(np.arctan2(R[1, 0], R[0, 0]))), 2) if ok else None,
+                         scale=round(float(np.hypot(R[0, 0], R[1, 0])), 3) if ok else None,
+                         mean_absdiff_to_median=round(float(cv2.absdiff(spec, med).mean()), 1)))
+    return pd.DataFrame(rows)
+
+
+def specimen_path(ref_dir: Path, design_id: str) -> Path | None:
+    p = ref_dir / f"{design_id.replace('/', '_')}_specimen.jpg"
+    return p if p.is_file() else None

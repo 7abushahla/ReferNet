@@ -40,6 +40,35 @@
 | sidtd | text_inpaint | 1077 |
 
 
+## Registration (per design: images registered, min inliers, rotation and shift spread)
+
+| design_id | n | applied | inliers_min | rot_sd_deg | rot_max_deg | shift_med_px | shift_max_px |
+|---|---|---|---|---|---|---|---|
+| fantasyid/arabic | 273 | 273 | 336 | 1.124 | 2.486 | 13.991 | 24.453 |
+| fantasyid/chinese | 303 | 303 | 250 | 0.773 | 1.909 | 5.875 | 16.535 |
+| fantasyid/chinese2 | 245 | 245 | 399 | 0.595 | 2.141 | 5.027 | 23.273 |
+| fantasyid/french | 288 | 288 | 405 | 0.740 | 1.922 | 3.967 | 16.922 |
+| fantasyid/indian | 195 | 195 | 417 | 0.856 | 2.073 | 3.023 | 17.722 |
+| fantasyid/netherland | 186 | 186 | 451 | 0.600 | 1.742 | 4.814 | 20.230 |
+| fantasyid/persian | 219 | 219 | 238 | 1.015 | 2.813 | 3.170 | 22.200 |
+| fantasyid/portugal | 339 | 339 | 380 | 0.772 | 2.086 | 3.766 | 19.286 |
+| fantasyid/russian | 204 | 204 | 267 | 0.776 | 2.152 | 7.610 | 21.516 |
+| fantasyid/singapore | 168 | 168 | 347 | 0.598 | 2.240 | 2.128 | 19.587 |
+| fantasyid/turkiye | 327 | 327 | 402 | 0.881 | 2.460 | 3.334 | 20.363 |
+| fantasyid/ukraine | 219 | 219 | 230 | 1.070 | 2.579 | 4.609 | 19.468 |
+| fantasyid/usa | 318 | 318 | 214 | 0.795 | 2.243 | 3.440 | 18.378 |
+| sidtd/alb_id | 222 | 222 | 743 | 0.003 | 0.028 | 0.013 | 0.742 |
+| sidtd/aze_passport | 226 | 226 | 699 | 0.002 | 0.021 | 0.018 | 0.164 |
+| sidtd/esp_id | 222 | 222 | 1404 | 0.001 | 0.003 | 0.012 | 0.126 |
+| sidtd/est_id | 220 | 220 | 634 | 0.001 | 0.005 | 0.008 | 0.037 |
+| sidtd/fin_id | 221 | 221 | 1586 | 0.001 | 0.007 | 0.006 | 0.027 |
+| sidtd/grc_passport | 221 | 221 | 1145 | 0.002 | 0.007 | 0.014 | 0.093 |
+| sidtd/lva_passport | 222 | 222 | 980 | 0.010 | 0.030 | 0.032 | 1.033 |
+| sidtd/rus_internalpassport | 225 | 225 | 520 | 0.001 | 0.004 | 0.008 | 0.019 |
+| sidtd/srb_passport | 222 | 222 | 630 | 0.007 | 0.043 | 0.216 | 0.566 |
+| sidtd/svk_id | 221 | 221 | 762 | 0.002 | 0.004 | 0.009 | 0.026 |
+
+
 ## References
 
 | design_id | n_genuine | n_identities | n_fold0 | n_fold1 |
@@ -69,32 +98,47 @@
 | sidtd/svk_id | 100 | 100 | 55 | 45 |
 
 
+## Blank specimens (IDNet paper templates registered to the design median)
+
+| design_id | template | inliers | registered | rot_deg | scale | mean_absdiff_to_median |
+|---|---|---|---|---|---|---|
+| sidtd/alb_id | alb_id | 499 | True | 0.01 | 1.001 | 21.0 |
+| sidtd/aze_passport | aze_passport | 190 | True | -0.0 | 0.996 | 18.5 |
+| sidtd/esp_id | esp_id | 489 | True | 0.01 | 0.993 | 31.0 |
+| sidtd/est_id | est_id | 470 | True | -0.0 | 0.999 | 24.8 |
+| sidtd/fin_id | fin_id | 1316 | True | 0.0 | 1.0 | 22.3 |
+| sidtd/grc_passport | grc_passport | 606 | True | 0.0 | 1.006 | 15.3 |
+| sidtd/lva_passport | lva_passport | 625 | True | 0.01 | 1.0 | 18.1 |
+| sidtd/rus_internalpassport | rus_internalpassport | 233 | True | -0.01 | 1.0 | 10.4 |
+| sidtd/srb_passport | srb_passport | 362 | True | 0.01 | 0.999 | 14.1 |
+| sidtd/svk_id | svk_id | 524 | True | -0.0 | 1.0 | 8.5 |
+
 ## Zone masks
 
 | design_id | n_fields | zone_fraction |
 |---|---|---|
-| fantasyid/arabic | 9 | 0.538 |
-| fantasyid/chinese | 6 | 0.365 |
-| fantasyid/chinese2 | 6 | 0.363 |
-| fantasyid/french | 6 | 0.316 |
-| fantasyid/indian | 6 | 0.401 |
-| fantasyid/netherland | 8 | 0.398 |
-| fantasyid/persian | 8 | 0.354 |
-| fantasyid/portugal | 4 | 0.292 |
-| fantasyid/russian | 8 | 0.324 |
-| fantasyid/singapore | 5 | 0.228 |
-| fantasyid/turkiye | 5 | 0.275 |
-| fantasyid/ukraine | 8 | 0.330 |
-| fantasyid/usa | 11 | 0.410 |
-| sidtd/alb_id | 14 | 0.242 |
+| fantasyid/arabic | 9 | 0.554 |
+| fantasyid/chinese | 6 | 0.360 |
+| fantasyid/chinese2 | 6 | 0.366 |
+| fantasyid/french | 6 | 0.307 |
+| fantasyid/indian | 6 | 0.408 |
+| fantasyid/netherland | 8 | 0.395 |
+| fantasyid/persian | 8 | 0.351 |
+| fantasyid/portugal | 4 | 0.295 |
+| fantasyid/russian | 8 | 0.325 |
+| fantasyid/singapore | 5 | 0.238 |
+| fantasyid/turkiye | 5 | 0.274 |
+| fantasyid/ukraine | 8 | 0.327 |
+| fantasyid/usa | 11 | 0.409 |
+| sidtd/alb_id | 14 | 0.243 |
 | sidtd/aze_passport | 23 | 0.315 |
 | sidtd/esp_id | 14 | 0.371 |
 | sidtd/est_id | 13 | 0.327 |
 | sidtd/fin_id | 14 | 0.319 |
 | sidtd/grc_passport | 21 | 0.303 |
-| sidtd/lva_passport | 20 | 0.313 |
+| sidtd/lva_passport | 20 | 0.315 |
 | sidtd/rus_internalpassport | 11 | 0.257 |
-| sidtd/srb_passport | 21 | 0.385 |
+| sidtd/srb_passport | 21 | 0.387 |
 | sidtd/svk_id | 13 | 0.395 |
 
 
@@ -102,7 +146,7 @@
 
 | dataset | n | mean_fraction | zero_rects |
 |---|---|---|---|
-| fantasyid | 2351 | 0.081 | 0 |
+| fantasyid | 2351 | 0.084 | 0 |
 | sidtd | 1222 | 0.013 | 0 |
 
 

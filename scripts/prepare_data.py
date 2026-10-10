@@ -2,7 +2,8 @@
 """Build data/processed from data/raw for the datasets present (SIDTD, FantasyID; IDNet when staged).
 
 Outputs under data/processed:
-    records.csv, transforms.json, canvases/<image_id>.jpg, valid/<image_id>.png (only when padded),
+    records.csv, transforms.json (letterbox then registration, composed), registration.csv,
+    canvases/<image_id>.jpg, valid/<image_id>.png (only when padded or warped out of frame),
     masks/<image_id>.png (altered only), zones/<design>.png, references/<design>_{fold0,fold1,all}.jpg,
     splits/protocol_a.csv, splits/protocol_b.csv, counts.md
 Usage: python scripts/prepare_data.py [--data-root data] [--datasets sidtd,fantasyid] [--workers 4] [--force]
@@ -17,12 +18,14 @@ from pathlib import Path
 
 import cv2
 import numpy as np
+import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from refer_or_clear.data.forgeries import build_masks  # noqa: E402
 from refer_or_clear.data.records import build_records, provenance_components  # noqa: E402
 from refer_or_clear.data.rectify import to_canvas  # noqa: E402
-from refer_or_clear.data.references import build_references, build_zone_masks  # noqa: E402
+from refer_or_clear.data.register import register_design, warp  # noqa: E402
+from refer_or_clear.data.references import build_references, build_specimens, build_zone_masks  # noqa: E402
 from refer_or_clear.data.splits import protocol_a, protocol_b  # noqa: E402
 
 
@@ -38,15 +41,25 @@ def md(df) -> str:
 
 
 def _canvas_job(args):
-    image_id, src, dst_jpg, dst_valid = args
+    image_id, src, dst_jpg, dst_valid, R = args
     img = cv2.imread(str(src), cv2.IMREAD_COLOR)
     if img is None:
         raise RuntimeError(f"cannot read {src}")
     canvas, valid, T = to_canvas(img)
+    if R is not None:
+        R = np.asarray(R)
+        canvas, valid, T = warp(canvas, R), warp(valid, R), R @ T
     cv2.imwrite(str(dst_jpg), canvas, [cv2.IMWRITE_JPEG_QUALITY, 95])
+    if dst_valid.is_file():
+        dst_valid.unlink()
     if valid.min() == 0:
         cv2.imwrite(str(dst_valid), valid)
     return image_id, T.tolist()
+
+
+def _register_job(args):
+    design_id, image_ids, genuine_ids, canvas_dir = args
+    return register_design(design_id, image_ids, genuine_ids, canvas_dir)
 
 
 def main():
@@ -60,33 +73,53 @@ def main():
     for d in ("canvases", "valid", "masks", "zones", "references", "splits"):
         (out / d).mkdir(parents=True, exist_ok=True)
 
-    print("[1/6] records")
+    print("[1/7] records")
     rec = build_records(raw, tuple(a.datasets.split(",")))
     rec["component_id"] = provenance_components(rec)
     rec.to_csv(out / "records.csv", index=False)
     print(f"      {len(rec)} images, {rec.identity_id.nunique()} identities, {rec.component_id.nunique()} components")
 
-    print("[2/6] canvases")
-    tpath = out / "transforms.json"
-    transforms = json.load(open(tpath)) if tpath.is_file() and not a.force else {}
-    jobs = [(r.image_id, raw / r.path, out / "canvases" / f"{r.image_id}.jpg", out / "valid" / f"{r.image_id}.png")
+    print("[2/7] letterbox canvases")
+    tpath, rpath = out / "transforms.json", out / "registration.csv"
+    stale = a.force or not rpath.is_file()
+    transforms = {} if stale else json.load(open(tpath))
+    jobs = [(r.image_id, raw / r.path, out / "canvases" / f"{r.image_id}.jpg", out / "valid" / f"{r.image_id}.png", None)
             for r in rec.itertuples(index=False)
-            if a.force or r.image_id not in transforms or not (out / "canvases" / f"{r.image_id}.jpg").is_file()]
+            if stale or r.image_id not in transforms or not (out / "canvases" / f"{r.image_id}.jpg").is_file()]
     with ProcessPoolExecutor(a.workers) as ex:
         for i, (image_id, T) in enumerate(ex.map(_canvas_job, jobs, chunksize=16), 1):
             transforms[image_id] = T
             if i % 1000 == 0:
                 print(f"      {i}/{len(jobs)}")
+
+    print("[3/7] registration to the design (SIFT + RANSAC similarity, two passes)")
+    if jobs or stale:
+        rjobs = [(d, g.image_id.tolist(), g[g.label == 0].image_id.tolist(), out / "canvases")
+                 for d, g in rec.groupby("design_id") if (g.label == 0).any()]
+        with ProcessPoolExecutor(a.workers) as ex:
+            reg = pd.concat(list(ex.map(_register_job, rjobs)), ignore_index=True)
+        Rmap = {r.image_id: r.R for r in reg.itertuples(index=False) if r.applied}
+        jobs = [(r.image_id, raw / r.path, out / "canvases" / f"{r.image_id}.jpg", out / "valid" / f"{r.image_id}.png",
+                 Rmap.get(r.image_id)) for r in rec.itertuples(index=False)]
+        with ProcessPoolExecutor(a.workers) as ex:
+            for image_id, T in ex.map(_canvas_job, jobs, chunksize=16):
+                transforms[image_id] = T
+        reg.drop(columns=["R"]).to_csv(rpath, index=False)
     json.dump(transforms, open(tpath, "w"))
+    reg = pd.read_csv(rpath)
+    print(f"      applied to {int(reg.applied.sum())}/{len(reg)}; inliers min {reg.inliers.min()}, "
+          f"|rot| max {reg.rot_deg.abs().max():.2f} deg, shift max {reg.shift_px.max():.1f} px")
     T = {k: np.array(v) for k, v in transforms.items()}
 
-    print("[3/6] zone masks")
+    print("[4/7] zone masks")
     zones = build_zone_masks(rec, raw, T, out / "zones")
-    print("[4/6] references")
+    print("[5/7] references")
     refs = build_references(rec, out / "canvases", out / "references")
-    print("[5/6] ground-truth masks")
+    specimens = build_specimens(rec, raw / "idnet_templates", out / "references")
+    print(f"      specimens: {len(specimens)} designs")
+    print("[6/7] ground-truth masks")
     masks = build_masks(rec, raw, T, out / "masks")
-    print("[6/6] splits")
+    print("[7/7] splits")
     pa, pb = protocol_a(rec, raw), protocol_b(rec)
     pa.to_csv(out / "splits" / "protocol_a.csv", index=False)
     pb.to_csv(out / "splits" / "protocol_b.csv", index=False)
@@ -94,7 +127,12 @@ def main():
     L = ["# Data counts (generated by scripts/prepare_data.py)\n", "## Images per dataset, design and label\n",
          md(rec.groupby(["dataset", "design_id", "label"]).size().unstack(fill_value=0)),
          "\n\n## Attack families\n", md(rec[rec.label == 1].groupby(["dataset", "attack_family"]).size()),
-         "\n\n## References\n", md(refs.set_index("design_id")), "\n\n## Zone masks\n", md(zones.set_index("design_id")),
+         "\n\n## Registration (per design: images registered, min inliers, rotation and shift spread)\n",
+         md(reg.groupby("design_id").agg(n=("image_id", "size"), applied=("applied", "sum"), inliers_min=("inliers", "min"),
+                                         rot_sd_deg=("rot_deg", "std"), rot_max_deg=("rot_deg", lambda s: s.abs().max()),
+                                         shift_med_px=("shift_px", "median"), shift_max_px=("shift_px", "max"))),
+         "\n\n## References\n", md(refs.set_index("design_id")),
+         "\n\n## Blank specimens (IDNet paper templates registered to the design median)\n", md(specimens.set_index("design_id")), "\n\n## Zone masks\n", md(zones.set_index("design_id")),
          "\n\n## Ground-truth masks (altered images)\n",
          md(masks.groupby("dataset").agg(n=("image_id", "size"), mean_fraction=("mask_fraction", "mean"),
                                          zero_rects=("n_altered_rects", lambda s: int((s == 0).sum()))))]
