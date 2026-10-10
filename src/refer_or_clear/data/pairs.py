@@ -8,7 +8,8 @@ network fails safe when the reference does not match the document.
 
 Dict keys
     image_id, design_id, path, valid_path (or None), mask_path (or None), zone_path, ref_path,
-    label (0 genuine, 1 altered), subset, attack_family, component_id, wrong_design (bool)
+    label (0 genuine, 1 altered), subset, attack_family, component_id, wrong_design (bool),
+    ref_group ('' for the global fold medians, 'it<k>' for Protocol A fold k)
 """
 from __future__ import annotations
 
@@ -47,10 +48,11 @@ class _RefPicker:
         g = records_df[records_df.label == 0]
         self.genuine = {d: list(zip(s.image_id, s.component_id)) for d, s in g.groupby("design_id")}
 
-    def __call__(self, design_id: str, component_id: str) -> str:
+    def __call__(self, design_id: str, component_id: str, group: str = "") -> str:
         tag, ref_dir = _tag(design_id), self.root / "references"
         if self.reference == "median":
-            return _require(ref_dir / f"{tag}_fold{1 - fold_of(component_id)}.png")
+            g = f"_{group}" if group else ""
+            return _require(ref_dir / f"{tag}{g}_fold{1 - fold_of(component_id)}.png")
         if self.reference == "specimen":          # registered to the fold median the query never entered
             return _require(ref_dir / f"{tag}_specimen_fold{1 - fold_of(component_id)}.png")
         pool = sorted(i for i, c in self.genuine.get(design_id, []) if c != component_id)
@@ -70,6 +72,7 @@ def build_pairs(split_df: pd.DataFrame, records_df: pd.DataFrame, processed_root
     pairs = []
     for r in rows.itertuples(index=False):
         comp, label = str(r.component_id), int(r.label)
+        group = _str(getattr(r, "ref_group", ""))
         valid = root / "valid" / f"{r.image_id}.png"
         pairs.append(dict(
             image_id=r.image_id, design_id=r.design_id, component_id=comp, label=label,
@@ -77,7 +80,7 @@ def build_pairs(split_df: pd.DataFrame, records_df: pd.DataFrame, processed_root
             valid_path=str(valid) if valid.is_file() else None,
             mask_path=_require(root / "masks" / f"{r.image_id}.png") if label else None,
             zone_path=_require(root / "zones" / f"{_tag(r.design_id)}.png"),
-            ref_path=pick(r.design_id, comp),
+            ref_path=pick(r.design_id, comp, group), ref_group=group,
             subset=_str(r.subset), attack_family=_str(rec.at[r.image_id, "attack_family"]),
             wrong_design=False))
     if role == "train" and wrong_design_fraction > 0:
@@ -97,6 +100,6 @@ def _wrong_design(pairs: list[dict], pick: _RefPicker, fraction: float, rng: np.
         p = dict(genuine[i])
         others = [d for d in designs if d != p["design_id"]]
         other = others[rng.integers(len(others))]
-        p.update(ref_path=pick(other, p["component_id"]), label=1, mask_path=None, wrong_design=True)
+        p.update(ref_path=pick(other, p["component_id"], p.get("ref_group", "")), label=1, mask_path=None, wrong_design=True)
         out.append(p)
     return out

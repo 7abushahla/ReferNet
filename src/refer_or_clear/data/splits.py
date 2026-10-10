@@ -1,8 +1,8 @@
 """Protocol splits, grouped by provenance component.
 
-Protocol A (SIDTD official few-shot split): the published train nationalities are the training pool
-(90/10 train/val by component hash), the published test nationalities are the test set; membership
-is read from the release CSVs so it is the authors', not ours.
+Protocol A (anchor): the SIDTD paper's ten official template folds (kfold_split_templates), used as given,
+one split per fold; each row carries ref_group 'it<k>' so the design medians of fold k are built from that
+fold's training file only.
 
 Protocol B: every SIDTD image (plus IDNet when staged) is the training pool (90/10 by component
 hash); the FantasyID test release is the test set with a subset tag: 'heldout' = the 300 bona fide
@@ -30,26 +30,39 @@ def _train_val(df: pd.DataFrame) -> pd.Series:
     return df.component_id.map(lambda c: "val" if _hash01("val:" + c) < VAL_FRACTION else "train")
 
 
-def _sidtd_official_fewshot(root: Path):
-    d = root / "sidtd" / "split_shot"
-
-    def ids(csv):
-        p = pd.read_csv(csv)
-        col = [c for c in p.columns if "path" in c.lower()][0]
-        return {"sidtd_" + Path(x).stem for x in p[col]}
-    return ids(d / "train_split_SIDTD.csv"), ids(d / "test_split_SIDTD.csv")
+REF_COL = "ref_group"
+KFOLD_DIR = ("sidtd", "kfold_split_templates", "split_kfold")
+N_FOLDS = 10
 
 
-def protocol_a(records: pd.DataFrame, root: Path) -> pd.DataFrame:
-    tr, te = _sidtd_official_fewshot(root)
-    s = records[records.dataset == "sidtd"].copy()
-    s["protocol"], s["subset"], s["role"] = "A", "", ""
-    s.loc[s.image_id.isin(te), "role"] = "test"
-    pool = s.image_id.isin(tr)
-    s.loc[pool, "role"] = _train_val(s[pool])
-    s = s[s.role != ""]
-    assert not (set(s[s.role == "test"].design_id) & set(s[s.role != "test"].design_id)), "designs leak across A"
-    return s[COLS]
+def _csv_ids(csv: Path) -> set[str]:
+    p = pd.read_csv(csv)
+    col = [c for c in p.columns if "path" in c.lower()][0]
+    return {"sidtd_" + Path(x).stem for x in p[col]}
+
+
+def protocol_a_kfold(records: pd.DataFrame, root: Path) -> dict[int, pd.DataFrame]:
+    """Protocol A (anchor): fold k -> split frame, roles read from the paper's CSVs and never re-drawn."""
+    d = Path(root).joinpath(*KFOLD_DIR)
+    s0 = records[records.dataset == "sidtd"]
+    known = set(s0.image_id)
+    out = {}
+    for k in range(N_FOLDS):
+        ids = {role: _csv_ids(d / f"{role}_split_SIDTD_it_{k}.csv") for role in ("train", "val", "test")}
+        for role, s in ids.items():
+            if s - known:
+                raise ValueError(f"fold {k} {role}: {len(s - known)} ids not in records, e.g. {sorted(s - known)[:3]}")
+        if (ids["train"] & ids["val"]) or (ids["train"] & ids["test"]) or (ids["val"] & ids["test"]):
+            raise ValueError(f"fold {k}: an image appears in two roles")
+        s = s0.copy()
+        s["protocol"], s["subset"], s[REF_COL] = "A", "", f"it{k}"
+        s["role"] = ""
+        for role, members in ids.items():
+            s.loc[s.image_id.isin(members), "role"] = role
+        if (s.role == "").any():
+            raise ValueError(f"fold {k}: {int((s.role == '').sum())} SIDTD images are in no role")
+        out[k] = s[COLS + [REF_COL]].reset_index(drop=True)
+    return out
 
 
 def protocol_b(records: pd.DataFrame) -> pd.DataFrame:

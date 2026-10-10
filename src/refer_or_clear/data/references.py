@@ -48,27 +48,32 @@ def median_canvas(paths: list[Path], valid_dir: Path | None = None) -> tuple[np.
     return med, cover
 
 
-def build_references(records: pd.DataFrame, canvas_dir: Path, out_dir: Path) -> pd.DataFrame:
+def build_references(records: pd.DataFrame, canvas_dir: Path, out_dir: Path, group: str = "",
+                     write_all: bool = True) -> pd.DataFrame:
+    """Fold medians per design from the genuine rows of `records`. With `group`, files are named
+    <design>_<group>_fold{0,1}.png and both halves must be non-empty (no fallback to the global median)."""
     out_dir.mkdir(parents=True, exist_ok=True)
     genuine = records[records.label == 0].copy()
     genuine["fold"] = genuine.component_id.map(fold_of)
     valid_dir = canvas_dir.parent / "valid"
     rows = []
     for design, g in genuine.groupby("design_id"):
-        tag = design.replace("/", "_")
+        tag = design.replace("/", "_") + (f"_{group}" if group else "")
         for fold in (0, 1):
             sub = g[g.fold == fold]
-            if len(sub):
-                med, cover = median_canvas([canvas_dir / f"{i}{CANVAS_EXT}" for i in sub.image_id], valid_dir)
-                cv2.imwrite(str(out_dir / f"{tag}_fold{fold}.png"), med)
-                cv2.imwrite(str(out_dir / f"{tag}_fold{fold}_coverage.png"), cover)
-        med, cover = median_canvas([canvas_dir / f"{i}{CANVAS_EXT}" for i in g.image_id], valid_dir)
-        cv2.imwrite(str(out_dir / f"{tag}_all.png"), med)
-        rows.append(dict(design_id=design, n_genuine=len(g), n_identities=g.identity_id.nunique(),
+            if not len(sub):
+                if group:
+                    raise ValueError(f"design {design}, group {group}: no genuine image in half {fold}")
+                continue
+            med, cover = median_canvas([canvas_dir / f"{i}{CANVAS_EXT}" for i in sub.image_id], valid_dir)
+            cv2.imwrite(str(out_dir / f"{tag}_fold{fold}.png"), med)
+            cv2.imwrite(str(out_dir / f"{tag}_fold{fold}_coverage.png"), cover)
+        if write_all:
+            med, cover = median_canvas([canvas_dir / f"{i}{CANVAS_EXT}" for i in g.image_id], valid_dir)
+            cv2.imwrite(str(out_dir / f"{tag}_all.png"), med)
+        rows.append(dict(design_id=design, group=group, n_genuine=len(g), n_identities=g.identity_id.nunique(),
                          n_components=g.component_id.nunique(), n_fold0=int((g.fold == 0).sum()),
-                         n_fold1=int((g.fold == 1).sum()),
-                         ident_fold0=int(g[g.fold == 0].identity_id.nunique()), ident_fold1=int(g[g.fold == 1].identity_id.nunique()),
-                         min_coverage=int(cover.min())))
+                         n_fold1=int((g.fold == 1).sum()), min_coverage=int(cover.min())))
     return pd.DataFrame(rows)
 
 
