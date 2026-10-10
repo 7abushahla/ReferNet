@@ -4,7 +4,7 @@ Date: 10 October 2026. Status: approved in conversation, awaiting review of this
 
 ## 1. Goal
 
-Protocol A reproduces the SIDTD dataset paper's template protocol exactly, so that our no-reference control lands on the published numbers and validates our data, split and scoring against prior work. The reference arms are then compared with that validated control. Protocol B keeps everything from Protocol A and changes only the split, holding out nationalities, to test the unseen-design claim within one dataset before FantasyID and IDNet.
+Protocol A follows the SIDTD dataset paper's template protocol exactly, so that our no-reference control lands on the published numbers and validates our data, split and scoring against prior work. The reference arms are then compared with that validated control. Protocol B keeps everything from Protocol A and changes only the split, holding out nationalities, to test the unseen-design claim within one dataset before FantasyID and IDNet.
 
 Reference paper: C. Boned et al., "Synthetic dataset of ID and Travel Documents," Scientific Data 11:1356, 2024, Table 5, column "Composite Detection (K-fold, Balanced)", and its code at github.com/Oriolrt/SIDTD_Dataset.
 
@@ -50,13 +50,13 @@ The data, the split files and the scoring follow the paper. Only the method diff
 | Augmentation | random resized crop (0.8 to 1.0), horizontal and vertical flips, brightness and contrast | small shifts and photometric jitter, no flips | flips would break alignment with the reference |
 | Schedule | 100 epochs, learning rate 0.01, batch 32 (paper defaults) | Section 3 | part of the method |
 
-## 6. Checks (gates)
+## 6. Checks
 
-1. Reproduction of the paper. Download the five released template checkpoints (`http://datasets.cvc.uab.es/SIDTD/balanced_templates_SIDTD/{efficientnet-b3,resnet50,vit_large_patch16_224,trans_fg,coatten_fcn_model}_trained_models.zip`, about 26 GB) and score each fold's checkpoint on that fold's test file with the paper's preprocessing (`Baseline/test_kfold_baseline.py`: resize to 299, or 224 for ViT; ImageNet normalization; accuracy from argmax; ROC AUC from the softmax probability of "fake"; CoAARN through its own script `arc_pytorch/test_coAttn.py`). Pass: each model's mean accuracy and mean AUC lie within the larger of one published standard deviation and 0.005 of Table 5. Fail: stop and find the difference in data or scoring before any further run.
-2. Validation of the control. Pass: our control's mean AUC is at least 0.99 and mean accuracy at least 0.97, the range of the paper's ResNet50 and EfficientNet-B3. Fail: fix our pipeline before the control is used as the bridge.
-3. Compression check (reported, not a gate). Every model, ours and the paper's checkpoints, is also scored on a copy of each test file re-encoded at JPEG quality 75, so that genuine and forged images share one compression level. The main numbers stay on the raw files; this table is reported beside them.
+1. Gate: validation of the control. The published Table 5 numbers are taken as reported. Pass: our control's mean AUC is at least 0.99 and mean accuracy at least 0.97, the range of the paper's ResNet50 and EfficientNet-B3. Fail: fix our pipeline before the control is used as the bridge.
+2. Diagnostic, only on suspicion: reproduction of the paper. Run only if the control fails gate 1 or a result looks inconsistent with the paper. Download the smallest released template checkpoints first, ResNet50 (0.9 GB) and EfficientNet-B3 (0.4 GB), from `http://datasets.cvc.uab.es/SIDTD/balanced_templates_SIDTD/`, and score each fold's checkpoint on that fold's test file with the paper's preprocessing (`Baseline/test_kfold_baseline.py`: resize to 299, ImageNet normalization, accuracy from argmax, ROC AUC from the softmax probability of "fake"). Agreement with Table 5 within the larger of one published standard deviation and 0.005 locates the problem in our pipeline; disagreement locates it in the data or the scoring. The other three models are scored only if these two leave the question open.
+3. Compression check (reported, not a gate). Each of our arms is also scored on a copy of each test file re-encoded at JPEG quality 75, so that genuine and forged images share one compression level. The main numbers stay on the raw files; this table is reported beside them.
 
-Protocol B starts only after gates 1 and 2 pass.
+Protocol B starts only after gate 1 passes.
 
 ## 7. Code changes
 
@@ -64,12 +64,12 @@ Protocol B starts only after gates 1 and 2 pass.
 2. JPEG augmentation and canvas re-encoding switched off in the training configuration.
 3. Split builders for the 10 official folds (from the CSV files) and the 10 nationality groups (with the identity-grouped validation set).
 4. Evaluator reports accuracy at 0.5 and ROC AUC per fold or group, and the mean and standard deviation; the equalized-test variant re-encodes raw test files at quality 75 before preprocessing.
-5. A separate script scores the paper's released checkpoints with their own preprocessing, raw and equalized.
+5. A script that scores the paper's released checkpoints with their own preprocessing, written only if the diagnostic in Section 6 is triggered.
 6. Aggregation script produces the Protocol A table in the layout of the paper's Table 5 (models as rows, accuracy and ROC AUC as columns), with our arms added as rows.
 
 ## 8. Compute
 
-60 training runs (30 per protocol), spread over the available GPUs, plus checkpoint scoring (no training). Protocol B runs are submitted only after the gates pass.
+60 training runs (30 per protocol), spread over the available GPUs. Protocol B runs are submitted only after gate 1 passes. No checkpoint downloads unless the diagnostic is triggered.
 
 ## 9. Consequences
 
