@@ -391,7 +391,7 @@ IDNet~\cite{guan2024idnet} (AZ, WV) & 2 US driver's licenses & 5,979 genuine and
 
 % The template-diversity figure (fig_templates.pdf) is left out for now; restore it if space allows.
 
-\subsection{Data preparation}
+\subsection{Tools: data preparation}
 \label{sec:prep}
 Every image becomes a record of its design, identity, label, attack type, capture device, field rectangles, mask of the altered region, and group of related images. We use the forgeries as the datasets provide them and create none of our own.
 
@@ -427,7 +427,7 @@ Protocol B, test on the held-out designs & 93.5 & 75 & 1.000 \\
 \label{fig:references}
 \end{figure}
 
-\subsection{Proposed architecture}
+\subsection{Tools: proposed architecture}
 \label{sec:arch}
 ChangerEx~\cite{fang2023changer} is a Siamese change-detection network for satellite images, available with pretrained weights in the Open-CD toolbox~\cite{li2025opencd}. We build on it for two reasons. Change detection has the same structure as our task, two registered images and the question of where they differ, and ChangerEx aligns the two feature maps before comparing them, which absorbs the small misalignment that remains after registration. To our knowledge, ChangerEx has not been applied to documents before, and the building blocks that we keep come from published work~\cite{daudt2018fcsiamdiff,fang2023changer}. We use the network as it is and test an attention variant alongside it (see Fig.~\ref{fig:arch}).
 
@@ -491,7 +491,12 @@ ChangerEx~\cite{fang2023changer} is a Siamese change-detection network for satel
 
 \textbf{Control without a reference.} To isolate the effect of the reference, each network is also trained as a control. The control receives a content-free reference canvas, a uniform image at the mean color of the ImageNet normalization, together with the query's zone mask, so it has the same architecture and parameters as the method but never sees the design.
 
-\textbf{Training.} We start from the ChangerEx weights trained on the LEVIR-CD change-detection dataset~\cite{chen2020levir} and widen the first convolution to four input channels with zero weights for the zone channel, so that the network initially behaves as the original one. These weights were trained from random initialization rather than from ImageNet, and their authors selected them on the LEVIR-CD test split, so we use them only as a starting point. The loss is the binary cross-entropy of the referral score plus three times the sum of the binary cross-entropy and the Dice loss of the alteration map, where the Dice loss measures the overlap between the predicted and the true altered regions. Table~\ref{tab:train} lists the other settings. Training ran on NVIDIA A10G GPUs of the high-performance computing cluster of the American University of Sharjah. We train every model for the full schedule without early stopping and keep the checkpoint with the best AUC on a validation split of the training designs.
+\textbf{Training.} We start from the ChangerEx weights trained on the LEVIR-CD change-detection dataset~\cite{chen2020levir} and widen the first convolution to four input channels with zero weights for the zone channel, so that the network initially behaves as the original one. These weights were trained from random initialization rather than from ImageNet, and their authors selected them on the LEVIR-CD test split, so we use them only as a starting point. The loss has two parts. The first is the binary cross-entropy between the referral score and the label of the document. The second supervises the alteration map pixel by pixel, as the sum of a binary cross-entropy and a Dice loss over the valid region of the canvas. The Dice loss~\cite{milletari2016vnet} is one minus a soft version of the Dice coefficient~\cite{dice1945},
+\begin{equation}
+\mathcal{L}_{\text{Dice}} = 1 - \frac{2\sum_i p_i\, g_i + 1}{\sum_i p_i + \sum_i g_i + 1},
+\label{eq:dice}
+\end{equation}
+where $p_i$ is the predicted probability that pixel $i$ is altered, $g_i$ is 1 inside the true altered region and 0 elsewhere, and the sums run over the valid pixels of all the documents in a batch. The coefficient measures the overlap between the predicted and the true altered regions, from 0 when they do not overlap to 1 when they coincide. An altered field covers only a small part of a document, so a pixel-wise cross-entropy alone is dominated by the many unaltered pixels and can be lowered by predicting no alteration anywhere. The Dice loss depends only on the overlap with the altered region, so it rewards finding that region whatever its size, and EdgeDoc~\cite{george2025edgedoc} combines the two losses in the same way to localize forgeries in identity documents. The 1 added to the numerator and the denominator keeps the loss defined for batches that contain no altered pixel. We weight the loss of the map three times as much as the loss of the score, which gives the dense supervision of the map more influence on training than the single label of each document. Table~\ref{tab:train} lists the other settings. Training ran on NVIDIA A10G GPUs of the high-performance computing cluster of the American University of Sharjah. We train every model for the full schedule without early stopping and keep the checkpoint with the best AUC on a validation split of the training designs.
 
 \begin{table}[htbp]
 \centering\small

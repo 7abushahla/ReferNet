@@ -67,3 +67,17 @@ Also received on 10 Oct: Chen et al. in both versions. The TIFS 2022 version is 
 No peer-reviewed version that the draft relies on is missing now. Optional: ChangeChip (PAINE 2021), Changer (TGRS 2023), and the peer-reviewed versions of EdgeDoc and of Al-Ghadi et al. (2022), if they exist.
 
 Useful but not blocking: ChangeChip (PAINE 2021), Changer (TGRS 2023), and the peer-reviewed versions of EdgeDoc and of Al-Ghadi et al. (2022), if they exist.
+
+## 4. Standard method references added on 10 Oct (review round 1)
+
+Classic, peer-reviewed sources cited for a method the paper uses. Bibliographic details are from the publishers' records; the texts were not re-read for this paper.
+
+| Published | Work (bib key) | Venue | Used for |
+|---|---|---|---|
+| 1945 | Dice, "Measures of the amount of ecologic association between species" (`dice1945`) | Ecology 26(3) 297 to 302, DOI 10.2307/1932409 | the Dice coefficient behind the Dice loss |
+| 1966 | Green and Swets, Signal Detection Theory and Psychophysics (`green1966sdt`) | Wiley (book) | the equal-variance Gaussian model of the referral sketch |
+| 1981 | Fischler and Bolles, RANSAC (`fischler1981ransac`) | Communications of the ACM 24(6) 381 to 395, DOI 10.1145/358669.358692 | robust estimation of the registration transform |
+| 1993 | Efron and Tibshirani, An Introduction to the Bootstrap (`efron1993bootstrap`) | Chapman and Hall (book) | the paired bootstrap interval |
+| 2004 | Lowe, SIFT (`lowe2004sift`) | International Journal of Computer Vision 60(2) 91 to 110, DOI 10.1023/B:VISI.0000029664.99615.94 | keypoints for registration |
+| 2006 | Fawcett, "An introduction to ROC analysis" (`fawcett2006roc`) | Pattern Recognition Letters 27(8) 861 to 874, DOI 10.1016/j.patrec.2005.10.010 | what AUC does and does not measure |
+| Oct 2016 | Milletari, Navab and Ahmadi, V-Net (`milletari2016vnet`), arXiv 1606.04797 (June 2016) | 3DV 2016, 565 to 571, DOI 10.1109/3DV.2016.79 | the Dice loss for training segmentation networks |
