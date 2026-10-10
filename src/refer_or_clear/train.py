@@ -50,7 +50,7 @@ def parse_args(argv=None):
     ap.add_argument("--batch-size", type=int, default=None, help="default: config train.batch_size")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--crop", type=int, nargs=2, default=None, metavar=("H", "W"),
-                    help="training crop (default 448 704); must not exceed the canvas")
+                    help="training crop H W; default from augment.crop in the config (null = full canvas)")
     return ap.parse_args(argv)
 
 
@@ -85,7 +85,8 @@ def resolve(args, cfg) -> dict:
         lr_backbone=float(t.get("lr_backbone", 1e-4)), lr_new=float(t.get("lr_new", 1e-3)),
         weight_decay=float(t.get("weight_decay", 0.05)), warmup_iters=int(t.get("warmup_iters", 500)),
         mask_weight=float(t.get("mask_loss_weight", 3.0)), amp=bool(args.amp), workers=args.workers,
-        crop=tuple(args.crop) if args.crop else (448, 704), limit=args.limit, data_root=str(args.data_root),
+        crop=tuple(args.crop) if args.crop else (tuple(cfg.get("augment", {}).get("crop")) if cfg.get("augment", {}).get("crop") else None),
+        limit=args.limit, data_root=str(args.data_root),
         wrong_design_fraction=float(cfg.get("data", {}).get("wrong_design_fraction", 0.1)),
         augment=dict(cfg.get("augment", {})),
         test_variants=list(cfg.get("eval", {}).get("test_variants", ["native", "equalized_qf75"])),

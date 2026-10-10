@@ -27,6 +27,7 @@ train:
   amp: true
   seeds: [42, 43, 44]
 augment:
+  crop: null                     # full 512 x 800 canvas; a crop could remove the altered field while keeping the label
   canvas_jpeg_quality: 95        # every canvas re-encoded; removes the raw-file quantization-table shortcut
   affine_px: 8
   jpeg_quality: [60, 100]

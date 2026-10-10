@@ -12,6 +12,7 @@ fusion  "difference": stock ChangerEx, query and reference through the shared ba
                       query's own zone channel; x[:, 4:] is never read. Feeding the query to both
                       branches would be wrong here: FDAF fuses warp(x0) - x1 and warp(x1) - x0, so
                       identical branches give an all-zero fused feature and an untrainable head.
+        "attention_single": the improved variant's matched control (attention modules, content-free reference).
         "attention":  the improved variant, the dashed boxes of the proposal figure: at strides 16 and
                       32 the query features pass a pre-LN self-attention block and then a cross-
                       attention block (Q = f(x), K = V = f(r)), each residual on f(x), before the
@@ -183,7 +184,7 @@ class ChangerEx(nn.Module):
     def __init__(self, fusion="difference", in_channels=4, norm_cfg=None):
         super().__init__()
         _require_opencd()
-        if fusion not in ("difference", "single", "attention"):
+        if fusion not in ("difference", "single", "attention", "attention_single"):
             raise ValueError(f"changerex_r18 supports fusion in {{'difference', 'single', 'attention'}}, "
                              f"got {fusion!r}")
         self.fusion = fusion
@@ -199,7 +200,7 @@ class ChangerEx(nn.Module):
                 num_classes=2, out_channels=1, threshold=0.5, norm_cfg=norm_cfg, align_corners=False)
         self.referral = ReferralHead(in_channels=128)
         self.attention = None
-        if fusion == "attention":
+        if fusion in ("attention", "attention_single"):
             # Built on a forked RNG stream so that the backbone, head and referral tensors receive the same
             # draws as in the other variants (the test relies on it; the initial behaviour then matches).
             with torch.random.fork_rng(devices=[]):
@@ -215,7 +216,7 @@ class ChangerEx(nn.Module):
     def split(self, x):
         c = self.in_channels
         query = x[:, :c]
-        if self.fusion == "single":
+        if self.fusion in ("single", "attention_single"):
             ref = torch.cat([torch.zeros_like(query[:, :c - 1]), query[:, c - 1:c]], dim=1)
         else:
             ref = x[:, c:2 * c]

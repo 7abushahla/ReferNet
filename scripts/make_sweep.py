@@ -40,7 +40,7 @@ CLUSTER = dict(account="acc-mialhajri", partition="gpu", conda_sh="/opt/minicond
 CHOICES = dict(
     protocols=("A", "B", "C"),
     archs=("siamese_r18", "changerex_r18"),
-    fusions=("single", "stacked", "difference", "attention"),
+    fusions=("single", "stacked", "difference", "attention", "attention_single"),
     references=("median", "specimen", "single"),
     inits=("imagenet", "scratch", "levir"),
 )
