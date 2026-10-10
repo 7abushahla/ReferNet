@@ -65,6 +65,33 @@ def protocol_a_kfold(records: pd.DataFrame, root: Path) -> dict[int, pd.DataFram
     return out
 
 
+# The ten nationality groups hard-coded in the SIDTD paper's few-shot code
+# (SIDTD/models/fsl_models/test_fsl.py, partitions_test); each names the four test nationalities.
+FSL_GROUPS = ("svk_alb_aze_lva", "svk_rus_esp_aze", "grc_esp_fin_srb", "svk_alb_grc_est", "alb_grc_rus_lva",
+              "alb_grc_est_rus", "svk_rus_lva_fin", "rus_aze_lva_fin", "svk_alb_lva_fin", "svk_alb_rus_fin")
+NATIONALITY = {"alb": "sidtd/alb_id", "aze": "sidtd/aze_passport", "esp": "sidtd/esp_id", "est": "sidtd/est_id",
+               "fin": "sidtd/fin_id", "grc": "sidtd/grc_passport", "lva": "sidtd/lva_passport",
+               "rus": "sidtd/rus_internalpassport", "srb": "sidtd/srb_passport", "svk": "sidtd/svk_id"}
+
+
+def protocol_b_groups(records: pd.DataFrame) -> dict[int, pd.DataFrame]:
+    """Protocol B: group k -> split frame; the four nationalities of FSL_GROUPS[k] are the test set, the other six
+    train, with a 10 percent validation set by provenance-component hash. References use the global fold medians."""
+    s0 = records[records.dataset == "sidtd"]
+    out = {}
+    for k, name in enumerate(FSL_GROUPS):
+        test_designs = {NATIONALITY[n] for n in name.split("_")}
+        s = s0.copy()
+        s["protocol"], s["subset"], s[REF_COL] = "B", "", ""
+        is_test = s.design_id.isin(test_designs)
+        s["role"] = "test"
+        s.loc[~is_test, "role"] = _train_val(s[~is_test])
+        if set(s[s.role == "test"].design_id) & set(s[s.role != "test"].design_id):
+            raise ValueError(f"group {name}: a design is both test and train")
+        out[k] = s[COLS + [REF_COL]].reset_index(drop=True)
+    return out
+
+
 def protocol_b(records: pd.DataFrame) -> pd.DataFrame:
     pool = records[records.dataset.isin(["sidtd", "idnet"])].copy()
     pool["protocol"], pool["subset"] = "B", ""

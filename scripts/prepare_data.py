@@ -26,7 +26,7 @@ from refer_or_clear.data.records import build_records, provenance_components  # 
 from refer_or_clear.data.rectify import CANVAS_EXT, to_canvas  # noqa: E402
 from refer_or_clear.data.register import register_design, warp  # noqa: E402
 from refer_or_clear.data.references import build_references, build_specimens, build_zone_masks  # noqa: E402
-from refer_or_clear.data.splits import protocol_a_kfold, protocol_b  # noqa: E402
+from refer_or_clear.data.splits import protocol_a_kfold, protocol_b, protocol_b_groups  # noqa: E402
 
 
 def md(df) -> str:
@@ -137,6 +137,12 @@ def main():
                                           group=f"it{k}", write_all=False))
     fold_refs = pd.concat(fold_refs, ignore_index=True)
     pa = pd.concat(folds_a.values(), ignore_index=True)
+    for old in (out / "splits").glob("protocol_b_g*.csv"):
+        old.unlink()
+    groups_b = protocol_b_groups(rec)
+    for k, df in groups_b.items():
+        df.to_csv(out / "splits" / f"protocol_b_g{k}.csv", index=False)
+    pbg = pd.concat(groups_b.values(), ignore_index=True)
     pb = protocol_b(rec)
     pb.to_csv(out / "splits" / "protocol_b.csv", index=False)
 
@@ -155,7 +161,8 @@ def main():
          "\n\n## Ground-truth masks (altered images)\n",
          md(masks.groupby("dataset").agg(n=("image_id", "size"), mean_fraction=("mask_fraction", "mean"),
                                          zero_rects=("n_altered_rects", lambda s: int((s == 0).sum()))))]
-    for name, df in (("Protocol A (all folds stacked)", pa), ("Protocol B", pb)):
+    for name, df in (("Protocol A (all folds stacked)", pa),
+                     ("Protocol B, held-out nationalities (all groups stacked)", pbg), ("Protocol B", pb)):
         keys = ["ref_group", "role", "label"] if "ref_group" in df and df.ref_group.astype(bool).any() else ["role", "subset", "label"]
         L += [f"\n\n## {name}\n", md(df.groupby(keys).size().unstack(fill_value=0))]
     (out / "counts.md").write_text("\n".join(L) + "\n")
