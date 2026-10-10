@@ -123,6 +123,37 @@ Where we sit: a registered specimen of the query's own design, given to a learne
 | C4 | The time budget | measured inference time and FPS on a counter-class CPU for every variant, with and without cached reference features; the first measured time for an alteration detector also evaluated on unseen designs | not an on-sensor or quantized deployment, which is future work |
 | C5 | The release | references, zone masks, box masks, provenance-grouped splits, the protocol and the code, so GDRFA can rerun the measurement on its own template library | not real documents and not a vendor evaluation |
 
+## 2c. Why the architecture should work here, and where it may not
+
+**The failure is design-tied, so the fix must carry the design.** On IDNet the same generator gives 98 to 100 percent within a design and 35 to 71 across designs; the generator did not change, the design did. A single-image detector must learn two things at once, what this design looks like and how an alteration deviates from it, and only the first fails to transfer. A registered specimen supplies the first at inference. What remains to learn, how an altered field deviates from its design (a texture discontinuity at the field edge, a broken guilloche, a font, kerning or baseline that disagrees with the printed labels, halftone or noise statistics that differ inside and outside the field), is the same function on every design. That is also why golden-sample inspection generalizes to a new board layout without retraining: the reference carries the layout.
+
+**Four independent precedents say reference information is what carries generalization.** Differential morph detection outperforms single-image morph detection because the trusted reference supplies the baseline (Scherhag et al. 2020). Supplying four target bona fide samples at inference cut the error on unseen countries from 26.6 to 9.1 percent (Nieto-Hidalgo et al. 2026). Removing the reference from the FMIDV Siamese dropped it to chance. CADNet reports generalization from few labels precisely because it learns feature differences rather than defect appearance. The contrary precedent is CoAARC, whose partner is a random genuine of any design; it shows that an unregistered, wrong-design partner does not help, which is the condition our design removes.
+
+**What each component is for.**
+
+| Component | The failure it addresses | Why it should help |
+|---|---|---|
+| Shared encoder, absolute feature difference | design-specific appearance | the difference is near zero on unchanged static design and non-zero at an altered field, on any design; shared weights force a design-agnostic feature space |
+| Page features kept beside the difference | legitimate variation in fields | inside a field the question is how the content differs, not whether; an inpainted name shows blended edges and a wrong font against the label, which needs the page's own features |
+| Zone channel | every genuine pair differs in its fields | tells the network where difference is expected and where it is forbidden; difference outside zones is almost a direct signal, inside zones the task is consistency; without it the network must infer the layout from one example |
+| Flow dual-alignment fusion | residual misregistration | pixel-level reference comparison fails first on misalignment (the recurring complaint in inspection work); the fusion aligns features before differencing; the misregistration sweep measures it |
+| Feature exchange | each stream blind to the other until fusion | parameter-free early interaction, shown to help most on the harder change-detection set |
+| Cross-attention, page queries reference | fields inpainted without a seam | each location reads what the specimen contains there (label font, spacing); the attention route Neitthoffer et al. found necessary where stacking failed |
+| Map head with box masks, plus score head | small training sets | dense supervision from every altered pixel, the EdgeDoc and TruFor recipe proven on FantasyID; the score head is the decision |
+| Change-detection pretraining (LEVIR checkpoint) | few thousand pairs | the encoder already knows how to compare two registered images and find differences, the same reason TruFor transfers from natural-image forensics |
+| Design-median reference | no blank specimen in public data | the median over genuine documents removes personal content and keeps the printed design, the nearest public analog of the specimen a template library holds |
+
+**Why it fits the competition.** It mirrors what the counter already does (a specimen per design, lookup by the design the reader identifies), it is small enough for a CPU (ResNet-18 ChangerEx, about 12 M parameters, to be timed), and it hands the officer a map and a decision, not a probability.
+
+**Where it may not hold, stated before the results.**
+
+1. Face swaps. The design median has no face; the portrait sits inside a zone, so the difference says nothing about whether the face was swapped. Detection there rests on the page's own blending cues, as for every published detector. Faces are reported separately and may remain hard.
+2. Capture gap. The encoder trains on clean SIDTD and IDNet renders; FantasyID queries are photographs. The reference for each FantasyID design is built from captured genuine cards, so the reference carries the capture domain, which helps; the encoder may still shift. Augmentation first, SIDTD's captured clips second.
+3. Registration. A failed quad or a wrong design yields spurious difference everywhere; the gate catches the detectable cases and the sweep measures the rest.
+4. The bet itself. FMIDV's Siamese was weak and CoAARC's partner was wrong; ours wagers that a registered same-design reference, a zone channel and dense supervision are what was missing. The controlled baseline makes the result informative either way: if the specimen does not help, the paper says so against the published rows.
+
+**Expectations, not promises.** Protocol A: the published single-image rows sit at 82 to 91 percent and within-design at 97 to 100; if the hypothesis holds, the reference recovers most of that gap. Protocol B text: single-image AUC is already near 99, so the gain to measure is the referral rate at a 5 percent miss budget (62 percent of genuine cards for TruFor) and the localization. Protocol B faces: uncertain. Protocol C: the published 50 to 71 percent is the number to move.
+
 ## 3. The three protocols
 
 | Protocol | Train | Test | Reference for a test design | Published comparison | Priority |
