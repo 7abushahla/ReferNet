@@ -40,3 +40,7 @@ results/runs/smoke*/
 results/runs/sanity*/
 results/runs/*.log
 checkpoints/
+
+# Local git worktrees and agent scratch
+.worktrees/
+.superpowers/
