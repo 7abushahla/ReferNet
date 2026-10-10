@@ -106,7 +106,8 @@ def predict(model, loader, device, amp=False, loss_fn=None, mask_weight=3.0, map
     """Forward every batch once; per-sample bona fide score, label, map metrics and meta, plus the mean loss."""
     model.eval()
     use_amp = bool(amp) and device.type == "cuda"
-    rec = {k: [] for k in ("score", "label", "loc_f1", "fp_in", "fp_out", "image_id", "subset", "wrong_design")}
+    rec = {k: [] for k in ("score", "label", "loc_f1", "fp_in", "fp_out", "image_id", "subset", "wrong_design",
+                           "attack_family", "design_id")}
     losses = []
     for batch in loader:
         x, mask, valid, label = (batch[k].to(device, non_blocking=True) for k in ("x", "mask", "valid", "label"))
@@ -132,6 +133,8 @@ def predict(model, loader, device, amp=False, loss_fn=None, mask_weight=3.0, map
         rec["image_id"].extend(_meta_list(meta, "image_id", n))
         rec["subset"].extend(_meta_list(meta, "subset", n))
         rec["wrong_design"].extend(bool(w) for w in _meta_list(meta, "wrong_design", n))
+        rec["attack_family"].extend(_meta_list(meta, "attack_family", n))
+        rec["design_id"].extend(_meta_list(meta, "design_id", n))
     out = {k: np.asarray(v) for k, v in rec.items()}
     out["loss"] = float(np.mean(losses)) if losses else None
     return out
@@ -189,10 +192,32 @@ def run(model, loader_by_variant: dict, device, thresholds_from_val: dict | None
         test[variant] = metric_block(pred, thresholds_from_val)
         subset_of = pred["subset"] if subsets_meta is None else \
             np.asarray([subsets_meta.get(i, "") for i in pred["image_id"]])
-        for name in sorted({str(s) for s in subset_of if str(s)}):
-            subsets.setdefault(name, {})[variant] = metric_block(pred, thresholds_from_val,
-                                                                 np.flatnonzero(subset_of == name))
+        for name, idx in derived_subsets(pred, subset_of).items():
+            subsets.setdefault(name, {})[variant] = metric_block(pred, thresholds_from_val, idx)
     return {"test": test, "subsets": subsets}
+
+
+def derived_subsets(pred: dict, subset_of) -> dict:
+    """Index sets for reporting: each named subset; within each (or 'all' when unnamed) one set per attack
+    family, genuine cards of that subset plus the altered cards of that family; and one set per design when
+    the test spans several designs. Names: '<subset>', '<subset>:<family>', 'design:<design>'."""
+    subset_of = np.asarray([str(s) for s in subset_of])
+    label, fam, design = pred["label"], np.asarray([str(f) for f in pred["attack_family"]]), \
+        np.asarray([str(d) for d in pred["design_id"]])
+    out = {}
+    names = sorted({s for s in subset_of if s}) or [""]
+    for s in names:
+        in_s = (subset_of == s) if s else np.ones(len(label), bool)
+        if s:
+            out[s] = np.flatnonzero(in_s)
+        for f in sorted({x for x in fam[in_s & (label == 1)] if x}):
+            idx = np.flatnonzero(in_s & ((label == 0) | (fam == f)))
+            if (label[idx] == 0).any():
+                out[f"{s or 'all'}:{f}"] = idx
+    if len(set(design)) > 1:
+        for d in sorted(set(design)):
+            out[f"design:{d}"] = np.flatnonzero(design == d)
+    return out
 
 
 def summary_line(tag: str, val: dict | None, test: dict) -> str:
