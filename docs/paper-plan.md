@@ -24,7 +24,7 @@ A paper for the GDRFA Dubai Scientific Research Award, second cycle, Digital Inn
 
 - [[#1. Venue facts]]
 - [[#2. The claim, one chain]]
-- [[#3. The three protocols]]
+- [[#3. The four protocols]]
 - [[#4. Paper structure and word budget]]
 - [[#5. Experimental protocol]]
 - [[#6. Training and timing recipe]]
@@ -155,13 +155,16 @@ Where we sit: a registered specimen of the query's own design, given to a learne
 
 **Expectations, not promises.** Protocol A: the published single-image rows sit at 82 to 91 percent and within-design at 97 to 100; if the hypothesis holds, the reference recovers most of that gap. Protocol B text: single-image AUC is already near 99, so the gain to measure is the referral rate at a 5 percent miss budget (62 percent of genuine cards for TruFor) and the localization. Protocol B faces: uncertain. Protocol C: the published 50 to 71 percent is the number to move.
 
-## 3. The three protocols
+## 3. The four protocols
 
 | Protocol | Train | Test | Reference for a test design | Published comparison | Priority |
 |---|---|---|---|---|---|
-| A | SIDTD, 6 nationalities, 1,328 images | SIDTD, 4 held-out nationalities, 894 images (the official quadruple rus_aze_lva_fin; all ten published quadruples at one seed if time allows) | leave-identity-out median over the design's 100 genuine templates | SIDTD Table 5 few-shot rows as anchors only: 5-shot prototypical networks on cropped clips with labelled forgeries of the test nationality in every episode (SIDTD code audit, 10 Oct) | 1 |
-| B | SIDTD all 10 designs plus IDNet AZ and WV face attacks | FantasyID official test: 300 genuine, Attack-2 face swaps and Attack-3 text rewrites on the 3 held-out designs; Attack-1 separately with Arabic broken out | leave-identity-out median over the design's genuine captures | FantasyID Table 3; DeepID FA2 and FA3; DocForge-Bench pixel F1; our own TruFor rerun on the Arabic subset if time allows | 1 |
-| C | IDNet WV, four attack folders | IDNet AZ, last 1,000 identities per class, per task; and the reverse | median over the target's 4,979 non-test genuine images | IDNet Table 14 | 3 |
+| A (anchor) | SIDTD, the paper's 10 official template folds, all nationalities seen, raw files | the fold's test file, about 222 images; mean and sd over the 10 folds | per-fold median over the design's genuine templates in that fold's training file, leaving out the query's component | SIDTD Table 5, Composite Detection (K-fold, Balanced), all five models; our no-reference control must reach the published range (gate) | 1 |
+| B | SIDTD, six nationalities, for each of the paper's 10 nationality groups | the group's four held-out nationalities; mean and sd over groups, plus per nationality | median over the unseen design's genuine templates, leaving out the query's component | none published on templates; compared against the control validated in A | 1 |
+| C | SIDTD all 10 designs plus IDNet AZ and WV face attacks | FantasyID official test: 300 genuine, Attack-2 face swaps and Attack-3 text rewrites on the 3 held-out designs; Attack-1 separately with Arabic broken out | leave-identity-out median over the design's genuine captures | FantasyID Table 3; DeepID FA2 and FA3; DocForge-Bench pixel F1; our own TruFor rerun on the Arabic subset if time allows | 2 |
+| D | IDNet WV, four attack folders | IDNet AZ, last 1,000 identities per class, per task; and the reverse | median over the target's 4,979 non-test genuine images | IDNet Table 14 | 3 |
+
+Protocols A and B: docs/superpowers/specs/2026-10-10-sidtd-anchor-protocols-design.md. C and D are revisited in their own plan.
 
 Every split is grouped by provenance component: a forgery stays with its source document and, for crop-and-replace, its donor document. The detector never trains on a test design and the reference never contains the query's identity.
 
