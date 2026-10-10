@@ -13,30 +13,22 @@ Cluster: AWS SLURM, account `acc-mialhajri`, partition `gpu`, one A10G (24 GB) p
 | Protocol B train set | 1,981 pairs (SIDTD + IDNet AZ/WV when staged) | 1.7x Protocol A |
 | Protocol C | 2 directions x 4 tasks x about 5,000 training pairs | 20 epochs, about 1.5 hours per run |
 
-## Protocol A today (priority 1)
+## Protocol A (approved 10 October, 18 runs, submitted 16:40)
 
-| Arm | Architecture | Fusion | Reference | Seeds | Runs | Answers |
-|---|---|---|---|---|---|---|
-| A1 | siamese_r18 | single (zone-aware control) | none | 42, 43, 44 | 3 | the control |
-| A2 | siamese_r18 | difference | registered median | 42, 43, 44 | 3 | RQ1 (reference helps) |
-| A3 | siamese_r18 | difference | blank specimen (IDNet) | 42, 43, 44 | 3 | reference quality |
-| A4 | changerex_r18 | difference (FDAF) | registered median | 42, 43, 44 | 3 | the published architecture |
-| A5 | changerex_r18 | single | none | 42, 43, 44 | 3 | its control |
+Two architectures times three arms, three seeds each. One network (ChangerEx r18, LEVIR init, fine-tuned end to end), full 512 x 800 canvas, 40 epochs with early stopping, batch 8, AMP. Dropped by decision: the ResNet-18 fallback as a headline arm, the ImageNet-encoder row, the 100-epoch row, the validation grid, the training crop.
 
-15 runs, one GPU each, about 40 minutes each: with 8 concurrent A10Gs the sweep finishes in about 1.5 hours of wall time; with 4, in about 3 hours. Submit A1 and A2 first (6 jobs), then A3, then A4 and A5 once the Open-CD environment passes `verify_gpu.sh`.
+| Architecture | Arm | Second input | Jobs |
+|---|---|---|---|
+| standard (exchange + FDAF) | control | content-free canvas + query zone | 3 |
+| standard | method, median | registered design median, other provenance fold | 3 |
+| standard | method, specimen | IDNet blank registered to the fold median | 3 |
+| improved (+ self/cross-attention at strides 16, 32, global-over-local) | control | content-free canvas + query zone | 3 |
+| improved | method, median | registered design median | 3 |
+| improved | method, specimen | IDNet blank | 3 |
 
-## Ablations on Protocol A (priority 2, one seed unless marked)
+About 45 minutes of wall time on 18 A10Gs; aggregation by `scripts/aggregate_runs.py --protocol A`.
 
-| Arm | Change | Runs |
-|---|---|---|
-| A6 | fusion stacked and attention, median reference | 2 (3 seeds for attention if time: 6) |
-| A7 | no zone channel (model and control) | 2 |
-| A8 | reference = single genuine card of another component (the CheckID choice) | 1 |
-| A9 | unregistered median (negative control) | 1 |
-| A10 | median-trained model evaluated with the specimen and vice versa (inference-only swap, no training) | 0 |
-| A11 | init scratch vs ImageNet vs LEVIR (ChangerEx) | 2 |
-
-About 9 runs, 6 hours of GPU time.
+Optional one-seed ablations, not in the campaign: single genuine card as reference (CheckID's choice), unregistered median, no zone channel.
 
 ## Protocol B (priority 3, tomorrow)
 
