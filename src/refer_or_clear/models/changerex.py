@@ -145,6 +145,13 @@ class ChangerEx(nn.Module):
             ref = x[:, c:2 * c]
         return query, ref
 
+    def parameter_groups(self):
+        """(pretrained params, new params) for the two learning rates: backbone and decode head come
+        from LEVIR (or Open-CD init), the referral head is ours. The zone channel of the stem is part of
+        the pretrained tensor and follows the backbone rate."""
+        pre = list(self.backbone.parameters()) + list(self.decode_head.parameters())
+        return pre, list(self.referral.parameters())
+
     def forward(self, x):
         query, ref = self.split(x)
         feats = self.backbone(query, ref)  # per stage: cat([f_query, f_ref]) at strides 4, 8, 16, 32
