@@ -4,7 +4,7 @@ Date: 10 October 2026. Status: approved in conversation, awaiting review of this
 
 ## 1. Goal
 
-Protocol A follows the SIDTD dataset paper's template protocol exactly, so that our no-reference control lands on the published numbers and validates our data, split and scoring against prior work. The reference arms are then compared with that validated control. Protocol B keeps everything from Protocol A and changes only the split, holding out nationalities, to test the unseen-design claim within one dataset before FantasyID and IDNet.
+Protocol A follows the SIDTD dataset paper's template protocol exactly, so that our no-reference control lands on the published numbers. Because the control is our own network with the reference input removed, this validates two things against prior work: our data, split and scoring, and our architecture as a forgery classifier on equal terms with the paper's models. The reference arms, the same network given the reference, are then compared with that validated control, so any difference between them is the effect of the reference alone. Protocol B keeps everything from Protocol A and changes only the split, holding out nationalities, to test the unseen-design claim within one dataset before FantasyID and IDNet.
 
 Reference paper: C. Boned et al., "Synthetic dataset of ID and Travel Documents," Scientific Data 11:1356, 2024, Table 5, column "Composite Detection (K-fold, Balanced)", and its code at github.com/Oriolrt/SIDTD_Dataset.
 
