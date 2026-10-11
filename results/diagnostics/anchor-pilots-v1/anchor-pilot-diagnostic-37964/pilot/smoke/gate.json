@@ -1,0 +1,21 @@
+{
+  "failures": [],
+  "fresh_initialization": {
+    "buffer_sha256": "c4bc9ea7a71b381e91b4d2262bf58215791611e8d003cd2573a2b4a5ac1e84b7",
+    "checkpoint_supplied": false,
+    "passed": true,
+    "pretrained_tensor_sha256": "1283f34343b41b2a5e27d55ec9654bf1e7dae47e1959adab4f403c4e0884ef44",
+    "source": "original_offline_weights_and_seeded_head",
+    "state_sha256": "4dc5c40189721778f4fd598b65c24b62cb6f7d2414a092edbc86a40733c9e837"
+  },
+  "identities": {
+    "config_sha256": "2f852c2715c780d6901b0d3e5c0068bbeb4f51a1c0f0f09fa33f40bf567ee1b9",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "2f8a833e5cb3450fdccd8c58dba8f07f58af330747a69cca7363d1a21528da9a",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "passed": true,
+  "phase": "smoke",
+  "schema_version": "anchor_pilot_v1"
+}

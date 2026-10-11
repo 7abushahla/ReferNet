@@ -1,0 +1,35 @@
+{
+  "evidence": {
+    "overfit": {
+      "passed": true,
+      "selected_checkpoint_sha256": "2d6023353aafe25d6e498cb807da1983a4f46d982691c2fd9607e37c8fa1e77d"
+    },
+    "smoke": {
+      "passed": true,
+      "selected_checkpoint_sha256": "d159b4463172cec506303a166b58f614a5a4a3d8de85ae97ef51582499e82f9c"
+    }
+  },
+  "failures": [],
+  "fresh_initialization": {
+    "buffer_sha256": "0bfa10bb2a503e294368dadfffd619915cdf2851d729605cfed021ec326ddd23",
+    "checkpoint_supplied": false,
+    "passed": true,
+    "pretrained_tensor_sha256": "0150afd376fe184579109c26e8ce4de79b3701cd8a661cad5cc43e26b8b31ca0",
+    "source": "original_offline_weights_and_seeded_head",
+    "state_sha256": "9194a3153c9be65b1d5ba13f967bef00dc8fce11865db76b08a7cebd60b858da"
+  },
+  "identities": {
+    "config_sha256": "2860b05436a0fcf890b61a5124d717be925be95a710be28beb74414fa9d8030b",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "2f8a833e5cb3450fdccd8c58dba8f07f58af330747a69cca7363d1a21528da9a",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "0676ba61b6795bbe1773cffd859882e5e297624d384b6993f7c9e683e722fb8a"
+  },
+  "passed": true,
+  "phase": "pretrain",
+  "schema_version": "anchor_pilot_v1",
+  "tracks": {
+    "overfit": "R",
+    "smoke": "R"
+  }
+}

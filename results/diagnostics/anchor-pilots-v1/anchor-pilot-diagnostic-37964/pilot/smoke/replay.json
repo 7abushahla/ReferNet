@@ -1,0 +1,277 @@
+{
+  "atol": 1e-05,
+  "checkpoint_sha256": "ec2b20dd2a2219ee7d65e106e8c0acd00bdeb8855126f3e25a87579ae274afd5",
+  "fresh_process": true,
+  "identities": {
+    "config_sha256": "2f852c2715c780d6901b0d3e5c0068bbeb4f51a1c0f0f09fa33f40bf567ee1b9",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "2f8a833e5cb3450fdccd8c58dba8f07f58af330747a69cca7363d1a21528da9a",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "inference": {
+    "atol": 1e-05,
+    "batch_sizes": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "buffer_sha256_after": "0835ac95d55c4268a77c43117c10a8286ea8df159b158bc0303647a22076514f",
+    "buffer_sha256_before": "0835ac95d55c4268a77c43117c10a8286ea8df159b158bc0303647a22076514f",
+    "buffers_unchanged": true,
+    "companion_invariance": true,
+    "comparisons": 72,
+    "max_abs_difference": 8.195638656616211e-08,
+    "normalization_dropout": {
+      "backbone.layer1.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.4": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.7": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "decode_head.convs.0.bn": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "decode_head.convs.1.bn": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "decode_head.convs.2.bn": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "decode_head.convs.3.bn": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "decode_head.discriminator.dropout_layer": {
+        "drop_probability": 0.0,
+        "kind": "DropPath",
+        "track_running_stats": null,
+        "training": false
+      },
+      "decode_head.discriminator.layers.3": {
+        "drop_probability": 0.0,
+        "kind": "Dropout",
+        "track_running_stats": null,
+        "training": false
+      },
+      "decode_head.dropout": {
+        "drop_probability": 0.1,
+        "kind": "Dropout2d",
+        "track_running_stats": null,
+        "training": false
+      },
+      "decode_head.fusion_conv.bn": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "decode_head.neck_layer.flow_make.1": {
+        "drop_probability": null,
+        "kind": "InstanceNorm2d",
+        "track_running_stats": false,
+        "training": false
+      }
+    },
+    "passed": true,
+    "rtol": 0.0001,
+    "traversal": {
+      "calls": {
+        "query_stem": 1,
+        "shared_projection": 1
+      },
+      "passed": true,
+      "state_unchanged": true
+    }
+  },
+  "max_abs_difference": 0.0,
+  "n_images": 32,
+  "parent_pid": 3700,
+  "passed": true,
+  "phase": "replay",
+  "pid": 3740,
+  "rtol": 0.0001,
+  "schema_version": "anchor_pilot_v1",
+  "summary": {
+    "accuracy": 0.4375,
+    "altered_misses": [
+      "sidtd_alb_id_03_fake_6_87",
+      "sidtd_alb_id_17_fake_6_98",
+      "sidtd_alb_id_20_fake_6_51",
+      "sidtd_alb_id_24_fake_6_100",
+      "sidtd_alb_id_33_fake_6_10",
+      "sidtd_alb_id_42_fake_6_94",
+      "sidtd_alb_id_45_fake_6_62",
+      "sidtd_alb_id_53_fake_6_33",
+      "sidtd_alb_id_54_fake_6_24",
+      "sidtd_alb_id_59_fake_6_7",
+      "sidtd_alb_id_66_fake_6_21",
+      "sidtd_alb_id_69_fake_6_3",
+      "sidtd_alb_id_70_fake_6_55",
+      "sidtd_alb_id_80_fake_6_57",
+      "sidtd_alb_id_81_fake_6_63",
+      "sidtd_alb_id_81_fake_6_91",
+      "sidtd_alb_id_83_fake_6_35",
+      "sidtd_aze_passport_00_fake_3_105"
+    ],
+    "auc": 0.3849206349206349,
+    "buffers_unchanged": true,
+    "genuine_false_positives": [],
+    "image_loss": 0.6995310336351395,
+    "n_altered": 18,
+    "n_genuine": 14,
+    "n_images": 32,
+    "subgroups": {
+      "copy": {
+        "accuracy": 0.9333333333333333,
+        "auc": 1.0,
+        "n_altered": 1,
+        "n_genuine": 14
+      },
+      "inpainting": {
+        "accuracy": 0.45161290322580644,
+        "auc": 0.3487394957983193,
+        "n_altered": 17,
+        "n_genuine": 14
+      }
+    }
+  }
+}

@@ -321,7 +321,8 @@ def test_review_is_bound_to_runtime_gate_and_original_diagnostic_manifest(helper
 def shell_env(tmp_path):
     environment_file = tmp_path / "bash_env"
     environment_file.write_text(f'''source() {{
-    [[ "$1" == /opt/miniconda/etc/profile.d/conda.sh ]] || return 99
+    [[ "$1" == /opt/miniconda/etc/profile.d/conda.sh && "$SLURM_JOB_PARTITION" == gpu ]] ||
+        [[ "$1" == /opt/miniconda3/etc/profile.d/conda.sh && "$SLURM_JOB_PARTITION" == cpu ]] || return 99
 }}
 conda() {{
     [[ "$1" == activate && "$2" == {ENV_PATH} ]] || return 98

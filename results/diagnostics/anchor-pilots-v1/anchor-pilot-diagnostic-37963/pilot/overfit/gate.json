@@ -1,0 +1,23 @@
+{
+  "failures": [
+    "phase correctness/overfit gate failed"
+  ],
+  "fresh_initialization": {
+    "buffer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "checkpoint_supplied": false,
+    "passed": true,
+    "pretrained_tensor_sha256": "fa5acd71c1a1d7504a38be3c8a64729d3c2398f854fa11b3f86539b0ae8859e9",
+    "source": "original_offline_weights_and_seeded_head",
+    "state_sha256": "cca5429e481ee96edcfd9f65c46c0b5e8e2e3398c1a400b2200a24ea6c01cf48"
+  },
+  "identities": {
+    "config_sha256": "0d1a21db4757a31597cb096487210e37d780f9d4008d1a48f9c24756db77a4d0",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "2f8a833e5cb3450fdccd8c58dba8f07f58af330747a69cca7363d1a21528da9a",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "passed": false,
+  "phase": "overfit",
+  "schema_version": "anchor_pilot_v1"
+}

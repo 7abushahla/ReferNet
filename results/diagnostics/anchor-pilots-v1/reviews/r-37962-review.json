@@ -1,0 +1,37 @@
+{
+  "schema_version": "anchor_review_v1",
+  "approved": true,
+  "reviewer": "Galileo, independent read-only GPU gate review, agent 01a12c50-7727-7fd2-997b-ce56f43731f8",
+  "reviewed_at": "2026-10-11T18:57:36Z",
+  "scope": "One Protocol A R run, fold 0, seed 42, 100 epochs. No other tracks, sweeps, reference extensions, or downstream evaluation.",
+  "source_revision": "0959335bd9a6a22510f6706c49c62d84560cd524",
+  "source_archive_sha256": "4413528c1afd15f6c420763287bc57d9eb523df2a69138d5b472f0b4b2092ba4",
+  "scheduler_verification": {"job_id": "37962", "state": "COMPLETED", "exit_code": "0:0", "elapsed": "00:02:01"},
+  "gate_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-pilot-diagnostic-37962/pilot/gate.json",
+  "gate_sha256": "a1da74419bcb9a93ac4484ef88dfbe74e2a9d7880f10fceb69a0da2f652e23fa",
+  "provenance": {
+    "config_sha256": "ed5c22565f764449e4375be3da2f0747986e1c952febe3d16725c93f2bbb4467",
+    "data_sha256": "3a3156740c35401e7e0cd1eeb47d2f9dd033a286b76c57e72dc9e7351b8dd9e9",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "cb64905ab51a0c5fcc4600148765eb2e27db9cb5b860c4b2630593c617d37318",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "0676ba61b6795bbe1773cffd859882e5e297624d384b6993f7c9e683e722fb8a"
+  },
+  "checks": {
+    "metadata_and_identity_checks_passed": 55,
+    "archive_files_checked": 136,
+    "only_train_and_validation_pixels": true,
+    "test_reference_zone_and_mask_pixel_access": false,
+    "official_initialization_hash_verified": true,
+    "pristine_initialization_between_phases": true,
+    "overfit_accuracy": 1.0,
+    "overfit_updates": 50,
+    "overfit_image_ce": 0.000004962060302204918,
+    "companion_invariance_before_and_after": true,
+    "fresh_process_replay_max_logit_difference": 0.0
+  },
+  "limitations": [
+    "The 32-image smoke exercises a partial accumulation window, not two full microbatches. Frozen code implements sample-correct accumulation; the full run implies 56 BN forwards and 28 optimizer steps per epoch.",
+    "This establishes execution readiness, not trained-model competence, reference benefit, or generalization."
+  ]
+}

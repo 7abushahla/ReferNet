@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="38.845" timestamp="2026-10-11T18:51:01.705145+00:00" hostname="gpu-dy-g5-0-52"><testcase classname="tests.test_anchor_changer" name="test_actual_opencd_gpu_integration" time="5.828" /></testsuite></testsuites>

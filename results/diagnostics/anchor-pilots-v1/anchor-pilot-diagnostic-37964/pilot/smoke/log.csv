@@ -1,0 +1,2 @@
+epoch,loss,image_loss,bce_map,dice_map,n_images,optimizer_steps,val_image_loss,val_accuracy,val_auc,lr_pretrained,lr_new
+1,3.849983334541321,0.6903912574052811,0.06258909031748772,0.9906082898378372,32,4,0.6995310336351395,0.4375,0.3849206349206349,0.0,0.0

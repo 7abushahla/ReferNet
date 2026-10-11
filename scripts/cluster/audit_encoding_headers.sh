@@ -21,7 +21,7 @@ case "${SLURMD_NODENAME,,}" in
 esac
 [[ "${SLURM_JOB_PARTITION:-}" == cpu ]] || { echo 'Allocated CPU partition required' >&2; exit 2; }
 [[ "$SLURM_JOB_ID" =~ ^[0-9]+$ ]] || { echo 'Invalid Slurm job ID' >&2; exit 2; }
-source /opt/miniconda/etc/profile.d/conda.sh
+source /opt/miniconda3/etc/profile.d/conda.sh
 environment_path=/shared/b00090279/conda/envs/refer-or-clear
 conda activate "$environment_path"
 python_bin="$environment_path/bin/python"
