@@ -172,3 +172,24 @@ Pixel checks on all 18 training/validation examples with different field names s
 The user approved an isolated correction, regression tests and a separate corrected-mask directory, without changing ongoing jobs or launching another training run. The regression test reproduced the extra donor target before the fix. New records now retain only `field` in `altered_fields`; donor identity and the raw annotation remain available. The mask builder reads the recipient field from the raw annotation, so stale records containing both names cannot silently recreate the error. Missing recipient fields or missing recipient rectangles raise errors rather than falling back to donor geometry. Three recipient-mask tests and four adjacent test scripts pass. The correction remains local until deliberately deployed; the three input pilots and gradient diagnostic keep their original data and code.
 
 This corrects supervision, not a measured performance outcome. Its effect requires a controlled follow-up. Most existing copy misses are outside these 18 affected examples.
+
+### Isolated mask preparation verified
+
+`scripts/prepare_copy_mask_overlay.py` prepared `data/interim/copy_target_correction_f0_20261011/`. It contains corrected train/validation records and 1,092 forged-image masks, not a complete training dataset. Exactly 18 masks change (16 training, two validation); the other 1,074 remain pixel-identical. Every changed mask removes pixels only, with no added target pixels, and every forged mask remains nonempty. No test masks are prepared. Hash checks confirm that the original records, split, transforms and all 1,092 source masks are unchanged. The running jobs have not been restarted or modified.
+
+The reproducible audit and per-image old/new hashes are at `results/diagnostics/copy-target-audit-20261011/`. The overlay preparation test first failed before implementation and now passes for exclusion of test rows, rejection of inconsistent labels and rejection of existing or source-overlapping output directories. The mask-builder correction was committed and pushed as `a28c495` before preparing the overlay.
+
+## Completed parallel gradient diagnostic, job 37930
+
+The job completed in 4 minutes 37 seconds with exit code 0:0 after its six-image smoke. It scored 324 distinct training images at the epoch-49 checkpoint, 108 per family, with no optimizer steps and verified unchanged model state. Full results are under `results/diagnostics/copy-gradient-37930/`; smoke evidence is in `results/diagnostics/copy-gradient-smoke-37930/`.
+
+| Training subset | Examples | Negative shared-gradient cosine | Median cosine | Median localization/image gradient norm ratio |
+|---|---:|---:|---:|---:|
+| Copy, missed at zero logit | 48 | 14/48 | 0.090502 | 0.048381 |
+| Copy, correctly classified | 60 | 4/60 | 0.538380 | 297.307776 |
+
+The shared gradient covers the backbone and decoder. Gradients are generally more aligned on correctly classified copy examples, but most missed copy examples also have nonnegative alignment. For missed copies, the median classification-gradient norm is 60.622 versus 3.076 for the already-weighted localization objective. This does not support localization dominance as a general explanation of the copy failures at this checkpoint. Across inpainting examples, 21 of 103 nonzero shared-gradient pairs have negative cosine; five image gradients are zero and have undefined cosine. Negative alignment is therefore not unique to the weak family.
+
+Ratios on confidently correct examples are large partly because their classification gradients approach zero. They must not be interpreted as evidence of harmful loss weighting. These measurements concern unaugmented, per-image evaluation-mode gradients at one checkpoint, not the gradients of the historical augmented batch-eight training process. They neither prove nor exclude earlier training conflict. A blanket removal of localization is not justified by this diagnostic.
+
+The immediate verified correction is the recipient mask. Input-preparation pilots remain in progress. A subsequent training comparison must use a separate corrected-data directory and compare against an otherwise matched run. Neither an additional training run nor a broader fold sweep was submitted with this diagnostic or mask correction.

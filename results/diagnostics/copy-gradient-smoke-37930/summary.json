@@ -1,0 +1,97 @@
+{
+  "complete": true,
+  "checkpoint_sha256": "4848185b9baffea8d8183a98404dfcb85aa098b4ac25ec9c861b19079484d8eb",
+  "checkpoint_epoch": 49,
+  "script_sha256": "dccadb4cd97f2acfe061612e684bd0f8ee5c8860bbef4d1fdffdb249ea7336a3",
+  "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+  "role": "train",
+  "selected_ids": [
+    "sidtd_alb_id_38_fake_6_107",
+    "sidtd_alb_id_84_fake_6_110",
+    "sidtd_alb_id_87",
+    "sidtd_grc_passport_33",
+    "sidtd_grc_passport_53_fake_4_70",
+    "sidtd_grc_passport_64_fake_4_114"
+  ],
+  "mask_weight": 3.0,
+  "model_mode": "eval",
+  "batch_size": 1,
+  "augmentation": false,
+  "strict_fp32": true,
+  "cudnn_tf32": false,
+  "matmul_tf32": false,
+  "optimizer_steps": 0,
+  "interpretation": "Fixed-point per-image gradients, not training dynamics or causal proof.",
+  "model_state_unchanged": true,
+  "families": {
+    "genuine": {
+      "count": 2,
+      "gradients": {
+        "backbone": {
+          "median_cosine": -0.08651352113741173,
+          "negative_cosine_fraction": 1.0,
+          "median_norm_ratio": 16.490066921040842
+        },
+        "decode_head": {
+          "median_cosine": 0.3832494691814649,
+          "negative_cosine_fraction": 0.0,
+          "median_norm_ratio": 39.90293433408084
+        },
+        "shared": {
+          "median_cosine": -0.02227621557235244,
+          "negative_cosine_fraction": 0.5,
+          "median_norm_ratio": 18.602515348691163
+        }
+      },
+      "errors_at_zero_logit": 0,
+      "median_image_loss": 0.037758370861411095,
+      "median_weighted_localization_loss": 1.736820638179779
+    },
+    "text_copy": {
+      "count": 2,
+      "gradients": {
+        "backbone": {
+          "median_cosine": 0.6214108759470582,
+          "negative_cosine_fraction": 0.0,
+          "median_norm_ratio": 761.0863067710101
+        },
+        "decode_head": {
+          "median_cosine": 0.5368262057677429,
+          "negative_cosine_fraction": 0.0,
+          "median_norm_ratio": 316.4852237505145
+        },
+        "shared": {
+          "median_cosine": 0.6056700211331449,
+          "negative_cosine_fraction": 0.0,
+          "median_norm_ratio": 717.357971486441
+        }
+      },
+      "errors_at_zero_logit": 1,
+      "median_image_loss": 1.3492119896254735,
+      "median_weighted_localization_loss": 2.1141873598098755
+    },
+    "text_inpaint": {
+      "count": 2,
+      "gradients": {
+        "backbone": {
+          "median_cosine": 0.17804938632119519,
+          "negative_cosine_fraction": 0.0,
+          "median_norm_ratio": 4853.238502971994
+        },
+        "decode_head": {
+          "median_cosine": 0.45669709504921335,
+          "negative_cosine_fraction": 0.0,
+          "median_norm_ratio": 4290.249238337243
+        },
+        "shared": {
+          "median_cosine": 0.2264014495695884,
+          "negative_cosine_fraction": 0.0,
+          "median_norm_ratio": 4753.321301453405
+        }
+      },
+      "errors_at_zero_logit": 0,
+      "median_image_loss": 7.986976811480417e-06,
+      "median_weighted_localization_loss": 0.11409252882003784
+    }
+  }
+}
