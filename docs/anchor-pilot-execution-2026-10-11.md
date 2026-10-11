@@ -11,7 +11,7 @@ Starting revision `60a3adf`. Implementation and parallel delegation are authoriz
 | M0, reviewed amendments and stable interfaces | Committed and pushed | `61833c9`; three contract tests passed; D is non-stream-matched; per-track launch path; one coordinator |
 | M1-R, raw RGB classifier and loader | Reviewed and locally verified, GPU gates pending | Coordinator verification passed 30 model/contract tests; official hash-bound BN-counter migration is explicit |
 | M1-DN, single-query encoder routes | Reviewed and locally verified, GPU integration pending | Coordinator verification passed 42 tests with one explicit local GPU skip; actual installed Open-CD/LEVIR checks require an allocation |
-| M1-audit, exact-membership headers | Reviewed and locally verified, production allocation pending | Coordinator verified 44 tests and shell syntax; isolated raw transfer completed |
+| M1-audit, exact-membership headers | Reviewed and locally verified, production job submitted | Coordinator verified 44 tests and shell syntax; job 37961 consumes isolated original-header inputs |
 | M2, isolated training and smoke gates | Implemented and independently reviewed | Coordinator tests passed 35 runtime/gate checks and 50 packaging checks; GPU evidence remains pending |
 | M3, fold-safe support | Implemented, review corrections pending | Reviewer reproduced external-specimen inventory and explicit official-fold binding gaps; production registration remains unrun |
 | M4, selected-validation reports and common runtime | Implemented, independent review pending | Worker verified 38 focused tests; no actual timing or long-run decision claimed |
@@ -60,3 +60,7 @@ All three use records SHA256 `afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c
 | N | 37960 | Diagnostic only | `458b664a051097037adec83c8cb61466e702eba02ee471260be01a5950da5e40` | `anchor-pilot-diagnostic-37960` | Pending actual GPU gates and independent review |
 
 R uses the official V1 checkpoint hash recorded above. D/N use the verified LEVIR checkpoint hash. Submission returned all three job IDs successfully; immediate queue state was pending. No 100-epoch training job was submitted. Diagnostic output review must precede each separate long-run submission with the same frozen source and inputs.
+
+### Header audit allocation
+
+Job `37961` uses immutable revision `e2435ae10cad2697f22d290110e4b3d6a3efb6a0` and archive SHA256 `07b77f996aece22612acff5b53c18de56ecc94592b74ea9a911cf2c12cb8c2ae`. Source is the corresponding read-only `results/source/anchor-REVISION/code` directory. Its original-header corpus and frozen metadata are the separate audit roots described above. Output is `results/diagnostics/anchor-pilots-v1/encoding-headers-37961`. The allocation requests four CPUs, 8 GB memory and one hour on the GPU partition, without reserving a GPU. It performs no decoding or detector inference and never runs on the login node. Its immediate submission state was pending. A successful scheduler exit is not a scientific completeness or transfer claim; the audit health and qualified results require inspection.
