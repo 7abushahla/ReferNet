@@ -1,0 +1,43 @@
+{
+  "schema_version": "anchor_review_v1",
+  "approved": true,
+  "reviewer": "Galileo, independent actual-gate review, agent 01a12c50-7727-7fd2-997b-ce56f43731f8",
+  "reviewed_at": "2026-10-11T21:07:59Z",
+  "scope": "Exactly one Protocol A D_running_pilot legacy-geometry validation pilot, fold 0, seed 42, 100 epochs. No sweep, other fold or seed, test, reference training or downstream detector evaluation.",
+  "source_revision": "bef7544a64f36a166f76eeef0d3130e353bd3203",
+  "source_archive_sha256": "00d0b99e635536d27a01c6f4f39bd94e14e98409dc5616c722f7dd4db3f8d5de",
+  "scheduler_verification": {"job_id": "37980", "state": "COMPLETED", "exit_code": "0:0", "elapsed": "00:04:29"},
+  "diagnostic_manifest_sha256": "78d0a6242865639c96402e0b1686c1cc7a1c84078e8079b6256812fdf4499d03",
+  "gate_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-pilot-diagnostic-37980/pilot/gate.json",
+  "gate_sha256": "90644094ef97f7867d842c52a3a2be7243001d1628a7b8b43eb6db8f5a06cc54",
+  "provenance": {
+    "config_sha256": "604d888d046d1903ef1741476e0a3170bde05ec9cc8abef9482b43fe71072f79",
+    "data_sha256": "4276e25e9310ef5b76a9358f28a33fd261ea3c2eb2bbfc5f98cba82860b23680",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "1dc29e362523ab3bcfdfaa794764dd85f2c8c1043fe3acae3381b89bec1bc69a",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "checks": {
+    "source_and_artifact_assertions_passed": 244,
+    "actual_stack_integration_passed": 1,
+    "actual_stack_integration_skipped": 0,
+    "pristine_initialization_between_phases": true,
+    "running_statistics_bn_modules": 22,
+    "train_membership": 1778,
+    "validation_membership": 222,
+    "test_reference_raw_and_dense_target_access": false,
+    "overfit_accuracy": 1.0,
+    "overfit_updates": 50,
+    "overfit_image_bce": 0.004217768659145804,
+    "companion_invariance_before_after_and_replay": true,
+    "fresh_process_replay_max_logit_difference": 0.0
+  },
+  "limitations": [
+    "Legacy geometry pilot, not a final support-safe arm.",
+    "Pixel access and GPU state conclusions rely on recorded allocated evidence and frozen code, not an independent syscall trace or repeated inference.",
+    "Official checkpoint bytes were not independently fetched or rehashed locally.",
+    "One-epoch smoke validation is not evidence of classification competence.",
+    "Passing launch gates does not establish reference benefit, generalization or exclusive causality for historical failures."
+  ]
+}

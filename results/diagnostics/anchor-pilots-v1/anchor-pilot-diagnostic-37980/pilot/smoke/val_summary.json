@@ -1,0 +1,47 @@
+{
+  "accuracy": 0.4375,
+  "altered_misses": [
+    "sidtd_alb_id_03_fake_6_87",
+    "sidtd_alb_id_17_fake_6_98",
+    "sidtd_alb_id_20_fake_6_51",
+    "sidtd_alb_id_24_fake_6_100",
+    "sidtd_alb_id_33_fake_6_10",
+    "sidtd_alb_id_42_fake_6_94",
+    "sidtd_alb_id_45_fake_6_62",
+    "sidtd_alb_id_53_fake_6_33",
+    "sidtd_alb_id_54_fake_6_24",
+    "sidtd_alb_id_59_fake_6_7",
+    "sidtd_alb_id_66_fake_6_21",
+    "sidtd_alb_id_69_fake_6_3",
+    "sidtd_alb_id_70_fake_6_55",
+    "sidtd_alb_id_80_fake_6_57",
+    "sidtd_alb_id_81_fake_6_63",
+    "sidtd_alb_id_81_fake_6_91",
+    "sidtd_alb_id_83_fake_6_35",
+    "sidtd_aze_passport_00_fake_3_105"
+  ],
+  "auc": 0.33333333333333337,
+  "buffers_unchanged": true,
+  "genuine_false_positives": [],
+  "image_loss": 0.6946411523967981,
+  "localization_metrics": null,
+  "n_altered": 18,
+  "n_genuine": 14,
+  "n_images": 32,
+  "role": "val",
+  "selected_epoch": 1,
+  "subgroups": {
+    "copy": {
+      "accuracy": 0.9333333333333333,
+      "auc": 0.7857142857142857,
+      "n_altered": 1,
+      "n_genuine": 14
+    },
+    "inpainting": {
+      "accuracy": 0.45161290322580644,
+      "auc": 0.3067226890756303,
+      "n_altered": 17,
+      "n_genuine": 14
+    }
+  }
+}

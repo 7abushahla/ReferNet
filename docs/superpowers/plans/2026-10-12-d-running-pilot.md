@@ -63,13 +63,13 @@
 - [x] Add smoke/replay tests proving train/validation evaluation with no targets and batched invariance, preserving bounded-track training-only regressions.
 - [x] Run the combined focused suite, inspect diff and obtain independent implementation review.
 - [x] Commit/push, archive the exact revision, verify authorities and submit one fresh diagnostic allocation.
-- [ ] Inspect actual stack XML, probe counts/loss, smoke scope, pristine fingerprints, normalization increments, replay and source/config/data/checkpoint hashes. Obtain independent actual-gate review.
+- [x] Inspect actual stack XML, probe counts/loss, smoke scope, pristine fingerprints, normalization increments, replay and source/config/data/checkpoint hashes. Obtain independent actual-gate review.
 
 ## Task 5. Single Full Pilot
 
 **Owner:** Coordinator only.
 
-- [ ] Create an identity-bound review record for one full pilot after actual gates pass.
-- [ ] Recheck cluster authorities and submit one 100-epoch training job from the identical frozen source/config/data and original offline initialization.
-- [ ] Record job ID, output root, revision/archive/config/data/gate/review hashes and scheduler state. Commit/push the ledger.
-- [ ] Stop at this authorized scope. Continue monitoring N independently; do not automatically sweep or add reference training.
+- [x] Create an identity-bound review record for one full pilot after actual gates pass.
+- [x] Recheck cluster authorities and submit one 100-epoch training job from the identical frozen source/config/data and original offline initialization.
+- [x] Record job ID, output root, revision/archive/config/data/gate/review hashes and scheduler state. Commit/push the ledger.
+- [x] Stop at this authorized scope. Continue monitoring N independently; do not automatically sweep or add reference training.

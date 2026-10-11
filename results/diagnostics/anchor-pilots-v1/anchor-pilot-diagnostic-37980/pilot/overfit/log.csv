@@ -1,0 +1,2 @@
+update,loss,image_loss,bce_map,dice_map,n_images,optimizer_steps,eval_image_loss,n_correct
+50,0.01264377310872078,0.01264377310872078,,,16,2,0.004217768659145804,16

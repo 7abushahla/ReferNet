@@ -1,0 +1,215 @@
+{
+  "atol": 1e-05,
+  "checkpoint_sha256": "6db02f09b4a8c810b01fbae1d9a14f9823a6e3d65fd31cce699c335bfd30ec18",
+  "fresh_process": true,
+  "identities": {
+    "config_sha256": "5672a841eea3e683cdf76892d828c015711d500187e56fbe9c0a8aa86f30fdf9",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "af7073f3dd12299d9836f665cab5307dd5fed4a22882cc9fbbef317b8a38ae59",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "inference": {
+    "atol": 1e-05,
+    "batch_sizes": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "buffer_sha256_after": "8c0c84fe682f98944f1976d8988b78ab9b24abae0ebc01def8b57e0cc48236ef",
+    "buffer_sha256_before": "8c0c84fe682f98944f1976d8988b78ab9b24abae0ebc01def8b57e0cc48236ef",
+    "buffers_unchanged": true,
+    "companion_invariance": true,
+    "comparisons": 72,
+    "max_abs_difference": 1.30385160446167e-08,
+    "normalization_dropout": {
+      "backbone.layer1.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.4": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.7": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      }
+    },
+    "passed": true,
+    "rtol": 0.0001
+  },
+  "max_abs_difference": 0.0,
+  "n_images": 32,
+  "parent_pid": 3529,
+  "passed": true,
+  "phase": "replay",
+  "pid": 3574,
+  "rtol": 0.0001,
+  "schema_version": "anchor_pilot_v1",
+  "summary": {
+    "accuracy": 0.4375,
+    "altered_misses": [
+      "sidtd_alb_id_03_fake_6_87",
+      "sidtd_alb_id_17_fake_6_98",
+      "sidtd_alb_id_20_fake_6_51",
+      "sidtd_alb_id_24_fake_6_100",
+      "sidtd_alb_id_33_fake_6_10",
+      "sidtd_alb_id_42_fake_6_94",
+      "sidtd_alb_id_45_fake_6_62",
+      "sidtd_alb_id_53_fake_6_33",
+      "sidtd_alb_id_54_fake_6_24",
+      "sidtd_alb_id_59_fake_6_7",
+      "sidtd_alb_id_66_fake_6_21",
+      "sidtd_alb_id_69_fake_6_3",
+      "sidtd_alb_id_70_fake_6_55",
+      "sidtd_alb_id_80_fake_6_57",
+      "sidtd_alb_id_81_fake_6_63",
+      "sidtd_alb_id_81_fake_6_91",
+      "sidtd_alb_id_83_fake_6_35",
+      "sidtd_aze_passport_00_fake_3_105"
+    ],
+    "auc": 0.33333333333333337,
+    "buffers_unchanged": true,
+    "genuine_false_positives": [],
+    "image_loss": 0.6946411523967981,
+    "n_altered": 18,
+    "n_genuine": 14,
+    "n_images": 32,
+    "subgroups": {
+      "copy": {
+        "accuracy": 0.9333333333333333,
+        "auc": 0.7857142857142857,
+        "n_altered": 1,
+        "n_genuine": 14
+      },
+      "inpainting": {
+        "accuracy": 0.45161290322580644,
+        "auc": 0.3067226890756303,
+        "n_altered": 17,
+        "n_genuine": 14
+      }
+    }
+  }
+}

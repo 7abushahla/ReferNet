@@ -1,0 +1,1694 @@
+{
+  "architecture_id": "anchor_direct_running_ia18_pilot_v1",
+  "bn_training": [
+    {
+      "expected_forward_calls": 4,
+      "increments": {
+        "backbone.layer1.0.bn1": 4,
+        "backbone.layer1.0.bn2": 4,
+        "backbone.layer1.1.bn1": 4,
+        "backbone.layer1.1.bn2": 4,
+        "backbone.layer2.0.bn1": 4,
+        "backbone.layer2.0.bn2": 4,
+        "backbone.layer2.0.downsample.1": 4,
+        "backbone.layer2.1.bn1": 4,
+        "backbone.layer2.1.bn2": 4,
+        "backbone.layer3.0.bn1": 4,
+        "backbone.layer3.0.bn2": 4,
+        "backbone.layer3.0.downsample.1": 4,
+        "backbone.layer3.1.bn1": 4,
+        "backbone.layer3.1.bn2": 4,
+        "backbone.layer4.0.bn1": 4,
+        "backbone.layer4.0.bn2": 4,
+        "backbone.layer4.0.downsample.1": 4,
+        "backbone.layer4.1.bn1": 4,
+        "backbone.layer4.1.bn2": 4,
+        "backbone.stem.1": 4,
+        "backbone.stem.4": 4,
+        "backbone.stem.7": 4
+      },
+      "passed": true
+    }
+  ],
+  "config": {
+    "accumulation_steps": 1,
+    "architecture_id": "anchor_direct_running_ia18_pilot_v1",
+    "augment": {
+      "affine_border": "constant_zero",
+      "affine_px": 8,
+      "binary_interpolation": "opencv_inter_nearest",
+      "crop": null,
+      "enabled": true,
+      "interpolation": "opencv_inter_linear",
+      "jitter_p": 0.25,
+      "jitter_px": 2,
+      "jitter_rgb_border": "replicate",
+      "jitter_target_border": "constant_zero",
+      "jitter_zone": false,
+      "jpeg_quality": null,
+      "photometric": true,
+      "photometric_strength": 0.2,
+      "preset": "legacy_query_v1",
+      "rotation_degrees": 1.0
+    },
+    "batch_size": 8,
+    "bn_policy": "running",
+    "comparison": "non_stream_matched",
+    "data_contract": "legacy_geometry_diagnostic",
+    "drop_last": true,
+    "epochs": 100,
+    "eval_batch_size": 1,
+    "eval_drop_last": false,
+    "fold": 0,
+    "mask_weight": 0.0,
+    "normalization": {
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "optimizer": {
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "lr_backbone": 0.0001,
+      "lr_new": 0.001,
+      "name": "adamw",
+      "weight_decay": 0.05
+    },
+    "precision": {
+      "amp": false,
+      "cudnn_tf32": false,
+      "dtype": "float32",
+      "matmul_tf32": false
+    },
+    "records_csv": "data/processed/records.csv",
+    "scheduler": {
+      "name": "warmup_cosine",
+      "warmup_cap_fraction": 0.1,
+      "warmup_iters": 1000
+    },
+    "schema_version": "anchor_pilot_v1",
+    "seed": 42,
+    "selection": {
+      "exact_tie": "earlier_epoch",
+      "primary": "accuracy",
+      "tie_break": "auc"
+    },
+    "split_csv": "data/processed/splits/protocol_a_it0.csv",
+    "track": "D_running_pilot",
+    "wrong_design_fraction": 0.0
+  },
+  "cuda_backward_probe": {
+    "performed": false
+  },
+  "device": "cuda",
+  "epochs_completed": 1,
+  "evaluation_role": "val",
+  "fresh_initialization": {
+    "buffer_sha256": "bc4e5ed3fe4e999395997ded7981a9bd9a0acd198e21c5b342f348713aa64dad",
+    "checkpoint_supplied": false,
+    "passed": true,
+    "pretrained_tensor_sha256": "9ab72d0bbe12d81de9034b1b44e5d037576a8e83f45addf0ba9d339382e59c42",
+    "source": "original_offline_weights_and_seeded_head",
+    "state_sha256": "32e2fcde137e5dac4c537dc5e18ba3ff02cf8d12a72311e0177aa28c076cfec4"
+  },
+  "identities": {
+    "config_sha256": "5672a841eea3e683cdf76892d828c015711d500187e56fbe9c0a8aa86f30fdf9",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "af7073f3dd12299d9836f665cab5307dd5fed4a22882cc9fbbef317b8a38ae59",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "inference_after": {
+    "atol": 1e-05,
+    "batch_sizes": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "buffer_sha256_after": "8c0c84fe682f98944f1976d8988b78ab9b24abae0ebc01def8b57e0cc48236ef",
+    "buffer_sha256_before": "8c0c84fe682f98944f1976d8988b78ab9b24abae0ebc01def8b57e0cc48236ef",
+    "buffers_unchanged": true,
+    "companion_invariance": true,
+    "comparisons": 72,
+    "max_abs_difference": 1.30385160446167e-08,
+    "normalization_dropout": {
+      "backbone.layer1.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.4": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.7": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      }
+    },
+    "passed": true,
+    "rtol": 0.0001
+  },
+  "inference_before": {
+    "atol": 1e-05,
+    "batch_sizes": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "buffer_sha256_after": "bc4e5ed3fe4e999395997ded7981a9bd9a0acd198e21c5b342f348713aa64dad",
+    "buffer_sha256_before": "bc4e5ed3fe4e999395997ded7981a9bd9a0acd198e21c5b342f348713aa64dad",
+    "buffers_unchanged": true,
+    "companion_invariance": true,
+    "comparisons": 72,
+    "max_abs_difference": 9.313225746154785e-09,
+    "normalization_dropout": {
+      "backbone.layer1.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.4": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.7": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      }
+    },
+    "passed": true,
+    "rtol": 0.0001
+  },
+  "initialization": {
+    "optimizer_coverage": {
+      "groups": [
+        [
+          "backbone.stem.0.weight",
+          "backbone.stem.1.weight",
+          "backbone.stem.1.bias",
+          "backbone.stem.3.weight",
+          "backbone.stem.4.weight",
+          "backbone.stem.4.bias",
+          "backbone.stem.6.weight",
+          "backbone.stem.7.weight",
+          "backbone.stem.7.bias",
+          "backbone.layer1.0.conv1.weight",
+          "backbone.layer1.0.bn1.weight",
+          "backbone.layer1.0.bn1.bias",
+          "backbone.layer1.0.conv2.weight",
+          "backbone.layer1.0.bn2.weight",
+          "backbone.layer1.0.bn2.bias",
+          "backbone.layer1.1.conv1.weight",
+          "backbone.layer1.1.bn1.weight",
+          "backbone.layer1.1.bn1.bias",
+          "backbone.layer1.1.conv2.weight",
+          "backbone.layer1.1.bn2.weight",
+          "backbone.layer1.1.bn2.bias",
+          "backbone.layer2.0.conv1.weight",
+          "backbone.layer2.0.bn1.weight",
+          "backbone.layer2.0.bn1.bias",
+          "backbone.layer2.0.conv2.weight",
+          "backbone.layer2.0.bn2.weight",
+          "backbone.layer2.0.bn2.bias",
+          "backbone.layer2.0.downsample.0.weight",
+          "backbone.layer2.0.downsample.1.weight",
+          "backbone.layer2.0.downsample.1.bias",
+          "backbone.layer2.1.conv1.weight",
+          "backbone.layer2.1.bn1.weight",
+          "backbone.layer2.1.bn1.bias",
+          "backbone.layer2.1.conv2.weight",
+          "backbone.layer2.1.bn2.weight",
+          "backbone.layer2.1.bn2.bias",
+          "backbone.layer3.0.conv1.weight",
+          "backbone.layer3.0.bn1.weight",
+          "backbone.layer3.0.bn1.bias",
+          "backbone.layer3.0.conv2.weight",
+          "backbone.layer3.0.bn2.weight",
+          "backbone.layer3.0.bn2.bias",
+          "backbone.layer3.0.downsample.0.weight",
+          "backbone.layer3.0.downsample.1.weight",
+          "backbone.layer3.0.downsample.1.bias",
+          "backbone.layer3.1.conv1.weight",
+          "backbone.layer3.1.bn1.weight",
+          "backbone.layer3.1.bn1.bias",
+          "backbone.layer3.1.conv2.weight",
+          "backbone.layer3.1.bn2.weight",
+          "backbone.layer3.1.bn2.bias",
+          "backbone.layer4.0.conv1.weight",
+          "backbone.layer4.0.bn1.weight",
+          "backbone.layer4.0.bn1.bias",
+          "backbone.layer4.0.conv2.weight",
+          "backbone.layer4.0.bn2.weight",
+          "backbone.layer4.0.bn2.bias",
+          "backbone.layer4.0.downsample.0.weight",
+          "backbone.layer4.0.downsample.1.weight",
+          "backbone.layer4.0.downsample.1.bias",
+          "backbone.layer4.1.conv1.weight",
+          "backbone.layer4.1.bn1.weight",
+          "backbone.layer4.1.bn1.bias",
+          "backbone.layer4.1.conv2.weight",
+          "backbone.layer4.1.bn2.weight",
+          "backbone.layer4.1.bn2.bias"
+        ],
+        [
+          "classifier.0.weight",
+          "classifier.0.bias",
+          "classifier.2.weight",
+          "classifier.2.bias"
+        ]
+      ],
+      "n_tensors": 70,
+      "passed": true
+    },
+    "passed": true,
+    "provenance": {
+      "active_parameter_count": 11261825,
+      "active_pretrained_keys": [
+        "backbone.layer1.0.bn1.bias",
+        "backbone.layer1.0.bn1.num_batches_tracked",
+        "backbone.layer1.0.bn1.running_mean",
+        "backbone.layer1.0.bn1.running_var",
+        "backbone.layer1.0.bn1.weight",
+        "backbone.layer1.0.bn2.bias",
+        "backbone.layer1.0.bn2.num_batches_tracked",
+        "backbone.layer1.0.bn2.running_mean",
+        "backbone.layer1.0.bn2.running_var",
+        "backbone.layer1.0.bn2.weight",
+        "backbone.layer1.0.conv1.weight",
+        "backbone.layer1.0.conv2.weight",
+        "backbone.layer1.1.bn1.bias",
+        "backbone.layer1.1.bn1.num_batches_tracked",
+        "backbone.layer1.1.bn1.running_mean",
+        "backbone.layer1.1.bn1.running_var",
+        "backbone.layer1.1.bn1.weight",
+        "backbone.layer1.1.bn2.bias",
+        "backbone.layer1.1.bn2.num_batches_tracked",
+        "backbone.layer1.1.bn2.running_mean",
+        "backbone.layer1.1.bn2.running_var",
+        "backbone.layer1.1.bn2.weight",
+        "backbone.layer1.1.conv1.weight",
+        "backbone.layer1.1.conv2.weight",
+        "backbone.layer2.0.bn1.bias",
+        "backbone.layer2.0.bn1.num_batches_tracked",
+        "backbone.layer2.0.bn1.running_mean",
+        "backbone.layer2.0.bn1.running_var",
+        "backbone.layer2.0.bn1.weight",
+        "backbone.layer2.0.bn2.bias",
+        "backbone.layer2.0.bn2.num_batches_tracked",
+        "backbone.layer2.0.bn2.running_mean",
+        "backbone.layer2.0.bn2.running_var",
+        "backbone.layer2.0.bn2.weight",
+        "backbone.layer2.0.conv1.weight",
+        "backbone.layer2.0.conv2.weight",
+        "backbone.layer2.0.downsample.0.weight",
+        "backbone.layer2.0.downsample.1.bias",
+        "backbone.layer2.0.downsample.1.num_batches_tracked",
+        "backbone.layer2.0.downsample.1.running_mean",
+        "backbone.layer2.0.downsample.1.running_var",
+        "backbone.layer2.0.downsample.1.weight",
+        "backbone.layer2.1.bn1.bias",
+        "backbone.layer2.1.bn1.num_batches_tracked",
+        "backbone.layer2.1.bn1.running_mean",
+        "backbone.layer2.1.bn1.running_var",
+        "backbone.layer2.1.bn1.weight",
+        "backbone.layer2.1.bn2.bias",
+        "backbone.layer2.1.bn2.num_batches_tracked",
+        "backbone.layer2.1.bn2.running_mean",
+        "backbone.layer2.1.bn2.running_var",
+        "backbone.layer2.1.bn2.weight",
+        "backbone.layer2.1.conv1.weight",
+        "backbone.layer2.1.conv2.weight",
+        "backbone.layer3.0.bn1.bias",
+        "backbone.layer3.0.bn1.num_batches_tracked",
+        "backbone.layer3.0.bn1.running_mean",
+        "backbone.layer3.0.bn1.running_var",
+        "backbone.layer3.0.bn1.weight",
+        "backbone.layer3.0.bn2.bias",
+        "backbone.layer3.0.bn2.num_batches_tracked",
+        "backbone.layer3.0.bn2.running_mean",
+        "backbone.layer3.0.bn2.running_var",
+        "backbone.layer3.0.bn2.weight",
+        "backbone.layer3.0.conv1.weight",
+        "backbone.layer3.0.conv2.weight",
+        "backbone.layer3.0.downsample.0.weight",
+        "backbone.layer3.0.downsample.1.bias",
+        "backbone.layer3.0.downsample.1.num_batches_tracked",
+        "backbone.layer3.0.downsample.1.running_mean",
+        "backbone.layer3.0.downsample.1.running_var",
+        "backbone.layer3.0.downsample.1.weight",
+        "backbone.layer3.1.bn1.bias",
+        "backbone.layer3.1.bn1.num_batches_tracked",
+        "backbone.layer3.1.bn1.running_mean",
+        "backbone.layer3.1.bn1.running_var",
+        "backbone.layer3.1.bn1.weight",
+        "backbone.layer3.1.bn2.bias",
+        "backbone.layer3.1.bn2.num_batches_tracked",
+        "backbone.layer3.1.bn2.running_mean",
+        "backbone.layer3.1.bn2.running_var",
+        "backbone.layer3.1.bn2.weight",
+        "backbone.layer3.1.conv1.weight",
+        "backbone.layer3.1.conv2.weight",
+        "backbone.layer4.0.bn1.bias",
+        "backbone.layer4.0.bn1.num_batches_tracked",
+        "backbone.layer4.0.bn1.running_mean",
+        "backbone.layer4.0.bn1.running_var",
+        "backbone.layer4.0.bn1.weight",
+        "backbone.layer4.0.bn2.bias",
+        "backbone.layer4.0.bn2.num_batches_tracked",
+        "backbone.layer4.0.bn2.running_mean",
+        "backbone.layer4.0.bn2.running_var",
+        "backbone.layer4.0.bn2.weight",
+        "backbone.layer4.0.conv1.weight",
+        "backbone.layer4.0.conv2.weight",
+        "backbone.layer4.0.downsample.0.weight",
+        "backbone.layer4.0.downsample.1.bias",
+        "backbone.layer4.0.downsample.1.num_batches_tracked",
+        "backbone.layer4.0.downsample.1.running_mean",
+        "backbone.layer4.0.downsample.1.running_var",
+        "backbone.layer4.0.downsample.1.weight",
+        "backbone.layer4.1.bn1.bias",
+        "backbone.layer4.1.bn1.num_batches_tracked",
+        "backbone.layer4.1.bn1.running_mean",
+        "backbone.layer4.1.bn1.running_var",
+        "backbone.layer4.1.bn1.weight",
+        "backbone.layer4.1.bn2.bias",
+        "backbone.layer4.1.bn2.num_batches_tracked",
+        "backbone.layer4.1.bn2.running_mean",
+        "backbone.layer4.1.bn2.running_var",
+        "backbone.layer4.1.bn2.weight",
+        "backbone.layer4.1.conv1.weight",
+        "backbone.layer4.1.conv2.weight",
+        "backbone.stem.0.weight",
+        "backbone.stem.1.bias",
+        "backbone.stem.1.num_batches_tracked",
+        "backbone.stem.1.running_mean",
+        "backbone.stem.1.running_var",
+        "backbone.stem.1.weight",
+        "backbone.stem.3.weight",
+        "backbone.stem.4.bias",
+        "backbone.stem.4.num_batches_tracked",
+        "backbone.stem.4.running_mean",
+        "backbone.stem.4.running_var",
+        "backbone.stem.4.weight",
+        "backbone.stem.6.weight",
+        "backbone.stem.7.bias",
+        "backbone.stem.7.num_batches_tracked",
+        "backbone.stem.7.running_mean",
+        "backbone.stem.7.running_var",
+        "backbone.stem.7.weight"
+      ],
+      "bn_policy": "running",
+      "checkpoint_loading_policy": "official_hash_bound_pickle_v1",
+      "checkpoint_path": "/scratch/b00090279/anchor-pilot-37980/inputs/weights.pth",
+      "checkpoint_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618",
+      "head_seed": 42,
+      "historical_pretrained_tensor_sha256": "1283f34343b41b2a5e27d55ec9654bf1e7dae47e1959adab4f403c4e0884ef44",
+      "loaded_keys": [
+        "backbone.layer1.0.bn1.bias",
+        "backbone.layer1.0.bn1.num_batches_tracked",
+        "backbone.layer1.0.bn1.running_mean",
+        "backbone.layer1.0.bn1.running_var",
+        "backbone.layer1.0.bn1.weight",
+        "backbone.layer1.0.bn2.bias",
+        "backbone.layer1.0.bn2.num_batches_tracked",
+        "backbone.layer1.0.bn2.running_mean",
+        "backbone.layer1.0.bn2.running_var",
+        "backbone.layer1.0.bn2.weight",
+        "backbone.layer1.0.conv1.weight",
+        "backbone.layer1.0.conv2.weight",
+        "backbone.layer1.1.bn1.bias",
+        "backbone.layer1.1.bn1.num_batches_tracked",
+        "backbone.layer1.1.bn1.running_mean",
+        "backbone.layer1.1.bn1.running_var",
+        "backbone.layer1.1.bn1.weight",
+        "backbone.layer1.1.bn2.bias",
+        "backbone.layer1.1.bn2.num_batches_tracked",
+        "backbone.layer1.1.bn2.running_mean",
+        "backbone.layer1.1.bn2.running_var",
+        "backbone.layer1.1.bn2.weight",
+        "backbone.layer1.1.conv1.weight",
+        "backbone.layer1.1.conv2.weight",
+        "backbone.layer2.0.bn1.bias",
+        "backbone.layer2.0.bn1.num_batches_tracked",
+        "backbone.layer2.0.bn1.running_mean",
+        "backbone.layer2.0.bn1.running_var",
+        "backbone.layer2.0.bn1.weight",
+        "backbone.layer2.0.bn2.bias",
+        "backbone.layer2.0.bn2.num_batches_tracked",
+        "backbone.layer2.0.bn2.running_mean",
+        "backbone.layer2.0.bn2.running_var",
+        "backbone.layer2.0.bn2.weight",
+        "backbone.layer2.0.conv1.weight",
+        "backbone.layer2.0.conv2.weight",
+        "backbone.layer2.0.downsample.0.weight",
+        "backbone.layer2.0.downsample.1.bias",
+        "backbone.layer2.0.downsample.1.num_batches_tracked",
+        "backbone.layer2.0.downsample.1.running_mean",
+        "backbone.layer2.0.downsample.1.running_var",
+        "backbone.layer2.0.downsample.1.weight",
+        "backbone.layer2.1.bn1.bias",
+        "backbone.layer2.1.bn1.num_batches_tracked",
+        "backbone.layer2.1.bn1.running_mean",
+        "backbone.layer2.1.bn1.running_var",
+        "backbone.layer2.1.bn1.weight",
+        "backbone.layer2.1.bn2.bias",
+        "backbone.layer2.1.bn2.num_batches_tracked",
+        "backbone.layer2.1.bn2.running_mean",
+        "backbone.layer2.1.bn2.running_var",
+        "backbone.layer2.1.bn2.weight",
+        "backbone.layer2.1.conv1.weight",
+        "backbone.layer2.1.conv2.weight",
+        "backbone.layer3.0.bn1.bias",
+        "backbone.layer3.0.bn1.num_batches_tracked",
+        "backbone.layer3.0.bn1.running_mean",
+        "backbone.layer3.0.bn1.running_var",
+        "backbone.layer3.0.bn1.weight",
+        "backbone.layer3.0.bn2.bias",
+        "backbone.layer3.0.bn2.num_batches_tracked",
+        "backbone.layer3.0.bn2.running_mean",
+        "backbone.layer3.0.bn2.running_var",
+        "backbone.layer3.0.bn2.weight",
+        "backbone.layer3.0.conv1.weight",
+        "backbone.layer3.0.conv2.weight",
+        "backbone.layer3.0.downsample.0.weight",
+        "backbone.layer3.0.downsample.1.bias",
+        "backbone.layer3.0.downsample.1.num_batches_tracked",
+        "backbone.layer3.0.downsample.1.running_mean",
+        "backbone.layer3.0.downsample.1.running_var",
+        "backbone.layer3.0.downsample.1.weight",
+        "backbone.layer3.1.bn1.bias",
+        "backbone.layer3.1.bn1.num_batches_tracked",
+        "backbone.layer3.1.bn1.running_mean",
+        "backbone.layer3.1.bn1.running_var",
+        "backbone.layer3.1.bn1.weight",
+        "backbone.layer3.1.bn2.bias",
+        "backbone.layer3.1.bn2.num_batches_tracked",
+        "backbone.layer3.1.bn2.running_mean",
+        "backbone.layer3.1.bn2.running_var",
+        "backbone.layer3.1.bn2.weight",
+        "backbone.layer3.1.conv1.weight",
+        "backbone.layer3.1.conv2.weight",
+        "backbone.layer4.0.bn1.bias",
+        "backbone.layer4.0.bn1.num_batches_tracked",
+        "backbone.layer4.0.bn1.running_mean",
+        "backbone.layer4.0.bn1.running_var",
+        "backbone.layer4.0.bn1.weight",
+        "backbone.layer4.0.bn2.bias",
+        "backbone.layer4.0.bn2.num_batches_tracked",
+        "backbone.layer4.0.bn2.running_mean",
+        "backbone.layer4.0.bn2.running_var",
+        "backbone.layer4.0.bn2.weight",
+        "backbone.layer4.0.conv1.weight",
+        "backbone.layer4.0.conv2.weight",
+        "backbone.layer4.0.downsample.0.weight",
+        "backbone.layer4.0.downsample.1.bias",
+        "backbone.layer4.0.downsample.1.num_batches_tracked",
+        "backbone.layer4.0.downsample.1.running_mean",
+        "backbone.layer4.0.downsample.1.running_var",
+        "backbone.layer4.0.downsample.1.weight",
+        "backbone.layer4.1.bn1.bias",
+        "backbone.layer4.1.bn1.num_batches_tracked",
+        "backbone.layer4.1.bn1.running_mean",
+        "backbone.layer4.1.bn1.running_var",
+        "backbone.layer4.1.bn1.weight",
+        "backbone.layer4.1.bn2.bias",
+        "backbone.layer4.1.bn2.num_batches_tracked",
+        "backbone.layer4.1.bn2.running_mean",
+        "backbone.layer4.1.bn2.running_var",
+        "backbone.layer4.1.bn2.weight",
+        "backbone.layer4.1.conv1.weight",
+        "backbone.layer4.1.conv2.weight",
+        "backbone.stem.0.weight",
+        "backbone.stem.1.bias",
+        "backbone.stem.1.num_batches_tracked",
+        "backbone.stem.1.running_mean",
+        "backbone.stem.1.running_var",
+        "backbone.stem.1.weight",
+        "backbone.stem.3.weight",
+        "backbone.stem.4.bias",
+        "backbone.stem.4.num_batches_tracked",
+        "backbone.stem.4.running_mean",
+        "backbone.stem.4.running_var",
+        "backbone.stem.4.weight",
+        "backbone.stem.6.weight",
+        "backbone.stem.7.bias",
+        "backbone.stem.7.num_batches_tracked",
+        "backbone.stem.7.running_mean",
+        "backbone.stem.7.running_var",
+        "backbone.stem.7.weight",
+        "decode_head.conv_seg.bias",
+        "decode_head.conv_seg.weight",
+        "decode_head.convs.0.bn.bias",
+        "decode_head.convs.0.bn.num_batches_tracked",
+        "decode_head.convs.0.bn.running_mean",
+        "decode_head.convs.0.bn.running_var",
+        "decode_head.convs.0.bn.weight",
+        "decode_head.convs.0.conv.weight",
+        "decode_head.convs.1.bn.bias",
+        "decode_head.convs.1.bn.num_batches_tracked",
+        "decode_head.convs.1.bn.running_mean",
+        "decode_head.convs.1.bn.running_var",
+        "decode_head.convs.1.bn.weight",
+        "decode_head.convs.1.conv.weight",
+        "decode_head.convs.2.bn.bias",
+        "decode_head.convs.2.bn.num_batches_tracked",
+        "decode_head.convs.2.bn.running_mean",
+        "decode_head.convs.2.bn.running_var",
+        "decode_head.convs.2.bn.weight",
+        "decode_head.convs.2.conv.weight",
+        "decode_head.convs.3.bn.bias",
+        "decode_head.convs.3.bn.num_batches_tracked",
+        "decode_head.convs.3.bn.running_mean",
+        "decode_head.convs.3.bn.running_var",
+        "decode_head.convs.3.bn.weight",
+        "decode_head.convs.3.conv.weight",
+        "decode_head.discriminator.layers.0.bias",
+        "decode_head.discriminator.layers.0.weight",
+        "decode_head.discriminator.layers.1.bias",
+        "decode_head.discriminator.layers.1.weight",
+        "decode_head.discriminator.layers.4.bias",
+        "decode_head.discriminator.layers.4.weight",
+        "decode_head.fusion_conv.bn.bias",
+        "decode_head.fusion_conv.bn.num_batches_tracked",
+        "decode_head.fusion_conv.bn.running_mean",
+        "decode_head.fusion_conv.bn.running_var",
+        "decode_head.fusion_conv.bn.weight",
+        "decode_head.fusion_conv.conv.weight",
+        "decode_head.neck_layer.flow_make.0.bias",
+        "decode_head.neck_layer.flow_make.0.weight",
+        "decode_head.neck_layer.flow_make.3.weight"
+      ],
+      "missing_keys": [
+        "referral.fc1.bias",
+        "referral.fc1.weight",
+        "referral.fc2.bias",
+        "referral.fc2.weight"
+      ],
+      "new_parameter_count": 65793,
+      "normalization_audit": [
+        {
+          "name": "backbone.stem.1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.stem.4",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.stem.7",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer1.0.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer1.0.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer1.1.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer1.1.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer2.0.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer2.0.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer2.0.downsample.1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer2.1.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer2.1.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer3.0.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer3.0.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer3.0.downsample.1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer3.1.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer3.1.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer4.0.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer4.0.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer4.0.downsample.1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer4.1.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer4.1.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        }
+      ],
+      "pretrained_tensor_sha256": "9ab72d0bbe12d81de9034b1b44e5d037576a8e83f45addf0ba9d339382e59c42",
+      "requested_initialization": "levir",
+      "surgeries": {
+        "conv_seg_log_odds": {
+          "source_shape": [
+            2,
+            128,
+            1,
+            1
+          ],
+          "target_shape": [
+            1,
+            128,
+            1,
+            1
+          ]
+        },
+        "stem_zero_padding": {
+          "source_shape": [
+            32,
+            3,
+            3,
+            3
+          ],
+          "target_shape": [
+            32,
+            4,
+            3,
+            3
+          ]
+        }
+      },
+      "tensor_hash_format": "sorted_name_shape_dtype_compact_json_newline_then_c_order_bytes_v1",
+      "unexpected_keys": []
+    }
+  },
+  "membership": {
+    "train": [
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_00",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_00",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_00.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_01",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_01",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_01.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_01",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_01_fake_6_56",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_01",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_01_fake_6_61",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_02",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_02",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_02.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_02",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_02_fake_6_44",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_02",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_02_fake_6_49",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_02",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_02_fake_6_88",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_03",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_03",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_03.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_03",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_03_fake_6_69",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_04",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_04",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_04.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_05",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_05",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_05.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_05",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_05_fake_6_60",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_05_fake_6_60.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_06",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_06",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_06.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_07",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_07",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_07.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_08",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_08",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_08.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_09",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_09",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_09.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_10",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_10",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_10.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_10",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_10_fake_6_67",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_10_fake_6_67.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_11",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_11",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_11.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_12",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_12",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_12.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_12",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_12_fake_6_29",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_12_fake_6_29.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_46",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_13_fake_6_18",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_13_fake_6_18.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_14",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_14",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_14.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_15",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_15",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_15.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_15",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_15_fake_6_111",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_15_fake_6_111.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_17",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_17",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_17.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_18",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_18",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_18.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_18",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_18_fake_6_78",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_18_fake_6_78.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_19",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_19_fake_6_16",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_19_fake_6_16.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_20",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_20",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_20.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_21",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_21",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_21.jpg"
+      }
+    ],
+    "val": [
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_03",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_03_fake_6_87",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_03_fake_6_87.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_46",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_13",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_13.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_17",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_17_fake_6_98",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_17_fake_6_98.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_19",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_19",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_19.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_20",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_20_fake_6_51",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_20_fake_6_51.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_24",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_24_fake_6_100",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_24_fake_6_100.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_33",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_33_fake_6_10",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_33_fake_6_10.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_37",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_37",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_37.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_41",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_41",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_41.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_42",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_42_fake_6_94",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_42_fake_6_94.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_45",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_45_fake_6_62",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_45_fake_6_62.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_53",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_53_fake_6_33",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_53_fake_6_33.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_54",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_54_fake_6_24",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_54_fake_6_24.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_59",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_59_fake_6_7",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_59_fake_6_7.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_61",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_61",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_61.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_49",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_63",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_63.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_66",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_66_fake_6_21",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_66_fake_6_21.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_69",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_69_fake_6_3",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_69_fake_6_3.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_70",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_70_fake_6_55",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_70_fake_6_55.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_75",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_75",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_75.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_80",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_80_fake_6_57",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_80_fake_6_57.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_81",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_81_fake_6_63",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_81_fake_6_63.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_81",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_81_fake_6_91",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_81_fake_6_91.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_83",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_83",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_83.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_83",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_83_fake_6_35",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_83_fake_6_35.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_89",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_89",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_89.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_90",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_90",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_90.jpg"
+      },
+      {
+        "attack_family": "text_copy",
+        "component_id": "sidtd/aze_passport_89",
+        "design_id": "sidtd/aze_passport",
+        "image_id": "sidtd_aze_passport_00_fake_3_105",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/aze_passport_00_fake_3_105.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/aze_passport_89",
+        "design_id": "sidtd/aze_passport",
+        "image_id": "sidtd_aze_passport_10",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/aze_passport_10.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/aze_passport_17",
+        "design_id": "sidtd/aze_passport",
+        "image_id": "sidtd_aze_passport_17",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/aze_passport_17.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/aze_passport_27",
+        "design_id": "sidtd/aze_passport",
+        "image_id": "sidtd_aze_passport_27",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/aze_passport_27.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/aze_passport_42",
+        "design_id": "sidtd/aze_passport",
+        "image_id": "sidtd_aze_passport_33",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/aze_passport_33.jpg"
+      }
+    ]
+  },
+  "n_active_parameters": 11261825,
+  "n_images": {
+    "train": 32,
+    "val": 32
+  },
+  "n_total_parameters": 11261825,
+  "no_test_open": true,
+  "omitted_train_ids": [
+    {
+      "epoch": 1,
+      "image_ids": []
+    }
+  ],
+  "opened_roles": [
+    "train",
+    "val"
+  ],
+  "optimizer": {
+    "groups": [
+      {
+        "lr": 0.0001,
+        "n_tensors": 66,
+        "weight_decay": 0.05
+      },
+      {
+        "lr": 0.001,
+        "n_tensors": 4,
+        "weight_decay": 0.05
+      }
+    ],
+    "initial_state_empty": true,
+    "name": "adamw"
+  },
+  "optimizer_coverage": {
+    "groups": [
+      [
+        "backbone.stem.0.weight",
+        "backbone.stem.1.weight",
+        "backbone.stem.1.bias",
+        "backbone.stem.3.weight",
+        "backbone.stem.4.weight",
+        "backbone.stem.4.bias",
+        "backbone.stem.6.weight",
+        "backbone.stem.7.weight",
+        "backbone.stem.7.bias",
+        "backbone.layer1.0.conv1.weight",
+        "backbone.layer1.0.bn1.weight",
+        "backbone.layer1.0.bn1.bias",
+        "backbone.layer1.0.conv2.weight",
+        "backbone.layer1.0.bn2.weight",
+        "backbone.layer1.0.bn2.bias",
+        "backbone.layer1.1.conv1.weight",
+        "backbone.layer1.1.bn1.weight",
+        "backbone.layer1.1.bn1.bias",
+        "backbone.layer1.1.conv2.weight",
+        "backbone.layer1.1.bn2.weight",
+        "backbone.layer1.1.bn2.bias",
+        "backbone.layer2.0.conv1.weight",
+        "backbone.layer2.0.bn1.weight",
+        "backbone.layer2.0.bn1.bias",
+        "backbone.layer2.0.conv2.weight",
+        "backbone.layer2.0.bn2.weight",
+        "backbone.layer2.0.bn2.bias",
+        "backbone.layer2.0.downsample.0.weight",
+        "backbone.layer2.0.downsample.1.weight",
+        "backbone.layer2.0.downsample.1.bias",
+        "backbone.layer2.1.conv1.weight",
+        "backbone.layer2.1.bn1.weight",
+        "backbone.layer2.1.bn1.bias",
+        "backbone.layer2.1.conv2.weight",
+        "backbone.layer2.1.bn2.weight",
+        "backbone.layer2.1.bn2.bias",
+        "backbone.layer3.0.conv1.weight",
+        "backbone.layer3.0.bn1.weight",
+        "backbone.layer3.0.bn1.bias",
+        "backbone.layer3.0.conv2.weight",
+        "backbone.layer3.0.bn2.weight",
+        "backbone.layer3.0.bn2.bias",
+        "backbone.layer3.0.downsample.0.weight",
+        "backbone.layer3.0.downsample.1.weight",
+        "backbone.layer3.0.downsample.1.bias",
+        "backbone.layer3.1.conv1.weight",
+        "backbone.layer3.1.bn1.weight",
+        "backbone.layer3.1.bn1.bias",
+        "backbone.layer3.1.conv2.weight",
+        "backbone.layer3.1.bn2.weight",
+        "backbone.layer3.1.bn2.bias",
+        "backbone.layer4.0.conv1.weight",
+        "backbone.layer4.0.bn1.weight",
+        "backbone.layer4.0.bn1.bias",
+        "backbone.layer4.0.conv2.weight",
+        "backbone.layer4.0.bn2.weight",
+        "backbone.layer4.0.bn2.bias",
+        "backbone.layer4.0.downsample.0.weight",
+        "backbone.layer4.0.downsample.1.weight",
+        "backbone.layer4.0.downsample.1.bias",
+        "backbone.layer4.1.conv1.weight",
+        "backbone.layer4.1.bn1.weight",
+        "backbone.layer4.1.bn1.bias",
+        "backbone.layer4.1.conv2.weight",
+        "backbone.layer4.1.bn2.weight",
+        "backbone.layer4.1.bn2.bias"
+      ],
+      [
+        "classifier.0.weight",
+        "classifier.0.bias",
+        "classifier.2.weight",
+        "classifier.2.bias"
+      ]
+    ],
+    "n_tensors": 70,
+    "passed": true
+  },
+  "passed": true,
+  "paths": {
+    "config": "/scratch/b00090279/anchor-pilot-37980/inputs/config.yaml",
+    "legacy_root": "/scratch/b00090279/anchor-pilot-37980/legacy",
+    "raw_root": "/scratch/b00090279/anchor-pilot-37980/raw",
+    "records": "/scratch/b00090279/anchor-pilot-37980/inputs/records.csv",
+    "split": "/scratch/b00090279/anchor-pilot-37980/inputs/split.csv",
+    "weights": "/scratch/b00090279/anchor-pilot-37980/inputs/weights.pth"
+  },
+  "phase": "smoke",
+  "phase_recipe": {
+    "accumulation_steps": 1,
+    "augment": {
+      "affine_border": "constant_zero",
+      "affine_px": 8,
+      "binary_interpolation": "opencv_inter_nearest",
+      "crop": null,
+      "enabled": true,
+      "interpolation": "opencv_inter_linear",
+      "jitter_p": 0.25,
+      "jitter_px": 2,
+      "jitter_rgb_border": "replicate",
+      "jitter_target_border": "constant_zero",
+      "jitter_zone": false,
+      "jpeg_quality": null,
+      "photometric": true,
+      "photometric_strength": 0.2,
+      "preset": "legacy_query_v1",
+      "rotation_degrees": 1.0
+    },
+    "batch_size": 8,
+    "drop_last": true,
+    "epochs": 1,
+    "evaluation_interval_updates": null,
+    "gradient_clip_norm": 5.0,
+    "max_updates": null
+  },
+  "pid": 3529,
+  "precision": {
+    "amp": false,
+    "cublas_workspace_config": ":4096:8",
+    "cudnn_tf32": false,
+    "deterministic_algorithms": true,
+    "deterministic_warn_only": false,
+    "dtype": "float32",
+    "known_nondeterministic_ops": [],
+    "matmul_tf32": false,
+    "training_bit_reproducible": false
+  },
+  "rng": {
+    "head_rng_isolated": true,
+    "persistent_workers": false,
+    "sampler_initial_state_sha256": "72772952dea975c85940f7e2fdf714de96c26b3eb0fc80f91ca9435bbd061e01",
+    "sampler_seed": 1043,
+    "seed": 42,
+    "worker_seed": 2043,
+    "workers": 0
+  },
+  "scheduler": {
+    "effective_warmup_iters": 0,
+    "name": "warmup_cosine",
+    "total_iters": 4
+  },
+  "schema_version": "anchor_pilot_v1",
+  "selected_checkpoint_sha256": "6db02f09b4a8c810b01fbae1d9a14f9823a6e3d65fd31cce699c335bfd30ec18",
+  "selected_epoch": 1,
+  "selection_key": [
+    0.4375,
+    0.33333333333333337
+  ],
+  "track": "D_running_pilot",
+  "versions": {
+    "numpy": "1.26.4",
+    "python": "3.10.22",
+    "torch": "2.1.2+cu121"
+  }
+}
