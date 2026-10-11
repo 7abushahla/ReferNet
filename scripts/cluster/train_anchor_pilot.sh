@@ -71,7 +71,7 @@ common=(--config "$scratch/inputs/config.yaml" --raw-root "$scratch/raw" --legac
         --weights "$scratch/inputs/weights.pth" --weights-sha256 "$9" --run-dir "$pilot_dir" --device cuda)
 if [[ "$phase" == diagnostic ]]; then
     track="$("$python_bin" -c 'import json, sys; from pathlib import Path; print(json.loads(Path(sys.argv[1]).read_text())["track"])' "$run_dir/input_manifest.json")"
-    if [[ "$track" == D || "$track" == D_running || "$track" == N ]]; then
+    if [[ "$track" == D || "$track" == D_running || "$track" == D_running_pilot || "$track" == N ]]; then
         "$python_bin" -m pytest "$code_root/tests/test_anchor_changer.py::test_actual_opencd_gpu_integration" \
             -q --maxfail=1 -s --junitxml "$run_dir/actual-stack-test.xml" 2>&1 | tee "$run_dir/actual-stack-test.log"
         "$python_bin" "$code_root/scripts/anchor_job_manifest.py" check-stack --report "$run_dir/actual-stack-test.xml"

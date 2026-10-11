@@ -294,8 +294,8 @@ def prepare_job(*, source_dir, config, raw_root, legacy_root, records, split, we
         config_hash = hashlib.sha256(config_bytes).hexdigest()
         settings = resolve_config(source_dir, config)
         if (not isinstance(settings, dict) or settings.get("schema_version") != "anchor_pilot_v1"
-                or settings.get("track") not in {"R", "D", "D_running", "N"}):
-            raise ValueError("anchor_pilot_v1 config with track R/D/D_running/N required")
+                or settings.get("track") not in {"R", "D", "D_running", "D_running_pilot", "N"}):
+            raise ValueError("anchor_pilot_v1 config with track R/D/D_running/D_running_pilot/N required")
         track = settings["track"]
         if track == "D_running" and phase == "train":
             raise ValueError("D_running is diagnostic-only; full training is not authorized")

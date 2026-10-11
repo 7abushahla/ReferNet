@@ -223,7 +223,7 @@ def test_query_features_match_legacy_exchange_off(anchor, policy):
         torch.testing.assert_close(actual_stage, legacy_stage.chunk(2, dim=1)[0], atol=0, rtol=0)
 
 
-@pytest.mark.parametrize("track", ["D", "D_running"])
+@pytest.mark.parametrize("track", ["D", "D_running", "D_running_pilot"])
 def test_direct_route_has_no_decoder_or_map_ancestor(anchor, checkpoint, track):
     model = build(anchor, checkpoint, track).train()
     assert not hasattr(model, "decode_head") and not hasattr(model, "referral")
@@ -304,10 +304,15 @@ def test_direct_uses_encoder_batch_stats_and_enforces_eval_batch_one(anchor, che
         model(query_tensor(1))
 
 
-def test_direct_running_retains_stored_bn_and_changes_only_buffers_policy(anchor, stored_bn_checkpoint):
-    model = build(anchor, stored_bn_checkpoint, "D_running")
+@pytest.mark.parametrize("track", ["D_running", "D_running_pilot"])
+def test_direct_running_retains_stored_bn_and_changes_only_buffers_policy(anchor, stored_bn_checkpoint, track):
+    model = build(anchor, stored_bn_checkpoint, track)
     direct = build(anchor, stored_bn_checkpoint, "D")
-    assert model.track == "D_running" and model.architecture_id == "anchor_direct_running_ia18_v1"
+    assert model.track == track
+    assert model.architecture_id == {
+        "D_running": "anchor_direct_running_ia18_v1",
+        "D_running_pilot": "anchor_direct_running_ia18_pilot_v1",
+    }[track]
     assert direct.architecture_id == "anchor_direct_ia18_v1"
     assert model.bn_policy == model.initialization_provenance["bn_policy"] == "running"
     assert model.initialization_provenance["checkpoint_sha256"] == stored_bn_checkpoint[1]
@@ -325,13 +330,14 @@ def test_direct_running_retains_stored_bn_and_changes_only_buffers_policy(anchor
     model(query_tensor(8))
     assert all(torch.equal(module.num_batches_tracked, previous + 1) for module, previous in zip(norms, before))
     assert any(not torch.equal(module.running_mean, previous) for module, previous in zip(norms, means))
-    pristine = build(anchor, stored_bn_checkpoint, "D_running")
+    pristine = build(anchor, stored_bn_checkpoint, track)
     for name, buffer in pristine.named_buffers():
         torch.testing.assert_close(buffer, stored_bn_checkpoint[2][name], atol=0, rtol=0)
 
 
-def test_direct_running_eval_is_companion_invariant_and_buffers_immutable(anchor, stored_bn_checkpoint):
-    model = build(anchor, stored_bn_checkpoint, "D_running").train()
+@pytest.mark.parametrize("track", ["D_running", "D_running_pilot"])
+def test_direct_running_eval_is_companion_invariant_and_buffers_immutable(anchor, stored_bn_checkpoint, track):
+    model = build(anchor, stored_bn_checkpoint, track).train()
     model(query_tensor(8))
     model.eval()
     probe = query_tensor(1)
@@ -351,16 +357,60 @@ def test_direct_running_eval_is_companion_invariant_and_buffers_immutable(anchor
     assert all(not module.training for module in model.modules())
 
 
-def test_direct_running_cannot_reinterpret_failed_direct_checkpoint(anchor, checkpoint, tmp_path):
+@pytest.mark.parametrize("track", ["D_running", "D_running_pilot"])
+def test_direct_running_cannot_reinterpret_failed_direct_checkpoint(anchor, checkpoint, tmp_path, track):
     direct = build(anchor, checkpoint, "D")
-    running = build(anchor, checkpoint, "D_running")
+    running = build(anchor, checkpoint, track)
     with pytest.raises(RuntimeError, match="running_mean|running_var"):
         running.load_state_dict(direct.state_dict(), strict=True)
     failed_checkpoint = tmp_path / "failed-direct.pth"
     torch.save({"architecture_id": direct.architecture_id, "state_dict": direct.state_dict()}, failed_checkpoint)
     digest = hashlib.sha256(failed_checkpoint.read_bytes()).hexdigest()
     with pytest.raises(ValueError, match="key coverage"):
-        anchor.build_anchor_changer("D_running", failed_checkpoint, digest, 42)
+        anchor.build_anchor_changer(track, failed_checkpoint, digest, 42)
+
+
+def test_direct_running_pilot_matches_diagnostic_fresh_initialization(anchor, stored_bn_checkpoint):
+    diagnostic = build(anchor, stored_bn_checkpoint, "D_running").eval()
+    pilot = build(anchor, stored_bn_checkpoint, "D_running_pilot").eval()
+    assert pilot.track == "D_running_pilot"
+    assert pilot.architecture_id == "anchor_direct_running_ia18_pilot_v1"
+    assert pilot.architecture_id != diagnostic.architecture_id
+    assert pilot.bn_policy == diagnostic.bn_policy == "running"
+    assert pilot.initialization_provenance == diagnostic.initialization_provenance
+    diagnostic_state, pilot_state = diagnostic.state_dict(), pilot.state_dict()
+    assert diagnostic_state.keys() == pilot_state.keys()
+    for name, tensor in pilot_state.items():
+        torch.testing.assert_close(tensor, diagnostic_state[name], atol=0, rtol=0)
+    with torch.inference_mode():
+        query = query_tensor(8)
+        torch.testing.assert_close(pilot(query)["attack_logit"], diagnostic(query)["attack_logit"], atol=0, rtol=0)
+
+
+@pytest.mark.parametrize("old_track", ["D", "D_running", "N"])
+@pytest.mark.parametrize("save_pilot", [False, True])
+def test_direct_running_pilot_rejects_old_checkpoint_identities(anchor, checkpoint, tmp_path, old_track, save_pilot):
+    pilots = importlib.import_module("refer_or_clear.pilots")
+    saved_track, target_track = ("D_running_pilot", old_track) if save_pilot else (old_track, "D_running_pilot")
+    model = build(anchor, checkpoint, saved_track)
+    target = build(anchor, checkpoint, target_track)
+    config = {"schema_version": "anchor_pilot_v1", "track": saved_track, "architecture_id": model.architecture_id}
+    identities = {"source_sha256": "a" * 64}
+    path = tmp_path / "pilot.pt"
+    pilots.save_pilot_checkpoint(path, model, config, identities, 1, (1., 1.), "smoke")
+    wrong_config = dict(config, track=target_track, architecture_id=target.architecture_id)
+    with pytest.raises(ValueError, match="architecture mismatch"):
+        pilots.read_pilot_checkpoint(path, wrong_config, identities)
+
+
+def test_direct_running_pilot_cannot_initialize_from_diagnostic_checkpoint(anchor, checkpoint, tmp_path):
+    diagnostic = build(anchor, checkpoint, "D_running").train()
+    diagnostic(query_tensor(8))
+    path = tmp_path / "diagnostic.pth"
+    torch.save({"architecture_id": diagnostic.architecture_id, "state_dict": diagnostic.state_dict()}, path)
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    with pytest.raises(ValueError, match="key coverage"):
+        anchor.build_anchor_changer("D_running_pilot", path, digest, 42)
 
 
 @pytest.mark.parametrize("saved_track", ["D", "D_running"])
@@ -378,7 +428,7 @@ def test_direct_running_checkpoint_architecture_is_not_legacy_id(anchor, checkpo
         pilots.read_pilot_checkpoint(path, wrong_config, identities)
 
 
-@pytest.mark.parametrize("track", ["D", "D_running", "N"])
+@pytest.mark.parametrize("track", ["D", "D_running", "D_running_pilot", "N"])
 def test_optimizer_groups_cover_only_active_trainable_tensors(anchor, checkpoint, track):
     model = build(anchor, checkpoint, track)
     pretrained, new = model.parameter_groups()
@@ -412,7 +462,7 @@ def test_absent_classification_gradients_and_dense_target_affect_loss_not_infere
         model(query_tensor(), mask)
 
 
-@pytest.mark.parametrize("track", ["D", "D_running", "N"])
+@pytest.mark.parametrize("track", ["D", "D_running", "D_running_pilot", "N"])
 def test_reference_planes_are_not_model_inputs(anchor, checkpoint, track):
     model = build(anchor, checkpoint, track).eval()
     query = query_tensor(1)
@@ -442,7 +492,7 @@ def test_absent_running_bn_companion_invariance(anchor, checkpoint):
         torch.testing.assert_close(solo[name][0], last[name][-1], atol=1e-5, rtol=1e-4)
 
 
-@pytest.mark.parametrize("track", ["D", "D_running", "N"])
+@pytest.mark.parametrize("track", ["D", "D_running", "D_running_pilot", "N"])
 def test_checkpoint_replay(anchor, checkpoint, track):
     model = build(anchor, checkpoint, track).train()
     model(query_tensor())
@@ -458,7 +508,7 @@ def test_checkpoint_replay(anchor, checkpoint, track):
         torch.testing.assert_close(actual[name], expected[name], atol=1e-5, rtol=1e-4)
 
 
-@pytest.mark.parametrize("track", ["D", "D_running", "N"])
+@pytest.mark.parametrize("track", ["D", "D_running", "D_running_pilot", "N"])
 def test_fresh_process_checkpoint_replay(anchor, checkpoint, tmp_path, track):
     model = build(anchor, checkpoint, track).train()
     model(query_tensor())
@@ -493,7 +543,7 @@ with torch.no_grad():
         torch.testing.assert_close(actual[name], expected[name], atol=1e-5, rtol=1e-4)
 
 
-@pytest.mark.parametrize("track", ["D", "D_running", "N"])
+@pytest.mark.parametrize("track", ["D", "D_running", "D_running_pilot", "N"])
 def test_construction_preserves_rng_and_declared_historical_initialization(anchor, checkpoint, track):
     torch.manual_seed(83)
     random.seed(91)
@@ -517,11 +567,12 @@ def test_construction_preserves_rng_and_declared_historical_initialization(ancho
     assert all(torch.equal(tensor, repeated.state_dict()[name]) for name, tensor in model.state_dict().items())
 
 
-@pytest.mark.parametrize("track", ["D", "D_running", "N"])
+@pytest.mark.parametrize("track", ["D", "D_running", "D_running_pilot", "N"])
 def test_levir_surgery_and_initialization_provenance(anchor, checkpoint, track):
     model = build(anchor, checkpoint, track)
     path, digest, source = checkpoint
     assert model.architecture_id == {"D": "anchor_direct_ia18_v1", "D_running": "anchor_direct_running_ia18_v1",
+                                     "D_running_pilot": "anchor_direct_running_ia18_pilot_v1",
                                      "N": "anchor_absent_ia18_v1"}[track]
     assert model.track == track
     provenance = model.initialization_provenance
@@ -542,7 +593,7 @@ def test_levir_surgery_and_initialization_provenance(anchor, checkpoint, track):
     assert any(not torch.equal(first, second) for first, second in zip(model.parameter_groups()[1], alternate.parameter_groups()[1]))
 
 
-@pytest.mark.parametrize("track", ["D", "D_running", "N"])
+@pytest.mark.parametrize("track", ["D", "D_running", "D_running_pilot", "N"])
 def test_active_pretrained_hash_matches_retained_state_independently(anchor, checkpoint, track):
     model = build(anchor, checkpoint, track)
     state = model.state_dict()
@@ -622,7 +673,7 @@ def test_provenance_hashes_active_pretrained_tensors_and_audits_fusion_normaliza
     assert modified_absent.initialization_provenance["pretrained_tensor_sha256"] != absent.initialization_provenance["pretrained_tensor_sha256"]
 
 
-@pytest.mark.parametrize("track", ["D", "D_running", "N"])
+@pytest.mark.parametrize("track", ["D", "D_running", "D_running_pilot", "N"])
 def test_input_contract_rejects_extra_inputs_and_invalid_query_tensors(anchor, checkpoint, track):
     model = build(anchor, checkpoint, track)
     for query in (torch.randn(2, 3, 32, 48), torch.randn(2, 4, 32), torch.randn(0, 4, 32, 48), query_tensor().double()):
@@ -692,7 +743,7 @@ def test_official_hash_bound_checkpoint_allows_numpy_metadata(anchor, checkpoint
     assert set(model.initialization_provenance["loaded_keys"]) == set(state)
 
 
-@pytest.mark.parametrize("track", ["D", "D_running"])
+@pytest.mark.parametrize("track", ["D", "D_running", "D_running_pilot"])
 def test_nonallowlisted_numpy_checkpoint_has_no_unrestricted_fallback(anchor, checkpoint, monkeypatch, track):
     path, _, state = checkpoint
     torch.save({"state_dict": state, "meta": {"best_score": np.float64(.99)}}, path)
@@ -736,7 +787,8 @@ def test_actual_opencd_gpu_integration():
     torch.backends.cudnn.allow_tf32 = False
     query = torch.randn(2, 4, 512, 800, device="cuda")
     direct_parameters = None
-    for track in ("D", "D_running", "N"):
+    running_buffers = None
+    for track in ("D", "D_running", "D_running_pilot", "N"):
         cpu_rng = torch.get_rng_state().clone()
         cuda_rng = [state.clone() for state in torch.cuda.get_rng_state_all()]
         model = anchor.build_anchor_changer(track, path, digest, 42)
@@ -744,12 +796,21 @@ def test_actual_opencd_gpu_integration():
         assert all(torch.equal(before, after) for before, after in zip(cuda_rng, torch.cuda.get_rng_state_all()))
         if track == "D":
             direct_parameters = {name: parameter.detach().clone() for name, parameter in model.named_parameters()}
-        elif track == "D_running":
-            assert model.architecture_id == "anchor_direct_running_ia18_v1"
+        elif track in ("D_running", "D_running_pilot"):
+            assert model.architecture_id == {
+                "D_running": "anchor_direct_running_ia18_v1",
+                "D_running_pilot": "anchor_direct_running_ia18_pilot_v1",
+            }[track]
             assert dict(model.named_parameters()).keys() == direct_parameters.keys()
             for name, parameter in model.named_parameters():
                 torch.testing.assert_close(parameter, direct_parameters[name], atol=0, rtol=0)
-            del direct_parameters
+            if track == "D_running":
+                running_buffers = {name: buffer.clone() for name, buffer in model.named_buffers()}
+            else:
+                assert dict(model.named_buffers()).keys() == running_buffers.keys()
+                for name, buffer in model.named_buffers():
+                    torch.testing.assert_close(buffer, running_buffers[name], atol=0, rtol=0)
+                del direct_parameters, running_buffers
             norms = [module for module in model.backbone.modules() if isinstance(module, nn.modules.batchnorm._BatchNorm)]
             assert len(norms) == 22 and all(module.track_running_stats for module in norms)
             assert not hasattr(model, "decode_head") and not hasattr(model, "referral")
@@ -760,7 +821,7 @@ def test_actual_opencd_gpu_integration():
             changerex.load_levir(historical, path, verbose=False)
         for name, parameter in model.backbone.named_parameters():
             torch.testing.assert_close(parameter, dict(historical.backbone.named_parameters())[name], atol=0, rtol=0)
-        if track == "D_running":
+        if track in ("D_running", "D_running_pilot"):
             for name, buffer in model.backbone.named_buffers():
                 torch.testing.assert_close(buffer, dict(historical.backbone.named_buffers())[name], atol=0, rtol=0)
         changerex.set_encoder_bn_policy(historical, model.bn_policy)
@@ -779,7 +840,7 @@ def test_actual_opencd_gpu_integration():
                 counts[name] = counts.get(name, 0) + 1
             handles.append(getattr(model.backbone, name).register_forward_hook(count))
         norms = [module for module in model.modules() if isinstance(module, nn.modules.batchnorm._BatchNorm)]
-        before = [module.num_batches_tracked.clone() for module in norms] if track in ("D_running", "N") else []
+        before = [module.num_batches_tracked.clone() for module in norms] if track in ("D_running", "D_running_pilot", "N") else []
         projections = []
         if track == "N":
             base_forward = model.decode_head.base_forward
@@ -801,7 +862,7 @@ def test_actual_opencd_gpu_integration():
             assert output["map_logit"].shape == (2, 1, 128, 200)
         else:
             assert set(output) == {"attack_logit"} and output["attack_logit"].shape == (2,)
-        if track in ("D_running", "N"):
+        if track in ("D_running", "D_running_pilot", "N"):
             assert all(module.num_batches_tracked == previous + 1 for module, previous in zip(norms, before))
         output["attack_logit"].sum().backward()
         assert all(parameter.grad is not None and torch.isfinite(parameter.grad).all() for parameter in model.parameters())
@@ -815,7 +876,7 @@ def test_actual_opencd_gpu_integration():
                 for name in solo:
                     torch.testing.assert_close(solo[name][0], together[name][0], atol=1e-5, rtol=1e-4)
                     torch.testing.assert_close(solo[name][0], reversed_batch[name][-1], atol=1e-5, rtol=1e-4)
-            elif track == "D_running":
+            elif track in ("D_running", "D_running_pilot"):
                 companions = torch.randn(7, 4, 512, 800, device="cuda")
                 for batch_size in (2, 4, 8):
                     for position in sorted({0, batch_size // 2, batch_size - 1}):

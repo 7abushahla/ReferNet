@@ -172,6 +172,29 @@ def test_d_running_stages_only_train_queries_without_raw_or_targets(helper, inpu
     ]
 
 
+def test_d_running_pilot_stages_train_val_queries_without_raw_dense_or_test(helper, inputs, monkeypatch):
+    inputs["config"].write_text("schema_version: anchor_pilot_v1\ntrack: D_running_pilot\n")
+    original_hash = helper.file_sha256
+    expected = {"canvases/a.png", "canvases/b.png", "canvases/c.png", "zones/sidtd_design.png"}
+
+    def guarded_hash(path):
+        path = Path(path)
+        if path.is_relative_to(inputs["raw_root"]):
+            pytest.fail(f"D_running_pilot hashed raw pixels: {path}")
+        if path.is_relative_to(inputs["legacy_root"]):
+            assert path.relative_to(inputs["legacy_root"]).as_posix() in expected
+        return original_hash(path)
+
+    monkeypatch.setattr(helper, "file_sha256", guarded_hash)
+    manifest = prepare(helper, inputs)
+    assert manifest["track"] == "D_running_pilot"
+    assert manifest["effective_config"]["architecture_id"] == "anchor_direct_running_ia18_pilot_v1"
+    assert manifest["data_scope"] == "train_val_only"
+    assert manifest["membership"] == {"train": ["a", "b"], "val": ["c"]}
+    assert staged_files(inputs["stage_dir"] / "raw") == []
+    assert staged_files(inputs["stage_dir"] / "legacy") == sorted(expected)
+
+
 def test_d_running_full_train_rejected_before_data_selection_or_staging(helper, inputs, monkeypatch):
     inputs["config"].write_text("schema_version: anchor_pilot_v1\ntrack: D_running\n")
 
@@ -222,7 +245,9 @@ def review_record(inputs, manifest, write_gate=True):
 
 @pytest.mark.parametrize("damage", ["missing", "unapproved", "gate_failed", "config", "data",
                                     "source", "weight", "gate_hash", "reviewer", "provenance"])
-def test_train_requires_explicit_review_matching_all_inputs(helper, inputs, damage):
+@pytest.mark.parametrize("track", ["R", "D_running_pilot"])
+def test_train_requires_explicit_review_matching_all_inputs(helper, inputs, damage, track):
+    inputs["config"].write_text(f"schema_version: anchor_pilot_v1\ntrack: {track}\n")
     manifest = prepare(helper, inputs)
     review = review_record(inputs, manifest)
     payload = json.loads(review.read_text())
@@ -239,7 +264,8 @@ def test_train_requires_explicit_review_matching_all_inputs(helper, inputs, dama
     elif damage == "config":
         inputs["config"].write_text(inputs["config"].read_text() + "seed: 43\n")
     elif damage == "data":
-        (inputs["raw_root"] / "a.jpg").write_bytes(b"changed data")
+        data_path = inputs["raw_root"] / "a.jpg" if track == "R" else inputs["legacy_root"] / "canvases/a.png"
+        data_path.write_bytes(b"changed data")
     elif damage == "source":
         (inputs["source_dir"] / "src/model.py").write_text("changed source")
     elif damage == "weight":
@@ -257,6 +283,44 @@ def test_train_requires_explicit_review_matching_all_inputs(helper, inputs, dama
         prepare(helper, inputs, phase="train", review=review,
                 stage_dir=inputs["stage_dir"].parent / "train-stage",
                 run_dir=inputs["run_dir"].parent / "train-run")
+    assert not (inputs["stage_dir"].parent / "train-stage").exists()
+    assert not (inputs["run_dir"].parent / "train-run").exists()
+
+
+def test_d_running_pilot_rejects_old_training_only_diagnostic_review(helper, inputs):
+    inputs["config"].write_text("schema_version: anchor_pilot_v1\ntrack: D_running\n")
+    diagnostic = prepare(helper, inputs)
+    review = review_record(inputs, diagnostic)
+    inputs["config"].write_text("schema_version: anchor_pilot_v1\ntrack: D_running_pilot\n")
+    stage = inputs["stage_dir"].parent / "pilot-train-stage"
+    run = inputs["run_dir"].parent / "pilot-train-run"
+    with pytest.raises(ValueError, match="review|provenance|identities"):
+        prepare(helper, inputs, phase="train", review=review, stage_dir=stage, run_dir=run)
+    assert not stage.exists()
+    assert not run.exists()
+
+
+def test_d_running_pilot_matching_review_authorizes_separate_fresh_training(helper, inputs, shell_env, tmp_path):
+    inputs["config"].write_text("schema_version: anchor_pilot_v1\ntrack: D_running_pilot\n")
+    diagnostic = prepare(helper, inputs)
+    review = review_record(inputs, diagnostic)
+    output = tmp_path / "approved-training"
+    result = run_wrapper("train_anchor_pilot.sh", pilot_args(inputs, output, "train", review), shell_env)
+    assert result.returncode == 0, result.stderr
+    run = output / "anchor-pilot-train-1234"
+    manifest = json.loads((run / "input_manifest.json").read_text())
+    assert manifest["provenance"] == diagnostic["provenance"]
+    assert manifest["runtime_identities"] == diagnostic["runtime_identities"]
+    assert manifest["data_files"] == diagnostic["data_files"]
+    assert manifest["data_scope"] == "train_val_only"
+    assert staged_files(Path(manifest["paths"]["stage_dir"]) / "raw") == []
+    assert staged_files(Path(manifest["paths"]["stage_dir"]) / "legacy") == [
+        "canvases/a.png", "canvases/b.png", "canvases/c.png", "zones/sidtd_design.png",
+    ]
+    calls = json.loads((run / "pilot/runtime_calls.json").read_text())
+    assert [call["phase"] for call in calls] == ["train", "selected"]
+    assert Path(calls[0]["pretrain_gate"]).read_bytes() == (inputs["run_dir"] / "pilot/gate.json").read_bytes()
+    assert Path(calls[0]["weights"]).read_bytes() == inputs["weights"].read_bytes()
 
 
 def test_test_pixels_are_not_hashed_and_outputs_cannot_be_reused(helper, inputs):
@@ -333,7 +397,9 @@ def test_packaged_identities_match_actual_runner_source_and_resolved_config(help
 
 
 @pytest.mark.parametrize("damage", ["gate_identity", "diagnostic_data"])
-def test_review_is_bound_to_runtime_gate_and_original_diagnostic_manifest(helper, inputs, damage):
+@pytest.mark.parametrize("track", ["R", "D_running_pilot"])
+def test_review_is_bound_to_runtime_gate_and_original_diagnostic_manifest(helper, inputs, damage, track):
+    inputs["config"].write_text(f"schema_version: anchor_pilot_v1\ntrack: {track}\n")
     manifest = prepare(helper, inputs)
     review = review_record(inputs, manifest)
     payload = json.loads(review.read_text())
@@ -647,7 +713,7 @@ def test_d_running_wrapper_rejects_full_train_before_staging(inputs, shell_env, 
     assert not output.exists()
 
 
-@pytest.mark.parametrize("track", ["D", "D_running", "N"])
+@pytest.mark.parametrize("track", ["D", "D_running", "D_running_pilot", "N"])
 @pytest.mark.parametrize("outcome", ["pass", "fail", "skip"])
 def test_dn_diagnostic_requires_actual_stack_gate_before_checker(inputs, shell_env, tmp_path, track, outcome):
     inputs["config"].write_text(f"schema_version: anchor_pilot_v1\ntrack: {track}\n")
