@@ -122,11 +122,13 @@ def run_checks(args, report):
             depth=18, in_channels=3, interaction_cfg=INTERACTION_CFG, num_stages=4,
             out_indices=(0, 1, 2, 3), dilations=(1, 1, 1, 1), strides=(1, 2, 2, 2),
             norm_cfg=dict(type="BN", requires_grad=True), norm_eval=False,
-            style="pytorch", contract_dilation=True).eval().cuda()
+            style="pytorch", contract_dilation=True).cuda()
         original_head = Changer(
             in_channels=[64, 128, 256, 512], in_index=[0, 1, 2, 3], channels=128,
             dropout_ratio=0.1, num_classes=2, out_channels=2,
-            norm_cfg=dict(type="BN", requires_grad=True), align_corners=False).eval().cuda()
+            norm_cfg=dict(type="BN", requires_grad=True), align_corners=False).cuda()
+    original_backbone.eval()
+    original_head.eval()
     original_backbone.load_state_dict({name.removeprefix("backbone."): value
                                       for name, value in weights.items() if name.startswith("backbone.")},
                                      strict=True)

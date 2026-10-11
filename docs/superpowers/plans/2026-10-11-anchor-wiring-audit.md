@@ -25,3 +25,5 @@ A passing conversion check rules out a specific implementation error, not an ina
 ## Execution record
 
 The user reaffirmed that the anchor remains the priority. This audit deliberately excludes broader literature expansion, transfer-protocol implementation and additional training. Existing branch-calibration and dense-gradient diagnostics are not repeated.
+
+Job 37938 passed checkpoint-key and optimizer coverage checks, then stopped in the diagnostic constructor because the upstream backbone's `train` override makes `eval()` return `None`. The harness incorrectly chained `.eval().cuda()` on that object. The correction separates device placement from `eval()`. This is a diagnostic-harness error, not a failure in the training model, which wraps the backbone and does not depend on its evaluation method's return value. The failed report is preserved; numerical parity remains pending until the rerun.
