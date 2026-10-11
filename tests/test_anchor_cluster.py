@@ -633,6 +633,12 @@ def test_slurm_requests_one_gpu_without_changing_resource_pattern():
         assert f"#SBATCH {request}" in directives
 
 
+def test_cpu_audit_default_scratch_uses_node_tmp_and_keeps_override():
+    wrapper = (ROOT / "scripts/cluster/audit_encoding_headers.sh").read_text()
+    assert 'scratch="${ROC_SCRATCH_ROOT:-/tmp/$USER}/encoding-headers-$SLURM_JOB_ID"' in wrapper
+    assert "/scratch/$USER" not in wrapper
+
+
 def test_header_audit_requests_cpu_partition_without_gpu():
     wrapper = CLUSTER / "audit_encoding_headers.sh"
     directives = [line for line in wrapper.read_text().splitlines() if line.startswith("#SBATCH")]

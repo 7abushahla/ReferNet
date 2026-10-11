@@ -1,0 +1,41 @@
+{
+  "schema_version": "anchor_review_v1",
+  "approved": true,
+  "reviewer": "Galileo, independent read-only GPU gate review, agent 01a12c50-7727-7fd2-997b-ce56f43731f8",
+  "reviewed_at": "2026-10-11T19:02:18Z",
+  "scope": "One Protocol A N legacy-geometry diagnostic run, fold 0, seed 42, 100 epochs. No other tracks, sweeps, reference extensions, or downstream evaluation.",
+  "source_revision": "0959335bd9a6a22510f6706c49c62d84560cd524",
+  "source_archive_sha256": "4413528c1afd15f6c420763287bc57d9eb523df2a69138d5b472f0b4b2092ba4",
+  "scheduler_verification": {"job_id": "37964", "state": "COMPLETED", "exit_code": "0:0", "elapsed": "00:04:04"},
+  "diagnostic_manifest_sha256": "75a7fd676291083db7f7ad5b6a29e6701e109a6005d47de66763375272cd0aa7",
+  "gate_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-pilot-diagnostic-37964/pilot/gate.json",
+  "gate_sha256": "32389c00f173c6c18b3f21d1e34a9759e7db82248a9959c91cfb004aab40378a",
+  "provenance": {
+    "config_sha256": "458b664a051097037adec83c8cb61466e702eba02ee471260be01a5950da5e40",
+    "data_sha256": "a93245fe8e8ffe9b343abab5dd803c11d7ee311b88fc7661b5e4d9e56741e647",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "cb64905ab51a0c5fcc4600148765eb2e27db9cb5b860c4b2630593c617d37318",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "checks": {
+    "identity_and_evidence_checks_passed": 59,
+    "actual_stack_integration_passed": 1,
+    "actual_stack_integration_skipped": 0,
+    "pristine_initialization_between_phases": true,
+    "single_query_and_single_shared_projection": true,
+    "running_statistics_bn_modules": 27,
+    "test_canvas_and_reference_access": false,
+    "dense_targets_training_only": true,
+    "overfit_accuracy": 1.0,
+    "overfit_updates": 50,
+    "overfit_image_bce": 0.0005263534840196371,
+    "companion_invariance_before_after_and_replay": true,
+    "fresh_process_replay_max_logit_difference": 0.0
+  },
+  "limitations": [
+    "Legacy geometry diagnostic, not support-safe downstream clearance.",
+    "The CUDA grid_sample backward nondeterminism policy is declared. Bit-reproducible training is not established.",
+    "Passing a launch gate does not establish validation competence, reference benefit, or generalization."
+  ]
+}

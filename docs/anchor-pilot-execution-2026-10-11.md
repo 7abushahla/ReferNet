@@ -10,11 +10,11 @@ Starting revision `60a3adf`. Implementation and parallel delegation are authoriz
 |---|---|---|
 | M0, reviewed amendments and stable interfaces | Committed and pushed | `61833c9`; three contract tests passed; D is non-stream-matched; per-track launch path; one coordinator |
 | M1-R, raw RGB classifier and loader | GPU gate independently cleared, one long pilot submitted | Diagnostic 37962 completed; independent review cleared only R fold 0, seed 42; separate 100-epoch job 37967 |
-| M1-DN, single-query encoder routes | Actual GPU integration passed, track gates differ | D 37963 failed bounded overfit and stopped; N 37964 passed diagnostics, independent gate review pending |
+| M1-DN, single-query encoder routes | Actual GPU integration passed, track gates differ | D 37963 failed bounded overfit and stopped; N 37964 independently cleared, separate 100-epoch job 37971 |
 | M1-audit, exact-membership headers | CPU bootstrap corrected, retry preparation | Audit 37965 failed before execution; allocated CPU preflight 37966 verified the same shared project environment |
 | M2, isolated training and smoke gates | Implemented and independently reviewed | Coordinator tests passed 35 runtime/gate checks and 50 packaging checks; GPU evidence remains pending |
-| M3, fold-safe support | Implemented, review corrections pending | Reviewer reproduced external-specimen inventory and explicit official-fold binding gaps; production registration remains unrun |
-| M4, selected-validation reports and common runtime | Implemented, independent review pending | Worker verified 38 focused tests; no actual timing or long-run decision claimed |
+| M3, fold-safe support | Core corrections independently cleared, CPU wrapper final correction pending | Complete inventory and explicit fold binding verified; 48 enrollment and 21 wrapper tests passed; production registration remains unrun |
+| M4, selected-validation reports and common runtime | Implemented, two review blockers assigned | Runtime-ID/source binding and integer parameter-count validation need bounded corrections; no actual timing claimed |
 
 ## Decisions
 
@@ -96,3 +96,17 @@ N diagnostic `37964` completed with scheduler exit 0:0 in 4:04. The actual-stack
 ### First reviewed long-run submission
 
 Job `37967` is one R training run, official fold 0, seed 42, 100 epochs, one GPU. It reuses immutable revision `0959335bd9a6a22510f6706c49c62d84560cd524`, its original archive, configuration, records, split, raw training/validation files and official offline weights. Review is archived at `results/diagnostics/anchor-pilots-v1/reviews/r-37962-review.json`; the uploaded cluster review is `results/diagnostics/anchor-pilots-v1/r-37962-review.json`. Its original diagnostic gate SHA256 is `a1da74419bcb9a93ac4484ef88dfbe74e2a9d7880f10fceb69a0da2f652e23fa`; diagnostic input-manifest SHA256 is `ee524c60d1e98bd7ace21a603888b2d917b99a27e26ca9bf4f5268870bcc3d43`. Both were independently checked on the cluster before submission. The training output is `results/runs/anchor-pilots-v1/anchor-pilot-train-37967`. No sweep, reference extension or downstream detector experiment is authorized by this review.
+
+### Verified CPU bootstrap audit retry
+
+Header audit `37969` uses immutable revision `d55c01a56916e687fceae0c3d7bedecce6d885cd`, archive SHA256 `54e33993d617ae0fb26922df613cdc7b0e231086320c87467598f98ab7f89412`, and the matching read-only source directory. The source corrects the CPU Conda bootstrap without changing the audit algorithm or frozen membership. Coordinator verification passed all 51 packaging tests, and shell syntax checks passed. It requests four CPUs, 8 GB memory and one hour on `cpu`. Inputs are `data/anchor_audit_inputs_v1/records.csv`, the original hash-verified `data/anchor_audit_inputs_v1/split.csv`, and `data/raw_anchor_audit_v1`. Output is `results/diagnostics/anchor-pilots-v1/encoding-headers-37969`.
+
+The coordinator's preceding retry `37968` mistakenly named the split `protocol_c.csv` rather than the transferred `split.csv`. It failed before the audit in two seconds. The original split filename and digest were checked before submitting `37969`. This was a submission-argument error, not an environment or dataset finding. It produced no scientific result and is not replaced or relabeled.
+
+Audit `37969` then failed in two seconds when creating scratch. The CPU image does not expose writable `/scratch`, whereas the GPU image does. Allocated CPU preflight `37970` completed in one second, verified writable `/tmp` with 39 GB available, and again printed the intended shared environment interpreter, `sys.prefix` and Conda prefix. CPU wrappers now use job-unique `/tmp/$USER` scratch by default while preserving `ROC_SCRATCH_ROOT`. GPU wrappers retain their verified `/scratch/$USER` defaults. A regression failed on the original CPU default before the correction. These failures do not establish an audit result.
+
+### Second reviewed long-run submission
+
+Independent reviewer Galileo cleared N `37964` for one fold-0, seed-42, 100-epoch legacy-geometry pilot after 59 identity/evidence checks. The actual installed-stack test passed with zero skips, both phases had pristine initialization, all 27 BN modules retained running statistics, and companion invariance, buffer stability and fresh-process replay passed. Overfit reached 16/16 after 50 updates, with image BCE 0.0005263534840196371. The declared CUDA backward policy does not establish bit-reproducible training. The review provides no support-safe downstream clearance.
+
+Separate job `37971` uses the original immutable `0959335bd9a6a22510f6706c49c62d84560cd524` source, original N configuration, records, fold split, legacy products and official LEVIR weights. It requests one GPU. Review is archived at `results/diagnostics/anchor-pilots-v1/reviews/n-37964-review.json`, uploaded as `results/diagnostics/anchor-pilots-v1/n-37964-review.json`. Original gate SHA256 is `32389c00f173c6c18b3f21d1e34a9759e7db82248a9959c91cfb004aab40378a`; diagnostic manifest SHA256 is `75a7fd676291083db7f7ad5b6a29e6701e109a6005d47de66763375272cd0aa7`. Both were checked on the cluster before submission. Output is `results/runs/anchor-pilots-v1/anchor-pilot-train-37971`. D remains withheld at its failed overfit gate.
