@@ -10,7 +10,7 @@ These contracts unblock independent workers. `anchor_contract.py` is the executa
 
 R uses raw RGB only. D/N use legacy registered query PNG plus its design zone. All tracks omit reference image access. No caller constructs legacy eight-channel model inputs. D is non-stream-matched to its historical comparator.
 
-`resolve_pilot_config(config_path: Path) -> dict` produces schema_version, track, architecture_id, data_contract, seed, fold, epochs, batch_size, eval_batch_size, mask_weight, bn_policy, optimizer/scheduler and augment dictionaries, precision and selection. Exact scientific settings follow the spec. File roots and offline weights are runtime paths, with their hashes saved separately in the run ledger.
+`pilot_config.resolve_pilot_config(config_path: Path) -> dict`, imported by `pilots.py`, produces schema_version, track, architecture_id, data_contract, seed, fold, epochs, batch_size, eval_batch_size, mask_weight, bn_policy, optimizer/scheduler and augment dictionaries, precision and selection. Exact scientific settings follow the spec. File roots and offline weights are runtime paths, with their hashes saved separately in the run ledger.
 
 ## Model interface
 
