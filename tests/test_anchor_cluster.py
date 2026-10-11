@@ -330,7 +330,7 @@ conda() {{
 }}
 function {ENV_PATH}/bin/python {{
     if [[ "$1" == -c && "$2" == 'import torch;'* ]]; then return 0; fi
-    {sys.executable} "$@"
+    command {sys.executable} "$@"
 }}
 ''')
     return dict(os.environ, BASH_ENV=str(environment_file), SLURM_JOB_ID="1234",
@@ -343,6 +343,16 @@ def run_wrapper(name, arguments, environment):
     assert wrapper.is_file(), f"{name} wrapper is missing"
     return subprocess.run(["bash", str(wrapper), *map(str, arguments)], env=environment,
                           text=True, capture_output=True)
+
+
+def test_python_mock_bypasses_itself_when_environment_matches_interpreter(monkeypatch, request):
+    monkeypatch.setattr(sys.modules[__name__], "ENV_PATH", str(Path(sys.executable).parent.parent))
+    environment = request.getfixturevalue("shell_env")
+    environment["FUNCNEST"] = "12"
+    result = subprocess.run(["bash", "-c", f"{sys.executable} -c 'print(42)'"],
+                            env=environment, text=True, capture_output=True, timeout=10)
+    assert result.returncode == 0, result.stderr
+    assert result.stdout.strip() == "42"
 
 
 def pilot_args(inputs, output, phase="diagnostic", review=None):
@@ -559,9 +569,9 @@ raise SystemExit(0 if result['passed'] else 1)
         stream.write(f'''function {ENV_PATH}/bin/python {{
     if [[ "$1" == -c && "$2" == 'import torch;'* ]]; then return 0; fi
     if [[ "$1" == */check_anchor_pilots.py || ( "$1" == -m && "$2" == refer_or_clear.pilots ) ]]; then
-        {sys.executable} "$ROC_TEST_BOOTSTRAP" "$@"
+        command {sys.executable} "$ROC_TEST_BOOTSTRAP" "$@"
     else
-        {sys.executable} "$@"
+        command {sys.executable} "$@"
     fi
 }}
 ''')

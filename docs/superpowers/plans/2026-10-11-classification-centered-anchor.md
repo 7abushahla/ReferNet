@@ -20,10 +20,10 @@
 | 2, R classifier | Implemented; GPU gates independently cleared; job 37967 training | Complete 100 epochs and selected-checkpoint validation/replay |
 | 3, D/N routes | Implemented; N gates independently cleared and job 37971 training; D failed overfit | Diagnose D's normalization-context discrepancy without bypassing its gate |
 | 4, isolated training/replay | Implemented, tested and reviewed | Inspect completed pilot artifacts rather than treating smoke as competence |
-| 5, fold-safe support | Independently reviewed; CPU job 37973 building fold 0 | Inspect production provenance, dependencies and registration counts |
+| 5, fold-safe support | CPU job 37973 completed; metadata independently cleared (10 designs, 30 banks, 590 eligible genuines; zero reported registration failures) | Independently verify binary product hashes before consumer approval |
 | 6, early header audit | CPU job 37972 completed; health passed; artifacts archived | Preserve its bounded metadata interpretation, not detector-transfer evidence |
-| 7, correctness/shared runtime | R/N launch gates passed; D gate failed; timing tools reviewed | D inference-only diagnostic and actual common CPU timing |
-| 8, packaging/report/decision | Immutable submissions and reviews recorded; reporting tools reviewed | Completed selected-validation report, family decision and conditional continuation |
+| 7, correctness/shared runtime | R/N launch gates passed; D gate failed; diagnostic 37976 completed and shows batch-context sensitivity; timing tools reviewed | Independently review D evidence and perform actual common CPU timing |
+| 8, packaging/report/decision | Full suite 37975 completed with 495 passes and 23 shell-mock failures; portability correction independently cleared | Fresh allocated suite retry, completed selected-validation report, family decision and conditional continuation |
 
 All detector work remains within query-only fold-0 Protocol A pilots. No reference extension, sweep or B-D detector evaluation has started. See `docs/anchor-pilot-execution-2026-10-11.md` for exact revisions, hashes, jobs, failures and independent reviews. Running epochs and intermediate metrics are not final acceptance results.
 

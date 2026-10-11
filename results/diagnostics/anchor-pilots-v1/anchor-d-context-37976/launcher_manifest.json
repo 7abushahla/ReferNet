@@ -1,0 +1,107 @@
+{
+  "allocation": {
+    "cpus": "4",
+    "job_id": "37976",
+    "node": "gpu-dy-g5-0-53",
+    "partition": "gpu"
+  },
+  "diagnostic_only": true,
+  "diagnostic_script_sha256": "4253fc893e41d8a31cc95c35e5b170f1553b102eb53f2a7134f3faa8da7114b4",
+  "environment": {
+    "conda_prefix": "/shared/b00090279/conda/envs/refer-or-clear",
+    "flags": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+      "MKL_NUM_THREADS": "4",
+      "NVIDIA_TF32_OVERRIDE": "0",
+      "OMP_NUM_THREADS": "4",
+      "PYTHONHASHSEED": "42",
+      "TORCH_ALLOW_TF32_CUBLAS_OVERRIDE": "0"
+    },
+    "hostname": "gpu-dy-g5-0-53",
+    "packages": {
+      "Pillow": "12.3.0",
+      "mmcv": "2.1.0",
+      "mmengine": "0.10.4",
+      "numpy": "1.26.4",
+      "opencd": "1.1.0",
+      "pandas": "2.3.3",
+      "torch": "2.1.2+cu121",
+      "torchvision": "0.16.2+cu121"
+    },
+    "python_executable": "/shared/b00090279/conda/envs/refer-or-clear/bin/python",
+    "python_prefix": "/shared/b00090279/conda/envs/refer-or-clear",
+    "python_version": "3.10.22"
+  },
+  "execution": {
+    "amp": false,
+    "device": "cuda",
+    "precision": "float32",
+    "workers": 0
+  },
+  "inputs": {
+    "checkpoint": {
+      "path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-pilot-diagnostic-37963/pilot/overfit/checkpoints/best.pt",
+      "sha256": "c78d0b4a06b5dbde434d77f34ffa14ea437dbde4e1d3eafbd2d8aadfff72c47f"
+    },
+    "config": {
+      "path": "/shared/b00090279/refer-or-clear/results/source/anchor-0959335bd9a6a22510f6706c49c62d84560cd524/code/configs/anchor_pilot_d.yaml",
+      "sha256": "cc41136927c2cf5b9c729e92018b1572bb095b78743088f05c7d31950015460e"
+    },
+    "parent_manifest": {
+      "path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-pilot-diagnostic-37963/input_manifest.json",
+      "sha256": "e420dead0a0bc74786cdfebb81c134ccf4f206c9d2a581ba4bd11002f28184b8"
+    },
+    "predictions": {
+      "path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-pilot-diagnostic-37963/pilot/overfit/val_predictions.csv",
+      "sha256": "3b1707a023aecd30c6188a8bef65cfb3b586fb61874da3203c86ca9aae76dfda"
+    },
+    "records": {
+      "path": "/shared/b00090279/refer-or-clear/data/processed/records.csv",
+      "sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276"
+    },
+    "split": {
+      "path": "/shared/b00090279/refer-or-clear/data/processed/splits/protocol_a_it0.csv",
+      "sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9"
+    },
+    "train_json": {
+      "path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-pilot-diagnostic-37963/pilot/overfit/train.json",
+      "sha256": "e49fe3c7a06f36a2bccbfbffc1ad58460b222865360823de86ddffb3d3aaaaa2"
+    },
+    "weights": {
+      "path": "/shared/b00090279/refer-or-clear/checkpoints/pretrained/ChangerEx_r18-512x512_40k_levircd_20221223_120511.pth",
+      "sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+    }
+  },
+  "launcher_sha256": "29e8c356e38b3b7c01605fe26683d1814da2cd190ad5728ea5356846cb17e6cc",
+  "paths": {
+    "diagnostic_dir": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-d-context-37976/context",
+    "legacy_root": "/shared/b00090279/refer-or-clear/data/processed",
+    "raw_root": "/shared/b00090279/refer-or-clear/data/raw",
+    "run_dir": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-d-context-37976",
+    "scratch_dir": "/scratch/b00090279/anchor-d-context-37976"
+  },
+  "resource_contract": {
+    "cpus": 4,
+    "gpus": 1,
+    "memory": "8G",
+    "partition": "gpu",
+    "time": "1:00:00"
+  },
+  "schema_version": "anchor_d_context_launcher_v1",
+  "scientific_gate_passed": null,
+  "scientific_source": {
+    "inventory_sha256": "cb64905ab51a0c5fcc4600148765eb2e27db9cb5b860c4b2630593c617d37318",
+    "path": "/shared/b00090279/refer-or-clear/results/source/anchor-0959335bd9a6a22510f6706c49c62d84560cd524/code",
+    "runtime_sha256": "2f8a833e5cb3450fdccd8c58dba8f07f58af330747a69cca7363d1a21528da9a"
+  },
+  "tooling": {
+    "scripts/check_anchor_d_context.py": {
+      "path": "/shared/b00090279/refer-or-clear/results/source/anchor-66d8553ee80197059b9601d067500bbb6030650c/code/scripts/check_anchor_d_context.py",
+      "sha256": "4253fc893e41d8a31cc95c35e5b170f1553b102eb53f2a7134f3faa8da7114b4"
+    },
+    "tests/test_anchor_d_context.py": {
+      "path": "/shared/b00090279/refer-or-clear/results/source/anchor-66d8553ee80197059b9601d067500bbb6030650c/code/tests/test_anchor_d_context.py",
+      "sha256": "e73867c9cbb445c2a871ab4240cf29d07647b3c3291e6431fbb187c4339f1714"
+    }
+  }
+}

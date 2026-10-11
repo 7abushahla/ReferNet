@@ -108,7 +108,7 @@ conda() {{
     export CONDA_PREFIX="$2"
 }}
 function {ENV_PATH}/bin/python {{
-    {shlex.quote(sys.executable)} {shlex.quote(str(driver))} "$@"
+    command {shlex.quote(sys.executable)} {shlex.quote(str(driver))} "$@"
 }}
 ''')
     environment = dict(os.environ, BASH_ENV=str(environment_file), SLURM_JOB_ID="1234",
