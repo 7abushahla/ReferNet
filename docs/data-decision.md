@@ -136,3 +136,12 @@ The IDNet paper figure embeds its twenty Stable Diffusion-inpainted blank templa
 | Genuine videos | 100 identities per nationality, from MIDV-2020 |
 
 Capture confound. Genuine clips are MIDV-2020 frames; forged clips were printed on a laser printer, laminated and filmed by CVC staff on their own phones (paper, Methods). The two classes come from different capture pipelines. File size alone (bytes of the JPEG) separates them with AUC 1.000 within every nationality and 0.983 pooled; median 0.23 MB genuine vs 1.21 MB forged. Any classifier can therefore score near 1.0 on the clip protocols from capture cues without seeing the alteration, which is consistent with the near-perfect AUC reported by Talarmain et al. (ICDAR 2024) on this protocol. The episode sampler also draws support and query clips from about 19 forged videos per nationality, so query frames frequently share a video with a support frame.
+
+## The file-format cue in SIDTD, traced to its source (11 Oct 2026)
+
+| Subset | Genuine files | Forged files | Where the forged format comes from |
+|---|---|---|---|
+| Templates | JPEG quality 92, all 1,000 | JPEG quality 75, all 1,222 | the released generator saves forgeries with `PIL.Image.save(path)` and no quality argument (`SIDTD/data/explore/fake_id_ex.py:135`); PIL's JPEG default is quality 75 |
+| Cropped clips | JPEG quality 95 (300 of 300 sampled) | PNG, saved under a `.jpg` name (100 of 100 sampled) | not documented; it explains the file-size gap (median 0.23 MB against 1.21 MB) recorded in the clip audit above |
+
+The label is therefore written into the file format in both subsets. The paper's released template checkpoints, scored on the paper's folds, reproduce Table 5 exactly (ResNet50 98.1 percent, EfficientNet-B3 99.4 percent, AUC 1.000) and fall to AUC 0.655 and 0.539 when every test file is re-encoded at one quality (`results/tables/sidtd_checkpoints.md`). Published work on SIDTD: the dataset paper (templates and clips, raw files); Talarmain et al., ICDAR 2024 (clips, AUC about 1.00); the eigenface saliency PAD paper, arXiv 2606.13528 (the 2,222 raw templates); none mentions compression or file format. DocVerify (Pattern Recognition Letters 2026) tests on SIDTD after training on FantasyID and reports near chance; its preprocessing is not in the abstract and the full text is paywalled.
