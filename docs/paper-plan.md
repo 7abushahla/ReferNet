@@ -1,8 +1,8 @@
 ---
 title: Refer or Clear Paper Plan, Reference-Conditioned Detection of Altered Travel Documents on Unseen Designs
 date: 2026-10-10
-updated: 2026-10-10
-status: Scope, datasets, protocols and model fixed on 2026-10-10 after the data inspection and the external dossier review. No training run yet. The claim chain below is the contract for the manuscript and the repository.
+updated: 2026-10-11
+status: Historical study-wide plan. Protocol A architecture and implementation decisions are under review in the classification-centered anchor specification. Historical architectural and execution claims below are not authorization for new work.
 aliases:
   - Refer or Clear paper plan
   - GDRFA award paper plan
@@ -18,7 +18,13 @@ related:
 ---
 # Refer or Clear Paper Plan, Reference-Conditioned Detection of Altered Travel Documents on Unseen Designs
 
-A paper for the GDRFA Dubai Scientific Research Award, second cycle, Digital Innovation Award, Artificial Intelligence theme. The manuscript lives in the proposal folder under `submission/main.tex` (LuaLaTeX, the award's eleven-section structure). Code, data tooling and results live in the private repository `7abushahla/refer-or-clear`. This plan is the contract: the claim chain in Section 2 fixes what every experiment must show and the order in which the paper says it.
+A paper for the GDRFA Dubai Scientific Research Award, second cycle, Digital Innovation Award, Artificial Intelligence theme. The manuscript lives in the proposal folder under `submission/main.tex` (LuaLaTeX, the award's eleven-section structure). Code, data tooling and results live in the private repository `7abushahla/refer-or-clear`. The claim chain below records the historical study-wide plan, subject to the current review notice.
+
+## Current review notice, 11 October 2026
+
+The operative Protocol A proposal is [Classification-centered anchor and fold-safe enrollment design](superpowers/specs/2026-10-11-classification-centered-anchor-design.md), revised for final user review. It proposes three parallel fold-0 tracks, including exploration of a new architecture family, followed by a matched reference comparison and confirmation before an approved sweep. Protocol A must be established before B, FantasyID in C, and IDNet in D. The three-input study concept remains query RGB, genuine same-design reference RGB and personal-data zone context. Internal ChangerEx blocks, mandatory localization, wrong-design relabeling and the fixed canvas are not immutable requirements.
+
+Implementation and job submission are not yet authorized by this document revision. Older sections below and `docs/implementation-plan.md` describe historical designs; they must not override the reviewed specification or be treated as the new task-level implementation plan. Synchronize their detailed architectural claims and the manuscript after the family is selected. The immediate specification preserves native SIDTD benchmark comparison and uses source validation for development, not B-D test performance.
 
 ## Contents
 
