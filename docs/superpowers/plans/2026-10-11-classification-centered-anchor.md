@@ -187,7 +187,7 @@ Historical `train.py`, `evaluate.py`, `build.py`, `PairDataset`, split construct
 **Files:** Create the four cluster wrappers in the file map, `scripts/report_anchor_pilots.py`, `tests/test_anchor_cluster.py`, and `tests/test_anchor_report.py`.
 
 **Interfaces:**
-- Training wrapper `sbatch scripts/cluster/train_anchor_pilot.sh SOURCE_DIR CONFIG_PATH RAW_ROOT LEGACY_ROOT OUTPUT_ROOT`; the config selects exactly one of R/D/N. R ignores LEGACY_ROOT and fails if auxiliary data becomes required.
+- Training wrapper `sbatch scripts/cluster/train_anchor_pilot.sh PHASE SOURCE_DIR CONFIG_PATH RAW_ROOT LEGACY_ROOT RECORDS SPLIT WEIGHTS WEIGHTS_SHA256 OUTPUT_ROOT [REVIEW_JSON]`; the config selects exactly one of R/D/N. `diagnostic` exits after its checks. `train` requires a separate matching independent review record. Explicit metadata and offline weight arguments bind the reviewed inputs. R ignores LEGACY_ROOT and fails if auxiliary data becomes required.
 - Preparation wrapper `sbatch scripts/cluster/prepare_anchor_enrollment.sh SOURCE_DIR RECORDS SPLIT RAW_ROOT OUTPUT_ROOT`, builds fold zero only.
 - Audit wrapper `sbatch scripts/cluster/audit_encoding_headers.sh SOURCE_DIR RECORDS SPLIT RAW_ROOT OUTPUT_ROOT`, performs headers/membership only.
 - Benchmark wrapper `sbatch scripts/cluster/bench_anchor_pilots.sh SOURCE_DIR R_RUN D_RUN N_RUN RAW_ROOT LEGACY_ROOT OUTPUT_ROOT`; all three measurements stay on one host.

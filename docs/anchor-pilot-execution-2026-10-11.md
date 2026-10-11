@@ -11,10 +11,10 @@ Starting revision `60a3adf`. Implementation and parallel delegation are authoriz
 | M0, reviewed amendments and stable interfaces | Committed and pushed | `61833c9`; three contract tests passed; D is non-stream-matched; per-track launch path; one coordinator |
 | M1-R, raw RGB classifier and loader | Reviewed and locally verified, GPU gates pending | Coordinator verification passed 30 model/contract tests; official hash-bound BN-counter migration is explicit |
 | M1-DN, single-query encoder routes | Reviewed and locally verified, GPU integration pending | Coordinator verification passed 42 tests with one explicit local GPU skip; actual installed Open-CD/LEVIR checks require an allocation |
-| M1-audit, exact-membership headers | Implemented, independent review in progress | 19 focused tests; Claude read-only review requested; real-corpus audit not yet run |
+| M1-audit, exact-membership headers | Reviewed and locally verified, production allocation pending | Coordinator verified 44 tests and shell syntax; isolated raw transfer completed |
 | M2, isolated training and smoke gates | Implemented and independently reviewed | Coordinator tests passed 35 runtime/gate checks and 50 packaging checks; GPU evidence remains pending |
-| M3, fold-safe support | Implemented, review pending | Worker verified 590 eligible fold-0 supports, no empty halves and all authorized layout entries; production registration remains unrun |
-| M4, selected-validation reports and common runtime | Pending | |
+| M3, fold-safe support | Implemented, review corrections pending | Reviewer reproduced external-specimen inventory and explicit official-fold binding gaps; production registration remains unrun |
+| M4, selected-validation reports and common runtime | Implemented, independent review pending | Worker verified 38 focused tests; no actual timing or long-run decision claimed |
 
 ## Decisions
 
@@ -43,6 +43,9 @@ Starting revision `60a3adf`. Implementation and parallel delegation are authoriz
 - Actual source/donor field semantics were verified against `data/records.py`. They refer to document identity IDs. FantasyID source IDs reuse the document identity, while donor IDs are optional. The header audit's namespaced identity graph follows that declared metadata contract; it does not claim independent verification of historical document provenance.
 - Fresh coordinator model verification passed 30 R/contract tests and 42 D/N tests. The single D/N skip is the opt-in actual Open-CD GPU integration test, which the allocated diagnostic wrapper requires to execute without skips. R's historical counter migration is bound to the complete official V1 file hash. D's active fingerprint excludes discarded BN buffers and retains the historical fingerprint separately.
 - Completed historical job `37932` ran 100 epochs. Accuracy-first validation selection chose epoch 44, with validation AUC 0.8708196721311475 and logged accuracy 0.824324. Its final-epoch AUC 0.91 is not the selected result. This historical classification-only route retains decoder/map readout and does not test Pilot D's direct readout. The small original artifacts are archived under `results/diagnostics/anchor-pilots-v1/history-37932`.
+- Independent enrollment review passed 23 enrollment and 10 adjacent tests but reproduced two blockers. External specimen validation excluded eligible supports rather than the complete dataset inventory, allowing an evaluation image declared independent. Official protocol/fold markers were optional, allowing unbound membership to be relabeled. Both are assigned bounded regression-backed corrections before any support build. They do not affect the separately frozen query-only diagnostics, which do not consume the new builder or external specimens.
+- Fresh integrated coordinator verification passed 157 model, contract, runtime, replay, gate and packaging tests, with the one explicitly unrun local Open-CD GPU check. The three allocated diagnostics remain responsible for actual GPU evidence.
+- Audit transfer completed successfully, with all 3,408 files and 1,973,068,879 bytes transferred and no deletions. Its separate cluster raw root is `data/raw_anchor_audit_v1`. Frozen metadata is under `data/anchor_audit_inputs_v1`, with the split hash `816ef2eb148eaa34f65ff198fbe6854119564565454dd4afaa243990dd2198a9` and filename-list hash `dcf78d4b9acbc1c4d6344f33f7bd3dbbb1da4b0ee592c2de15ea45b8bc31f689`. These are candidate Protocol C header inputs only, not authorization for downstream detector evaluation.
 
 ## Submission ledger
 
