@@ -1,0 +1,127 @@
+{
+  "config": {
+    "tag": "A-cex-single-median-levir-f7-s42",
+    "protocol": "A",
+    "arch": "changerex_r18",
+    "fusion": "single",
+    "reference": "median",
+    "fold": 7,
+    "select": "accuracy",
+    "init": "levir",
+    "seed": 42,
+    "epochs": 40,
+    "patience": null,
+    "batch_size": 8,
+    "lr_backbone": 0.0001,
+    "lr_new": 0.001,
+    "weight_decay": 0.05,
+    "warmup_iters": 1000,
+    "mask_weight": 3.0,
+    "amp": false,
+    "workers": 4,
+    "crop": null,
+    "limit": null,
+    "data_root": "/scratch/b00090279/roc-data",
+    "wrong_design_fraction": 0.0,
+    "augment": {
+      "crop": null,
+      "affine_px": 8,
+      "jpeg_quality": null,
+      "photometric": true
+    },
+    "test_variants": [
+      "native",
+      "equalized_qf75"
+    ]
+  },
+  "raw_config": {
+    "protocol": "A",
+    "data": {
+      "split": "data/processed/splits/protocol_a_it{fold}.csv",
+      "folds": 10,
+      "canvas": [
+        512,
+        800
+      ],
+      "reference": "median",
+      "wrong_design_fraction": 0.1
+    },
+    "model": {
+      "arch": "changerex_r18",
+      "fusion": "difference",
+      "init": "levir"
+    },
+    "train": {
+      "epochs": 40,
+      "patience": null,
+      "select": "accuracy",
+      "batch_size": 8,
+      "lr_backbone": 0.0001,
+      "lr_new": 0.001,
+      "weight_decay": 0.05,
+      "warmup_iters": 1000,
+      "mask_loss_weight": 3.0,
+      "amp": true,
+      "seeds": [
+        42
+      ]
+    },
+    "augment": {
+      "crop": null,
+      "affine_px": 8,
+      "jpeg_quality": null,
+      "photometric": true
+    },
+    "eval": {
+      "test_variants": [
+        "native",
+        "equalized_qf75"
+      ],
+      "score_orientation": "bonafide_high",
+      "threshold_source": "source_validation",
+      "metrics": [
+        "accuracy",
+        "auc",
+        "eer",
+        "pixel_f1"
+      ]
+    }
+  },
+  "args": {
+    "config": "configs/protocol_a.yaml",
+    "arch": "changerex_r18",
+    "fusion": "single",
+    "reference": "median",
+    "init": "levir",
+    "seed": 42,
+    "fold": 7,
+    "data_root": "/scratch/b00090279/roc-data",
+    "run_dir": "results/runs/A-cex-single-median-levir-f7-s42",
+    "epochs": null,
+    "limit": null,
+    "device": "cuda",
+    "amp": false,
+    "batch_size": null,
+    "workers": 4,
+    "crop": null
+  },
+  "git_hash": "4e474c4",
+  "n_params": 11407874,
+  "device": "cuda",
+  "torch_version": "2.1.2+cu121",
+  "python": "3.10.22",
+  "n_pairs": {
+    "train": 1778,
+    "val": 222,
+    "test": 222
+  },
+  "iters_per_epoch": 222,
+  "total_iters": 8880,
+  "hostname": "gpu-dy-g5-0-60",
+  "timing": {
+    "train_seconds": 3601.8293812274933,
+    "epochs": 40,
+    "best_epoch": 3,
+    "total_seconds": 3623.279738664627
+  }
+}
