@@ -5,8 +5,10 @@ from __future__ import annotations
 from collections.abc import Mapping
 from contextlib import contextmanager
 import hashlib
+import io
 import json
 from pathlib import Path
+import pickle
 import random
 
 import numpy as np
@@ -23,6 +25,7 @@ _NEW_HISTORICAL_KEYS = frozenset(
 _STEM_KEY = "backbone.stem.0.weight"
 _MAP_WEIGHT = "decode_head.conv_seg.weight"
 _MAP_BIAS = "decode_head.conv_seg.bias"
+_TRUSTED_LEVIR_SHA256 = "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
 
 
 @contextmanager
@@ -45,15 +48,15 @@ def _verified_checkpoint(path: Path, expected_sha256: str) -> tuple[dict[str, Te
         raise ValueError("Expected checkpoint SHA256 must contain 64 hexadecimal characters")
     if any(character not in "0123456789abcdefABCDEF" for character in expected_sha256):
         raise ValueError("Expected checkpoint SHA256 must contain 64 hexadecimal characters")
-    digest = hashlib.sha256()
-    with path.open("rb") as checkpoint_file:
-        for chunk in iter(lambda: checkpoint_file.read(1024 * 1024), b""):
-            digest.update(chunk)
-        actual_sha256 = digest.hexdigest()
-        if actual_sha256 != expected_sha256.lower():
-            raise ValueError(f"LEVIR checkpoint SHA256 mismatch for {path}")
-        checkpoint_file.seek(0)
-        checkpoint = torch.load(checkpoint_file, map_location="cpu", weights_only=True)
+    checkpoint_bytes = path.read_bytes()
+    actual_sha256 = hashlib.sha256(checkpoint_bytes).hexdigest()
+    if actual_sha256 != expected_sha256.lower():
+        raise ValueError(f"LEVIR checkpoint SHA256 mismatch for {path}")
+    try:
+        checkpoint = torch.load(io.BytesIO(checkpoint_bytes), map_location="cpu",
+                                weights_only=actual_sha256 != _TRUSTED_LEVIR_SHA256)
+    except pickle.UnpicklingError as error:
+        raise ValueError("Unsupported checkpoint metadata; unrestricted loading requires the official LEVIR hash allowlist") from error
     if not isinstance(checkpoint, Mapping):
         raise ValueError("LEVIR checkpoint must be a tensor state dictionary or contain state_dict")
     state = checkpoint.get("state_dict", checkpoint)
@@ -216,6 +219,7 @@ def build_anchor_changer(track: str, levir_path: Path, expected_sha256: str, hea
         "requested_initialization": "levir",
         "checkpoint_path": str(path),
         "checkpoint_sha256": digest,
+        "checkpoint_loading_policy": "official_hash_bound_pickle_v1" if digest == _TRUSTED_LEVIR_SHA256 else "restricted_weights_only_v1",
         "head_seed": head_seed,
         "tensor_hash_format": "sorted_name_shape_dtype_compact_json_newline_then_c_order_bytes_v1",
         "bn_policy": model.bn_policy,

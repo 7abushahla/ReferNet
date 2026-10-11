@@ -590,6 +590,46 @@ def test_unknown_track_is_rejected(anchor, checkpoint):
         build(anchor, checkpoint, "R")
 
 
+def test_official_hash_bound_checkpoint_allows_numpy_metadata(anchor, checkpoint, monkeypatch):
+    path, _, state = checkpoint
+    torch.save({"state_dict": state, "meta": {"best_score": np.float64(.99)}}, path)
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    monkeypatch.setattr(anchor, "_TRUSTED_LEVIR_SHA256", digest, raising=False)
+    model = anchor.build_anchor_changer("D", path, digest, 42)
+    assert model.initialization_provenance["checkpoint_loading_policy"] == "official_hash_bound_pickle_v1"
+    assert set(model.initialization_provenance["loaded_keys"]) == set(state)
+
+
+def test_nonallowlisted_numpy_checkpoint_has_no_unrestricted_fallback(anchor, checkpoint, monkeypatch):
+    path, _, state = checkpoint
+    torch.save({"state_dict": state, "meta": {"best_score": np.float64(.99)}}, path)
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    original = torch.load
+    policies = []
+    def inspect_policy(*args, **kwargs):
+        policies.append(kwargs.get("weights_only"))
+        return original(*args, **kwargs)
+    monkeypatch.setattr(torch, "load", inspect_policy)
+    with pytest.raises(ValueError, match="metadata|allowlist|official"):
+        anchor.build_anchor_changer("D", path, digest, 42)
+    assert policies == [True]
+
+
+def test_checkpoint_deserializes_the_same_bytes_it_verified(anchor, tmp_path, monkeypatch):
+    path = tmp_path / "immutable-load.pth"
+    torch.save({"state_dict": {"probe": torch.tensor([1.])}}, path)
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    monkeypatch.setattr(anchor, "_TRUSTED_LEVIR_SHA256", digest)
+    original = torch.load
+    def replace_source_before_loading(source, **kwargs):
+        torch.save({"state_dict": {"probe": torch.tensor([2.])}}, path)
+        return original(source, **kwargs)
+    monkeypatch.setattr(torch, "load", replace_source_before_loading)
+    state, actual_digest = anchor._verified_checkpoint(path, digest)
+    assert actual_digest == digest
+    torch.testing.assert_close(state["probe"], torch.tensor([1.]))
+
+
 def test_actual_opencd_gpu_integration():
     if os.environ.get("ROC_ANCHOR_GPU_INTEGRATION") != "1":
         pytest.skip("Opt-in actual Open-CD/LEVIR GPU integration is unrun locally; set ROC_ANCHOR_GPU_INTEGRATION=1 with ROC_LEVIR_CKPT and ROC_LEVIR_SHA256 in an allocation")

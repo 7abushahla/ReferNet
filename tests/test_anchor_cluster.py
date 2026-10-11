@@ -90,7 +90,7 @@ if args.phase == 'pretrain':
         (raw / f"{identifier}.jpg").write_bytes(f"raw-{identifier}".encode())
         rows.append(dict(image_id=identifier, dataset="sidtd", path=f"{identifier}.jpg",
                          design_id="sidtd/design", component_id=identifier,
-                         label=label, attack_family="copy" if label else ""))
+                         label=label, attack_family="text_copy" if label else ""))
         for folder in ("canvases", "masks", "valid"):
             (legacy / folder).mkdir(exist_ok=True)
             (legacy / folder / f"{identifier}.png").write_bytes(f"{folder}-{identifier}".encode())
@@ -431,6 +431,8 @@ def test_diagnostic_fails_if_success_exit_has_no_gate(inputs, shell_env, tmp_pat
 
 
 def test_audit_wrapper_freezes_metadata_but_never_stages_or_decodes_pixels(inputs, shell_env, tmp_path):
+    shell_env["SLURM_JOB_PARTITION"] = "cpu"
+    shell_env["SLURMD_NODENAME"] = "cpu01"
     audit_script = inputs["source_dir"] / "scripts/audit_encoding_headers.py"
     audit_script.write_text('''import argparse, json
 from pathlib import Path
@@ -464,6 +466,8 @@ out.mkdir()
 
 
 def test_incomplete_audit_retains_summary_and_reports_failed_health(inputs, shell_env, tmp_path):
+    shell_env["SLURM_JOB_PARTITION"] = "cpu"
+    shell_env["SLURMD_NODENAME"] = "cpu01"
     script = inputs["source_dir"] / "scripts/audit_encoding_headers.py"
     script.write_text('''import argparse, json
 from pathlib import Path
@@ -521,7 +525,7 @@ def rows(records, split, role):
     count = 1778 if role == 'train' else 222
     return pd.DataFrame([dict(image_id=f'{role}-{index:04d}', path=f'{role}-{index}.png',
         label=index % 2, design_id='design', component_id=f'{role}-{index}', role=role,
-        attack_family='real' if index % 2 == 0 else ('copy' if index % 8 == 1 else 'inpainting'))
+        attack_family='' if index % 2 == 0 else ('text_copy' if index % 8 == 1 else 'text_inpaint'))
         for index in range(count)])
 pilots._model_builder = lambda track: builder
 query.AnchorQueryDataset = FixtureDataset
@@ -626,3 +630,10 @@ def test_slurm_requests_one_gpu_without_changing_resource_pattern():
     for request in ("--account=acc-mialhajri", "--partition=gpu", "--nodes=1", "--ntasks=1",
                     "--gres=gpu:1", "--cpus-per-task=4", "--mem=8G", "--time=6:00:00"):
         assert f"#SBATCH {request}" in directives
+
+
+def test_header_audit_requests_cpu_partition_without_gpu():
+    wrapper = CLUSTER / "audit_encoding_headers.sh"
+    directives = [line for line in wrapper.read_text().splitlines() if line.startswith("#SBATCH")]
+    assert "#SBATCH --partition=cpu" in directives
+    assert not any("--gres" in line or "--gpus" in line for line in directives)

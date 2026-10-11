@@ -28,6 +28,7 @@ from .train import make_scheduler, selection_key
 
 ATOL = 1e-5
 RTOL = 1e-4
+ATTACK_SUBGROUPS = {"copy": "text_copy", "inpainting": "text_inpaint"}
 OFFICIAL_WEIGHT_SHA256 = {
     "R": "0676ba61b6795bbe1773cffd859882e5e297624d384b6993f7c9e683e722fb8a",
     "D": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618",
@@ -266,6 +267,8 @@ def evaluate_pilot(model, loader, track, device):
 
 
 def summarize_predictions(predictions):
+    if any(row["label"] == 1 and row["attack_family"] not in ATTACK_SUBGROUPS.values() for row in predictions):
+        raise ValueError("unknown SIDTD attack family in predictions")
     scores = [row["bonafide_score"] for row in predictions]
     labels = [row["label"] for row in predictions]
     genuine = [row for row in predictions if row["label"] == 0]
@@ -274,8 +277,8 @@ def summarize_predictions(predictions):
                "genuine_false_positives": [row["image_id"] for row in genuine if row["bonafide_score"] < .5],
                "altered_misses": [row["image_id"] for row in predictions if row["label"] == 1 and row["bonafide_score"] >= .5],
                "subgroups": {}}
-    for family in ("copy", "inpainting"):
-        altered = [row for row in predictions if row["label"] == 1 and row["attack_family"] == family]
+    for family, record_family in ATTACK_SUBGROUPS.items():
+        altered = [row for row in predictions if row["label"] == 1 and row["attack_family"] == record_family]
         population = genuine + altered
         family_scores, family_labels = [row["bonafide_score"] for row in population], [row["label"] for row in population]
         summary["subgroups"][family] = {"n_genuine": len(genuine), "n_altered": len(altered),
@@ -287,12 +290,14 @@ def summarize_predictions(predictions):
 def select_phase_rows(rows, phase, role):
     if role not in ("train", "val"):
         raise ValueError("pilot role must be train or val, never test")
+    if not rows.loc[rows.label == 1, "attack_family"].isin(ATTACK_SUBGROUPS.values()).all():
+        raise ValueError("unknown SIDTD attack family in source membership")
     rows = rows.sort_values("image_id").reset_index(drop=True)
     if phase == "overfit":
         if role != "train":
             raise ValueError("overfit opens training rows only")
         selections = []
-        for family, count in (("real", 8), ("inpainting", 6), ("copy", 2)):
+        for family, count in (("real", 8), ("text_inpaint", 6), ("text_copy", 2)):
             candidates = rows[rows.label == 0] if family == "real" else rows[(rows.label == 1) & (rows.attack_family == family)]
             if len(candidates) < count:
                 raise ValueError(f"overfit requires {count} {family} train images")

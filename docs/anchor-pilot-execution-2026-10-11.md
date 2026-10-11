@@ -11,7 +11,7 @@ Starting revision `60a3adf`. Implementation and parallel delegation are authoriz
 | M0, reviewed amendments and stable interfaces | Committed and pushed | `61833c9`; three contract tests passed; D is non-stream-matched; per-track launch path; one coordinator |
 | M1-R, raw RGB classifier and loader | Reviewed and locally verified, GPU gates pending | Coordinator verification passed 30 model/contract tests; official hash-bound BN-counter migration is explicit |
 | M1-DN, single-query encoder routes | Reviewed and locally verified, GPU integration pending | Coordinator verification passed 42 tests with one explicit local GPU skip; actual installed Open-CD/LEVIR checks require an allocation |
-| M1-audit, exact-membership headers | Reviewed and locally verified, production job submitted | Coordinator verified 44 tests and shell syntax; job 37961 consumes isolated original-header inputs |
+| M1-audit, exact-membership headers | Reviewed and locally verified, CPU resubmission pending | Coordinator verified 44 tests and shell syntax; GPU-partition audit 37961 cancelled at the user's instruction |
 | M2, isolated training and smoke gates | Implemented and independently reviewed | Coordinator tests passed 35 runtime/gate checks and 50 packaging checks; GPU evidence remains pending |
 | M3, fold-safe support | Implemented, review corrections pending | Reviewer reproduced external-specimen inventory and explicit official-fold binding gaps; production registration remains unrun |
 | M4, selected-validation reports and common runtime | Implemented, independent review pending | Worker verified 38 focused tests; no actual timing or long-run decision claimed |
@@ -55,12 +55,22 @@ All three use records SHA256 `afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c
 
 | Track | Job | Phase | Configuration bytes SHA256 | Output directory under `results/diagnostics/anchor-pilots-v1` | Gate/review |
 |---|---|---|---|---|---|
-| R | 37958 | Diagnostic only | `ed5c22565f764449e4375be3da2f0747986e1c952febe3d16725c93f2bbb4467` | `anchor-pilot-diagnostic-37958` | Pending actual GPU gates and independent review |
-| D | 37959 | Diagnostic only | `cc41136927c2cf5b9c729e92018b1572bb095b78743088f05c7d31950015460e` | `anchor-pilot-diagnostic-37959` | Pending actual GPU gates and independent review |
-| N | 37960 | Diagnostic only | `458b664a051097037adec83c8cb61466e702eba02ee471260be01a5950da5e40` | `anchor-pilot-diagnostic-37960` | Pending actual GPU gates and independent review |
+| R | 37958 | Diagnostic only | `ed5c22565f764449e4375be3da2f0747986e1c952febe3d16725c93f2bbb4467` | `anchor-pilot-diagnostic-37958` | Failed before training, canonical attack-family mismatch |
+| D | 37959 | Diagnostic only | `cc41136927c2cf5b9c729e92018b1572bb095b78743088f05c7d31950015460e` | `anchor-pilot-diagnostic-37959` | Failed during actual-stack initialization, official checkpoint metadata rejected |
+| N | 37960 | Diagnostic only | `458b664a051097037adec83c8cb61466e702eba02ee471260be01a5950da5e40` | `anchor-pilot-diagnostic-37960` | Failed during actual-stack initialization, same checkpoint metadata rejection |
 
 R uses the official V1 checkpoint hash recorded above. D/N use the verified LEVIR checkpoint hash. Submission returned all three job IDs successfully; immediate queue state was pending. No 100-epoch training job was submitted. Diagnostic output review must precede each separate long-run submission with the same frozen source and inputs.
 
 ### Header audit allocation
 
 Job `37961` uses immutable revision `e2435ae10cad2697f22d290110e4b3d6a3efb6a0` and archive SHA256 `07b77f996aece22612acff5b53c18de56ecc94592b74ea9a911cf2c12cb8c2ae`. Source is the corresponding read-only `results/source/anchor-REVISION/code` directory. Its original-header corpus and frozen metadata are the separate audit roots described above. Output is `results/diagnostics/anchor-pilots-v1/encoding-headers-37961`. The allocation requests four CPUs, 8 GB memory and one hour on the GPU partition, without reserving a GPU. It performs no decoding or detector inference and never runs on the login node. Its immediate submission state was pending. A successful scheduler exit is not a scientific completeness or transfer claim; the audit health and qualified results require inspection.
+
+### First diagnostic outcomes and corrections
+
+R `37958` failed in 2:02 before overfit training. The source record taxonomy is `text_inpaint` and `text_copy`, while the new runtime had used display names `inpainting` and `copy`. The correction uses canonical record labels for selection and subgroup membership, retains display names only as report keys, and rejects unknown altered families. Metadata-only verification of actual fold 0 confirms the eight-genuine, six-inpainting, two-copy probe is available.
+
+D `37959` failed in 2:28 and N `37960` failed in 3:05, before actual-stack model initialization completed. PyTorch 2.1's restricted weight loader rejected NumPy scalar metadata in the verified official LEVIR checkpoint. The correction permits full deserialization only after matching the immutable complete official LEVIR SHA256, records that policy, and retains restricted loading with no unrestricted fallback for every other digest. Tensor key, shape, dtype and initialization checks remain unchanged. Regression tests reproduce both failures and then pass after the corrections. These failed allocations provide no trained-model performance evidence and cannot authorize long training.
+
+At the user's explicit instruction, CPU-only jobs must request the `cpu` partition, not a GPU-partition node without a GPU reservation. The cluster's available partitions were checked with `sinfo`. Audit `37961` was cancelled at 2:26 before completion and will be resubmitted on `cpu`; it has no completed scientific result. Enrollment and shared CPU benchmark wrappers follow the same CPU resource rule. Model diagnostics continue to request one GPU each on `gpu`.
+
+Independent review cleared the narrowly scoped corrections for diagnostic relaunch only. Coordinator verification passed the six initially failing regressions, 162 integrated tests (one explicit local GPU skip), 45 fresh Changer tests after the immutable-byte correction (one GPU skip), and three CPU audit wrapper checks. The reviewer independently reproduced the byte-mutation failure before the fix and verified it afterward. Deserialization now consumes the exact byte snapshot whose digest was verified. The first three failed allocation manifests/logs are archived separately under their original job directories; no original output is rewritten or promoted to a passing gate. Long-run approval remains absent.

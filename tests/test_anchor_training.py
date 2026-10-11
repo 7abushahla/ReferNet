@@ -59,7 +59,7 @@ def samples(count=5, masks=False):
     rows = []
     for index in range(count):
         row = {"query": torch.tensor([index / 5, 1.0]), "label": index % 2,
-               "meta": {"image_id": str(index), "design_id": "design", "attack_family": "inpainting" if index % 2 else "real"}}
+               "meta": {"image_id": str(index), "design_id": "design", "attack_family": "text_inpaint" if index % 2 else ""}}
         if masks:
             row.update(mask=torch.full((1, 2, 2), float(index % 2)), valid=torch.ones(1, 2, 2))
         rows.append(row)
@@ -188,12 +188,33 @@ def test_evaluation_rejects_mutated_buffers(pilots):
 
 def test_overfit_selection_fixed_composition_sorted(pilots):
     rows = pd.DataFrame([{"image_id": f"{family}-{index:02d}", "attack_family": family, "label": int(family != "real")}
-                         for family, count in (("real", 10), ("inpainting", 8), ("copy", 3)) for index in range(count)])
+                         for family, count in (("real", 10), ("text_inpaint", 8), ("text_copy", 3)) for index in range(count)])
     selected = pilots.select_phase_rows(rows.sample(frac=1, random_state=9), "overfit", "train")
-    assert selected["attack_family"].value_counts().to_dict() == {"real": 8, "inpainting": 6, "copy": 2}
+    assert selected["attack_family"].value_counts().to_dict() == {"real": 8, "text_inpaint": 6, "text_copy": 2}
     assert selected.image_id.tolist() == sorted(selected.image_id.tolist())
     with pytest.raises(ValueError, match="test|role"):
         pilots.select_phase_rows(rows, "smoke", "test")
+
+
+def test_overfit_uses_canonical_sidtd_attack_families(pilots):
+    rows = pd.DataFrame([dict(image_id=f"{family}-{index:02d}", attack_family=family,
+                              label=int(bool(family)))
+                         for family, count in (("", 8), ("text_inpaint", 6), ("text_copy", 2))
+                         for index in range(count)])
+    selected = pilots.select_phase_rows(rows, "overfit", "train")
+    assert selected.attack_family.value_counts().to_dict() == {"": 8, "text_inpaint": 6, "text_copy": 2}
+
+
+def test_subgroups_use_canonical_record_labels_and_reject_unknown_families(pilots):
+    predictions = [dict(image_id="genuine", label=0, attack_family="", bonafide_score=.9),
+                   dict(image_id="copy", label=1, attack_family="text_copy", bonafide_score=.1),
+                   dict(image_id="inpaint", label=1, attack_family="text_inpaint", bonafide_score=.2)]
+    summary = pilots.summarize_predictions(predictions)
+    assert summary["subgroups"]["copy"]["n_altered"] == 1
+    assert summary["subgroups"]["inpainting"]["n_altered"] == 1
+    predictions[1]["attack_family"] = "unknown"
+    with pytest.raises(ValueError, match="family"):
+        pilots.summarize_predictions(predictions)
 
 
 def test_builder_preserves_external_random_streams(pilots, monkeypatch, tmp_path):
@@ -272,7 +293,7 @@ class FixtureDataset(torch.utils.data.Dataset):
 def fixture_rows(role):
     return pd.DataFrame([dict(image_id=f"{role}-{index:02d}", path=f"{role}-{index}.png", label=index % 2,
                               design_id="design", component_id=f"component-{index}", role=role,
-                              attack_family="real" if index % 2 == 0 else ("copy" if index % 8 == 1 else "inpainting"))
+                              attack_family="" if index % 2 == 0 else ("text_copy" if index % 8 == 1 else "text_inpaint"))
                          for index in range(32)])
 
 

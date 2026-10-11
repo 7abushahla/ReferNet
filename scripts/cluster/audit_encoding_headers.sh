@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --account=acc-mialhajri
-#SBATCH --partition=gpu
+#SBATCH --partition=cpu
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
@@ -19,7 +19,7 @@ fi
 case "${SLURMD_NODENAME,,}" in
     *login*|*head*|*frontend*|*lgn*) echo 'Header audit is forbidden on login nodes' >&2; exit 2 ;;
 esac
-[[ "${SLURM_JOB_PARTITION:-}" == gpu ]] || { echo 'Allocated compute partition required' >&2; exit 2; }
+[[ "${SLURM_JOB_PARTITION:-}" == cpu ]] || { echo 'Allocated CPU partition required' >&2; exit 2; }
 [[ "$SLURM_JOB_ID" =~ ^[0-9]+$ ]] || { echo 'Invalid Slurm job ID' >&2; exit 2; }
 source /opt/miniconda/etc/profile.d/conda.sh
 environment_path=/shared/b00090279/conda/envs/refer-or-clear

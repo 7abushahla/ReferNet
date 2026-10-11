@@ -1,0 +1,14 @@
+{
+  "evidence": {},
+  "failures": [
+    "overfit: incomplete evidence ([Errno 2] No such file or directory: '/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-pilot-diagnostic-37958/pilot/overfit/train.json')",
+    "smoke: incomplete evidence ([Errno 2] No such file or directory: '/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-pilot-diagnostic-37958/pilot/smoke/train.json')",
+    "overfit requires 6 inpainting train images"
+  ],
+  "fresh_initialization": {},
+  "identities": {},
+  "passed": false,
+  "phase": "pretrain",
+  "schema_version": "anchor_pilot_v1",
+  "tracks": {}
+}
