@@ -2,7 +2,7 @@
 
 Date: 2026-10-11.
 
-Status: approved for task-level planning on 11 October 2026, including the three review amendments below. Implementation, diagnostic execution, new training jobs and a sweep remain unstarted and require execution approval. Historical jobs and results remain unchanged.
+Status: implementation and delegated work authorized on 11 October 2026. Codex coordinates integration and all submissions. Each completed milestone is supplied for independent review. Overfit/smoke diagnostics may be submitted after their implementation checks; each 100-epoch launch waits for review of that track's gate outputs. Sweeps and downstream model evaluations remain outside this authorization.
 
 ## 1. Approved objective
 
@@ -90,7 +90,7 @@ For this diagnostic only, preserve the old registered 512 by 800 query/zone arti
 | Augmentation | Existing corrected paired transforms, affine limit 8 px, query jitter 2 px at probability 0.25, photometric jitter on, JPEG off, no crop |
 | Selection | Validation accuracy first, AUC tie-break, earlier epoch on exact ties |
 
-Initialize the encoder identically to the comparator. Isolate new-head initialization from data-sampler and augmentation random streams. The smoke audit must verify unchanged encoder starting tensors and the intended sample/augmentation replay contract. Do not claim a readout-only contrast if these gates fail. Report changed classifier capacity and active parameter counts. This experiment replaces the complete readout route, not only the map-peak scalar.
+Initialize the encoder identically to the comparator and verify its starting tensors. Retain deterministic seeds, declared query augmentation settings and sampler/worker provenance, with new-head initialization isolated from data random streams. Exact historical augmentation-stream replay is not required. D versus job 37932 is a non-stream-matched comparison of the readout routes, not an isolated causal estimate from identical stochastic trajectories. Report changed classifier capacity and active parameter counts. This experiment replaces the complete readout route, not only the map-peak scalar.
 
 ## 5. Pilot R, RGB-only ResNet50 anchor
 
@@ -119,7 +119,7 @@ Source locations are `data/raw/sidtd/SIDTD_Dataset/SIDTD/models/Baseline/_utils.
 
 Export attack probability as softmax class 1, and bona fide score as class 0. Validate equivalence with the logit difference if the common metric interface uses a sigmoid. Resolve threshold ties consistently with two-class argmax. The new runtime may reuse shared metric/checkpoint infrastructure, but must not fabricate masks or references merely to satisfy the old eight-channel loader.
 
-Pilot R is a complete baseline-recipe candidate. A difference from Pilot D does not isolate backbone capacity, initialization, normalization, or optimizer. The controlled readout comparison is D versus job 37932.
+Pilot R is a complete baseline-recipe candidate. A difference from Pilot D does not isolate backbone capacity, initialization, normalization, or optimizer. D versus job 37932 compares readout routes under declared shared settings without claiming historical stochastic-stream matching.
 
 The released SIDTD checkpoints already provide the published-model diagnostic. Pilot R is not another reproduction required to trust that row. Its purpose is to establish a query-only member that can become our reference-conditioned family. Matching the published RGB baseline does not validate a reference adapter that has not yet been tested.
 
@@ -185,7 +185,7 @@ Before long training, require all of the following.
 - Every long pilot starts in a new process with newly loaded declared initialization, a new head, pristine BN state, fresh optimizer/scheduler and reset random streams. Overfit and smoke weights, buffers, optimizer state, and scheduler state are never used to initialize a 100-epoch pilot.
 - Full configuration, source archive/hash, raw/split hashes, weight hashes, actual precision flags, and submit IDs in an immutable ledger.
 
-Acceptance gates apply to the condition that owns their inputs. The new enrollment-isolation checks gate fold-safe reference experiments, not the raw RGB pilot or explicitly legacy D/N diagnostics. All three pilot smokes can run independently on separate GPU nodes. A condition can launch its own 100-epoch run without waiting for the other conditions only after implementation/execution approval and its correctness gates pass. Request one GPU per training run, three training GPUs at most for the initial tracks, plus separately allocated support preparation if needed. Heavy data preparation, model probes, inference, and timing run in allocated compute jobs, never on the login node. Preserve current jobs. Do not automatically change batch size or precision after an OOM; report and document a recipe revision first.
+Acceptance gates apply to the condition that owns their inputs. The new enrollment-isolation checks gate fold-safe reference experiments, not the raw RGB pilot or explicitly legacy D/N diagnostics. All three pilot smokes can run independently on separate GPU nodes. Codex alone submits and records jobs. A condition can launch its own 100-epoch run without waiting for the other conditions after its implementation checks, smoke/replay and independent gate review pass. Support construction, runtime benchmarking and report tooling do not gate a correct query pilot's launch. Request one GPU per training run, three training GPUs at most for the initial tracks, plus separately allocated support preparation if needed. Heavy data preparation, model probes, inference, and timing run in allocated compute jobs, never on the login node. Preserve current jobs. Do not automatically change batch size or precision after an OOM; report and document a recipe revision first.
 
 Correctness gates permit an approved long pilot; scientific gates permit advancement to reference-family confirmation. The latter require selected-checkpoint validation evidence, genuine false positives, both attack subsets, stable inference and a defensible runtime profile. A successful smoke is not evidence that the anchor target has been met.
 
