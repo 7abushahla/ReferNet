@@ -9,8 +9,8 @@ Starting revision `60a3adf`. Implementation and parallel delegation are authoriz
 | Milestone | State | Evidence |
 |---|---|---|
 | M0, reviewed amendments and stable interfaces | Committed and pushed | `61833c9`; three contract tests passed; D is non-stream-matched; per-track launch path; one coordinator |
-| M1-R, raw RGB classifier and loader | Implemented, review in progress | R historical BN-counter compatibility finding is being corrected; loader/configuration focused tests pass |
-| M1-DN, single-query encoder routes | Implemented, integration pending | Worker reports fixture tests; actual installed Open-CD/LEVIR checks require an allocation |
+| M1-R, raw RGB classifier and loader | Reviewed and locally verified, GPU gates pending | Coordinator verification passed 30 model/contract tests; official hash-bound BN-counter migration is explicit |
+| M1-DN, single-query encoder routes | Reviewed and locally verified, GPU integration pending | Coordinator verification passed 42 tests with one explicit local GPU skip; actual installed Open-CD/LEVIR checks require an allocation |
 | M1-audit, exact-membership headers | Implemented, independent review in progress | 19 focused tests; Claude read-only review requested; real-corpus audit not yet run |
 | M2, isolated training and smoke gates | Implemented and independently reviewed | Coordinator tests passed 35 runtime/gate checks and 50 packaging checks; GPU evidence remains pending |
 | M3, fold-safe support | Implemented, review pending | Worker verified 590 eligible fold-0 supports, no empty halves and all authorized layout entries; production registration remains unrun |
@@ -41,6 +41,8 @@ Starting revision `60a3adf`. Implementation and parallel delegation are authoriz
 - VPN reconnection restored access through the required hostname. Job `37932` completed successfully in 3:42:35. Its completed artifacts are being archived separately for the historical readout comparison.
 - The early header-audit transfer freezes 2,018 candidate rows and transfers the complete local FantasyID test directory plus proposed support files, including test JSON metadata. It contains 3,408 files and 1,973,068,879 bytes, excludes sidecars, and targets separate `data/raw_anchor_audit_v1` and `data/anchor_audit_inputs_v1` directories. Metadata hashes are recorded in the temporary transfer ledger. This scope enables independent filename inventory rather than constructing a directory solely from selected test rows.
 - Actual source/donor field semantics were verified against `data/records.py`. They refer to document identity IDs. FantasyID source IDs reuse the document identity, while donor IDs are optional. The header audit's namespaced identity graph follows that declared metadata contract; it does not claim independent verification of historical document provenance.
+- Fresh coordinator model verification passed 30 R/contract tests and 42 D/N tests. The single D/N skip is the opt-in actual Open-CD GPU integration test, which the allocated diagnostic wrapper requires to execute without skips. R's historical counter migration is bound to the complete official V1 file hash. D's active fingerprint excludes discarded BN buffers and retains the historical fingerprint separately.
+- Completed historical job `37932` ran 100 epochs. Accuracy-first validation selection chose epoch 44, with validation AUC 0.8708196721311475 and logged accuracy 0.824324. Its final-epoch AUC 0.91 is not the selected result. This historical classification-only route retains decoder/map readout and does not test Pilot D's direct readout. The small original artifacts are archived under `results/diagnostics/anchor-pilots-v1/history-37932`.
 
 ## Submission ledger
 

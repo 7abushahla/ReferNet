@@ -1,0 +1,28 @@
+{
+  "tag": "A-classification-only-registered-f0-s42-fp32-jfix-e100",
+  "protocol": "A",
+  "arch": "changerex_r18",
+  "fusion": "single_noex",
+  "bn_policy": "batch_stats",
+  "validation_only": true,
+  "strict_fp32": true,
+  "reference": "median",
+  "init": "levir",
+  "seed": 42,
+  "fold": 0,
+  "n_params": 11407874,
+  "val": {
+    "auc": 0.8708196721311475,
+    "threshold_miss5": 0.9505524039268494,
+    "threshold_miss1": 0.9933173358440399,
+    "n_genuine": 100,
+    "n_altered": 122
+  },
+  "test": {},
+  "subsets": {},
+  "timing": {
+    "train_seconds": 13036.568304538727,
+    "epochs": 100,
+    "best_epoch": 44
+  }
+}
