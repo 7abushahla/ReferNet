@@ -207,6 +207,10 @@ Before reference-family replication, benchmark batch-one FP32 CPU latency on nam
 
 Freeze architecture, recipes, enrollment rules and source-derived operating thresholds before B-D. Do not use FantasyID-trained detectors or teachers to initialize a supposedly FantasyID-unseen model. Keep robustness to encoding interventions separate from the native benchmark; no compression equalization is introduced in this increment. Resolving the SIDTD causal mechanism is not a prerequisite for running the native Protocol A candidate comparison, but encoding sensitivity limits what that comparison establishes.
 
+### Approved normalization diagnostic, 12 October 2026
+
+The failed direct-readout D probe has an independently reviewed batch-context effect at frozen weights. A separate `D_running` diagnostic retains D's input, direct readout, seed, offline initialization and declared recipe, but uses stored BatchNorm statistics under the distinct architecture identifier `anchor_direct_running_ia18_v1`. It starts from the original LEVIR weights, not the failed D checkpoint. The authorized scope is one GPU allocation for training-only overfit, smoke, companion invariance and fresh-process replay. Smoke evaluates an unaugmented view of its 32 training images. Validation and test pixels are neither staged nor opened. Full training is blocked in packaging and runtime. Passing these gates establishes implementation readiness only; it does not establish source-validation competence or authorize a 100-epoch run.
+
 ### Early metadata audit and later-protocol safeguards
 
 Prepare and run a bounded FantasyID encoding-header and membership audit alongside the Protocol A pilots after execution approval. Freeze and identify the exact audited subset membership, report current counts and missing files, and distinguish that audited manifest from any later revised evaluation/support contract. This audit reads headers and existing membership metadata only. It performs no pixel decoding, inference, recompression, training, target threshold calibration or target-based family selection. It must not delay independent Protocol A tracks.

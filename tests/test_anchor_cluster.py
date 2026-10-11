@@ -148,6 +148,44 @@ def test_legacy_stages_only_needed_query_and_training_targets(helper, inputs, tr
     assert staged_files(inputs["stage_dir"] / "legacy") == expected
 
 
+def test_d_running_stages_only_train_queries_without_raw_or_targets(helper, inputs, monkeypatch):
+    inputs["config"].write_text("schema_version: anchor_pilot_v1\ntrack: D_running\n")
+    original_hash = helper.file_sha256
+
+    def guarded_hash(path):
+        path = Path(path)
+        if path.is_relative_to(inputs["raw_root"]):
+            pytest.fail(f"D_running hashed raw pixels: {path}")
+        if path.is_relative_to(inputs["legacy_root"]):
+            relative = path.relative_to(inputs["legacy_root"]).as_posix()
+            assert relative in {"canvases/a.png", "canvases/b.png", "zones/sidtd_design.png"}, relative
+        return original_hash(path)
+
+    monkeypatch.setattr(helper, "file_sha256", guarded_hash)
+    manifest = prepare(helper, inputs)
+    assert manifest["track"] == "D_running"
+    assert manifest["data_scope"] == "train_only"
+    assert manifest["membership"] == {"train": ["a", "b"]}
+    assert staged_files(inputs["stage_dir"] / "raw") == []
+    assert staged_files(inputs["stage_dir"] / "legacy") == [
+        "canvases/a.png", "canvases/b.png", "zones/sidtd_design.png",
+    ]
+
+
+def test_d_running_full_train_rejected_before_data_selection_or_staging(helper, inputs, monkeypatch):
+    inputs["config"].write_text("schema_version: anchor_pilot_v1\ntrack: D_running\n")
+
+    def forbidden(*args, **kwargs):
+        pytest.fail("D_running full training selected or staged data")
+
+    monkeypatch.setattr(helper, "selected_rows", forbidden)
+    monkeypatch.setattr(helper, "copy_verified", forbidden)
+    with pytest.raises(ValueError, match="D_running is diagnostic-only"):
+        prepare(helper, inputs, phase="train")
+    assert not inputs["stage_dir"].exists()
+    assert not inputs["run_dir"].exists()
+
+
 @pytest.mark.parametrize("damage", ["weights", "duplicate", "mismatch", "escape", "sidecar", "symlink"])
 def test_invalid_inputs_fail_before_runtime(helper, inputs, damage):
     if damage == "weights":
@@ -598,7 +636,18 @@ raise SystemExit(0 if result['passed'] else 1)
     assert selected["identities"] == gate["identities"]
 
 
-@pytest.mark.parametrize("track", ["D", "N"])
+def test_d_running_wrapper_rejects_full_train_before_staging(inputs, shell_env, tmp_path):
+    inputs["config"].write_text("schema_version: anchor_pilot_v1\ntrack: D_running\n")
+    output = tmp_path / "out"
+    review = tmp_path / "unused-review.json"
+    result = run_wrapper("train_anchor_pilot.sh", pilot_args(inputs, output, "train", review), shell_env)
+    assert result.returncode != 0
+    assert "D_running is diagnostic-only" in result.stderr
+    assert not Path(shell_env["ROC_SCRATCH_ROOT"]).exists()
+    assert not output.exists()
+
+
+@pytest.mark.parametrize("track", ["D", "D_running", "N"])
 @pytest.mark.parametrize("outcome", ["pass", "fail", "skip"])
 def test_dn_diagnostic_requires_actual_stack_gate_before_checker(inputs, shell_env, tmp_path, track, outcome):
     inputs["config"].write_text(f"schema_version: anchor_pilot_v1\ntrack: {track}\n")
@@ -628,7 +677,12 @@ def test_actual_opencd_gpu_integration():
     assert (run / "actual-stack-test.log").is_file()
     if outcome == "pass":
         assert result.returncode == 0, result.stderr
-        assert (run / "pilot/runtime_calls.json").is_file()
+        calls = json.loads((run / "pilot/runtime_calls.json").read_text())
+        assert [call["phase"] for call in calls] == ["pretrain"]
+        if track == "D_running":
+            manifest = json.loads((run / "input_manifest.json").read_text())
+            assert manifest["data_scope"] == "train_only"
+            assert manifest["membership"] == {"train": ["a", "b"]}
     else:
         assert result.returncode != 0
         assert not (run / "pilot").exists()

@@ -1,4 +1,4 @@
-"""Isolated query-only D/N pilots using the installed Open-CD Changer modules."""
+"""Isolated query-only D/D_running/N pilots using installed Open-CD Changer modules."""
 
 from __future__ import annotations
 
@@ -152,10 +152,10 @@ class AnchorChanger(nn.Module):
         self.architecture_id = contract.architecture_id
         self.bn_policy = contract.bn_policy
         self.backbone = historical.backbone
-        if track == "D":
+        if track in ("D", "D_running"):
             with _seeded_construction(head_seed):
                 self.classifier = nn.Sequential(nn.Linear(512, 128), nn.ReLU(), nn.Linear(128, 1))
-            changerex.set_encoder_bn_policy(self, "batch_stats")
+            changerex.set_encoder_bn_policy(self, self.bn_policy)
         else:
             self.decode_head = historical.decode_head
             self.referral = historical.referral
@@ -191,7 +191,7 @@ class AnchorChanger(nn.Module):
             raise ValueError("D batch-statistics evaluation requires batch size one")
         self._check_bn_policy()
         features = encode_query(self.backbone, query)
-        if self.track == "D":
+        if self.track in ("D", "D_running"):
             pooled = features[-1].mean(dim=(2, 3))
             return {"attack_logit": self.classifier(pooled).squeeze(1)}
         projected = self.decode_head.base_forward(features)
@@ -203,8 +203,8 @@ class AnchorChanger(nn.Module):
 
 def build_anchor_changer(track: str, levir_path: Path, expected_sha256: str, head_seed: int) -> nn.Module:
     """Verify offline LEVIR tensors, reproduce historical initialization, retain active modules."""
-    if track not in ("D", "N"):
-        raise ValueError(f"Unknown Changer pilot track {track!r}, expected D or N")
+    if track not in ("D", "D_running", "N"):
+        raise ValueError(f"Unknown Changer pilot track {track!r}, expected D, D_running or N")
     path = Path(levir_path).resolve()
     source, digest = _verified_checkpoint(path, expected_sha256)
     with _seeded_construction(head_seed):

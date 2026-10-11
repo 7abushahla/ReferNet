@@ -1,0 +1,46 @@
+{
+  "allocation": {
+    "cpus": "4",
+    "job_id": "37978",
+    "node": "cpu-dy-c5-0-3",
+    "partition": "cpu"
+  },
+  "authority": {
+    "frozen_path": "/tmp/b00090279/anchor-enrollment-integrity-37978/inputs/manifest.json",
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold0-37973/enrollment/manifest.json",
+    "sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8"
+  },
+  "environment": {
+    "conda_prefix": "/shared/b00090279/conda/envs/refer-or-clear",
+    "flags": {
+      "MKL_NUM_THREADS": "4",
+      "OMP_NUM_THREADS": "4",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "",
+      "TMPDIR": "/tmp/b00090279/anchor-enrollment-integrity-37978/tmp"
+    },
+    "hostname": "cpu-dy-c5-0-3",
+    "python_executable": "/shared/b00090279/conda/envs/refer-or-clear/bin/python",
+    "python_prefix": "/shared/b00090279/conda/envs/refer-or-clear",
+    "python_version": "3.10.22"
+  },
+  "launcher_sha256": "5a7799127e77bb64d1f034a61a043abd29b94ecf57febb528536a129aca2c5b3",
+  "paths": {
+    "report": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-integrity-37978/report.json",
+    "run_dir": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-integrity-37978",
+    "scratch_dir": "/tmp/b00090279/anchor-enrollment-integrity-37978"
+  },
+  "resource_contract": {
+    "cpus": 4,
+    "memory": "8G",
+    "partition": "cpu",
+    "time": "1:00:00"
+  },
+  "schema_version": "anchor_enrollment_integrity_launcher_v1",
+  "script": {
+    "frozen_path": "/tmp/b00090279/anchor-enrollment-integrity-37978/code/verify_anchor_enrollment_products.py",
+    "path": "/shared/b00090279/refer-or-clear/results/source/anchor-982ebddb1bd32a824349da9f725f712a08e6d24d/code/scripts/verify_anchor_enrollment_products.py",
+    "sha256": "fa6912ce4df26aa5b6c8bb12675b938e9070710178047738893cf8a1df3c511f"
+  },
+  "verification_only": true
+}

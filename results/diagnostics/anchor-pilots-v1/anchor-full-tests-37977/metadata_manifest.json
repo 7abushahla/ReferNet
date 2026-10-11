@@ -1,0 +1,137 @@
+{
+  "schema_version": "full_suite_metadata_v1",
+  "repository": "/shared/b00090279/refer-or-clear",
+  "code": "/scratch/b00090279/anchor-full-tests-37977/code",
+  "metadata_files": [
+    {
+      "relative_path": "data/processed/records.csv",
+      "sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276"
+    },
+    {
+      "relative_path": "data/processed/splits/protocol_a_it0.csv",
+      "sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/train_split_SIDTD_it_0.csv",
+      "sha256": "fa9444e7bf2e67cebee1eda16b748bc50710719b0dc4302641035752cfcd96c4"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/val_split_SIDTD_it_0.csv",
+      "sha256": "1376866f00cb792526f099bce86b9eeb754cdb8ee1507a59f6a192cedc11da2b"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/test_split_SIDTD_it_0.csv",
+      "sha256": "dd034e1f3296368e478898eb8d674814dd2c3a80af078271ab5b3dee821bdb28"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/train_split_SIDTD_it_1.csv",
+      "sha256": "d7f5c0c49d075c5f273f483f0b39f9c463693781c0adab83788433e6dfcaa5f2"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/val_split_SIDTD_it_1.csv",
+      "sha256": "53ae44961dfb164420fac7b1694a9991f4ff9860fb67bbdb2a4c18cf26ff7cb3"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/test_split_SIDTD_it_1.csv",
+      "sha256": "1376866f00cb792526f099bce86b9eeb754cdb8ee1507a59f6a192cedc11da2b"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/train_split_SIDTD_it_2.csv",
+      "sha256": "4bbe40e43b85de18f7476adc854328df9da1067acedf9d5c168b38883a4e50cd"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/val_split_SIDTD_it_2.csv",
+      "sha256": "338519f652265b4e190ea97f592f1fdcec36162fc59925591c96c5450c684e28"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/test_split_SIDTD_it_2.csv",
+      "sha256": "53ae44961dfb164420fac7b1694a9991f4ff9860fb67bbdb2a4c18cf26ff7cb3"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/train_split_SIDTD_it_3.csv",
+      "sha256": "0a09cf870e39ec1f0367cfb2276dc5d2dcb0a3010c2d4a394e2a7da91c3d7269"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/val_split_SIDTD_it_3.csv",
+      "sha256": "8b8c7149900273bf8945920f5885a0a8da50714fc465625f5a1cf7d6b4ed81a6"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/test_split_SIDTD_it_3.csv",
+      "sha256": "338519f652265b4e190ea97f592f1fdcec36162fc59925591c96c5450c684e28"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/train_split_SIDTD_it_4.csv",
+      "sha256": "ee328610b601061dba5b8d726f38bcd7cc2ba7d9c2fe706032065508a9651055"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/val_split_SIDTD_it_4.csv",
+      "sha256": "493f3791bf44adffa45517d854f357a031bafafe99008fff7b6f0727e7aae694"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/test_split_SIDTD_it_4.csv",
+      "sha256": "cc536878f6378ee4c0d19686d627c4e72b1d24de8432973945dca1b3c57961e9"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/train_split_SIDTD_it_5.csv",
+      "sha256": "e868709a37c62ebfd85e1037fdb17f10af4de8bc9d32352d203a4d529f2ab412"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/val_split_SIDTD_it_5.csv",
+      "sha256": "74bf03e5be5bc47b0f59cbb9d761d5c13b6cb2e376783ce3ffcb57af3ffee9a3"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/test_split_SIDTD_it_5.csv",
+      "sha256": "c862c943fc3f2c87e9c0e4c6079c844082cc9a03a2ba11191e7aa399eaf416a6"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/train_split_SIDTD_it_6.csv",
+      "sha256": "9a8849f6f9ab3067113e6464ba845b9e5fa78b394e0c519a1c70afcc9a89f438"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/val_split_SIDTD_it_6.csv",
+      "sha256": "0a2d6b36ca4fa400d7e514e0a9b8b682293918980e647e7eaaebc961839036a9"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/test_split_SIDTD_it_6.csv",
+      "sha256": "74bf03e5be5bc47b0f59cbb9d761d5c13b6cb2e376783ce3ffcb57af3ffee9a3"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/train_split_SIDTD_it_7.csv",
+      "sha256": "1d66c6c2283b691c3263f1c4d1f2a69b55fbfd5239ec1710335543b82f620fc4"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/val_split_SIDTD_it_7.csv",
+      "sha256": "71164ddd3ee9c4ff6044321f9a7fabbc7fbb3096fee747c081771810cc745887"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/test_split_SIDTD_it_7.csv",
+      "sha256": "0a2d6b36ca4fa400d7e514e0a9b8b682293918980e647e7eaaebc961839036a9"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/train_split_SIDTD_it_8.csv",
+      "sha256": "7a7ca3f8497a735f6090469f1f419ad23efd20b208425ffa1ea05ec99ba9b209"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/val_split_SIDTD_it_8.csv",
+      "sha256": "c8918ba005f4c805d9958a571f6b9503569579960101c27acad3c8987f4b59c2"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/test_split_SIDTD_it_8.csv",
+      "sha256": "71164ddd3ee9c4ff6044321f9a7fabbc7fbb3096fee747c081771810cc745887"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/train_split_SIDTD_it_9.csv",
+      "sha256": "784c20d2849df7714da8cce9dee9ec5790151e4b085bd5f314cd5a7da54d8af9"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/val_split_SIDTD_it_9.csv",
+      "sha256": "dd034e1f3296368e478898eb8d674814dd2c3a80af078271ab5b3dee821bdb28"
+    },
+    {
+      "relative_path": "data/raw/sidtd/kfold_split_templates/split_kfold/test_split_SIDTD_it_9.csv",
+      "sha256": "10b94cfd02852c3f637b3111d1e549c2a543b8e57edac51c95a8f81ad7bb8d57"
+    }
+  ],
+  "image_existence_link": "/shared/b00090279/refer-or-clear/data/raw/sidtd/templates/Images",
+  "image_scope": "Legacy scorer checks file existence only; no corpus image bytes staged or decoded"
+}

@@ -102,7 +102,7 @@ def _defaults(track: str) -> dict:
         selection=dict(primary="accuracy", tie_break="auc", exact_tie="earlier_epoch"),
         accumulation_steps=2 if track == "R" else 1, drop_last=track != "R", eval_drop_last=False,
         wrong_design_fraction=0.0, augment=augmentation_defaults(track),
-        comparison="non_stream_matched" if track == "D" else "candidate_package",
+        comparison="non_stream_matched" if track in ("D", "D_running") else "candidate_package",
     )
     if track == "R":
         config["optimizer"] = dict(name="sgd", lr=0.01, momentum=0.9, weight_decay=0.0, nesterov=False)

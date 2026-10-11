@@ -32,6 +32,7 @@ ATTACK_SUBGROUPS = {"copy": "text_copy", "inpainting": "text_inpaint"}
 OFFICIAL_WEIGHT_SHA256 = {
     "R": "0676ba61b6795bbe1773cffd859882e5e297624d384b6993f7c9e683e722fb8a",
     "D": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618",
+    "D_running": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618",
     "N": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618",
 }
 
@@ -547,6 +548,10 @@ def _inference_gate(model, dataset, track, device):
     return result
 
 
+def evaluation_role(track, phase):
+    return "train" if phase == "overfit" or contract_for(track).diagnostic_only else "val"
+
+
 def run_pilot(config_path, raw_root, legacy_root, run_dir, device, phase, *, weights, weights_sha256,
               records=None, split=None, checkpoint=None, workers=0, pretrain_gate=None):
     from .data.query import AnchorQueryDataset, load_role_rows
@@ -557,6 +562,8 @@ def run_pilot(config_path, raw_root, legacy_root, run_dir, device, phase, *, wei
     if phase != "replay" and checkpoint is not None:
         raise ValueError("training phases forbid checkpoint initialization")
     config = resolve_pilot_config(Path(config_path))
+    if phase == "train" and contract_for(config["track"]).diagnostic_only:
+        raise ValueError("D_running is diagnostic-only; full training is not authorized")
     validate_weight_request(config["track"], weights_sha256)
     if phase == "train" and config["epochs"] != 100:
         raise ValueError("full pilot training requires 100 epochs without early stopping")
@@ -588,7 +595,7 @@ def run_pilot(config_path, raw_root, legacy_root, run_dir, device, phase, *, wei
         saved = read_pilot_checkpoint(checkpoint or run_dir / "checkpoints" / "best.pt", config, identities)
         if saved["phase"] != info["phase"]:
             raise ValueError("replay checkpoint phase mismatch")
-        role = "train" if saved["phase"] == "overfit" else "val"
+        role = evaluation_role(track, saved["phase"])
         rows = select_phase_rows(load_role_rows(records, split, role), saved["phase"], role)
         if _rows_manifest(rows) != info["membership"][role]:
             raise ValueError("replay membership manifest mismatch")
@@ -606,7 +613,7 @@ def run_pilot(config_path, raw_root, legacy_root, run_dir, device, phase, *, wei
         result["passed"] = result["passed"] and result["inference"]["passed"]
         write_json(run_dir / "replay.json", result)
         return result
-    roles = ("train",) if phase == "overfit" else ("train", "val")
+    roles = ("train",) if phase == "overfit" or contract_for(track).diagnostic_only else ("train", "val")
     role_rows = {role: select_phase_rows(load_role_rows(records, split, role), phase, role) for role in roles}
     for role, rows in role_rows.items():
         if "role" in rows and not rows.role.eq(role).all():
@@ -618,8 +625,9 @@ def run_pilot(config_path, raw_root, legacy_root, run_dir, device, phase, *, wei
     train_rows = role_rows["train"]
     train_dataset = AnchorQueryDataset(train_rows, Path(raw_root), legacy_root, track, True,
                                       {"enabled": False} if phase == "overfit" else config["augment"])
-    eval_rows = role_rows["train"] if phase == "overfit" else role_rows["val"]
-    eval_dataset = AnchorQueryDataset(eval_rows, Path(raw_root), legacy_root, track, phase == "overfit", {"enabled": False})
+    eval_role = evaluation_role(track, phase)
+    eval_rows = role_rows[eval_role]
+    eval_dataset = AnchorQueryDataset(eval_rows, Path(raw_root), legacy_root, track, eval_role == "train", {"enabled": False})
     val_loader = _loader(eval_dataset, config["eval_batch_size"], workers, config["seed"] + 2001)
     model = build_initialized_model(config, weights, weights_sha256).to(device)
     initial_state = tensor_sha256(model.state_dict())
@@ -655,6 +663,7 @@ def run_pilot(config_path, raw_root, legacy_root, run_dir, device, phase, *, wei
                       "legacy_root": str(Path(legacy_root).resolve()) if legacy_root else None},
             "membership": {role: _rows_manifest(rows) for role, rows in role_rows.items()},
             "n_images": {role: len(rows) for role, rows in role_rows.items()}, "opened_roles": list(roles), "no_test_open": True,
+            "evaluation_role": eval_role,
             "initialization": initialization, "fresh_initialization": fresh_initialization,
             "optimizer_coverage": optimizer_coverage(model),
             "cuda_backward_probe": probe_cuda_grid_sample_policy(device, track) if phase == "overfit" else {"performed": False},
@@ -735,7 +744,7 @@ def run_pilot(config_path, raw_root, legacy_root, run_dir, device, phase, *, wei
     info["selected_checkpoint_sha256"] = file_sha256(run_dir / "checkpoints" / "best.pt")
     _write_csv(run_dir / "log.csv", history)
     _write_csv(run_dir / "val_predictions.csv", predictions)
-    write_json(run_dir / "val_summary.json", dict(summary, role="train" if phase == "overfit" else "val",
+    write_json(run_dir / "val_summary.json", dict(summary, role=eval_role,
                                                   selected_epoch=info.get("selected_epoch"),
                                                   localization_metrics=None))
     write_json(run_dir / "train.json", info)
@@ -806,8 +815,11 @@ def check_pilot_gates(run_dir, phase):
                     failures.append(f"{name}: missing/failed {key}")
             if not info.get("optimizer", {}).get("initial_state_empty"):
                 failures.append(f"{name}: optimizer was not fresh")
-            if info.get("opened_roles") != (["train"] if name == "overfit" else ["train", "val"]):
+            training_only = name == "overfit" or contract.diagnostic_only
+            if info.get("opened_roles") != (["train"] if training_only else ["train", "val"]):
                 failures.append(f"{name}: forbidden role access")
+            if contract.diagnostic_only and (name == "train" or info.get("evaluation_role") != "train"):
+                failures.append(f"{name}: diagnostic-only training scope violated")
             precision = info.get("precision", {})
             if precision.get("dtype") != "float32" or any(precision.get(key) is not False for key in ("amp", "matmul_tf32", "cudnn_tf32")):
                 failures.append(f"{name}: strict FP32 missing")
@@ -826,12 +838,15 @@ def check_pilot_gates(run_dir, phase):
                     failures.append("overfit: incorrect fixed image count")
             else:
                 expected_epochs, expected_counts = (1, {"train": 32, "val": 32}) if name == "smoke" else (100, {"train": 1778, "val": 222})
+                if contract.diagnostic_only and name == "smoke":
+                    expected_counts = {"train": 32}
                 if info.get("epochs_completed") != expected_epochs or info.get("n_images") != expected_counts:
                     failures.append(f"{name}: epoch/image count mismatch")
                 if saved["epoch"] != info.get("selected_epoch") or saved["selection_key"] != info.get("selection_key"):
                     failures.append(f"{name}: selected epoch/key mismatch")
                 predictions = _read_predictions(directory / "val_predictions.csv")
-                if [row["image_id"] for row in predictions] != [row["image_id"] for row in info["membership"]["val"]]:
+                eval_role = evaluation_role(info["track"], name)
+                if [row["image_id"] for row in predictions] != [row["image_id"] for row in info["membership"][eval_role]]:
                     failures.append(f"{name}: prediction membership mismatch")
                 for key in ("inference_before", "inference_after"):
                     if not info.get(key, {}).get("passed"):

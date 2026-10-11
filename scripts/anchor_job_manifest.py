@@ -116,10 +116,11 @@ def read_rows(path, required):
 
 
 def selected_rows(records, split, track):
+    wanted_roles = {"train"} if track == "D_running" else {"train", "val"}
     inventory = read_rows(records, {"image_id", "dataset", "path", "design_id", "label"})
     roles = read_rows(split, {"image_id", "role"})
     forbidden_raw = {inventory[identifier]["path"] for identifier, membership in roles.items()
-                     if identifier in inventory and membership["role"] not in {"train", "val"}}
+                     if identifier in inventory and membership["role"] not in wanted_roles}
     selected = []
     for identifier, membership in sorted(roles.items()):
         if identifier not in inventory:
@@ -128,7 +129,7 @@ def selected_rows(records, split, track):
         for field in (record.keys() & membership.keys()) - {"image_id"}:
             if record[field] != membership[field]:
                 raise ValueError(f"metadata mismatch for {identifier} field {field}")
-        if membership["role"] not in {"train", "val"}:
+        if membership["role"] not in wanted_roles:
             continue
         if record["dataset"].lower() != "sidtd" or record["label"] not in {"0", "1"}:
             raise ValueError(f"invalid pilot membership for {identifier}")
@@ -143,8 +144,8 @@ def selected_rows(records, split, track):
                     or forbidden_folders.intersection(part.lower() for part in raw_path.parts[:-1])):
                 raise ValueError(f"forbidden raw test/reference/clip path {raw_path}")
         selected.append(dict(record, role=membership["role"]))
-    if {row["role"] for row in selected} != {"train", "val"}:
-        raise ValueError("pilot inputs require both train and val membership")
+    if {row["role"] for row in selected} != wanted_roles:
+        raise ValueError("pilot inputs do not cover the required train/val membership")
     return selected
 
 
@@ -293,16 +294,18 @@ def prepare_job(*, source_dir, config, raw_root, legacy_root, records, split, we
         config_hash = hashlib.sha256(config_bytes).hexdigest()
         settings = resolve_config(source_dir, config)
         if (not isinstance(settings, dict) or settings.get("schema_version") != "anchor_pilot_v1"
-                or settings.get("track") not in {"R", "D", "N"}):
-            raise ValueError("anchor_pilot_v1 config with track R/D/N required")
+                or settings.get("track") not in {"R", "D", "D_running", "N"}):
+            raise ValueError("anchor_pilot_v1 config with track R/D/D_running/N required")
         track = settings["track"]
+        if track == "D_running" and phase == "train":
+            raise ValueError("D_running is diagnostic-only; full training is not authorized")
         effective_config = settings
         if file_sha256(weights) != weights_sha256:
             raise ValueError("pretrained weights hash mismatch")
         rows = selected_rows(records, split, track)
         files = data_entries(rows, track, raw_root, legacy_root)
         membership = {role: [row["image_id"] for row in rows if row["role"] == role]
-                      for role in ("train", "val")}
+                      for role in (("train",) if track == "D_running" else ("train", "val"))}
         provenance.update(config_sha256=config_hash, weights_sha256=weights_sha256,
                           data_sha256=object_sha256(files))
         identities = dict(source_sha256=runtime_source_sha256(source_files), config_sha256=object_sha256(settings),
@@ -346,7 +349,7 @@ def prepare_job(*, source_dir, config, raw_root, legacy_root, records, split, we
     manifest = dict(schema_version="anchor_job_manifest_v1", phase=phase, track=track,
                     provenance=provenance, runtime_identities=identities, effective_config=effective_config,
                     membership=membership, source_files=source_files, data_files=files,
-                    data_scope="metadata_only" if phase == "audit" else "train_val_only",
+                    data_scope="metadata_only" if phase == "audit" else ("train_only" if track == "D_running" else "train_val_only"),
                     paths=dict(source_dir=str(source_dir), raw_root=str(raw_root), legacy_root=str(legacy_root),
                                records=str(records), split=str(split), config=str(config) if config else None,
                                weights=str(weights) if weights else None, stage_dir=str(stage_dir), run_dir=str(run_dir),

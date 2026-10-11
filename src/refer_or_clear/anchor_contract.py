@@ -16,6 +16,7 @@ class PilotContract:
     eval_batch_size: int
     mask_weight: float
     bn_policy: str
+    diagnostic_only: bool = False
 
     @property
     def input_shape(self) -> tuple[int, int, int]:
@@ -25,6 +26,7 @@ class PilotContract:
 _CONTRACTS = {
     "R": PilotContract("R", "anchor_rgb_r50_v1", "raw_rgb_299_v1", 3, 299, 299, 32, 32, 0.0, "running"),
     "D": PilotContract("D", "anchor_direct_ia18_v1", "legacy_geometry_diagnostic", 4, 512, 800, 8, 1, 0.0, "batch_stats"),
+    "D_running": PilotContract("D_running", "anchor_direct_running_ia18_v1", "legacy_geometry_diagnostic", 4, 512, 800, 8, 1, 0.0, "running", True),
     "N": PilotContract("N", "anchor_absent_ia18_v1", "legacy_geometry_diagnostic", 4, 512, 800, 8, 8, 3.0, "running"),
 }
 
@@ -33,4 +35,4 @@ def contract_for(track: str) -> PilotContract:
     try:
         return _CONTRACTS[track]
     except KeyError as error:
-        raise ValueError(f"Unknown pilot track {track!r}; expected R, D or N") from error
+        raise ValueError(f"Unknown pilot track {track!r}; expected R, D, D_running or N") from error
