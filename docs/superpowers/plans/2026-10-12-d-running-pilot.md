@@ -62,7 +62,7 @@
 
 - [x] Add smoke/replay tests proving train/validation evaluation with no targets and batched invariance, preserving bounded-track training-only regressions.
 - [x] Run the combined focused suite, inspect diff and obtain independent implementation review.
-- [ ] Commit/push, archive the exact revision, verify authorities and submit one fresh diagnostic allocation.
+- [x] Commit/push, archive the exact revision, verify authorities and submit one fresh diagnostic allocation.
 - [ ] Inspect actual stack XML, probe counts/loss, smoke scope, pristine fingerprints, normalization increments, replay and source/config/data/checkpoint hashes. Obtain independent actual-gate review.
 
 ## Task 5. Single Full Pilot
