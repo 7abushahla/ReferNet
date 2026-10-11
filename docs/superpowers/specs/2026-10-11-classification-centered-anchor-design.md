@@ -2,7 +2,7 @@
 
 Date: 2026-10-11.
 
-Status: revised for final user review. Agreement on the direction and permission to revise this document do not authorize implementation, diagnostic execution, new training jobs, or a sweep. A task-level implementation plan follows approval of this specification. Historical jobs and results remain unchanged.
+Status: approved for task-level planning on 11 October 2026, including the three review amendments below. Implementation, diagnostic execution, new training jobs and a sweep remain unstarted and require execution approval. Historical jobs and results remain unchanged.
 
 ## 1. Approved objective
 
@@ -133,7 +133,7 @@ Encode the query once with exchanges disabled. Run the decoder's shared `base_fo
 
 Use running-statistics BN throughout the active encoder and decoder. Training updates statistics from the actual query-driven computation. Evaluation freezes all BN buffers and disables dropout. Query-driven fused features downstream of the missing-stream representation still need a complete normalization audit. Loading a batch-statistics checkpoint is not an acceptable substitute for training this policy from the declared initialization.
 
-Require hook-based checks of one query encoder traversal and one shared decoder projection, reference/forgery-annotation invariance of classification, expected BN update counts, finite gradients, and unchanged state during evaluation. Compare each document's score when evaluated alone, in different batch positions and with different companion documents. Fresh-process replay must agree with the selected checkpoint under the declared numerical tolerance.
+Require hook-based checks of one query encoder traversal and one shared decoder projection, reference/forgery-annotation invariance of classification, expected BN update counts, finite gradients, and unchanged state during evaluation. Compare each document's score when evaluated alone, in different batch positions and with different companion documents. This batched-inference check is a mandatory smoke gate before the 100-epoch run, and is repeated on the selected checkpoint. Fresh-process replay must agree with the selected checkpoint under the declared numerical tolerance.
 
 Skipping the blank pass changes the missing-stream representation as well as the normalization policy. N is therefore a candidate route/package comparison, not an isolated proof that blank-reference BN caused all remaining errors. Like D, it uses a declared `legacy_geometry_diagnostic` contract. It requires support-safe confirmation and a separately designed matched reference extension if advanced. Its classification still depends on the map; a favorable result would justify retaining that route rather than claiming that a direct head necessarily wins.
 
@@ -193,7 +193,7 @@ Reuse existing Slurm account/environment/staging patterns. Run each condition fr
 
 ## 9. Interpretation and next decision
 
-Evaluate the selected checkpoint, not the highest AUC encountered or the final epoch. Save per-image validation scores, attack family, genuine false positives and misses, overall AUC/accuracy, and copy/inpainting results. Explain the uncertainty associated with only 16 fold-0 copy forgeries. Record active/total parameters and preliminary batch-one runtime for each track under a named, shared measurement contract. Later end-to-end reference timing is a separate requirement. Do not describe differing R/D/N recipes as a backbone-only comparison.
+Evaluate the selected checkpoint, not the highest AUC encountered or the final epoch. Save per-image validation scores, attack family, genuine false positives and misses, overall AUC/accuracy, and copy/inpainting results. Explain the uncertainty associated with only 16 fold-0 copy forgeries. Record active/total parameters and preliminary batch-one runtime for each track under a named, shared measurement contract. Pin hardware identity, thread settings, precision, source-image IDs, warm-ups, timed repetitions and timing boundaries once in the implementation plan and its immutable runtime manifest. Later end-to-end reference timing is a separate requirement. Do not describe differing R/D/N recipes as a backbone-only comparison.
 
 If R succeeds and D/N remain weak, provisionally advance the classification-centered family. If D succeeds, retain its current encoder and new direct route as a candidate. If N succeeds, retain the current family as a candidate with its explicitly tested absent-reference policy. If several succeed, compare source-validation competence, subgroup uncertainty, genuine false positives, stability, matched-reference readiness and CPU cost. If none succeeds, inspect training fit, subgroup errors and the corresponding recipe before adding a new architecture. Missing the target does not itself establish a software defect. No branch of this decision automatically authorizes a sweep.
 
@@ -207,9 +207,11 @@ Before reference-family replication, benchmark batch-one FP32 CPU latency on nam
 
 Freeze architecture, recipes, enrollment rules and source-derived operating thresholds before B-D. Do not use FantasyID-trained detectors or teachers to initialize a supposedly FantasyID-unseen model. Keep robustness to encoding interventions separate from the native benchmark; no compression equalization is introduced in this increment. Resolving the SIDTD causal mechanism is not a prerequisite for running the native Protocol A candidate comparison, but encoding sensitivity limits what that comparison establishes.
 
-### Later-protocol safeguards, not immediate work
+### Early metadata audit and later-protocol safeguards
 
-FantasyID loader implementation and evaluation wait until Protocol A is established. At that transition, audit the exact locked Protocol C subsets and genuine support membership. No target images may enter optimization, threshold calibration or family selection. Disclosed genuine enrollment is an inference-time information source, not parameter training, and must remain separate from evaluation identities.
+Prepare and run a bounded FantasyID encoding-header and membership audit alongside the Protocol A pilots after execution approval. Freeze and identify the exact audited subset membership, report current counts and missing files, and distinguish that audited manifest from any later revised evaluation/support contract. This audit reads headers and existing membership metadata only. It performs no pixel decoding, inference, recompression, training, target threshold calibration or target-based family selection. It must not delay independent Protocol A tracks.
+
+FantasyID loader implementation and model evaluation still wait until Protocol A is established. At that transition, resolve and freeze the final Protocol C genuine support/evaluation contract and rerun the header audit if membership changed. Disclosed genuine enrollment is an inference-time information source, not parameter training, and must remain separate from evaluation identities.
 
 Not training on FantasyID does not prevent a SIDTD-learned encoding association from transferring there. The saved `results/tables/jpeg_audit.md` reports mixed encoding on the complete FantasyID test collection but perfect table-based separation on a 599-image held-out subset. It uses old protocol names and superseded preprocessing, so it is evidence requiring a current exact-subset audit, not a verified measurement of the final Protocol C. The reported 93.5 is a quantization-table-based estimate, not an exact recovered encoder quality setting. Do not infer that a mixed aggregate corpus means every evaluated subset is unconfounded.
 
