@@ -1,0 +1,10 @@
+{
+  "commit": "83561db",
+  "source_sha256": "28ca9de1de08c593e8d5f070252a571e495e6b72eb8bdacb50ceb9334e57d42d",
+  "baseline_job": "37924",
+  "objective": "image BCE only",
+  "localization_weight": 0,
+  "test_usage": "none",
+  "code_directory": "/shared/b00090279/refer-or-clear/results/diagnostics/classification-anchor-source-83561db/code",
+  "job": "37932"
+}
