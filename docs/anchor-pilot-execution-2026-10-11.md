@@ -46,4 +46,14 @@ Starting revision `60a3adf`. Implementation and parallel delegation are authoriz
 
 ## Submission ledger
 
-No new jobs submitted. Each entry will record track/phase, source revision and archive SHA256, effective config hash, data-manifest hashes, output directory, resource request, job ID, gate result and independent-review status.
+The three diagnostic allocations below use immutable source revision `d229db3aae39644fdb05459915136470708e753b`. The verified source archive SHA256 is `8ba50a3ecf0d403daccfbc50da9e104ef8963b8887dbca426d105664d4d5dbd2`. Its extracted, read-only cluster path is `/shared/b00090279/refer-or-clear/results/source/anchor-d229db3aae39644fdb05459915136470708e753b/code`.
+
+All three use records SHA256 `afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276` and official fold-0 split SHA256 `985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9`. Each requests one GPU, four CPUs, 8 GB memory and a six-hour limit. Per-file data hashes, resolved configuration hashes, environment and node are written to each allocation's `input_manifest.json`. Only train/validation pixels are staged.
+
+| Track | Job | Phase | Configuration bytes SHA256 | Output directory under `results/diagnostics/anchor-pilots-v1` | Gate/review |
+|---|---|---|---|---|---|
+| R | 37958 | Diagnostic only | `ed5c22565f764449e4375be3da2f0747986e1c952febe3d16725c93f2bbb4467` | `anchor-pilot-diagnostic-37958` | Pending actual GPU gates and independent review |
+| D | 37959 | Diagnostic only | `cc41136927c2cf5b9c729e92018b1572bb095b78743088f05c7d31950015460e` | `anchor-pilot-diagnostic-37959` | Pending actual GPU gates and independent review |
+| N | 37960 | Diagnostic only | `458b664a051097037adec83c8cb61466e702eba02ee471260be01a5950da5e40` | `anchor-pilot-diagnostic-37960` | Pending actual GPU gates and independent review |
+
+R uses the official V1 checkpoint hash recorded above. D/N use the verified LEVIR checkpoint hash. Submission returned all three job IDs successfully; immediate queue state was pending. No 100-epoch training job was submitted. Diagnostic output review must precede each separate long-run submission with the same frozen source and inputs.
