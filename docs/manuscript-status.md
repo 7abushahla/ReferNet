@@ -2,6 +2,47 @@
 
 Written with the first draft of Sections 1 to 4 (the guide's sections 4 to 7). The plan (`docs/paper-plan.md`) stays the contract; this note records what the draft changed, what in the repository is stale or inconsistent, and the decisions the authors still need to make.
 
+## 00. Update of 11 Oct (Methodology and Results moved to the redesigned protocols, after commit c9cb1d8)
+
+Base: `GDRFA-Award-Paper` at b672780, which holds Hamza's edits of 10 Oct evening. Sections 1 to 3 read well (Ariel, 11 Oct) and were kept, with only these factual fixes:
+- the result sentences of both abstracts (the superseded 0.53 to 0.83 result is gone);
+- RQ2 now names Protocols B and C;
+- two guidance notes, one proposing a contribution on the compression cue and one on the SIDTD paragraph of the literature review.
+
+The first contribution and Table 1 still say "three protocols". This is correct, since they count the held-out-design protocols B to D.
+
+What changed in Sections 4 and 5:
+- **Four protocols.**
+  - A: anchor, SIDTD's ten official template folds, every design seen in training, with the gate;
+  - B: the ten held-out nationality groups;
+  - C: FantasyID;
+  - D: IDNet.
+- **Pipeline.**
+  - Lossless PNG canvases and no JPEG augmentation.
+  - The checkpoint is chosen by best validation accuracy, with ties broken by AUC.
+  - Medians exclude the query's identity (per fold in A).
+  - The control receives no wrong-design pairs.
+- **Training table corrected.**
+  - The anchor runs have `amp: false` in `train.json`, so "mixed precision" was removed.
+  - Seed 42, one run per fold.
+- **Control caveat.** The paper says that the reported control still had the feature exchange on (11c9cc3), and that the fair control (`single_noex`) and the with-cue control (e6b986d) are pending.
+- **Protocol A table.** Table 5 layout: the five published rows, the two rescored released checkpoints, and our three arms, each on raw files and equalized at quality 75.
+- **Protocol A text.** Gate FAIL, the diagnostic, per attack (inpaint 0.995 against copy 0.48), per design, map F1, and a rewritten referral analysis (median refers 54% of genuine documents at a 5.5% miss rate).
+- **Earlier configuration (18 runs).** Kept only in the text:
+  - as a preliminary indication for Protocol B (median 0.83, blank 0.72; the control gain is not reported);
+  - as the attention ablation (0.80 against 0.83), as the spec allows.
+
+Open for the authors:
+1. **Equalized columns.** e6b986d removed `equalized_qf75` from the protocol configs, but `docs/conventions.md` (JPEG handling row) still says that every test is also reported equalized. Keep the equalized columns for our Protocol A arms or drop them?
+2. **Official folds.** Do SIDTD's official folds keep a forgery in the same split as its source document? The paper now claims identity grouping only for B to D.
+3. **Proposed contribution** on the compression cue (guidance note after the contributions).
+4. **Literature review.** SIDTD's seen-designs result above 96% and its clip results are both confounded by file format, so the Introduction, the literature review and panel A of `fig_idea` may need a sentence.
+5. **Pending runs.** Fair and with-cue controls, Protocol B (waiting for the gate decision), the plans for C and D, and the paired bootstrap.
+6. **Unverified candidate sources.** `docs/study-brief.md` (line 51) says that references are "never test samples", but the spec builds the Protocol B median from the test design's other identities, and the paper follows the spec. Three sources named in the 11 Oct data note are not read or cited yet and need dated records before any citation:
+   - Talarmain et al., ICDAR 2024;
+   - arXiv 2606.13528;
+   - DocVerify, PRL 2026.
+
 ## 0. Update of 10 Oct, afternoon (after commit 498c548)
 
 Decisions taken in the draft. Each is reversible.
