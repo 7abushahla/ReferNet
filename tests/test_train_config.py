@@ -102,6 +102,22 @@ def test_load_split_formats_the_fold():
             raise AssertionError("a {fold} split without --fold was accepted")
 
 
+def test_explicit_localization_weight_override():
+    args = T.parse_args(["--config", "configs/protocol_a.yaml", "--arch", "changerex_r18",
+                         "--fusion", "single_noex", "--init", "levir", "--run-dir", "/tmp/x",
+                         "--mask-loss-weight", "0"])
+    assert T.resolve(args, CFG_A)["mask_weight"] == 0.
+    assert rc_for("single_noex")["mask_weight"] == 3.
+    for invalid in (-1., float("nan"), float("inf")):
+        args.mask_loss_weight = invalid
+        try:
+            T.resolve(args, CFG_A)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("invalid mask weight accepted")
+
+
 def test_role_pairs_override_reaches_build_pairs():
     seen = {}
 
@@ -127,5 +143,6 @@ if __name__ == "__main__":
     test_selection_key()
     test_validation_only_and_strict_precision()
     test_load_split_formats_the_fold()
+    test_explicit_localization_weight_override()
     test_role_pairs_override_reaches_build_pairs()
     print("ok")

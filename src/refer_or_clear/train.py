@@ -76,6 +76,8 @@ def parse_args(argv=None):
                     help="encoder BN statistics; batch_stats scores each validation/test image alone")
     ap.add_argument("--validation-only", action="store_true", help="development pilot: never construct or score test pairs")
     ap.add_argument("--strict-fp32", action="store_true", help="disable TF32 and reject AMP for controlled comparisons")
+    ap.add_argument("--mask-loss-weight", type=float, default=None,
+                    help="localization-loss weight; zero trains with image classification only")
     return ap.parse_args(argv)
 
 
@@ -108,6 +110,9 @@ def resolve(args, cfg) -> dict:
     bn_policy = args.bn_policy or m.get("bn_policy", "running")
     if bn_policy == "batch_stats" and args.arch != "changerex_r18":
         raise SystemExit("[train] batch_stats BN policy requires changerex_r18")
+    mask_weight = float(t.get("mask_loss_weight", 3.0) if args.mask_loss_weight is None else args.mask_loss_weight)
+    if not math.isfinite(mask_weight) or mask_weight < 0:
+        raise ValueError("mask loss weight must be finite and nonnegative")
     return dict(
         tag=Path(args.run_dir).name, protocol=cfg.get("protocol"), arch=args.arch,
         fusion=fusion, bn_policy=bn_policy, reference=E.reference_name(cfg, args.reference), fold=args.fold,
@@ -119,7 +124,7 @@ def resolve(args, cfg) -> dict:
         eval_batch_size=1 if bn_policy == "batch_stats" else int(t.get("batch_size", 8) if args.batch_size is None else args.batch_size),
         lr_backbone=float(t.get("lr_backbone", 1e-4)), lr_new=float(t.get("lr_new", 1e-3)),
         weight_decay=float(t.get("weight_decay", 0.05)), warmup_iters=int(t.get("warmup_iters", 500)),
-        mask_weight=float(t.get("mask_loss_weight", 3.0)), amp=bool(args.amp), workers=args.workers,
+        mask_weight=mask_weight, amp=bool(args.amp), workers=args.workers,
         crop=tuple(args.crop) if args.crop else (tuple(cfg.get("augment", {}).get("crop")) if cfg.get("augment", {}).get("crop") else None),
         limit=args.limit, data_root=str(args.data_root),
         wrong_design_fraction=0.0 if fusion in SINGLE_FUSIONS
@@ -230,6 +235,7 @@ def main(argv=None):
                 total_iters=total_iters, hostname=os.uname().nodename)
     info["precision"] = dict(matmul_tf32=torch.backends.cuda.matmul.allow_tf32,
                              cudnn_tf32=torch.backends.cudnn.allow_tf32, amp=rc["amp"])
+    info["supervision"] = dict(image_labels=True, localization_targets=rc["mask_weight"] > 0)
     dump_json(run_dir / "train.json", info)
     print(f"[train] {rc['tag']}: {n_params / 1e6:.2f}M params on {device}, "
           f"{info['n_pairs']} pairs, {len(train_loader)} it/epoch x {rc['epochs']} epochs")
