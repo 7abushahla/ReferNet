@@ -1,0 +1,382 @@
+{
+  "atol": 1e-05,
+  "checkpoint_sha256": "6acd6886030a4ff5281e171798e572240fda338ae9c0ebbba0bedf44229a66b2",
+  "fresh_process": true,
+  "identities": {
+    "config_sha256": "2860b05436a0fcf890b61a5124d717be925be95a710be28beb74414fa9d8030b",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "2f8a833e5cb3450fdccd8c58dba8f07f58af330747a69cca7363d1a21528da9a",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "0676ba61b6795bbe1773cffd859882e5e297624d384b6993f7c9e683e722fb8a"
+  },
+  "inference": {
+    "atol": 1e-05,
+    "batch_sizes": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "buffer_sha256_after": "6f017d7e76ef1271c59e22f05b4039eb6ae3abcf085323d0dba9067deccf8c34",
+    "buffer_sha256_before": "6f017d7e76ef1271c59e22f05b4039eb6ae3abcf085323d0dba9067deccf8c34",
+    "buffers_unchanged": true,
+    "companion_invariance": true,
+    "comparisons": 72,
+    "max_abs_difference": 9.5367431640625e-07,
+    "normalization_dropout": {
+      "backbone.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.0.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.1.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.2.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.2.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.2.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.1.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.2.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.2.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.2.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.3.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.3.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.3.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.1.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.2.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.2.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.2.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.3.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.3.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.3.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.4.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.4.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.4.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.5.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.5.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.5.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.1.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.2.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.2.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.2.bn3": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      }
+    },
+    "passed": true,
+    "rtol": 0.0001
+  },
+  "max_abs_difference": 0.0,
+  "n_images": 222,
+  "parent_pid": 5894,
+  "passed": true,
+  "phase": "replay",
+  "pid": 5908,
+  "rtol": 0.0001,
+  "schema_version": "anchor_pilot_v1",
+  "summary": {
+    "accuracy": 1.0,
+    "altered_misses": [],
+    "auc": 1.0,
+    "buffers_unchanged": true,
+    "genuine_false_positives": [],
+    "image_loss": 0.01514829081474795,
+    "n_altered": 122,
+    "n_genuine": 100,
+    "n_images": 222,
+    "subgroups": {
+      "copy": {
+        "accuracy": 1.0,
+        "auc": 1.0,
+        "n_altered": 16,
+        "n_genuine": 100
+      },
+      "inpainting": {
+        "accuracy": 1.0,
+        "auc": 1.0,
+        "n_altered": 106,
+        "n_genuine": 100
+      }
+    }
+  }
+}

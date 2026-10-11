@@ -1,0 +1,28 @@
+{
+  "accuracy": 1.0,
+  "altered_misses": [],
+  "auc": 1.0,
+  "buffers_unchanged": true,
+  "genuine_false_positives": [],
+  "image_loss": 0.004217768659145804,
+  "localization_metrics": null,
+  "n_altered": 8,
+  "n_genuine": 8,
+  "n_images": 16,
+  "role": "train",
+  "selected_epoch": null,
+  "subgroups": {
+    "copy": {
+      "accuracy": 1.0,
+      "auc": 1.0,
+      "n_altered": 2,
+      "n_genuine": 8
+    },
+    "inpainting": {
+      "accuracy": 1.0,
+      "auc": 1.0,
+      "n_altered": 6,
+      "n_genuine": 8
+    }
+  }
+}

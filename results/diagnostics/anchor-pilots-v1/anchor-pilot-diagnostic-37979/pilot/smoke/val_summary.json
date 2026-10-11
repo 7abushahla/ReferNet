@@ -1,0 +1,42 @@
+{
+  "accuracy": 0.59375,
+  "altered_misses": [
+    "sidtd_alb_id_01_fake_6_56",
+    "sidtd_alb_id_01_fake_6_61",
+    "sidtd_alb_id_02_fake_6_44",
+    "sidtd_alb_id_02_fake_6_49",
+    "sidtd_alb_id_02_fake_6_88",
+    "sidtd_alb_id_03_fake_6_69",
+    "sidtd_alb_id_05_fake_6_60",
+    "sidtd_alb_id_10_fake_6_67",
+    "sidtd_alb_id_12_fake_6_29",
+    "sidtd_alb_id_13_fake_6_18",
+    "sidtd_alb_id_15_fake_6_111",
+    "sidtd_alb_id_18_fake_6_78",
+    "sidtd_alb_id_19_fake_6_16"
+  ],
+  "auc": 0.7692307692307692,
+  "buffers_unchanged": true,
+  "genuine_false_positives": [],
+  "image_loss": 0.6913338974118233,
+  "localization_metrics": null,
+  "n_altered": 13,
+  "n_genuine": 19,
+  "n_images": 32,
+  "role": "train",
+  "selected_epoch": 1,
+  "subgroups": {
+    "copy": {
+      "accuracy": null,
+      "auc": null,
+      "n_altered": 0,
+      "n_genuine": 19
+    },
+    "inpainting": {
+      "accuracy": 0.59375,
+      "auc": 0.7692307692307692,
+      "n_altered": 13,
+      "n_genuine": 19
+    }
+  }
+}

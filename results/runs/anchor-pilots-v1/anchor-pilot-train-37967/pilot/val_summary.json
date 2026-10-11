@@ -1,0 +1,28 @@
+{
+  "accuracy": 1.0,
+  "altered_misses": [],
+  "auc": 1.0,
+  "buffers_unchanged": true,
+  "genuine_false_positives": [],
+  "image_loss": 0.01514829081474795,
+  "localization_metrics": null,
+  "n_altered": 122,
+  "n_genuine": 100,
+  "n_images": 222,
+  "role": "val",
+  "selected_epoch": 55,
+  "subgroups": {
+    "copy": {
+      "accuracy": 1.0,
+      "auc": 1.0,
+      "n_altered": 16,
+      "n_genuine": 100
+    },
+    "inpainting": {
+      "accuracy": 1.0,
+      "auc": 1.0,
+      "n_altered": 106,
+      "n_genuine": 100
+    }
+  }
+}

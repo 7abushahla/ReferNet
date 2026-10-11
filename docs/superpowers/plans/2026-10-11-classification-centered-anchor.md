@@ -17,12 +17,12 @@
 | Task | Current state | Remaining work |
 |---|---|---|
 | 1, data/configuration contracts | Implemented, tested and reviewed | No new contract change proposed |
-| 2, R classifier | Implemented; GPU gates independently cleared; job 37967 training | Complete 100 epochs and selected-checkpoint validation/replay |
-| 3, D/N routes | N job 37971 training; original D failed overfit; frozen-D context diagnostic independently reviewed | Prepare the approved training-only D-running normalization diagnostic, without authorizing full training |
+| 2, R classifier | Job 37967 completed 100 epochs; selected epoch 55 reports validation AUC/accuracy 1.0 and passing replay | Independently review selected-validation artifacts; measure preliminary CPU runtime |
+| 3, D/N routes | N job 37971 training; original D failed overfit; bounded D-running job 37979 completed with passing overfit/smoke/replay | Independently review D-running evidence; any full-training contract needs a separate decision |
 | 4, isolated training/replay | Implemented, tested and reviewed | Inspect completed pilot artifacts rather than treating smoke as competence |
 | 5, fold-safe support | CPU job 37973 completed; metadata independently cleared; integrity job 37978 and its 270 matching hashes independently reviewed | Detector consumption and registration quality remain uncleared |
 | 6, early header audit | CPU job 37972 completed; health passed; artifacts archived | Preserve its bounded metadata interpretation, not detector-transfer evidence |
-| 7, correctness/shared runtime | R/N launch gates passed; D context evidence independently reviewed; timing tools reviewed | Run the bounded D-running gates after implementation review and perform actual common CPU timing |
+| 7, correctness/shared runtime | R/N launch gates passed; original D context independently reviewed; D-running gates report passing; timing tools reviewed | Review actual D-running gates and perform actual common CPU timing |
 | 8, packaging/report/decision | Allocated suite 37977 passed 558 tests with no failures/errors/skips on its frozen revision | Verify subsequent changes separately; complete selected-validation report, family decision and conditional continuation |
 
 All detector work remains within query-only fold-0 Protocol A pilots. No reference extension, sweep or B-D detector evaluation has started. See `docs/anchor-pilot-execution-2026-10-11.md` for exact revisions, hashes, jobs, failures and independent reviews. Running epochs and intermediate metrics are not final acceptance results.

@@ -1,0 +1,21 @@
+{
+  "failures": [],
+  "fresh_initialization": {
+    "buffer_sha256": "bc4e5ed3fe4e999395997ded7981a9bd9a0acd198e21c5b342f348713aa64dad",
+    "checkpoint_supplied": false,
+    "passed": true,
+    "pretrained_tensor_sha256": "9ab72d0bbe12d81de9034b1b44e5d037576a8e83f45addf0ba9d339382e59c42",
+    "source": "original_offline_weights_and_seeded_head",
+    "state_sha256": "32e2fcde137e5dac4c537dc5e18ba3ff02cf8d12a72311e0177aa28c076cfec4"
+  },
+  "identities": {
+    "config_sha256": "20f2cbfe518cff59f3bc47b0220d16df4e7ebdb055f23b8a11872d45307d8cde",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "48441bfb1eae114378a50f13cfb6a225bedcfc6baeb0bace7e87ac0e61b01634",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "passed": true,
+  "phase": "overfit",
+  "schema_version": "anchor_pilot_v1"
+}

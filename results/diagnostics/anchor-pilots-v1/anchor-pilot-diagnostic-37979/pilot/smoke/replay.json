@@ -1,0 +1,210 @@
+{
+  "atol": 1e-05,
+  "checkpoint_sha256": "7277ed5e23d1cc2dd35fbedec7a16d32414e940f3486ea326451d9509bd094ef",
+  "fresh_process": true,
+  "identities": {
+    "config_sha256": "20f2cbfe518cff59f3bc47b0220d16df4e7ebdb055f23b8a11872d45307d8cde",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "48441bfb1eae114378a50f13cfb6a225bedcfc6baeb0bace7e87ac0e61b01634",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "inference": {
+    "atol": 1e-05,
+    "batch_sizes": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "buffer_sha256_after": "8c0c84fe682f98944f1976d8988b78ab9b24abae0ebc01def8b57e0cc48236ef",
+    "buffer_sha256_before": "8c0c84fe682f98944f1976d8988b78ab9b24abae0ebc01def8b57e0cc48236ef",
+    "buffers_unchanged": true,
+    "companion_invariance": true,
+    "comparisons": 72,
+    "max_abs_difference": 1.1175870895385742e-08,
+    "normalization_dropout": {
+      "backbone.layer1.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.4": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.7": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      }
+    },
+    "passed": true,
+    "rtol": 0.0001
+  },
+  "max_abs_difference": 0.0,
+  "n_images": 32,
+  "parent_pid": 8440,
+  "passed": true,
+  "phase": "replay",
+  "pid": 8481,
+  "rtol": 0.0001,
+  "schema_version": "anchor_pilot_v1",
+  "summary": {
+    "accuracy": 0.59375,
+    "altered_misses": [
+      "sidtd_alb_id_01_fake_6_56",
+      "sidtd_alb_id_01_fake_6_61",
+      "sidtd_alb_id_02_fake_6_44",
+      "sidtd_alb_id_02_fake_6_49",
+      "sidtd_alb_id_02_fake_6_88",
+      "sidtd_alb_id_03_fake_6_69",
+      "sidtd_alb_id_05_fake_6_60",
+      "sidtd_alb_id_10_fake_6_67",
+      "sidtd_alb_id_12_fake_6_29",
+      "sidtd_alb_id_13_fake_6_18",
+      "sidtd_alb_id_15_fake_6_111",
+      "sidtd_alb_id_18_fake_6_78",
+      "sidtd_alb_id_19_fake_6_16"
+    ],
+    "auc": 0.7692307692307692,
+    "buffers_unchanged": true,
+    "genuine_false_positives": [],
+    "image_loss": 0.6913338974118233,
+    "n_altered": 13,
+    "n_genuine": 19,
+    "n_images": 32,
+    "subgroups": {
+      "copy": {
+        "accuracy": null,
+        "auc": null,
+        "n_altered": 0,
+        "n_genuine": 19
+      },
+      "inpainting": {
+        "accuracy": 0.59375,
+        "auc": 0.7692307692307692,
+        "n_altered": 13,
+        "n_genuine": 19
+      }
+    }
+  }
+}
