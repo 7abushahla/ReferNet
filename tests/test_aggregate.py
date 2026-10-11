@@ -24,7 +24,7 @@ def write(runs: Path, tag: str, auc: float, acc: float, fold, designs=()):
 def make(control_auc=0.995, n=10):
     runs = Path(tempfile.mkdtemp())
     for k in range(n):
-        write(runs, f"A-cex-single-median-levir-f{k}-s42", control_auc, 0.985, k)
+        write(runs, f"A-cex-single_noex-median-levir-f{k}-s42", control_auc, 0.985, k)
         write(runs, f"A-cex-difference-median-levir-f{k}-s42", 0.999, 0.995, k)
     write(runs, "A-cex-single-median-levir-s42", 0.40, 0.40, None)   # superseded, no fold
     return runs
@@ -33,7 +33,7 @@ def make(control_auc=0.995, n=10):
 def test_superseded_runs_are_ignored():
     df = AG.load(make(), "A")
     assert set(df.fold.dropna().astype(int)) == set(range(10))
-    assert not ((df.fusion == "single") & (df.auc < 0.5)).any()
+    assert not ((df.fusion == "single_noex") & (df.auc < 0.5)).any()
 
 
 def test_paper_table_has_published_rows_and_ours():
@@ -56,7 +56,7 @@ def test_gate_counts_distinct_folds():
     runs = Path(tempfile.mkdtemp())
     for k in range(5):
         for seed in (42, 43):
-            write(runs, f"A-cex-single-median-levir-f{k}-s{seed}", 0.995, 0.985, k)
+            write(runs, f"A-cex-single_noex-median-levir-f{k}-s{seed}", 0.995, 0.985, k)
     ok, msg = AG.gate(AG.load(runs, "A"))
     assert not ok and "5 of 10" in msg, msg
 

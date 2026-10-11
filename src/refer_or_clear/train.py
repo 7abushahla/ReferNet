@@ -33,7 +33,7 @@ LOG_COLUMNS = ["epoch", "train_loss", "bce_image", "bce_map", "dice_map", "val_l
                "peak_mem_mb"]
 PATIENCE = None   # no early stopping by default (decision of 10 Oct: identical compute for every arm)
 GRAD_CLIP = 5.0
-SINGLE_FUSIONS = ("single", "attention_single")   # ignore the reference: no wrong-design pairs for them
+SINGLE_FUSIONS = ("single", "single_noex", "attention_single")   # ignore the reference: no wrong-design pairs for them
 
 
 def jpeg_range(rc: dict):

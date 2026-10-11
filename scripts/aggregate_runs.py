@@ -16,13 +16,15 @@ import pandas as pd
 
 METRICS = ["auc", "eer", "deepid_acc", "deepid_f1", "transported_miss5", "transported_referral5",
            "transported_miss1", "transported_referral1", "bpcer_at_apcer_5", "loc_f1", "fp_area_in_zone", "fp_area_out_zone"]
-ARM_LABEL = {("single", "median"): "standard, control", ("difference", "median"): "standard, median",
+ARM_LABEL = {("single", "median"): "standard, blank-branch control (superseded)", ("single_noex", "median"): "standard, control", ("difference", "median"): "standard, median",
              ("difference", "specimen"): "standard, specimen", ("attention_single", "median"): "improved, control",
              ("attention", "median"): "improved, median", ("attention", "specimen"): "improved, specimen"}
 TAG = re.compile(r"^(?P<protocol>[A-D])-(?P<arch>[a-z0-9]+)-(?P<fusion>[a-z_]+)-(?P<reference>[a-z]+)-(?P<init>[a-z]+)"
                  r"(?:-f(?P<fold>\d+))?-s(?P<seed>\d+)$")
 FOLDED = {"A", "B"}   # protocols whose runs carry a fold or group index; foldless runs there are superseded
-OURS = {("single", "median"): "Ours, control (no reference)", ("difference", "median"): "Ours, design median",
+OURS = {("single_noex", "median"): "Ours, control (no reference)",
+        ("single", "median"): "Ours, blank-branch control with exchange (unfair, superseded)",
+        ("difference", "median"): "Ours, design median",
         ("difference", "specimen"): "Ours, blank specimen"}
 # Boned et al., Scientific Data 11:1356 (2024), Table 5, Composite Detection (K-fold, Balanced):
 # (model, accuracy %, sd, ROC AUC, sd), as published.
@@ -113,7 +115,7 @@ def per_design(df: pd.DataFrame) -> str:
 def gate(df: pd.DataFrame) -> tuple[bool, str]:
     """The control on the raw test files: all folds present (distinct folds, not rows), mean AUC >= 0.99 and mean
     accuracy >= 0.97."""
-    s = df[(df.variant == "native") & (df.fusion == "single") & (df.reference == "median")]
+    s = df[(df.variant == "native") & (df.fusion == "single_noex") & (df.reference == "median")]
     n, auc_m, acc_m = s.fold.nunique(), pd.to_numeric(s.auc).mean(), pd.to_numeric(s.deepid_acc).mean()
     if n < GATE["n"]:
         return False, f"GATE FAIL: control has {n} of {GATE['n']} folds"

@@ -26,6 +26,7 @@ def rc_for(fusion, fold=3):
 def test_control_gets_no_wrong_design_pairs():
     assert rc_for("single")["wrong_design_fraction"] == 0.0
     assert rc_for("attention_single")["wrong_design_fraction"] == 0.0
+    assert rc_for("single_noex")["wrong_design_fraction"] == 0.0
     assert rc_for("difference")["wrong_design_fraction"] == 0.1
 
 

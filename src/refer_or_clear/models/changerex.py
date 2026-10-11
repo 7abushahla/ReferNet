@@ -13,6 +13,11 @@ fusion  "difference": stock ChangerEx, query and reference through the shared ba
                       branches would be wrong here: FDAF fuses warp(x0) - x1 and warp(x1) - x0, so
                       identical branches give an all-zero fused feature and an untrainable head.
         "attention_single": the improved variant's matched control (attention modules, content-free reference).
+        "single_noex": the fair single-image control (11 Oct 2026): content-free reference AND the exchange
+                      layers switched off, so the query keeps all its features. With "single" the spatial and
+                      channel exchanges still swap half of the query's features for the blank branch's at three
+                      depths, which halves the signal; Protocol A measured it at chance (AUC 0.60 on seen designs).
+                      Same backbone, weights, heads and parameter count as "difference".
         "attention":  the improved variant, the dashed boxes of the proposal figure: at strides 16 and
                       32 the query features pass a pre-LN self-attention block and then a cross-
                       attention block (Q = f(x), K = V = f(r)), each residual on f(x), before the
@@ -188,15 +193,16 @@ class ChangerEx(nn.Module):
     def __init__(self, fusion="difference", in_channels=4, norm_cfg=None):
         super().__init__()
         _require_opencd()
-        if fusion not in ("difference", "single", "attention", "attention_single"):
-            raise ValueError(f"changerex_r18 supports fusion in {{'difference', 'single', 'attention'}}, "
-                             f"got {fusion!r}")
+        if fusion not in ("difference", "single", "single_noex", "attention", "attention_single"):
+            raise ValueError(f"changerex_r18 supports fusion in {{'difference', 'single', 'single_noex', "
+                             f"'attention', 'attention_single'}}, got {fusion!r}")
         self.fusion = fusion
         self.in_channels = in_channels
         norm_cfg = norm_cfg or dict(type="BN", requires_grad=True)
         with _quiet():
             self.backbone = IA_ResNetV1c(
-                depth=18, in_channels=in_channels, interaction_cfg=INTERACTION_CFG, num_stages=4,
+                depth=18, in_channels=in_channels,
+                interaction_cfg=(None, None, None, None) if fusion == "single_noex" else INTERACTION_CFG, num_stages=4,
                 out_indices=(0, 1, 2, 3), dilations=(1, 1, 1, 1), strides=(1, 2, 2, 2), norm_cfg=norm_cfg,
                 norm_eval=False, style="pytorch", contract_dilation=True)
             self.decode_head = _make_head_class()(
@@ -220,7 +226,7 @@ class ChangerEx(nn.Module):
     def split(self, x):
         c = self.in_channels
         query = x[:, :c]
-        if self.fusion in ("single", "attention_single"):
+        if self.fusion in ("single", "single_noex", "attention_single"):
             ref = torch.cat([torch.zeros_like(query[:, :c - 1]), query[:, c - 1:c]], dim=1)
         else:
             ref = x[:, c:2 * c]
