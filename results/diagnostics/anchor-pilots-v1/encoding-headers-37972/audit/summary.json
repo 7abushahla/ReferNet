@@ -1,0 +1,5457 @@
+{
+  "completeness": {
+    "candidate_headers_complete": true,
+    "complete": true,
+    "exhaustive_test_inventory_confirmed": true,
+    "manifest_membership_complete": true,
+    "reasons": [],
+    "scope": "Candidate headers, declared metadata, and suffix-filtered test-directory inventory only"
+  },
+  "counts": {
+    "access_error": 0,
+    "altered": 1085,
+    "corrupt": 0,
+    "error": 0,
+    "genuine": 933,
+    "missing": 0,
+    "ok": 2018,
+    "total": 2018,
+    "unsupported": 0
+  },
+  "disk_inventory": {
+    "disk_image_count": 1385,
+    "disk_images_absent_records": [],
+    "errors": [],
+    "records_absent_disk": [],
+    "requested": true,
+    "scanned": true,
+    "suffix_filter": [
+      ".avif",
+      ".bmp",
+      ".gif",
+      ".heic",
+      ".heif",
+      ".jfif",
+      ".jpe",
+      ".jpeg",
+      ".jpg",
+      ".mpo",
+      ".png",
+      ".tif",
+      ".tiff",
+      ".webp"
+    ]
+  },
+  "duplicate_selected_paths": [],
+  "groups": {
+    "attack1": {
+      "counts": {
+        "access_error": 0,
+        "altered": 786,
+        "corrupt": 0,
+        "error": 0,
+        "genuine": 0,
+        "missing": 0,
+        "ok": 786,
+        "total": 786,
+        "unsupported": 0
+      },
+      "metrics": {
+        "accuracy_estimate_lt_85": 0.0,
+        "altered": 786,
+        "auc_direction": "-estimated_quality",
+        "auc_negative_estimate": null,
+        "eligible": 786,
+        "excluded": 0,
+        "genuine": 0,
+        "rule": "estimated_quality < 85"
+      },
+      "signature_associations": {
+        "format": {
+          "class_disjoint": null,
+          "coverage": 1.0,
+          "eligible": 786,
+          "eligible_class_counts": {
+            "altered": 786,
+            "genuine": 0
+          },
+          "excluded": 0,
+          "full_coverage": true,
+          "population_class_disjoint": null,
+          "signatures": [
+            {
+              "altered": 786,
+              "genuine": 0,
+              "signature": "JPEG"
+            }
+          ]
+        },
+        "quantization": {
+          "class_disjoint": null,
+          "coverage": 1.0,
+          "eligible": 786,
+          "eligible_class_counts": {
+            "altered": 786,
+            "genuine": 0
+          },
+          "excluded": 0,
+          "full_coverage": true,
+          "population_class_disjoint": null,
+          "signatures": [
+            {
+              "altered": 786,
+              "genuine": 0,
+              "signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+            }
+          ]
+        },
+        "sampling": {
+          "class_disjoint": null,
+          "coverage": 1.0,
+          "eligible": 786,
+          "eligible_class_counts": {
+            "altered": 786,
+            "genuine": 0
+          },
+          "excluded": 0,
+          "full_coverage": true,
+          "population_class_disjoint": null,
+          "signatures": [
+            {
+              "altered": 786,
+              "genuine": 0,
+              "signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5"
+            }
+          ]
+        }
+      },
+      "strata": [
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 25,
+          "design_id": "fantasyid/arabic",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 25,
+          "design_id": "fantasyid/arabic",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 25,
+          "design_id": "fantasyid/arabic",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 32,
+          "design_id": "fantasyid/chinese",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 32,
+          "design_id": "fantasyid/chinese",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 32,
+          "design_id": "fantasyid/chinese",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 27,
+          "design_id": "fantasyid/french",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 27,
+          "design_id": "fantasyid/french",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 27,
+          "design_id": "fantasyid/french",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 23,
+          "design_id": "fantasyid/indian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 23,
+          "design_id": "fantasyid/indian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 23,
+          "design_id": "fantasyid/indian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 22,
+          "design_id": "fantasyid/persian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 22,
+          "design_id": "fantasyid/persian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 22,
+          "design_id": "fantasyid/persian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 29,
+          "design_id": "fantasyid/portugal",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 29,
+          "design_id": "fantasyid/portugal",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 29,
+          "design_id": "fantasyid/portugal",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 20,
+          "design_id": "fantasyid/russian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 20,
+          "design_id": "fantasyid/russian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 20,
+          "design_id": "fantasyid/russian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 34,
+          "design_id": "fantasyid/turkiye",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 34,
+          "design_id": "fantasyid/turkiye",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 34,
+          "design_id": "fantasyid/turkiye",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 22,
+          "design_id": "fantasyid/ukraine",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 22,
+          "design_id": "fantasyid/ukraine",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 22,
+          "design_id": "fantasyid/ukraine",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 28,
+          "design_id": "fantasyid/usa",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 28,
+          "design_id": "fantasyid/usa",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 28,
+          "design_id": "fantasyid/usa",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        }
+      ]
+    },
+    "candidate_test": {
+      "counts": {
+        "access_error": 0,
+        "altered": 1085,
+        "corrupt": 0,
+        "error": 0,
+        "genuine": 300,
+        "missing": 0,
+        "ok": 1385,
+        "total": 1385,
+        "unsupported": 0
+      },
+      "metrics": {
+        "accuracy_estimate_lt_85": 0.43249097472924186,
+        "altered": 1085,
+        "auc_direction": "-estimated_quality",
+        "auc_negative_estimate": 0.27557603686635945,
+        "eligible": 1385,
+        "excluded": 0,
+        "genuine": 300,
+        "rule": "estimated_quality < 85"
+      },
+      "signature_associations": {
+        "format": {
+          "class_disjoint": false,
+          "coverage": 1.0,
+          "eligible": 1385,
+          "eligible_class_counts": {
+            "altered": 1085,
+            "genuine": 300
+          },
+          "excluded": 0,
+          "full_coverage": true,
+          "population_class_disjoint": false,
+          "signatures": [
+            {
+              "altered": 1085,
+              "genuine": 300,
+              "signature": "JPEG"
+            }
+          ]
+        },
+        "quantization": {
+          "class_disjoint": true,
+          "coverage": 1.0,
+          "eligible": 1385,
+          "eligible_class_counts": {
+            "altered": 1085,
+            "genuine": 300
+          },
+          "excluded": 0,
+          "full_coverage": true,
+          "population_class_disjoint": true,
+          "signatures": [
+            {
+              "altered": 0,
+              "genuine": 300,
+              "signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+            },
+            {
+              "altered": 299,
+              "genuine": 0,
+              "signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+            },
+            {
+              "altered": 786,
+              "genuine": 0,
+              "signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+            }
+          ]
+        },
+        "sampling": {
+          "class_disjoint": false,
+          "coverage": 1.0,
+          "eligible": 1385,
+          "eligible_class_counts": {
+            "altered": 1085,
+            "genuine": 300
+          },
+          "excluded": 0,
+          "full_coverage": true,
+          "population_class_disjoint": false,
+          "signatures": [
+            {
+              "altered": 1085,
+              "genuine": 300,
+              "signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5"
+            }
+          ]
+        }
+      },
+      "strata": [
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 25,
+          "design_id": "fantasyid/arabic",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 25,
+          "design_id": "fantasyid/arabic",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 25,
+          "design_id": "fantasyid/arabic",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 32,
+          "design_id": "fantasyid/chinese",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 32,
+          "design_id": "fantasyid/chinese",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 32,
+          "design_id": "fantasyid/chinese",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 41,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15",
+          "count": 41,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 41,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "huawei",
+          "count": 23,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "iphone15",
+          "count": 17,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "scan",
+          "count": 24,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 17,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15",
+          "count": 24,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 17,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 27,
+          "design_id": "fantasyid/french",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 27,
+          "design_id": "fantasyid/french",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 27,
+          "design_id": "fantasyid/french",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 23,
+          "design_id": "fantasyid/indian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 23,
+          "design_id": "fantasyid/indian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 23,
+          "design_id": "fantasyid/indian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 31,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15",
+          "count": 31,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 31,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "huawei",
+          "count": 15,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "iphone15",
+          "count": 12,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "scan",
+          "count": 17,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 16,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15",
+          "count": 19,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 14,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 22,
+          "design_id": "fantasyid/persian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 22,
+          "design_id": "fantasyid/persian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 22,
+          "design_id": "fantasyid/persian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 29,
+          "design_id": "fantasyid/portugal",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 29,
+          "design_id": "fantasyid/portugal",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 29,
+          "design_id": "fantasyid/portugal",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 20,
+          "design_id": "fantasyid/russian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 20,
+          "design_id": "fantasyid/russian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 20,
+          "design_id": "fantasyid/russian",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 28,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15",
+          "count": 28,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 28,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "huawei",
+          "count": 15,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "iphone15",
+          "count": 15,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "scan",
+          "count": 12,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 13,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15",
+          "count": 13,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 16,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 34,
+          "design_id": "fantasyid/turkiye",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 34,
+          "design_id": "fantasyid/turkiye",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 34,
+          "design_id": "fantasyid/turkiye",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 22,
+          "design_id": "fantasyid/ukraine",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 22,
+          "design_id": "fantasyid/ukraine",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 22,
+          "design_id": "fantasyid/ukraine",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 28,
+          "design_id": "fantasyid/usa",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15pro",
+          "count": 28,
+          "design_id": "fantasyid/usa",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 28,
+          "design_id": "fantasyid/usa",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        }
+      ]
+    },
+    "heldout": {
+      "counts": {
+        "access_error": 0,
+        "altered": 299,
+        "corrupt": 0,
+        "error": 0,
+        "genuine": 300,
+        "missing": 0,
+        "ok": 599,
+        "total": 599,
+        "unsupported": 0
+      },
+      "metrics": {
+        "accuracy_estimate_lt_85": 1.0,
+        "altered": 299,
+        "auc_direction": "-estimated_quality",
+        "auc_negative_estimate": 1.0,
+        "eligible": 599,
+        "excluded": 0,
+        "genuine": 300,
+        "rule": "estimated_quality < 85"
+      },
+      "signature_associations": {
+        "format": {
+          "class_disjoint": false,
+          "coverage": 1.0,
+          "eligible": 599,
+          "eligible_class_counts": {
+            "altered": 299,
+            "genuine": 300
+          },
+          "excluded": 0,
+          "full_coverage": true,
+          "population_class_disjoint": false,
+          "signatures": [
+            {
+              "altered": 299,
+              "genuine": 300,
+              "signature": "JPEG"
+            }
+          ]
+        },
+        "quantization": {
+          "class_disjoint": true,
+          "coverage": 1.0,
+          "eligible": 599,
+          "eligible_class_counts": {
+            "altered": 299,
+            "genuine": 300
+          },
+          "excluded": 0,
+          "full_coverage": true,
+          "population_class_disjoint": true,
+          "signatures": [
+            {
+              "altered": 0,
+              "genuine": 300,
+              "signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+            },
+            {
+              "altered": 299,
+              "genuine": 0,
+              "signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+            }
+          ]
+        },
+        "sampling": {
+          "class_disjoint": false,
+          "coverage": 1.0,
+          "eligible": 599,
+          "eligible_class_counts": {
+            "altered": 299,
+            "genuine": 300
+          },
+          "excluded": 0,
+          "full_coverage": true,
+          "population_class_disjoint": false,
+          "signatures": [
+            {
+              "altered": 299,
+              "genuine": 300,
+              "signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5"
+            }
+          ]
+        }
+      },
+      "strata": [
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 41,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15",
+          "count": 41,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 41,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "huawei",
+          "count": 23,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "iphone15",
+          "count": 17,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "scan",
+          "count": 24,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 17,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15",
+          "count": 24,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 17,
+          "design_id": "fantasyid/chinese2",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 31,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15",
+          "count": 31,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 31,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "huawei",
+          "count": 15,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "iphone15",
+          "count": 12,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "scan",
+          "count": 17,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 16,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15",
+          "count": 19,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 14,
+          "design_id": "fantasyid/netherland",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 28,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15",
+          "count": 28,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 28,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "73aff93cb2eeaf95dee09b05a95cfeb4812db6f0faaa7b4e912337dd08cfcc62"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "huawei",
+          "count": 15,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "iphone15",
+          "count": 15,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "face_swap",
+          "capture": "scan",
+          "count": 12,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "huawei",
+          "count": 13,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "iphone15",
+          "count": 13,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        },
+        {
+          "attack_family": "text_inpaint",
+          "capture": "scan",
+          "count": 16,
+          "design_id": "fantasyid/singapore",
+          "format": "JPEG",
+          "label": 1,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "85d75b33ac7af6f59574bb4440a1b5c35825e1f0ffd8ccf6922b9683e8bf33f3"
+        }
+      ]
+    },
+    "reference_only": {
+      "counts": {
+        "access_error": 0,
+        "altered": 0,
+        "corrupt": 0,
+        "error": 0,
+        "genuine": 633,
+        "missing": 0,
+        "ok": 633,
+        "total": 633,
+        "unsupported": 0
+      },
+      "metrics": {
+        "accuracy_estimate_lt_85": 1.0,
+        "altered": 0,
+        "auc_direction": "-estimated_quality",
+        "auc_negative_estimate": null,
+        "eligible": 633,
+        "excluded": 0,
+        "genuine": 633,
+        "rule": "estimated_quality < 85"
+      },
+      "signature_associations": {
+        "format": {
+          "class_disjoint": null,
+          "coverage": 1.0,
+          "eligible": 633,
+          "eligible_class_counts": {
+            "altered": 0,
+            "genuine": 633
+          },
+          "excluded": 0,
+          "full_coverage": true,
+          "population_class_disjoint": null,
+          "signatures": [
+            {
+              "altered": 0,
+              "genuine": 633,
+              "signature": "JPEG"
+            }
+          ]
+        },
+        "quantization": {
+          "class_disjoint": null,
+          "coverage": 1.0,
+          "eligible": 633,
+          "eligible_class_counts": {
+            "altered": 0,
+            "genuine": 633
+          },
+          "excluded": 0,
+          "full_coverage": true,
+          "population_class_disjoint": null,
+          "signatures": [
+            {
+              "altered": 0,
+              "genuine": 633,
+              "signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+            }
+          ]
+        },
+        "sampling": {
+          "class_disjoint": null,
+          "coverage": 1.0,
+          "eligible": 633,
+          "eligible_class_counts": {
+            "altered": 0,
+            "genuine": 633
+          },
+          "excluded": 0,
+          "full_coverage": true,
+          "population_class_disjoint": null,
+          "signatures": [
+            {
+              "altered": 0,
+              "genuine": 633,
+              "signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5"
+            }
+          ]
+        }
+      },
+      "strata": [
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 22,
+          "design_id": "fantasyid/arabic",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15pro",
+          "count": 22,
+          "design_id": "fantasyid/arabic",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 22,
+          "design_id": "fantasyid/arabic",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 23,
+          "design_id": "fantasyid/chinese",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15pro",
+          "count": 23,
+          "design_id": "fantasyid/chinese",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 23,
+          "design_id": "fantasyid/chinese",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 23,
+          "design_id": "fantasyid/french",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15pro",
+          "count": 23,
+          "design_id": "fantasyid/french",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 23,
+          "design_id": "fantasyid/french",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 14,
+          "design_id": "fantasyid/indian",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15pro",
+          "count": 14,
+          "design_id": "fantasyid/indian",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 14,
+          "design_id": "fantasyid/indian",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 17,
+          "design_id": "fantasyid/persian",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15pro",
+          "count": 17,
+          "design_id": "fantasyid/persian",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 17,
+          "design_id": "fantasyid/persian",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 28,
+          "design_id": "fantasyid/portugal",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15pro",
+          "count": 28,
+          "design_id": "fantasyid/portugal",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 28,
+          "design_id": "fantasyid/portugal",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 16,
+          "design_id": "fantasyid/russian",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15pro",
+          "count": 16,
+          "design_id": "fantasyid/russian",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 16,
+          "design_id": "fantasyid/russian",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 25,
+          "design_id": "fantasyid/turkiye",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15pro",
+          "count": 25,
+          "design_id": "fantasyid/turkiye",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 25,
+          "design_id": "fantasyid/turkiye",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 17,
+          "design_id": "fantasyid/ukraine",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15pro",
+          "count": 17,
+          "design_id": "fantasyid/ukraine",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 17,
+          "design_id": "fantasyid/ukraine",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "huawei",
+          "count": 26,
+          "design_id": "fantasyid/usa",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "iphone15pro",
+          "count": 26,
+          "design_id": "fantasyid/usa",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        },
+        {
+          "attack_family": "",
+          "capture": "scan",
+          "count": 26,
+          "design_id": "fantasyid/usa",
+          "format": "JPEG",
+          "label": 0,
+          "sampling_signature": "c078a22d2347292d9f446ff00f79d0a3e17e58346e05b31df7c919f43f9d04c5",
+          "status": "ok",
+          "table_signature": "f67e35fd0dcd2fd9f999077e2aae8560e6327a8477c45427f6ea2e0a224cd187"
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Header validity does not establish pixel-payload integrity.",
+    "Exact IJG candidates match available full tables, not a recovered encoder setting.",
+    "The luminance-based estimate is approximate, not an exact encoder quality.",
+    "Metrics exclude unavailable estimates and use a fixed threshold and direction.",
+    "Attack1 uses only its existing membership; no genuine comparison pool is assigned.",
+    "Candidate test is the frozen split membership, not an asserted exhaustive official test.",
+    "Optional disk inventory uses filenames/suffixes only, not unselected image headers or release authentication.",
+    "For JPEG-family MPO files, only the primary image header is inspected.",
+    "Signature class-disjointness concerns known eligible headers; excluded rows prevent population-wide conclusions.",
+    "Reference-only is an unapproved inventory; provenance relies on existing metadata.",
+    "Encoding association does not prove exclusive CNN reliance or a causal mechanism.",
+    "A revised evaluation/support contract requires a new membership audit."
+  ],
+  "manifests": {
+    "membership_sha256": "9dec63bc25aa93b0de0ff0cbf1634bd899fe10b42a13d516c6e542fc7c4e0de4",
+    "records": {
+      "sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+      "source": "/tmp/b00090279/encoding-headers-37972/inputs/records.csv"
+    },
+    "split": {
+      "sha256": "816ef2eb148eaa34f65ff198fbe6854119564565454dd4afaa243990dd2198a9",
+      "source": "/tmp/b00090279/encoding-headers-37972/inputs/split.csv"
+    }
+  },
+  "membership_version": "membership_candidate_v1",
+  "metadata_quality": {
+    "counts_scope": "Selected candidate test and reference-only membership; nonblank values only.",
+    "distinct_counts": {
+      "attack_family": 2,
+      "capture": 4,
+      "component_id": 362,
+      "design_id": 13,
+      "donor_id": 0,
+      "identity_id": 362,
+      "source_id": 362
+    },
+    "missing_columns": [],
+    "missing_values": {
+      "attack_family": [],
+      "capture": [],
+      "component_id": [],
+      "design_id": [],
+      "identity_id": [],
+      "source_id": []
+    },
+    "populated_counts": {
+      "attack_family": 1085,
+      "capture": 2018,
+      "component_id": 2018,
+      "design_id": 2018,
+      "donor_id": 0,
+      "identity_id": 2018,
+      "source_id": 1085
+    },
+    "semantics": "Blank source_id and attack_family are expected for genuine rows; donor_id is optional."
+  },
+  "official_test_membership": {
+    "candidate_not_official_path": [],
+    "missing_from_candidate": [],
+    "record_count": 1385
+  },
+  "omissions": [],
+  "raw_root": "/shared/b00090279/refer-or-clear/data/raw_anchor_audit_v1",
+  "schema_version": 2,
+  "support": {
+    "approved": false,
+    "designs_without_separate_support": [
+      "fantasyid/arabic",
+      "fantasyid/chinese",
+      "fantasyid/chinese2",
+      "fantasyid/french",
+      "fantasyid/indian",
+      "fantasyid/netherland",
+      "fantasyid/persian",
+      "fantasyid/portugal",
+      "fantasyid/russian",
+      "fantasyid/singapore",
+      "fantasyid/turkiye",
+      "fantasyid/ukraine",
+      "fantasyid/usa"
+    ],
+    "identity_overlap_tokens": [
+      "fantasyid/arabic-003_03",
+      "fantasyid/arabic-005_03",
+      "fantasyid/arabic-024_03",
+      "fantasyid/arabic-112_03",
+      "fantasyid/arabic-120_03",
+      "fantasyid/arabic-131_03",
+      "fantasyid/arabic-139_03",
+      "fantasyid/arabic-173_03",
+      "fantasyid/arabic-NF-1003",
+      "fantasyid/arabic-NF-1012",
+      "fantasyid/arabic-NF-1030",
+      "fantasyid/arabic-NF-1037",
+      "fantasyid/arabic-NF-1040",
+      "fantasyid/arabic-NF-1045",
+      "fantasyid/arabic-NF-1048",
+      "fantasyid/arabic-NF-1049",
+      "fantasyid/arabic-NF-1053",
+      "fantasyid/arabic-NF-1098",
+      "fantasyid/arabic-NF-1100",
+      "fantasyid/arabic-NM-1029",
+      "fantasyid/arabic-NM-1064",
+      "fantasyid/arabic-NM-1090",
+      "fantasyid/chinese-001_03",
+      "fantasyid/chinese-018_03",
+      "fantasyid/chinese-020_03",
+      "fantasyid/chinese-039_03",
+      "fantasyid/chinese-064_03",
+      "fantasyid/chinese-081_03",
+      "fantasyid/chinese-096_03",
+      "fantasyid/chinese-099_03",
+      "fantasyid/chinese-102_03",
+      "fantasyid/chinese-107_03",
+      "fantasyid/chinese-113_03",
+      "fantasyid/chinese-142_03",
+      "fantasyid/chinese-NF-1014",
+      "fantasyid/chinese-NF-1023",
+      "fantasyid/chinese-NF-1042",
+      "fantasyid/chinese-NF-1050",
+      "fantasyid/chinese-NF-1059",
+      "fantasyid/chinese-NF-1067",
+      "fantasyid/chinese-NF-1072",
+      "fantasyid/chinese-NF-1085",
+      "fantasyid/chinese-NF-1088",
+      "fantasyid/chinese-NF-1101",
+      "fantasyid/chinese-NM-1092",
+      "fantasyid/french-019_03",
+      "fantasyid/french-022_03",
+      "fantasyid/french-033_03",
+      "fantasyid/french-044_03",
+      "fantasyid/french-068_03",
+      "fantasyid/french-090_03",
+      "fantasyid/french-091_03",
+      "fantasyid/french-097_03",
+      "fantasyid/french-100_03",
+      "fantasyid/french-114_03",
+      "fantasyid/french-118_03",
+      "fantasyid/french-124_03",
+      "fantasyid/french-128_03",
+      "fantasyid/french-135_03",
+      "fantasyid/french-NF-1020",
+      "fantasyid/french-NF-1047",
+      "fantasyid/french-NF-1056",
+      "fantasyid/french-NF-1063",
+      "fantasyid/french-NF-1082",
+      "fantasyid/french-NF-1095",
+      "fantasyid/french-NF-1110",
+      "fantasyid/french-NM-1070",
+      "fantasyid/french-NM-1104",
+      "fantasyid/indian-012_03",
+      "fantasyid/indian-014_03",
+      "fantasyid/indian-021_03",
+      "fantasyid/indian-037_03",
+      "fantasyid/indian-038_03",
+      "fantasyid/indian-094_03",
+      "fantasyid/indian-108_03",
+      "fantasyid/indian-NF-1006",
+      "fantasyid/indian-NF-1025",
+      "fantasyid/indian-NF-1039",
+      "fantasyid/indian-NF-1061",
+      "fantasyid/indian-NF-1075",
+      "fantasyid/indian-NF-1096",
+      "fantasyid/indian-NM-1058",
+      "fantasyid/persian-010_03",
+      "fantasyid/persian-045_03",
+      "fantasyid/persian-069_03",
+      "fantasyid/persian-087_03",
+      "fantasyid/persian-122_03",
+      "fantasyid/persian-144_03",
+      "fantasyid/persian-NF-1001",
+      "fantasyid/persian-NF-1018",
+      "fantasyid/persian-NF-1031",
+      "fantasyid/persian-NF-1034",
+      "fantasyid/persian-NF-1043",
+      "fantasyid/persian-NF-1079",
+      "fantasyid/persian-NF-1097",
+      "fantasyid/persian-NF-1108",
+      "fantasyid/persian-NM-1010",
+      "fantasyid/persian-NM-1035",
+      "fantasyid/persian-NM-1074",
+      "fantasyid/portugal-004_03",
+      "fantasyid/portugal-013_03",
+      "fantasyid/portugal-017_03",
+      "fantasyid/portugal-026_03",
+      "fantasyid/portugal-029_03",
+      "fantasyid/portugal-042_03",
+      "fantasyid/portugal-061_03",
+      "fantasyid/portugal-066_03",
+      "fantasyid/portugal-070_03",
+      "fantasyid/portugal-105_03",
+      "fantasyid/portugal-119_03",
+      "fantasyid/portugal-125_03",
+      "fantasyid/portugal-143_03",
+      "fantasyid/portugal-172_03",
+      "fantasyid/portugal-NF-1016",
+      "fantasyid/portugal-NF-1022",
+      "fantasyid/portugal-NF-1024",
+      "fantasyid/portugal-NF-1026",
+      "fantasyid/portugal-NF-1041",
+      "fantasyid/portugal-NF-1060",
+      "fantasyid/portugal-NF-1066",
+      "fantasyid/portugal-NF-1083",
+      "fantasyid/portugal-NF-1086",
+      "fantasyid/portugal-NF-1105",
+      "fantasyid/portugal-NF-1107",
+      "fantasyid/portugal-NF-1109",
+      "fantasyid/portugal-NM-1091",
+      "fantasyid/portugal-NM-1102",
+      "fantasyid/russian-002_03",
+      "fantasyid/russian-027_03",
+      "fantasyid/russian-062_03",
+      "fantasyid/russian-082_03",
+      "fantasyid/russian-123_03",
+      "fantasyid/russian-132_03",
+      "fantasyid/russian-140_03",
+      "fantasyid/russian-141_03",
+      "fantasyid/russian-NF-1013",
+      "fantasyid/russian-NF-1028",
+      "fantasyid/russian-NF-1069",
+      "fantasyid/russian-NF-1080",
+      "fantasyid/russian-NF-1081",
+      "fantasyid/russian-NF-1089",
+      "fantasyid/russian-NF-1099",
+      "fantasyid/russian-NM-1027",
+      "fantasyid/turkiye-008_03",
+      "fantasyid/turkiye-031_03",
+      "fantasyid/turkiye-032_03",
+      "fantasyid/turkiye-036_03",
+      "fantasyid/turkiye-041_03",
+      "fantasyid/turkiye-083_03",
+      "fantasyid/turkiye-086_03",
+      "fantasyid/turkiye-092_03",
+      "fantasyid/turkiye-101_03",
+      "fantasyid/turkiye-104_03",
+      "fantasyid/turkiye-115_03",
+      "fantasyid/turkiye-121_03",
+      "fantasyid/turkiye-126_03",
+      "fantasyid/turkiye-127_03",
+      "fantasyid/turkiye-129_03",
+      "fantasyid/turkiye-130_03",
+      "fantasyid/turkiye-138_03",
+      "fantasyid/turkiye-NF-1002",
+      "fantasyid/turkiye-NF-1008",
+      "fantasyid/turkiye-NF-1054",
+      "fantasyid/turkiye-NF-1103",
+      "fantasyid/turkiye-NM-1011",
+      "fantasyid/turkiye-NM-1019",
+      "fantasyid/turkiye-NM-1033",
+      "fantasyid/turkiye-NM-1055",
+      "fantasyid/ukraine-006_03",
+      "fantasyid/ukraine-007_03",
+      "fantasyid/ukraine-025_03",
+      "fantasyid/ukraine-030_03",
+      "fantasyid/ukraine-103_03",
+      "fantasyid/ukraine-NF-1005",
+      "fantasyid/ukraine-NF-1015",
+      "fantasyid/ukraine-NF-1021",
+      "fantasyid/ukraine-NF-1032",
+      "fantasyid/ukraine-NF-1057",
+      "fantasyid/ukraine-NF-1068",
+      "fantasyid/ukraine-NF-1073",
+      "fantasyid/ukraine-NF-1077",
+      "fantasyid/ukraine-NF-1084",
+      "fantasyid/ukraine-NF-1087",
+      "fantasyid/ukraine-NF-1106",
+      "fantasyid/ukraine-NM-1007",
+      "fantasyid/usa-009_03",
+      "fantasyid/usa-011_03",
+      "fantasyid/usa-016_03",
+      "fantasyid/usa-034_03",
+      "fantasyid/usa-043_03",
+      "fantasyid/usa-063_03",
+      "fantasyid/usa-067_03",
+      "fantasyid/usa-117_03",
+      "fantasyid/usa-134_03",
+      "fantasyid/usa-136_03",
+      "fantasyid/usa-137_03",
+      "fantasyid/usa-NF-1004",
+      "fantasyid/usa-NF-1009",
+      "fantasyid/usa-NF-1017",
+      "fantasyid/usa-NF-1036",
+      "fantasyid/usa-NF-1044",
+      "fantasyid/usa-NF-1046",
+      "fantasyid/usa-NF-1051",
+      "fantasyid/usa-NF-1062",
+      "fantasyid/usa-NF-1065",
+      "fantasyid/usa-NF-1071",
+      "fantasyid/usa-NF-1076",
+      "fantasyid/usa-NF-1093",
+      "fantasyid/usa-NF-1094",
+      "fantasyid/usa-NM-1038",
+      "fantasyid/usa-NM-1052"
+    ],
+    "inventory_only": true,
+    "missing_provenance_columns": [],
+    "nongenuine_support_image_ids": [],
+    "overlapping_support_image_ids": [
+      "fantasyid_train_bonafide_huawei_arabic-003_03",
+      "fantasyid_train_bonafide_huawei_arabic-005_03",
+      "fantasyid_train_bonafide_huawei_arabic-024_03",
+      "fantasyid_train_bonafide_huawei_arabic-112_03",
+      "fantasyid_train_bonafide_huawei_arabic-120_03",
+      "fantasyid_train_bonafide_huawei_arabic-131_03",
+      "fantasyid_train_bonafide_huawei_arabic-139_03",
+      "fantasyid_train_bonafide_huawei_arabic-173_03",
+      "fantasyid_train_bonafide_huawei_arabic-NF-1003",
+      "fantasyid_train_bonafide_huawei_arabic-NF-1012",
+      "fantasyid_train_bonafide_huawei_arabic-NF-1030",
+      "fantasyid_train_bonafide_huawei_arabic-NF-1037",
+      "fantasyid_train_bonafide_huawei_arabic-NF-1040",
+      "fantasyid_train_bonafide_huawei_arabic-NF-1045",
+      "fantasyid_train_bonafide_huawei_arabic-NF-1048",
+      "fantasyid_train_bonafide_huawei_arabic-NF-1049",
+      "fantasyid_train_bonafide_huawei_arabic-NF-1053",
+      "fantasyid_train_bonafide_huawei_arabic-NF-1098",
+      "fantasyid_train_bonafide_huawei_arabic-NF-1100",
+      "fantasyid_train_bonafide_huawei_arabic-NM-1029",
+      "fantasyid_train_bonafide_huawei_arabic-NM-1064",
+      "fantasyid_train_bonafide_huawei_arabic-NM-1090",
+      "fantasyid_train_bonafide_huawei_chinese-001_03",
+      "fantasyid_train_bonafide_huawei_chinese-018_03",
+      "fantasyid_train_bonafide_huawei_chinese-020_03",
+      "fantasyid_train_bonafide_huawei_chinese-039_03",
+      "fantasyid_train_bonafide_huawei_chinese-064_03",
+      "fantasyid_train_bonafide_huawei_chinese-081_03",
+      "fantasyid_train_bonafide_huawei_chinese-096_03",
+      "fantasyid_train_bonafide_huawei_chinese-099_03",
+      "fantasyid_train_bonafide_huawei_chinese-102_03",
+      "fantasyid_train_bonafide_huawei_chinese-107_03",
+      "fantasyid_train_bonafide_huawei_chinese-113_03",
+      "fantasyid_train_bonafide_huawei_chinese-142_03",
+      "fantasyid_train_bonafide_huawei_chinese-NF-1014",
+      "fantasyid_train_bonafide_huawei_chinese-NF-1023",
+      "fantasyid_train_bonafide_huawei_chinese-NF-1042",
+      "fantasyid_train_bonafide_huawei_chinese-NF-1050",
+      "fantasyid_train_bonafide_huawei_chinese-NF-1059",
+      "fantasyid_train_bonafide_huawei_chinese-NF-1067",
+      "fantasyid_train_bonafide_huawei_chinese-NF-1072",
+      "fantasyid_train_bonafide_huawei_chinese-NF-1085",
+      "fantasyid_train_bonafide_huawei_chinese-NF-1088",
+      "fantasyid_train_bonafide_huawei_chinese-NF-1101",
+      "fantasyid_train_bonafide_huawei_chinese-NM-1092",
+      "fantasyid_train_bonafide_huawei_french-019_03",
+      "fantasyid_train_bonafide_huawei_french-022_03",
+      "fantasyid_train_bonafide_huawei_french-033_03",
+      "fantasyid_train_bonafide_huawei_french-044_03",
+      "fantasyid_train_bonafide_huawei_french-068_03",
+      "fantasyid_train_bonafide_huawei_french-090_03",
+      "fantasyid_train_bonafide_huawei_french-091_03",
+      "fantasyid_train_bonafide_huawei_french-097_03",
+      "fantasyid_train_bonafide_huawei_french-100_03",
+      "fantasyid_train_bonafide_huawei_french-114_03",
+      "fantasyid_train_bonafide_huawei_french-118_03",
+      "fantasyid_train_bonafide_huawei_french-124_03",
+      "fantasyid_train_bonafide_huawei_french-128_03",
+      "fantasyid_train_bonafide_huawei_french-135_03",
+      "fantasyid_train_bonafide_huawei_french-NF-1020",
+      "fantasyid_train_bonafide_huawei_french-NF-1047",
+      "fantasyid_train_bonafide_huawei_french-NF-1056",
+      "fantasyid_train_bonafide_huawei_french-NF-1063",
+      "fantasyid_train_bonafide_huawei_french-NF-1082",
+      "fantasyid_train_bonafide_huawei_french-NF-1095",
+      "fantasyid_train_bonafide_huawei_french-NF-1110",
+      "fantasyid_train_bonafide_huawei_french-NM-1070",
+      "fantasyid_train_bonafide_huawei_french-NM-1104",
+      "fantasyid_train_bonafide_huawei_indian-012_03",
+      "fantasyid_train_bonafide_huawei_indian-014_03",
+      "fantasyid_train_bonafide_huawei_indian-021_03",
+      "fantasyid_train_bonafide_huawei_indian-037_03",
+      "fantasyid_train_bonafide_huawei_indian-038_03",
+      "fantasyid_train_bonafide_huawei_indian-094_03",
+      "fantasyid_train_bonafide_huawei_indian-108_03",
+      "fantasyid_train_bonafide_huawei_indian-NF-1006",
+      "fantasyid_train_bonafide_huawei_indian-NF-1025",
+      "fantasyid_train_bonafide_huawei_indian-NF-1039",
+      "fantasyid_train_bonafide_huawei_indian-NF-1061",
+      "fantasyid_train_bonafide_huawei_indian-NF-1075",
+      "fantasyid_train_bonafide_huawei_indian-NF-1096",
+      "fantasyid_train_bonafide_huawei_indian-NM-1058",
+      "fantasyid_train_bonafide_huawei_persian-010_03",
+      "fantasyid_train_bonafide_huawei_persian-045_03",
+      "fantasyid_train_bonafide_huawei_persian-069_03",
+      "fantasyid_train_bonafide_huawei_persian-087_03",
+      "fantasyid_train_bonafide_huawei_persian-122_03",
+      "fantasyid_train_bonafide_huawei_persian-144_03",
+      "fantasyid_train_bonafide_huawei_persian-NF-1001",
+      "fantasyid_train_bonafide_huawei_persian-NF-1018",
+      "fantasyid_train_bonafide_huawei_persian-NF-1031",
+      "fantasyid_train_bonafide_huawei_persian-NF-1034",
+      "fantasyid_train_bonafide_huawei_persian-NF-1043",
+      "fantasyid_train_bonafide_huawei_persian-NF-1079",
+      "fantasyid_train_bonafide_huawei_persian-NF-1097",
+      "fantasyid_train_bonafide_huawei_persian-NF-1108",
+      "fantasyid_train_bonafide_huawei_persian-NM-1010",
+      "fantasyid_train_bonafide_huawei_persian-NM-1035",
+      "fantasyid_train_bonafide_huawei_persian-NM-1074",
+      "fantasyid_train_bonafide_huawei_portugal-004_03",
+      "fantasyid_train_bonafide_huawei_portugal-013_03",
+      "fantasyid_train_bonafide_huawei_portugal-017_03",
+      "fantasyid_train_bonafide_huawei_portugal-026_03",
+      "fantasyid_train_bonafide_huawei_portugal-029_03",
+      "fantasyid_train_bonafide_huawei_portugal-042_03",
+      "fantasyid_train_bonafide_huawei_portugal-061_03",
+      "fantasyid_train_bonafide_huawei_portugal-066_03",
+      "fantasyid_train_bonafide_huawei_portugal-070_03",
+      "fantasyid_train_bonafide_huawei_portugal-105_03",
+      "fantasyid_train_bonafide_huawei_portugal-119_03",
+      "fantasyid_train_bonafide_huawei_portugal-125_03",
+      "fantasyid_train_bonafide_huawei_portugal-143_03",
+      "fantasyid_train_bonafide_huawei_portugal-172_03",
+      "fantasyid_train_bonafide_huawei_portugal-NF-1016",
+      "fantasyid_train_bonafide_huawei_portugal-NF-1022",
+      "fantasyid_train_bonafide_huawei_portugal-NF-1024",
+      "fantasyid_train_bonafide_huawei_portugal-NF-1026",
+      "fantasyid_train_bonafide_huawei_portugal-NF-1041",
+      "fantasyid_train_bonafide_huawei_portugal-NF-1060",
+      "fantasyid_train_bonafide_huawei_portugal-NF-1066",
+      "fantasyid_train_bonafide_huawei_portugal-NF-1083",
+      "fantasyid_train_bonafide_huawei_portugal-NF-1086",
+      "fantasyid_train_bonafide_huawei_portugal-NF-1105",
+      "fantasyid_train_bonafide_huawei_portugal-NF-1107",
+      "fantasyid_train_bonafide_huawei_portugal-NF-1109",
+      "fantasyid_train_bonafide_huawei_portugal-NM-1091",
+      "fantasyid_train_bonafide_huawei_portugal-NM-1102",
+      "fantasyid_train_bonafide_huawei_russian-002_03",
+      "fantasyid_train_bonafide_huawei_russian-027_03",
+      "fantasyid_train_bonafide_huawei_russian-062_03",
+      "fantasyid_train_bonafide_huawei_russian-082_03",
+      "fantasyid_train_bonafide_huawei_russian-123_03",
+      "fantasyid_train_bonafide_huawei_russian-132_03",
+      "fantasyid_train_bonafide_huawei_russian-140_03",
+      "fantasyid_train_bonafide_huawei_russian-141_03",
+      "fantasyid_train_bonafide_huawei_russian-NF-1013",
+      "fantasyid_train_bonafide_huawei_russian-NF-1028",
+      "fantasyid_train_bonafide_huawei_russian-NF-1069",
+      "fantasyid_train_bonafide_huawei_russian-NF-1080",
+      "fantasyid_train_bonafide_huawei_russian-NF-1081",
+      "fantasyid_train_bonafide_huawei_russian-NF-1089",
+      "fantasyid_train_bonafide_huawei_russian-NF-1099",
+      "fantasyid_train_bonafide_huawei_russian-NM-1027",
+      "fantasyid_train_bonafide_huawei_turkiye-008_03",
+      "fantasyid_train_bonafide_huawei_turkiye-031_03",
+      "fantasyid_train_bonafide_huawei_turkiye-032_03",
+      "fantasyid_train_bonafide_huawei_turkiye-036_03",
+      "fantasyid_train_bonafide_huawei_turkiye-041_03",
+      "fantasyid_train_bonafide_huawei_turkiye-083_03",
+      "fantasyid_train_bonafide_huawei_turkiye-086_03",
+      "fantasyid_train_bonafide_huawei_turkiye-092_03",
+      "fantasyid_train_bonafide_huawei_turkiye-101_03",
+      "fantasyid_train_bonafide_huawei_turkiye-104_03",
+      "fantasyid_train_bonafide_huawei_turkiye-115_03",
+      "fantasyid_train_bonafide_huawei_turkiye-121_03",
+      "fantasyid_train_bonafide_huawei_turkiye-126_03",
+      "fantasyid_train_bonafide_huawei_turkiye-127_03",
+      "fantasyid_train_bonafide_huawei_turkiye-129_03",
+      "fantasyid_train_bonafide_huawei_turkiye-130_03",
+      "fantasyid_train_bonafide_huawei_turkiye-138_03",
+      "fantasyid_train_bonafide_huawei_turkiye-NF-1002",
+      "fantasyid_train_bonafide_huawei_turkiye-NF-1008",
+      "fantasyid_train_bonafide_huawei_turkiye-NF-1054",
+      "fantasyid_train_bonafide_huawei_turkiye-NF-1103",
+      "fantasyid_train_bonafide_huawei_turkiye-NM-1011",
+      "fantasyid_train_bonafide_huawei_turkiye-NM-1019",
+      "fantasyid_train_bonafide_huawei_turkiye-NM-1033",
+      "fantasyid_train_bonafide_huawei_turkiye-NM-1055",
+      "fantasyid_train_bonafide_huawei_ukraine-006_03",
+      "fantasyid_train_bonafide_huawei_ukraine-007_03",
+      "fantasyid_train_bonafide_huawei_ukraine-025_03",
+      "fantasyid_train_bonafide_huawei_ukraine-030_03",
+      "fantasyid_train_bonafide_huawei_ukraine-103_03",
+      "fantasyid_train_bonafide_huawei_ukraine-NF-1005",
+      "fantasyid_train_bonafide_huawei_ukraine-NF-1015",
+      "fantasyid_train_bonafide_huawei_ukraine-NF-1021",
+      "fantasyid_train_bonafide_huawei_ukraine-NF-1032",
+      "fantasyid_train_bonafide_huawei_ukraine-NF-1057",
+      "fantasyid_train_bonafide_huawei_ukraine-NF-1068",
+      "fantasyid_train_bonafide_huawei_ukraine-NF-1073",
+      "fantasyid_train_bonafide_huawei_ukraine-NF-1077",
+      "fantasyid_train_bonafide_huawei_ukraine-NF-1084",
+      "fantasyid_train_bonafide_huawei_ukraine-NF-1087",
+      "fantasyid_train_bonafide_huawei_ukraine-NF-1106",
+      "fantasyid_train_bonafide_huawei_ukraine-NM-1007",
+      "fantasyid_train_bonafide_huawei_usa-009_03",
+      "fantasyid_train_bonafide_huawei_usa-011_03",
+      "fantasyid_train_bonafide_huawei_usa-016_03",
+      "fantasyid_train_bonafide_huawei_usa-034_03",
+      "fantasyid_train_bonafide_huawei_usa-043_03",
+      "fantasyid_train_bonafide_huawei_usa-063_03",
+      "fantasyid_train_bonafide_huawei_usa-067_03",
+      "fantasyid_train_bonafide_huawei_usa-117_03",
+      "fantasyid_train_bonafide_huawei_usa-134_03",
+      "fantasyid_train_bonafide_huawei_usa-136_03",
+      "fantasyid_train_bonafide_huawei_usa-137_03",
+      "fantasyid_train_bonafide_huawei_usa-NF-1004",
+      "fantasyid_train_bonafide_huawei_usa-NF-1009",
+      "fantasyid_train_bonafide_huawei_usa-NF-1017",
+      "fantasyid_train_bonafide_huawei_usa-NF-1036",
+      "fantasyid_train_bonafide_huawei_usa-NF-1044",
+      "fantasyid_train_bonafide_huawei_usa-NF-1046",
+      "fantasyid_train_bonafide_huawei_usa-NF-1051",
+      "fantasyid_train_bonafide_huawei_usa-NF-1062",
+      "fantasyid_train_bonafide_huawei_usa-NF-1065",
+      "fantasyid_train_bonafide_huawei_usa-NF-1071",
+      "fantasyid_train_bonafide_huawei_usa-NF-1076",
+      "fantasyid_train_bonafide_huawei_usa-NF-1093",
+      "fantasyid_train_bonafide_huawei_usa-NF-1094",
+      "fantasyid_train_bonafide_huawei_usa-NM-1038",
+      "fantasyid_train_bonafide_huawei_usa-NM-1052",
+      "fantasyid_train_bonafide_iphone15pro_arabic-003_03",
+      "fantasyid_train_bonafide_iphone15pro_arabic-005_03",
+      "fantasyid_train_bonafide_iphone15pro_arabic-024_03",
+      "fantasyid_train_bonafide_iphone15pro_arabic-112_03",
+      "fantasyid_train_bonafide_iphone15pro_arabic-120_03",
+      "fantasyid_train_bonafide_iphone15pro_arabic-131_03",
+      "fantasyid_train_bonafide_iphone15pro_arabic-139_03",
+      "fantasyid_train_bonafide_iphone15pro_arabic-173_03",
+      "fantasyid_train_bonafide_iphone15pro_arabic-NF-1003",
+      "fantasyid_train_bonafide_iphone15pro_arabic-NF-1012",
+      "fantasyid_train_bonafide_iphone15pro_arabic-NF-1030",
+      "fantasyid_train_bonafide_iphone15pro_arabic-NF-1037",
+      "fantasyid_train_bonafide_iphone15pro_arabic-NF-1040",
+      "fantasyid_train_bonafide_iphone15pro_arabic-NF-1045",
+      "fantasyid_train_bonafide_iphone15pro_arabic-NF-1048",
+      "fantasyid_train_bonafide_iphone15pro_arabic-NF-1049",
+      "fantasyid_train_bonafide_iphone15pro_arabic-NF-1053",
+      "fantasyid_train_bonafide_iphone15pro_arabic-NF-1098",
+      "fantasyid_train_bonafide_iphone15pro_arabic-NF-1100",
+      "fantasyid_train_bonafide_iphone15pro_arabic-NM-1029",
+      "fantasyid_train_bonafide_iphone15pro_arabic-NM-1064",
+      "fantasyid_train_bonafide_iphone15pro_arabic-NM-1090",
+      "fantasyid_train_bonafide_iphone15pro_chinese-001_03",
+      "fantasyid_train_bonafide_iphone15pro_chinese-018_03",
+      "fantasyid_train_bonafide_iphone15pro_chinese-020_03",
+      "fantasyid_train_bonafide_iphone15pro_chinese-039_03",
+      "fantasyid_train_bonafide_iphone15pro_chinese-064_03",
+      "fantasyid_train_bonafide_iphone15pro_chinese-081_03",
+      "fantasyid_train_bonafide_iphone15pro_chinese-096_03",
+      "fantasyid_train_bonafide_iphone15pro_chinese-099_03",
+      "fantasyid_train_bonafide_iphone15pro_chinese-102_03",
+      "fantasyid_train_bonafide_iphone15pro_chinese-107_03",
+      "fantasyid_train_bonafide_iphone15pro_chinese-113_03",
+      "fantasyid_train_bonafide_iphone15pro_chinese-142_03",
+      "fantasyid_train_bonafide_iphone15pro_chinese-NF-1014",
+      "fantasyid_train_bonafide_iphone15pro_chinese-NF-1023",
+      "fantasyid_train_bonafide_iphone15pro_chinese-NF-1042",
+      "fantasyid_train_bonafide_iphone15pro_chinese-NF-1050",
+      "fantasyid_train_bonafide_iphone15pro_chinese-NF-1059",
+      "fantasyid_train_bonafide_iphone15pro_chinese-NF-1067",
+      "fantasyid_train_bonafide_iphone15pro_chinese-NF-1072",
+      "fantasyid_train_bonafide_iphone15pro_chinese-NF-1085",
+      "fantasyid_train_bonafide_iphone15pro_chinese-NF-1088",
+      "fantasyid_train_bonafide_iphone15pro_chinese-NF-1101",
+      "fantasyid_train_bonafide_iphone15pro_chinese-NM-1092",
+      "fantasyid_train_bonafide_iphone15pro_french-019_03",
+      "fantasyid_train_bonafide_iphone15pro_french-022_03",
+      "fantasyid_train_bonafide_iphone15pro_french-033_03",
+      "fantasyid_train_bonafide_iphone15pro_french-044_03",
+      "fantasyid_train_bonafide_iphone15pro_french-068_03",
+      "fantasyid_train_bonafide_iphone15pro_french-090_03",
+      "fantasyid_train_bonafide_iphone15pro_french-091_03",
+      "fantasyid_train_bonafide_iphone15pro_french-097_03",
+      "fantasyid_train_bonafide_iphone15pro_french-100_03",
+      "fantasyid_train_bonafide_iphone15pro_french-114_03",
+      "fantasyid_train_bonafide_iphone15pro_french-118_03",
+      "fantasyid_train_bonafide_iphone15pro_french-124_03",
+      "fantasyid_train_bonafide_iphone15pro_french-128_03",
+      "fantasyid_train_bonafide_iphone15pro_french-135_03",
+      "fantasyid_train_bonafide_iphone15pro_french-NF-1020",
+      "fantasyid_train_bonafide_iphone15pro_french-NF-1047",
+      "fantasyid_train_bonafide_iphone15pro_french-NF-1056",
+      "fantasyid_train_bonafide_iphone15pro_french-NF-1063",
+      "fantasyid_train_bonafide_iphone15pro_french-NF-1082",
+      "fantasyid_train_bonafide_iphone15pro_french-NF-1095",
+      "fantasyid_train_bonafide_iphone15pro_french-NF-1110",
+      "fantasyid_train_bonafide_iphone15pro_french-NM-1070",
+      "fantasyid_train_bonafide_iphone15pro_french-NM-1104",
+      "fantasyid_train_bonafide_iphone15pro_indian-012_03",
+      "fantasyid_train_bonafide_iphone15pro_indian-014_03",
+      "fantasyid_train_bonafide_iphone15pro_indian-021_03",
+      "fantasyid_train_bonafide_iphone15pro_indian-037_03",
+      "fantasyid_train_bonafide_iphone15pro_indian-038_03",
+      "fantasyid_train_bonafide_iphone15pro_indian-094_03",
+      "fantasyid_train_bonafide_iphone15pro_indian-108_03",
+      "fantasyid_train_bonafide_iphone15pro_indian-NF-1006",
+      "fantasyid_train_bonafide_iphone15pro_indian-NF-1025",
+      "fantasyid_train_bonafide_iphone15pro_indian-NF-1039",
+      "fantasyid_train_bonafide_iphone15pro_indian-NF-1061",
+      "fantasyid_train_bonafide_iphone15pro_indian-NF-1075",
+      "fantasyid_train_bonafide_iphone15pro_indian-NF-1096",
+      "fantasyid_train_bonafide_iphone15pro_indian-NM-1058",
+      "fantasyid_train_bonafide_iphone15pro_persian-010_03",
+      "fantasyid_train_bonafide_iphone15pro_persian-045_03",
+      "fantasyid_train_bonafide_iphone15pro_persian-069_03",
+      "fantasyid_train_bonafide_iphone15pro_persian-087_03",
+      "fantasyid_train_bonafide_iphone15pro_persian-122_03",
+      "fantasyid_train_bonafide_iphone15pro_persian-144_03",
+      "fantasyid_train_bonafide_iphone15pro_persian-NF-1001",
+      "fantasyid_train_bonafide_iphone15pro_persian-NF-1018",
+      "fantasyid_train_bonafide_iphone15pro_persian-NF-1031",
+      "fantasyid_train_bonafide_iphone15pro_persian-NF-1034",
+      "fantasyid_train_bonafide_iphone15pro_persian-NF-1043",
+      "fantasyid_train_bonafide_iphone15pro_persian-NF-1079",
+      "fantasyid_train_bonafide_iphone15pro_persian-NF-1097",
+      "fantasyid_train_bonafide_iphone15pro_persian-NF-1108",
+      "fantasyid_train_bonafide_iphone15pro_persian-NM-1010",
+      "fantasyid_train_bonafide_iphone15pro_persian-NM-1035",
+      "fantasyid_train_bonafide_iphone15pro_persian-NM-1074",
+      "fantasyid_train_bonafide_iphone15pro_portugal-004_03",
+      "fantasyid_train_bonafide_iphone15pro_portugal-013_03",
+      "fantasyid_train_bonafide_iphone15pro_portugal-017_03",
+      "fantasyid_train_bonafide_iphone15pro_portugal-026_03",
+      "fantasyid_train_bonafide_iphone15pro_portugal-029_03",
+      "fantasyid_train_bonafide_iphone15pro_portugal-042_03",
+      "fantasyid_train_bonafide_iphone15pro_portugal-061_03",
+      "fantasyid_train_bonafide_iphone15pro_portugal-066_03",
+      "fantasyid_train_bonafide_iphone15pro_portugal-070_03",
+      "fantasyid_train_bonafide_iphone15pro_portugal-105_03",
+      "fantasyid_train_bonafide_iphone15pro_portugal-119_03",
+      "fantasyid_train_bonafide_iphone15pro_portugal-125_03",
+      "fantasyid_train_bonafide_iphone15pro_portugal-143_03",
+      "fantasyid_train_bonafide_iphone15pro_portugal-172_03",
+      "fantasyid_train_bonafide_iphone15pro_portugal-NF-1016",
+      "fantasyid_train_bonafide_iphone15pro_portugal-NF-1022",
+      "fantasyid_train_bonafide_iphone15pro_portugal-NF-1024",
+      "fantasyid_train_bonafide_iphone15pro_portugal-NF-1026",
+      "fantasyid_train_bonafide_iphone15pro_portugal-NF-1041",
+      "fantasyid_train_bonafide_iphone15pro_portugal-NF-1060",
+      "fantasyid_train_bonafide_iphone15pro_portugal-NF-1066",
+      "fantasyid_train_bonafide_iphone15pro_portugal-NF-1083",
+      "fantasyid_train_bonafide_iphone15pro_portugal-NF-1086",
+      "fantasyid_train_bonafide_iphone15pro_portugal-NF-1105",
+      "fantasyid_train_bonafide_iphone15pro_portugal-NF-1107",
+      "fantasyid_train_bonafide_iphone15pro_portugal-NF-1109",
+      "fantasyid_train_bonafide_iphone15pro_portugal-NM-1091",
+      "fantasyid_train_bonafide_iphone15pro_portugal-NM-1102",
+      "fantasyid_train_bonafide_iphone15pro_russian-002_03",
+      "fantasyid_train_bonafide_iphone15pro_russian-027_03",
+      "fantasyid_train_bonafide_iphone15pro_russian-062_03",
+      "fantasyid_train_bonafide_iphone15pro_russian-082_03",
+      "fantasyid_train_bonafide_iphone15pro_russian-123_03",
+      "fantasyid_train_bonafide_iphone15pro_russian-132_03",
+      "fantasyid_train_bonafide_iphone15pro_russian-140_03",
+      "fantasyid_train_bonafide_iphone15pro_russian-141_03",
+      "fantasyid_train_bonafide_iphone15pro_russian-NF-1013",
+      "fantasyid_train_bonafide_iphone15pro_russian-NF-1028",
+      "fantasyid_train_bonafide_iphone15pro_russian-NF-1069",
+      "fantasyid_train_bonafide_iphone15pro_russian-NF-1080",
+      "fantasyid_train_bonafide_iphone15pro_russian-NF-1081",
+      "fantasyid_train_bonafide_iphone15pro_russian-NF-1089",
+      "fantasyid_train_bonafide_iphone15pro_russian-NF-1099",
+      "fantasyid_train_bonafide_iphone15pro_russian-NM-1027",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-008_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-031_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-032_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-036_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-041_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-083_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-086_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-092_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-101_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-104_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-115_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-121_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-126_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-127_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-129_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-130_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-138_03",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-NF-1002",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-NF-1008",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-NF-1054",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-NF-1103",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-NM-1011",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-NM-1019",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-NM-1033",
+      "fantasyid_train_bonafide_iphone15pro_turkiye-NM-1055",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-006_03",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-007_03",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-025_03",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-030_03",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-103_03",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-NF-1005",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-NF-1015",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-NF-1021",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-NF-1032",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-NF-1057",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-NF-1068",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-NF-1073",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-NF-1077",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-NF-1084",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-NF-1087",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-NF-1106",
+      "fantasyid_train_bonafide_iphone15pro_ukraine-NM-1007",
+      "fantasyid_train_bonafide_iphone15pro_usa-009_03",
+      "fantasyid_train_bonafide_iphone15pro_usa-011_03",
+      "fantasyid_train_bonafide_iphone15pro_usa-016_03",
+      "fantasyid_train_bonafide_iphone15pro_usa-034_03",
+      "fantasyid_train_bonafide_iphone15pro_usa-043_03",
+      "fantasyid_train_bonafide_iphone15pro_usa-063_03",
+      "fantasyid_train_bonafide_iphone15pro_usa-067_03",
+      "fantasyid_train_bonafide_iphone15pro_usa-117_03",
+      "fantasyid_train_bonafide_iphone15pro_usa-134_03",
+      "fantasyid_train_bonafide_iphone15pro_usa-136_03",
+      "fantasyid_train_bonafide_iphone15pro_usa-137_03",
+      "fantasyid_train_bonafide_iphone15pro_usa-NF-1004",
+      "fantasyid_train_bonafide_iphone15pro_usa-NF-1009",
+      "fantasyid_train_bonafide_iphone15pro_usa-NF-1017",
+      "fantasyid_train_bonafide_iphone15pro_usa-NF-1036",
+      "fantasyid_train_bonafide_iphone15pro_usa-NF-1044",
+      "fantasyid_train_bonafide_iphone15pro_usa-NF-1046",
+      "fantasyid_train_bonafide_iphone15pro_usa-NF-1051",
+      "fantasyid_train_bonafide_iphone15pro_usa-NF-1062",
+      "fantasyid_train_bonafide_iphone15pro_usa-NF-1065",
+      "fantasyid_train_bonafide_iphone15pro_usa-NF-1071",
+      "fantasyid_train_bonafide_iphone15pro_usa-NF-1076",
+      "fantasyid_train_bonafide_iphone15pro_usa-NF-1093",
+      "fantasyid_train_bonafide_iphone15pro_usa-NF-1094",
+      "fantasyid_train_bonafide_iphone15pro_usa-NM-1038",
+      "fantasyid_train_bonafide_iphone15pro_usa-NM-1052",
+      "fantasyid_train_bonafide_scan_arabic-003_03",
+      "fantasyid_train_bonafide_scan_arabic-005_03",
+      "fantasyid_train_bonafide_scan_arabic-024_03",
+      "fantasyid_train_bonafide_scan_arabic-112_03",
+      "fantasyid_train_bonafide_scan_arabic-120_03",
+      "fantasyid_train_bonafide_scan_arabic-131_03",
+      "fantasyid_train_bonafide_scan_arabic-139_03",
+      "fantasyid_train_bonafide_scan_arabic-173_03",
+      "fantasyid_train_bonafide_scan_arabic-NF-1003",
+      "fantasyid_train_bonafide_scan_arabic-NF-1012",
+      "fantasyid_train_bonafide_scan_arabic-NF-1030",
+      "fantasyid_train_bonafide_scan_arabic-NF-1037",
+      "fantasyid_train_bonafide_scan_arabic-NF-1040",
+      "fantasyid_train_bonafide_scan_arabic-NF-1045",
+      "fantasyid_train_bonafide_scan_arabic-NF-1048",
+      "fantasyid_train_bonafide_scan_arabic-NF-1049",
+      "fantasyid_train_bonafide_scan_arabic-NF-1053",
+      "fantasyid_train_bonafide_scan_arabic-NF-1098",
+      "fantasyid_train_bonafide_scan_arabic-NF-1100",
+      "fantasyid_train_bonafide_scan_arabic-NM-1029",
+      "fantasyid_train_bonafide_scan_arabic-NM-1064",
+      "fantasyid_train_bonafide_scan_arabic-NM-1090",
+      "fantasyid_train_bonafide_scan_chinese-001_03",
+      "fantasyid_train_bonafide_scan_chinese-018_03",
+      "fantasyid_train_bonafide_scan_chinese-020_03",
+      "fantasyid_train_bonafide_scan_chinese-039_03",
+      "fantasyid_train_bonafide_scan_chinese-064_03",
+      "fantasyid_train_bonafide_scan_chinese-081_03",
+      "fantasyid_train_bonafide_scan_chinese-096_03",
+      "fantasyid_train_bonafide_scan_chinese-099_03",
+      "fantasyid_train_bonafide_scan_chinese-102_03",
+      "fantasyid_train_bonafide_scan_chinese-107_03",
+      "fantasyid_train_bonafide_scan_chinese-113_03",
+      "fantasyid_train_bonafide_scan_chinese-142_03",
+      "fantasyid_train_bonafide_scan_chinese-NF-1014",
+      "fantasyid_train_bonafide_scan_chinese-NF-1023",
+      "fantasyid_train_bonafide_scan_chinese-NF-1042",
+      "fantasyid_train_bonafide_scan_chinese-NF-1050",
+      "fantasyid_train_bonafide_scan_chinese-NF-1059",
+      "fantasyid_train_bonafide_scan_chinese-NF-1067",
+      "fantasyid_train_bonafide_scan_chinese-NF-1072",
+      "fantasyid_train_bonafide_scan_chinese-NF-1085",
+      "fantasyid_train_bonafide_scan_chinese-NF-1088",
+      "fantasyid_train_bonafide_scan_chinese-NF-1101",
+      "fantasyid_train_bonafide_scan_chinese-NM-1092",
+      "fantasyid_train_bonafide_scan_french-019_03",
+      "fantasyid_train_bonafide_scan_french-022_03",
+      "fantasyid_train_bonafide_scan_french-033_03",
+      "fantasyid_train_bonafide_scan_french-044_03",
+      "fantasyid_train_bonafide_scan_french-068_03",
+      "fantasyid_train_bonafide_scan_french-090_03",
+      "fantasyid_train_bonafide_scan_french-091_03",
+      "fantasyid_train_bonafide_scan_french-097_03",
+      "fantasyid_train_bonafide_scan_french-100_03",
+      "fantasyid_train_bonafide_scan_french-114_03",
+      "fantasyid_train_bonafide_scan_french-118_03",
+      "fantasyid_train_bonafide_scan_french-124_03",
+      "fantasyid_train_bonafide_scan_french-128_03",
+      "fantasyid_train_bonafide_scan_french-135_03",
+      "fantasyid_train_bonafide_scan_french-NF-1020",
+      "fantasyid_train_bonafide_scan_french-NF-1047",
+      "fantasyid_train_bonafide_scan_french-NF-1056",
+      "fantasyid_train_bonafide_scan_french-NF-1063",
+      "fantasyid_train_bonafide_scan_french-NF-1082",
+      "fantasyid_train_bonafide_scan_french-NF-1095",
+      "fantasyid_train_bonafide_scan_french-NF-1110",
+      "fantasyid_train_bonafide_scan_french-NM-1070",
+      "fantasyid_train_bonafide_scan_french-NM-1104",
+      "fantasyid_train_bonafide_scan_indian-012_03",
+      "fantasyid_train_bonafide_scan_indian-014_03",
+      "fantasyid_train_bonafide_scan_indian-021_03",
+      "fantasyid_train_bonafide_scan_indian-037_03",
+      "fantasyid_train_bonafide_scan_indian-038_03",
+      "fantasyid_train_bonafide_scan_indian-094_03",
+      "fantasyid_train_bonafide_scan_indian-108_03",
+      "fantasyid_train_bonafide_scan_indian-NF-1006",
+      "fantasyid_train_bonafide_scan_indian-NF-1025",
+      "fantasyid_train_bonafide_scan_indian-NF-1039",
+      "fantasyid_train_bonafide_scan_indian-NF-1061",
+      "fantasyid_train_bonafide_scan_indian-NF-1075",
+      "fantasyid_train_bonafide_scan_indian-NF-1096",
+      "fantasyid_train_bonafide_scan_indian-NM-1058",
+      "fantasyid_train_bonafide_scan_persian-010_03",
+      "fantasyid_train_bonafide_scan_persian-045_03",
+      "fantasyid_train_bonafide_scan_persian-069_03",
+      "fantasyid_train_bonafide_scan_persian-087_03",
+      "fantasyid_train_bonafide_scan_persian-122_03",
+      "fantasyid_train_bonafide_scan_persian-144_03",
+      "fantasyid_train_bonafide_scan_persian-NF-1001",
+      "fantasyid_train_bonafide_scan_persian-NF-1018",
+      "fantasyid_train_bonafide_scan_persian-NF-1031",
+      "fantasyid_train_bonafide_scan_persian-NF-1034",
+      "fantasyid_train_bonafide_scan_persian-NF-1043",
+      "fantasyid_train_bonafide_scan_persian-NF-1079",
+      "fantasyid_train_bonafide_scan_persian-NF-1097",
+      "fantasyid_train_bonafide_scan_persian-NF-1108",
+      "fantasyid_train_bonafide_scan_persian-NM-1010",
+      "fantasyid_train_bonafide_scan_persian-NM-1035",
+      "fantasyid_train_bonafide_scan_persian-NM-1074",
+      "fantasyid_train_bonafide_scan_portugal-004_03",
+      "fantasyid_train_bonafide_scan_portugal-013_03",
+      "fantasyid_train_bonafide_scan_portugal-017_03",
+      "fantasyid_train_bonafide_scan_portugal-026_03",
+      "fantasyid_train_bonafide_scan_portugal-029_03",
+      "fantasyid_train_bonafide_scan_portugal-042_03",
+      "fantasyid_train_bonafide_scan_portugal-061_03",
+      "fantasyid_train_bonafide_scan_portugal-066_03",
+      "fantasyid_train_bonafide_scan_portugal-070_03",
+      "fantasyid_train_bonafide_scan_portugal-105_03",
+      "fantasyid_train_bonafide_scan_portugal-119_03",
+      "fantasyid_train_bonafide_scan_portugal-125_03",
+      "fantasyid_train_bonafide_scan_portugal-143_03",
+      "fantasyid_train_bonafide_scan_portugal-172_03",
+      "fantasyid_train_bonafide_scan_portugal-NF-1016",
+      "fantasyid_train_bonafide_scan_portugal-NF-1022",
+      "fantasyid_train_bonafide_scan_portugal-NF-1024",
+      "fantasyid_train_bonafide_scan_portugal-NF-1026",
+      "fantasyid_train_bonafide_scan_portugal-NF-1041",
+      "fantasyid_train_bonafide_scan_portugal-NF-1060",
+      "fantasyid_train_bonafide_scan_portugal-NF-1066",
+      "fantasyid_train_bonafide_scan_portugal-NF-1083",
+      "fantasyid_train_bonafide_scan_portugal-NF-1086",
+      "fantasyid_train_bonafide_scan_portugal-NF-1105",
+      "fantasyid_train_bonafide_scan_portugal-NF-1107",
+      "fantasyid_train_bonafide_scan_portugal-NF-1109",
+      "fantasyid_train_bonafide_scan_portugal-NM-1091",
+      "fantasyid_train_bonafide_scan_portugal-NM-1102",
+      "fantasyid_train_bonafide_scan_russian-002_03",
+      "fantasyid_train_bonafide_scan_russian-027_03",
+      "fantasyid_train_bonafide_scan_russian-062_03",
+      "fantasyid_train_bonafide_scan_russian-082_03",
+      "fantasyid_train_bonafide_scan_russian-123_03",
+      "fantasyid_train_bonafide_scan_russian-132_03",
+      "fantasyid_train_bonafide_scan_russian-140_03",
+      "fantasyid_train_bonafide_scan_russian-141_03",
+      "fantasyid_train_bonafide_scan_russian-NF-1013",
+      "fantasyid_train_bonafide_scan_russian-NF-1028",
+      "fantasyid_train_bonafide_scan_russian-NF-1069",
+      "fantasyid_train_bonafide_scan_russian-NF-1080",
+      "fantasyid_train_bonafide_scan_russian-NF-1081",
+      "fantasyid_train_bonafide_scan_russian-NF-1089",
+      "fantasyid_train_bonafide_scan_russian-NF-1099",
+      "fantasyid_train_bonafide_scan_russian-NM-1027",
+      "fantasyid_train_bonafide_scan_turkiye-008_03",
+      "fantasyid_train_bonafide_scan_turkiye-031_03",
+      "fantasyid_train_bonafide_scan_turkiye-032_03",
+      "fantasyid_train_bonafide_scan_turkiye-036_03",
+      "fantasyid_train_bonafide_scan_turkiye-041_03",
+      "fantasyid_train_bonafide_scan_turkiye-083_03",
+      "fantasyid_train_bonafide_scan_turkiye-086_03",
+      "fantasyid_train_bonafide_scan_turkiye-092_03",
+      "fantasyid_train_bonafide_scan_turkiye-101_03",
+      "fantasyid_train_bonafide_scan_turkiye-104_03",
+      "fantasyid_train_bonafide_scan_turkiye-115_03",
+      "fantasyid_train_bonafide_scan_turkiye-121_03",
+      "fantasyid_train_bonafide_scan_turkiye-126_03",
+      "fantasyid_train_bonafide_scan_turkiye-127_03",
+      "fantasyid_train_bonafide_scan_turkiye-129_03",
+      "fantasyid_train_bonafide_scan_turkiye-130_03",
+      "fantasyid_train_bonafide_scan_turkiye-138_03",
+      "fantasyid_train_bonafide_scan_turkiye-NF-1002",
+      "fantasyid_train_bonafide_scan_turkiye-NF-1008",
+      "fantasyid_train_bonafide_scan_turkiye-NF-1054",
+      "fantasyid_train_bonafide_scan_turkiye-NF-1103",
+      "fantasyid_train_bonafide_scan_turkiye-NM-1011",
+      "fantasyid_train_bonafide_scan_turkiye-NM-1019",
+      "fantasyid_train_bonafide_scan_turkiye-NM-1033",
+      "fantasyid_train_bonafide_scan_turkiye-NM-1055",
+      "fantasyid_train_bonafide_scan_ukraine-006_03",
+      "fantasyid_train_bonafide_scan_ukraine-007_03",
+      "fantasyid_train_bonafide_scan_ukraine-025_03",
+      "fantasyid_train_bonafide_scan_ukraine-030_03",
+      "fantasyid_train_bonafide_scan_ukraine-103_03",
+      "fantasyid_train_bonafide_scan_ukraine-NF-1005",
+      "fantasyid_train_bonafide_scan_ukraine-NF-1015",
+      "fantasyid_train_bonafide_scan_ukraine-NF-1021",
+      "fantasyid_train_bonafide_scan_ukraine-NF-1032",
+      "fantasyid_train_bonafide_scan_ukraine-NF-1057",
+      "fantasyid_train_bonafide_scan_ukraine-NF-1068",
+      "fantasyid_train_bonafide_scan_ukraine-NF-1073",
+      "fantasyid_train_bonafide_scan_ukraine-NF-1077",
+      "fantasyid_train_bonafide_scan_ukraine-NF-1084",
+      "fantasyid_train_bonafide_scan_ukraine-NF-1087",
+      "fantasyid_train_bonafide_scan_ukraine-NF-1106",
+      "fantasyid_train_bonafide_scan_ukraine-NM-1007",
+      "fantasyid_train_bonafide_scan_usa-009_03",
+      "fantasyid_train_bonafide_scan_usa-011_03",
+      "fantasyid_train_bonafide_scan_usa-016_03",
+      "fantasyid_train_bonafide_scan_usa-034_03",
+      "fantasyid_train_bonafide_scan_usa-043_03",
+      "fantasyid_train_bonafide_scan_usa-063_03",
+      "fantasyid_train_bonafide_scan_usa-067_03",
+      "fantasyid_train_bonafide_scan_usa-117_03",
+      "fantasyid_train_bonafide_scan_usa-134_03",
+      "fantasyid_train_bonafide_scan_usa-136_03",
+      "fantasyid_train_bonafide_scan_usa-137_03",
+      "fantasyid_train_bonafide_scan_usa-NF-1004",
+      "fantasyid_train_bonafide_scan_usa-NF-1009",
+      "fantasyid_train_bonafide_scan_usa-NF-1017",
+      "fantasyid_train_bonafide_scan_usa-NF-1036",
+      "fantasyid_train_bonafide_scan_usa-NF-1044",
+      "fantasyid_train_bonafide_scan_usa-NF-1046",
+      "fantasyid_train_bonafide_scan_usa-NF-1051",
+      "fantasyid_train_bonafide_scan_usa-NF-1062",
+      "fantasyid_train_bonafide_scan_usa-NF-1065",
+      "fantasyid_train_bonafide_scan_usa-NF-1071",
+      "fantasyid_train_bonafide_scan_usa-NF-1076",
+      "fantasyid_train_bonafide_scan_usa-NF-1093",
+      "fantasyid_train_bonafide_scan_usa-NF-1094",
+      "fantasyid_train_bonafide_scan_usa-NM-1038",
+      "fantasyid_train_bonafide_scan_usa-NM-1052"
+    ],
+    "provenance_overlap_nodes": [
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-003_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-005_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-024_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-112_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-120_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-131_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-139_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-173_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-NF-1003"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-NF-1012"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-NF-1030"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-NF-1037"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-NF-1040"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-NF-1045"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-NF-1048"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-NF-1049"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-NF-1053"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-NF-1098"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-NF-1100"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-NM-1029"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-NM-1064"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/arabic-NM-1090"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-001_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-018_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-020_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-039_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-064_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-081_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-096_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-099_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-102_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-107_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-113_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-142_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-NF-1014"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-NF-1023"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-NF-1042"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-NF-1050"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-NF-1059"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-NF-1067"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-NF-1072"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-NF-1085"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-NF-1088"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-NF-1101"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/chinese-NM-1092"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-019_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-022_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-033_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-044_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-068_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-090_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-091_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-097_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-100_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-114_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-118_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-124_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-128_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-135_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-NF-1020"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-NF-1047"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-NF-1056"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-NF-1063"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-NF-1082"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-NF-1095"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-NF-1110"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-NM-1070"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/french-NM-1104"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/indian-012_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/indian-014_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/indian-021_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/indian-037_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/indian-038_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/indian-094_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/indian-108_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/indian-NF-1006"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/indian-NF-1025"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/indian-NF-1039"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/indian-NF-1061"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/indian-NF-1075"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/indian-NF-1096"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/indian-NM-1058"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-010_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-045_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-069_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-087_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-122_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-144_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-NF-1001"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-NF-1018"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-NF-1031"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-NF-1034"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-NF-1043"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-NF-1079"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-NF-1097"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-NF-1108"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-NM-1010"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-NM-1035"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/persian-NM-1074"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-004_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-013_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-017_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-026_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-029_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-042_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-061_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-066_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-070_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-105_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-119_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-125_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-143_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-172_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-NF-1016"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-NF-1022"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-NF-1024"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-NF-1026"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-NF-1041"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-NF-1060"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-NF-1066"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-NF-1083"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-NF-1086"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-NF-1105"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-NF-1107"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-NF-1109"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-NM-1091"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/portugal-NM-1102"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-002_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-027_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-062_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-082_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-123_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-132_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-140_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-141_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-NF-1013"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-NF-1028"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-NF-1069"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-NF-1080"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-NF-1081"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-NF-1089"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-NF-1099"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/russian-NM-1027"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-008_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-031_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-032_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-036_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-041_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-083_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-086_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-092_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-101_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-104_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-115_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-121_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-126_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-127_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-129_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-130_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-138_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-NF-1002"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-NF-1008"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-NF-1054"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-NF-1103"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-NM-1011"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-NM-1019"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-NM-1033"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/turkiye-NM-1055"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-006_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-007_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-025_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-030_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-103_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-NF-1005"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-NF-1015"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-NF-1021"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-NF-1032"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-NF-1057"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-NF-1068"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-NF-1073"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-NF-1077"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-NF-1084"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-NF-1087"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-NF-1106"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/ukraine-NM-1007"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-009_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-011_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-016_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-034_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-043_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-063_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-067_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-117_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-134_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-136_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-137_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-NF-1004"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-NF-1009"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-NF-1017"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-NF-1036"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-NF-1044"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-NF-1046"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-NF-1051"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-NF-1062"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-NF-1065"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-NF-1071"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-NF-1076"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-NF-1093"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-NF-1094"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-NM-1038"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "component",
+        "value": "fantasyid/usa-NM-1052"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-003_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-005_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-024_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-112_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-120_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-131_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-139_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-173_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-NF-1003"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-NF-1012"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-NF-1030"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-NF-1037"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-NF-1040"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-NF-1045"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-NF-1048"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-NF-1049"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-NF-1053"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-NF-1098"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-NF-1100"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-NM-1029"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-NM-1064"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/arabic-NM-1090"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-001_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-018_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-020_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-039_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-064_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-081_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-096_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-099_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-102_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-107_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-113_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-142_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-NF-1014"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-NF-1023"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-NF-1042"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-NF-1050"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-NF-1059"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-NF-1067"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-NF-1072"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-NF-1085"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-NF-1088"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-NF-1101"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/chinese-NM-1092"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-019_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-022_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-033_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-044_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-068_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-090_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-091_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-097_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-100_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-114_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-118_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-124_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-128_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-135_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-NF-1020"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-NF-1047"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-NF-1056"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-NF-1063"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-NF-1082"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-NF-1095"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-NF-1110"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-NM-1070"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/french-NM-1104"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/indian-012_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/indian-014_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/indian-021_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/indian-037_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/indian-038_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/indian-094_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/indian-108_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/indian-NF-1006"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/indian-NF-1025"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/indian-NF-1039"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/indian-NF-1061"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/indian-NF-1075"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/indian-NF-1096"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/indian-NM-1058"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-010_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-045_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-069_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-087_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-122_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-144_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-NF-1001"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-NF-1018"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-NF-1031"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-NF-1034"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-NF-1043"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-NF-1079"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-NF-1097"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-NF-1108"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-NM-1010"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-NM-1035"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/persian-NM-1074"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-004_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-013_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-017_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-026_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-029_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-042_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-061_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-066_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-070_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-105_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-119_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-125_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-143_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-172_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-NF-1016"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-NF-1022"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-NF-1024"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-NF-1026"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-NF-1041"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-NF-1060"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-NF-1066"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-NF-1083"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-NF-1086"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-NF-1105"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-NF-1107"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-NF-1109"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-NM-1091"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/portugal-NM-1102"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-002_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-027_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-062_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-082_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-123_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-132_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-140_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-141_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-NF-1013"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-NF-1028"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-NF-1069"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-NF-1080"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-NF-1081"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-NF-1089"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-NF-1099"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/russian-NM-1027"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-008_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-031_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-032_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-036_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-041_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-083_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-086_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-092_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-101_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-104_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-115_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-121_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-126_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-127_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-129_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-130_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-138_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-NF-1002"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-NF-1008"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-NF-1054"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-NF-1103"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-NM-1011"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-NM-1019"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-NM-1033"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/turkiye-NM-1055"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-006_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-007_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-025_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-030_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-103_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-NF-1005"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-NF-1015"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-NF-1021"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-NF-1032"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-NF-1057"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-NF-1068"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-NF-1073"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-NF-1077"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-NF-1084"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-NF-1087"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-NF-1106"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/ukraine-NM-1007"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-009_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-011_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-016_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-034_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-043_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-063_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-067_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-117_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-134_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-136_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-137_03"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-NF-1004"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-NF-1009"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-NF-1017"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-NF-1036"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-NF-1044"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-NF-1046"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-NF-1051"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-NF-1062"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-NF-1065"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-NF-1071"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-NF-1076"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-NF-1093"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-NF-1094"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-NM-1038"
+      },
+      {
+        "dataset": "fantasyid",
+        "namespace": "identity",
+        "value": "fantasyid/usa-NM-1052"
+      }
+    ],
+    "provenance_overlap_tokens": [
+      "component:fantasyid/arabic-003_03",
+      "component:fantasyid/arabic-005_03",
+      "component:fantasyid/arabic-024_03",
+      "component:fantasyid/arabic-112_03",
+      "component:fantasyid/arabic-120_03",
+      "component:fantasyid/arabic-131_03",
+      "component:fantasyid/arabic-139_03",
+      "component:fantasyid/arabic-173_03",
+      "component:fantasyid/arabic-NF-1003",
+      "component:fantasyid/arabic-NF-1012",
+      "component:fantasyid/arabic-NF-1030",
+      "component:fantasyid/arabic-NF-1037",
+      "component:fantasyid/arabic-NF-1040",
+      "component:fantasyid/arabic-NF-1045",
+      "component:fantasyid/arabic-NF-1048",
+      "component:fantasyid/arabic-NF-1049",
+      "component:fantasyid/arabic-NF-1053",
+      "component:fantasyid/arabic-NF-1098",
+      "component:fantasyid/arabic-NF-1100",
+      "component:fantasyid/arabic-NM-1029",
+      "component:fantasyid/arabic-NM-1064",
+      "component:fantasyid/arabic-NM-1090",
+      "component:fantasyid/chinese-001_03",
+      "component:fantasyid/chinese-018_03",
+      "component:fantasyid/chinese-020_03",
+      "component:fantasyid/chinese-039_03",
+      "component:fantasyid/chinese-064_03",
+      "component:fantasyid/chinese-081_03",
+      "component:fantasyid/chinese-096_03",
+      "component:fantasyid/chinese-099_03",
+      "component:fantasyid/chinese-102_03",
+      "component:fantasyid/chinese-107_03",
+      "component:fantasyid/chinese-113_03",
+      "component:fantasyid/chinese-142_03",
+      "component:fantasyid/chinese-NF-1014",
+      "component:fantasyid/chinese-NF-1023",
+      "component:fantasyid/chinese-NF-1042",
+      "component:fantasyid/chinese-NF-1050",
+      "component:fantasyid/chinese-NF-1059",
+      "component:fantasyid/chinese-NF-1067",
+      "component:fantasyid/chinese-NF-1072",
+      "component:fantasyid/chinese-NF-1085",
+      "component:fantasyid/chinese-NF-1088",
+      "component:fantasyid/chinese-NF-1101",
+      "component:fantasyid/chinese-NM-1092",
+      "component:fantasyid/french-019_03",
+      "component:fantasyid/french-022_03",
+      "component:fantasyid/french-033_03",
+      "component:fantasyid/french-044_03",
+      "component:fantasyid/french-068_03",
+      "component:fantasyid/french-090_03",
+      "component:fantasyid/french-091_03",
+      "component:fantasyid/french-097_03",
+      "component:fantasyid/french-100_03",
+      "component:fantasyid/french-114_03",
+      "component:fantasyid/french-118_03",
+      "component:fantasyid/french-124_03",
+      "component:fantasyid/french-128_03",
+      "component:fantasyid/french-135_03",
+      "component:fantasyid/french-NF-1020",
+      "component:fantasyid/french-NF-1047",
+      "component:fantasyid/french-NF-1056",
+      "component:fantasyid/french-NF-1063",
+      "component:fantasyid/french-NF-1082",
+      "component:fantasyid/french-NF-1095",
+      "component:fantasyid/french-NF-1110",
+      "component:fantasyid/french-NM-1070",
+      "component:fantasyid/french-NM-1104",
+      "component:fantasyid/indian-012_03",
+      "component:fantasyid/indian-014_03",
+      "component:fantasyid/indian-021_03",
+      "component:fantasyid/indian-037_03",
+      "component:fantasyid/indian-038_03",
+      "component:fantasyid/indian-094_03",
+      "component:fantasyid/indian-108_03",
+      "component:fantasyid/indian-NF-1006",
+      "component:fantasyid/indian-NF-1025",
+      "component:fantasyid/indian-NF-1039",
+      "component:fantasyid/indian-NF-1061",
+      "component:fantasyid/indian-NF-1075",
+      "component:fantasyid/indian-NF-1096",
+      "component:fantasyid/indian-NM-1058",
+      "component:fantasyid/persian-010_03",
+      "component:fantasyid/persian-045_03",
+      "component:fantasyid/persian-069_03",
+      "component:fantasyid/persian-087_03",
+      "component:fantasyid/persian-122_03",
+      "component:fantasyid/persian-144_03",
+      "component:fantasyid/persian-NF-1001",
+      "component:fantasyid/persian-NF-1018",
+      "component:fantasyid/persian-NF-1031",
+      "component:fantasyid/persian-NF-1034",
+      "component:fantasyid/persian-NF-1043",
+      "component:fantasyid/persian-NF-1079",
+      "component:fantasyid/persian-NF-1097",
+      "component:fantasyid/persian-NF-1108",
+      "component:fantasyid/persian-NM-1010",
+      "component:fantasyid/persian-NM-1035",
+      "component:fantasyid/persian-NM-1074",
+      "component:fantasyid/portugal-004_03",
+      "component:fantasyid/portugal-013_03",
+      "component:fantasyid/portugal-017_03",
+      "component:fantasyid/portugal-026_03",
+      "component:fantasyid/portugal-029_03",
+      "component:fantasyid/portugal-042_03",
+      "component:fantasyid/portugal-061_03",
+      "component:fantasyid/portugal-066_03",
+      "component:fantasyid/portugal-070_03",
+      "component:fantasyid/portugal-105_03",
+      "component:fantasyid/portugal-119_03",
+      "component:fantasyid/portugal-125_03",
+      "component:fantasyid/portugal-143_03",
+      "component:fantasyid/portugal-172_03",
+      "component:fantasyid/portugal-NF-1016",
+      "component:fantasyid/portugal-NF-1022",
+      "component:fantasyid/portugal-NF-1024",
+      "component:fantasyid/portugal-NF-1026",
+      "component:fantasyid/portugal-NF-1041",
+      "component:fantasyid/portugal-NF-1060",
+      "component:fantasyid/portugal-NF-1066",
+      "component:fantasyid/portugal-NF-1083",
+      "component:fantasyid/portugal-NF-1086",
+      "component:fantasyid/portugal-NF-1105",
+      "component:fantasyid/portugal-NF-1107",
+      "component:fantasyid/portugal-NF-1109",
+      "component:fantasyid/portugal-NM-1091",
+      "component:fantasyid/portugal-NM-1102",
+      "component:fantasyid/russian-002_03",
+      "component:fantasyid/russian-027_03",
+      "component:fantasyid/russian-062_03",
+      "component:fantasyid/russian-082_03",
+      "component:fantasyid/russian-123_03",
+      "component:fantasyid/russian-132_03",
+      "component:fantasyid/russian-140_03",
+      "component:fantasyid/russian-141_03",
+      "component:fantasyid/russian-NF-1013",
+      "component:fantasyid/russian-NF-1028",
+      "component:fantasyid/russian-NF-1069",
+      "component:fantasyid/russian-NF-1080",
+      "component:fantasyid/russian-NF-1081",
+      "component:fantasyid/russian-NF-1089",
+      "component:fantasyid/russian-NF-1099",
+      "component:fantasyid/russian-NM-1027",
+      "component:fantasyid/turkiye-008_03",
+      "component:fantasyid/turkiye-031_03",
+      "component:fantasyid/turkiye-032_03",
+      "component:fantasyid/turkiye-036_03",
+      "component:fantasyid/turkiye-041_03",
+      "component:fantasyid/turkiye-083_03",
+      "component:fantasyid/turkiye-086_03",
+      "component:fantasyid/turkiye-092_03",
+      "component:fantasyid/turkiye-101_03",
+      "component:fantasyid/turkiye-104_03",
+      "component:fantasyid/turkiye-115_03",
+      "component:fantasyid/turkiye-121_03",
+      "component:fantasyid/turkiye-126_03",
+      "component:fantasyid/turkiye-127_03",
+      "component:fantasyid/turkiye-129_03",
+      "component:fantasyid/turkiye-130_03",
+      "component:fantasyid/turkiye-138_03",
+      "component:fantasyid/turkiye-NF-1002",
+      "component:fantasyid/turkiye-NF-1008",
+      "component:fantasyid/turkiye-NF-1054",
+      "component:fantasyid/turkiye-NF-1103",
+      "component:fantasyid/turkiye-NM-1011",
+      "component:fantasyid/turkiye-NM-1019",
+      "component:fantasyid/turkiye-NM-1033",
+      "component:fantasyid/turkiye-NM-1055",
+      "component:fantasyid/ukraine-006_03",
+      "component:fantasyid/ukraine-007_03",
+      "component:fantasyid/ukraine-025_03",
+      "component:fantasyid/ukraine-030_03",
+      "component:fantasyid/ukraine-103_03",
+      "component:fantasyid/ukraine-NF-1005",
+      "component:fantasyid/ukraine-NF-1015",
+      "component:fantasyid/ukraine-NF-1021",
+      "component:fantasyid/ukraine-NF-1032",
+      "component:fantasyid/ukraine-NF-1057",
+      "component:fantasyid/ukraine-NF-1068",
+      "component:fantasyid/ukraine-NF-1073",
+      "component:fantasyid/ukraine-NF-1077",
+      "component:fantasyid/ukraine-NF-1084",
+      "component:fantasyid/ukraine-NF-1087",
+      "component:fantasyid/ukraine-NF-1106",
+      "component:fantasyid/ukraine-NM-1007",
+      "component:fantasyid/usa-009_03",
+      "component:fantasyid/usa-011_03",
+      "component:fantasyid/usa-016_03",
+      "component:fantasyid/usa-034_03",
+      "component:fantasyid/usa-043_03",
+      "component:fantasyid/usa-063_03",
+      "component:fantasyid/usa-067_03",
+      "component:fantasyid/usa-117_03",
+      "component:fantasyid/usa-134_03",
+      "component:fantasyid/usa-136_03",
+      "component:fantasyid/usa-137_03",
+      "component:fantasyid/usa-NF-1004",
+      "component:fantasyid/usa-NF-1009",
+      "component:fantasyid/usa-NF-1017",
+      "component:fantasyid/usa-NF-1036",
+      "component:fantasyid/usa-NF-1044",
+      "component:fantasyid/usa-NF-1046",
+      "component:fantasyid/usa-NF-1051",
+      "component:fantasyid/usa-NF-1062",
+      "component:fantasyid/usa-NF-1065",
+      "component:fantasyid/usa-NF-1071",
+      "component:fantasyid/usa-NF-1076",
+      "component:fantasyid/usa-NF-1093",
+      "component:fantasyid/usa-NF-1094",
+      "component:fantasyid/usa-NM-1038",
+      "component:fantasyid/usa-NM-1052",
+      "fantasyid/arabic-003_03",
+      "fantasyid/arabic-005_03",
+      "fantasyid/arabic-024_03",
+      "fantasyid/arabic-112_03",
+      "fantasyid/arabic-120_03",
+      "fantasyid/arabic-131_03",
+      "fantasyid/arabic-139_03",
+      "fantasyid/arabic-173_03",
+      "fantasyid/arabic-NF-1003",
+      "fantasyid/arabic-NF-1012",
+      "fantasyid/arabic-NF-1030",
+      "fantasyid/arabic-NF-1037",
+      "fantasyid/arabic-NF-1040",
+      "fantasyid/arabic-NF-1045",
+      "fantasyid/arabic-NF-1048",
+      "fantasyid/arabic-NF-1049",
+      "fantasyid/arabic-NF-1053",
+      "fantasyid/arabic-NF-1098",
+      "fantasyid/arabic-NF-1100",
+      "fantasyid/arabic-NM-1029",
+      "fantasyid/arabic-NM-1064",
+      "fantasyid/arabic-NM-1090",
+      "fantasyid/chinese-001_03",
+      "fantasyid/chinese-018_03",
+      "fantasyid/chinese-020_03",
+      "fantasyid/chinese-039_03",
+      "fantasyid/chinese-064_03",
+      "fantasyid/chinese-081_03",
+      "fantasyid/chinese-096_03",
+      "fantasyid/chinese-099_03",
+      "fantasyid/chinese-102_03",
+      "fantasyid/chinese-107_03",
+      "fantasyid/chinese-113_03",
+      "fantasyid/chinese-142_03",
+      "fantasyid/chinese-NF-1014",
+      "fantasyid/chinese-NF-1023",
+      "fantasyid/chinese-NF-1042",
+      "fantasyid/chinese-NF-1050",
+      "fantasyid/chinese-NF-1059",
+      "fantasyid/chinese-NF-1067",
+      "fantasyid/chinese-NF-1072",
+      "fantasyid/chinese-NF-1085",
+      "fantasyid/chinese-NF-1088",
+      "fantasyid/chinese-NF-1101",
+      "fantasyid/chinese-NM-1092",
+      "fantasyid/french-019_03",
+      "fantasyid/french-022_03",
+      "fantasyid/french-033_03",
+      "fantasyid/french-044_03",
+      "fantasyid/french-068_03",
+      "fantasyid/french-090_03",
+      "fantasyid/french-091_03",
+      "fantasyid/french-097_03",
+      "fantasyid/french-100_03",
+      "fantasyid/french-114_03",
+      "fantasyid/french-118_03",
+      "fantasyid/french-124_03",
+      "fantasyid/french-128_03",
+      "fantasyid/french-135_03",
+      "fantasyid/french-NF-1020",
+      "fantasyid/french-NF-1047",
+      "fantasyid/french-NF-1056",
+      "fantasyid/french-NF-1063",
+      "fantasyid/french-NF-1082",
+      "fantasyid/french-NF-1095",
+      "fantasyid/french-NF-1110",
+      "fantasyid/french-NM-1070",
+      "fantasyid/french-NM-1104",
+      "fantasyid/indian-012_03",
+      "fantasyid/indian-014_03",
+      "fantasyid/indian-021_03",
+      "fantasyid/indian-037_03",
+      "fantasyid/indian-038_03",
+      "fantasyid/indian-094_03",
+      "fantasyid/indian-108_03",
+      "fantasyid/indian-NF-1006",
+      "fantasyid/indian-NF-1025",
+      "fantasyid/indian-NF-1039",
+      "fantasyid/indian-NF-1061",
+      "fantasyid/indian-NF-1075",
+      "fantasyid/indian-NF-1096",
+      "fantasyid/indian-NM-1058",
+      "fantasyid/persian-010_03",
+      "fantasyid/persian-045_03",
+      "fantasyid/persian-069_03",
+      "fantasyid/persian-087_03",
+      "fantasyid/persian-122_03",
+      "fantasyid/persian-144_03",
+      "fantasyid/persian-NF-1001",
+      "fantasyid/persian-NF-1018",
+      "fantasyid/persian-NF-1031",
+      "fantasyid/persian-NF-1034",
+      "fantasyid/persian-NF-1043",
+      "fantasyid/persian-NF-1079",
+      "fantasyid/persian-NF-1097",
+      "fantasyid/persian-NF-1108",
+      "fantasyid/persian-NM-1010",
+      "fantasyid/persian-NM-1035",
+      "fantasyid/persian-NM-1074",
+      "fantasyid/portugal-004_03",
+      "fantasyid/portugal-013_03",
+      "fantasyid/portugal-017_03",
+      "fantasyid/portugal-026_03",
+      "fantasyid/portugal-029_03",
+      "fantasyid/portugal-042_03",
+      "fantasyid/portugal-061_03",
+      "fantasyid/portugal-066_03",
+      "fantasyid/portugal-070_03",
+      "fantasyid/portugal-105_03",
+      "fantasyid/portugal-119_03",
+      "fantasyid/portugal-125_03",
+      "fantasyid/portugal-143_03",
+      "fantasyid/portugal-172_03",
+      "fantasyid/portugal-NF-1016",
+      "fantasyid/portugal-NF-1022",
+      "fantasyid/portugal-NF-1024",
+      "fantasyid/portugal-NF-1026",
+      "fantasyid/portugal-NF-1041",
+      "fantasyid/portugal-NF-1060",
+      "fantasyid/portugal-NF-1066",
+      "fantasyid/portugal-NF-1083",
+      "fantasyid/portugal-NF-1086",
+      "fantasyid/portugal-NF-1105",
+      "fantasyid/portugal-NF-1107",
+      "fantasyid/portugal-NF-1109",
+      "fantasyid/portugal-NM-1091",
+      "fantasyid/portugal-NM-1102",
+      "fantasyid/russian-002_03",
+      "fantasyid/russian-027_03",
+      "fantasyid/russian-062_03",
+      "fantasyid/russian-082_03",
+      "fantasyid/russian-123_03",
+      "fantasyid/russian-132_03",
+      "fantasyid/russian-140_03",
+      "fantasyid/russian-141_03",
+      "fantasyid/russian-NF-1013",
+      "fantasyid/russian-NF-1028",
+      "fantasyid/russian-NF-1069",
+      "fantasyid/russian-NF-1080",
+      "fantasyid/russian-NF-1081",
+      "fantasyid/russian-NF-1089",
+      "fantasyid/russian-NF-1099",
+      "fantasyid/russian-NM-1027",
+      "fantasyid/turkiye-008_03",
+      "fantasyid/turkiye-031_03",
+      "fantasyid/turkiye-032_03",
+      "fantasyid/turkiye-036_03",
+      "fantasyid/turkiye-041_03",
+      "fantasyid/turkiye-083_03",
+      "fantasyid/turkiye-086_03",
+      "fantasyid/turkiye-092_03",
+      "fantasyid/turkiye-101_03",
+      "fantasyid/turkiye-104_03",
+      "fantasyid/turkiye-115_03",
+      "fantasyid/turkiye-121_03",
+      "fantasyid/turkiye-126_03",
+      "fantasyid/turkiye-127_03",
+      "fantasyid/turkiye-129_03",
+      "fantasyid/turkiye-130_03",
+      "fantasyid/turkiye-138_03",
+      "fantasyid/turkiye-NF-1002",
+      "fantasyid/turkiye-NF-1008",
+      "fantasyid/turkiye-NF-1054",
+      "fantasyid/turkiye-NF-1103",
+      "fantasyid/turkiye-NM-1011",
+      "fantasyid/turkiye-NM-1019",
+      "fantasyid/turkiye-NM-1033",
+      "fantasyid/turkiye-NM-1055",
+      "fantasyid/ukraine-006_03",
+      "fantasyid/ukraine-007_03",
+      "fantasyid/ukraine-025_03",
+      "fantasyid/ukraine-030_03",
+      "fantasyid/ukraine-103_03",
+      "fantasyid/ukraine-NF-1005",
+      "fantasyid/ukraine-NF-1015",
+      "fantasyid/ukraine-NF-1021",
+      "fantasyid/ukraine-NF-1032",
+      "fantasyid/ukraine-NF-1057",
+      "fantasyid/ukraine-NF-1068",
+      "fantasyid/ukraine-NF-1073",
+      "fantasyid/ukraine-NF-1077",
+      "fantasyid/ukraine-NF-1084",
+      "fantasyid/ukraine-NF-1087",
+      "fantasyid/ukraine-NF-1106",
+      "fantasyid/ukraine-NM-1007",
+      "fantasyid/usa-009_03",
+      "fantasyid/usa-011_03",
+      "fantasyid/usa-016_03",
+      "fantasyid/usa-034_03",
+      "fantasyid/usa-043_03",
+      "fantasyid/usa-063_03",
+      "fantasyid/usa-067_03",
+      "fantasyid/usa-117_03",
+      "fantasyid/usa-134_03",
+      "fantasyid/usa-136_03",
+      "fantasyid/usa-137_03",
+      "fantasyid/usa-NF-1004",
+      "fantasyid/usa-NF-1009",
+      "fantasyid/usa-NF-1017",
+      "fantasyid/usa-NF-1036",
+      "fantasyid/usa-NF-1044",
+      "fantasyid/usa-NF-1046",
+      "fantasyid/usa-NF-1051",
+      "fantasyid/usa-NF-1062",
+      "fantasyid/usa-NF-1065",
+      "fantasyid/usa-NF-1071",
+      "fantasyid/usa-NF-1076",
+      "fantasyid/usa-NF-1093",
+      "fantasyid/usa-NF-1094",
+      "fantasyid/usa-NM-1038",
+      "fantasyid/usa-NM-1052"
+    ],
+    "provenance_semantics": "source_id and donor_id are identity IDs, not image IDs",
+    "separate_support_image_ids": [],
+    "unknown_identity_evaluation_image_ids": [],
+    "unknown_identity_support_image_ids": []
+  }
+}
