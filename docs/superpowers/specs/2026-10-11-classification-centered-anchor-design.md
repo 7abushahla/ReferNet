@@ -6,7 +6,11 @@ Status: architectural direction approved in conversation. This written specifica
 
 ## 1. Approved objective
 
-Establish a credible SIDTD query-only classifier, then measure the contribution of a genuine same-design reference within the same model family. Preserve the eventual three-input contract of query RGB, reference RGB, and a personal-data zone. The zone is design context, not a forgery mask. The final method must support new-design enrollment without target forgery labels or target-specific parameter training.
+Develop and evaluate a reference-conditioned document alteration detector for first-line GDRFA triage that can generalize to designs and data sources absent from training. Measure whether a genuine same-design reference improves detection relative to the same model family without reference information, while meeting the officer-device runtime requirement. New-design enrollment supplies genuine design information without target forgery labels or target-specific parameter training.
+
+Protocol A establishes a credible query-only control against the published SIDTD template benchmark and tests the initial reference contribution on familiar designs. Protocol B tests held-out SIDTD designs. Protocol C tests transfer to FantasyID, and Protocol D tests cross-design transfer within IDNet. A strong Protocol A anchor is necessary for the planned comparison, but does not by itself establish the study's generalization claim. The selected architecture family must support all four protocols.
+
+Preserve the three-input contract of query RGB, reference RGB, and a personal-data zone. The zone is design context, not a forgery mask. The immediate pilots address the Protocol A foundation within this broader study objective.
 
 The user explicitly authorizes replacing the existing all-genuine registration and zone construction. It is not a design constraint. Existing running jobs, archived data, and completed results remain immutable historical experiments. Available GPUs permit parallel independent pilots, not an uncontrolled search or an automatic full fold sweep.
 
