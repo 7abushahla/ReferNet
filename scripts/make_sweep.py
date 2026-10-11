@@ -135,11 +135,11 @@ mkdir -p "$TMPDIR"
 
 # The processed pairs are thousands of 512 x 800 images read every epoch: /shared (NFS, ~100 MB/s)
 # would be the bottleneck, so stage them once per job to node-local /scratch (~2.4 GB/s).
-[[ -n "$(ls data/processed/splits/*.csv 2>/dev/null)" ]] || {{
+[[ -n "$(ls {data_dir}/splits/*.csv 2>/dev/null)" ]] || {{
     echo "[FATAL] data/processed missing; run scripts/cluster/stage-data.sh on the login node"; exit 1; }}
-export ROC_DATA="/scratch/$USER/roc-data"
+export ROC_DATA="/scratch/$USER/roc-data-{data_tag}"
 mkdir -p "$ROC_DATA"
-rsync -a --delete data/processed/ "$ROC_DATA/" || {{ echo "[FATAL] staging to /scratch failed"; exit 1; }}
+rsync -a --delete {data_dir}/ "$ROC_DATA/" || {{ echo "[FATAL] staging to /scratch failed"; exit 1; }}
 echo "[ok] data staged to $ROC_DATA ($(du -sh "$ROC_DATA" | cut -f1))"
 
 # A real cuDNN convolution, not an import: an env that is wrong for this node imports fine and dies hours in.
@@ -202,10 +202,11 @@ mkdir -p logs/slurm
 """
 
 
-def render_job(arms, *, job_name, time, mem, cpus, env, extra, suffix="") -> str:
+def render_job(arms, *, job_name, time, mem, cpus, env, extra, suffix="", data_dir="data/processed") -> str:
     optional = f" \\\n        {extra}" if extra else ""
     text = PREAMBLE.format(n=len(arms), arm_list="\n".join(f"#   {i}. {a.tag}" for i, a in enumerate(arms, 1)),
-                           job_name=job_name, time=time, mem=mem, cpus=cpus, env=env, **CLUSTER)
+                           job_name=job_name, time=time, mem=mem, cpus=cpus, env=env, data_dir=data_dir,
+                           data_tag=data_dir.replace("/", "-"), **CLUSTER)
     for i, a in enumerate(arms, 1):
         text += ARM.format(index=i, total=len(arms), tag=a.tag + suffix, config=CONFIG[a.protocol], arch=a.arch,
                            fusion=a.fusion, reference=a.reference, init=a.init, seed=a.seed,
@@ -238,6 +239,7 @@ def parse_args(argv=None):
     p.add_argument("--mem", default="8G", help="cluster cap is 8G per job")
     p.add_argument("--cpus", type=int, default=4, help="cluster cap is 4 per job")
     p.add_argument("--env", default="refer-or-clear", help="conda env name or absolute path")
+    p.add_argument("--data-dir", default="data/processed", help="processed data dir staged to /scratch (default data/processed)")
     a = p.parse_args(argv)
     if not re.fullmatch(r"[A-Za-z0-9_.-]+", a.name):
         p.error("--name must contain only letters, digits, dot, underscore, hyphen")
@@ -262,7 +264,7 @@ def write_sweep(argv=None) -> list[Path]:
         job_name = f"{a.name}-{job[0].tag}" if len(job) == 1 else f"{a.name}-j{j:02d}"
         path = out / f"{stem}.sh"
         path.write_text(render_job(job, job_name=job_name, time=a.time, mem=a.mem, cpus=a.cpus, env=a.env, suffix=a.suffix,
-                                   extra=a.extra))
+                                   extra=a.extra, data_dir=a.data_dir.rstrip("/")))
         path.chmod(path.stat().st_mode | stat.S_IXUSR)
         paths.append(path)
     try:

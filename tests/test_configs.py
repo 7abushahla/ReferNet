@@ -27,7 +27,7 @@ def test_anchor_and_heldout_recipe():
         assert c["train"]["select"] == "accuracy"
         assert c["train"]["seeds"] == [42]
         assert c["train"]["epochs"] == 40
-        assert c["eval"]["test_variants"] == ["native", "equalized_qf75"]
+        assert c["eval"]["test_variants"] == ["native"]
 
 
 def test_fantasyid_and_idnet_moved():

@@ -30,7 +30,7 @@ augment:
   jpeg_quality: null            # raw files as the paper reads them: no JPEG augmentation, no re-encoding
   photometric: true
 eval:
-  test_variants: [native, equalized_qf75]   # equalized: query and reference canvases re-encoded at 75
+  test_variants: [native]                   # raw files only; no re-encoding anywhere in our protocol (11 Oct)
   score_orientation: bonafide_high          # 1 = genuine, threshold 0.5 with >= (DeepID)
   threshold_source: source_validation
   metrics: [accuracy, auc, eer, pixel_f1]

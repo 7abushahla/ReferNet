@@ -62,14 +62,28 @@ def _register_job(args):
     return register_design(design_id, image_ids, genuine_ids, canvas_dir)
 
 
-def main():
+def identity_registration(rec: pd.DataFrame) -> pd.DataFrame:
+    """registration.csv rows for a build without the alignment warp (letterbox only)."""
+    return pd.DataFrame(dict(design_id=rec.design_id.values, image_id=rec.image_id.values, applied=False,
+                             inliers=0, rot_deg=0.0, scale=1.0, shift_px=0.0))
+
+
+def parse_args(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--data-root", default="data")
     ap.add_argument("--datasets", default="sidtd,fantasyid")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--force", action="store_true")
-    a = ap.parse_args()
-    raw, out = Path(a.data_root) / "raw", Path(a.data_root) / "processed"
+    ap.add_argument("--no-register", action="store_true",
+                    help="letterbox only, no SIFT+RANSAC alignment to the design (the paper's input treatment: "
+                         "one resize); used for the with-cue control row")
+    ap.add_argument("--out", default=None, help="output dir (default <data-root>/processed)")
+    return ap.parse_args(argv)
+
+
+def main():
+    a = parse_args()
+    raw, out = Path(a.data_root) / "raw", Path(a.out) if a.out else Path(a.data_root) / "processed"
     for d in ("canvases", "valid", "masks", "zones", "references", "splits"):
         (out / d).mkdir(parents=True, exist_ok=True)
     stale_jpg = list((out / "canvases").glob("*.jpg")) + list((out / "references").glob("*.jpg"))
@@ -98,8 +112,11 @@ def main():
             if i % 1000 == 0:
                 print(f"      {i}/{len(jobs)}")
 
-    print("[3/7] registration to the design (SIFT + RANSAC similarity, two passes)")
-    if jobs or stale:
+    print("[3/7] registration to the design (SIFT + RANSAC similarity, two passes)" +
+          (" -- SKIPPED (--no-register: letterbox only)" if a.no_register else ""))
+    if a.no_register:
+        identity_registration(rec).to_csv(rpath, index=False)
+    elif jobs or stale:
         rjobs = [(d, g.image_id.tolist(), g[g.label == 0].image_id.tolist(), out / "canvases")
                  for d, g in rec.groupby("design_id") if (g.label == 0).any()]
         with ProcessPoolExecutor(a.workers) as ex:
