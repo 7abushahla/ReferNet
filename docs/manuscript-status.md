@@ -32,8 +32,23 @@ What changed in Sections 4 and 5:
   - as a preliminary indication for Protocol B (median 0.83, blank 0.72; the control gain is not reported);
   - as the attention ablation (0.80 against 0.83), as the spec allows.
 
+Later on 11 Oct, the authors decided to follow the commits for the methodology and results for now, and to keep the guidance notes:
+- **Our arms on raw files only, following e6b986d.**
+  - The equalized columns were dropped from the Protocol A table, and "ours keeps 0.93" was removed from both abstracts.
+  - The released checkpoints keep their quality-75 rows as the diagnostic.
+  - The equalized values of our arms (0.571, 0.928, 0.896) sit in a guidance note in the compression paragraph.
+  - The evidence that our network does not rely on compression now comes from the results by attack type: every forgery is quality 75, yet the median scores 0.995 on inpaint and 0.48 on crop-and-replace.
+  - `docs/conventions.md` (JPEG handling row) still says that every test is also reported equalized. It needs the same update.
+- **Three sources cited.** Their dated records are in `docs/reference-timeline.md`.
+  - Talarmain et al., ICDAR 2024 (`talarmain2024fewshot`, an existing key; pages added): in the compression paragraph, for the clip AUC of 99.9 to 100%.
+  - Díaz Rodríguez, DocVerify, PRL 2026 (`diazrodriguez2026docverify`):
+    - in the literature review: AUC 0.50 from FantasyID to SIDTD;
+    - in Section 5.1: 0.83 retrained on templates.
+  - Webster and Scheirer, arXiv 2606.13528v1, the only version (`webster2026saliency`): as a preprint that uses the templates without noting the cue.
+- **Bibliography fix.** "Oriol {Ramos Terrades}" is now braced in both SIDTD-group entries, so IEEEtran prints "O. Ramos Terrades" instead of "O. R. Terrades".
+
 Open for the authors:
-1. **Equalized columns.** e6b986d removed `equalized_qf75` from the protocol configs, but `docs/conventions.md` (JPEG handling row) still says that every test is also reported equalized. Keep the equalized columns for our Protocol A arms or drop them?
+1. **Equalized columns.** Followed e6b986d for now (see above). Restore them from the guidance note if wanted.
 2. **Official folds.** Do SIDTD's official folds keep a forgery in the same split as its source document? The paper now claims identity grouping only for B to D.
 3. **Proposed contribution** on the compression cue (guidance note after the contributions).
 4. **Literature review.** SIDTD's seen-designs result above 96% and its clip results are both confounded by file format, so the Introduction, the literature review and panel A of `fig_idea` may need a sentence.
