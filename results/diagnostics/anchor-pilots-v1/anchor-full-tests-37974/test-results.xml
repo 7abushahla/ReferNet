@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="3" failures="0" skipped="0" tests="3" time="45.700" timestamp="2026-10-11T19:22:26.716415+00:00" hostname="gpu-dy-g5-0-16"><testcase classname="" name="tests.test_data_pairs" time="0.000"><error message="collection failure">tests/test_data_pairs.py:22: in &lt;module&gt;
+    split = pd.read_csv(P / "splits" / "protocol_a_it0.csv", keep_default_na=False)
+../../../../../conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1026: in read_csv
+    return _read(filepath_or_buffer, kwds)
+../../../../../conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/io/parsers/readers.py:620: in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+../../../../../conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1620: in __init__
+    self._engine = self._make_engine(f, self.engine)
+../../../../../conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1880: in _make_engine
+    self.handles = get_handle(
+../../../../../conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/io/common.py:873: in get_handle
+    handle = open(
+E   FileNotFoundError: [Errno 2] No such file or directory: '/shared/b00090279/refer-or-clear/results/source/anchor-ecf049e67cd5de5a303669e6e7e7301cdf34b6a6/code/data/processed/splits/protocol_a_it0.csv'</error></testcase><testcase classname="" name="tests.test_splits_anchor" time="0.000"><error message="collection failure">tests/test_splits_anchor.py:20: in &lt;module&gt;
+    RECORDS = pd.read_csv(ROOT / "data" / "processed" / "records.csv", keep_default_na=False)
+../../../../../conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1026: in read_csv
+    return _read(filepath_or_buffer, kwds)
+../../../../../conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/io/parsers/readers.py:620: in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+../../../../../conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1620: in __init__
+    self._engine = self._make_engine(f, self.engine)
+../../../../../conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1880: in _make_engine
+    self.handles = get_handle(
+../../../../../conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/io/common.py:873: in get_handle
+    handle = open(
+E   FileNotFoundError: [Errno 2] No such file or directory: '/shared/b00090279/refer-or-clear/results/source/anchor-ecf049e67cd5de5a303669e6e7e7301cdf34b6a6/code/data/processed/records.csv'</error></testcase><testcase classname="" name="tests.test_splits_heldout" time="0.000"><error message="collection failure">tests/test_splits_heldout.py:14: in &lt;module&gt;
+    RECORDS = pd.read_csv(ROOT / "data" / "processed" / "records.csv", keep_default_na=False)
+../../../../../conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1026: in read_csv
+    return _read(filepath_or_buffer, kwds)
+../../../../../conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/io/parsers/readers.py:620: in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+../../../../../conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1620: in __init__
+    self._engine = self._make_engine(f, self.engine)
+../../../../../conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1880: in _make_engine
+    self.handles = get_handle(
+../../../../../conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/io/common.py:873: in get_handle
+    handle = open(
+E   FileNotFoundError: [Errno 2] No such file or directory: '/shared/b00090279/refer-or-clear/results/source/anchor-ecf049e67cd5de5a303669e6e7e7301cdf34b6a6/code/data/processed/records.csv'</error></testcase></testsuite></testsuites>
