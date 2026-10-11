@@ -8,6 +8,7 @@ mask; the paper says so. Masks are written only for altered images.
 """
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import cv2
@@ -15,6 +16,7 @@ import numpy as np
 import pandas as pd
 
 from .rectify import CANVAS_H, CANVAS_W, rect_to_canvas
+from .records import sidtd_target_field
 from .references import _fantasy_rects, _sidtd_rects
 
 SIDTD_DILATE_PX = 8
@@ -25,8 +27,12 @@ def altered_rects(root: Path, row):
         src = row.source_id.split("/", 1)[1]
         design, nn = src.rsplit("_", 1)
         rects = _sidtd_rects(root, f"sidtd/templates/Annotations/reals/{design}.json", f"{nn}.jpg")
-        wanted = set(row.altered_fields.split(",")) if row.altered_fields else set()
-        return [r for r in rects if r[0] in wanted]
+        annotation = json.loads((root / row.annotation).read_text())
+        wanted = sidtd_target_field(annotation)
+        selected = [rect for rect in rects if rect[0] == wanted]
+        if not selected:
+            raise ValueError(f"recipient field {wanted!r} not found for {row.image_id}")
+        return selected
     if row.dataset == "fantasyid" and row.annotation:
         return _fantasy_rects(root, row.annotation, only_altered=True)
     return []

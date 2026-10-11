@@ -65,6 +65,14 @@ def jpeg_size(path: Path) -> tuple[int, int]:
     raise ValueError(f"no SOF marker in {path}")
 
 
+def sidtd_target_field(annotation: dict) -> str:
+    """The recipient field is altered; second_field describes the donor document."""
+    field = annotation.get("field")
+    if not isinstance(field, str) or field in ("", "None"):
+        raise ValueError("SIDTD annotation has no recipient field")
+    return field
+
+
 def sidtd_records(root: Path) -> pd.DataFrame:
     base = root / "sidtd" / "templates"
     rows = []
@@ -93,12 +101,12 @@ def sidtd_records(root: Path) -> pd.DataFrame:
         if design not in size_cache:
             size_cache[design] = jpeg_size(base / "Images" / "fakes" / name)
         w, h = size_cache[design]
-        fields = [f for f in (meta.get("field"), meta.get("second_field")) if f and f != "None"]
+        field = sidtd_target_field(meta)
         rows.append(dict(dataset="sidtd", image_id=f"sidtd_{stem}", path=f"sidtd/templates/Images/fakes/{name}",
                          design_id=f"sidtd/{design}", identity_id=f"sidtd/{src}", label=1,
                          attack_family=SIDTD_CTYPE.get(meta["ctype"], meta["ctype"]), attack_source=meta["ctype"],
                          capture="template", source_id=f"sidtd/{src}", donor_id=donor_id,
-                         altered_fields=",".join(fields), annotation=f"sidtd/templates/Annotations/fakes/{stem}.json",
+                         altered_fields=field, annotation=f"sidtd/templates/Annotations/fakes/{stem}.json",
                          width=w, height=h))
     return pd.DataFrame(rows)
 
