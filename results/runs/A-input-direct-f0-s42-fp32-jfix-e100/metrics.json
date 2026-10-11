@@ -1,0 +1,28 @@
+{
+  "tag": "A-input-direct-f0-s42-fp32-jfix-e100",
+  "protocol": "A",
+  "arch": "changerex_r18",
+  "fusion": "single_noex",
+  "bn_policy": "batch_stats",
+  "validation_only": true,
+  "strict_fp32": true,
+  "reference": "median",
+  "init": "levir",
+  "seed": 42,
+  "fold": 0,
+  "n_params": 11407874,
+  "val": {
+    "auc": 0.9670491803278688,
+    "threshold_miss5": 0.9730826318264008,
+    "threshold_miss1": 0.9939050376415253,
+    "n_genuine": 100,
+    "n_altered": 122
+  },
+  "test": {},
+  "subsets": {},
+  "timing": {
+    "train_seconds": 13077.857882499695,
+    "epochs": 100,
+    "best_epoch": 63
+  }
+}
