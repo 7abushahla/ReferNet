@@ -37,6 +37,17 @@ def test_fold_select_and_jpeg():
     assert T.jpeg_range({"augment": {"jpeg_quality": [60, 100]}}) == (60, 100)
 
 
+def test_batch_stats_uses_one_image_per_validation_and_test_batch():
+    args = T.parse_args(["--config", "configs/protocol_a.yaml", "--arch", "changerex_r18",
+                         "--fusion", "single_noex", "--init", "levir", "--run-dir", "/tmp/x",
+                         "--fold", "0", "--bn-policy", "batch_stats"])
+    resolved = T.resolve(args, CFG_A)
+    assert resolved["batch_size"] == 8
+    assert resolved["eval_batch_size"] == 1
+    assert resolved["bn_policy"] == "batch_stats"
+    assert rc_for("single_noex")["bn_policy"] == "running"
+
+
 def test_selection_key():
     k = T.selection_key
     assert k("accuracy", 0.99, 0.90, 0.1, 0.1) > k("accuracy", 0.98, 1.00, 0.1, 0.1)   # accuracy first
@@ -45,6 +56,33 @@ def test_selection_key():
     assert k("auc", 0.5, 0.9, 0.1, 0.1) > k("auc", 0.9, 0.8, 0.1, 0.1)
     assert k("accuracy", None, None, 0.2, 0.1) > k("accuracy", None, None, 0.3, 0.1)
     assert k("accuracy", 0.9, None, 0.2, 0.1) == (0.9, -math.inf)
+
+
+def test_validation_only_and_strict_precision():
+    import torch
+    args = T.parse_args(["--config", "configs/protocol_a.yaml", "--arch", "changerex_r18",
+                         "--fusion", "single_noex", "--init", "levir", "--run-dir", "/tmp/x",
+                         "--validation-only", "--strict-fp32"])
+    resolved = T.resolve(args, CFG_A)
+    assert resolved["validation_only"] and resolved["strict_fp32"]
+    assert T.evaluation_roles(resolved) == ("train", "val")
+    assert T.evaluation_roles(rc_for("single_noex")) == ("train", "val", "test")
+    original = (torch.backends.cuda.matmul.allow_tf32, torch.backends.cudnn.allow_tf32)
+    try:
+        torch.backends.cuda.matmul.allow_tf32 = True
+        torch.backends.cudnn.allow_tf32 = True
+        E.configure_precision(resolved)
+        assert not torch.backends.cuda.matmul.allow_tf32
+        assert not torch.backends.cudnn.allow_tf32
+    finally:
+        torch.backends.cuda.matmul.allow_tf32, torch.backends.cudnn.allow_tf32 = original
+    args.amp = True
+    try:
+        T.resolve(args, CFG_A)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("strict FP32 accepted mixed precision")
 
 
 def test_load_split_formats_the_fold():
@@ -85,7 +123,9 @@ def test_role_pairs_override_reaches_build_pairs():
 if __name__ == "__main__":
     test_control_gets_no_wrong_design_pairs()
     test_fold_select_and_jpeg()
+    test_batch_stats_uses_one_image_per_validation_and_test_batch()
     test_selection_key()
+    test_validation_only_and_strict_precision()
     test_load_split_formats_the_fold()
     test_role_pairs_override_reaches_build_pairs()
     print("ok")

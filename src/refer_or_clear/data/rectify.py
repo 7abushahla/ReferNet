@@ -21,9 +21,17 @@ def letterbox_transform(width: int, height: int) -> tuple[float, int, int]:
     return s, (CANVAS_W - nw) // 2, (CANVAS_H - nh) // 2
 
 
-def to_canvas(img: np.ndarray, quad: np.ndarray | None = None):
+def to_canvas(img: np.ndarray, quad: np.ndarray | None = None, mode: str = "letterbox"):
     """Place an image on the canvas. Returns (canvas BGR uint8, valid mask uint8, 3x3 transform)."""
     h, w = img.shape[:2]
+    if mode not in ("letterbox", "direct"):
+        raise ValueError(f"unknown input mode {mode!r}")
+    if mode == "direct":
+        if quad is not None:
+            raise ValueError("direct resize cannot include a perspective transform")
+        resized = cv2.resize(img, (CANVAS_W, CANVAS_H), interpolation=cv2.INTER_AREA)
+        transform = np.diag([CANVAS_W / w, CANVAS_H / h, 1.])
+        return resized, np.full((CANVAS_H, CANVAS_W), 255, np.uint8), transform
     if quad is not None:
         dst = np.float32([[0, 0], [CANVAS_W - 1, 0], [CANVAS_W - 1, CANVAS_H - 1], [0, CANVAS_H - 1]])
         H = cv2.getPerspectiveTransform(np.float32(quad), dst)

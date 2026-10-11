@@ -252,12 +252,20 @@ def checkpoint_fold(ck: dict, override=None):
     return override if override is not None else ck.get("config", {}).get("fold")
 
 
+def configure_precision(config):
+    if config.get("strict_fp32"):
+        torch.backends.cuda.matmul.allow_tf32 = False
+        torch.backends.cudnn.allow_tf32 = False
+
+
 def load_checkpoint(path, device):
     """(model, checkpoint dict): rebuilds the model from the saved CLI args and loads the weights."""
     from .models import build_model
     ck = torch.load(path, map_location="cpu")
+    configure_precision(ck["config"])
     a = ck["args"]
-    model = build_model(arch=a["arch"], fusion=a["fusion"], init="scratch", in_channels=4)
+    model = build_model(arch=a["arch"], fusion=a["fusion"], init="scratch", in_channels=4,
+                        bn_policy=ck["config"].get("bn_policy", "running"))
     model.load_state_dict(ck["state_dict"])
     return model.to(device), ck
 
@@ -283,6 +291,10 @@ def main(argv=None):
     device = torch.device(args.device)
     cfg = load_config(args.config)
     model, ck = load_checkpoint(args.checkpoint, device)
+    if ck["config"].get("strict_fp32") and args.amp:
+        raise ValueError("strict-FP32 checkpoints must not be evaluated with --amp")
+    if ck["config"].get("bn_policy") == "batch_stats" and args.batch_size != 1:
+        raise ValueError("batch_stats checkpoints must be evaluated one image at a time (--batch-size 1)")
     reference = args.reference or ck["args"].get("reference") or reference_name(cfg)
     seed = int(ck["args"].get("seed", 0))
     fold = checkpoint_fold(ck, args.fold)
@@ -299,6 +311,8 @@ def main(argv=None):
     out = {"tag": Path(args.run_dir).name, "protocol": cfg.get("protocol"), "split": args.split,
            "checkpoint": str(args.checkpoint), "epoch": ck.get("epoch"), "reference": reference, "fold": fold,
            "val": val, "test": res["test"], "subsets": res["subsets"], "seconds": time.time() - t0}
+    out["precision"] = dict(matmul_tf32=torch.backends.cuda.matmul.allow_tf32,
+                            cudnn_tf32=torch.backends.cudnn.allow_tf32, amp=args.amp)
     path = dump_json(args.out or Path(args.run_dir) / f"eval_{args.split}.json", out)
     print(summary_line(out["tag"], val, res["test"]))
     print(f"[evaluate] wrote {path}")

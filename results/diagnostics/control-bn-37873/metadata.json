@@ -1,0 +1,25 @@
+{
+  "args": {
+    "checkpoints": [
+      "checkpoints/A-cex-single_noex-median-levir-f0-s42-e100/best.pt",
+      "checkpoints/A-cex-single_noex-median-levir-f0-s42-e100/last.pt",
+      "checkpoints/A-cex-difference-median-levir-f0-s42-e100/best.pt"
+    ],
+    "data_root": "/scratch/b00090279/control-diag-37873/data",
+    "run_root": "results/runs",
+    "out": "results/diagnostics/control-bn-37873",
+    "train_limit": 256,
+    "calibration_limit": 512,
+    "batch_size": 8,
+    "workers": 2,
+    "device": "cuda"
+  },
+  "hostname": "gpu-dy-g5-0-6",
+  "torch": "2.1.2+cu121",
+  "git_hash": "e6b986d",
+  "script_sha256": "1ac7c1089e8c1689faaa858e019f3db461962051e74c20f9cc3141a39afac22a",
+  "test_split_used": false,
+  "precision": "float32",
+  "warning": "Batch-statistic probes are batch-dependent diagnostics, not benchmark results.",
+  "complete": true
+}

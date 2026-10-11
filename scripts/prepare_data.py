@@ -41,11 +41,11 @@ def md(df) -> str:
 
 
 def _canvas_job(args):
-    image_id, src, dst_img, dst_valid, R = args
+    image_id, src, dst_img, dst_valid, R, *mode = args
     img = cv2.imread(str(src), cv2.IMREAD_COLOR)
     if img is None:
         raise RuntimeError(f"cannot read {src}")
-    canvas, valid, T = to_canvas(img)
+    canvas, valid, T = to_canvas(img, mode=mode[0] if mode else "letterbox")
     if R is not None:
         R = np.asarray(R)
         canvas, valid, T = warp(canvas, R), warp(valid, R), R @ T
@@ -75,15 +75,32 @@ def parse_args(argv=None):
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--no-register", action="store_true",
-                    help="letterbox only, no SIFT+RANSAC alignment to the design (the paper's input treatment: "
-                         "one resize); used for the with-cue control row")
+                    help="skip SIFT+RANSAC alignment; this alone does not reproduce the paper's 299-square input")
+    ap.add_argument("--input-mode", choices=("letterbox", "direct"), default="letterbox")
+    ap.add_argument("--anchor-fold", type=int, choices=range(10), default=None,
+                    help="build only this Protocol A fold's median banks; skip global medians and specimens")
     ap.add_argument("--out", default=None, help="output dir (default <data-root>/processed)")
-    return ap.parse_args(argv)
+    args = ap.parse_args(argv)
+    if args.input_mode == "direct" and (not args.no_register or args.out is None):
+        ap.error("direct resize requires --no-register and an explicit --out directory")
+    return args
+
+
+def check_preprocessing_cache(out, mode, no_register, force):
+    manifest = out / "preprocessing.json"
+    expected = dict(input_mode=mode, registration=not no_register, size=[512, 800], interpolation="area")
+    if not force:
+        if manifest.exists() and json.loads(manifest.read_text()) != expected:
+            raise ValueError("preprocessing cache differs; choose a new output directory or explicitly rebuild with --force")
+        if not manifest.exists() and mode == "direct" and any((out / "canvases").glob("*.png")):
+            raise ValueError("existing canvases have no direct-resize manifest; choose a new output directory")
+    return expected
 
 
 def main():
     a = parse_args()
     raw, out = Path(a.data_root) / "raw", Path(a.out) if a.out else Path(a.data_root) / "processed"
+    preprocessing = check_preprocessing_cache(out, a.input_mode, a.no_register, a.force)
     for d in ("canvases", "valid", "masks", "zones", "references", "splits"):
         (out / d).mkdir(parents=True, exist_ok=True)
     stale_jpg = list((out / "canvases").glob("*.jpg")) + list((out / "references").glob("*.jpg"))
@@ -99,11 +116,11 @@ def main():
     rec.to_csv(out / "records.csv", index=False)
     print(f"      {len(rec)} images, {rec.identity_id.nunique()} identities, {rec.component_id.nunique()} components")
 
-    print("[2/7] letterbox canvases")
+    print(f"[2/7] {a.input_mode} canvases")
     tpath, rpath = out / "transforms.json", out / "registration.csv"
     stale = a.force or not rpath.is_file()
     transforms = {} if stale else json.load(open(tpath))
-    jobs = [(r.image_id, raw / r.path, out / "canvases" / f"{r.image_id}{CANVAS_EXT}", out / "valid" / f"{r.image_id}.png", None)
+    jobs = [(r.image_id, raw / r.path, out / "canvases" / f"{r.image_id}{CANVAS_EXT}", out / "valid" / f"{r.image_id}.png", None, a.input_mode)
             for r in rec.itertuples(index=False)
             if stale or r.image_id not in transforms or not (out / "canvases" / f"{r.image_id}{CANVAS_EXT}").is_file()]
     with ProcessPoolExecutor(a.workers) as ex:
@@ -113,7 +130,7 @@ def main():
                 print(f"      {i}/{len(jobs)}")
 
     print("[3/7] registration to the design (SIFT + RANSAC similarity, two passes)" +
-          (" -- SKIPPED (--no-register: letterbox only)" if a.no_register else ""))
+          (" -- SKIPPED (--no-register)" if a.no_register else ""))
     if a.no_register:
         identity_registration(rec).to_csv(rpath, index=False)
     elif jobs or stale:
@@ -129,6 +146,7 @@ def main():
                 transforms[image_id] = T
         reg.drop(columns=["R"]).to_csv(rpath, index=False)
     json.dump(transforms, open(tpath, "w"))
+    (out / "preprocessing.json").write_text(json.dumps(preprocessing, indent=2) + "\n")
     reg = pd.read_csv(rpath)
     print(f"      applied to {int(reg.applied.sum())}/{len(reg)}; inliers min {reg.inliers.min()}, "
           f"|rot| max {reg.rot_deg.abs().max():.2f} deg, shift max {reg.shift_px.max():.1f} px")
@@ -137,21 +155,29 @@ def main():
     print("[4/7] zone masks")
     zones = build_zone_masks(rec, raw, T, out / "zones")
     print("[5/7] references")
-    refs = build_references(rec, out / "canvases", out / "references")
-    specimens = build_specimens(rec, raw / "idnet_templates", out / "references")
+    folds_a = protocol_a_kfold(rec, raw)
+    if a.anchor_fold is None:
+        refs = build_references(rec, out / "canvases", out / "references")
+        specimens = build_specimens(rec, raw / "idnet_templates", out / "references")
+    else:
+        folds_a = {a.anchor_fold: folds_a[a.anchor_fold]}
+        fold = folds_a[a.anchor_fold]
+        training_ids = set(fold[fold.role == "train"].image_id)
+        refs = build_references(rec[rec.image_id.isin(training_ids)], out / "canvases", out / "references",
+                                group=f"it{a.anchor_fold}", write_all=False)
+        specimens = pd.DataFrame(columns=["design_id"])
     print(f"      specimens: {len(specimens)} designs")
     print("[6/7] ground-truth masks")
     masks = build_masks(rec, raw, T, out / "masks")
     print("[7/7] splits and per-fold references")
     for old in (out / "splits").glob("protocol_a*.csv"):
         old.unlink()
-    folds_a = protocol_a_kfold(rec, raw)
     fold_refs = []
     for k, df in folds_a.items():
         df.to_csv(out / "splits" / f"protocol_a_it{k}.csv", index=False)
         train_ids = set(df[df.role == "train"].image_id)
         fold_refs.append(build_references(rec[rec.image_id.isin(train_ids)], out / "canvases", out / "references",
-                                          group=f"it{k}", write_all=False))
+                                          group=f"it{k}", write_all=False) if a.anchor_fold is None else refs)
     fold_refs = pd.concat(fold_refs, ignore_index=True)
     pa = pd.concat(folds_a.values(), ignore_index=True)
     for old in (out / "splits").glob("protocol_b_g*.csv"):

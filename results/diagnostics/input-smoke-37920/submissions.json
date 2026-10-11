@@ -1,0 +1,11 @@
+{
+  "smoke_job": "37920",
+  "state": "submitted",
+  "jobs": {
+    "direct": "37922",
+    "letterbox": "37923",
+    "registered": "37924"
+  },
+  "previous_error": "[Errno 32] Broken pipe",
+  "recovery_note": "Smoke passed. Original watcher stopped after direct submission with broken pipe. Queue/accounting checked; only the two missing approved conditions submitted."
+}

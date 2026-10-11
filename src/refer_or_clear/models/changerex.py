@@ -288,7 +288,20 @@ def load_levir(model, ckpt_path=None, verbose=True):
     return res.missing_keys, res.unexpected_keys
 
 
-def build_changerex(fusion="difference", init="levir", in_channels=4, ckpt_path=None) -> nn.Module:
+def set_encoder_bn_policy(model, policy):
+    if policy not in ("running", "batch_stats"):
+        raise ValueError(f"unknown encoder BN policy {policy!r}")
+    if policy == "batch_stats":
+        for module in model.backbone.modules():
+            if isinstance(module, nn.modules.batchnorm._BatchNorm):
+                module.track_running_stats = False
+                module.running_mean = None
+                module.running_var = None
+                module.num_batches_tracked = None
+
+
+def build_changerex(fusion="difference", init="levir", in_channels=4, ckpt_path=None,
+                    bn_policy="running") -> nn.Module:
     """Entry point for build.py (arch == "changerex_r18"). init in {"scratch", "levir"}."""
     model = ChangerEx(fusion=fusion, in_channels=in_channels)
     model.init_opencd_weights()
@@ -296,4 +309,5 @@ def build_changerex(fusion="difference", init="levir", in_channels=4, ckpt_path=
         load_levir(model, ckpt_path)
     elif init != "scratch":
         raise ValueError(f"changerex_r18 supports init in {{'scratch', 'levir'}}, got {init!r}")
+    set_encoder_bn_policy(model, bn_policy)
     return model

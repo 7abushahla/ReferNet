@@ -94,6 +94,9 @@ class PairDataset(Dataset):
                 J = np.float32([[1, 0, random.randint(-self.jitter_px, self.jitter_px)],
                                 [0, 1, random.randint(-self.jitter_px, self.jitter_px)]])
                 q = cv2.warpAffine(q, J, (q.shape[1], q.shape[0]), borderMode=cv2.BORDER_REPLICATE)
+                mask, valid = (cv2.warpAffine(plane, J, (q.shape[1], q.shape[0]),
+                                              flags=cv2.INTER_NEAREST, borderMode=cv2.BORDER_CONSTANT)
+                               for plane in (mask, valid))
             if self.photometric:
                 q, r = _photometric(q), _photometric(r)
             if self.equalize_qf is None and self.jpeg:

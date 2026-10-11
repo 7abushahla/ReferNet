@@ -87,12 +87,15 @@ class SiameseNet(nn.Module):
         return {"logit": self.referral_head(fused[-1], m), "map": m}
 
 
-def build_model(arch="siamese_r18", fusion="difference", init="imagenet", in_channels=4) -> nn.Module:
+def build_model(arch="siamese_r18", fusion="difference", init="imagenet", in_channels=4,
+                bn_policy="running") -> nn.Module:
     if arch == "siamese_r18":
+        if bn_policy != "running":
+            raise ValueError("encoder BN batch statistics are only supported for changerex_r18")
         return SiameseNet(fusion=fusion, init=init, in_channels=in_channels)
     if arch == "changerex_r18":
         from .changerex import build_changerex
-        return build_changerex(fusion, init, in_channels=in_channels)
+        return build_changerex(fusion, init, in_channels=in_channels, bn_policy=bn_policy)
     raise ValueError(f"unknown arch {arch!r}; expected 'siamese_r18' or 'changerex_r18'")
 
 

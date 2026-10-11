@@ -1,0 +1,131 @@
+{
+  "passed": true,
+  "runs": {
+    "A-input-direct-f0-s42-smoke-37920": {
+      "val_auc": 0.47265625,
+      "config": {
+        "tag": "A-input-direct-f0-s42-smoke-37920",
+        "protocol": "A",
+        "arch": "changerex_r18",
+        "fusion": "single_noex",
+        "bn_policy": "batch_stats",
+        "reference": "median",
+        "fold": 0,
+        "validation_only": true,
+        "strict_fp32": true,
+        "select": "accuracy",
+        "init": "levir",
+        "seed": 42,
+        "epochs": 1,
+        "patience": null,
+        "batch_size": 8,
+        "eval_batch_size": 1,
+        "lr_backbone": 0.0001,
+        "lr_new": 0.001,
+        "weight_decay": 0.05,
+        "warmup_iters": 1000,
+        "mask_weight": 3.0,
+        "amp": false,
+        "workers": 4,
+        "crop": null,
+        "limit": 32,
+        "data_root": "/scratch/b00090279/input-smoke-37920/direct",
+        "wrong_design_fraction": 0.0,
+        "augment": {
+          "crop": null,
+          "affine_px": 8,
+          "jpeg_quality": null,
+          "photometric": true
+        },
+        "test_variants": [
+          "native"
+        ]
+      },
+      "n_params": 11407874
+    },
+    "A-input-letterbox-f0-s42-smoke-37920": {
+      "val_auc": 0.51171875,
+      "config": {
+        "tag": "A-input-letterbox-f0-s42-smoke-37920",
+        "protocol": "A",
+        "arch": "changerex_r18",
+        "fusion": "single_noex",
+        "bn_policy": "batch_stats",
+        "reference": "median",
+        "fold": 0,
+        "validation_only": true,
+        "strict_fp32": true,
+        "select": "accuracy",
+        "init": "levir",
+        "seed": 42,
+        "epochs": 1,
+        "patience": null,
+        "batch_size": 8,
+        "eval_batch_size": 1,
+        "lr_backbone": 0.0001,
+        "lr_new": 0.001,
+        "weight_decay": 0.05,
+        "warmup_iters": 1000,
+        "mask_weight": 3.0,
+        "amp": false,
+        "workers": 4,
+        "crop": null,
+        "limit": 32,
+        "data_root": "/scratch/b00090279/input-smoke-37920/letterbox",
+        "wrong_design_fraction": 0.0,
+        "augment": {
+          "crop": null,
+          "affine_px": 8,
+          "jpeg_quality": null,
+          "photometric": true
+        },
+        "test_variants": [
+          "native"
+        ]
+      },
+      "n_params": 11407874
+    },
+    "A-input-registered-f0-s42-smoke-37920": {
+      "val_auc": 0.546875,
+      "config": {
+        "tag": "A-input-registered-f0-s42-smoke-37920",
+        "protocol": "A",
+        "arch": "changerex_r18",
+        "fusion": "single_noex",
+        "bn_policy": "batch_stats",
+        "reference": "median",
+        "fold": 0,
+        "validation_only": true,
+        "strict_fp32": true,
+        "select": "accuracy",
+        "init": "levir",
+        "seed": 42,
+        "epochs": 1,
+        "patience": null,
+        "batch_size": 8,
+        "eval_batch_size": 1,
+        "lr_backbone": 0.0001,
+        "lr_new": 0.001,
+        "weight_decay": 0.05,
+        "warmup_iters": 1000,
+        "mask_weight": 3.0,
+        "amp": false,
+        "workers": 4,
+        "crop": null,
+        "limit": 32,
+        "data_root": "/scratch/b00090279/input-smoke-37920/registered",
+        "wrong_design_fraction": 0.0,
+        "augment": {
+          "crop": null,
+          "affine_px": 8,
+          "jpeg_quality": null,
+          "photometric": true
+        },
+        "test_variants": [
+          "native"
+        ]
+      },
+      "n_params": 11407874
+    }
+  }
+}

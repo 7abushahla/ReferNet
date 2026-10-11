@@ -72,6 +72,10 @@ def parse_args(argv=None):
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--crop", type=int, nargs=2, default=None, metavar=("H", "W"),
                     help="training crop H W; default from augment.crop in the config (null = full canvas)")
+    ap.add_argument("--bn-policy", choices=("running", "batch_stats"), default=None,
+                    help="encoder BN statistics; batch_stats scores each validation/test image alone")
+    ap.add_argument("--validation-only", action="store_true", help="development pilot: never construct or score test pairs")
+    ap.add_argument("--strict-fp32", action="store_true", help="disable TF32 and reject AMP for controlled comparisons")
     return ap.parse_args(argv)
 
 
@@ -94,18 +98,25 @@ def peak_mem_mb(device) -> float:
 def resolve(args, cfg) -> dict:
     """The run configuration with CLI overrides applied; everything train.json records."""
     t, m = cfg.get("train", {}), cfg.get("model", {})
+    if args.strict_fp32 and args.amp:
+        raise ValueError("strict FP32 cannot be combined with AMP")
     init = args.init or m.get("init", "imagenet")
     allowed = ("scratch", "levir") if args.arch == "changerex_r18" else ("imagenet", "scratch")
     if init not in allowed:
         raise SystemExit(f"[train] --init {init!r} is not available for arch {args.arch}; use one of {allowed}")
     fusion = args.fusion or m.get("fusion", "difference")
+    bn_policy = args.bn_policy or m.get("bn_policy", "running")
+    if bn_policy == "batch_stats" and args.arch != "changerex_r18":
+        raise SystemExit("[train] batch_stats BN policy requires changerex_r18")
     return dict(
         tag=Path(args.run_dir).name, protocol=cfg.get("protocol"), arch=args.arch,
-        fusion=fusion, reference=E.reference_name(cfg, args.reference), fold=args.fold,
+        fusion=fusion, bn_policy=bn_policy, reference=E.reference_name(cfg, args.reference), fold=args.fold,
+        validation_only=args.validation_only, strict_fp32=args.strict_fp32,
         select=str(t.get("select", "auc")),
         init=init, seed=args.seed, epochs=int(t.get("epochs", 40) if args.epochs is None else args.epochs),
         patience=t.get("patience"),
         batch_size=int(t.get("batch_size", 8) if args.batch_size is None else args.batch_size),
+        eval_batch_size=1 if bn_policy == "batch_stats" else int(t.get("batch_size", 8) if args.batch_size is None else args.batch_size),
         lr_backbone=float(t.get("lr_backbone", 1e-4)), lr_new=float(t.get("lr_new", 1e-3)),
         weight_decay=float(t.get("weight_decay", 0.05)), warmup_iters=int(t.get("warmup_iters", 500)),
         mask_weight=float(t.get("mask_loss_weight", 3.0)), amp=bool(args.amp), workers=args.workers,
@@ -116,6 +127,10 @@ def resolve(args, cfg) -> dict:
         augment=dict(cfg.get("augment", {})),
         test_variants=list(cfg.get("eval", {}).get("test_variants", ["native", "equalized_qf75"])),
     )
+
+
+def evaluation_roles(rc):
+    return ("train", "val") if rc.get("validation_only") else ("train", "val", "test")
 
 
 def make_optimizer(model, rc):
@@ -182,6 +197,7 @@ def main(argv=None):
     if device.type == "cuda" and not torch.cuda.is_available():
         raise SystemExit("[train] --device cuda requested but CUDA is not available")
     seed_everything(rc["seed"])
+    E.configure_precision(rc)
     run_dir, ck_dir = Path(args.run_dir), Path("checkpoints") / rc["tag"]
     run_dir.mkdir(parents=True, exist_ok=True)
     t_start = time.time()
@@ -189,19 +205,20 @@ def main(argv=None):
     split_df, records_df = E.load_split(cfg, args.data_root, fold=rc["fold"])
     pairs = {role: E.role_pairs(split_df, records_df, args.data_root, role, rc["reference"], cfg, rc["seed"],
                                 args.limit, wrong_design_fraction=rc["wrong_design_fraction"])
-             for role in ("train", "val", "test")}
+             for role in evaluation_roles(rc)}
     if not pairs["train"]:
         raise SystemExit("[train] no training pairs in this split")
-    for role in ("val", "test"):
+    for role in evaluation_roles(rc)[1:]:
         if not pairs[role]:
             print(f"[train] warning: no {role} pairs in this split")
     aug = rc["augment"]
     train_loader = make_loader(pairs["train"], True, rc["batch_size"], rc["workers"], crop=rc["crop"],
                                jpeg=jpeg_range(rc), affine_px=aug.get("affine_px", 8),
                                photometric=aug.get("photometric", True))
-    val_loader = E.eval_loader(pairs["val"], rc["batch_size"], rc["workers"]) if pairs["val"] else None
+    val_loader = E.eval_loader(pairs["val"], rc["eval_batch_size"], rc["workers"]) if pairs["val"] else None
 
-    model = build_model(arch=rc["arch"], fusion=rc["fusion"], init=rc["init"], in_channels=4).to(device)
+    model = build_model(arch=rc["arch"], fusion=rc["fusion"], init=rc["init"], in_channels=4,
+                        bn_policy=rc["bn_policy"]).to(device)
     n_params = count_params(model)
     opt = make_optimizer(model, rc)
     total_iters = rc["epochs"] * len(train_loader)
@@ -211,6 +228,8 @@ def main(argv=None):
                 device=str(device), torch_version=torch.__version__, python=sys.version.split()[0],
                 n_pairs={k: len(v) for k, v in pairs.items()}, iters_per_epoch=len(train_loader),
                 total_iters=total_iters, hostname=os.uname().nodename)
+    info["precision"] = dict(matmul_tf32=torch.backends.cuda.matmul.allow_tf32,
+                             cudnn_tf32=torch.backends.cudnn.allow_tf32, amp=rc["amp"])
     dump_json(run_dir / "train.json", info)
     print(f"[train] {rc['tag']}: {n_params / 1e6:.2f}M params on {device}, "
           f"{info['n_pairs']} pairs, {len(train_loader)} it/epoch x {rc['epochs']} epochs")
@@ -256,13 +275,15 @@ def main(argv=None):
     val = None
     if val_loader is not None:
         val = E.val_thresholds(E.predict(model, val_loader, device, amp=rc["amp"]))
-    loaders = {v: E.eval_loader(pairs["test"], rc["batch_size"], rc["workers"], **E.variant_kwargs(v))
-               for v in rc["test_variants"]} if pairs["test"] else {}
+    loaders = {v: E.eval_loader(pairs["test"], rc["eval_batch_size"], rc["workers"], **E.variant_kwargs(v))
+               for v in rc["test_variants"]} if pairs.get("test") else {}
     res = E.run(model, loaders, device, val, amp=rc["amp"])
     info.update(timing=dict(train_seconds=train_seconds, epochs=epoch if rc["epochs"] else 0,
                             best_epoch=best_epoch, total_seconds=time.time() - t_start))
     dump_json(run_dir / "train.json", info)
     metrics = {"tag": rc["tag"], "protocol": rc["protocol"], "arch": rc["arch"], "fusion": rc["fusion"],
+               "bn_policy": rc["bn_policy"],
+               "validation_only": rc["validation_only"], "strict_fp32": rc["strict_fp32"],
                "reference": rc["reference"], "init": rc["init"], "seed": rc["seed"], "fold": rc["fold"], "n_params": n_params,
                "val": val, "test": res["test"], "subsets": res["subsets"],
                "timing": {"train_seconds": train_seconds, "epochs": epoch if rc["epochs"] else 0,

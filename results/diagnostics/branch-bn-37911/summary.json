@@ -1,0 +1,227 @@
+{
+  "run": "A-cex-single_noex-median-levir-f0-s42-bnbatch-e100",
+  "checkpoint_sha256": "4848185b9baffea8d8183a98404dfcb85aa098b4ac25ec9c861b19079484d8eb",
+  "epoch": 49,
+  "script_sha256": "84d9d9e4dccdf0336c969c27114d5eb599e0acff5eb6895cd31a1c5fd3267868",
+  "test_used": false,
+  "complete": false,
+  "calibration": "all native training images, batch 8; population moments, branch separated",
+  "scope": "fold 0 selected checkpoint only; all probes on validation",
+  "results": {
+    "baseline": {
+      "all": {
+        "n": 222,
+        "auc_logit": 0.9754098360655737,
+        "auc_pipeline_score": 0.9754098360655737,
+        "accuracy": 0.9459459459459459,
+        "predicted_forged": 114,
+        "bce_image": 0.19462063053574785,
+        "unique_scores": 178,
+        "genuine": {
+          "n": 100,
+          "logit_mean": -3.077682357430458,
+          "logit_quantiles": [
+            -3.8264927864074707,
+            -3.7248631834983827,
+            -3.2211859226226807,
+            -2.657065093517304,
+            5.861652851104736
+          ],
+          "predicted_forged": 2
+        },
+        "forged": {
+          "n": 122,
+          "logit_mean": 10.650120656998432,
+          "logit_quantiles": [
+            -3.5881357192993164,
+            -2.7834523439407346,
+            12.899043560028076,
+            16.194116115570065,
+            18.946975708007812
+          ],
+          "predicted_forged": 112
+        },
+        "map_peak_auc": 0.9738524590163934,
+        "empty_forged_masks": 0
+      },
+      "text_copy": {
+        "n": 116,
+        "auc_logit": 0.818125,
+        "auc_pipeline_score": 0.818125,
+        "accuracy": 0.896551724137931,
+        "predicted_forged": 8,
+        "bce_image": 0.36590095151287716,
+        "unique_scores": 116,
+        "genuine": {
+          "n": 100,
+          "logit_mean": -3.077682357430458,
+          "logit_quantiles": [
+            -3.8264927864074707,
+            -3.7248631834983827,
+            -3.2211859226226807,
+            -2.657065093517304,
+            5.861652851104736
+          ],
+          "predicted_forged": 2
+        },
+        "forged": {
+          "n": 16,
+          "logit_mean": 0.6077852845191956,
+          "logit_quantiles": [
+            -3.5881357192993164,
+            -3.376218318939209,
+            -2.464773178100586,
+            8.761580467224121,
+            11.059948921203613
+          ],
+          "predicted_forged": 6
+        },
+        "map_peak_auc": 0.80625,
+        "empty_forged_masks": 0
+      },
+      "text_inpaint": {
+        "n": 206,
+        "auc_logit": 0.9991509433962265,
+        "auc_pipeline_score": 0.9991509433962265,
+        "accuracy": 0.9902912621359223,
+        "predicted_forged": 108,
+        "bce_image": 0.06487866830218626,
+        "unique_scores": 162,
+        "genuine": {
+          "n": 100,
+          "logit_mean": -3.077682357430458,
+          "logit_quantiles": [
+            -3.8264927864074707,
+            -3.7248631834983827,
+            -3.2211859226226807,
+            -2.657065093517304,
+            5.861652851104736
+          ],
+          "predicted_forged": 2
+        },
+        "forged": {
+          "n": 106,
+          "logit_mean": 12.165944864165109,
+          "logit_quantiles": [
+            0.9542019367218018,
+            5.1363606452941895,
+            13.258110523223877,
+            16.331421375274658,
+            18.946975708007812
+          ],
+          "predicted_forged": 106
+        },
+        "map_peak_auc": 0.9991509433962265,
+        "empty_forged_masks": 0
+      }
+    },
+    "backbone": {
+      "all": {
+        "n": 222,
+        "auc_logit": 0.9783606557377049,
+        "auc_pipeline_score": 0.9783606557377049,
+        "accuracy": 0.9504504504504504,
+        "predicted_forged": 115,
+        "bce_image": 0.1610809349217569,
+        "unique_scores": 178,
+        "genuine": {
+          "n": 100,
+          "logit_mean": -3.216773854792118,
+          "logit_quantiles": [
+            -4.139038562774658,
+            -3.9285715579986573,
+            -3.2821593284606934,
+            -2.505916512012482,
+            1.9978675842285156
+          ],
+          "predicted_forged": 2
+        },
+        "forged": {
+          "n": 122,
+          "logit_mean": 10.953249279348576,
+          "logit_quantiles": [
+            -3.855562686920166,
+            -2.9220614790916444,
+            12.679183006286621,
+            17.01826477050781,
+            19.036449432373047
+          ],
+          "predicted_forged": 113
+        },
+        "map_peak_auc": 0.9698360655737704,
+        "empty_forged_masks": 0
+      },
+      "text_copy": {
+        "n": 116,
+        "auc_logit": 0.83625,
+        "auc_pipeline_score": 0.83625,
+        "accuracy": 0.9051724137931034,
+        "predicted_forged": 9,
+        "bce_image": 0.30256158623304086,
+        "unique_scores": 116,
+        "genuine": {
+          "n": 100,
+          "logit_mean": -3.216773854792118,
+          "logit_quantiles": [
+            -4.139038562774658,
+            -3.9285715579986573,
+            -3.2821593284606934,
+            -2.505916512012482,
+            1.9978675842285156
+          ],
+          "predicted_forged": 2
+        },
+        "forged": {
+          "n": 16,
+          "logit_mean": 0.577868452295661,
+          "logit_quantiles": [
+            -3.855562686920166,
+            -3.4020063281059265,
+            -2.384088635444641,
+            9.509612083435059,
+            10.975411415100098
+          ],
+          "predicted_forged": 7
+        },
+        "map_peak_auc": 0.77125,
+        "empty_forged_masks": 0
+      },
+      "text_inpaint": {
+        "n": 206,
+        "auc_logit": 0.999811320754717,
+        "auc_pipeline_score": 0.999811320754717,
+        "accuracy": 0.9902912621359223,
+        "predicted_forged": 108,
+        "bce_image": 0.036379209645492364,
+        "unique_scores": 162,
+        "genuine": {
+          "n": 100,
+          "logit_mean": -3.216773854792118,
+          "logit_quantiles": [
+            -4.139038562774658,
+            -3.9285715579986573,
+            -3.2821593284606934,
+            -2.505916512012482,
+            1.9978675842285156
+          ],
+          "predicted_forged": 2
+        },
+        "forged": {
+          "n": 106,
+          "logit_mean": 12.519344498526376,
+          "logit_quantiles": [
+            0.7758934497833252,
+            5.422984838485718,
+            13.508999347686768,
+            17.4023118019104,
+            19.036449432373047
+          ],
+          "predicted_forged": 106
+        },
+        "map_peak_auc": 0.999811320754717,
+        "empty_forged_masks": 0
+      },
+      "batch_invariance_max_logit_difference": 0.0013275146484375
+    }
+  }
+}
