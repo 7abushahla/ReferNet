@@ -1,0 +1,17 @@
+{
+  "job_id": 37942,
+  "state": "COMPLETED",
+  "exit_code": "0:0",
+  "elapsed": "00:00:58",
+  "source_revision": "a64542e62e9e295fcfa17161d426e2e454f8f208",
+  "source_archive_sha256": "3a7ef93557f3350ff4c46a4a94b21b8e147a43859cafdea9b4cdf8c602312783",
+  "remote_source_root": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-wiring-source-a64542e62e9e295fcfa17161d426e2e454f8f208/code",
+  "scope": "synthetic inputs only; no training or dataset evaluation",
+  "previous_attempt": {
+    "job_id": 37938,
+    "state": "FAILED",
+    "source_revision": "039f3399963b855d38c022d1299b8e8bac6934b5",
+    "source_archive_sha256": "66e40f11c9e80fbeb8843aa4a222db7ddbd9aa09b4dfa932a033d5014cbc5ead",
+    "reason": "diagnostic chained cuda() after upstream backbone eval() returned None"
+  }
+}

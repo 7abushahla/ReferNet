@@ -1,0 +1,37 @@
+{
+  "complete": false,
+  "scope": "synthetic inputs only; no dataset or optimizer steps",
+  "environment": {
+    "torch": "2.1.2+cu121",
+    "cuda": "12.1",
+    "gpu": "NVIDIA A10G",
+    "amp": false,
+    "matmul_tf32": false,
+    "cudnn_tf32": false
+  },
+  "checkpoint": {
+    "path": "/shared/b00090279/refer-or-clear/checkpoints/pretrained/ChangerEx_r18-512x512_40k_levircd_20221223_120511.pth",
+    "sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "sources": {
+    "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-wiring-source-039f3399963b855d38c022d1299b8e8bac6934b5/code/scripts/audit_anchor_wiring.py": "8a63e3e914e984c8384790c8891e6013bf13ce017ab5578f8ba1eeb0900bd900",
+    "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-wiring-source-039f3399963b855d38c022d1299b8e8bac6934b5/code/src/refer_or_clear/models/changerex.py": "df5fb27661d7aa45191a0f234dfbf8ec50bfd7cea6e1435f892bbfd7f84ec7a0",
+    "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/opencd/models/decode_heads/changer.py": "5830e025e5be51ae9811de58d11c077aa6667b757e55a7b99a1b620ca4eb9cd2",
+    "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/opencd/models/backbones/interaction_resnet.py": "524836522a99dd41194d39dc1088a7b8e09952c9c25580774f2a29765947ac5d"
+  },
+  "loading": {
+    "missing": [
+      "referral.fc1.weight",
+      "referral.fc1.bias",
+      "referral.fc2.weight",
+      "referral.fc2.bias"
+    ],
+    "unexpected": []
+  },
+  "optimizer": {
+    "pretrained_tensors": 92,
+    "added_tensors": 4,
+    "trainable_parameters": 11407874
+  },
+  "error": "Traceback (most recent call last):\n  File \"/shared/b00090279/refer-or-clear/results/diagnostics/anchor-wiring-source-039f3399963b855d38c022d1299b8e8bac6934b5/code/scripts/audit_anchor_wiring.py\", line 193, in main\n    run_checks(args, report)\n  File \"/shared/b00090279/refer-or-clear/results/diagnostics/anchor-wiring-source-039f3399963b855d38c022d1299b8e8bac6934b5/code/scripts/audit_anchor_wiring.py\", line 125, in run_checks\n    style=\"pytorch\", contract_dilation=True).eval().cuda()\nAttributeError: 'NoneType' object has no attribute 'cuda'\n"
+}

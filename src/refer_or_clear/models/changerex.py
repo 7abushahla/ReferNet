@@ -9,15 +9,15 @@ arch == "changerex_r18" to `build_changerex(fusion, init, in_channels)`.
 fusion  "difference": stock ChangerEx, query and reference through the shared backbone, FDAF fusion.
         "single":     matched single-image control: the reference branch receives a content-free
                       canvas (RGB zeros, i.e. the ImageNet mean after normalization) carrying the
-                      query's own zone channel; x[:, 4:] is never read. Feeding the query to both
-                      branches would be wrong here: FDAF fuses warp(x0) - x1 and warp(x1) - x0, so
-                      identical branches give an all-zero fused feature and an untrainable head.
+                      query's own zone channel; x[:, 4:] is never read. This blank-reference choice
+                      is an adaptation, not a requirement of FDAF. Identical branch features need
+                      not give zero differences when the predicted alignment flow is nonzero.
         "attention_single": the improved variant's matched control (attention modules, content-free reference).
-        "single_noex": the fair single-image control (11 Oct 2026): content-free reference AND the exchange
-                      layers switched off, so the query keeps all its features. With "single" the spatial and
-                      channel exchanges still swap half of the query's features for the blank branch's at three
-                      depths, which halves the signal; Protocol A measured it at chance (AUC 0.60 on seen designs).
-                      Same backbone, weights, heads and parameter count as "difference".
+        "single_noex": the exchange-off single-image control (11 Oct 2026): content-free reference AND
+                      exchange layers switched off. With "single", exchanges move features between
+                      both streams at three depths; this does not establish that half of the total
+                      information is lost or explain its measured performance. Same parameterized
+                      modules and parameter count as "difference", but different exchange behavior.
         "attention":  the improved variant, the dashed boxes of the proposal figure: at strides 16 and
                       32 the query features pass a pre-LN self-attention block and then a cross-
                       attention block (Q = f(x), K = V = f(r)), each residual on f(x), before the

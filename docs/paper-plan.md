@@ -135,8 +135,8 @@ Where we sit: a registered specimen of the query's own design, given to a learne
 
 | Component | The failure it addresses | Why it should help |
 |---|---|---|
-| Shared encoder, absolute feature difference | design-specific appearance | the difference is near zero on unchanged static design and non-zero at an altered field, on any design; shared weights force a design-agnostic feature space |
-| Page features kept beside the difference | legitimate variation in fields | inside a field the question is how the content differs, not whether; an inpainted name shows blended edges and a wrong font against the label, which needs the page's own features |
+| Shared encoder, signed flow-aligned feature differences | design-specific appearance | the implemented ChangerEx compares the two streams after learned alignment; shared weights permit comparison but do not guarantee design invariance or zero response on legitimate differences |
+| Page features retained beside the difference, an earlier design proposal | legitimate variation in fields | no explicit undifferenced query-feature bypass is present in the current ChangerEx wrapper; the classifier consumes fused decoder features and a map peak. Do not describe this proposed path as implemented or add it without a controlled comparison |
 | Zone channel | every genuine pair differs in its fields | tells the network where difference is expected and where it is forbidden; difference outside zones is almost a direct signal, inside zones the task is consistency; without it the network must infer the layout from one example |
 | Flow dual-alignment fusion | residual misregistration | pixel-level reference comparison fails first on misalignment (the recurring complaint in inspection work); the fusion aligns features before differencing; the misregistration sweep measures it |
 | Feature exchange | each stream blind to the other until fusion | parameter-free early interaction, shown to help most on the harder change-detection set |

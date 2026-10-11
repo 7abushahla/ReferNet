@@ -1,0 +1,202 @@
+{
+  "complete": true,
+  "scope": "synthetic inputs only; no dataset or optimizer steps",
+  "environment": {
+    "torch": "2.1.2+cu121",
+    "cuda": "12.1",
+    "gpu": "NVIDIA A10G",
+    "amp": false,
+    "matmul_tf32": false,
+    "cudnn_tf32": false
+  },
+  "checkpoint": {
+    "path": "/shared/b00090279/refer-or-clear/checkpoints/pretrained/ChangerEx_r18-512x512_40k_levircd_20221223_120511.pth",
+    "sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "sources": {
+    "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-wiring-source-a64542e62e9e295fcfa17161d426e2e454f8f208/code/scripts/audit_anchor_wiring.py": "906351f28b92dc8702dd819fd207aa47aa99cd0cab661d7f798e24cf436ae8d9",
+    "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-wiring-source-a64542e62e9e295fcfa17161d426e2e454f8f208/code/src/refer_or_clear/models/changerex.py": "df5fb27661d7aa45191a0f234dfbf8ec50bfd7cea6e1435f892bbfd7f84ec7a0",
+    "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/opencd/models/decode_heads/changer.py": "5830e025e5be51ae9811de58d11c077aa6667b757e55a7b99a1b620ca4eb9cd2",
+    "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/opencd/models/backbones/interaction_resnet.py": "524836522a99dd41194d39dc1088a7b8e09952c9c25580774f2a29765947ac5d"
+  },
+  "loading": {
+    "missing": [
+      "referral.fc1.weight",
+      "referral.fc1.bias",
+      "referral.fc2.weight",
+      "referral.fc2.bias"
+    ],
+    "unexpected": []
+  },
+  "optimizer": {
+    "pretrained_tensors": 92,
+    "added_tensors": 4,
+    "trainable_parameters": 11407874
+  },
+  "parity": {
+    "decoder_128x160": {
+      "passed": true,
+      "max_absolute_difference": 1.33514404296875e-05,
+      "mean_absolute_difference": 2.187490508731571e-06,
+      "atol": 0.0001,
+      "rtol": 0.0001
+    },
+    "end_to_end_128x160": {
+      "passed": true,
+      "max_absolute_difference": 1.33514404296875e-05,
+      "mean_absolute_difference": 2.187490508731571e-06,
+      "atol": 0.0001,
+      "rtol": 0.0001
+    },
+    "backbone_128x160_stage0": {
+      "passed": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "atol": 0.0001,
+      "rtol": 0.0001
+    },
+    "backbone_128x160_stage1": {
+      "passed": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "atol": 0.0001,
+      "rtol": 0.0001
+    },
+    "backbone_128x160_stage2": {
+      "passed": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "atol": 0.0001,
+      "rtol": 0.0001
+    },
+    "backbone_128x160_stage3": {
+      "passed": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "atol": 0.0001,
+      "rtol": 0.0001
+    },
+    "decoder_512x800": {
+      "passed": true,
+      "max_absolute_difference": 1.9073486328125e-05,
+      "mean_absolute_difference": 2.314941866643494e-06,
+      "atol": 0.0001,
+      "rtol": 0.0001
+    },
+    "end_to_end_512x800": {
+      "passed": true,
+      "max_absolute_difference": 1.9073486328125e-05,
+      "mean_absolute_difference": 2.314941866643494e-06,
+      "atol": 0.0001,
+      "rtol": 0.0001
+    },
+    "backbone_512x800_stage0": {
+      "passed": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "atol": 0.0001,
+      "rtol": 0.0001
+    },
+    "backbone_512x800_stage1": {
+      "passed": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "atol": 0.0001,
+      "rtol": 0.0001
+    },
+    "backbone_512x800_stage2": {
+      "passed": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "atol": 0.0001,
+      "rtol": 0.0001
+    },
+    "backbone_512x800_stage3": {
+      "passed": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "atol": 0.0001,
+      "rtol": 0.0001
+    }
+  },
+  "identical_feature_warp": {
+    "zero_flow_max_difference": 3.814697265625e-06,
+    "nonzero_flow_max_difference": 54.559364318847656
+  },
+  "control_optimizer": {
+    "pretrained_tensors": 92,
+    "added_tensors": 4,
+    "trainable_parameters": 11407874
+  },
+  "control_reference_invariance": {
+    "logit": {
+      "passed": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "atol": 0.0001,
+      "rtol": 0.0001
+    },
+    "map": {
+      "passed": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "atol": 0.0001,
+      "rtol": 0.0001
+    }
+  },
+  "control_gradients": {
+    "image_only": {
+      "backbone": {
+        "tensors": 66,
+        "connected": 66,
+        "nonzero": 66,
+        "norm": 97.94671159705112
+      },
+      "map_projection": {
+        "tensors": 2,
+        "connected": 2,
+        "nonzero": 2,
+        "norm": 0.005331844648186019
+      },
+      "decode_head": {
+        "tensors": 24,
+        "connected": 24,
+        "nonzero": 24,
+        "norm": 0.345730649756227
+      },
+      "referral": {
+        "tensors": 4,
+        "connected": 4,
+        "nonzero": 4,
+        "norm": 1.5980960731950826
+      }
+    },
+    "dense_only": {
+      "backbone": {
+        "tensors": 66,
+        "connected": 66,
+        "nonzero": 66,
+        "norm": 30.056554090556048
+      },
+      "map_projection": {
+        "tensors": 2,
+        "connected": 2,
+        "nonzero": 2,
+        "norm": 0.010281829686192654
+      },
+      "decode_head": {
+        "tensors": 24,
+        "connected": 24,
+        "nonzero": 24,
+        "norm": 0.09009160701937363
+      },
+      "referral": {
+        "tensors": 4,
+        "connected": 0,
+        "nonzero": 0,
+        "norm": 0.0
+      }
+    }
+  },
+  "control_state_unchanged": true
+}
