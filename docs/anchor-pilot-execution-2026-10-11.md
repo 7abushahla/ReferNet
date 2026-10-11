@@ -14,7 +14,7 @@ Starting revision `60a3adf`. Implementation and parallel delegation are authoriz
 | M1-audit, exact-membership headers | Allocated CPU audit completed, health passed | Audit 37972 completed in 38 seconds with 2,018/2,018 candidate headers and no access/read errors |
 | M2, isolated training and smoke gates | Implemented and independently reviewed | Coordinator tests passed 35 runtime/gate checks and 50 packaging checks; GPU evidence remains pending |
 | M3, fold-safe support | Independently cleared for one frozen fold-0 CPU build | Complete inventory and explicit fold binding verified; fresh 48 enrollment and 22 wrapper tests passed; actual metadata preflight passed |
-| M4, selected-validation reports and common runtime | Implemented, two review blockers assigned | Runtime-ID/source binding and integer parameter-count validation need bounded corrections; no actual timing claimed |
+| M4, selected-validation reports and common runtime | Independently reviewed and verified | Runtime-ID/source binding and integer parameter-count regressions corrected; 47 focused tests passed; actual timing and final decision remain pending |
 
 ## Decisions
 
@@ -126,3 +126,9 @@ The new builder and wrapper create a separate versioned output, never rewrite le
 Audit `37972` completed with scheduler exit 0:0 in 38 seconds. It recorded 2,018/2,018 successful candidate header reads, no missing/corrupt/unsupported/access-error files, and complete declared membership and suffix-filtered test-directory inventory. This is a bounded metadata completeness finding, not a detector-transfer result or a causal claim about CNN decisions. Its audit health and scientific summaries are archived under the original job directory.
 
 Fold-0 CPU support-build job `37973` uses immutable revision `40e1528f6e6e7c6e5dc52614613cb86558d3ffda`, archive SHA256 `75cf78a65a815a86d8da32293e897d22f28e3179f0fb79814f468f32a936750e`, and its matching read-only source directory. Before submission the archive, original records/fold-0 split hashes and raw genuine annotation path were checked on the cluster. It requests four CPUs, 8 GB memory and one hour on `cpu`, uses the verified absolute project environment and `/tmp/$USER` scratch, and prepares no external specimen. Output is `results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold0-37973/enrollment`. Only the approved fold is built. Output provenance, dependency hashes and registration counts remain to be checked before any detector consumes it.
+
+### Reporting and runtime milestone reviewed
+
+Independent reviewer Wegener cleared the five-file report/benchmark implementation after reproducing 47 focused passing tests. Runtime source IDs and raw/canvas/zone mappings are bound to each candidate's first 200 training IDs. Parameter counts require integers and reject Boolean values. The CPU wrapper uses the verified CPU bootstrap and node-local temporary scratch. It preserves failed/incomplete-track status and selected-validation-only reporting. Coordinator verification passed 90 combined D-context, runtime and report tests, followed by a fresh focused M4 run. No actual CPU measurement or final selected-validation comparison is claimed from these tests.
+
+Independent reviewer Galileo cleared the D-context inference script only after reproducing 43 synthetic tests. Reviewed script SHA256 is `4253fc893e41d8a31cc95c35e5b170f1553b102eb53f2a7134f3faa8da7114b4`. It is restricted to frozen scientific source `0959335bd9a6a22510f6706c49c62d84560cd524` and failed-D37963 checkpoint SHA256 `c78d0b4a06b5dbde434d77f34ffa14ea437dbde4e1d3eafbd2d8aadfff72c47f`. This clears one inference-only diagnostic, not D100. Its allocated-GPU wrapper is being prepared separately; no diagnostic submission or actual outcome is claimed yet.
