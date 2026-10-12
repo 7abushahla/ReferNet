@@ -1,10 +1,11 @@
-"""Metadata-only candidate runtime preparation. No measurement is authorized here.
+"""Candidate runtime preflight and allocated-only isolated CPU measurement.
 
 The externally SHA256-bound catalogue uses anchor_candidate_bindings_v1.
 Candidates retain original parent-manifest identities and scientific sources.
 Completion reviews may be text records, with explicit final-evidence bindings
 authenticated by the catalogue. Readiness does not verify checkpoint, source,
 weight or image bytes and is not a substitute for later scientific inspection.
+Measurement setup is not launch approval or family-selection authorization.
 """
 from __future__ import annotations
 
@@ -15,9 +16,11 @@ import hashlib
 import io
 import json
 import math
+import os
 from pathlib import Path
 import re
 import sys
+import subprocess
 
 
 TRACK_ORDER = ("R", "D_running_pilot", "N")
@@ -454,6 +457,480 @@ def create_output_directory(requested, protections):
     return actual
 
 
+def file_sha256(path):
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def validate_allocation():
+    require(os.environ.get("SLURM_JOB_PARTITION") == "cpu", "allocated CPU partition required")
+    require(re.fullmatch(r"[1-9][0-9]*", os.environ.get("SLURM_JOB_ID", "")) is not None,
+            "allocated job ID required")
+    node = os.environ.get("SLURMD_NODENAME", "")
+    require(bool(node) and not any(word in node.lower() for word in ("login", "head", "frontend", "lgn")),
+            "allocated non-login CPU node required")
+    require(int(os.environ.get("SLURM_CPUS_PER_TASK", "0")) >= 4, "four allocated CPUs required")
+    require(os.environ.get("CUDA_VISIBLE_DEVICES") == "", "GPU visibility must be explicitly disabled")
+
+
+def authenticate_scientific_source(candidate):
+    parent = authenticated_json(candidate["parent_manifest"], "scientific parent manifest")
+    root = absolute_path(candidate["scientific_source"]["directory"], "scientific source")
+    for path in (root / "src").rglob("*"):
+        require(not path.is_symlink(), f"scientific source symlink forbidden: {path}")
+        require(path.suffix not in (".pyc", ".pyo", ".so", ".pyd"),
+                f"unbound cached/native scientific code forbidden: {path}")
+    entries = parent["source_files"]
+    expected = {}
+    for entry in entries:
+        relative = relative_path(entry["path"], "scientific source")
+        path = absolute_path(str(root / relative), "scientific source file")
+        require(path.is_relative_to(root) and path.is_file(), f"scientific source file missing: {path}")
+        require(type(entry.get("size")) is int and entry["size"] == path.stat().st_size,
+                f"scientific source size mismatch: {path}")
+        require(file_sha256(path) == entry["sha256"], f"scientific source SHA256 mismatch: {path}")
+        if (relative.parts[0] == "src" and relative.suffix == ".py") or str(relative) == "scripts/check_anchor_pilots.py":
+            expected[str(relative)] = entry["sha256"]
+    actual = {}
+    for path in sorted((root / "src").rglob("*.py")) + [root / "scripts/check_anchor_pilots.py"]:
+        absolute_path(str(path), "scientific runtime file")
+        actual[str(path.relative_to(root))] = file_sha256(path)
+    require(actual == expected and json_sha256(actual) == candidate["identities"]["source_sha256"],
+            "scientific runtime inventory/source SHA256 mismatch")
+    return parent
+
+
+def candidate_fingerprints(catalogue, candidate):
+    """Allocated runtime byte verification, never used by metadata preparation."""
+    authenticate_scientific_source(candidate)
+    paths = {}
+    for name in ("parent_manifest", "records", "split", "weights", "train_json", "selected_checkpoint", "completion_review"):
+        binding = candidate[name]
+        paths[binding["path"]] = binding["sha256"]
+    for binding in candidate["selected_evidence"].values():
+        paths[binding["path"]] = binding["sha256"]
+    tools = catalogue["measurement_tools"]
+    for filename, expected in tools["files"].items():
+        paths[str(Path(tools["directory"]) / filename)] = expected
+    parent = authenticated_json(candidate["parent_manifest"], "scientific parent manifest")
+    for entry in parent["source_files"]:
+        paths[str(Path(candidate["scientific_source"]["directory"]) / entry["path"])] = entry["sha256"]
+    for filename, expected in paths.items():
+        path = absolute_path(filename, "immutable runtime authority")
+        require(path.is_file() and file_sha256(path) == expected, f"immutable authority SHA256 mismatch: {path}")
+    return dict(sorted(paths.items()))
+
+
+def validate_inspection_result(result, catalogue, candidate, catalogue_sha256):
+    require(result.get("schema_version") == "anchor_candidate_worker_result_v1"
+            and result.get("operation") == "inspect" and result.get("status") == "inspected",
+            "passing candidate inspection required")
+    require(result.get("track") == candidate["track"] and result.get("catalogue_sha256") == catalogue_sha256
+            and result.get("identities") == candidate["identities"]
+            and result.get("scientific_source") == candidate["scientific_source"]
+            and result.get("measurement_tools") == catalogue["measurement_tools"], "inspection provenance mismatch")
+    require(result.get("comparable") is False and result.get("execution_authorized") is False,
+            "inspection cannot authorize timing")
+    require(result.get("fingerprints") == candidate_fingerprints(catalogue, candidate), "inspection immutable authorities changed")
+    train = authenticated_json(candidate["train_json"], "selected train ledger")
+    inspection = result.get("inspection", {})
+    require(inspection.get("status") == "complete" and inspection.get("eligible_candidate") is True
+            and inspection.get("identities") == candidate["identities"]
+            and inspection.get("selected_epoch") == train["selected_epoch"], "selected inspection result mismatch")
+
+
+def validate_inspection_bundle(bindings, catalogue, catalogue_sha256):
+    require(isinstance(bindings, dict) and set(bindings) == set(TRACK_ORDER), "all three inspections required before preparation")
+    results = {}
+    for candidate in catalogue["candidates"]:
+        result = authenticated_json(bindings[candidate["track"]], "candidate inspection")
+        validate_inspection_result(result, catalogue, candidate, catalogue_sha256)
+        results[candidate["track"]] = result
+    require(all(result["host"] == results["R"]["host"] for result in results.values()), "inspection host identity drift")
+    return results
+
+
+def validate_preparation_result(result, catalogue, candidate, catalogue_sha256, inspection):
+    require(result.get("schema_version") == "anchor_candidate_worker_result_v1" and result.get("status") == "prepared"
+            and result.get("operation") == "prepare" and result.get("track") == candidate["track"]
+            and result.get("catalogue_sha256") == catalogue_sha256, "preparation request/provenance mismatch")
+    require(result.get("scientific_source") == candidate["scientific_source"]
+            and result.get("identities") == candidate["identities"]
+            and result.get("measurement_tools") == catalogue["measurement_tools"]
+            and result.get("fingerprints") == candidate_fingerprints(catalogue, candidate), "preparation immutable provenance mismatch")
+    require(result.get("host") == inspection["host"], "preparation host differs from inspection")
+    require(result.get("image_ids") == catalogue["image_ids"]
+            and result.get("image_ids_sha256") == json_sha256(catalogue["image_ids"])
+            and result.get("membership_role") == "train" and result.get("query_view_role") == "val"
+            and result.get("augment") == {"enabled": False}, "preparation training IDs/query view mismatch")
+    expected_shape = [1, 3, 299, 299] if candidate["track"] == "R" else [1, 4, 512, 800]
+    require(result.get("input_shape") == expected_shape, "prepared input shape mismatch")
+    require(result.get("comparable") is False and result.get("execution_authorized") is False,
+            "preparation cannot authorize timing")
+    train = authenticated_json(candidate["train_json"], "prepared train ledger")
+    for field in ("selected_epoch", "selection_key", "n_active_parameters", "n_total_parameters", "initialization"):
+        require(result.get(field) == train[field], f"prepared {field} mismatch")
+    require(result.get("checkpoint_sha256") == candidate["selected_checkpoint"]["sha256"]
+            and result.get("checkpoint_bytes") == inspection["inspection"]["checkpoint_bytes"], "prepared checkpoint mismatch")
+    raw = absolute_path(candidate["raw_root"], "raw root")
+    legacy = absolute_path(candidate["legacy_root"], "legacy root")
+    require(result.get("source_roots") == {"raw": str(raw), "legacy": str(legacy)}, "prepared source roots mismatch")
+    require(result.get("preparation_scope") == ("raw_input" if candidate["track"] == "R" else "processed_input_only"),
+            "prepared input boundary mismatch")
+    for name in ("records", "split", "weights"):
+        value = result.get("weights_path") if name == "weights" else result.get("resolved_metadata", {}).get(name)
+        path = absolute_path(value, f"prepared {name}")
+        require(str(path) in (candidate[name]["path"], train["paths"][name])
+                and file_sha256(path) == candidate["identities"][f"{name}_sha256"], f"prepared {name} authority mismatch")
+    sources = result.get("sources")
+    require(isinstance(sources, list) and len(sources) == 200
+            and result.get("sources_sha256") == json_sha256(sources), "prepared source inventory mismatch")
+    rows = sorted(train["membership"]["train"], key=lambda row: row["image_id"])[:200]
+    for source, row in zip(sources, rows):
+        require(source.get("image_id") == row["image_id"], "prepared source/ID mapping mismatch")
+        expected = [raw / relative_path(row["path"], "training path")] if candidate["track"] == "R" else [
+            legacy / "canvases" / f"{row['image_id']}.png", legacy / "zones" / f"{row['design_id'].replace('/', '_')}.png"]
+        artifacts = source.get("artifacts")
+        require(isinstance(artifacts, list) and len(artifacts) == len(expected), "prepared source artifact count mismatch")
+        for artifact, path in zip(artifacts, expected):
+            require(absolute_path(artifact.get("path"), "prepared training artifact") == path
+                    and artifact.get("sha256") == file_sha256(path), "prepared training artifact SHA256/path mismatch")
+
+
+def freeze_candidate_manifest(path, manifest):
+    path = Path(path)
+    reject_symlinks(path.absolute())
+    require(not path.exists(), f"runtime manifest already exists: {path}")
+    payload = copy.deepcopy(manifest)
+    payload.pop("manifest_sha256", None)
+    payload["manifest_sha256"] = json_sha256(payload)
+    with path.open("x") as stream:
+        json.dump(payload, stream, sort_keys=True, indent=2, allow_nan=False)
+        stream.write("\n")
+    return payload
+
+
+def validate_worker_request(receipt, result, expected):
+    path = Path(receipt["path"]).parent / f"{expected['operation']}-{expected['track']}-request.json"
+    request = authenticated_json({"path": str(path), "sha256": result["request_sha256"]}, "immutable worker request")
+    require(request == expected, "worker request provenance mismatch")
+
+
+def validate_runtime_manifest(binding, catalogue_binding):
+    manifest = authenticated_json(binding, "frozen runtime manifest")
+    payload = {name: value for name, value in manifest.items() if name != "manifest_sha256"}
+    require(manifest.get("manifest_sha256") == json_sha256(payload), "canonical runtime manifest SHA256 mismatch")
+    require(manifest.get("schema_version") == "anchor_candidate_cpu_v1"
+            and manifest.get("base_timing_contract") == "anchor_cpu_v1" and manifest.get("contract") == CONTRACT
+            and manifest.get("catalogue") == catalogue_binding, "frozen runtime manifest contract/catalogue mismatch")
+    require(manifest.get("comparable") is False and manifest.get("execution_authorized") is False
+            and manifest.get("full_source_to_decision_latency") == "not_measured", "manifest cannot authorize comparison")
+    catalogue = authenticated_json(catalogue_binding, "original candidate catalogue")
+    readiness = prepare_bindings(catalogue)
+    require(readiness["status"] == "metadata-ready",
+            "all completed selected reviews required: " + "; ".join(readiness["errors"]))
+    require(manifest.get("image_ids") == readiness["image_ids"]
+            and manifest.get("image_ids_sha256") == readiness["image_ids_sha256"]
+            and manifest.get("measurement_tools") == catalogue["measurement_tools"], "manifest original authority drift")
+    inspections = validate_inspection_bundle(manifest.get("inspections"), catalogue, catalogue_binding["sha256"])
+    require(isinstance(manifest.get("tracks"), dict) and set(manifest["tracks"]) == set(TRACK_ORDER)
+            and isinstance(manifest.get("preparations"), dict) and set(manifest["preparations"]) == set(TRACK_ORDER),
+            "all prepared candidates required")
+    for candidate in catalogue["candidates"]:
+        track = candidate["track"]
+        validate_worker_request(manifest["inspections"][track], inspections[track], {
+            "schema_version": "anchor_candidate_worker_request_v1", "operation": "inspect", "track": track,
+            "catalogue": catalogue_binding, "inspections": None})
+        prepared = authenticated_json(manifest["preparations"][track], "frozen preparation receipt")
+        require(prepared == manifest["tracks"][track], "frozen preparation receipt mismatch")
+        validate_preparation_result(prepared, catalogue, candidate, catalogue_binding["sha256"], inspections[track])
+        require(prepared["inspections"] == manifest["inspections"] and prepared["host"] == manifest["host"],
+                "frozen inspection/host drift")
+        validate_worker_request(manifest["preparations"][track], prepared, {
+            "schema_version": "anchor_candidate_worker_request_v1", "operation": "prepare", "track": track,
+            "catalogue": catalogue_binding, "inspections": manifest["inspections"]})
+    return manifest
+
+
+def timing_statistics(values):
+    ordered = sorted(values)
+    midpoint = len(ordered) // 2
+    median = ordered[midpoint] if len(ordered) % 2 else (ordered[midpoint - 1] + ordered[midpoint]) / 2
+    position = (len(ordered) - 1) * 0.95
+    lower = math.floor(position)
+    upper = min(lower + 1, len(ordered) - 1)
+    return {"median": median, "p95": ordered[lower] + (ordered[upper] - ordered[lower]) * (position - lower)}
+
+
+def finite_duration(value):
+    require(type(value) in (int, float) and math.isfinite(value) and value >= 0, "finite nonnegative timing required")
+
+
+def validate_measurement_result(result, manifest, catalogue, candidate, manifest_binding):
+    track = candidate["track"]
+    prepared = manifest["tracks"][track]
+    require(result.get("schema_version") == "anchor_candidate_worker_result_v1" and result.get("operation") == "measure"
+            and result.get("status") == "measured" and result.get("track") == track, "measured worker result required")
+    for name in ("catalogue_sha256", "identities", "scientific_source", "measurement_tools", "host", "image_ids",
+                 "image_ids_sha256", "sources", "sources_sha256", "input_shape", "preparation_scope", "checkpoint_sha256",
+                 "checkpoint_bytes", "selected_epoch", "selection_key", "initialization", "n_active_parameters", "n_total_parameters"):
+        require(result.get(name) == prepared[name], f"timing frozen {name} mismatch")
+    require(result.get("runtime_manifest") == manifest_binding and result.get("manifest_sha256") == manifest["manifest_sha256"],
+            "timing manifest authority mismatch")
+    require(result.get("comparable") is False and result.get("execution_authorized") is False, "worker cannot authorize comparison")
+    require(result.get("fingerprints") == candidate_fingerprints(catalogue, candidate), "timing immutable authority drift")
+    expected_runtime = {"host": manifest["host"], "thread_contract": {name: CONTRACT[name] for name in
+                        ("torch_intraop", "torch_interop", "opencv_threads", "OMP_NUM_THREADS", "MKL_NUM_THREADS")},
+                        "precision_contract": {"device": "cpu", "precision": "float32", "batch_size": 1, "amp": False, "tf32": False},
+                        "inference_mode": True, "eval_mode": True, "CUDA_VISIBLE_DEVICES": ""}
+    require(result.get("runtime_before") == expected_runtime and result.get("runtime_after") == expected_runtime
+            and result.get("thread_contract") == expected_runtime["thread_contract"]
+            and result.get("precision_contract") == expected_runtime["precision_contract"], "timing execution contract drift")
+    before = result.get("model_before")
+    require(isinstance(before, dict) and set(before) == {"parameters_sha256", "buffers_sha256", "state_sha256"}
+            and result.get("model_after") == before, "model parameters/buffers mutated")
+    for name, value in before.items():
+        validate_sha256(value, name)
+    require(result.get("checkpoint_state_sha256") == before["state_sha256"], "selected checkpoint state binding mismatch")
+    require(type(result.get("warmups")) is int and result["warmups"] == 20
+            and type(result.get("n_documents")) is int and result["n_documents"] == 200, "warmup/document count mismatch")
+    rows = result.get("per_image")
+    fields = ("preparation_ms", "network_ms", "prepared_input_total_ms")
+    require(isinstance(rows, list) and len(rows) == 200, "exactly 200 timed records required")
+    for row, image_id in zip(rows, manifest["image_ids"]):
+        require(isinstance(row, dict) and set(row) == {"image_id", *fields} and row["image_id"] == image_id,
+                "timed record ID/source relationship mismatch")
+        for field in fields:
+            finite_duration(row[field])
+        require(math.isclose(row["preparation_ms"] + row["network_ms"], row["prepared_input_total_ms"], rel_tol=1e-10, abs_tol=1e-9),
+                "timing total accounting mismatch")
+    timing = result.get("timing")
+    require(isinstance(timing, dict) and set(timing) == set(fields), "timing summary fields mismatch")
+    for field in fields:
+        summary = timing[field]
+        require(isinstance(summary, dict) and set(summary) == {"median", "p95"}, "timing percentile fields mismatch")
+        for name, expected in timing_statistics([row[field] for row in rows]).items():
+            finite_duration(summary[name])
+            require(math.isclose(summary[name], expected, rel_tol=1e-10, abs_tol=1e-9), "independently recomputed percentile mismatch")
+
+
+def excluded_candidate_costs():
+    names = ("officer_source_to_canonical_registration", "detector_and_crop", "zone_reference_preparation",
+             "enrollment_and_reference_loading", "reference_retrieval", "reference_alignment", "reference_cache_handling",
+             "query_reference_matching", "production_fusion", "officer_device_execution", "metadata_loading",
+             "model_initialization_and_checkpoint_loading")
+    return {track: dict({name: "not_measured" for name in names},
+                        offline_legacy_canvas_preparation="not_applicable_to_query_only_candidate" if track == "R" else "not_measured")
+            for track in TRACK_ORDER}
+
+
+def validate_candidate_measurement(measurement: dict, bindings: dict) -> None:
+    manifest = validate_runtime_manifest(bindings["runtime_manifest"], bindings["catalogue"])
+    catalogue = authenticated_json(bindings["catalogue"], "original candidate catalogue")
+    require(measurement.get("schema_version") == "anchor_candidate_measurement_v1"
+            and measurement.get("status") == "measured" and measurement.get("measured") is True
+            and measurement.get("comparable") is True and measurement.get("track_order") == list(TRACK_ORDER),
+            "all three serial measurements required")
+    require(measurement.get("catalogue") == bindings["catalogue"]
+            and measurement.get("runtime_manifest") == bindings["runtime_manifest"]
+            and measurement.get("manifest_sha256") == manifest["manifest_sha256"] and measurement.get("contract") == CONTRACT
+            and measurement.get("host") == manifest["host"], "measurement original/frozen binding mismatch")
+    require(measurement.get("winner") is None and measurement.get("family_selection") == "not-authorized"
+            and measurement.get("detector_clearance") is False and measurement.get("execution_authorized") is False
+            and measurement.get("full_source_to_decision_latency") == "not_measured"
+            and measurement.get("excluded_or_unmeasured_costs") == excluded_candidate_costs(), "unsupported clearance/latency claim")
+    require(measurement.get("errors") == [] and measurement.get("diagnostic_only") == {}, "partial timing cannot be comparable")
+    tracks = measurement.get("tracks")
+    require(isinstance(tracks, dict) and set(tracks) == set(TRACK_ORDER), "all three measurements required")
+    require(isinstance(measurement.get("receipts"), dict) and set(measurement["receipts"]) == set(TRACK_ORDER),
+            "all three immutable measurement receipts required")
+    for candidate in catalogue["candidates"]:
+        track = candidate["track"]
+        validate_measurement_result(tracks[track], manifest, catalogue, candidate, bindings["runtime_manifest"])
+        receipt = measurement["receipts"][track]
+        require(authenticated_json(receipt, "immutable measurement receipt") == tracks[track], "measurement receipt changed")
+        validate_worker_request(receipt, tracks[track], {
+            "schema_version": "anchor_candidate_worker_request_v1", "operation": "measure", "track": track,
+            "catalogue": bindings["catalogue"], "inspections": manifest["inspections"], "runtime_manifest": bindings["runtime_manifest"]})
+
+
+def run_candidate_worker(operation, request_binding, output):
+    request = authenticated_json(request_binding, "worker request")
+    catalogue = authenticated_json(request["catalogue"], "worker catalogue")
+    tools = catalogue["measurement_tools"]
+    validate_tools(tools)
+    require("bench_anchor_candidate_worker.py" in tools["files"], "authenticated scientific worker required")
+    environment = dict(os.environ, PYTHONDONTWRITEBYTECODE="1")
+    environment.pop("PYTHONPATH", None)
+    process = subprocess.run([sys.executable, "-I", str(Path(tools["directory"]) / "bench_anchor_candidate_worker.py"),
+                              "--operation", operation, "--request", request_binding["path"],
+                              "--request-sha256", request_binding["sha256"], "--out", str(output)],
+                             env=environment, capture_output=True, text=True)
+    for suffix, content in (("stdout", process.stdout), ("stderr", process.stderr)):
+        with Path(str(output) + f".{suffix}.log").open("x") as stream:
+            stream.write(content)
+    require(process.returncode == 0, f"{operation} worker failed: {process.stderr.strip()}")
+
+
+def prepare_candidate_runtime(catalogue_binding, run_dir, worker_runner=None):
+    """Inspect all candidates serially, then prepare and freeze; never measure.
+
+    worker_runner(operation, request_authority, output_path) writes one result.
+    The default uses this interpreter in isolated fresh processes. The stable
+    prepare CLI remains metadata-only. Actual timing requires launch approval.
+    """
+    catalogue = authenticated_json(catalogue_binding, "candidate catalogue")
+    readiness = prepare_bindings(catalogue)
+    if readiness["status"] != "metadata-ready":
+        return readiness
+    validate_allocation()
+    output = create_output_directory(run_dir, protected_paths(catalogue) + [catalogue_binding["path"]])
+    runner = worker_runner or run_candidate_worker
+    result = dict(readiness, status="not-comparable", inspections={}, preparations={})
+    try:
+        for operation in ("inspect", "prepare"):
+            for candidate in catalogue["candidates"]:
+                track = candidate["track"]
+                request = {"schema_version": "anchor_candidate_worker_request_v1", "operation": operation,
+                           "track": track, "catalogue": catalogue_binding,
+                           "inspections": result["inspections"] if operation == "prepare" else None}
+                request_path = output / f"{operation}-{track}-request.json"
+                with request_path.open("x") as stream:
+                    json.dump(request, stream, sort_keys=True, indent=2, allow_nan=False)
+                request_binding = {"path": str(request_path), "sha256": file_sha256(request_path)}
+                result_path = output / f"{operation}-{track}-result.json"
+                runner(operation, request_binding, result_path)
+                binding = {"path": str(result_path), "sha256": file_sha256(result_path)}
+                payload = authenticated_json(binding, f"{operation} result")
+                require(payload.get("request_sha256") == request_binding["sha256"], "worker request/result binding mismatch")
+                if operation == "inspect":
+                    validate_inspection_result(payload, catalogue, candidate, catalogue_binding["sha256"])
+                    result["inspections"][track] = binding
+                else:
+                    inspected = authenticated_json(result["inspections"][track], "candidate inspection")
+                    validate_preparation_result(payload, catalogue, candidate, catalogue_binding["sha256"], inspected)
+                    result["preparations"][track] = binding
+            validate_inspection_bundle(result["inspections"], catalogue, catalogue_binding["sha256"])
+        tracks = {track: authenticated_json(binding, "prepared candidate") for track, binding in result["preparations"].items()}
+        for candidate in catalogue["candidates"]:
+            inspected = authenticated_json(result["inspections"][candidate["track"]], "candidate inspection")
+            validate_preparation_result(tracks[candidate["track"]], catalogue, candidate, catalogue_binding["sha256"], inspected)
+        host = tracks["R"]["host"]
+        require(all(item["host"] == host for item in tracks.values()), "prepared host identity drift")
+        manifest = {"schema_version": "anchor_candidate_cpu_v1", "base_timing_contract": "anchor_cpu_v1",
+                    "contract": copy.deepcopy(CONTRACT), "catalogue": catalogue_binding,
+                    "measurement_tools": catalogue["measurement_tools"], "image_ids": readiness["image_ids"],
+                    "image_ids_sha256": readiness["image_ids_sha256"], "host": host, "tracks": tracks,
+                    "inspections": result["inspections"], "preparations": result["preparations"],
+                    "full_source_to_decision_latency": "not_measured", "comparable": False,
+                    "execution_authorized": False, "excluded_or_unmeasured_costs": readiness["excluded_or_unmeasured_costs"]}
+        frozen = freeze_candidate_manifest(output / "runtime-manifest.json", manifest)
+        result.update(status="prepared", manifest_sha256=frozen["manifest_sha256"])
+    except (ValueError, TypeError, KeyError, OSError, RuntimeError, AttributeError) as error:
+        result["errors"].append(str(error))
+    with (output / "runtime-preparation.json").open("x") as stream:
+        json.dump(result, stream, sort_keys=True, indent=2, allow_nan=False)
+    return result
+
+
+def write_new_json(path, value):
+    reject_symlinks(Path(path).absolute())
+    with Path(path).open("x") as stream:
+        json.dump(value, stream, sort_keys=True, indent=2, allow_nan=False)
+        stream.write("\n")
+
+
+def runtime_markdown(result):
+    lines = ["# Preliminary candidate CPU timing", "", f"Status: {result['status']}", "",
+             "These are compound-recipe measurements, not a backbone-only comparison.",
+             "Same-host comparability does not establish officer-device deployment performance.",
+             "Input-plus-network timing is not full source-to-decision deployment latency.",
+             "Full source-to-decision latency: not_measured. No detector clearance or family selection is authorized.", ""]
+    if result["comparable"]:
+        lines.extend(["| Candidate | Input boundary | Preparation median/p95 ms | Network median/p95 ms | Input + network median/p95 ms |",
+                      "| --- | --- | --- | --- | --- |"])
+        for track in TRACK_ORDER:
+            measured = result["tracks"][track]
+            cells = [f"{measured['timing'][name]['median']:.6g}/{measured['timing'][name]['p95']:.6g}" for name in
+                     ("preparation_ms", "network_ms", "prepared_input_total_ms")]
+            lines.append(f"| {track} | {measured['preparation_scope']} | {' | '.join(cells)} |")
+    else:
+        lines.append("Partial durations are diagnostic-only and excluded from comparison tables.")
+    lines.extend(["", "## Excluded or unmeasured costs", "",
+                  "R includes raw decoding and resize. D/N start from precomputed canvases and zones; offline registration is excluded."])
+    for track, costs in result["excluded_or_unmeasured_costs"].items():
+        lines.append(f"\n{track}")
+        lines.extend(f"- {name}: {status}" for name, status in costs.items())
+    if result["errors"]:
+        lines.extend(["", "## Errors", *[f"- {error}" for error in result["errors"]]])
+    return "\n".join(lines) + "\n"
+
+
+def measure_candidate_runtime(catalogue_binding, run_dir, worker_runner=None):
+    """Allocated-only serial execution. Preparation is not launch authorization."""
+    preparation = prepare_candidate_runtime(catalogue_binding, run_dir, worker_runner)
+    if "inspections" not in preparation:
+        return preparation
+    output = Path(run_dir).resolve()
+    catalogue = authenticated_json(catalogue_binding, "original candidate catalogue")
+    result = {"schema_version": "anchor_candidate_measurement_v1", "status": "not-comparable", "measured": False,
+              "comparable": False, "execution_authorized": False, "winner": None, "family_selection": "not-authorized",
+              "detector_clearance": False, "full_source_to_decision_latency": "not_measured",
+              "excluded_or_unmeasured_costs": excluded_candidate_costs(), "catalogue": catalogue_binding,
+              "contract": copy.deepcopy(CONTRACT), "track_order": list(TRACK_ORDER), "tracks": {},
+              "diagnostic_only": {}, "receipts": {}, "errors": list(preparation["errors"])}
+    runner = worker_runner or run_candidate_worker
+    scientific_inventories = {}
+    try:
+        require(preparation["status"] == "prepared", "all inspections/preparations required before timing")
+        for candidate in catalogue["candidates"]:
+            parent = authenticated_json(candidate["parent_manifest"], "scientific parent")
+            scientific_inventories[candidate["track"]] = {
+                "scientific_source": candidate["scientific_source"], "source_files": parent["source_files"]}
+        manifest_binding = {"path": str(output / "runtime-manifest.json"), "sha256": file_sha256(output / "runtime-manifest.json")}
+        manifest = validate_runtime_manifest(manifest_binding, catalogue_binding)
+        result.update(runtime_manifest=manifest_binding, manifest_sha256=manifest["manifest_sha256"], host=manifest["host"])
+        receipts = {}
+        for candidate in catalogue["candidates"]:
+            validate_allocation()
+            validate_runtime_manifest(manifest_binding, catalogue_binding)
+            track = candidate["track"]
+            request = {"schema_version": "anchor_candidate_worker_request_v1", "operation": "measure", "track": track,
+                       "catalogue": catalogue_binding, "inspections": manifest["inspections"], "runtime_manifest": manifest_binding}
+            request_path = output / f"measure-{track}-request.json"
+            write_new_json(request_path, request)
+            request_binding = {"path": str(request_path), "sha256": file_sha256(request_path)}
+            result_path = output / f"measure-{track}-result.json"
+            runner("measure", request_binding, result_path)
+            authenticated_json(request_binding, "immutable measurement request")
+            receipt = {"path": str(result_path), "sha256": file_sha256(result_path)}
+            payload = authenticated_json(receipt, "measured candidate")
+            require(payload.get("request_sha256") == request_binding["sha256"], "measurement request/result binding mismatch")
+            validate_runtime_manifest(manifest_binding, catalogue_binding)
+            validate_measurement_result(payload, manifest, catalogue, candidate, manifest_binding)
+            receipts[track] = receipt
+            result["diagnostic_only"][track] = payload
+        for track, receipt in receipts.items():
+            require(authenticated_json(receipt, "immutable measured receipt") == result["diagnostic_only"][track],
+                    "earlier measurement receipt mutated")
+        result.update(status="measured", measured=True, comparable=True, tracks=result["diagnostic_only"], diagnostic_only={}, receipts=receipts)
+        validate_candidate_measurement(result, {"catalogue": catalogue_binding, "runtime_manifest": manifest_binding})
+    except (ValueError, TypeError, KeyError, OSError, RuntimeError, AttributeError) as error:
+        if result["tracks"]:
+            result["diagnostic_only"] = result["tracks"]
+        result.update(status="not-comparable", measured=False, comparable=False, tracks={})
+        result["errors"].append(str(error))
+    write_new_json(output / "measurement-source-inventory.json", catalogue["measurement_tools"])
+    write_new_json(output / "scientific-source-inventories.json", scientific_inventories)
+    write_new_json(output / "runtime.json", result)
+    with (output / "runtime.md").open("x") as stream:
+        stream.write(runtime_markdown(result))
+    return result
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--phase", choices=("prepare", "measure"), required=True)
@@ -462,8 +939,12 @@ def main(argv=None):
     parser.add_argument("--run-dir", required=True)
     args = parser.parse_args(argv)
     try:
-        require(args.phase == "prepare", "measurement is not implemented or authorized by Task 1 preparation")
         binding = {"path": str(Path(args.candidates).absolute()), "sha256": args.candidates_sha256}
+        if args.phase == "measure":
+            result = measure_candidate_runtime(binding, args.run_dir)
+            print(json.dumps({"status": result["status"], "comparable": result["comparable"], "execution_authorized": False,
+                              "report": str(Path(args.run_dir) / "runtime.json") if Path(args.run_dir).exists() else None}))
+            return 0 if result["status"] == "measured" else 2 if result["status"] == "waiting-for-completion" else 1
         catalogue = authenticated_json(binding, "candidate catalogue")
         result = prepare_bindings(catalogue)
         protections = protected_paths(catalogue)
