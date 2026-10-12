@@ -1,0 +1,147 @@
+{
+  "identities": {
+    "enrollment_manifest_sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8",
+    "recipe_sha256": "7a87ddefc956dd6026e2d29c8459d9bcb8251cbc9105218926b6d67e5abaa1a5",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "c6a75f48e7c5b405d853a95d67078487e165ff97d27054b42b8737892a6f1509",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9"
+  },
+  "phase": "coordinate",
+  "phase_authority": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-diagnostic-38063/diagnostic/coordinate/phase-authority.json",
+    "sha256": "a6d793b7369e7b5e827ab8c1216a87ef1680f0f7fb9d4973f90ebd2bf7c83409"
+  },
+  "query_opens": [
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_aze_passport_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/aze_passport_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_esp_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/esp_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_est_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/est_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_fin_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/fin_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_grc_passport_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/grc_passport_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_lva_passport_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/lva_passport_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/rus_internalpassport_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_srb_passport_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/srb_passport_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_svk_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/raw/sidtd/templates/Images/reals/svk_id_01.jpg",
+      "role": "train"
+    }
+  ],
+  "registration": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-diagnostic-38063/diagnostic/coordinate/registration.json",
+    "sha256": "2e9fc838f832d63b2cde089a21af8b6555b70f3c248f91393c7e977effb00d74"
+  },
+  "schema_version": "direct_reference_query_reads_v1",
+  "shared": true
+}

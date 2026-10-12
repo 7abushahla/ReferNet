@@ -1,0 +1,33 @@
+{
+  "diagnostic_only": true,
+  "identities": {
+    "enrollment_manifest_sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8",
+    "recipe_sha256": "7a87ddefc956dd6026e2d29c8459d9bcb8251cbc9105218926b6d67e5abaa1a5",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "c6a75f48e7c5b405d853a95d67078487e165ff97d27054b42b8737892a6f1509",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9"
+  },
+  "no_test_open": true,
+  "passed": true,
+  "schema_version": "direct_reference_diagnostic_v1",
+  "smoke_gates": {
+    "off": {
+      "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-diagnostic-38063/diagnostic/smoke/off/smoke-gate.json",
+      "sha256": "848368b634e725c3b2c7db000c26df625e7190be2bb00319d18355690af7c695"
+    },
+    "on": {
+      "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-diagnostic-38063/diagnostic/smoke/on/smoke-gate.json",
+      "sha256": "3050f9a6dd2ebb6a8d8afe1d048e64e57bd12c643974b76c543cd8270c783d3f"
+    }
+  },
+  "training_gates": {
+    "off": {
+      "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-diagnostic-38063/diagnostic/coordinate/off/training-gate.json",
+      "sha256": "805452ef8cf9501096f03006f198773d7829f628ba2ede7b80f2d3d083b3cfba"
+    },
+    "on": {
+      "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-diagnostic-38063/diagnostic/coordinate/on/training-gate.json",
+      "sha256": "b01de10bdd339fb04accbcaf97f7354bc0824e154d6317a52886f3868cfa4b67"
+    }
+  }
+}

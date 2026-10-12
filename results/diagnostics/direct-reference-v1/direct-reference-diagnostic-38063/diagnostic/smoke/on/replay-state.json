@@ -1,0 +1,178 @@
+{
+  "checkpoint": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-diagnostic-38063/diagnostic/smoke/on/best.pt",
+    "sha256": "ee7aa64db88d308548458229b524eb163b0b8365bdc0aac2eb90fb98a1010fa2"
+  },
+  "config": {
+    "accumulation_steps": 1,
+    "adapter_seed": 42,
+    "architecture_id": "anchor_direct_reference_ia18_v1",
+    "arm": "on",
+    "augment": {
+      "affine_border": "constant_zero",
+      "affine_px": 8,
+      "binary_interpolation": "opencv_inter_nearest",
+      "crop": null,
+      "enabled": true,
+      "interpolation": "opencv_inter_linear",
+      "jitter_p": 0.25,
+      "jitter_px": 2,
+      "jitter_rgb_border": "replicate",
+      "jitter_target_border": "constant_zero",
+      "jitter_zone": true,
+      "jpeg_quality": null,
+      "photometric": true,
+      "photometric_strength": 0.2,
+      "preset": "direct_reference_canvas_v1",
+      "reference_photometric": false,
+      "rotation_degrees": 1.0
+    },
+    "batch_size": 8,
+    "bn_policy": "shared_sequential_train_bn_stored_eval_v1",
+    "clip_grad_norm": 5.0,
+    "comparison": "matched_reference_bridge",
+    "data_contract": "direct_reference_canvas_v1",
+    "drop_last": true,
+    "enrollment_sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8",
+    "epochs": 100,
+    "eval_batch_size": 1,
+    "eval_drop_last": false,
+    "fold": 0,
+    "head_seed": 42,
+    "initialization": "fresh_offline_levir",
+    "input_shape": [
+      4,
+      512,
+      800
+    ],
+    "mask_weight": 0.0,
+    "normalization": {
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "optimizer": {
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "lr_backbone": 0.0001,
+      "lr_new": 0.001,
+      "name": "adamw",
+      "weight_decay": 0.05
+    },
+    "precision": {
+      "amp": false,
+      "cudnn_tf32": false,
+      "dtype": "float32",
+      "matmul_tf32": false,
+      "training_bit_reproducible": false
+    },
+    "records_csv": "data/processed/records.csv",
+    "reference_enabled": true,
+    "scheduler": {
+      "name": "warmup_cosine",
+      "warmup_cap_fraction": 0.1,
+      "warmup_iters": 1000
+    },
+    "schema_version": "direct_reference_pilot_v1",
+    "seed": 42,
+    "selection": {
+      "exact_tie": "earlier_epoch",
+      "primary": "accuracy",
+      "tie_break": "auc"
+    },
+    "split_csv": "data/processed/splits/protocol_a_it0.csv",
+    "track": "direct_reference_pilot",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618",
+    "wrong_design_fraction": 0.0
+  },
+  "identities": {
+    "config_sha256": "5704fddf58154c4ba66de9b972b6425f92c25cb2da905d645afc03a7af64dae1",
+    "enrollment_sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8",
+    "initialization_sha256": "ea47da64e71ef4c0e90e213baa846e54ae0ec1df23fd6678dac06c0281e6e9d2",
+    "phase_authority_sha256": "a97e37edf9bfa54ab0562964398e571561b987a6f188fb3e933eee5c1938208d",
+    "preprocess_sha256": "a7dfbe5785d574f7271ae301e121c51d566f7a4b8176cebe7895f57c302af622",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "registration_sha256": "956d3ff75443bd253ea92a62ce6bd072bc242d4f9d3f20afd96539493004bf38",
+    "source_sha256": "c6a75f48e7c5b405d853a95d67078487e165ff97d27054b42b8737892a6f1509",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "predictions": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-diagnostic-38063/diagnostic/smoke/on/predictions.csv",
+    "sha256": "4b871cdbc692c89438b6829f8e9f1446d7245092dcb6c70de10ec23c80ae35eb"
+  },
+  "preprocess": {
+    "enrollment_authority": {
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/inputs/enrollment.json",
+      "sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8"
+    },
+    "phase_authority": {
+      "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-diagnostic-38063/diagnostic/smoke/phase-authority.json",
+      "sha256": "a97e37edf9bfa54ab0562964398e571561b987a6f188fb3e933eee5c1938208d"
+    },
+    "product_root_authority": {
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/inputs/product-root.json",
+      "sha256": "6ec0235c0e8089df6d1355ee6e8d3b0256f6001a97d03e7df27d0585d55de1fb"
+    },
+    "raw_root": "/scratch/b00090279/direct-reference-diagnostic-38063/raw",
+    "recipe_sha256": "7a87ddefc956dd6026e2d29c8459d9bcb8251cbc9105218926b6d67e5abaa1a5",
+    "records_authority": {
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/inputs/records.csv",
+      "sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276"
+    },
+    "source_sha256": "c6a75f48e7c5b405d853a95d67078487e165ff97d27054b42b8737892a6f1509",
+    "split_authority": {
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38063/inputs/split.csv",
+      "sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9"
+    },
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "table": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-diagnostic-38063/diagnostic/smoke/registration.json",
+    "sha256": "956d3ff75443bd253ea92a62ce6bd072bc242d4f9d3f20afd96539493004bf38"
+  },
+  "val_ids": [
+    "sidtd_alb_id_03_fake_6_87",
+    "sidtd_alb_id_13",
+    "sidtd_alb_id_17_fake_6_98",
+    "sidtd_alb_id_19",
+    "sidtd_alb_id_20_fake_6_51",
+    "sidtd_alb_id_24_fake_6_100",
+    "sidtd_alb_id_33_fake_6_10",
+    "sidtd_alb_id_37",
+    "sidtd_alb_id_41",
+    "sidtd_alb_id_42_fake_6_94",
+    "sidtd_alb_id_45_fake_6_62",
+    "sidtd_alb_id_53_fake_6_33",
+    "sidtd_alb_id_54_fake_6_24",
+    "sidtd_alb_id_59_fake_6_7",
+    "sidtd_alb_id_61",
+    "sidtd_alb_id_63",
+    "sidtd_alb_id_66_fake_6_21",
+    "sidtd_alb_id_69_fake_6_3",
+    "sidtd_alb_id_70_fake_6_55",
+    "sidtd_alb_id_75",
+    "sidtd_alb_id_80_fake_6_57",
+    "sidtd_alb_id_81_fake_6_63",
+    "sidtd_alb_id_81_fake_6_91",
+    "sidtd_alb_id_83",
+    "sidtd_alb_id_83_fake_6_35",
+    "sidtd_alb_id_89",
+    "sidtd_alb_id_90",
+    "sidtd_aze_passport_00_fake_3_105",
+    "sidtd_aze_passport_10",
+    "sidtd_aze_passport_17",
+    "sidtd_aze_passport_27",
+    "sidtd_aze_passport_33"
+  ]
+}
