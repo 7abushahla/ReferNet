@@ -1,0 +1,27 @@
+{
+  "authorized_enrollment": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/protocol-b-group7-38178/preparation/authorized-enrollment.json",
+    "sha256": "3d899d9f07a5915e9e0d242c6cd771dd8932f54759ae76731e5c53fb86663aa7"
+  },
+  "enrollment": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/protocol-b-group7-38178/preparation/enrollment/manifest.json",
+    "sha256": "3220821e7640aa49bb70b1ab59001217e3296f847954e2da0d79a048ef295ddc"
+  },
+  "group": 7,
+  "n_target_excluded": 89,
+  "n_target_queries": 729,
+  "n_target_support": 76,
+  "n_train": 1184,
+  "n_val": 144,
+  "passed": true,
+  "phase": "products",
+  "protocol": "B",
+  "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+  "schema_version": "protocol_b_preparation_v1",
+  "split_sha256": "64d41caab2d0158955b9c6c7f09db9ad3f40fc2fe49443f95ddf59de8a2b7fea",
+  "target_enrollment": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/protocol-b-group7-38178/preparation/target-enrollment.json",
+    "sha256": "b6a43b269007c2819573da3893a5bd2e334e97e617fe3ecf7fefb7c990bd2ba0"
+  },
+  "target_query_pixels_opened": false
+}

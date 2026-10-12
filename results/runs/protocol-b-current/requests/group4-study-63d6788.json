@@ -1,0 +1,33 @@
+{
+  "schema_version": "protocol_b_request_v1",
+  "protocol": "B",
+  "group": 4,
+  "source_sha256": "a404e2f98333b03633ef81782a97da9fc89674f14b8cd29d4ddebe042a804865",
+  "config": {
+    "path": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788/configs/direct_reference_pilot.yaml",
+    "sha256": "a89c6213a1877632510f66f49cf843c7e0c5a9e585b434da08abbecb8abf7b39"
+  },
+  "weights": {
+    "path": "/shared/b00090279/refer-or-clear/results/source/study-shared-assets/weights.pth",
+    "sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "records": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/protocol-b-group4-38175/inputs/records.csv",
+    "sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276"
+  },
+  "split": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/protocol-b-group4-38175/inputs/split.csv",
+    "sha256": "9879e5979091254cc358949a35bc6f99321152dcbebe47eca0e7c5a68195821e"
+  },
+  "target_enrollment": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/protocol-b-group4-38175/preparation/target-enrollment.json",
+    "sha256": "14b6e7f77ec2951e7fdc9cad1ec6d5d66405acd3f790d72c8ecd8dfe4774df01"
+  },
+  "enrollment": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/protocol-b-group4-38175/preparation/enrollment/manifest.json",
+    "sha256": "fb65fc230afd8ff7accfed28eba92baaa90a0614967d1dc985ebea48b34e5001"
+  },
+  "raw_root": "/shared/b00090279/refer-or-clear/data/raw",
+  "output_root": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group4-study-63d6788",
+  "cache_bytes": 4294967296
+}
