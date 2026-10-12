@@ -290,3 +290,11 @@ Ruling: use ordinary shared BN in both sequential training branches and stored s
 Ruling: retain context-to-query alignment, authenticate one common image-only transform table, and keep the existing bridge-first sequence and .99 AUC/.97 accuracy criteria. ChangeChip provides an explicit inverse-context alignment precedent; literature does not require reversing the warp. Threshold relaxation, unsupported non-inferiority wording, automatic parallel long runs and extra seed launches are not adopted.
 
 Archimedes is updating the concrete specification and task plan under narrow document ownership. Production implementation follows reviewed interfaces and TDD. Already-authorized runtime Task 3 has resumed its synthetic regression work in parallel. No new model, diagnostic allocation, 100-epoch run or sweep has been submitted in this continuation.
+
+### Direct-reference implementation milestone, 12 October
+
+The amended concrete spec and four-task implementation brief are now published. They pin the shared training-BN policy, retained off-mode local head, authenticated phase/data bridge, isolated runner/checkpoint schema, and diagnostic-only allocation packaging. Turing independently returned bounded document PASS, including the coordinator's Task 3/4 additions and the explicit hash-bound phase-authority clarification. This clears the written contract, not its implementation or GPU execution.
+
+The user accepts a possible small query-only tradeoff if reference conditioning improves the intended unseen-design setting. This is recorded as a hypothesis, not a demonstrated gain, a change to the .99 AUC/.97 accuracy bridge gates, or a final choice of D over R. No later-protocol test results may be used to repeatedly select the family.
+
+Maxwell delivered the pure model and synthetic tests. A fresh coordinator run of `tests/test_direct_reference_model.py` and `tests/test_anchor_changer.py` passed 131 tests with one inherited GPU test skipped. The new actual-stack integration test was not yet present at that checkpoint; it is being added explicitly, and Galileo is independently reviewing the model. No installed-stack/GPU clearance is claimed. Wegener is implementing the authenticated data bridge, while Archimedes implements the isolated training/checkpoint primitives in separate files. No new allocation or training job has been submitted.

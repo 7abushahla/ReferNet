@@ -1,5 +1,7 @@
 # Matched Reference Extension Preparation Plan
 
+> **Direct-branch supersession, 12 October 2026.** This document retains reusable provenance and consumer gates, not the current direct-model implementation schedule. The concrete design in `docs/superpowers/specs/2026-10-12-direct-reference-pilot-design.md` and Task 1/2 brief in `docs/superpowers/plans/2026-10-12-direct-reference-pilot.md` supersede unresolved direct-family choices and the older tasks below. The approved direct route retains the off-mode query projection/local head with structural-zero reference/difference channels. Both shared-encoder paths use ordinary training BN, with sequential query then available-reference-prefix updates and frozen evaluation buffers. The previous reference-buffer-freeze preference is superseded. R/N branch alternatives remain archival options, not authorization for new architectural search. Bounded pure-library implementation/test preparation is approved; allocations and substantive training remain separately authorized.
+
 > **For agentic workers:** Use `superpowers:executing-plans` only after the family, extension design, interfaces, implementation ownership, and execution scope receive explicit approval. This document authorizes neither implementation nor execution. Checkboxes below describe future work, not work approved for this preparation task.
 
 **Status:** Branch-conditional preparation requested on 12 October 2026. No family or fusion design is selected. No model run, reference training, sweep, submission, or commit is authorized by this document.
