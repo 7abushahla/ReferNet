@@ -1,8 +1,8 @@
 ---
 title: Refer or Clear Paper Plan, Reference-Conditioned Detection of Altered Travel Documents on Unseen Designs
 date: 2026-10-10
-updated: 2026-10-11
-status: Historical study-wide plan. Protocol A pilot implementation is authorized under Codex coordination, with milestone review and a separate gate review before each long training run. Historical architectural claims below are superseded by the current specification.
+updated: 2026-10-13
+status: Historical study-wide plan. Current execution follows the deadline-bounded parallel plan and original selected DirectReference family. Historical architecture, protocol numbering, performance gates, and completed-result claims below do not override the current execution notice.
 aliases:
   - Refer or Clear paper plan
   - GDRFA award paper plan
@@ -20,7 +20,19 @@ related:
 
 A paper for the GDRFA Dubai Scientific Research Award, second cycle, Digital Innovation Award, Artificial Intelligence theme. The manuscript lives in the proposal folder under `submission/main.tex` (LuaLaTeX, the award's eleven-section structure). Code, data tooling and results live in the private repository `7abushahla/refer-or-clear`. The claim chain below records the historical study-wide plan, subject to the current review notice.
 
-## Current review notice, 11 October 2026
+## Current execution notice, 13 October 2026
+
+The operative execution policy is [Deadline-bounded parallel study execution](superpowers/plans/2026-10-13-parallel-study-execution.md), with authenticated submissions and outcomes in the [execution ledger](anchor-pilot-execution-2026-10-11.md). The user accepts a reported familiar-design trade-off and authorizes parallel work without further approval. Earlier 97% accuracy and 0.99 AUC advancement targets no longer block execution. Correctness, trusted-support isolation, matched fresh initialization, complete prediction replay, and validation-only selection remain mandatory.
+
+The current family is the scalar-output DirectReference model. A shared ResNet18 encoder supplies a global query classifier and a local correction branch. The latter can compare a genuine design median with the query inside an enrollment-derived personal-data zone. Reference OFF retains local query processing but omits reference encoding. There is no ChangerEx feature exchange, alteration-map decoder, predicted localization map, or localization loss in this family. Query RGB, optional reference RGB, and a non-oracle personal-data zone remain the study inputs. OFF still receives trusted design geometry and zone context; it is not a zero-design-information condition.
+
+The four experimental roles remain A, the official familiar-design SIDTD anchor; B, SIDTD held-out-nationality evaluation; C, frozen SIDTD-to-FantasyID transfer; and D, the original WV/AZ IDNet pair. Fold-zero A OFF100 completed, and its selected validation result is 92.79% accuracy and 0.974672 AUC. Formal A ON100 and the matched B group-zero source-training pair are running. Neither is a completed test result. Additive A fold-aware replication adapters and existing support banks are being prepared to complete the official ten-fold anchor, not to select another architecture.
+
+B and C use deterministic trusted target enrollment reserved before outcome access. The reserved identities/components and linked attacks are excluded from both arms' common query population. This is not the unchanged published test population or zero target information. C support construction completed for three designs, with 66 genuine support captures, 66 excluded attacks, and 467 remaining queries (234 genuine, 113 face swaps, 120 text inpaints). C performs no target training and deploys the same source-validation-selected A models after both original training/replay chains complete. The exact native C cohort has class-linked JPEG quantization dictionaries; this limits interpretation and does not prove CNN mechanism or shortcut removal. D remains incomplete because verified WV inputs and a finalized D contract are absent. AZ-only transfer cannot silently stand in for it.
+
+Test outcomes cannot choose the family or tune thresholds. Source-validation thresholds are transported unchanged. Failed registration retains queries with mandatory referral; classifier-only metrics and deployment-with-referral rates are reported separately. Only completed authenticated measurements enter the manuscript. The manuscript now lives at `/Users/hamza/Documents/GitHub/GDRFA-Award-Paper/main.tex`. Historical localization, specimen, and timing claims below are not implemented current results.
+
+## Earlier review notice, 11 October 2026
 
 The operative Protocol A proposal is [Classification-centered anchor and fold-safe enrollment design](superpowers/specs/2026-10-11-classification-centered-anchor-design.md). Its [implementation plan](superpowers/plans/2026-10-11-classification-centered-anchor.md) is authorized under Codex coordination, with progress in the [execution ledger](anchor-pilot-execution-2026-10-11.md). It proposes three parallel fold-0 tracks, including exploration of a new architecture family, followed by a matched reference comparison and confirmation before an approved sweep. Protocol A must be established before B, FantasyID in C, and IDNet in D. An early FantasyID header/membership audit is a bounded exception, not model evaluation or training. The three-input study concept remains query RGB, genuine same-design reference RGB and personal-data zone context. Internal ChangerEx blocks, mandatory localization, wrong-design relabeling and the fixed canvas are not immutable requirements.
 

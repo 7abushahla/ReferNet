@@ -2,13 +2,21 @@
 
 This note fixes which public datasets the study uses, what each one is for, and what each one cannot do. Everything below was checked against the servers and the papers on 10 October 2026, not against secondary descriptions.
 
+## Current execution qualification, 13 October 2026
+
+The protocol numbering and architecture changed after this historical dataset survey. Current A is the official familiar-design SIDTD template anchor, B is SIDTD held-out nationalities, C is frozen SIDTD-to-FantasyID transfer, and D is the original WV/AZ IDNet pair. Follow `docs/superpowers/plans/2026-10-13-parallel-study-execution.md` and the execution ledger rather than older B/C numbering or localization claims below. The current model produces scalar classification scores, not pixel masks.
+
+SIDTD classifier training uses the original official folded image populations. Trusted geometry, zones, and median support exclude each fold's validation/test components. B and C reserve deterministic target genuine components for enrollment and exclude their linked queries/attacks from both arms. C's actual classifier source is A fold zero, 1,778 training and 222 validation images, not the legacy C source split. Its frozen 599 target images become 66 genuine support, 66 excluded altered derivatives, and 467 queries comprising 234 genuine, 113 face swaps, and 120 text inpaints. Target outcomes do not select models or thresholds. The exact reduced C cohort has deterministic class-associated quantization dictionaries, documented in `evidence/protocol-c-locked-header-audit-2026-10-13.md`; this is a measured dataset association, not a demonstrated exclusive CNN mechanism.
+
+Already downloaded FantasyID and AZ were transferred to the cluster. These transport receipts do not establish original Protocol D readiness. WV is not verified locally or on the cluster, and unresolved IDNet combined-morph donor provenance remains fail-closed. Do not download new archives autonomously, claim D completion, or silently substitute an AZ-only experiment. Later statements about exact published-population comparison, Arabic evaluation, face-task training, and localization metrics describe earlier proposals unless specifically implemented and authenticated under the current plan.
+
 ## 1. Decision
 
 | Dataset | Role | Download | Size |
 |---|---|---|---|
-| SIDTD (built on MIDV-2020) | Training source for Protocols A and B. Protocol A test (nationality hold-out). | `templates.zip`, `few_shot_split_templates.zip`, `kfold_split_templates.zip` from `datasets.cvc.uab.es/SIDTD/`; verified locally on 10 October 2026 at `~/Downloads/Datasets/SIDTD` (1,000 reals, 1,222 fakes, 10 real and 1,222 fake annotation files, the few-shot and 10-fold split CSVs, the generator repository) | 1.3 GB |
-| FantasyID | Protocol B test: unseen designs, unseen generator, printed and captured, Arabic design. | `FantasyID.tgz`, Zenodo 17063366 | 2.6 GB |
-| IDNet (Zenodo release) | Protocol C: the published cross-type pair West Virginia and Arizona, both directions. Face attacks for Protocol B training. | `AZ.zip` (Zenodo 13852757), `WV.zip` (Zenodo 13854938) | 45 GB |
+| SIDTD (built on MIDV-2020) | Classifier source for A and B. A uses official template folds; B holds out nationalities. A-selected models deploy unchanged in C. | `templates.zip`, `few_shot_split_templates.zip`, `kfold_split_templates.zip` from `datasets.cvc.uab.es/SIDTD/`; verified locally on 10 October 2026 at `~/Downloads/Datasets/SIDTD` (1,000 reals, 1,222 fakes, 10 real and 1,222 fake annotation files, the few-shot and 10-fold split CSVs, the generator repository) | 1.3 GB |
+| FantasyID | C test, unseen designs and captured-source transfer with target genuine enrollment; face swaps reported separately from text inpainting. No classifier training on FantasyID. | `FantasyID.tgz`, Zenodo 17063366 | 2.6 GB |
+| IDNet (Zenodo release) | Planned D, the original West Virginia/Arizona cross-type pair. Not implemented current results or B training. | `AZ.zip` (Zenodo 13852757), `WV.zip` (Zenodo 13854938); AZ exists, WV remains unverified | 45 GB planned |
 | IDNet, optional | Second published pair: Finland to Spain (Table 15, cheapest, shares designs with SIDTD) or Greece to Albania (Table 16, the worst published numbers). | `FIN.zip`, `ESP.zip` (13852734) or `GRC.zip`, `ALB.zip` (13854938, 13854897) | 13.6 GB or 34.5 GB |
 
 Total for the core study: about 49 GB. Nothing else is downloaded.
