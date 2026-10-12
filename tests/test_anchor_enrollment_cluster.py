@@ -35,7 +35,7 @@ from pathlib import Path
 parser = argparse.ArgumentParser()
 for flag in ('records', 'split', 'raw-root', 'out'):
     parser.add_argument('--' + flag, type=Path, required=True)
-parser.add_argument('--fold', type=int, choices=[0], required=True)
+parser.add_argument('--fold', type=int, choices=range(10), required=True)
 args = parser.parse_args()
 if args.out.exists():
     parser.error('output already exists')
@@ -192,6 +192,51 @@ def test_enrollment_runs_frozen_fold0_builder_without_staging_pixels_or_launchin
             assert (root / name).stat().st_mode & 0o222 == 0
 
 
+@pytest.mark.parametrize("fold", [1, 4, 9])
+def test_optional_fold_propagates_to_paths_and_frozen_builder(enrollment_job, fold):
+    job = enrollment_job
+    with job["split"].open(newline="") as stream:
+        reader = csv.DictReader(stream)
+        fields = reader.fieldnames
+        membership = list(reader)
+    for row in membership:
+        row.update(fold=fold, ref_group=f"it{fold}")
+    with job["split"].open("w", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(membership)
+    result = run_wrapper(job, [*job["arguments"], fold])
+    assert result.returncode == 0, result.stderr
+    run = job["run"].with_name(f"anchor-enrollment-fold{fold}-1234")
+    stage = job["stage"].with_name(f"anchor-enrollment-fold{fold}-1234")
+    call = json.loads((run / "enrollment/builder_call.json").read_text())
+    assert call["arguments"] == dict(records=str(stage / "inputs/records.csv"),
+                                     split=str(stage / "inputs/split.csv"), fold=str(fold),
+                                     raw_root=str(job["raw"]), out=str(run / "enrollment"))
+    assert call["script"] == str(stage / "code/scripts/prepare_anchor_enrollment.py")
+    assert call["cwd"] == str(stage / "code")
+    assert call["split"] == job["split"].read_text()
+    assert call["environment"]["TMPDIR"] == str(stage / "tmp")
+    assert list((stage / "raw").iterdir()) == []
+    assert not job["run"].exists() and not job["stage"].exists()
+
+
+@pytest.mark.parametrize("fold", ["-1", "10", "1.0", "01", "", "../4", "A", " 4"])
+def test_invalid_fold_fails_before_environment_activation_or_preparation(enrollment_job, fold):
+    job = enrollment_job
+    marker = job["source"].parent / "environment_activated.txt"
+    with Path(job["environment"]["BASH_ENV"]).open("a") as stream:
+        stream.write(f'''source() {{
+    printf 'unexpected work' > {shlex.quote(str(marker))}
+    return 97
+}}
+''')
+    result = run_wrapper(job, [*job["arguments"], fold])
+    assert result.returncode == 2, result.stderr
+    assert not marker.exists()
+    assert not job["stage"].parent.exists() and not job["run"].parent.exists()
+
+
 @pytest.mark.parametrize("guard", ["job", "node", "submit", "login", "head", "frontend", "lgn",
                                    "partition", "job_id", "few_arguments", "extra_arguments"])
 def test_allocation_and_cli_guards_fail_before_preparation(enrollment_job, guard):
@@ -209,7 +254,7 @@ def test_allocation_and_cli_guards_fail_before_preparation(enrollment_job, guard
     elif guard == "few_arguments":
         arguments = arguments[:-1]
     else:
-        arguments = [*arguments, "specimens"]
+        arguments = [*arguments, "0", "specimens"]
     result = run_wrapper(job, arguments)
     assert result.returncode != 0
     assert not job["stage"].exists()

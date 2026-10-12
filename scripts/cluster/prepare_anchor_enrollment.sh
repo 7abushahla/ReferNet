@@ -9,10 +9,12 @@
 #SBATCH --job-name=anchor-enrollment-fold0
 #SBATCH --output=logs/slurm/%x-%j.out
 set -euo pipefail
-if [[ $# -ne 5 ]]; then
-    echo "Usage: $0 SOURCE_DIR RECORDS SPLIT RAW_ROOT OUTPUT_ROOT" >&2
+if [[ $# -ne 5 && $# -ne 6 ]]; then
+    echo "Usage: $0 SOURCE_DIR RECORDS SPLIT RAW_ROOT OUTPUT_ROOT [FOLD (0..9, default 0)]" >&2
     exit 2
 fi
+fold="${6-0}"
+[[ "$fold" =~ ^[0-9]$ ]] || { echo 'Fold must be an integer in 0..9' >&2; exit 2; }
 : "${SLURM_JOB_ID:?Allocated Slurm job required}"
 : "${SLURMD_NODENAME:?Allocated compute node required}"
 : "${SLURM_SUBMIT_DIR:?Submit from the repository root}"
@@ -28,9 +30,9 @@ python_bin="$environment_path/bin/python"
 cd "$SLURM_SUBMIT_DIR"
 source_dir="$(cd "$1" && pwd -P)"
 raw_root="$(cd "$4" && pwd -P)"
-scratch="${ROC_SCRATCH_ROOT:-/tmp/$USER}/anchor-enrollment-fold0-$SLURM_JOB_ID"
+scratch="${ROC_SCRATCH_ROOT:-/tmp/$USER}/anchor-enrollment-fold$fold-$SLURM_JOB_ID"
 [[ "$scratch" == /* ]] || scratch="$PWD/$scratch"
-run_dir="$5/anchor-enrollment-fold0-$SLURM_JOB_ID"
+run_dir="$5/anchor-enrollment-fold$fold-$SLURM_JOB_ID"
 [[ "$run_dir" == /* ]] || run_dir="$PWD/$run_dir"
 export PYTHONPATH="$source_dir/src"
 export PYTHONUNBUFFERED=1
@@ -51,4 +53,4 @@ export PYTHONPATH="$code_root/src"
 cd "$code_root"
 "$python_bin" "$code_root/scripts/prepare_anchor_enrollment.py" \
     --records "$scratch/inputs/records.csv" --split "$scratch/inputs/split.csv" \
-    --fold 0 --raw-root "$raw_root" --out "$run_dir/enrollment"
+    --fold "$fold" --raw-root "$raw_root" --out "$run_dir/enrollment"
