@@ -1,0 +1,94 @@
+{
+  "accuracy": 0.9279279279279279,
+  "altered_misses": [
+    "sidtd_aze_passport_97_fake_3_115",
+    "sidtd_esp_id_56_fake_2_107",
+    "sidtd_esp_id_63_fake_2_112",
+    "sidtd_esp_id_77_fake_2_103",
+    "sidtd_est_id_62_fake_9_113",
+    "sidtd_est_id_74_fake_9_115",
+    "sidtd_fin_id_18_fake_7_110",
+    "sidtd_grc_passport_07_fake_4_101",
+    "sidtd_grc_passport_30_fake_4_108",
+    "sidtd_grc_passport_94_fake_4_106",
+    "sidtd_lva_passport_51_fake_0_114",
+    "sidtd_srb_passport_87_fake_5_100",
+    "sidtd_svk_id_34_fake_8_103"
+  ],
+  "auc": 0.9637704918032788,
+  "availability_reasons": {
+    "fit": 222
+  },
+  "buffers_unchanged": true,
+  "by_availability": {
+    "available": {
+      "accuracy": 0.9279279279279279,
+      "altered_misses": [
+        "sidtd_aze_passport_97_fake_3_115",
+        "sidtd_esp_id_56_fake_2_107",
+        "sidtd_esp_id_63_fake_2_112",
+        "sidtd_esp_id_77_fake_2_103",
+        "sidtd_est_id_62_fake_9_113",
+        "sidtd_est_id_74_fake_9_115",
+        "sidtd_fin_id_18_fake_7_110",
+        "sidtd_grc_passport_07_fake_4_101",
+        "sidtd_grc_passport_30_fake_4_108",
+        "sidtd_grc_passport_94_fake_4_106",
+        "sidtd_lva_passport_51_fake_0_114",
+        "sidtd_srb_passport_87_fake_5_100",
+        "sidtd_svk_id_34_fake_8_103"
+      ],
+      "auc": 0.9637704918032788,
+      "genuine_false_positives": [
+        "sidtd_alb_id_63",
+        "sidtd_aze_passport_75",
+        "sidtd_rus_internalpassport_77"
+      ],
+      "n_altered": 122,
+      "n_genuine": 100,
+      "n_images": 222,
+      "subgroups": {
+        "copy": {
+          "accuracy": 0.8706896551724138,
+          "auc": 0.765,
+          "n_altered": 16,
+          "n_genuine": 100
+        },
+        "inpainting": {
+          "accuracy": 0.9805825242718447,
+          "auc": 0.9937735849056604,
+          "n_altered": 106,
+          "n_genuine": 100
+        }
+      }
+    },
+    "unavailable": null
+  },
+  "genuine_false_positives": [
+    "sidtd_alb_id_63",
+    "sidtd_aze_passport_75",
+    "sidtd_rus_internalpassport_77"
+  ],
+  "genuine_fpr": 0.03,
+  "image_loss": 0.30322744431882115,
+  "n_altered": 122,
+  "n_context_available": 222,
+  "n_context_unavailable": 0,
+  "n_genuine": 100,
+  "n_images": 222,
+  "referral_ids": [],
+  "subgroups": {
+    "copy": {
+      "accuracy": 0.8706896551724138,
+      "auc": 0.765,
+      "n_altered": 16,
+      "n_genuine": 100
+    },
+    "inpainting": {
+      "accuracy": 0.9805825242718447,
+      "auc": 0.9937735849056604,
+      "n_altered": 106,
+      "n_genuine": 100
+    }
+  }
+}
