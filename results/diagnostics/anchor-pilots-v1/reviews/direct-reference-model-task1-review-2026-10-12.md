@@ -78,3 +78,43 @@ The live plan changed during review; the quoted Task 1 clauses remained present 
 ## Limits
 
 No actual Open-CD backbone, official LEVIR bytes, real images, allocated-GPU tensors, actual 22-BN accounting, dataset/registration authority, installed-stack replay, fresh-process direct-reference replay, source archive or diagnostic artifacts were exercised. Synthetic tests cannot establish those properties. No diagnostic launcher, full training, validation outcome, family selection, sweep or downstream/reference run is approved by this review.
+
+## Narrow re-review disposition, 12 October 2026
+
+**Bounded PASS for the corrected Task 1 pure model and synthetic tests. F1–F4 are closed on the updated byte identities below.** This disposition supersedes the original CHANGES REQUIRED verdict only for this updated implementation snapshot. The original findings, reproductions and byte identities above are preserved as the historical review record. No new blocker was identified in this narrow re-review.
+
+### Finding disposition
+
+- **F1 closed.** `src/refer_or_clear/models/direct_reference.py:168` initializes a zero correction for the full population. Lines 169–182 enter the adapter only when effective availability is nonempty, subset query features before projection, execute reference only for that same subset, and scatter the differentiable corrections back with `index_copy`. All queries still traverse the original base. The ten regression cases at `tests/test_direct_reference_model.py:418` cover both modes across all-unavailable, empty pixel overlap, empty stride-eight overlap, mixed availability and mixed overlap. Hooks verify no adapter calls for empty support and available-only adapter batch sizes otherwise. They also verify exact zero unavailable corrections, no adapter gradients for all-unavailable batches, and unchanged intended BN counter accounting.
+- **F2 closed.** `src/refer_or_clear/models/direct_reference.py:139` rejects non-FP32 overlap before query traversal. The eight cases at `tests/test_direct_reference_model.py:406` reject bool/int64/float64/complex64 in both modes and assert byte-identical buffers after rejection. The former positive bool-overlap test has been replaced by the valid FP32 alternate-grid case. No pinned API relaxation was introduced.
+- **F3 closed as a test-implementation gap, not as an actual-GPU result.** `test_actual_direct_reference_gpu_integration` now exists at `tests/test_direct_reference_model.py:508` and calls `_actual_direct_reference_prerequisites` before any model construction or weight read. Static inspection confirms the real test uses no synthetic checkpoint fixture or monkeypatched historical backbone. Its declared checks cover both modes, official hash-bound fresh builds, matched initial state and preserved RNG, 512-by-800 FP32 tensors, `(2,128,64,100)` stage-two geometry, initial base-logit identity, 22 running-BN modules, sequential traversal/prefix versus deeper counters over two forwards, first/second backward adapter/reference gradients, evaluation companions at batch sizes 1/2/4/8, immutable evaluation buffers and strict state-dictionary replay. The companion GPU check tracks one query across positions with seven possible companions; the retained synthetic test checks all eight queries. The GPU replay is same-process, not the separately required future fresh-process pipeline replay.
+- **F4 closed.** The revised module docstring at lines 1–4 explicitly distinguishes identical local-head tensors and inactive off input slices from exact functional capacity, and discloses extra on-mode encoder computation.
+
+### Opt-in guard and skip semantics
+
+The coordinator-approved existing flag is **`ROC_ANCHOR_GPU_INTEGRATION=1`**, with `ROC_LEVIR_CKPT` and `ROC_LEVIR_SHA256`. There is no separate DIRECT flag in this test. A later wrapper must use the same existing flag and require the actual test to execute without skips; this review does not inspect or clear that wrapper.
+
+At `tests/test_direct_reference_model.py:490`, lack of opt-in is the only explicit skip path. Once opted in, absent CUDA, missing checkpoint environment or a nonofficial declared digest raises an assertion. Missing Open-CD raises an import error through `_require_opencd`, rather than `importorskip`. The inherited builder subsequently checks actual checkpoint bytes against the declared digest. Its byte-loading behavior was inspected, not exercised on official weights.
+
+An additional independent in-memory probe replaced `Path.read_bytes` with a forbidden-read sentinel and simulated five prerequisite cases. Unset opt-in produced the expected skip; missing CUDA, missing environment and wrong hash failed closed; simulated missing installed stack raised `ImportError`. **Zero weight reads** occurred in all five cases. No real CUDA allocation or official weight loading was performed by these probes. The authored four guard cases also passed in the focused suite. A locally skipped integration case is explicitly unrun, never an installed-stack pass.
+
+### Independent fresh GREEN results
+
+Both commands explicitly unset all three GPU/checkpoint environment variables using `env -u`, set `OMP_NUM_THREADS=1` and `PYTHONDONTWRITEBYTECODE=1`, and use `/private/tmp/roc-anchor-dev/bin/python`. Pytest cache writing was disabled.
+
+1. `python -m pytest tests/test_direct_reference_model.py -q -rs -p no:cacheprovider`, **72 passed, one skipped, one TypedStorage warning**, 48.68 seconds.
+2. `python -m pytest tests/test_direct_reference_model.py tests/test_anchor_changer.py -q -rs -p no:cacheprovider`, **153 passed, two skipped, one TypedStorage warning**, 130.11 seconds. The combined shell command completed with exit 0. The two skips explicitly identify the new direct-reference integration test and inherited anchor integration test, respectively; neither executed a GPU gate.
+3. The independent prerequisite/forbidden-read probe completed with exit 0. Maxwell's reported 18 RED regressions were not independently reproduced by reverting code; the fresh GREEN results and current regression behavior were independently verified.
+
+### Updated snapshot binding
+
+| File | SHA256 |
+| --- | --- |
+| `src/refer_or_clear/models/direct_reference.py` | `9839ffee680af418d6af4c1dd7b1f7c23aeaa4b73ae3555aa1a5cf628a98ce3e` |
+| `tests/test_direct_reference_model.py` | `f674caae1d67578c7b43ac89d9bf766180135a7bf55576be82588eca58d84d09` |
+
+Both hashes were checked before and during the re-review. The base model, inherited tests, design spec and latest plan retain their previously recorded hashes. The shared sequential BN policy, zero initial identity, learned off local head, gradient connectivity, optimizer uniqueness/provenance and synthetic evaluation invariance remain covered by the passing retained tests. The review does not reinterpret identical initial on/off tensors as equivalent training-state evolution.
+
+### Continuing limits
+
+Only this review disposition was appended. No production edits, real weights/images, SSH, jobs or commits were performed. The new GPU test is implemented and guard-reviewed but **unrun**. Actual 22-BN/installed-stack behavior, official byte identities, allocated-GPU invariance/replay, fresh-process replay, data/registration authority and integrated runner/launcher gates remain separate requirements. This bounded Task 1 PASS does not authorize an actual diagnostic allocation, full training, family selection, sweep or downstream run.
