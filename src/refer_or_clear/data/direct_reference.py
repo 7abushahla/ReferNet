@@ -33,11 +33,17 @@ Augmentation uses direct_reference_canvas_v1, query-only photometry and zone
 jitter. Legacy numeric validation is reused after explicit semantic translation.
 Metadata is authenticated at construction and reused while file fingerprints
 are unchanged. Changed authority files must still match their pinned hashes.
+The dataset table is a detached recursively immutable snapshot. Nested mutation
+is rejected immediately, before any getter or pixel read, rather than detected
+by rehashing the entire table per sample. Original content/authority hashes stay
+unchanged. Manifest/preprocess mutation checks and per-file hashes remain active.
 """
 from __future__ import annotations
 
 from contextlib import contextmanager
+from collections.abc import Mapping
 import copy
+from dataclasses import dataclass
 import hashlib
 import importlib.util
 from io import BytesIO
@@ -46,6 +52,7 @@ import math
 from pathlib import Path
 import random
 import threading
+from types import MappingProxyType
 
 import cv2
 import numpy as np
@@ -278,6 +285,31 @@ class _AuthenticatedTable(dict):
         self.authority_sha256 = file_binding["sha256"] if file_binding else self.content_sha256
 
 
+def _immutable(value):
+    if isinstance(value, dict):
+        return MappingProxyType({key: _immutable(child) for key, child in value.items()})
+    if isinstance(value, list):
+        return tuple(_immutable(child) for child in value)
+    _require(value is None or type(value) in (str, int, float, bool), "table must contain JSON values")
+    return value
+
+
+@dataclass(frozen=True)
+class _TableSnapshot(Mapping):
+    content: Mapping
+    content_sha256: str
+    authority_sha256: str
+
+    def __getitem__(self, key):
+        return self.content[key]
+
+    def __iter__(self):
+        return iter(self.content)
+
+    def __len__(self):
+        return len(self.content)
+
+
 def _validate_table(table, rows, manifest, preprocess, context):
     _require(table.get("schema_version") == SCHEMA and table.get("preprocess") == preprocess and table.get("policy") == _policy(), "table schema/policy/preprocessing mismatch")
     entries = table.get("entries")
@@ -397,6 +429,7 @@ class DirectReferenceDataset(Dataset):
         try:
             _require(type(reference_enabled) is bool and type(train) is bool, "dataset mode booleans required")
             _require(isinstance(registration_table, _AuthenticatedTable), "use authenticated table builder/loader, not a plain dictionary")
+            registration_table = copy.deepcopy(registration_table)
             _require(_digest(registration_table) == registration_table.content_sha256, "authenticated table was mutated")
             if registration_table.file_binding: _bytes(registration_table.file_binding)
             preprocess = registration_table["preprocess"]
@@ -405,7 +438,8 @@ class DirectReferenceDataset(Dataset):
             self.rows = _rows(rows, context)
             _require(all(row["role"] == ("train" if train else "val") for row in self.rows), "dataset train/validation role mismatch")
             _validate_table(registration_table, rows, enrollment_manifest, preprocess, context)
-            self.table = copy.deepcopy(registration_table)
+            self._table = _TableSnapshot(_immutable(registration_table), registration_table.content_sha256,
+                                         registration_table.authority_sha256)
             self.manifest, self.preprocess = copy.deepcopy(enrollment_manifest), copy.deepcopy(preprocess)
             self.raw_root, self.context = context["raw_root"], context
             self.reference_enabled, self.train = reference_enabled, train
@@ -417,7 +451,7 @@ class DirectReferenceDataset(Dataset):
             self.geometry_rng, self.photometry_rng = random.Random(seed), random.Random(seed + 1)
             self.metadata_sha256 = _digest(dict(manifest=self.manifest, preprocess=self.preprocess))
             self.authority_files = copy.deepcopy(_authority_bindings(preprocess, context["phase"]))
-            if self.table.file_binding: self.authority_files.append(copy.deepcopy(self.table.file_binding))
+            if registration_table.file_binding: self.authority_files.append(copy.deepcopy(registration_table.file_binding))
             self.authority_fingerprints = []
             for binding in self.authority_files:
                 before = _fingerprint(binding)
@@ -430,8 +464,11 @@ class DirectReferenceDataset(Dataset):
     def __len__(self):
         return len(self.rows)
 
+    @property
+    def table(self):
+        return self._table
+
     def __getitem__(self, index):
-        _require(_digest(self.table) == self.table.content_sha256, "authenticated table was mutated")
         _require(_digest(dict(manifest=self.manifest, preprocess=self.preprocess)) == self.metadata_sha256, "authenticated metadata was mutated")
         for position, binding in enumerate(self.authority_files):
             observed = _fingerprint(binding)

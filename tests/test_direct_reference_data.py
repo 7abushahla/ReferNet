@@ -390,8 +390,99 @@ def test_failed_fit_does_not_inherit_previous_query_inliers(api, inputs, monkeyp
 
 def test_dataset_rejects_table_mutation_after_construction(api, inputs, monkeypatch):
     consumer = dataset(api, inputs, build(api, inputs), False)
-    consumer.table["entries"]["query0"]["query_canvas_to_bank"][0][2] = 5
     monkeypatch.setattr(api, "_image", lambda *args: pytest.fail("mutated fit consumed pixels"))
+    with pytest.raises(TypeError):
+        consumer.table["entries"]["query0"]["query_canvas_to_bank"][0][2] = 5
+
+
+def full_table(api, inputs):
+    phase = copy.deepcopy(inputs["phase"])
+    phase.update(phase="train", authorized_image_ids={
+        role: sorted(inputs["all_rows"].loc[inputs["all_rows"].role == role, "image_id"])
+        for role in ("train", "val")}, training_gates=gates(inputs), smoke_gates=gates(inputs, smoke=True))
+    permit(inputs, phase)
+    context = api._authorities(inputs["manifest"], inputs["preprocess"])
+    query_sha = authority(inputs["raw"] / "query0.png")["sha256"]
+    entries = {}
+    for row in inputs["all_rows"].loc[inputs["all_rows"].role != "test"].to_dict("records"):
+        bank = api._bank(inputs["manifest"], row, context)
+        binding = api._entry_binding(row, query_sha, bank, api._products(bank, context), inputs["preprocess"])
+        entries[row["image_id"]] = dict(binding, key=api._digest(binding), status="fit", reason="fit",
+                                         inliers=100, query_canvas_to_bank=np.eye(3).tolist())
+    return api._AuthenticatedTable(dict(schema_version=api.SCHEMA, preprocess=copy.deepcopy(inputs["preprocess"]),
+                                        policy=api._policy(), entries=entries))
+
+
+def test_full_table_getter_never_digests_complete_table(api, inputs, monkeypatch):
+    table = full_table(api, inputs)
+    assert len(table["entries"]) == 2000
+    consumer = dataset(api, inputs, table, False)
+    original = api._digest
+    def guarded(value):
+        assert not (hasattr(value, "get") and value.get("schema_version") == api.SCHEMA), "full table digest in getter"
+        return original(value)
+    monkeypatch.setattr(api, "_digest", guarded)
+    assert consumer[0]["meta"]["registration_table_sha256"] == table.authority_sha256
+
+
+@pytest.mark.parametrize("mutation", ["entry", "entries", "preprocess", "policy", "replace"])
+def test_dataset_table_snapshot_rejects_nested_mutation_before_pixels(api, inputs, monkeypatch, mutation):
+    consumer = dataset(api, inputs, build(api, inputs), False)
+    monkeypatch.setattr(api, "_image", lambda *args: pytest.fail("mutation consumed pixels"))
+    with pytest.raises((TypeError, AttributeError)):
+        if mutation == "entry": consumer.table["entries"]["query0"]["bank"] = "enrollment"
+        elif mutation == "entries": consumer.table["entries"].clear()
+        elif mutation == "preprocess": consumer.table["preprocess"]["phase_authority"]["sha256"] = "0" * 64
+        elif mutation == "policy": consumer.table["policy"]["canvas_hw"][0] = 1
+        else: consumer.table = {}
+
+
+def test_dataset_table_snapshot_detaches_input_aliases(api, inputs):
+    table = build(api, inputs)
+    consumer = dataset(api, inputs, table, False)
+    table["entries"]["query0"]["query_canvas_to_bank"][0][2] = 5
+    table["preprocess"]["phase_authority"]["sha256"] = "0" * 64
+    assert consumer.table["entries"]["query0"]["query_canvas_to_bank"][0][2] == 0
+    assert consumer[0]["meta"]["registration_table_sha256"] == table.authority_sha256
+
+
+def test_dataset_owns_table_before_validation_alias_boundary(api, inputs, monkeypatch):
+    table = build(api, inputs)
+    content_sha256 = table.content_sha256
+    original_validate = api._validate_table
+    def racing_validate(*args, **kwargs):
+        original_validate(*args, **kwargs)
+        table["entries"]["query0"]["query_canvas_to_bank"][0][2] = 5
+    monkeypatch.setattr(api, "_validate_table", racing_validate)
+    monkeypatch.setattr(api, "_image", lambda *args: pytest.fail("constructor consumed pixels"))
+    consumer = dataset(api, inputs, table, False)
+    assert table["entries"]["query0"]["query_canvas_to_bank"][0][2] == 5
+    assert consumer.table["entries"]["query0"]["query_canvas_to_bank"][0][2] == 0
+    assert consumer.table.content_sha256 == content_sha256
+    assert consumer.table.authority_sha256 == content_sha256
+
+
+@pytest.mark.parametrize("mutation", ["query", "product", "table-file", "row"])
+def test_snapshot_preserves_getter_authentication_guards(api, inputs, monkeypatch, mutation):
+    table = build(api, inputs)
+    binding = write_json(inputs["tmp"] / "table.json", table)
+    loaded = api.load_registration_table(Path(binding["path"]), binding["sha256"], rows=inputs["rows"],
+                                         enrollment_manifest=inputs["manifest"], preprocess=inputs["preprocess"])
+    consumer = dataset(api, inputs, loaded, False)
+    assert consumer.table.content_sha256 == loaded.content_sha256
+    assert consumer.table.authority_sha256 == binding["sha256"]
+    if mutation == "query": (inputs["raw"] / "query0.png").write_bytes(b"changed")
+    elif mutation == "product":
+        Path(inputs["manifest"]["banks"]["sidtd/example"]["train_half1"]["products"]["zone"]["path"]).write_bytes(b"changed")
+    elif mutation == "table-file": Path(binding["path"]).write_text("{}")
+    else: consumer.rows[0]["label"] = 1 - consumer.rows[0]["label"]
+    original = cv2.imdecode
+    def guarded(content, flags):
+        assert content.tobytes() != b"changed", "unauthenticated bytes decoded"
+        return original(content, flags)
+    monkeypatch.setattr(cv2, "imdecode", guarded)
+    if mutation in ("table-file", "row"):
+        monkeypatch.setattr(api, "_image", lambda *args: pytest.fail("pixels before metadata validation"))
     with pytest.raises(ValueError): consumer[0]
 
 
