@@ -1,0 +1,740 @@
+{
+  "arm": "on",
+  "authority": {
+    "path": "/shared/b00090279/refer-or-clear/results/source/reference-warmstart-04334a4/fold0-reference-adapter10-best50.json",
+    "sha256": "6375af670959422174596326ab34c8a77af25a52fc6b579d9e5b70c00287489c"
+  },
+  "base_unchanged": true,
+  "batch_size": 8,
+  "checkpoint": {
+    "path": "/shared/b00090279/refer-or-clear/results/exploratory/direct-reference-warmstart-38105/best.pt",
+    "sha256": "50273f4f1d1de8d1e8444e55ed28d3daadbadc0a50395845404a5063385d426e"
+  },
+  "cold_on": {
+    "accuracy": 0.9279279279279279,
+    "altered_misses": [
+      "sidtd_aze_passport_97_fake_3_115",
+      "sidtd_esp_id_56_fake_2_107",
+      "sidtd_esp_id_63_fake_2_112",
+      "sidtd_esp_id_77_fake_2_103",
+      "sidtd_est_id_62_fake_9_113",
+      "sidtd_est_id_74_fake_9_115",
+      "sidtd_fin_id_18_fake_7_110",
+      "sidtd_grc_passport_07_fake_4_101",
+      "sidtd_grc_passport_30_fake_4_108",
+      "sidtd_grc_passport_94_fake_4_106",
+      "sidtd_lva_passport_51_fake_0_114",
+      "sidtd_rus_internalpassport_49_fake_1_83",
+      "sidtd_srb_passport_87_fake_5_100",
+      "sidtd_svk_id_34_fake_8_103"
+    ],
+    "auc": 0.9631147540983607,
+    "availability_reasons": {
+      "fit": 222
+    },
+    "buffers_unchanged": true,
+    "by_availability": {
+      "available": {
+        "accuracy": 0.9279279279279279,
+        "altered_misses": [
+          "sidtd_aze_passport_97_fake_3_115",
+          "sidtd_esp_id_56_fake_2_107",
+          "sidtd_esp_id_63_fake_2_112",
+          "sidtd_esp_id_77_fake_2_103",
+          "sidtd_est_id_62_fake_9_113",
+          "sidtd_est_id_74_fake_9_115",
+          "sidtd_fin_id_18_fake_7_110",
+          "sidtd_grc_passport_07_fake_4_101",
+          "sidtd_grc_passport_30_fake_4_108",
+          "sidtd_grc_passport_94_fake_4_106",
+          "sidtd_lva_passport_51_fake_0_114",
+          "sidtd_rus_internalpassport_49_fake_1_83",
+          "sidtd_srb_passport_87_fake_5_100",
+          "sidtd_svk_id_34_fake_8_103"
+        ],
+        "auc": 0.9631147540983607,
+        "genuine_false_positives": [
+          "sidtd_alb_id_63",
+          "sidtd_rus_internalpassport_77"
+        ],
+        "n_altered": 122,
+        "n_genuine": 100,
+        "n_images": 222,
+        "subgroups": {
+          "copy": {
+            "accuracy": 0.8793103448275862,
+            "auc": 0.7612500000000001,
+            "n_altered": 16,
+            "n_genuine": 100
+          },
+          "inpainting": {
+            "accuracy": 0.9805825242718447,
+            "auc": 0.9935849056603774,
+            "n_altered": 106,
+            "n_genuine": 100
+          }
+        }
+      },
+      "unavailable": null
+    },
+    "genuine_false_positives": [
+      "sidtd_alb_id_63",
+      "sidtd_rus_internalpassport_77"
+    ],
+    "genuine_fpr": 0.02,
+    "image_loss": 0.30907658858175474,
+    "n_altered": 122,
+    "n_context_available": 222,
+    "n_context_unavailable": 0,
+    "n_genuine": 100,
+    "n_images": 222,
+    "referral_ids": [],
+    "subgroups": {
+      "copy": {
+        "accuracy": 0.8793103448275862,
+        "auc": 0.7612500000000001,
+        "n_altered": 16,
+        "n_genuine": 100
+      },
+      "inpainting": {
+        "accuracy": 0.9805825242718447,
+        "auc": 0.9935849056603774,
+        "n_altered": 106,
+        "n_genuine": 100
+      }
+    }
+  },
+  "continuation_checkpoint": {
+    "path": "/shared/b00090279/refer-or-clear/results/exploratory/direct-reference-warmstart-38105/last.pt",
+    "sha256": "e5de77cf66c2e648fc1eb51b00a44e78df4e69cfa9ec24ede2828a4a40b5c6d1"
+  },
+  "decode_audit_scope": "original TRAIN-only update / VAL-only evaluation helper guards; not a syscall audit",
+  "epochs_completed": 10,
+  "exploratory_only": true,
+  "fold": 0,
+  "frozen_base_buffer_sha256": "e3edffec1b07a38388238bf96fc71d9f56d76f32f9d0cec55cdd1af9285dfc7b",
+  "frozen_base_sha256": "055bd89172ff1f0bc56697b0f347918dd439b152bd31dd1f238260ffa588e901",
+  "history": [
+    {
+      "base_unchanged": true,
+      "epoch": 0,
+      "image_loss": null,
+      "loss": null,
+      "lr": 4.504504504504505e-06,
+      "n_images": 0,
+      "omitted_train_ids": [],
+      "optimizer_steps": 0,
+      "skipped_batches": 0,
+      "stored_bn_unchanged": true,
+      "val_accuracy": 0.9279279279279279,
+      "val_auc": 0.9631147540983607
+    },
+    {
+      "base_unchanged": true,
+      "epoch": 1,
+      "image_loss": 0.09555239286006274,
+      "loss": 0.09555239286006274,
+      "lr": 0.001,
+      "n_images": 1776,
+      "omitted_train_ids": [
+        "sidtd_alb_id_98",
+        "sidtd_fin_id_18"
+      ],
+      "optimizer_steps": 222,
+      "skipped_batches": 0,
+      "stored_bn_unchanged": true,
+      "val_accuracy": 0.918918918918919,
+      "val_auc": 0.9704918032786884
+    },
+    {
+      "base_unchanged": true,
+      "epoch": 2,
+      "image_loss": 0.0842002372296233,
+      "loss": 0.0842002372296233,
+      "lr": 0.0009698463103929542,
+      "n_images": 1776,
+      "omitted_train_ids": [
+        "sidtd_aze_passport_81_fake_3_46",
+        "sidtd_grc_passport_35_fake_4_51"
+      ],
+      "optimizer_steps": 222,
+      "skipped_batches": 0,
+      "stored_bn_unchanged": true,
+      "val_accuracy": 0.918918918918919,
+      "val_auc": 0.9709016393442623
+    },
+    {
+      "base_unchanged": true,
+      "epoch": 3,
+      "image_loss": 0.08827755472943741,
+      "loss": 0.08827755472943741,
+      "lr": 0.000883022221559489,
+      "n_images": 1776,
+      "omitted_train_ids": [
+        "sidtd_svk_id_10",
+        "sidtd_aze_passport_61"
+      ],
+      "optimizer_steps": 222,
+      "skipped_batches": 0,
+      "stored_bn_unchanged": true,
+      "val_accuracy": 0.918918918918919,
+      "val_auc": 0.969344262295082
+    },
+    {
+      "base_unchanged": true,
+      "epoch": 4,
+      "image_loss": 0.08388666344726844,
+      "loss": 0.08388666344726844,
+      "lr": 0.00075,
+      "n_images": 1776,
+      "omitted_train_ids": [
+        "sidtd_fin_id_56",
+        "sidtd_est_id_90_fake_9_112"
+      ],
+      "optimizer_steps": 222,
+      "skipped_batches": 0,
+      "stored_bn_unchanged": true,
+      "val_accuracy": 0.918918918918919,
+      "val_auc": 0.9678688524590163
+    },
+    {
+      "base_unchanged": true,
+      "epoch": 5,
+      "image_loss": 0.07612700030939949,
+      "loss": 0.07612700030939949,
+      "lr": 0.0005868240888334653,
+      "n_images": 1776,
+      "omitted_train_ids": [
+        "sidtd_lva_passport_80_fake_0_68",
+        "sidtd_esp_id_43"
+      ],
+      "optimizer_steps": 222,
+      "skipped_batches": 0,
+      "stored_bn_unchanged": true,
+      "val_accuracy": 0.918918918918919,
+      "val_auc": 0.9687704918032787
+    },
+    {
+      "base_unchanged": true,
+      "epoch": 6,
+      "image_loss": 0.07910935788757277,
+      "loss": 0.07910935788757277,
+      "lr": 0.00041317591116653486,
+      "n_images": 1776,
+      "omitted_train_ids": [
+        "sidtd_srb_passport_53",
+        "sidtd_est_id_11_fake_9_40"
+      ],
+      "optimizer_steps": 222,
+      "skipped_batches": 0,
+      "stored_bn_unchanged": true,
+      "val_accuracy": 0.9234234234234234,
+      "val_auc": 0.9699180327868853
+    },
+    {
+      "base_unchanged": true,
+      "epoch": 7,
+      "image_loss": 0.07860729326253975,
+      "loss": 0.07860729326253975,
+      "lr": 0.0002500000000000001,
+      "n_images": 1776,
+      "omitted_train_ids": [
+        "sidtd_aze_passport_95",
+        "sidtd_est_id_32_fake_9_60"
+      ],
+      "optimizer_steps": 222,
+      "skipped_batches": 0,
+      "stored_bn_unchanged": true,
+      "val_accuracy": 0.9234234234234234,
+      "val_auc": 0.9700819672131148
+    },
+    {
+      "base_unchanged": true,
+      "epoch": 8,
+      "image_loss": 0.07689525725678929,
+      "loss": 0.07689525725678929,
+      "lr": 0.00011697777844051105,
+      "n_images": 1776,
+      "omitted_train_ids": [
+        "sidtd_alb_id_47",
+        "sidtd_svk_id_11_fake_8_46"
+      ],
+      "optimizer_steps": 222,
+      "skipped_batches": 0,
+      "stored_bn_unchanged": true,
+      "val_accuracy": 0.918918918918919,
+      "val_auc": 0.9694262295081968
+    },
+    {
+      "base_unchanged": true,
+      "epoch": 9,
+      "image_loss": 0.07669254386145202,
+      "loss": 0.07669254386145202,
+      "lr": 3.0153689607045842e-05,
+      "n_images": 1776,
+      "omitted_train_ids": [
+        "sidtd_est_id_79_fake_9_55",
+        "sidtd_fin_id_72"
+      ],
+      "optimizer_steps": 222,
+      "skipped_batches": 0,
+      "stored_bn_unchanged": true,
+      "val_accuracy": 0.9099099099099099,
+      "val_auc": 0.9695901639344263
+    },
+    {
+      "base_unchanged": true,
+      "epoch": 10,
+      "image_loss": 0.0672385184655935,
+      "loss": 0.0672385184655935,
+      "lr": 0.0,
+      "n_images": 1776,
+      "omitted_train_ids": [
+        "sidtd_aze_passport_90_fake_3_44",
+        "sidtd_est_id_40_fake_9_98"
+      ],
+      "optimizer_steps": 222,
+      "skipped_batches": 0,
+      "stored_bn_unchanged": true,
+      "val_accuracy": 0.9144144144144144,
+      "val_auc": 0.9693442622950821
+    }
+  ],
+  "independently_trained_matched_comparison": false,
+  "no_test_open": true,
+  "off_baseline": {
+    "accuracy": 0.9279279279279279,
+    "altered_misses": [
+      "sidtd_aze_passport_97_fake_3_115",
+      "sidtd_esp_id_56_fake_2_107",
+      "sidtd_esp_id_63_fake_2_112",
+      "sidtd_esp_id_77_fake_2_103",
+      "sidtd_est_id_62_fake_9_113",
+      "sidtd_est_id_74_fake_9_115",
+      "sidtd_fin_id_18_fake_7_110",
+      "sidtd_grc_passport_07_fake_4_101",
+      "sidtd_grc_passport_30_fake_4_108",
+      "sidtd_grc_passport_94_fake_4_106",
+      "sidtd_lva_passport_51_fake_0_114",
+      "sidtd_srb_passport_87_fake_5_100",
+      "sidtd_svk_id_34_fake_8_103"
+    ],
+    "auc": 0.9637704918032788,
+    "availability_reasons": {
+      "fit": 222
+    },
+    "buffers_unchanged": true,
+    "by_availability": {
+      "available": {
+        "accuracy": 0.9279279279279279,
+        "altered_misses": [
+          "sidtd_aze_passport_97_fake_3_115",
+          "sidtd_esp_id_56_fake_2_107",
+          "sidtd_esp_id_63_fake_2_112",
+          "sidtd_esp_id_77_fake_2_103",
+          "sidtd_est_id_62_fake_9_113",
+          "sidtd_est_id_74_fake_9_115",
+          "sidtd_fin_id_18_fake_7_110",
+          "sidtd_grc_passport_07_fake_4_101",
+          "sidtd_grc_passport_30_fake_4_108",
+          "sidtd_grc_passport_94_fake_4_106",
+          "sidtd_lva_passport_51_fake_0_114",
+          "sidtd_srb_passport_87_fake_5_100",
+          "sidtd_svk_id_34_fake_8_103"
+        ],
+        "auc": 0.9637704918032788,
+        "genuine_false_positives": [
+          "sidtd_alb_id_63",
+          "sidtd_aze_passport_75",
+          "sidtd_rus_internalpassport_77"
+        ],
+        "n_altered": 122,
+        "n_genuine": 100,
+        "n_images": 222,
+        "subgroups": {
+          "copy": {
+            "accuracy": 0.8706896551724138,
+            "auc": 0.765,
+            "n_altered": 16,
+            "n_genuine": 100
+          },
+          "inpainting": {
+            "accuracy": 0.9805825242718447,
+            "auc": 0.9937735849056604,
+            "n_altered": 106,
+            "n_genuine": 100
+          }
+        }
+      },
+      "unavailable": null
+    },
+    "genuine_false_positives": [
+      "sidtd_alb_id_63",
+      "sidtd_aze_passport_75",
+      "sidtd_rus_internalpassport_77"
+    ],
+    "genuine_fpr": 0.03,
+    "image_loss": 0.30322744431882115,
+    "n_altered": 122,
+    "n_context_available": 222,
+    "n_context_unavailable": 0,
+    "n_genuine": 100,
+    "n_images": 222,
+    "referral_ids": [],
+    "subgroups": {
+      "copy": {
+        "accuracy": 0.8706896551724138,
+        "auc": 0.765,
+        "n_altered": 16,
+        "n_genuine": 100
+      },
+      "inpainting": {
+        "accuracy": 0.9805825242718447,
+        "auc": 0.9937735849056604,
+        "n_altered": 106,
+        "n_genuine": 100
+      }
+    }
+  },
+  "optimizer": {
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "lr": 0.001,
+    "name": "AdamW",
+    "parameters": "adapter_only",
+    "weight_decay": 0.05
+  },
+  "optimizer_steps": 2220,
+  "original_off_final": {
+    "accuracy": 0.9279279279279279,
+    "altered_misses": [
+      "sidtd_aze_passport_97_fake_3_115",
+      "sidtd_esp_id_56_fake_2_107",
+      "sidtd_esp_id_63_fake_2_112",
+      "sidtd_esp_id_77_fake_2_103",
+      "sidtd_est_id_62_fake_9_113",
+      "sidtd_est_id_74_fake_9_115",
+      "sidtd_fin_id_18_fake_7_110",
+      "sidtd_grc_passport_07_fake_4_101",
+      "sidtd_grc_passport_30_fake_4_108",
+      "sidtd_grc_passport_94_fake_4_106",
+      "sidtd_lva_passport_51_fake_0_114",
+      "sidtd_srb_passport_87_fake_5_100",
+      "sidtd_svk_id_34_fake_8_103"
+    ],
+    "auc": 0.9637704918032788,
+    "availability_reasons": {
+      "fit": 222
+    },
+    "buffers_unchanged": true,
+    "by_availability": {
+      "available": {
+        "accuracy": 0.9279279279279279,
+        "altered_misses": [
+          "sidtd_aze_passport_97_fake_3_115",
+          "sidtd_esp_id_56_fake_2_107",
+          "sidtd_esp_id_63_fake_2_112",
+          "sidtd_esp_id_77_fake_2_103",
+          "sidtd_est_id_62_fake_9_113",
+          "sidtd_est_id_74_fake_9_115",
+          "sidtd_fin_id_18_fake_7_110",
+          "sidtd_grc_passport_07_fake_4_101",
+          "sidtd_grc_passport_30_fake_4_108",
+          "sidtd_grc_passport_94_fake_4_106",
+          "sidtd_lva_passport_51_fake_0_114",
+          "sidtd_srb_passport_87_fake_5_100",
+          "sidtd_svk_id_34_fake_8_103"
+        ],
+        "auc": 0.9637704918032788,
+        "genuine_false_positives": [
+          "sidtd_alb_id_63",
+          "sidtd_aze_passport_75",
+          "sidtd_rus_internalpassport_77"
+        ],
+        "n_altered": 122,
+        "n_genuine": 100,
+        "n_images": 222,
+        "subgroups": {
+          "copy": {
+            "accuracy": 0.8706896551724138,
+            "auc": 0.765,
+            "n_altered": 16,
+            "n_genuine": 100
+          },
+          "inpainting": {
+            "accuracy": 0.9805825242718447,
+            "auc": 0.9937735849056604,
+            "n_altered": 106,
+            "n_genuine": 100
+          }
+        }
+      },
+      "unavailable": null
+    },
+    "genuine_false_positives": [
+      "sidtd_alb_id_63",
+      "sidtd_aze_passport_75",
+      "sidtd_rus_internalpassport_77"
+    ],
+    "genuine_fpr": 0.03,
+    "image_loss": 0.30322744431882115,
+    "n_altered": 122,
+    "n_context_available": 222,
+    "n_context_unavailable": 0,
+    "n_genuine": 100,
+    "n_images": 222,
+    "referral_ids": [],
+    "subgroups": {
+      "copy": {
+        "accuracy": 0.8706896551724138,
+        "auc": 0.765,
+        "n_altered": 16,
+        "n_genuine": 100
+      },
+      "inpainting": {
+        "accuracy": 0.9805825242718447,
+        "auc": 0.9937735849056604,
+        "n_altered": 106,
+        "n_genuine": 100
+      }
+    }
+  },
+  "original_run_dir": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/direct-reference-control-38041",
+  "passed": true,
+  "phase_authority": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/direct-reference-control-38041/training/shared/phase-authority.json",
+    "sha256": "b711bcdb259f684f26a30bbad31b59bf5d4f5185f0f03138bd0f8166c1b40cc5"
+  },
+  "registration": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/direct-reference-control-38041/training/shared/registration.json",
+    "sha256": "759ccb75eb621bf1a6395ebfd765f64142d8e005bdfd06ceee4ee30d019ed47a"
+  },
+  "scheduler": {
+    "actual_updates": 2220,
+    "planned_updates": 2220,
+    "warmup_updates": 222
+  },
+  "schema_version": "direct_reference_warmstart_result_v1",
+  "scientific_identities": {
+    "config_sha256": "7a87ddefc956dd6026e2d29c8459d9bcb8251cbc9105218926b6d67e5abaa1a5",
+    "enrollment_sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8",
+    "initialization_sha256": "93086fd2832d7b83c9387cf99f8ef14d0f97f947fdc6c6beea4b0f1fd4b90a08",
+    "phase_authority_sha256": "b711bcdb259f684f26a30bbad31b59bf5d4f5185f0f03138bd0f8166c1b40cc5",
+    "preprocess_sha256": "4e71b159274fba1d38b65ed5973959028c5f9588df511a451679c24f64d43844",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "registration_sha256": "759ccb75eb621bf1a6395ebfd765f64142d8e005bdfd06ceee4ee30d019ed47a",
+    "source_sha256": "a5ff28ae2a332b977551241f2d07641d51df78d54a4cc1b58169c7338ce11292",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "seed": 42,
+  "selected_epoch": 0,
+  "selected_on": {
+    "accuracy": 0.9279279279279279,
+    "altered_misses": [
+      "sidtd_aze_passport_97_fake_3_115",
+      "sidtd_esp_id_56_fake_2_107",
+      "sidtd_esp_id_63_fake_2_112",
+      "sidtd_esp_id_77_fake_2_103",
+      "sidtd_est_id_62_fake_9_113",
+      "sidtd_est_id_74_fake_9_115",
+      "sidtd_fin_id_18_fake_7_110",
+      "sidtd_grc_passport_07_fake_4_101",
+      "sidtd_grc_passport_30_fake_4_108",
+      "sidtd_grc_passport_94_fake_4_106",
+      "sidtd_lva_passport_51_fake_0_114",
+      "sidtd_rus_internalpassport_49_fake_1_83",
+      "sidtd_srb_passport_87_fake_5_100",
+      "sidtd_svk_id_34_fake_8_103"
+    ],
+    "auc": 0.9631147540983607,
+    "availability_reasons": {
+      "fit": 222
+    },
+    "buffers_unchanged": true,
+    "by_availability": {
+      "available": {
+        "accuracy": 0.9279279279279279,
+        "altered_misses": [
+          "sidtd_aze_passport_97_fake_3_115",
+          "sidtd_esp_id_56_fake_2_107",
+          "sidtd_esp_id_63_fake_2_112",
+          "sidtd_esp_id_77_fake_2_103",
+          "sidtd_est_id_62_fake_9_113",
+          "sidtd_est_id_74_fake_9_115",
+          "sidtd_fin_id_18_fake_7_110",
+          "sidtd_grc_passport_07_fake_4_101",
+          "sidtd_grc_passport_30_fake_4_108",
+          "sidtd_grc_passport_94_fake_4_106",
+          "sidtd_lva_passport_51_fake_0_114",
+          "sidtd_rus_internalpassport_49_fake_1_83",
+          "sidtd_srb_passport_87_fake_5_100",
+          "sidtd_svk_id_34_fake_8_103"
+        ],
+        "auc": 0.9631147540983607,
+        "genuine_false_positives": [
+          "sidtd_alb_id_63",
+          "sidtd_rus_internalpassport_77"
+        ],
+        "n_altered": 122,
+        "n_genuine": 100,
+        "n_images": 222,
+        "subgroups": {
+          "copy": {
+            "accuracy": 0.8793103448275862,
+            "auc": 0.7612500000000001,
+            "n_altered": 16,
+            "n_genuine": 100
+          },
+          "inpainting": {
+            "accuracy": 0.9805825242718447,
+            "auc": 0.9935849056603774,
+            "n_altered": 106,
+            "n_genuine": 100
+          }
+        }
+      },
+      "unavailable": null
+    },
+    "genuine_false_positives": [
+      "sidtd_alb_id_63",
+      "sidtd_rus_internalpassport_77"
+    ],
+    "genuine_fpr": 0.02,
+    "image_loss": 0.30907658858175474,
+    "n_altered": 122,
+    "n_context_available": 222,
+    "n_context_unavailable": 0,
+    "n_genuine": 100,
+    "n_images": 222,
+    "referral_ids": [],
+    "subgroups": {
+      "copy": {
+        "accuracy": 0.8793103448275862,
+        "auc": 0.7612500000000001,
+        "n_altered": 16,
+        "n_genuine": 100
+      },
+      "inpainting": {
+        "accuracy": 0.9805825242718447,
+        "auc": 0.9935849056603774,
+        "n_altered": 106,
+        "n_genuine": 100
+      }
+    }
+  },
+  "selected_reference_disabled": {
+    "accuracy": 0.9279279279279279,
+    "altered_misses": [
+      "sidtd_aze_passport_97_fake_3_115",
+      "sidtd_esp_id_56_fake_2_107",
+      "sidtd_esp_id_63_fake_2_112",
+      "sidtd_esp_id_77_fake_2_103",
+      "sidtd_est_id_62_fake_9_113",
+      "sidtd_est_id_74_fake_9_115",
+      "sidtd_fin_id_18_fake_7_110",
+      "sidtd_grc_passport_07_fake_4_101",
+      "sidtd_grc_passport_30_fake_4_108",
+      "sidtd_grc_passport_94_fake_4_106",
+      "sidtd_lva_passport_51_fake_0_114",
+      "sidtd_srb_passport_87_fake_5_100",
+      "sidtd_svk_id_34_fake_8_103"
+    ],
+    "auc": 0.9637704918032788,
+    "availability_reasons": {
+      "fit": 222
+    },
+    "buffers_unchanged": true,
+    "by_availability": {
+      "available": {
+        "accuracy": 0.9279279279279279,
+        "altered_misses": [
+          "sidtd_aze_passport_97_fake_3_115",
+          "sidtd_esp_id_56_fake_2_107",
+          "sidtd_esp_id_63_fake_2_112",
+          "sidtd_esp_id_77_fake_2_103",
+          "sidtd_est_id_62_fake_9_113",
+          "sidtd_est_id_74_fake_9_115",
+          "sidtd_fin_id_18_fake_7_110",
+          "sidtd_grc_passport_07_fake_4_101",
+          "sidtd_grc_passport_30_fake_4_108",
+          "sidtd_grc_passport_94_fake_4_106",
+          "sidtd_lva_passport_51_fake_0_114",
+          "sidtd_srb_passport_87_fake_5_100",
+          "sidtd_svk_id_34_fake_8_103"
+        ],
+        "auc": 0.9637704918032788,
+        "genuine_false_positives": [
+          "sidtd_alb_id_63",
+          "sidtd_aze_passport_75",
+          "sidtd_rus_internalpassport_77"
+        ],
+        "n_altered": 122,
+        "n_genuine": 100,
+        "n_images": 222,
+        "subgroups": {
+          "copy": {
+            "accuracy": 0.8706896551724138,
+            "auc": 0.765,
+            "n_altered": 16,
+            "n_genuine": 100
+          },
+          "inpainting": {
+            "accuracy": 0.9805825242718447,
+            "auc": 0.9937735849056604,
+            "n_altered": 106,
+            "n_genuine": 100
+          }
+        }
+      },
+      "unavailable": null
+    },
+    "genuine_false_positives": [
+      "sidtd_alb_id_63",
+      "sidtd_aze_passport_75",
+      "sidtd_rus_internalpassport_77"
+    ],
+    "genuine_fpr": 0.03,
+    "image_loss": 0.30322744431882115,
+    "n_altered": 122,
+    "n_context_available": 222,
+    "n_context_unavailable": 0,
+    "n_genuine": 100,
+    "n_images": 222,
+    "referral_ids": [],
+    "subgroups": {
+      "copy": {
+        "accuracy": 0.8706896551724138,
+        "auc": 0.765,
+        "n_altered": 16,
+        "n_genuine": 100
+      },
+      "inpainting": {
+        "accuracy": 0.9805825242718447,
+        "auc": 0.9937735849056604,
+        "n_altered": 106,
+        "n_genuine": 100
+      }
+    }
+  },
+  "selection_key": [
+    0.9279279279279279,
+    0.9631147540983607
+  ],
+  "skip_policy": "all-effective-context-unavailable batches retain loss/counts, skip optimizer and scheduler; no synthetic gradient anchor",
+  "skipped_batches": 0,
+  "snapshot_checkpoint": {
+    "path": "/shared/b00090279/refer-or-clear/results/exploratory/direct-reference-warmstart-snapshot-20261012T155038Z/checkpoint.pt",
+    "sha256": "3230b5e81af26fc4c3019db39a1c9076833e7310e612433d106011f4366fa59e"
+  },
+  "snapshot_epochs": 58,
+  "snapshot_history": {
+    "path": "/shared/b00090279/refer-or-clear/results/exploratory/direct-reference-warmstart-snapshot-20261012T155038Z/history.csv",
+    "sha256": "11c03b89096c58bae2de1dce0152f6d9ac110cf449ab3b9841166ae4f299c3a0"
+  },
+  "snapshot_selected_epoch": 50,
+  "stored_bn_unchanged": true
+}
