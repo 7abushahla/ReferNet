@@ -1,0 +1,22 @@
+{
+  "schema_version": "protocol_a_evaluation_queue_v1",
+  "parent_job_id": 38152,
+  "evaluation_source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-a-evaluation-0950128",
+  "score_template": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/score-template-0950128.json",
+    "sha256": "9e7598a133aab07e6a0eb62cfe3cdfea2b8822e28fe03d0bdde5e077a102a1c1"
+  },
+  "wrapper": {
+    "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-evaluation-0950128/scripts/cluster/score_protocol_a_current.sh",
+    "sha256": "82f4bdf051515f64407bec895bd422037f022a1ee67c689a7d823022ab170cbd"
+  },
+  "inputs_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-a-eval-assets/inputs",
+  "inputs_manifest": {
+    "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-eval-assets/inputs.sha256",
+    "sha256": "72306666d7f432868c74298a93c43c564f62ba0c05422515c4b3ffab0fa45179"
+  },
+  "run_dir": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/direct-reference-control-38041",
+  "request_path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/fold0-0950128-test.json",
+  "ledger_path": "/shared/b00090279/refer-or-clear/results/monitoring/a-evaluation-0950128.jsonl",
+  "submit_cwd": "/shared/b00090279/refer-or-clear"
+}

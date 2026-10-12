@@ -1,0 +1,6 @@
+{
+  "schema_version": "direct_reference_product_root_v1",
+  "original_root": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold0-37973/enrollment",
+  "relocated_root": "/shared/b00090279/refer-or-clear/results/source/protocol-a-eval-assets/enrollment",
+  "enrollment_manifest_sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8"
+}
