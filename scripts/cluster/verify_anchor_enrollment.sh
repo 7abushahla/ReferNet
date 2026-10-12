@@ -9,10 +9,12 @@
 #SBATCH --job-name=anchor-enrollment-integrity
 #SBATCH --output=logs/slurm/%x-%j.out
 set -euo pipefail
-if [[ $# -ne 4 ]]; then
-    echo "Usage: $0 SOURCE_DIR MANIFEST MANIFEST_SHA256 OUTPUT_ROOT" >&2
+if [[ $# -ne 4 && $# -ne 5 ]]; then
+    echo "Usage: $0 SOURCE_DIR MANIFEST MANIFEST_SHA256 OUTPUT_ROOT [EXPECTED_FOLD (0..9, default 0)]" >&2
     exit 2
 fi
+expected_fold="${5-0}"
+[[ "$expected_fold" =~ ^[0-9]$ ]] || { echo 'Expected fold must be an integer in 0..9' >&2; exit 2; }
 : "${SLURM_JOB_ID:?Allocated Slurm job required}"
 : "${SLURMD_NODENAME:?Allocated compute node required}"
 : "${SLURM_SUBMIT_DIR:?Submit from the repository root}"
@@ -40,7 +42,7 @@ export PYTHONDONTWRITEBYTECODE=1
 export OMP_NUM_THREADS=4
 export MKL_NUM_THREADS=4
 export TMPDIR="$scratch/tmp"
-"$python_bin" - "$@" "$scratch" "$run_dir" "$environment_path" "$launcher" <<'PY'
+"$python_bin" - "$1" "$2" "$3" "$4" "$scratch" "$run_dir" "$environment_path" "$launcher" "$expected_fold" <<'PY'
 import hashlib
 import json
 import os
@@ -50,7 +52,8 @@ import shutil
 import sys
 
 source, authority, expected, output = sys.argv[1:5]
-scratch, run, environment, launcher = map(Path, sys.argv[5:])
+scratch, run, environment, launcher = map(Path, sys.argv[5:9])
+expected_fold = int(sys.argv[9])
 if (Path(sys.prefix).resolve() != environment.resolve()
         or Path(sys.executable).resolve() != (environment / "bin/python").resolve()):
     raise ValueError("absolute project Python environment required")
@@ -71,6 +74,8 @@ script_sha = digest(script)
 if digest(authority) != expected:
     raise ValueError("authority manifest hash mismatch")
 manifest = json.loads(authority.read_text())
+if type(manifest.get("fold")) is not int or manifest["fold"] != expected_fold:
+    raise ValueError("authority manifest differs from explicitly expected fold")
 protected = [source, authority.parent]
 for key in ("output_root", "raw_root"):
     if manifest.get(key):
@@ -100,6 +105,7 @@ frozen_authority = scratch / "inputs/manifest.json"
 freeze(script, frozen_script, script_sha)
 freeze(authority, frozen_authority, expected)
 ledger = dict(schema_version="anchor_enrollment_integrity_launcher_v1", verification_only=True,
+              expected_fold=expected_fold,
               script=dict(path=str(script), frozen_path=str(frozen_script), sha256=script_sha),
               authority=dict(path=str(authority), frozen_path=str(frozen_authority), sha256=expected),
               launcher_sha256=digest(launcher),
@@ -120,7 +126,7 @@ PY
 status=0
 "$python_bin" "$scratch/code/verify_anchor_enrollment_products.py" \
     --manifest "$scratch/inputs/manifest.json" --manifest-sha256 "$3" \
-    --report "$run_dir/report.json" || status=$?
+    --report "$run_dir/report.json" --expected-fold "$expected_fold" || status=$?
 "$python_bin" - "$run_dir" "$status" <<'PY'
 import hashlib
 import json

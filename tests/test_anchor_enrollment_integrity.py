@@ -86,6 +86,123 @@ def verify(verifier, bundle, **kwargs):
     return verifier.verify_products(path, digest(path), **kwargs)
 
 
+def set_bundle_fold(bundle, fold):
+    path, manifest = bundle
+    if fold:
+        (path.parent / "fold0").rename(path.parent / f"fold{fold}")
+    manifest["fold"] = fold
+    manifest["official_fold_binding"] = dict(protocol="A", fold=fold, ref_group=f"it{fold}")
+    manifest["classifier_counts"] = {4: dict(train=1776, val=223, test=223),
+                                     9: dict(train=1777, val=222, test=223)}.get(fold, dict(train=1778, val=222, test=222))
+    for bank in manifest["banks"]["sidtd/example"].values():
+        bank["fold"] = fold
+        for product in bank["products"].values():
+            relative = Path(product["path"]).relative_to(path.parent / "fold0")
+            product["path"] = str(path.parent / f"fold{fold}" / relative)
+        geometry_path = Path(bank["products"]["geometry"]["path"])
+        geometry = json.loads(geometry_path.read_text())
+        geometry["fold"] = fold
+        write_json(geometry_path, geometry)
+        bank["products"]["geometry"]["sha256"] = digest(geometry_path)
+        dependency_path = Path(bank["products"]["manifest"]["path"])
+        write_json(dependency_path, dict(geometry, output_sha256={name: entry["sha256"]
+                   for name, entry in bank["products"].items() if name != "manifest"}))
+        bank["products"]["manifest"]["sha256"] = digest(dependency_path)
+    write_json(path, manifest)
+
+
+@pytest.mark.parametrize("fold", range(1, 10))
+def test_explicit_nonzero_fold_verifies_all_bank_products(verifier, bundle, fold):
+    set_bundle_fold(bundle, fold)
+    result = verify(verifier, bundle, expected_fold=fold)
+    assert result["passed"], result["errors"]
+    assert result["expected_fold"] == fold
+    assert result["counts"]["products_matched"] == 27
+    assert result["counts"]["bank_json_pairs_checked"] == 3
+    assert result["pixels_decoded"] is False and result["raw_or_query_files_opened"] is False
+
+
+@pytest.mark.parametrize("actual,expected", [(1, 0), (0, 1), (4, 9), (9, 4)])
+def test_wrong_expected_fold_fails_before_product_reads(verifier, bundle, monkeypatch, actual, expected):
+    set_bundle_fold(bundle, actual)
+    original = verifier._read_file
+    def manifest_only(path, **kwargs):
+        assert path == bundle[0], "wrong-fold bank products must not be opened"
+        return original(path, **kwargs)
+    monkeypatch.setattr(verifier, "_read_file", manifest_only)
+    result = verify(verifier, bundle, expected_fold=expected)
+    assert not result["passed"] and result["counts"]["products_hashed"] == 0
+
+
+@pytest.mark.parametrize("fold", [True, False, -1, 10, 1.0, "1", None])
+def test_invalid_expected_fold_rejected_before_file_reads(verifier, bundle, monkeypatch, fold):
+    monkeypatch.setattr(verifier, "_read_file", lambda *args, **kwargs: pytest.fail("invalid fold opened files"))
+    with pytest.raises(ValueError, match="expected_fold"):
+        verifier.verify_products(bundle[0], digest(bundle[0]), expected_fold=fold)
+
+
+@pytest.mark.parametrize("change", ["bank", "geometry", "dependency", "path", "binding", "counts"])
+def test_nonzero_fold_checks_every_fold_binding(verifier, bundle, change):
+    set_bundle_fold(bundle, 4)
+    manifest = bundle[1]
+    bank = manifest["banks"]["sidtd/example"]["enrollment"]
+    if change == "bank": bank["fold"] = 0
+    elif change == "binding": manifest["official_fold_binding"]["fold"] = 0
+    elif change == "counts": manifest["classifier_counts"] = dict(train=1778, val=222, test=222)
+    elif change == "path":
+        bank["products"]["median"]["path"] = str(bundle[0].parent / "fold0/sidtd/example/enrollment/median.png")
+    else:
+        target = Path(bank["products"][change if change == "geometry" else "manifest"]["path"])
+        document = json.loads(target.read_text())
+        document["fold"] = 0
+        write_json(target, document)
+        bank["products"][change if change == "geometry" else "manifest"]["sha256"] = digest(target)
+        if change == "geometry":
+            target = Path(bank["products"]["manifest"]["path"])
+            document = json.loads(target.read_text())
+            document["fold"] = 0
+            document["output_sha256"]["geometry"] = bank["products"]["geometry"]["sha256"]
+            write_json(target, document)
+            bank["products"]["manifest"]["sha256"] = digest(target)
+    result = verify(verifier, bundle, expected_fold=4)
+    assert not result["passed"]
+
+
+@pytest.mark.parametrize("fold", [False, 0.0])
+def test_dependency_fold_requires_an_explicit_integer(verifier, bundle, fold):
+    bank = bundle[1]["banks"]["sidtd/example"]["enrollment"]
+    dependency_path = Path(bank["products"]["manifest"]["path"])
+    dependency = json.loads(dependency_path.read_text())
+    dependency["fold"] = fold
+    write_json(dependency_path, dependency)
+    bank["products"]["manifest"]["sha256"] = digest(dependency_path)
+    result = verify(verifier, bundle)
+    assert not result["passed"]
+    assert any(error["code"] == "dependency_fold" for error in result["errors"])
+
+
+def test_nonzero_fold_cli_and_relocated_product_paths(verifier, bundle, tmp_path):
+    import shutil
+    set_bundle_fold(bundle, 9)
+    relocated = tmp_path / "relocated"
+    shutil.copytree(bundle[0].parent, relocated)
+    report = tmp_path / "report.json"
+    result = subprocess.run([sys.executable, str(SCRIPT), "--manifest", str(bundle[0]),
+                            "--manifest-sha256", digest(bundle[0]), "--expected-fold", "9",
+                            "--output-root", str(relocated), "--report", str(report)], capture_output=True, text=True)
+    assert result.returncode == 0, result.stderr
+    assert json.loads(report.read_text())["expected_fold"] == 9
+
+
+@pytest.mark.parametrize("fold", ["-1", "10", "True", "1.0"])
+def test_cli_invalid_expected_fold_rejected_before_manifest_reads(verifier, tmp_path, fold):
+    report = tmp_path / "report.json"
+    with pytest.raises(SystemExit) as error:
+        verifier.main(["--manifest", str(tmp_path / "missing.json"), "--manifest-sha256", "a" * 64,
+                       "--report", str(report), "--expected-fold", fold])
+    assert error.value.code == 2 and not report.exists()
+
+
 def test_verifies_every_product_and_json_without_decoding_or_mutation(verifier, bundle):
     path, manifest = bundle
     protected = {product["path"]: digest(Path(product["path"])) for bank in manifest["banks"]["sidtd/example"].values()

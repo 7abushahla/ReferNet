@@ -29,12 +29,13 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--manifest', type=Path, required=True)
 parser.add_argument('--manifest-sha256', required=True)
 parser.add_argument('--report', type=Path, required=True)
+parser.add_argument('--expected-fold', type=int, choices=range(10), default=0)
 args = parser.parse_args()
 assert hashlib.sha256(args.manifest.read_bytes()).hexdigest() == args.manifest_sha256
 assert not args.report.exists()
 manifest = json.loads(args.manifest.read_text())
 assert not args.report.resolve().is_relative_to(Path(manifest['output_root']).resolve())
-call = dict(manifest=str(args.manifest), manifest_sha256=args.manifest_sha256,
+call = dict(manifest=str(args.manifest), manifest_sha256=args.manifest_sha256, expected_fold=args.expected_fold,
             manifest_text=args.manifest.read_text(), script=str(Path(__file__).resolve()),
             environment={key: os.environ.get(key) for key in
                          ('CONDA_PREFIX', 'TMPDIR', 'PYTHONPATH', 'OMP_NUM_THREADS')})
@@ -51,7 +52,7 @@ raise SystemExit(int(os.environ.get('VERIFIER_EXIT', '0')))
     product = products / "median.png"
     product.write_bytes(b"synthetic binary product, not an image")
     manifest = products / "manifest.json"
-    manifest.write_text(json.dumps(dict(output_root=str(products), banks={"design": {"enrollment": {
+    manifest.write_text(json.dumps(dict(fold=0, output_root=str(products), banks={"design": {"enrollment": {
         "products": {"median": {"path": str(product), "sha256": digest(product)}}}}})))
     driver = tmp_path / "python driver.py"
     driver.write_text(f'''import os, runpy, shutil, sys
@@ -71,7 +72,7 @@ if script == '-':
         return result
     shutil.copyfile = copy
     exec(compile(sys.stdin.read(), '<inline-launcher>', 'exec'))
-    if os.environ.get('MUTATE_LIVE') and len(arguments) == 8:
+    if os.environ.get('MUTATE_LIVE') and len(arguments) in (8, 9):
         Path(arguments[1]).write_text('changed live manifest')
         (Path(arguments[0]) / 'scripts/verify_anchor_enrollment_products.py').write_text('raise RuntimeError("live script")')
 else:
@@ -127,6 +128,7 @@ def test_frozen_verifier_and_manifest_preserve_authorities_without_staging_produ
     call = json.loads((job["run"] / "report.json").read_text())
     assert call["manifest_text"] == job["manifest"].read_text()
     assert call["manifest_sha256"] == before["manifest"]
+    assert call["expected_fold"] == 0
     assert Path(call["script"]) == job["scratch"] / "code/verify_anchor_enrollment_products.py"
     assert Path(call["manifest"]) == job["scratch"] / "inputs/manifest.json"
     for path in (Path(call["script"]), Path(call["manifest"])):
@@ -169,13 +171,50 @@ def test_missing_allocation_fails_closed(integrity_job, key):
     assert not job["run"].exists()
 
 
-@pytest.mark.parametrize("extra", [[], ["train"]])
+@pytest.mark.parametrize("extra", [[], ["0", "train"]])
 def test_exact_four_argument_cli_rejects_phases(integrity_job, extra):
     job = integrity_job
     arguments = job["arguments"][:-1] if not extra else [*job["arguments"], *extra]
     result = run_wrapper(job, arguments)
     assert result.returncode == 2
     assert "Usage:" in result.stderr
+
+
+@pytest.mark.parametrize("fold", [1, 4, 9])
+def test_optional_expected_fold_reaches_frozen_verifier_and_ledger(integrity_job, fold):
+    job = integrity_job
+    manifest = json.loads(job["manifest"].read_text())
+    manifest["fold"] = fold
+    job["manifest"].write_text(json.dumps(manifest))
+    job["arguments"][2] = digest(job["manifest"])
+    result = run_wrapper(job, [*job["arguments"], fold])
+    assert result.returncode == 0, result.stderr
+    assert json.loads((job["run"] / "report.json").read_text())["expected_fold"] == fold
+    assert json.loads((job["run"] / "launcher_manifest.json").read_text())["expected_fold"] == fold
+    assert sorted(path.name for path in job["scratch"].rglob("*") if path.is_file()) == [
+        "manifest.json", "verify_anchor_enrollment_products.py"]
+
+
+@pytest.mark.parametrize("fold", ["-1", "10", "True", "1.0", "", "01"])
+def test_invalid_expected_fold_fails_before_environment_work(integrity_job, fold):
+    job = integrity_job
+    marker = job["source"].parent / "environment_work.txt"
+    with Path(job["environment"]["BASH_ENV"]).open("a") as stream:
+        stream.write(f'''source() {{
+    printf 'unexpected work' > {shlex.quote(str(marker))}
+    return 97
+}}
+''')
+    result = run_wrapper(job, [*job["arguments"], fold])
+    assert result.returncode == 2 and not marker.exists()
+    assert not job["scratch"].exists() and not job["run"].exists()
+
+
+def test_manifest_wrong_fold_rejected_before_staging(integrity_job):
+    job = integrity_job
+    result = run_wrapper(job, [*job["arguments"], "4"])
+    assert result.returncode != 0 and "fold" in result.stderr.lower()
+    assert not job["scratch"].exists() and not job["run"].exists()
 
 
 @pytest.mark.parametrize("hash_value", ["0" * 64, "invalid"])

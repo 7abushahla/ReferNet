@@ -1,10 +1,12 @@
-"""Verify completed fold-zero bank products, not detector or model clearance.
+"""Verify completed explicitly selected-fold bank products, not model clearance.
 
 Only declared bank output files are opened. PNGs are streamed for SHA256 without
 decoding. Geometry and dependency JSON are checked against the authenticated
 completed manifest. --output-root optionally relocates the exact declared root;
 it never authorizes paths outside that original root or another bank directory.
 The report must be a new file outside both output trees and the manifest folder.
+--expected-fold defaults to zero for existing callers and never infers approval
+from the manifest. Official classifier counts retain the fold-four/nine exceptions.
 """
 from __future__ import annotations
 
@@ -103,19 +105,21 @@ def _identifiers(value):
             and len(value) == len(set(value)))
 
 
-def _check_bank_json(result, manifest, selected, documents, context):
+def _check_bank_json(result, manifest, selected, documents, context, expected_fold):
     geometry = documents.get("geometry")
     dependency = documents.get("manifest")
     if geometry is None or dependency is None:
         _error(result, "bank_json_unavailable", "geometry/dependency JSON pair unavailable", **context)
     if dependency is not None:
+        if type(dependency.get("fold")) is not int or dependency["fold"] != expected_fold:
+            _error(result, "dependency_fold", "dependency fold differs from explicitly expected integer fold", **context)
         expected = {name: entry.get("sha256") for name, entry in selected["products"].items()
                     if name != "manifest" and isinstance(entry, dict)}
         if dependency.get("output_sha256") != expected:
             _error(result, "dependency_output_sha256", "dependency outputs must equal product table excluding manifest self-hash", **context)
     if geometry is None:
         return
-    expected_fields = {"schema_version": SCHEMA_VERSION, "geometry_version": GEOMETRY_VERSION, "fold": 0,
+    expected_fields = {"schema_version": SCHEMA_VERSION, "geometry_version": GEOMETRY_VERSION, "fold": expected_fold,
                        "design_id": context["design"], "bank": context["bank"], "canvas_hw": CANVAS_HW, "axes": AXES,
                        "valid_interpolation": "nearest", "rgb_interpolation": "linear",
                        "support_ids": selected.get("support_ids"), "registered_ids": selected.get("registered_ids"),
@@ -151,11 +155,14 @@ def _check_bank_json(result, manifest, selected, documents, context):
         _error(result, "geometry_specimen", "specimen geometry/product presence differs", **context)
 
 
-def verify_products(manifest_path, expected_manifest_sha256, *, output_root=None):
+def verify_products(manifest_path, expected_manifest_sha256, *, output_root=None, expected_fold=0):
+    if type(expected_fold) is not int or not 0 <= expected_fold < 10:
+        raise ValueError("expected_fold must be an integer in 0..9")
     manifest_path = Path(manifest_path).absolute()
     result = {"schema_version": "anchor_enrollment_integrity_v1", "scope": "bank_product_integrity_only",
               "manifest_path": str(manifest_path), "expected_manifest_sha256": expected_manifest_sha256,
               "actual_manifest_sha256": None, "declared_output_root": None, "verification_output_root": None,
+              "expected_fold": expected_fold,
               "detector_clearance": False, "pixels_decoded": False, "raw_or_query_files_opened": False,
               "errors": [], "products": [], "counts": {"designs_declared": 0, "banks_checked": 0,
               "products_declared": 0, "products_hashed": 0, "products_matched": 0, "products_missing": 0,
@@ -174,9 +181,11 @@ def verify_products(manifest_path, expected_manifest_sha256, *, output_root=None
     except (OSError, ValueError, UnicodeError) as error:
         _error(result, "manifest_read", error)
         return _finish(result)
-    for field, wanted in (("schema_version", SCHEMA_VERSION), ("geometry_version", GEOMETRY_VERSION), ("fold", 0),
-                          ("official_fold_binding", {"protocol": "A", "fold": 0, "ref_group": "it0"}),
-                          ("classifier_counts", {"train": 1778, "val": 222, "test": 222}),
+    classifier_counts = {4: {"train": 1776, "val": 223, "test": 223},
+                         9: {"train": 1777, "val": 222, "test": 223}}.get(expected_fold, {"train": 1778, "val": 222, "test": 222})
+    for field, wanted in (("schema_version", SCHEMA_VERSION), ("geometry_version", GEOMETRY_VERSION), ("fold", expected_fold),
+                          ("official_fold_binding", {"protocol": "A", "fold": expected_fold, "ref_group": f"it{expected_fold}"}),
+                          ("classifier_counts", classifier_counts),
                           ("official_split_hash_format", "canonical_json_rows_v1")):
         if manifest.get(field) != wanted or (field == "fold" and type(manifest.get(field)) is not int):
             _error(result, "manifest_contract", f"unsupported or inconsistent {field}")
@@ -214,7 +223,7 @@ def verify_products(manifest_path, expected_manifest_sha256, *, output_root=None
             if bank not in BANKS or not isinstance(selected, dict):
                 _error(result, "bank_contract", "invalid named bank", **context)
                 continue
-            for field, wanted in (("design_id", design), ("bank", bank), ("fold", 0), ("geometry_version", GEOMETRY_VERSION)):
+            for field, wanted in (("design_id", design), ("bank", bank), ("fold", expected_fold), ("geometry_version", GEOMETRY_VERSION)):
                 if selected.get(field) != wanted or (field == "fold" and type(selected.get(field)) is not int):
                     _error(result, "bank_contract", f"bank {field} mismatch", **context)
             support, registered = selected.get("support_ids"), selected.get("registered_ids")
@@ -245,7 +254,7 @@ def verify_products(manifest_path, expected_manifest_sha256, *, output_root=None
                     if product not in REQUIRED_PRODUCTS | OPTIONAL_PRODUCTS or not isinstance(entry, dict):
                         raise ValueError("unsupported product declaration")
                     original_path = _absolute(entry.get("path"))
-                    expected_path = declared / "fold0" / design_path / bank / f"{product}{'.json' if product in ('geometry', 'manifest') else '.png'}"
+                    expected_path = declared / f"fold{expected_fold}" / design_path / bank / f"{product}{'.json' if product in ('geometry', 'manifest') else '.png'}"
                     if not original_path.is_relative_to(declared) or original_path != expected_path:
                         raise ValueError("product must remain in its exact authorized bank/output-root path")
                     mapped = actual_root / original_path.relative_to(declared)
@@ -279,7 +288,7 @@ def verify_products(manifest_path, expected_manifest_sha256, *, output_root=None
                     _error(result, "product_missing", error, **product_context)
                 except (OSError, ValueError) as error:
                     _error(result, "product_read", error, **product_context)
-            _check_bank_json(result, manifest, selected, documents, context)
+            _check_bank_json(result, manifest, selected, documents, context, expected_fold)
     expected_counts = {"designs": len(banks), "banks": sum(len(named) for named in banks.values() if isinstance(named, dict)),
                        "eligible": len(manifest.get("eligible_ids", []))}
     if manifest.get("counts") != expected_counts:
@@ -293,6 +302,8 @@ def main(argv=None):
     parser.add_argument("--manifest-sha256", required=True)
     parser.add_argument("--report", required=True, type=Path)
     parser.add_argument("--output-root", type=Path, help="explicit local relocation of the exact declared output root")
+    parser.add_argument("--expected-fold", type=int, choices=range(10), default=0,
+                        help="explicit authorized Protocol A fold (default 0)")
     args = parser.parse_args(argv)
     report = args.report.absolute()
     _no_symlinks(report)
@@ -304,7 +315,7 @@ def main(argv=None):
         root = _absolute(args.output_root)
         if report.is_relative_to(root) or report.is_relative_to(root.resolve()):
             raise ValueError("report must be outside the relocated output tree")
-    result = verify_products(args.manifest, args.manifest_sha256, output_root=args.output_root)
+    result = verify_products(args.manifest, args.manifest_sha256, output_root=args.output_root, expected_fold=args.expected_fold)
     for field in ("declared_output_root", "verification_output_root"):
         if result[field] is not None:
             root = Path(result[field])
