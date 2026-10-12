@@ -14,6 +14,12 @@ Separate work proceeds on B membership/accounting and explicitly reserved target
 
 An attempted Claude CLI second opinion returned `Not logged in`; no Claude review is claimed. Independent agent review supplied the recorded deployment assessment.
 
+CPU-only archive downloads were submitted in parallel as jobs **38155** (FantasyID) and **38156** (IDNet WV). The frozen wrapper at `results/source/transfer-download-dd5b425/download_transfer_archives.sh` has SHA256 `a1cf884d30feb4bc7716bd1af4cfb60a68ca4d6d7ac0e5b87fee5dbad66ca596`. Its URLs and MD5 checksums were checked against the official Zenodo records [FantasyID](https://zenodo.org/records/17063366) and [IDNet WV](https://zenodo.org/records/13854938). It resumes partial downloads and promotes them only after checksum verification. No archive extraction or dataset-completeness claim follows from submission. AZ is transferred from the existing local folder, not downloaded again. The wrapper passed 27 focused synthetic tests and shell syntax validation.
+
+Download job 38155 failed before transfer because the CPU node does not have the GPU image's `/opt/miniconda` initialization path. The coordinator cancelled 38156 before it repeated that startup failure. This was an unnecessary environment dependency, not a dataset or training error. The corrected download wrapper uses only its actual dependencies, `curl` and `md5sum`, with CPU allocation guards and checksum-before-promotion unchanged. Its SHA256 is `25b6e8aae52579160b7d172b47cf68976041aee10a4db42f837a3feea027c96d`; 29 focused tests and shell syntax passed. GPU training still uses the exact reviewed project environment and is unchanged.
+
+Manuscript working fragments for the current method and provenance-separated development evidence were committed and pushed in the paper repository as `173ede5`. Both fragments compiled together successfully through two LaTeX passes. They are not integrated into `main.tex` and do not present development validation as final test or transfer results.
+
 Plan `docs/superpowers/plans/2026-10-11-classification-centered-anchor.md`.
 
 Starting revision `60a3adf`. Implementation and parallel delegation are authorized. Codex owns integration, commits, pushes and all submissions. External review owns milestone/gate assessment and makes no repository changes. Existing jobs and historical artifacts remain untouched.

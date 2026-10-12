@@ -7,7 +7,6 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 WRAPPER = ROOT / 'scripts/cluster/download_transfer_archives.sh'
-ENV_PATH = '/shared/b00090279/conda/envs/refer-or-clear'
 ARCHIVES = {
     'fantasyid': ('fantasyid', 'FantasyID.tgz', '17063366', '5a6e608762f640db026ac122b4400a72'),
     'az': ('idnet', 'AZ.zip', '13852757', 'd51cdee3f3aaf4592039ba6623af7df3'),
@@ -22,23 +21,20 @@ def download_job(tmp_path):
     environment_file = tmp_path / 'bash_env'
     environment_file.write_text(f'''source() {{
     printf 'source %s\\n' "$1" >> "$TEST_LOG"
-    [[ "$1" == /opt/miniconda/etc/profile.d/conda.sh ]]
+    return 99
 }}
 conda() {{
     printf 'conda %s %s\\n' "$1" "$2" >> "$TEST_LOG"
-    [[ "$1" == activate && "$2" == {ENV_PATH} ]] || return 98
-    export CONDA_PREFIX="${{MOCK_CONDA_PREFIX:-$2}}"
+    return 98
 }}
-function {ENV_PATH}/bin/python {{
-    printf 'python %s %s\\n' {ENV_PATH}/bin/python "$*" >> "$TEST_LOG"
-    [[ "$1" == -c && "$2" == *sys.prefix* && "$2" == *sys.executable* ]] || return 94
-    [[ "${{MOCK_INTERPRETER_PREFIX:-{ENV_PATH}}}" == {ENV_PATH} ]]
+command() {{
+    if [[ "$1" == -v && "$2" == "${{MOCK_MISSING_TOOL:-}}" ]]; then return 127; fi
+    builtin command "$@"
 }}
 curl() {{
     printf 'curl' >> "$TEST_LOG"
     printf ' <%s>' "$@" >> "$TEST_LOG"
     printf '\\n' >> "$TEST_LOG"
-    [[ "$CONDA_PREFIX" == {ENV_PATH} ]] || return 97
     [[ "$PWD" == "$ROC_TRANSFER_RAW_ROOT/fantasyid" || "$PWD" == "$ROC_TRANSFER_RAW_ROOT/idnet" ]] || return 96
     local output=''
     while [[ $# -gt 0 ]]; do
@@ -64,6 +60,8 @@ md5sum() {{
                        SLURMD_NODENAME='cpu01', SLURM_JOB_PARTITION='cpu', SLURM_SUBMIT_DIR=str(tmp_path),
                        ROC_TRANSFER_RAW_ROOT=str(raw), TEST_LOG=str(log))
     environment.pop('MOCK_DOWNLOAD', None)
+    environment.pop('MOCK_MISSING_TOOL', None)
+    environment.pop('CONDA_PREFIX', None)
     return dict(raw=raw, log=log, environment=environment, tmp=tmp_path)
 
 
@@ -95,9 +93,7 @@ def test_download_mapping_resumes_part_and_promotes_only_verified_archive(downlo
     assert f'<--output> <{name}.part>' in log
     assert 'resume previous partial' in log
     assert f'md5 {checksum} {name}.part' in log
-    assert 'source /opt/miniconda/etc/profile.d/conda.sh' in log
-    assert f'conda activate {ENV_PATH}' in log
-    assert f'python {ENV_PATH}/bin/python -c' in log
+    assert 'source ' not in log and 'conda ' not in log
     assert len(list(destination.iterdir())) == 1
 
 
@@ -171,7 +167,7 @@ def test_symlinks_are_not_followed_or_modified(download_job, location):
     ('SLURMD_NODENAME', 'login01'), ('SLURMD_NODENAME', 'head01'),
     ('SLURM_JOB_PARTITION', 'gpu'), ('SLURM_JOB_PARTITION', None), ('SLURM_SUBMIT_DIR', None),
 ])
-def test_cpu_allocation_guards_fail_before_bootstrap_or_writes(download_job, field, value):
+def test_cpu_allocation_guards_fail_before_download_or_writes(download_job, field, value):
     job = download_job
     if value is None:
         job['environment'].pop(field, None)
@@ -199,17 +195,21 @@ def test_wrapper_reuses_cpu_allocation_and_default_shared_destination():
     assert '#SBATCH --gres=' not in text and '#SBATCH --gpus' not in text
     assert '/shared/b00090279/refer-or-clear/data/raw' in text
     assert 'tar ' not in text and 'unzip ' not in text and 'sbatch ' not in text
+    for forbidden in ('miniconda', 'conda activate', 'CONDA_PREFIX', 'python'):
+        assert forbidden not in text
     result = subprocess.run(['bash', '-n', str(WRAPPER)], capture_output=True, text=True)
     assert result.returncode == 0, result.stderr
 
 
-def test_wrong_activated_environment_fails_before_destination_or_download(download_job):
+@pytest.mark.parametrize('prefix', [None, '/unrelated/environment'])
+def test_pure_download_requires_no_conda_bootstrap_or_prefix(download_job, prefix):
     job = download_job
-    job['environment']['MOCK_CONDA_PREFIX'] = '/wrong/environment'
+    if prefix is not None:
+        job['environment']['CONDA_PREFIX'] = prefix
     result = run_wrapper(job)
-    assert result.returncode != 0
-    assert not job['raw'].exists()
-    assert 'curl' not in calls(job) and 'md5' not in calls(job)
+    assert result.returncode == 0, result.stderr
+    assert (job['raw'] / 'fantasyid/FantasyID.tgz').read_text() == 'verified archive'
+    assert 'source ' not in calls(job) and 'conda ' not in calls(job)
 
 
 def test_download_uses_public_get_without_authentication(download_job):
@@ -223,10 +223,12 @@ def test_download_uses_public_get_without_authentication(download_job):
     assert 'Authorization' not in invocation and 'Bearer' not in invocation
 
 
-def test_wrong_interpreter_prefix_fails_before_destination_or_download(download_job):
+@pytest.mark.parametrize('tool', ['curl', 'md5sum'])
+def test_missing_download_tool_fails_before_destination_or_download(download_job, tool):
     job = download_job
-    job['environment']['MOCK_INTERPRETER_PREFIX'] = '/wrong/interpreter'
+    job['environment']['MOCK_MISSING_TOOL'] = tool
     result = run_wrapper(job)
     assert result.returncode != 0
     assert not job['raw'].exists()
     assert 'curl' not in calls(job) and 'md5' not in calls(job)
+    assert tool in result.stderr

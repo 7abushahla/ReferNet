@@ -42,15 +42,8 @@ case "${SLURMD_NODENAME,,}" in
 esac
 [[ "${SLURM_JOB_PARTITION:-}" == cpu ]] || { echo 'Allocated CPU partition required' >&2; exit 2; }
 [[ "$SLURM_JOB_ID" =~ ^[0-9]+$ ]] || { echo 'Invalid Slurm job ID' >&2; exit 2; }
-source /opt/miniconda/etc/profile.d/conda.sh
-environment_path=/shared/b00090279/conda/envs/refer-or-clear
-conda activate "$environment_path"
-[[ "${CONDA_PREFIX:-}" == "$environment_path" ]] || { echo 'Exact environment prefix required' >&2; exit 2; }
-python_bin="$environment_path/bin/python"
-"$python_bin" -c 'import sys
-from pathlib import Path
-if sys.prefix != "/shared/b00090279/conda/envs/refer-or-clear" or str(Path(sys.executable).parent) != sys.prefix + "/bin":
-    raise SystemExit("interpreter prefix mismatch")'
+command -v curl >/dev/null || { echo 'Required download tool unavailable: curl' >&2; exit 2; }
+command -v md5sum >/dev/null || { echo 'Required checksum tool unavailable: md5sum' >&2; exit 2; }
 cd "$SLURM_SUBMIT_DIR"
 raw_root="${ROC_TRANSFER_RAW_ROOT:-/shared/b00090279/refer-or-clear/data/raw}"
 [[ "$raw_root" == /* && ! -L "$raw_root" && ! -L "$raw_root/$folder" ]] || {
