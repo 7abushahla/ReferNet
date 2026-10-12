@@ -1,5 +1,19 @@
 # Protocol A pilot execution ledger
 
+## 13 October parallel study update
+
+The user explicitly accepts a measured query-only trade-off. The original 0.97 accuracy and 0.99 AUC targets remain reported, but no longer block the formal matched reference run. The operative sequence is `docs/superpowers/plans/2026-10-13-parallel-study-execution.md`. This does not waive data isolation, source binding, fresh initialization, checkpoint selection, or replay. Historical gate statements below retain their historical scope.
+
+Formal ON100 job **38152** was submitted from commit `54bb62c` with one GPU, four CPUs, 8 GB, and an 18-hour allocation limit. It uses the original scientific source and completed OFF38041 as its matched comparison, not as a trained initialization. Global-only comparison 38146 continues independently. The new run is not a sweep and does not establish reference benefit before completion.
+
+The independently reviewed external launcher is `scripts/train_direct_reference_on_study.py`, SHA256 `b129f650da89f047473c0bd4a42f5ddcfcbd1ef97552fabb6fcfbe325c7efc04`. Wrapper SHA256 is `9edd87a45bd426be51ca479466629094d4db94e3b4e660f5ca198173538744b4`. Both are deployed read-only under `results/source/direct-reference-on-study-b129f65`. The explicit request is `results/runs/direct-reference-v1/requests/fold0-on-study100-b129f65.json`, SHA256 `acdf4a71756c521ce97eeb57914cd420619e24a2114efff223ef492c5e6edaea`. It binds OFF completion `1bb2a8e...`, original source `a5ff28ae...`, config `a89c6213...`, diagnostic request `2f6d4798...`, registration `759ccb75...`, and phase `b711bcdb...`; full hashes are in the request. Output is the previously absent `results/runs/direct-reference-v1/direct-reference-control-38041/training/on` directory. Nodes 16 and 4 are excluded at submission to avoid the original stage and the active global comparison.
+
+Coordinator verification passed 95 combined old/new launcher tests, 106 combined old/new wrapper tests, and then all 39 final study-launcher tests after additional completion/replay coverage. Independent review includes 60 study-wrapper tests and a synthetic selected-train/replay delegation check. These checks establish execution readiness, not statistical performance. Remote deployed launcher, wrapper, and authority hashes matched before submission. The old pinned ON helper remains unchanged.
+
+Separate work proceeds on B membership/accounting and explicitly reserved target enrollment, C transfer metadata, runtime options, and manuscript method/evidence fragments. B/C/D are not yet launched. The user approved excluding reserved target genuine identities and their derived attacks from both arms' evaluation. Local AZ data was found at `/Users/hamza/Downloads/AZ` and transfer to cluster `data/raw/idnet/AZ` started; this is not yet verified complete. Its observed counts are 5,979 for positive and attack folders 1 through 5, and 5,978 for attack folder 6.
+
+An attempted Claude CLI second opinion returned `Not logged in`; no Claude review is claimed. Independent agent review supplied the recorded deployment assessment.
+
 Plan `docs/superpowers/plans/2026-10-11-classification-centered-anchor.md`.
 
 Starting revision `60a3adf`. Implementation and parallel delegation are authorized. Codex owns integration, commits, pushes and all submissions. External review owns milestone/gate assessment and makes no repository changes. Existing jobs and historical artifacts remain untouched.
