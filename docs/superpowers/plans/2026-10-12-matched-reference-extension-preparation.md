@@ -4,6 +4,8 @@
 
 **Status:** Branch-conditional preparation requested on 12 October 2026. No family or fusion design is selected. No model run, reference training, sweep, submission, or commit is authorized by this document.
 
+**Completed-pilot follow-up:** The reviewed D/N validation outcomes now motivate the concrete proposal in `docs/superpowers/specs/2026-10-12-direct-reference-pilot-design.md`. It specifies the provisional D route, local adapter, context-to-query bridge, and first matched experiment. That proposal retains the execution boundaries here and does not constitute a final family decision or launch approval.
+
 **Goal:** Prepare a same-family comparison of query-plus-zone evidence against the identical query-plus-zone path with optional genuine same-design reference-conditioned evidence.
 
 **Architecture:** Preserve the chosen family's query evidence and classification route. The direct-family branch must satisfy the approved local-comparison and zero-initialized final-correction requirements. The N branch requires its own focused extension design and cannot silently inherit either a direct-head adapter or the historical reference arm.
