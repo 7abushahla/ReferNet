@@ -3,9 +3,10 @@
 The input is the AZ directory, not a general IDNet archive. Original annotation
 keys identify documents. Morph baseface fields provide an explicit bijection
 between portrait tokens and those documents; no filename token parsing is used.
-Replacement donors must resolve to original documents. Unresolved external donors
-and combined morphs without explicit donor provenance are rejected, not inferred
-from multi-face filenames. Textfield annotations declare no document donor, so
+Document donors require inventory membership or the explicit baseface map.
+Generated.photos portrait tokens are retained separately without document edges.
+Unknown namespaces and combined morphs without explicit donor provenance are
+rejected, not inferred from multi-face filenames. Textfield annotations declare no document donor, so
 their empty donor_id is accompanied by not_declared_by_annotation, not a claim
 of complete lineage. Basic metadata's is_donor is not a provenance field.
 
@@ -20,6 +21,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import re
 
 import pandas as pd
 
@@ -59,7 +61,7 @@ def _no_symlinks(path):
 
 
 def idnet_records(az_root: Path) -> pd.DataFrame:
-    """Return metadata records only if all five groups have resolvable lineage."""
+    """Return metadata only if all five groups have supported provenance declarations."""
     root = Path(az_root).absolute()
     annotations = {}
     hashes = {}
@@ -101,11 +103,23 @@ def idnet_records(az_root: Path) -> pd.DataFrame:
             raise ValueError(f"unresolved donor document: {token!r}")
         return f"idnet/AZ/{token}"
 
+    def replacement_donor(token):
+        if isinstance(token, str):
+            if token in originals:
+                return donor_document(token), "declared", "document"
+            if token in portraits:
+                return donor_document(portraits[token]), "declared", "baseface"
+            if re.fullmatch(r"generated\.photos(?:_v3)?_[0-9]{7}(?:_[0-9]{7})*\.png", token):
+                return "", "external_portrait_unresolved_to_document", "generated.photos"
+        raise ValueError(f"unresolved donor document or portrait namespace: {token!r}")
+
     rows = []
     for group, (filename, family) in GROUPS.items():
         for name, entry in sorted(annotations[group].items()):
             identity = f"idnet/AZ/{name}"
             donor = ""
+            donor_token = ""
+            namespace = "none"
             status = "not_applicable" if group == "positive" else "declared"
             if group in ("positive", "fraud1_copy_and_move"):
                 expected = "False" if group == "positive" else "True"
@@ -118,6 +132,8 @@ def idnet_records(az_root: Path) -> pd.DataFrame:
                 if not isinstance(token, str) or token not in portraits:
                     raise ValueError(f"unresolved morph donor: {token!r}")
                 donor = donor_document(portraits[token])
+                donor_token = token
+                namespace = "baseface"
             else:
                 if entry.get("originalface") != name:
                     raise ValueError(f"annotation source mismatch: {group}/{name}")
@@ -127,16 +143,17 @@ def idnet_records(az_root: Path) -> pd.DataFrame:
                         raise ValueError("combined morph has no explicit resolvable donor field")
                     if flags != ("False", "True"):
                         raise ValueError(f"unknown combined face flags: {flags!r}")
-                    donor = donor_document(entry.get("replaced_new_face"))
+                    donor_token = entry.get("replaced_new_face")
                 else:
-                    donor = donor_document(entry.get("newface"))
+                    donor_token = entry.get("newface")
+                donor, status, namespace = replacement_donor(donor_token)
             rows.append(dict(
                 dataset="idnet", image_id=f"idnet_AZ_{group}_{name[:-4]}",
                 path=f"idnet/AZ/{group}/{name}", design_id="idnet/AZ",
                 identity_id=identity, label=int(group != "positive"),
                 attack_family=family, attack_source=group, capture="render",
                 source_id=identity if group != "positive" else "", donor_id=donor,
-                donor_status=status,
+                donor_status=status, donor_token=donor_token, donor_namespace=namespace,
                 annotation=f"idnet/AZ/meta/detailed_with_fraud_info/{filename}",
                 annotation_key=name,
             ))

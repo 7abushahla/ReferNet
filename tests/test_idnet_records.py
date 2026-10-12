@@ -74,10 +74,69 @@ def test_explicit_lineage_no_pixels_no_roles_or_guessed_geometry(parser, archive
     assert result.attrs["annotation_sha256"][filename] == hashlib.sha256(original(archive[0] / "meta/detailed_with_fraud_info" / filename)).hexdigest()
 
 
+@pytest.mark.parametrize("group,field", [("fraud3_face_replacement", "newface"), ("fraud4_combined", "replaced_new_face")])
+@pytest.mark.parametrize("token", ["generated.photos_v3_0950632_0222045_0671460.png", "generated.photos_0997964.png"])
+def test_external_portrait_namespace_keeps_raw_token_without_document_edge(parser, archive, monkeypatch, group, field, token):
+    original = Path.read_bytes
+
+    def metadata_only(path):
+        assert path.suffix == ".json", "image bytes must never be read"
+        return original(path)
+
+    monkeypatch.setattr(Path, "read_bytes", metadata_only)
+    for name in archive[1]["fraud2_face_morphing"]:
+        index = 0 if name == "document-a.png" else 1
+        rewrite(archive, "fraud2_face_morphing", name, "overlayface", f"portrait-{index}")
+        rewrite(archive, "fraud3_face_replacement", name, "newface", name)
+        rewrite(archive, "fraud4_combined", name, "replaced_new_face", name)
+    for name in archive[1][group]:
+        rewrite(archive, group, name, field, token)
+    result = parser.idnet_records(archive[0])
+    changed = result[result.attack_source == group]
+    assert set(changed.donor_id) == {""}
+    assert set(changed.donor_token) == {token}
+    assert set(changed.donor_namespace) == {"generated.photos"}
+    assert set(changed.donor_status) == {"external_portrait_unresolved_to_document"}
+    assert result.component_id.nunique() == 2
+    assert not {"width", "height", "role", "split"} & set(result.columns)
+
+
+def test_replacement_uses_explicit_baseface_map_for_document_edges(parser, archive):
+    rewrite(archive, "fraud3_face_replacement", "document-a.png", "newface", "portrait-1")
+    result = parser.idnet_records(archive[0])
+    replaced = result[(result.attack_source == "fraud3_face_replacement") & (result.annotation_key == "document-a.png")].iloc[0]
+    assert replaced.donor_id == "idnet/AZ/document-b.png"
+    assert replaced.donor_token == "portrait-1"
+    assert replaced.donor_namespace == "baseface"
+    assert replaced.donor_status == "declared"
+
+
+def test_generated_photos_document_token_is_still_a_document_when_explicitly_in_inventory(parser, archive):
+    root, annotations = archive
+    old_name = "document-b.png"
+    new_name = "generated.photos_v3_0950632.png"
+    for group, filename in GROUPS.items():
+        annotations[group][new_name] = annotations[group].pop(old_name)
+        (root / group / old_name).rename(root / group / new_name)
+        for entry in annotations[group].values():
+            for field in ("originalface", "newface", "replaced_new_face"):
+                if entry.get(field) == old_name:
+                    entry[field] = new_name
+        (root / "meta/detailed_with_fraud_info" / filename).write_text(json.dumps(annotations[group]))
+    result = parser.idnet_records(root)
+    replaced = result[(result.attack_source == "fraud3_face_replacement") & (result.annotation_key == "document-a.png")].iloc[0]
+    assert replaced.donor_id == f"idnet/AZ/{new_name}"
+    assert replaced.donor_token == new_name and replaced.donor_namespace == "document"
+    assert replaced.donor_status == "declared" and result.component_id.nunique() == 1
+
+
 @pytest.mark.parametrize("group,field,value,match", [
     ("fraud2_face_morphing", "overlayface", "unknown", "unresolved"),
     ("fraud2_face_morphing", "baseface", "portrait-1", "ambiguous"),
     ("fraud3_face_replacement", "newface", "outside.png", "unresolved"),
+    ("fraud3_face_replacement", "newface", "generated.photos_v3_.png", "unresolved"),
+    ("fraud3_face_replacement", "newface", "../generated.photos_v3_0950632.png", "unresolved"),
+    ("fraud3_face_replacement", "newface", None, "unresolved"),
     ("fraud3_face_replacement", "originalface", "document-b.png", "source"),
     ("fraud4_combined", "replaced_new_face", "none", "unresolved"),
     ("fraud4_combined", "face_morphing", "True", "combined morph"),
@@ -118,4 +177,13 @@ def test_image_symlink_rejected_without_opening(parser, archive):
     path.unlink()
     path.symlink_to(archive[0] / "positive/document-b.png")
     with pytest.raises(ValueError, match="symlink"):
+        parser.idnet_records(archive[0])
+
+
+def test_external_portrait_does_not_waive_ambiguous_combined_morph(parser, archive):
+    token = "generated.photos_v3_0950632_0222045_0671460.png"
+    rewrite(archive, "fraud4_combined", "document-a.png", "face_morphing", "True")
+    rewrite(archive, "fraud4_combined", "document-a.png", "face_replacement", "False")
+    rewrite(archive, "fraud4_combined", "document-a.png", "replaced_new_face", token)
+    with pytest.raises(ValueError, match="combined morph"):
         parser.idnet_records(archive[0])
