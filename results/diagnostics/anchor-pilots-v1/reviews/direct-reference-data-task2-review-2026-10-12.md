@@ -1,0 +1,56 @@
+# Direct reference data Task 2 independent review
+
+Date, 12 October 2026.
+
+## Verdict
+
+**Bounded PASS for the frozen Task 2 bridge/data implementation and synthetic tests.** No blocker was identified against the reviewed Task 2 contract. This is not an actual-product, registration-quality, model/GPU, integrated pipeline, diagnostic-launch or training clearance.
+
+Reviewed `src/refer_or_clear/data/direct_reference.py` and `tests/test_direct_reference_data.py` against Task 2 of the implementation plan and the concrete design. Also inspected the reused enrollment resolver, product verifier, membership loader, registration/rectification primitives and augmentation resolver. Only this review file was written. No production/test edits, real products/images/weights, model execution, GPU, SSH, jobs or commits were performed.
+
+## Fresh independent checks
+
+- `OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 /private/tmp/roc-anchor-dev/bin/python -m pytest tests/test_direct_reference_data.py -q -rs -p no:cacheprovider`, **69 passed, zero skips**, exit 0, 68.19 seconds. No warning summary was emitted. The fixtures create synthetic images/products/metadata in temporary directories and replace the enrollment digest and registration fit with controlled synthetic authorities/results. These are not measurements of the actual enrolled products or real SIFT success rates.
+- Separately reran `test_failed_fit_does_not_inherit_previous_query_inliers`, **one passed**, 5.50 seconds. It is already one of the 69 cases, not an additional distinct coverage count.
+- An independent array-only landmark check confirmed the inverse convention. A query-to-bank translation of column +16, row +8 maps bank landmark `(row88,col116)` back to query `(row80,col100)` for both overlap and zone. That isolated one-pixel support is unavailable at the stride-eight sampling grid. No production image was used.
+- Maxwell/Wegener historical RED results were not recreated by reverting code. Current source and fresh GREEN behavior were independently inspected and executed.
+
+## Verified contract evidence
+
+1. **External phase authentication precedes pixels.** `_authorities` at model-data line 137 authenticates enrollment, phase and root documents, binds source/recipe/records/split/enrollment identities and official weights, and joins membership from authenticated CSV bytes rather than reopening paths. Coordinate/overfit forbid validation authorization. Smoke requires exactly 32 authorized train and 32 validation IDs plus both authenticated training receipts. Train additionally requires both smoke receipts with one epoch and passing fresh-process replay declarations. Wrong arm/weights, unsafe roles, failed gates, malformed counts, nonfinite loss and out-of-range overfit updates are rejected. Receipt verification is not independent proof that the claimed GPU measurements occurred.
+2. **Membership and transitive exclusion.** `_rows` at line 185 restricts consumers to official phase-authorized train/validation membership and checks path/design/label/family, plus the official training component. Test/evaluation roles are refused before raw image access. `_bank` at line 203 calls the existing opposite-component-half resolver for train and passes `None` for validation components. It checks contributor/support/eligible membership, genuine official-training provenance, contributor component consistency and forbidden components. The inherited resolver rejects the query training component in the selected support bank and has no global fallback.
+3. **No validation annotation or bank-fit route.** Context routing uses design/role and, for train only, component. Validation source/donor/annotation extras are ignored for routing and absent from registration bindings. The module consumes frozen bank products; it never rebuilds bank geometry or support from validation. Image-only registration of an authorized validation query to its frozen enrollment target is intentionally permitted after gates. This must not be mislabeled as “no validation registration.” Labels/families remain membership checks or output metadata, not fitting inputs.
+4. **Authenticated products and relocation.** Builder/loader require the existing completed-product verifier against the pinned enrollment digest. `_products` at line 216 enforces exact design/bank/product paths under the original root and maps them only through authenticated relocation authority. Original manifest bytes are not rewritten. Product/query reads recheck expected hashes and reject symlinks or changing/nonregular files through the inherited verifier. Plain JSON dictionaries are not accepted as table receipts.
+5. **Frozen table and authorized subset reuse.** `_validate_table` at line 281 validates every entry against phase membership, official rows, selected bank/product/preprocessing bindings, query digest/key, finite orientation-preserving similarity and fit/failure schema. Authorized superset entries are allowed, but each requested row must exist. Loading hashes only selected raw queries; dataset consumption reads only the indexed query and its selected context. Subset consumers do not refit or open other raw queries. The tests cover both same-role subsets and a 64-entry smoke union split into train/validation consumers in both modes. Reuse requires the same frozen preprocess/phase authority; changing that authority is not silent cross-phase table reuse.
+6. **Inverse geometry preserves the query route.** Build uses BGR query/target features, declared SIFT settings (3,000 features, ratio 0.75, RANSAC 3 pixels and minimum 40 inliers), and `to_canvas` letterboxing. It records query-canvas-to-bank similarity. Consumption at lines 448–459 retains the query canvas and inverse-warps bank context, with linear RGB and nearest masks. Overlap intersects query validity, bank target-valid and final-valid planes. Zone is clipped to overlap. Tests cover translation/rotation/scale, non-square padding, BGR grayscale, partial/empty support and rejected nonfinite/shear transforms. They do not establish production registration competence.
+7. **Failures remain classified examples with referral.** Registration failure and empty overlap retain the query and label, zero context/zone/overlap when unavailable, and emit `requires_referral` and a reason. There is no identity/global fallback or lazy refitting. Invalid authenticated products are hard errors, not ordinary registration failures. Stride-eight-empty support is unavailable even when some pixel overlap remains.
+8. **Matched augmentation and actual config usability.** `_augmentation` at line 372 explicitly translates the bridge preset for legacy numeric validation, then restores bridge semantics. It rejects the legacy preset, reference photometry, noncoherent zone jitter and unsupported semantics. The real `configs/direct_reference_pilot.yaml` augmentation dictionary passes in both modes with default DataLoader collation. Tensor shapes are query `(B,4,512,800)`, overlap `(B,1,512,800)`, bool availability `(B,)`, plus reference `(B,3,512,800)` only in on. Separate isolated Python RNG streams preserve caller randomness and paired on/off query draws. Geometry/jitter moves query/zone/reference/overlap coherently; RGB jitter replicates borders while masks use zero borders. Query-only photometry has strength 0.2; reference has no additional photometry. These tests use the default single-process loader, not a cluster worker-throughput benchmark.
+9. **Cached authentication remains fail-closed.** Dataset construction copies table/manifest/preprocess state and authenticates external authority bindings. Each item checks in-memory table/metadata digests and file fingerprints; changed authority files must still match pinned hashes before image decoding. Unchanged metadata does not trigger per-item CSV parsing, and registration targets are not reread in ordinary item consumption. Tests cover table mutation, stale metadata, changed authority bytes, query/product corruption, forged externally hashed tables and authenticated-byte membership joins.
+
+## Inlier carry-over concern
+
+The frozen source already contains `inliers = 0` at `src/refer_or_clear/data/direct_reference.py:325`, before each row's fit attempt. The exception handler uses that row-local reset when `_fit` raises before returning. `tests/test_direct_reference_data.py:380` makes one row succeed with 100 inliers and the next raise, then asserts the failed next row has zero inliers. It passed both the full fresh suite and the separate rerun. **No stale-inlier finding remains on these bytes.**
+
+## Median-read scope, stated precisely
+
+Reference-off dataset item consumption does not decode or read median bytes and omits the reference key. Reference-on reads its selected median only for usable registered context. Read spies verify the off consumer behavior at lines 337 and 443 of the tests.
+
+The mandatory shared upfront `verify_products` step in table build/load hashes all enrolled product files, including compressed median bytes, without decoding them or using them as model inputs. Therefore this review does **not** claim zero median file opens across the entire preparation/integrity workflow. It establishes no median pixel decode/reference consumption in off, and no off item-level median byte read. Full product hashing and selected raw-query hashing are authorized integrity operations, not model inference. A later access trace must retain this distinction.
+
+## Byte binding
+
+| File | SHA256 |
+| --- | --- |
+| `src/refer_or_clear/data/direct_reference.py` | `ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2` |
+| `tests/test_direct_reference_data.py` | `38c80eb4b1404ba584b9aa130330001509cd54bb1a82f2f6306c25b6ba31e56b` |
+| `configs/direct_reference_pilot.yaml` | `a89c6213a1877632510f66f49cf843c7e0c5a9e585b434da08abbecb8abf7b39` |
+| Design spec | `4c0da6c4ac45a8e716785a9b2cf6b989c8804affbbb16bf914cf3da80083b8a1` |
+| Implementation plan | `c4bfc42b0b4e467de2a7ea62c674a1cb6f74e40749af8d0efeb1fbd1fcab47f4` |
+| Reused enrollment implementation | `4eb02e72170669174a29832768076768d6bbaac9b57361a0a9cbfe890f952e65` |
+| Reused product verifier | `fa6912ce4df26aa5b6c8bb12675b938e9070710178047738893cf8a1df3c511f` |
+
+Task 2 source/test/config/spec/plan hashes remained unchanged through the final checks. The actual fixed enrollment digest is `7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8`; original weights digest is `da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618`. These are inspected code constants, not locally rehashed production artifacts in this review.
+
+## Continuing limits
+
+External expected digests must come from the reviewed coordinator/runner authority, not from newly generated self-declarations. File/receipt consistency does not establish human approval or genuine scientific success. Actual authorized query/product identities, registration availability/quality, complete phase read traces, both-mode overfit/smoke and fresh-process replay, selected checkpoints, archive/source packaging and launcher behavior remain separately reviewed gates. This Task 2 PASS alone does not clear the main diagnostic or any 100-epoch run, sweep, final family selection or downstream experiment.
