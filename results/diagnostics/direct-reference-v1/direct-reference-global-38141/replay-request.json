@@ -1,0 +1,31 @@
+{
+  "arm": "global_only",
+  "batch_size": 8,
+  "config_sha256": "a89c6213a1877632510f66f49cf843c7e0c5a9e585b434da08abbecb8abf7b39",
+  "control_request": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/requests/fold0-off100-eec5973.json",
+    "sha256": "7f92ecf587dc46b13836a5722ca9bb6a6d93fcfce214947023307308cbefc3c3"
+  },
+  "diagnostic_request_sha256": "2f6d479835003242790f6d10f44249d73aa9a43f6a465132e618bc99c24c87b9",
+  "epochs": 100,
+  "fold": 0,
+  "helper_sha256": "f2697cbf85067baeba354077dec2bc0427e39fcf71b0005396f0f265a054c012",
+  "launcher_sha256": "d67df02820cacb0d8e699330a04aabee9cea1c843a524b7b1af845d119e8a5bf",
+  "original_run_dir": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/direct-reference-control-38041",
+  "phase_authority": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/direct-reference-control-38041/training/shared/phase-authority.json",
+    "sha256": "b711bcdb259f684f26a30bbad31b59bf5d4f5185f0f03138bd0f8166c1b40cc5"
+  },
+  "registration": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/direct-reference-control-38041/training/shared/registration.json",
+    "sha256": "759ccb75eb621bf1a6395ebfd765f64142d8e005bdfd06ceee4ee30d019ed47a"
+  },
+  "replay_result": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-global-38141/phase-result.json",
+    "sha256": "283db6df102547265e61966d1145e42ab8042a6cc918235a30c964961f743359"
+  },
+  "schema_version": "direct_reference_global_request_v1",
+  "seed": 42,
+  "smoke_gate": null,
+  "source_sha256": "a5ff28ae2a332b977551241f2d07641d51df78d54a4cc1b58169c7338ce11292"
+}
