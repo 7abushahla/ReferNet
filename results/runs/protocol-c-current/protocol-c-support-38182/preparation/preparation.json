@@ -1,0 +1,36 @@
+{
+  "authorized_enrollment": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-c-current/protocol-c-support-38182/preparation/authorized-enrollment.json",
+    "sha256": "0d7b24f296a448147525935264ec814601f0d077aceb9b6954a02d798beee20e"
+  },
+  "checkpoint_evaluation_authorized": false,
+  "enrollment": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-c-current/protocol-c-support-38182/preparation/enrollment/manifest.json",
+    "sha256": "615d1ed44575ab3aca90476a48c60f76c5d837751f44b44eb8b75d1572ee885f"
+  },
+  "lineage": {
+    "complete_donor_disjointness_claimed": false,
+    "donor_unknown_altered_count": 299,
+    "scope": "recorded_identity_component_only"
+  },
+  "n_target_excluded": 66,
+  "n_target_queries": 467,
+  "n_target_support": 66,
+  "n_train": 1778,
+  "n_val": 222,
+  "passed": true,
+  "phase": "products",
+  "protocol": "C",
+  "published_target_count": 599,
+  "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+  "schema_version": "protocol_c_preparation_v1",
+  "source_pixels_opened": false,
+  "source_split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+  "target_enrollment": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-c-current/protocol-c-support-38182/preparation/target-enrollment.json",
+    "sha256": "0e37149e601fcb822506a9b8e30224db873fa7aa93700a5a8c83e6701316019c"
+  },
+  "target_outcomes_measured": false,
+  "target_query_pixels_opened": false,
+  "target_split_sha256": "816ef2eb148eaa34f65ff198fbe6854119564565454dd4afaa243990dd2198a9"
+}

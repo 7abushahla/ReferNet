@@ -1,0 +1,22 @@
+{
+  "schema_version": "protocol_c_evaluation_queue_v1",
+  "parent_job_id": 38152,
+  "evaluation_source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-c-evaluation-4aeb0d2-v2",
+  "score_template": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-c-current/requests/score-template-4aeb0d2.json",
+    "sha256": "b7eb095a1fb39910c76c6ae540ec2779c08fa26499dda0c66e880f61f2b0ad6a"
+  },
+  "wrapper": {
+    "path": "/shared/b00090279/refer-or-clear/results/source/protocol-c-evaluation-4aeb0d2-v2/scripts/cluster/score_protocol_c_current.sh",
+    "sha256": "7e7cfc01cf75ed6467e32612bac132316f90452f611046a3480d3a664e1f47d2"
+  },
+  "inputs_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-a-eval-assets/inputs",
+  "inputs_manifest": {
+    "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-eval-assets/inputs.sha256",
+    "sha256": "72306666d7f432868c74298a93c43c564f62ba0c05422515c4b3ffab0fa45179"
+  },
+  "run_dir": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/direct-reference-control-38041",
+  "request_path": "/shared/b00090279/refer-or-clear/results/runs/protocol-c-current/requests/fold0-4aeb0d2-v2-test.json",
+  "ledger_path": "/shared/b00090279/refer-or-clear/results/monitoring/c-evaluation-4aeb0d2-v2.jsonl",
+  "submit_cwd": "/shared/b00090279/refer-or-clear"
+}

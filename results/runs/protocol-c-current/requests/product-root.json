@@ -1,0 +1,7 @@
+{
+  "schema_version": "protocol_c_product_root_v1",
+  "protocol": "C",
+  "enrollment_manifest_sha256": "615d1ed44575ab3aca90476a48c60f76c5d837751f44b44eb8b75d1572ee885f",
+  "original_root": "/shared/b00090279/refer-or-clear/results/runs/protocol-c-current/protocol-c-support-38182/preparation/enrollment",
+  "relocated_root": "/shared/b00090279/refer-or-clear/results/runs/protocol-c-current/protocol-c-support-38182/preparation/enrollment"
+}

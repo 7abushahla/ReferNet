@@ -1,0 +1,84 @@
+{
+  "schema_version": "protocol_c_current_score_v1",
+  "protocol": "C",
+  "seed": 42,
+  "eval_batch_size": 1,
+  "training_source_sha256": "a5ff28ae2a332b977551241f2d07641d51df78d54a4cc1b58169c7338ce11292",
+  "evaluation_source_sha256": "1e4a8c0cd85971b2f312496309d049221b0d1900242e7d96176fd4d8debf4849",
+  "critical_source_hashes": {
+    "src/refer_or_clear/__init__.py": "895c8e77ee3553b74ca885a421261fa2e5bd39b301f44d40dc270839d9c0e041",
+    "src/refer_or_clear/anchor_contract.py": "f92c298fe2bf72c1b50748bad3ba782d091fd5248468325f88a0220fbf4b8a90",
+    "src/refer_or_clear/data/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/refer_or_clear/data/dataset.py": "f15beab4c2517702206774dc5f6efab0fe7ed3c2c389d3770314c25f46adafaa",
+    "src/refer_or_clear/data/direct_reference.py": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+    "src/refer_or_clear/data/enrollment.py": "4eb02e72170669174a29832768076768d6bbaac9b57361a0a9cbfe890f952e65",
+    "src/refer_or_clear/data/forgeries.py": "fc1a9681b5700d9ce3b96922ebff9c59c947732a400fda47cf94bfcdc8496e97",
+    "src/refer_or_clear/data/pairs.py": "a365c24858e06e22be02b0d720ef5cac5401e47e3cde72672f175afa4c00068d",
+    "src/refer_or_clear/data/query.py": "34ebfd6586c767a1c9f3d4cdfe6ca72260fc047205b05263d59c9ec82a51b34c",
+    "src/refer_or_clear/data/records.py": "3515b1105b82c4b04345c11c8f7d2a6e353baf8411eba1dc36365903af63b265",
+    "src/refer_or_clear/data/rectify.py": "7a78c1f0be9be62962d64acbe4837e6a2dbfdaf209faab35ebcf2dbb956bd61e",
+    "src/refer_or_clear/data/references.py": "f1b578549dc98343f48879beeb15accf4931910ac5c8df07d1533f939184818a",
+    "src/refer_or_clear/data/register.py": "4a283e70cdfec3085a839f42c425119025a746c52da7776f381f7ed0096a0e9c",
+    "src/refer_or_clear/data/splits.py": "79e056cbb8a9796c6c62d4e22a71875e0562d8d73863e85c881132e38829643e",
+    "src/refer_or_clear/direct_reference_control.py": "46804554d4b4afc64b547393436cca8e8775432c23b73bb8252bd618b34978c3",
+    "src/refer_or_clear/direct_reference_diagnostic.py": "f55ffe2615787e85ec97f17fe3235501667acee4f410d437a32f61bcd450db1a",
+    "src/refer_or_clear/direct_reference_pilot.py": "66a4bfebf919647af74f13e60a3b71b94f97dc3ca1f34b8bf75d51d10bf4ee01",
+    "src/refer_or_clear/direct_reference_train.py": "f7f4852e8cbb33366806e18a4efd1e814bf23cd91ec90fd434fd788416bf489f",
+    "src/refer_or_clear/evaluate.py": "ba29f76d781f6f76d15b8f8ad5bda98bacafb731b74638ad3397f254691e01ef",
+    "src/refer_or_clear/logging_utils.py": "9be6b897466f42917efec27e8989aa3c8dc4f857212121111b6db90149fcd325",
+    "src/refer_or_clear/losses.py": "e2f22271e1d867304322706518e5e918a0a6f65d9f9a7bf08c9df49afdf0238c",
+    "src/refer_or_clear/metrics.py": "dd17b3c16801bfa14e207652b6bca2f4006e1eb923db28acd75a143234343f7b",
+    "src/refer_or_clear/models/__init__.py": "3518cd0fe82b8bd3a53349baffa7625bca8eb656286cdbc42322930806351181",
+    "src/refer_or_clear/models/anchor_changer.py": "e30e60dfff1f11548e1d3cf601c23fbc475b2aa84855fdba74795aedc45c2c0a",
+    "src/refer_or_clear/models/anchor_rgb.py": "504d07d5ce5042fd9054ddabe945e22a0604128436167ed02607eee927afb32f",
+    "src/refer_or_clear/models/build.py": "52d7067822424397e6350b4e19249a1358769096aaf99dee785862711cf2e50f",
+    "src/refer_or_clear/models/changerex.py": "e8cdd4147e8dd0607549d700389f1301c9a59f64156f795ff2226abac3b35e10",
+    "src/refer_or_clear/models/direct_reference.py": "9839ffee680af418d6af4c1dd7b1f7c23aeaa4b73ae3555aa1a5cf628a98ce3e",
+    "src/refer_or_clear/models/fusion.py": "d5c65657d14aae3004a814f86922f0e889f3a3999add0f29afa822849326d243",
+    "src/refer_or_clear/models/heads.py": "1d90d35d266d43c000b08c9d15cdae9f50e9fcabe8d33064827e99c0629549b2",
+    "src/refer_or_clear/pilot_config.py": "5fd0d71afaa30babba2f01a3a2e79dbb36d0b25542a07a097411b7e610cbeb85",
+    "src/refer_or_clear/pilots.py": "725f30b908149380d73445c59f4da4eee6583c853579df56ccfdaba1601b0a8b",
+    "src/refer_or_clear/policy_metrics.py": "bccf0a2245739950fa49a0711457945037fa257b81bccc713922f8d4cb9abd80",
+    "src/refer_or_clear/train.py": "7ead78788bd925dac82d5ac4ee42f6ec5e164d3614e00c4ebe953e27e46beb34"
+  },
+  "source_selection": {
+    "records": {
+      "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-eval-assets/inputs/records.csv",
+      "sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276"
+    },
+    "split": {
+      "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-eval-assets/inputs/split.csv",
+      "sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9"
+    },
+    "enrollment": {
+      "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-eval-assets/inputs/enrollment.json",
+      "sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8"
+    },
+    "weights": {
+      "path": "/shared/b00090279/refer-or-clear/results/source/study-shared-assets/weights.pth",
+      "sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+    },
+    "config": {
+      "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-eval-assets/inputs/config.yaml",
+      "sha256": "a89c6213a1877632510f66f49cf843c7e0c5a9e585b434da08abbecb8abf7b39"
+    }
+  },
+  "target_split": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-c-current/protocol-c-support-38182/inputs/target-split.csv",
+    "sha256": "816ef2eb148eaa34f65ff198fbe6854119564565454dd4afaa243990dd2198a9"
+  },
+  "target_enrollment": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-c-current/protocol-c-support-38182/preparation/target-enrollment.json",
+    "sha256": "0e37149e601fcb822506a9b8e30224db873fa7aa93700a5a8c83e6701316019c"
+  },
+  "enrollment": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-c-current/protocol-c-support-38182/preparation/enrollment/manifest.json",
+    "sha256": "615d1ed44575ab3aca90476a48c60f76c5d837751f44b44eb8b75d1572ee885f"
+  },
+  "root": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-c-current/requests/product-root.json",
+    "sha256": "ea84590348def59aee21f421dcb860b75dd9fe528a0fd12f723188b4471df248"
+  },
+  "raw_root": "/shared/b00090279/refer-or-clear/data/raw",
+  "output_root": "/shared/b00090279/refer-or-clear/results/runs/protocol-c-current/fold0-4aeb0d2-v2-test"
+}
