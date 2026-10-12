@@ -5,9 +5,16 @@ The current_matched_report_request_v1 JSON has protocol (A/B/C), index
 bindings are {path,sha256}. Each arm has completion (selected train.json),
 val and test, each containing predictions and summary bindings. Membership
 CSVs explicitly enumerate the already scored populations with image_id and
-role. Test summaries must bind source_checkpoint and predictions. Checkpoint
+role. Test summaries must bind source_checkpoint and predictions, unless the
+request supplies scorer_result, the externally bound A/C producer result.json.
+That parent must bind both arms' exact checkpoint, train_result, training
+identities, prediction CSV, summary, and scored IDs. Plain producer summaries
+are never rewritten or enriched in place. Checkpoint
 bindings are compared as receipts only, never opened. This request is a
 reporting input, not evaluation authorization or population-selection policy.
+Legacy operational fields remain classifier-only transported-score rates.
+deployment_with_mandatory_referral separately simulates clearance requiring
+both the frozen source-val threshold and explicitly available context.
 """
 from __future__ import annotations
 
@@ -32,12 +39,17 @@ LIMITATIONS = (
     'selection, architecture selection, or cross-validation mean. Membership is '
     'the explicit hash-bound scored population, not proof of the full published '
     'population or independent verification of source, checkpoint, or pixel bytes.'
+    ' Native and legacy operational metrics are classifier-only. Deployment '
+    'rates separately include mandatory referral for unavailable or unknown '
+    'context; this policy simulation does not authorize clearance.'
 )
 BOOTSTRAP_INTERPRETATION = (
     'Paired cluster percentile intervals conditional on fixed trained checkpoints '
     'and fixed designs. They do not include training, checkpoint-selection, '
     'design-generalization, or cross-validation uncertainty. Source-val thresholds '
     'remain fixed in all resamples. Differences are ON minus OFF.'
+    ' APCER/BPCER intervals are classifier-only score-threshold intervals, not '
+    'mandatory-referral deployment intervals.'
 )
 
 
@@ -129,6 +141,44 @@ def operational_rates(rows, threshold):
                 hter=None if threshold is None else metrics.hter(scores, labels, threshold))
 
 
+def saved_boolean(value, name):
+    require(value in ('True', 'False'), f'{name} must be a saved True/False boolean')
+    return value == 'True'
+
+
+def deployment_with_mandatory_referral(rows, threshold):
+    require(threshold is None or type(threshold) in (int, float) and math.isfinite(threshold),
+            'finite frozen threshold or None required')
+    cleared, referred, mandatory, withheld = [], [], [], []
+    for row in rows:
+        available = row.get('context_available') is True
+        classifier_clear = threshold is not None and row['bonafide_score'] >= threshold
+        if not available:
+            mandatory.append(row)
+            if classifier_clear:
+                withheld.append(row)
+        (cleared if available and classifier_clear else referred).append(row)
+    n_genuine = sum(row['label'] == 0 for row in rows)
+    n_altered = len(rows) - n_genuine
+    genuine_referrals = sum(row['label'] == 0 for row in referred)
+    altered_clears = sum(row['label'] == 1 for row in cleared)
+    apcer = altered_clears / n_altered if n_altered else None
+    bpcer = genuine_referrals / n_genuine if n_genuine else None
+    return dict(clearance_policy='bonafide_score >= frozen_source_val_threshold AND context_available is True; '
+                                'unavailable/unknown context always referred; undefined threshold clears nobody',
+                status='defined' if threshold is not None else 'undefined_threshold_all_referred',
+                threshold=threshold, n_images=len(rows), n_genuine=n_genuine, n_altered=n_altered,
+                n_cleared=len(cleared), n_referred=len(referred), mandatory_referral_count=len(mandatory),
+                unknown_context_count=sum(row.get('context_available') is None for row in rows),
+                available_context_count=sum(row.get('context_available') is True for row in rows),
+                unavailable_context_count=sum(row.get('context_available') is False for row in rows),
+                withheld_due_to_mandatory_referral_count=len(withheld), genuine_referral_count=genuine_referrals,
+                altered_clear_count=altered_clears, apcer=apcer, bpcer=bpcer,
+                hter=None if apcer is None or bpcer is None else (apcer + bpcer) / 2,
+                cleared_ids=sorted(row['image_id'] for row in cleared),
+                referred_ids=sorted(row['image_id'] for row in referred))
+
+
 def check_summary(summary, rows, role, epoch):
     require(summary.get('role') == role and type(summary.get('selected_epoch')) is int
             and summary['selected_epoch'] == epoch, 'summary role/selected epoch mismatch')
@@ -169,7 +219,10 @@ def check_summary(summary, rows, role, epoch):
 
 def paired_bootstrap(populations, thresholds):
     result = dict(seed=42, replicates=1000, confidence_level=.95, method='paired_cluster_percentile',
-                  cluster_fields=['dataset', 'design_id', 'component_id'], interpretation=BOOTSTRAP_INTERPRETATION, roles={})
+                  cluster_fields=['dataset', 'design_id', 'component_id'], interpretation=BOOTSTRAP_INTERPRETATION,
+                  metric_policies=dict(accuracy='classifier_only_native_threshold_0.5', auc='classifier_only_saved_scores',
+                      genuine_false_positive_rate='classifier_only_native_threshold_0.5',
+                      apcer='classifier_only_score_threshold', bpcer='classifier_only_score_threshold'), roles={})
     generator = np.random.default_rng(42)
     for role, arms in populations.items():
         rows = arms['off']
@@ -249,6 +302,27 @@ def build_report(request_binding, *, bootstrap=False):
                     require(member[key] == record.get(key, ''), f'membership {key} mismatch')
             members[role][identifier] = record
     require(not set(members['val']) & set(members['test']), 'val/test IDs overlap')
+    scorer_binding = request.get('scorer_result')
+    scorer = None
+    if 'scorer_result' in request:
+        require(request['protocol'] in ('A', 'C'), 'parent scorer bridge supports the current A/C producers only')
+        scorer = artifact(scorer_binding, '.json')
+        require(scorer.get('schema_version') == f"protocol_{request['protocol'].lower()}_current_score_result_v1"
+                and scorer.get('protocol') == request['protocol'] and scorer.get('role') == 'test'
+                and scorer.get('passed') is True and scorer.get('aggregate') is False
+                and scorer.get('learning_performed') is False, 'completed nonaggregate current A/C scorer result required')
+        require(type(scorer.get('n_images')) is int and scorer['n_images'] == len(members['test'])
+                and scorer.get('image_ids') == sorted(members['test']), 'parent scorer population mismatch')
+        require(type(scorer.get('seed')) is int and scorer['seed'] == 42
+                and type(scorer.get('eval_batch_size')) is int and scorer['eval_batch_size'] == 1,
+                'parent scorer execution metadata mismatch')
+        index_key = 'fold' if request['protocol'] == 'A' else 'source_fold'
+        require(type(scorer.get(index_key)) is int and scorer[index_key] == request['index'], 'parent scorer fold mismatch')
+        tuning_key = 'threshold_tuning_performed' if request['protocol'] == 'A' else 'threshold_tuning'
+        require(scorer.get(tuning_key) is False, 'parent scorer must not tune test thresholds')
+        if request['protocol'] == 'C':
+            require(scorer.get('source_protocol') == 'A', 'current C scoring must retain A source selection')
+        require(isinstance(scorer.get('arms'), dict) and set(scorer['arms']) == {'off', 'on'}, 'parent scorer must bind both arms')
     populations = {role: {} for role in ('val', 'test')}
     report_arms, shared_identity, checkpoints, thresholds = {}, None, {}, {}
     for arm in ('off', 'on'):
@@ -273,6 +347,13 @@ def build_report(request_binding, *, bootstrap=False):
             shared_identity = common
         require(common == shared_identity, 'OFF/ON source/data identities differ')
         checkpoints[arm] = validate_binding(completion.get('checkpoint'))
+        if scorer is not None:
+            parent_arm = scorer['arms'][arm]
+            require(isinstance(parent_arm, dict) and parent_arm.get('checkpoint') == checkpoints[arm]
+                    and parent_arm.get('train_result') == inputs['completion']
+                    and parent_arm.get('training_identities') == identity,
+                    'parent scorer checkpoint/training provenance mismatch')
+            require(scorer.get('training_source_sha256') == identity['source_sha256'], 'parent scorer training source mismatch')
         report_arms[arm] = dict(selected_epoch=epoch, checkpoint=checkpoints[arm], completion=inputs['completion'])
         for role in ('val', 'test'):
             role_inputs = inputs[role]
@@ -293,11 +374,24 @@ def build_report(request_binding, *, bootstrap=False):
                 score = finite_probability(row.get('bonafide_score'))
                 if 'attack_probability' in row:
                     require(math.isclose(score + finite_probability(row['attack_probability']), 1., abs_tol=1e-7, rel_tol=0), 'saved probability orientation mismatch')
-                rows.append(dict(record, label=binary_label(record['label']), bonafide_score=score))
+                available = saved_boolean(row['context_available'], 'context_available') if 'context_available' in row else None
+                if 'referral_required' in row:
+                    referral = saved_boolean(row['referral_required'], 'referral_required')
+                    require(available is None or referral is not available, 'context/referral metadata contradicts itself')
+                rows.append(dict(record, label=binary_label(record['label']), bonafide_score=score, context_available=available))
             summary = artifact(role_inputs['summary'], '.json')
             if role == 'test':
-                require(summary.get('source_checkpoint') == checkpoints[arm]
-                        and summary.get('predictions') == role_inputs['predictions'], 'test checkpoint/prediction binding mismatch')
+                if scorer is None:
+                    require(summary.get('source_checkpoint') == checkpoints[arm]
+                            and summary.get('predictions') == role_inputs['predictions'], 'test checkpoint/prediction binding mismatch')
+                else:
+                    require(parent_arm.get('predictions') == role_inputs['predictions']
+                            and parent_arm.get('summary') == role_inputs['summary'], 'parent scorer prediction/summary binding mismatch')
+                    require(summary.get('protocol') == request['protocol'] and summary.get('aggregate') is False
+                            and summary.get('selected_on') == 'source_validation', 'plain producer summary source-selection metadata mismatch')
+                    for key, expected in (('source_checkpoint', checkpoints[arm]), ('predictions', role_inputs['predictions'])):
+                        if key in summary:
+                            require(summary[key] == expected, 'inline provenance contradicts parent scorer')
             if 'protocol' in summary:
                 require(summary['protocol'] == request['protocol'], 'summary protocol mismatch')
             for key in ('fold', 'group'):
@@ -313,27 +407,34 @@ def build_report(request_binding, *, bootstrap=False):
                                                  acceptance_rule='bonafide_score >= threshold', status='undefined' if threshold is None else 'defined')
         for role in ('val', 'test'):
             report_arms[arm][role]['operational'] = operational_rates(populations[role][arm], threshold)
+            report_arms[arm][role]['operational_policy'] = 'classifier_only_score_threshold; context availability is not applied'
+            report_arms[arm][role]['deployment_with_mandatory_referral'] = deployment_with_mandatory_referral(populations[role][arm], threshold)
     for path, checksum in consumed.items():
         require(hashlib.sha256(Path(path).read_bytes()).hexdigest() == checksum, 'metadata changed during report')
-    return dict(schema_version='current_matched_report_v1', protocol=request['protocol'], index=request['index'],
+    result = dict(schema_version='current_matched_report_v1', protocol=request['protocol'], index=request['index'],
                 authorization_granted=False, identities=shared_identity, arms=report_arms,
-                score_policy='saved bonafide scores; native threshold .5; ties genuine; no sigmoid recomputation',
+                score_policy='classifier_only saved bonafide scores; native threshold .5; ties genuine; no sigmoid recomputation',
                 membership_order='joined by unique image_id and sorted; input CSV order is not a pairing authority',
                 paired_bootstrap=paired_bootstrap(populations, thresholds) if bootstrap else dict(status='not_requested'),
                 metadata_sha256=consumed, limitations=LIMITATIONS)
+    if scorer is not None:
+        result['scorer_result'] = scorer_binding
+    return result
 
 
 def render_table(report):
-    lines = ['| Arm | Role | N | Accuracy | AUC | Genuine FP | Frozen-val threshold | Test APCER | Test BPCER |',
-             '|---|---|---:|---:|---:|---:|---:|---:|---:|']
+    lines = ['| Arm | Role | N | Native accuracy | AUC | Native genuine FP | Frozen-val threshold | Classifier-only test APCER | '
+             'Classifier-only test BPCER | Deployment test APCER | Deployment test BPCER |',
+             '|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
     for arm in ('off', 'on'):
         value = report['arms'][arm]
         for role in ('val', 'test'):
             native = value[role]['native']
             operational = value[role]['operational'] if role == 'test' else dict(apcer=None, bpcer=None)
+            deployment = value[role]['deployment_with_mandatory_referral'] if role == 'test' else dict(apcer=None, bpcer=None)
             lines.append(f"| {arm} | {role} | {native['n_images']} | {native['accuracy']} | {native['auc']} | "
                          f"{native['genuine_false_positive_count']} | {value['operating_point']['threshold']} | "
-                         f"{operational['apcer']} | {operational['bpcer']} |")
+                         f"{operational['apcer']} | {operational['bpcer']} | {deployment['apcer']} | {deployment['bpcer']} |")
     return '\n'.join(lines) + '\n'
 
 

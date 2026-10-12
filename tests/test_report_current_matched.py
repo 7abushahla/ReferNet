@@ -60,7 +60,8 @@ def bundle(tmp_path):
         for role in ('val', 'test'):
             scores = [.9, .5, .2, .7] if arm == 'off' else [.8, .6, .1, .3]
             predictions = [dict(image_id=row['image_id'], label=row['label'], design_id=row['design_id'],
-                                attack_family=row['attack_family'], bonafide_score=score, attack_probability=1 - score)
+                                attack_family=row['attack_family'], bonafide_score=score, attack_probability=1 - score,
+                                context_available=True, referral_required=False)
                            for row, score in zip(members[role], scores)]
             predictions_binding = csv_file(tmp_path / f'{arm}-{role}-predictions.csv', predictions)
             summary = dict(role=role, selected_epoch=12, n_images=4, n_genuine=2, n_altered=2,
@@ -318,3 +319,236 @@ def test_report_does_not_open_receipt_checkpoint_or_record_pixel_paths(reporter,
         return original(path)
     monkeypatch.setattr(Path, 'read_bytes', guarded)
     reporter.build_report(request_binding(bundle))
+
+
+def test_mandatory_referral_changes_deployment_not_saved_score_metrics_or_threshold(reporter, bundle):
+    def scores(rows):
+        rows[3].update(bonafide_score='.7', attack_probability='.3')
+    rewrite(bundle, 'on', 'test', 'predictions', scores)
+    rewrite(bundle, 'on', 'test', 'summary', lambda value: value.update(accuracy=.75, auc=.75))
+    before = reporter.build_report(request_binding(bundle))
+    def unavailable(rows):
+        for row in rows:
+            row['correction_logit'] = '0.0'
+        for index in (0, 3):
+            rows[index].update(context_available='False', referral_required='True')
+    rewrite(bundle, 'on', 'test', 'predictions', unavailable)
+    after = reporter.build_report(request_binding(bundle))
+    original, changed = before['arms']['on'], after['arms']['on']
+    assert changed['operating_point'] == original['operating_point']
+    assert changed['test']['native'] == original['test']['native']
+    assert changed['test']['operational'] == original['test']['operational'] == dict(apcer=.5, bpcer=0, hter=.25)
+    deployment = changed['test']['deployment_with_mandatory_referral']
+    assert deployment['apcer'] == 0
+    assert deployment['bpcer'] == .5
+    assert deployment['hter'] == .25
+    assert deployment['n_cleared'] == 1 and deployment['n_referred'] == 3
+    assert deployment['mandatory_referral_count'] == 2
+    assert deployment['withheld_due_to_mandatory_referral_count'] == 2
+    assert deployment['cleared_ids'] == ['test-1']
+    assert deployment['referred_ids'] == ['test-0', 'test-2', 'test-3']
+    assert 'classifier_only' in changed['test']['operational_policy']
+    assert 'context_available is True' in deployment['clearance_policy']
+
+
+def test_missing_context_is_unresolved_and_never_authorizes_clearance(reporter, bundle):
+    def missing(rows):
+        for row in rows:
+            del row['context_available']
+            del row['referral_required']
+    rewrite(bundle, 'off', 'test', 'predictions', missing)
+    result = reporter.build_report(request_binding(bundle))
+    block = result['arms']['off']['test']['deployment_with_mandatory_referral']
+    assert block['unknown_context_count'] == 4
+    assert block['mandatory_referral_count'] == 4
+    assert block['n_cleared'] == 0
+    assert block['apcer'] == 0 and block['bpcer'] == 1
+    assert result['arms']['off']['test']['operational']['bpcer'] == .5
+
+
+@pytest.mark.parametrize('failure', ['context', 'contradiction'])
+def test_malformed_or_contradictory_availability_is_rejected(reporter, bundle, failure):
+    def corrupt(rows):
+        if failure == 'context':
+            rows[0]['context_available'] = 'unknown'
+        else:
+            rows[0]['referral_required'] = 'True'
+    rewrite(bundle, 'on', 'test', 'predictions', corrupt)
+    with pytest.raises(ValueError):
+        reporter.build_report(request_binding(bundle))
+
+
+def test_undefined_threshold_fails_closed_in_deployment(reporter):
+    rows = [dict(image_id='clean', label=0, bonafide_score=1., context_available=True)]
+    block = reporter.deployment_with_mandatory_referral(rows, None)
+    assert block['status'] == 'undefined_threshold_all_referred'
+    assert block['n_cleared'] == 0 and block['bpcer'] == 1 and block['apcer'] is None
+
+
+def test_operational_bootstrap_is_explicitly_classifier_only(reporter):
+    rows = [dict(image_id='genuine', label=0, bonafide_score=.9, context_available=False,
+                 dataset='sidtd', design_id='design', component_id='same'),
+            dict(image_id='altered', label=1, bonafide_score=.8, context_available=False,
+                 dataset='sidtd', design_id='design', component_id='same')]
+    value = reporter.paired_bootstrap(dict(test=dict(off=rows, on=rows)), dict(off=.85, on=.85))
+    assert value['metric_policies']['apcer'] == 'classifier_only_score_threshold'
+    assert value['metric_policies']['bpcer'] == 'classifier_only_score_threshold'
+    assert 'mandatory-referral deployment' in value['interpretation']
+
+
+def test_table_labels_classifier_and_mandatory_referral_separately(reporter, bundle):
+    table = reporter.render_table(reporter.build_report(request_binding(bundle)))
+    assert 'Classifier-only test APCER' in table
+    assert 'Deployment test APCER' in table
+    assert 'Deployment test BPCER' in table
+
+
+def producer_shaped_bundle(bundle, protocol):
+    request = bundle['request']
+    request['protocol'] = protocol
+    if protocol == 'C':
+        records_path = Path(request['records']['path'])
+        with records_path.open(newline='') as stream:
+            records = list(csv.DictReader(stream))
+        for row in records:
+            if row['image_id'].startswith('test-'):
+                row['dataset'] = 'fantasyid'
+                if row['attack_family'] == 'text_copy':
+                    row['attack_family'] = 'face_swap'
+        request['records'] = csv_file(records_path, records)
+        members = [dict(row, role='test') for row in records if row['image_id'].startswith('test-')]
+        request['memberships']['test'] = csv_file(Path(request['memberships']['test']['path']), members)
+        for arm in ('off', 'on'):
+            rewrite(bundle, arm, 'test', 'predictions', lambda rows: rows[2].update(attack_family='face_swap'))
+            path = Path(request['arms'][arm]['completion']['path'])
+            receipt = json.loads(path.read_text())
+            receipt['identities']['records_sha256'] = request['records']['sha256']
+            request['arms'][arm]['completion'] = document(path, receipt)
+    parent_arms = {}
+    for arm in ('off', 'on'):
+        inputs = request['arms'][arm]
+        receipt = json.loads(Path(inputs['completion']['path']).read_text())
+        summary_path = Path(inputs['test']['summary']['path'])
+        summary = json.loads(summary_path.read_text())
+        del summary['source_checkpoint']
+        del summary['predictions']
+        summary.update(protocol=protocol, aggregate=False, selected_on='source_validation')
+        if protocol == 'A':
+            summary['fold'] = 0
+        else:
+            summary.update(source_protocol='A', source_fold=0)
+        inputs['test']['summary'] = document(summary_path, summary)
+        parent_arms[arm] = dict(checkpoint=receipt['checkpoint'], train_result=inputs['completion'],
+            completion=dict(path=str(bundle['root'] / f'{arm}-control.json'), sha256='1' * 64),
+            fresh_replay=dict(path=str(bundle['root'] / f'{arm}-fresh-replay.json'), sha256='2' * 64),
+            training_identities=receipt['identities'], predictions=inputs['test']['predictions'], summary=inputs['test']['summary'])
+    parent = dict(schema_version=f'protocol_{protocol.lower()}_current_score_result_v1', passed=True, protocol=protocol,
+        role='test', n_images=4, aggregate=False, seed=42, eval_batch_size=1,
+        request=dict(path=str(bundle['root'] / 'scorer-request.json'), sha256='3' * 64),
+        evaluation_source_sha256='4' * 64, training_source_sha256='c' * 64,
+        evaluation=dict(path=str(bundle['root'] / 'evaluation.json'), sha256='5' * 64),
+        registration=dict(path=str(bundle['root'] / 'test-registration.json'), sha256='6' * 64),
+        image_ids=[f'test-{index}' for index in range(4)], arms=parent_arms, learning_performed=False)
+    if protocol == 'A':
+        parent.update(fold=0, threshold_tuning_performed=False)
+    else:
+        parent.update(deployment='locked_a_selected_models_no_target_training', source_protocol='A', source_fold=0,
+            n_source_train=1778, n_source_val=222, published_target_count=6, n_target_support=1, n_target_excluded=1,
+            threshold_tuning=False, bonafide_threshold=.5, decision_rule='bonafide_score >= 0.5 is genuine; ties genuine')
+    request['scorer_result'] = document(bundle['root'] / 'score-result.json', parent)
+    return parent
+
+
+@pytest.mark.parametrize('protocol', ['A', 'C'])
+def test_plain_actual_producer_shaped_summary_uses_bound_parent_without_artifact_edits(reporter, bundle, protocol):
+    producer_shaped_bundle(bundle, protocol)
+    bound_request = request_binding(bundle)
+    before = {path: path.read_bytes() for path in bundle['root'].iterdir() if path.is_file()}
+    report = reporter.build_report(bound_request)
+    assert report['arms']['off']['test']['native']['accuracy'] == .75
+    assert report['arms']['on']['test']['native']['accuracy'] == 1
+    assert report['scorer_result'] == bundle['request']['scorer_result']
+    assert report['metadata_sha256'][report['scorer_result']['path']] == report['scorer_result']['sha256']
+    assert all(path.read_bytes() == content for path, content in before.items())
+    for arm in ('off', 'on'):
+        summary = json.loads(Path(bundle['request']['arms'][arm]['test']['summary']['path']).read_text())
+        assert 'source_checkpoint' not in summary and 'predictions' not in summary
+    if protocol == 'C':
+        assert report['arms']['off']['test']['native']['other_altered_count'] == 1
+        assert report['arms']['off']['test']['native']['subgroups']['copy']['n_altered'] == 0
+        assert report['arms']['off']['test']['native']['subgroups']['inpainting']['n_altered'] == 1
+    specification = importlib.util.spec_from_file_location('plot_current_matched_bridge', ROOT / 'scripts/plot_current_matched.py')
+    plotter = importlib.util.module_from_spec(specification)
+    specification.loader.exec_module(plotter)
+    report_binding = document(bundle['root'] / 'bound-report.json', report)
+    validated = plotter.load_inputs([(report_binding, bound_request)])
+    assert validated[0]['report']['scorer_result'] == bundle['request']['scorer_result']
+
+
+@pytest.mark.parametrize('failure', ['missing-parent', 'hash', 'schema', 'passed', 'protocol', 'role', 'aggregate',
+    'count', 'ids', 'training-source', 'checkpoint', 'predictions', 'summary', 'train-result', 'identities',
+    'arms', 'fold', 'learning', 'tuning'])
+def test_parent_result_provenance_is_not_optional_or_self_asserted(reporter, bundle, failure):
+    parent = producer_shaped_bundle(bundle, 'A')
+    if failure == 'missing-parent':
+        del bundle['request']['scorer_result']
+    elif failure == 'hash':
+        bundle['request']['scorer_result']['sha256'] = '0' * 64
+    else:
+        if failure == 'schema':
+            parent['schema_version'] = 'unknown'
+        elif failure == 'passed':
+            parent['passed'] = False
+        elif failure == 'protocol':
+            parent['protocol'] = 'C'
+        elif failure == 'role':
+            parent['role'] = 'val'
+        elif failure == 'aggregate':
+            parent['aggregate'] = True
+        elif failure == 'count':
+            parent['n_images'] = 99
+        elif failure == 'ids':
+            parent['image_ids'][1] = parent['image_ids'][0]
+        elif failure == 'training-source':
+            parent['training_source_sha256'] = 'f' * 64
+        elif failure == 'checkpoint':
+            parent['arms']['on']['checkpoint']['sha256'] = 'f' * 64
+        elif failure in ('predictions', 'summary'):
+            parent['arms']['on'][failure] = parent['arms']['off'][failure]
+        elif failure == 'train-result':
+            parent['arms']['on']['train_result'] = parent['arms']['off']['train_result']
+        elif failure == 'identities':
+            parent['arms']['on']['training_identities']['source_sha256'] = 'f' * 64
+        elif failure == 'arms':
+            del parent['arms']['on']
+        elif failure == 'fold':
+            parent['fold'] = True
+        elif failure == 'learning':
+            parent['learning_performed'] = True
+        else:
+            parent['threshold_tuning_performed'] = True
+        bundle['request']['scorer_result'] = document(Path(bundle['request']['scorer_result']['path']), parent)
+    with pytest.raises(ValueError):
+        reporter.build_report(request_binding(bundle))
+
+
+@pytest.mark.parametrize('field,value', [('source_protocol', 'B'), ('source_fold', True)])
+def test_c_parent_retains_original_a_source_selection(reporter, bundle, field, value):
+    parent = producer_shaped_bundle(bundle, 'C')
+    parent[field] = value
+    bundle['request']['scorer_result'] = document(Path(bundle['request']['scorer_result']['path']), parent)
+    with pytest.raises(ValueError):
+        reporter.build_report(request_binding(bundle))
+
+
+def test_parent_does_not_override_conflicting_inline_provenance(reporter, bundle):
+    parent = producer_shaped_bundle(bundle, 'A')
+    summary_path = Path(bundle['request']['arms']['on']['test']['summary']['path'])
+    summary = json.loads(summary_path.read_text())
+    summary['source_checkpoint'] = parent['arms']['off']['checkpoint']
+    updated = document(summary_path, summary)
+    bundle['request']['arms']['on']['test']['summary'] = updated
+    parent['arms']['on']['summary'] = updated
+    bundle['request']['scorer_result'] = document(Path(bundle['request']['scorer_result']['path']), parent)
+    with pytest.raises(ValueError, match='contradicts parent'):
+        reporter.build_report(request_binding(bundle))
