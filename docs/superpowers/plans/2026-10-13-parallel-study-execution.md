@@ -25,3 +25,11 @@ The primary objective is a complete, honest reference-off/on comparison, followe
 ## Runtime constraint
 
 The completed OFF run took 10 hours 44 minutes. Additional GPUs permit independent experiments but do not automatically shorten one run. Use measured, semantics-preserving performance improvements only after verification. Do not change batch size, precision, input resolution, or training duration only for the ON arm and still describe it as matched.
+
+## Autonomous overnight preparation
+
+The user subsequently authorized unattended execution, including submissions and checkpointing. Group-zero B smoke authenticates the fixed consumer/model recipe before its two independent full training jobs. Prepare the remaining nine reviewed B groups' support products concurrently on CPU allocations. These preparations use the already frozen records, reviewed split hashes, seed-42 reservation, and existing producer. They neither fit a detector nor inspect target query outcomes. A later replication submission must use the same frozen family and group-specific fresh smoke evidence; B outcomes cannot choose which groups to publish.
+
+Prepare C's three target-support banks concurrently, using the reviewed evaluation-only transfer contract. Actual classifier source membership remains A fold zero, 1,778 training and 222 validation documents. C reserves 66 genuine captures and excludes their 66 recorded altered derivatives, leaving 467 common queries from the 599-image baseline. No C outcome is available or used for model selection. The original WV/AZ D remains incomplete; an AZ-only transfer must not silently substitute for it.
+
+Queue metadata-only monitoring for A completion. A separate frozen scorer must authenticate both completed 100-epoch receipts and their fresh validation replay before opening the official test population. Monitoring may submit that fixed evaluator once, with immutable request and submission-ledger bindings. It must fail closed after a failed parent, ambiguous submission, or changed authority rather than resubmitting or altering the experiment automatically.
