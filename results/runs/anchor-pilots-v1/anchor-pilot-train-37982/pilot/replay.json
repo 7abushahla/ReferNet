@@ -1,0 +1,203 @@
+{
+  "atol": 1e-05,
+  "checkpoint_sha256": "dec4df1aa360c445185f17ee53c7e1275ea7a24d9fb721dc2740a65d86659844",
+  "fresh_process": true,
+  "identities": {
+    "config_sha256": "5672a841eea3e683cdf76892d828c015711d500187e56fbe9c0a8aa86f30fdf9",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "af7073f3dd12299d9836f665cab5307dd5fed4a22882cc9fbbef317b8a38ae59",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "inference": {
+    "atol": 1e-05,
+    "batch_sizes": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "buffer_sha256_after": "d264f427cef4c7c98547996c838524f6895718b5ad20074a2140b789114e85df",
+    "buffer_sha256_before": "d264f427cef4c7c98547996c838524f6895718b5ad20074a2140b789114e85df",
+    "buffers_unchanged": true,
+    "companion_invariance": true,
+    "comparisons": 72,
+    "max_abs_difference": 1.52587890625e-05,
+    "normalization_dropout": {
+      "backbone.layer1.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer1.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer2.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer3.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.0.downsample.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.1.bn1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.layer4.1.bn2": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.1": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.4": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      },
+      "backbone.stem.7": {
+        "drop_probability": null,
+        "kind": "BatchNorm2d",
+        "track_running_stats": true,
+        "training": false
+      }
+    },
+    "passed": true,
+    "rtol": 0.0001
+  },
+  "max_abs_difference": 0.0,
+  "n_images": 222,
+  "parent_pid": 33952,
+  "passed": true,
+  "phase": "replay",
+  "pid": 33962,
+  "rtol": 0.0001,
+  "schema_version": "anchor_pilot_v1",
+  "summary": {
+    "accuracy": 0.9774774774774775,
+    "altered_misses": [
+      "sidtd_aze_passport_97_fake_3_115",
+      "sidtd_lva_passport_51_fake_0_114",
+      "sidtd_srb_passport_87_fake_5_100"
+    ],
+    "auc": 0.9965573770491802,
+    "buffers_unchanged": true,
+    "genuine_false_positives": [
+      "sidtd_aze_passport_77",
+      "sidtd_srb_passport_36"
+    ],
+    "image_loss": 0.09837372227219977,
+    "n_altered": 122,
+    "n_genuine": 100,
+    "n_images": 222,
+    "subgroups": {
+      "copy": {
+        "accuracy": 0.9568965517241379,
+        "auc": 0.979375,
+        "n_altered": 16,
+        "n_genuine": 100
+      },
+      "inpainting": {
+        "accuracy": 0.9902912621359223,
+        "auc": 0.9991509433962265,
+        "n_altered": 106,
+        "n_genuine": 100
+      }
+    }
+  }
+}
