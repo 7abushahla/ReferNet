@@ -1,0 +1,39 @@
+{
+  "authorized_image_ids": {
+    "train": [
+      "sidtd_alb_id_00",
+      "sidtd_alb_id_01",
+      "sidtd_alb_id_01_fake_6_56",
+      "sidtd_alb_id_01_fake_6_61",
+      "sidtd_alb_id_02",
+      "sidtd_alb_id_02_fake_6_44",
+      "sidtd_alb_id_02_fake_6_49",
+      "sidtd_alb_id_02_fake_6_88",
+      "sidtd_alb_id_03",
+      "sidtd_alb_id_03_fake_6_69",
+      "sidtd_alb_id_04",
+      "sidtd_alb_id_05",
+      "sidtd_alb_id_06",
+      "sidtd_alb_id_07",
+      "sidtd_alb_id_23_fake_6_105",
+      "sidtd_alb_id_23_fake_6_106",
+      "sidtd_aze_passport_00",
+      "sidtd_esp_id_00",
+      "sidtd_est_id_00",
+      "sidtd_fin_id_00",
+      "sidtd_grc_passport_00",
+      "sidtd_lva_passport_00",
+      "sidtd_rus_internalpassport_00",
+      "sidtd_srb_passport_00",
+      "sidtd_svk_id_01"
+    ],
+    "val": []
+  },
+  "enrollment_manifest_sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8",
+  "phase": "coordinate",
+  "recipe_sha256": "7a87ddefc956dd6026e2d29c8459d9bcb8251cbc9105218926b6d67e5abaa1a5",
+  "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+  "schema_version": "direct_reference_phase_v1",
+  "source_sha256": "89f6c70266d1f9dce8d1e433dbb091ca310f79ef5a0b02eeecba8038ef8ff9e0",
+  "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9"
+}

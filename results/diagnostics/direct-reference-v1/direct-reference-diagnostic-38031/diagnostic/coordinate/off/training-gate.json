@@ -1,0 +1,3165 @@
+{
+  "coordinate_gate": {
+    "passed": true,
+    "probes": [
+      {
+        "available": true,
+        "bank": "train_half1",
+        "image_id": "sidtd_alb_id_00",
+        "query_pixels_unchanged": true
+      },
+      {
+        "available": true,
+        "bank": "train_half0",
+        "image_id": "sidtd_aze_passport_00",
+        "query_pixels_unchanged": true
+      },
+      {
+        "available": true,
+        "bank": "train_half1",
+        "image_id": "sidtd_esp_id_00",
+        "query_pixels_unchanged": true
+      },
+      {
+        "available": true,
+        "bank": "train_half0",
+        "image_id": "sidtd_est_id_00",
+        "query_pixels_unchanged": true
+      },
+      {
+        "available": true,
+        "bank": "train_half1",
+        "image_id": "sidtd_fin_id_00",
+        "query_pixels_unchanged": true
+      },
+      {
+        "available": true,
+        "bank": "train_half0",
+        "image_id": "sidtd_grc_passport_00",
+        "query_pixels_unchanged": true
+      },
+      {
+        "available": true,
+        "bank": "train_half1",
+        "image_id": "sidtd_lva_passport_00",
+        "query_pixels_unchanged": true
+      },
+      {
+        "available": true,
+        "bank": "train_half0",
+        "image_id": "sidtd_rus_internalpassport_00",
+        "query_pixels_unchanged": true
+      },
+      {
+        "available": true,
+        "bank": "train_half0",
+        "image_id": "sidtd_srb_passport_00",
+        "query_pixels_unchanged": true
+      },
+      {
+        "available": true,
+        "bank": "train_half0",
+        "image_id": "sidtd_svk_id_01",
+        "query_pixels_unchanged": true
+      }
+    ]
+  },
+  "enrollment_manifest_sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8",
+  "initialization": {
+    "initialization_sha256": "c8940e5c9fbb0595e7fb50136d72f743c7b25d7fd560940130c31eecc19bf671",
+    "state_sha256": "2678d5c9ec79a13a4ae012f398485bd32495ea64f1667dfbf29969103b8a2736"
+  },
+  "model_gate": {
+    "actual_stack_report_sha256": "b0963a648742b6dfe2f1f07840212328cba7ac0e6fac10c87cc439aa06d56928",
+    "bn_training": {
+      "increments": {
+        "base.backbone.layer1.0.bn1": 1,
+        "base.backbone.layer1.0.bn2": 1,
+        "base.backbone.layer1.1.bn1": 1,
+        "base.backbone.layer1.1.bn2": 1,
+        "base.backbone.layer2.0.bn1": 1,
+        "base.backbone.layer2.0.bn2": 1,
+        "base.backbone.layer2.0.downsample.1": 1,
+        "base.backbone.layer2.1.bn1": 1,
+        "base.backbone.layer2.1.bn2": 1,
+        "base.backbone.layer3.0.bn1": 1,
+        "base.backbone.layer3.0.bn2": 1,
+        "base.backbone.layer3.0.downsample.1": 1,
+        "base.backbone.layer3.1.bn1": 1,
+        "base.backbone.layer3.1.bn2": 1,
+        "base.backbone.layer4.0.bn1": 1,
+        "base.backbone.layer4.0.bn2": 1,
+        "base.backbone.layer4.0.downsample.1": 1,
+        "base.backbone.layer4.1.bn1": 1,
+        "base.backbone.layer4.1.bn2": 1,
+        "base.backbone.stem.1": 1,
+        "base.backbone.stem.4": 1,
+        "base.backbone.stem.7": 1
+      },
+      "passed": true
+    },
+    "inference": {
+      "batch_sizes": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "buffers_unchanged": true,
+      "max_abs_difference": 1.430511474609375e-06,
+      "n_queries": 8,
+      "passed": true
+    },
+    "passed": true
+  },
+  "no_test_open": true,
+  "opened_roles": [
+    "train"
+  ],
+  "overfit": {
+    "image_loss": 0.06056979967979714,
+    "n_correct": 16,
+    "n_images": 16,
+    "updates": 36
+  },
+  "passed": true,
+  "pixel_opens": [
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_aze_passport_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/aze_passport_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_aze_passport_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/aze_passport_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_esp_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/esp_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_esp_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/esp_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_est_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/est_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_est_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/est_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_fin_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/fin_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_fin_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/fin_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_grc_passport_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/grc_passport_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_grc_passport_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/grc_passport_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_lva_passport_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/lva_passport_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_lva_passport_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/lva_passport_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/rus_internalpassport_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/rus_internalpassport_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_srb_passport_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/srb_passport_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_srb_passport_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/srb_passport_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_svk_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/svk_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_svk_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/svk_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    }
+  ],
+  "pixel_opens_scope": "query_reads",
+  "query_read_stage": "coordinate_overfit",
+  "recipe_sha256": "7a87ddefc956dd6026e2d29c8459d9bcb8251cbc9105218926b6d67e5abaa1a5",
+  "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+  "reference_enabled": false,
+  "registration": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-diagnostic-38031/diagnostic/coordinate/registration.json",
+    "sha256": "670e799e39c81b2332fe96645d8597edcc8928fa80512547c0ccaf9f1bc700cf"
+  },
+  "registration_query_reads": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-diagnostic-38031/diagnostic/coordinate/registration-query-reads.json",
+    "sha256": "c4b6645098071b08de3bf4c3b6d2886e17102804d9efaf9b8e86a13066b76842"
+  },
+  "schema_version": "direct_reference_training_gates_v1",
+  "source_sha256": "89f6c70266d1f9dce8d1e433dbb091ca310f79ef5a0b02eeecba8038ef8ff9e0",
+  "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+  "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+}

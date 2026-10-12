@@ -1,0 +1,2145 @@
+{
+  "entries": {
+    "sidtd_alb_id_00": {
+      "bank": "train_half1",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_00",
+      "inliers": 1328,
+      "key": "6bc9867434dc0ad038419f5f80ed0c0a15026bafe1c5703a28edb7b0e52e06bc",
+      "path": "sidtd/templates/Images/reals/alb_id_00.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/geometry.json",
+          "sha256": "c34146954be855d499349f07754481bfea4b5d9070968294eb41f366e8867375"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/manifest.json",
+          "sha256": "a137108a31fd9b2acce0d1fe8d6749e0f0c713381bb5c8f7a4f74b187a3f70c8"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/median.png",
+          "sha256": "b482b387453cb95015bd0edfd8b97c1364a4372ce77dadafad4371dbe0b5f244"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target.png",
+          "sha256": "7ca8ad804506f657da88784ca8a4e482c5f42cb451846cd773d57d332625fd16"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/zone.png",
+          "sha256": "94c0ef50b1a1eb8eaffbb043bb40327ef2a41a5313cc30d5579a553b0792454e"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.0000195975422375,
+          -1.875825844601498e-05,
+          -0.0018360072379017996
+        ],
+        [
+          1.875825844601498e-05,
+          1.0000195975422375,
+          -0.011927079074737855
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "cba4c2bd4a3f74327845a6e0c209b9a947344a5b64181147678e6e4c15aa985f",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_00"
+    },
+    "sidtd_alb_id_01": {
+      "bank": "train_half0",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_01",
+      "inliers": 1298,
+      "key": "838f1b5a97072aff5d860e75ddfabc6399bd70216e7ae1a38f412ac7c4e01023",
+      "path": "sidtd/templates/Images/reals/alb_id_01.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/coverage.png",
+          "sha256": "648d4a2c16d80b8414841c6373554144202fe1a2f7782b13aff9612f4450c2ba"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/geometry.json",
+          "sha256": "c0a6c0041b2da4df7a199205ee94215ab4bcdcca9e6b83a0ec3402161bd97340"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/manifest.json",
+          "sha256": "8b060bd07cad13ac1273f585bfcd63d4b6ff7a9b170ad2216074276c44492240"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/median.png",
+          "sha256": "6b37e2142ecb7ba6efdb5affb1d3fbf835ca8b08472cf37e2f96d9e9cac1983a"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/target.png",
+          "sha256": "b5cb7e384dac8eb9f2c0ddbd2698d989add5e4c73e86488693b6efe2ec29c8d1"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/target_coverage.png",
+          "sha256": "69d8b242b5d6618097af05d82dc438221706a0eaeac2958df4d1dc980e60faaa"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/zone.png",
+          "sha256": "4a7fad7222522d43aeaede24429266aa3df4ff904755febc7f91607a5589145f"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.0000149244368437,
+          6.982103965555051e-06,
+          -0.003382846766255138
+        ],
+        [
+          -6.982103965555051e-06,
+          1.0000149244368437,
+          -3.7655474781566714e-05
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "a2094012fa88fbc463b06fe1fa773a0a66103044dfc2fa51db3d342d2548300c",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_01"
+    },
+    "sidtd_alb_id_01_fake_6_56": {
+      "bank": "train_half0",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "inliers": 1170,
+      "key": "7345bc676a225a2e8507be15d71d85daf66d5629f0c5b34faa6603352b43ae86",
+      "path": "sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/coverage.png",
+          "sha256": "648d4a2c16d80b8414841c6373554144202fe1a2f7782b13aff9612f4450c2ba"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/geometry.json",
+          "sha256": "c0a6c0041b2da4df7a199205ee94215ab4bcdcca9e6b83a0ec3402161bd97340"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/manifest.json",
+          "sha256": "8b060bd07cad13ac1273f585bfcd63d4b6ff7a9b170ad2216074276c44492240"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/median.png",
+          "sha256": "6b37e2142ecb7ba6efdb5affb1d3fbf835ca8b08472cf37e2f96d9e9cac1983a"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/target.png",
+          "sha256": "b5cb7e384dac8eb9f2c0ddbd2698d989add5e4c73e86488693b6efe2ec29c8d1"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/target_coverage.png",
+          "sha256": "69d8b242b5d6618097af05d82dc438221706a0eaeac2958df4d1dc980e60faaa"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/zone.png",
+          "sha256": "4a7fad7222522d43aeaede24429266aa3df4ff904755febc7f91607a5589145f"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.0000076756922531,
+          2.1583060547139188e-05,
+          -0.004963736703316426
+        ],
+        [
+          -2.1583060547139188e-05,
+          1.0000076756922531,
+          0.004839493672379831
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "2b7bcc1f35dbf2eb8196050d1739b69165fe58733a02895600ee0e255646a97c",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_01"
+    },
+    "sidtd_alb_id_01_fake_6_61": {
+      "bank": "train_half0",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "inliers": 1115,
+      "key": "3372470553eb79d19709120867c1bf711acc2e0dbd54059fb433ffeed8e3195e",
+      "path": "sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/coverage.png",
+          "sha256": "648d4a2c16d80b8414841c6373554144202fe1a2f7782b13aff9612f4450c2ba"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/geometry.json",
+          "sha256": "c0a6c0041b2da4df7a199205ee94215ab4bcdcca9e6b83a0ec3402161bd97340"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/manifest.json",
+          "sha256": "8b060bd07cad13ac1273f585bfcd63d4b6ff7a9b170ad2216074276c44492240"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/median.png",
+          "sha256": "6b37e2142ecb7ba6efdb5affb1d3fbf835ca8b08472cf37e2f96d9e9cac1983a"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/target.png",
+          "sha256": "b5cb7e384dac8eb9f2c0ddbd2698d989add5e4c73e86488693b6efe2ec29c8d1"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/target_coverage.png",
+          "sha256": "69d8b242b5d6618097af05d82dc438221706a0eaeac2958df4d1dc980e60faaa"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/zone.png",
+          "sha256": "4a7fad7222522d43aeaede24429266aa3df4ff904755febc7f91607a5589145f"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          0.9999968220140817,
+          -5.8760194920341195e-06,
+          0.0013259776726443633
+        ],
+        [
+          5.8760194920341195e-06,
+          0.9999968220140817,
+          -0.0006916523112436417
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "75fc00dae24174379653fa886d24f0560ef9ba4b4b3c9eefc5430520332f2e2b",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_01"
+    },
+    "sidtd_alb_id_02": {
+      "bank": "train_half1",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_02",
+      "inliers": 1285,
+      "key": "99d53458007417b935f83d8595edcd5eb159a7c70b01e3bb09f9479e6e4bc4c8",
+      "path": "sidtd/templates/Images/reals/alb_id_02.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/geometry.json",
+          "sha256": "c34146954be855d499349f07754481bfea4b5d9070968294eb41f366e8867375"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/manifest.json",
+          "sha256": "a137108a31fd9b2acce0d1fe8d6749e0f0c713381bb5c8f7a4f74b187a3f70c8"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/median.png",
+          "sha256": "b482b387453cb95015bd0edfd8b97c1364a4372ce77dadafad4371dbe0b5f244"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target.png",
+          "sha256": "7ca8ad804506f657da88784ca8a4e482c5f42cb451846cd773d57d332625fd16"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/zone.png",
+          "sha256": "94c0ef50b1a1eb8eaffbb043bb40327ef2a41a5313cc30d5579a553b0792454e"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.0000085649317896,
+          1.3830578656672015e-05,
+          -0.0008860972801755223
+        ],
+        [
+          -1.3830578656672015e-05,
+          1.0000085649317896,
+          0.004981638494552123
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "bb344cc5f982f9c60465b4caa912e3e4582e3315434438061011ae86049dad18",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_02"
+    },
+    "sidtd_alb_id_02_fake_6_44": {
+      "bank": "train_half1",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "inliers": 1138,
+      "key": "2bc7fe85b04c0d61981328f28f4086f834a55c1b04036b8f04e62794faa0dfa8",
+      "path": "sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/geometry.json",
+          "sha256": "c34146954be855d499349f07754481bfea4b5d9070968294eb41f366e8867375"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/manifest.json",
+          "sha256": "a137108a31fd9b2acce0d1fe8d6749e0f0c713381bb5c8f7a4f74b187a3f70c8"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/median.png",
+          "sha256": "b482b387453cb95015bd0edfd8b97c1364a4372ce77dadafad4371dbe0b5f244"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target.png",
+          "sha256": "7ca8ad804506f657da88784ca8a4e482c5f42cb451846cd773d57d332625fd16"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/zone.png",
+          "sha256": "94c0ef50b1a1eb8eaffbb043bb40327ef2a41a5313cc30d5579a553b0792454e"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.000012486509042,
+          2.896554299420783e-06,
+          -0.0031957657609508784
+        ],
+        [
+          -2.896554299420783e-06,
+          1.000012486509042,
+          0.0018509253455889565
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "a95ddac736f8319b89d32f388060c5501cd203ad3853dd188ee1f6d157676515",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_02"
+    },
+    "sidtd_alb_id_02_fake_6_49": {
+      "bank": "train_half1",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "inliers": 1139,
+      "key": "78bb0274385173c3e30d3f7edb64eda127cb3269492348ff1683d2f1188aae97",
+      "path": "sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/geometry.json",
+          "sha256": "c34146954be855d499349f07754481bfea4b5d9070968294eb41f366e8867375"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/manifest.json",
+          "sha256": "a137108a31fd9b2acce0d1fe8d6749e0f0c713381bb5c8f7a4f74b187a3f70c8"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/median.png",
+          "sha256": "b482b387453cb95015bd0edfd8b97c1364a4372ce77dadafad4371dbe0b5f244"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target.png",
+          "sha256": "7ca8ad804506f657da88784ca8a4e482c5f42cb451846cd773d57d332625fd16"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/zone.png",
+          "sha256": "94c0ef50b1a1eb8eaffbb043bb40327ef2a41a5313cc30d5579a553b0792454e"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          0.9999967665716157,
+          1.0807361778238159e-05,
+          0.003046882732667338
+        ],
+        [
+          -1.0807361778238159e-05,
+          0.9999967665716157,
+          0.004513041425042203
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "5405101102ae3f5b5f4fa2b98fd01f0d05d5b170ef96da0227587afb9e32fb1a",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_02"
+    },
+    "sidtd_alb_id_02_fake_6_88": {
+      "bank": "train_half1",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "inliers": 1163,
+      "key": "2ab14d5c8a1ca34475dee258e9011a1bbb45db850df43e7aae4ae71b0a64ae20",
+      "path": "sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/geometry.json",
+          "sha256": "c34146954be855d499349f07754481bfea4b5d9070968294eb41f366e8867375"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/manifest.json",
+          "sha256": "a137108a31fd9b2acce0d1fe8d6749e0f0c713381bb5c8f7a4f74b187a3f70c8"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/median.png",
+          "sha256": "b482b387453cb95015bd0edfd8b97c1364a4372ce77dadafad4371dbe0b5f244"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target.png",
+          "sha256": "7ca8ad804506f657da88784ca8a4e482c5f42cb451846cd773d57d332625fd16"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/zone.png",
+          "sha256": "94c0ef50b1a1eb8eaffbb043bb40327ef2a41a5313cc30d5579a553b0792454e"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.0000185414995688,
+          1.7431563441615914e-05,
+          -0.0057906153078503605
+        ],
+        [
+          -1.7431563441615914e-05,
+          1.0000185414995688,
+          0.006735540810118149
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "00b5d41f43cbe4c190c77aee9e151603fc8df2517156f234d350ac86b0a360a1",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_02"
+    },
+    "sidtd_alb_id_03": {
+      "bank": "train_half1",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_03",
+      "inliers": 1263,
+      "key": "f776c194c1a65eb7470b9969d0fb779dc38c414c84d0eb7459a6dcdc021869d8",
+      "path": "sidtd/templates/Images/reals/alb_id_03.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/geometry.json",
+          "sha256": "c34146954be855d499349f07754481bfea4b5d9070968294eb41f366e8867375"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/manifest.json",
+          "sha256": "a137108a31fd9b2acce0d1fe8d6749e0f0c713381bb5c8f7a4f74b187a3f70c8"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/median.png",
+          "sha256": "b482b387453cb95015bd0edfd8b97c1364a4372ce77dadafad4371dbe0b5f244"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target.png",
+          "sha256": "7ca8ad804506f657da88784ca8a4e482c5f42cb451846cd773d57d332625fd16"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/zone.png",
+          "sha256": "94c0ef50b1a1eb8eaffbb043bb40327ef2a41a5313cc30d5579a553b0792454e"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.0000410718867407,
+          5.731075932426654e-05,
+          -0.015413017736740014
+        ],
+        [
+          -5.731075932426654e-05,
+          1.0000410718867407,
+          0.010357260664966724
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "cb854422775d43f02236f94102b6d98dd2fe036d619ed39db235c84e56891b4c",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_03"
+    },
+    "sidtd_alb_id_03_fake_6_69": {
+      "bank": "train_half1",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "inliers": 1145,
+      "key": "c2f6761b52b3ed2d28ed1aeff6ad6314f72e6694046f41dc3299fc6292865cbd",
+      "path": "sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/geometry.json",
+          "sha256": "c34146954be855d499349f07754481bfea4b5d9070968294eb41f366e8867375"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/manifest.json",
+          "sha256": "a137108a31fd9b2acce0d1fe8d6749e0f0c713381bb5c8f7a4f74b187a3f70c8"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/median.png",
+          "sha256": "b482b387453cb95015bd0edfd8b97c1364a4372ce77dadafad4371dbe0b5f244"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target.png",
+          "sha256": "7ca8ad804506f657da88784ca8a4e482c5f42cb451846cd773d57d332625fd16"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/zone.png",
+          "sha256": "94c0ef50b1a1eb8eaffbb043bb40327ef2a41a5313cc30d5579a553b0792454e"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.000040074888012,
+          7.27785668216116e-05,
+          -0.020172059481885732
+        ],
+        [
+          -7.27785668216116e-05,
+          1.000040074888012,
+          0.018681402916159485
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "50c81c2bc1e7630cda160977194d1801792b6c587712e858a3e1f15a7683ad7c",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_03"
+    },
+    "sidtd_alb_id_04": {
+      "bank": "train_half1",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_04",
+      "inliers": 1351,
+      "key": "b14a7218395787fcb863e21f4b6f02963c803473ccc5cc3e2122451d9d1d58f6",
+      "path": "sidtd/templates/Images/reals/alb_id_04.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/geometry.json",
+          "sha256": "c34146954be855d499349f07754481bfea4b5d9070968294eb41f366e8867375"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/manifest.json",
+          "sha256": "a137108a31fd9b2acce0d1fe8d6749e0f0c713381bb5c8f7a4f74b187a3f70c8"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/median.png",
+          "sha256": "b482b387453cb95015bd0edfd8b97c1364a4372ce77dadafad4371dbe0b5f244"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target.png",
+          "sha256": "7ca8ad804506f657da88784ca8a4e482c5f42cb451846cd773d57d332625fd16"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/zone.png",
+          "sha256": "94c0ef50b1a1eb8eaffbb043bb40327ef2a41a5313cc30d5579a553b0792454e"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.000029603134963,
+          9.618572263298614e-07,
+          -0.00781912657744825
+        ],
+        [
+          -9.618572263298614e-07,
+          1.000029603134963,
+          -0.0027904042342125858
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "c5a53f76898a442b825758c3bc79e1420dbfce133fe66253f17b37c12aacdcf2",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_04"
+    },
+    "sidtd_alb_id_05": {
+      "bank": "train_half1",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_05",
+      "inliers": 1298,
+      "key": "fb7d065c23052dfafc8b6ea6979475c2b7436352b364c19b72dfee37cfd57639",
+      "path": "sidtd/templates/Images/reals/alb_id_05.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/geometry.json",
+          "sha256": "c34146954be855d499349f07754481bfea4b5d9070968294eb41f366e8867375"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/manifest.json",
+          "sha256": "a137108a31fd9b2acce0d1fe8d6749e0f0c713381bb5c8f7a4f74b187a3f70c8"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/median.png",
+          "sha256": "b482b387453cb95015bd0edfd8b97c1364a4372ce77dadafad4371dbe0b5f244"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target.png",
+          "sha256": "7ca8ad804506f657da88784ca8a4e482c5f42cb451846cd773d57d332625fd16"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/zone.png",
+          "sha256": "94c0ef50b1a1eb8eaffbb043bb40327ef2a41a5313cc30d5579a553b0792454e"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.0000247836767584,
+          1.1900103671967713e-05,
+          -0.007536148508253574
+        ],
+        [
+          -1.1900103671967713e-05,
+          1.0000247836767584,
+          -0.0003385361333645943
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "5102cc267e8c691c89044e7b280dc8de257e5dd1f4eda8f6749097f02c18ecc8",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_05"
+    },
+    "sidtd_alb_id_06": {
+      "bank": "train_half0",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_06",
+      "inliers": 1289,
+      "key": "0a792bd36be0ca8126578f403faaa21e780538439b24fef276cd4d47271870f5",
+      "path": "sidtd/templates/Images/reals/alb_id_06.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/coverage.png",
+          "sha256": "648d4a2c16d80b8414841c6373554144202fe1a2f7782b13aff9612f4450c2ba"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/geometry.json",
+          "sha256": "c0a6c0041b2da4df7a199205ee94215ab4bcdcca9e6b83a0ec3402161bd97340"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/manifest.json",
+          "sha256": "8b060bd07cad13ac1273f585bfcd63d4b6ff7a9b170ad2216074276c44492240"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/median.png",
+          "sha256": "6b37e2142ecb7ba6efdb5affb1d3fbf835ca8b08472cf37e2f96d9e9cac1983a"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/target.png",
+          "sha256": "b5cb7e384dac8eb9f2c0ddbd2698d989add5e4c73e86488693b6efe2ec29c8d1"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/target_coverage.png",
+          "sha256": "69d8b242b5d6618097af05d82dc438221706a0eaeac2958df4d1dc980e60faaa"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/zone.png",
+          "sha256": "4a7fad7222522d43aeaede24429266aa3df4ff904755febc7f91607a5589145f"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.0000159478583346,
+          3.2244393117439687e-07,
+          -0.005235816805752652
+        ],
+        [
+          -3.2244393117439687e-07,
+          1.0000159478583346,
+          -0.002973639862726111
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "4d84f94f1bce856b9908a9b53d88f1b3c0fe8e087481b6ecf2427114c4f5f94b",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_06"
+    },
+    "sidtd_alb_id_07": {
+      "bank": "train_half0",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_07",
+      "inliers": 1293,
+      "key": "ea73841b8ad1379560560cd3830dbdd7fb2242c6671c5ee7b7bf7e1dbf891c0b",
+      "path": "sidtd/templates/Images/reals/alb_id_07.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/coverage.png",
+          "sha256": "648d4a2c16d80b8414841c6373554144202fe1a2f7782b13aff9612f4450c2ba"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/geometry.json",
+          "sha256": "c0a6c0041b2da4df7a199205ee94215ab4bcdcca9e6b83a0ec3402161bd97340"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/manifest.json",
+          "sha256": "8b060bd07cad13ac1273f585bfcd63d4b6ff7a9b170ad2216074276c44492240"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/median.png",
+          "sha256": "6b37e2142ecb7ba6efdb5affb1d3fbf835ca8b08472cf37e2f96d9e9cac1983a"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/target.png",
+          "sha256": "b5cb7e384dac8eb9f2c0ddbd2698d989add5e4c73e86488693b6efe2ec29c8d1"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/target_coverage.png",
+          "sha256": "69d8b242b5d6618097af05d82dc438221706a0eaeac2958df4d1dc980e60faaa"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half0/zone.png",
+          "sha256": "4a7fad7222522d43aeaede24429266aa3df4ff904755febc7f91607a5589145f"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.0000188041081841,
+          7.058112956741185e-06,
+          -0.0007004003827616374
+        ],
+        [
+          -7.058112956741185e-06,
+          1.0000188041081841,
+          -0.0036715523232378512
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "9d88394aa8bf23a2e5e117ff501763a6430947d932a2905a2ce876a0455b9517",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_07"
+    },
+    "sidtd_alb_id_23_fake_6_105": {
+      "bank": "train_half1",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "inliers": 1162,
+      "key": "bfe469f2202117d8e3c549b61089d5582bc43124a072667c8a89d52c37ae6fbb",
+      "path": "sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/geometry.json",
+          "sha256": "c34146954be855d499349f07754481bfea4b5d9070968294eb41f366e8867375"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/manifest.json",
+          "sha256": "a137108a31fd9b2acce0d1fe8d6749e0f0c713381bb5c8f7a4f74b187a3f70c8"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/median.png",
+          "sha256": "b482b387453cb95015bd0edfd8b97c1364a4372ce77dadafad4371dbe0b5f244"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target.png",
+          "sha256": "7ca8ad804506f657da88784ca8a4e482c5f42cb451846cd773d57d332625fd16"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/zone.png",
+          "sha256": "94c0ef50b1a1eb8eaffbb043bb40327ef2a41a5313cc30d5579a553b0792454e"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.0000167767601145,
+          3.9346812205666166e-05,
+          -0.009294732140999754
+        ],
+        [
+          -3.9346812205666166e-05,
+          1.0000167767601145,
+          0.015481889015124206
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "0934e9069566aac5b2babf9179e1ee1f768e7066206553f1c7a3f9dbf1d20fef",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_23"
+    },
+    "sidtd_alb_id_23_fake_6_106": {
+      "bank": "train_half1",
+      "design_id": "sidtd/alb_id",
+      "fold": 0,
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "inliers": 1182,
+      "key": "f5152e73246646974a711420874a6e0ac1e30a83a8dd57d5707c2358d5d29ca3",
+      "path": "sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/geometry.json",
+          "sha256": "c34146954be855d499349f07754481bfea4b5d9070968294eb41f366e8867375"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/manifest.json",
+          "sha256": "a137108a31fd9b2acce0d1fe8d6749e0f0c713381bb5c8f7a4f74b187a3f70c8"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/median.png",
+          "sha256": "b482b387453cb95015bd0edfd8b97c1364a4372ce77dadafad4371dbe0b5f244"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target.png",
+          "sha256": "7ca8ad804506f657da88784ca8a4e482c5f42cb451846cd773d57d332625fd16"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_coverage.png",
+          "sha256": "53227c914750be7c7c9791038ba0f142329e2688fc1a2a951dc5e120eac66e32"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/alb_id/train_half1/zone.png",
+          "sha256": "94c0ef50b1a1eb8eaffbb043bb40327ef2a41a5313cc30d5579a553b0792454e"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.000003760119383,
+          1.9917313088300625e-05,
+          0.002232921265147367
+        ],
+        [
+          -1.9917313088300625e-05,
+          1.000003760119383,
+          0.011890223652594314
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "682224a5686e91ec3bc32a9abd79b21c2c9334109bd34f8ff0701de47dfa1780",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/alb_id_23"
+    },
+    "sidtd_aze_passport_00": {
+      "bank": "train_half0",
+      "design_id": "sidtd/aze_passport",
+      "fold": 0,
+      "image_id": "sidtd_aze_passport_00",
+      "inliers": 962,
+      "key": "50d75ce6b79aea7622c51083ff59801934fb4a28b1a68ae575b2140996438f04",
+      "path": "sidtd/templates/Images/reals/aze_passport_00.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/aze_passport/train_half0/coverage.png",
+          "sha256": "3f16fd46bd87cdcbe787a242aa74223123c26803b622dbf16b42017b21e5013d"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/aze_passport/train_half0/geometry.json",
+          "sha256": "1aae206d26056c6eaaa5f4f513b83c3ec32c66cd63c2c6d11109804283436d8d"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/aze_passport/train_half0/manifest.json",
+          "sha256": "05ba85d240b14a01154c0e960d6b72c6bab27a833bfce16aabb476d5281c88ae"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/aze_passport/train_half0/median.png",
+          "sha256": "876994dd33db0cd7c220834b6ace81c0f85aa0dfeac40dd294d8fc00f79bb6e5"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/aze_passport/train_half0/target.png",
+          "sha256": "5cee902416091a7679623552f423aa46c3464da474d24f6505ce0fa83869bf85"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/aze_passport/train_half0/target_coverage.png",
+          "sha256": "3f16fd46bd87cdcbe787a242aa74223123c26803b622dbf16b42017b21e5013d"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/aze_passport/train_half0/target_valid.png",
+          "sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/aze_passport/train_half0/valid.png",
+          "sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/aze_passport/train_half0/zone.png",
+          "sha256": "424cd3ca53ffd35d44f602dce5177df1333804edf72ec485b0cc450f0f93122a"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.0000177315763272,
+          2.3301414037924232e-05,
+          -0.013587235148570886
+        ],
+        [
+          -2.3301414037924232e-05,
+          1.0000177315763272,
+          0.005385238614830074
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "9978e9da28fb983020bfaaac385acd27e6ddedb2fe4b588d2ee849aaf6969bce",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/aze_passport_89"
+    },
+    "sidtd_esp_id_00": {
+      "bank": "train_half1",
+      "design_id": "sidtd/esp_id",
+      "fold": 0,
+      "image_id": "sidtd_esp_id_00",
+      "inliers": 2151,
+      "key": "6a6873cc9d3e06c7de327fbb2b63ee003b267473110383a9441feb7a7965abd7",
+      "path": "sidtd/templates/Images/reals/esp_id_00.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/esp_id/train_half1/coverage.png",
+          "sha256": "8c81ae326379b8b84e285a721c4ed43bf9c79eaf00adfc251c5a8acc0f395dd3"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/esp_id/train_half1/geometry.json",
+          "sha256": "dfc98828bcc7bc641954fc29b7302fca02eab17abc174a19896790ffe1a2b640"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/esp_id/train_half1/manifest.json",
+          "sha256": "e736f9cc612ae78c7646aef1d875e45ce6d596173e30c826ff14610f2a1c1b26"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/esp_id/train_half1/median.png",
+          "sha256": "6b693bdf42c4091c936c3b96ebb90b33cce80f01ed3e807445090eb83640a7ba"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/esp_id/train_half1/target.png",
+          "sha256": "837f1dc37f5bb856270206a0ac73b8a1e16d3d71d8b8cdeb710b84dbbd7adc9f"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/esp_id/train_half1/target_coverage.png",
+          "sha256": "8c81ae326379b8b84e285a721c4ed43bf9c79eaf00adfc251c5a8acc0f395dd3"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/esp_id/train_half1/target_valid.png",
+          "sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/esp_id/train_half1/valid.png",
+          "sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/esp_id/train_half1/zone.png",
+          "sha256": "f44c8076fbb2bb89286850eca83346ee87cce65ed4af172adc77aadd7e7babd8"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.0000078537628962,
+          -2.9900066202027382e-06,
+          -0.0035557982754619412
+        ],
+        [
+          2.9900066202027382e-06,
+          1.0000078537628962,
+          -0.001398321532043392
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "6ec20df2bcc17f5e07cbf0d87a12d066c29c1186ac7a7064d96d5847723ec317",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/esp_id_00"
+    },
+    "sidtd_est_id_00": {
+      "bank": "train_half0",
+      "design_id": "sidtd/est_id",
+      "fold": 0,
+      "image_id": "sidtd_est_id_00",
+      "inliers": 951,
+      "key": "ae03f8c4522d4ed1d63f90ff3ef5870cc00503c35c4eb42164081c8afe9ef79a",
+      "path": "sidtd/templates/Images/reals/est_id_00.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/est_id/train_half0/coverage.png",
+          "sha256": "aba84da0035978ad1c6749523fb09b932ff2ec1d8b8d226a09d5744729ef4cc6"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/est_id/train_half0/geometry.json",
+          "sha256": "ee7dae906fbb8f257890da67f53333ba01e832a6f7d20a562f3dddf9c9b4bf8b"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/est_id/train_half0/manifest.json",
+          "sha256": "8e2df226e25e071f57f8c75175dfa34bb528465c1603f23b27d161ffbc0d4da6"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/est_id/train_half0/median.png",
+          "sha256": "0265a0ae36348061cecaf85e472eaad5dedc134960663ee0cd8ec7d019bf537f"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/est_id/train_half0/target.png",
+          "sha256": "65f7fa07500251917c44f026da6c69eee5bc5d767b93ace3f9a711268570b72c"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/est_id/train_half0/target_coverage.png",
+          "sha256": "aba84da0035978ad1c6749523fb09b932ff2ec1d8b8d226a09d5744729ef4cc6"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/est_id/train_half0/target_valid.png",
+          "sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/est_id/train_half0/valid.png",
+          "sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/est_id/train_half0/zone.png",
+          "sha256": "fca6b66ea837f5f8c4ff190a2c698096c92cce27416662383a4b89a2ea030f1a"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          0.999995296750814,
+          -2.6629440321319546e-06,
+          0.0010133041549437124
+        ],
+        [
+          2.6629440321319546e-06,
+          0.999995296750814,
+          -0.00311540893588524
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "84a3b2d0d98856c0337c50b37d40deab293fe64644aed128858d0256750a27e3",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/est_id_00"
+    },
+    "sidtd_fin_id_00": {
+      "bank": "train_half1",
+      "design_id": "sidtd/fin_id",
+      "fold": 0,
+      "image_id": "sidtd_fin_id_00",
+      "inliers": 2057,
+      "key": "fac0c8bb5c210506bbead6ebcb922009e9cc6b022f6579366ca120eabf89f3e2",
+      "path": "sidtd/templates/Images/reals/fin_id_00.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/fin_id/train_half1/coverage.png",
+          "sha256": "f0c1e665362ae118a981ac3b1d0bf6096bda37d5fca3728bfb29ece1bf8f0f25"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/fin_id/train_half1/geometry.json",
+          "sha256": "6ecdb860a8758793c9c7ca18f8602f1d5b1df077a10566dd06d92068095f08d0"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/fin_id/train_half1/manifest.json",
+          "sha256": "5b1d10a2348cfe51b227cf6edf0ce755bba5a9ec638b2ed88f778c8e02734282"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/fin_id/train_half1/median.png",
+          "sha256": "cc896e3d969ea9584759a4d5242fd1b71f2c01149af3439e8daae3e03ca05911"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/fin_id/train_half1/target.png",
+          "sha256": "37fa2138416065cba5f67b8f27636bb712822c3ad769b77e937b0feeb4a92a64"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/fin_id/train_half1/target_coverage.png",
+          "sha256": "f0c1e665362ae118a981ac3b1d0bf6096bda37d5fca3728bfb29ece1bf8f0f25"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/fin_id/train_half1/target_valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/fin_id/train_half1/valid.png",
+          "sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/fin_id/train_half1/zone.png",
+          "sha256": "2ea1c461a1f3e279e3ca7a30211b7c54fddaf1a25a6e4689a22931df188c27c4"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.0000009340828178,
+          4.964904694612532e-06,
+          -0.0022335497135799773
+        ],
+        [
+          -4.964904694612532e-06,
+          1.0000009340828178,
+          0.0050578828403400455
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "d21264c82008d8b9bfc4d2da9d9985b2149562883f0133c0568f3d91241df664",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/fin_id_00"
+    },
+    "sidtd_grc_passport_00": {
+      "bank": "train_half0",
+      "design_id": "sidtd/grc_passport",
+      "fold": 0,
+      "image_id": "sidtd_grc_passport_00",
+      "inliers": 1535,
+      "key": "1c0793785b6d51c57b2ba92ac90f65c8b1822df62bc395b0effe452c385687b4",
+      "path": "sidtd/templates/Images/reals/grc_passport_00.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/grc_passport/train_half0/coverage.png",
+          "sha256": "41e79f2c068500633a43b0785e5c1b26ccf114a9b3e9ee50372a943113b5ff82"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/grc_passport/train_half0/geometry.json",
+          "sha256": "1df98eb769f0fd324190560ac0c2b628e14fd47aade0a153bd18e327e88dca29"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/grc_passport/train_half0/manifest.json",
+          "sha256": "e4aac2dd07b86040103cbd6dffe842192d38fbb7829b538d0c0282593f860b92"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/grc_passport/train_half0/median.png",
+          "sha256": "c3ff2d4f7dc00a9ff52e1d1814f698e49072ea526179bd5b3847ddc392cfcf92"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/grc_passport/train_half0/target.png",
+          "sha256": "1b4e6dc0cb71e6953286fc74c7fb5ff5c0fdd6b2ca5aeb26e20315b908da6a2d"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/grc_passport/train_half0/target_coverage.png",
+          "sha256": "41e79f2c068500633a43b0785e5c1b26ccf114a9b3e9ee50372a943113b5ff82"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/grc_passport/train_half0/target_valid.png",
+          "sha256": "cf6437b7f5e1f025d93e21aa3d99654c4fc3a500eee05fef83fbd37721a4830a"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/grc_passport/train_half0/valid.png",
+          "sha256": "cf6437b7f5e1f025d93e21aa3d99654c4fc3a500eee05fef83fbd37721a4830a"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/grc_passport/train_half0/zone.png",
+          "sha256": "9c3453a0a8010d36fbfc4f6fe1dab87b0a286fdad0c8961d934bbdf610b6cedf"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.0000331493093544,
+          -1.4772786379187615e-06,
+          -0.011332394462057374
+        ],
+        [
+          1.4772786379187615e-06,
+          1.0000331493093544,
+          -0.009382364922417879
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "3fdc610ab47a565eb0ab0dfd46c56f473e75916b10067565e48478294bed8d10",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/grc_passport_94"
+    },
+    "sidtd_lva_passport_00": {
+      "bank": "train_half1",
+      "design_id": "sidtd/lva_passport",
+      "fold": 0,
+      "image_id": "sidtd_lva_passport_00",
+      "inliers": 1603,
+      "key": "573fa403909908609d01d2fda1cbbc0f2e09b45a7e5b3c5d7776d195e11ae7ce",
+      "path": "sidtd/templates/Images/reals/lva_passport_00.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/lva_passport/train_half1/coverage.png",
+          "sha256": "311c79712fa69b35bb96cacc5b5d92280eb466eb8e2e8e59ff0b34339e7d8862"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/lva_passport/train_half1/geometry.json",
+          "sha256": "3860375b7eea9e2e55fd9cc9c75dfb49dbe71bef52a47910f006c1538bd10967"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/lva_passport/train_half1/manifest.json",
+          "sha256": "94026954ee9bb5a21bd2a5a32a8de14efcf72c0f629f3dc8970a00e448b79f79"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/lva_passport/train_half1/median.png",
+          "sha256": "c6794f8d824c56844391740540b352c304bc42bf9f4fa14d492337a5bc65457f"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/lva_passport/train_half1/target.png",
+          "sha256": "752f566acd356a3c9db5b6cffcbe11431d7d565eea73c17b119a24ec9a0c4ac9"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/lva_passport/train_half1/target_coverage.png",
+          "sha256": "311c79712fa69b35bb96cacc5b5d92280eb466eb8e2e8e59ff0b34339e7d8862"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/lva_passport/train_half1/target_valid.png",
+          "sha256": "75c21031e41247ac1fe83333eed5e27ed35004884754c83c64c824125083bb7f"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/lva_passport/train_half1/valid.png",
+          "sha256": "75c21031e41247ac1fe83333eed5e27ed35004884754c83c64c824125083bb7f"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/lva_passport/train_half1/zone.png",
+          "sha256": "3000c8a2a47b2c086bae5dc7c7f9ca191aa3d5e9e3b1348769350effd6a2101b"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.000029259634085,
+          -1.0850905103015071e-05,
+          -0.006993319839221801
+        ],
+        [
+          1.0850905103015071e-05,
+          1.000029259634085,
+          -0.07242041931354887
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "eb7214c469ef8af3d9c6cb520f602550c300421473d6a016027cc53b9ebc5ac4",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/lva_passport_00"
+    },
+    "sidtd_rus_internalpassport_00": {
+      "bank": "train_half0",
+      "design_id": "sidtd/rus_internalpassport",
+      "fold": 0,
+      "image_id": "sidtd_rus_internalpassport_00",
+      "inliers": 699,
+      "key": "c2a5267272b25c5bc1e554ecca206dbd6ab14b5fcf45533d9f211d43bd3b1c33",
+      "path": "sidtd/templates/Images/reals/rus_internalpassport_00.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/rus_internalpassport/train_half0/coverage.png",
+          "sha256": "006093769629cb8641d182d7b24ae53266a133ba0ffbccad52df407afa1de4a4"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/rus_internalpassport/train_half0/geometry.json",
+          "sha256": "a20ca8c15284524c5472dc373433e014d37b75ec2cabd267160c2ce91d420610"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/rus_internalpassport/train_half0/manifest.json",
+          "sha256": "970e6e7c9b3b6637e2a6eea43a449d093f63c74e759eddd7bf1e3129c730c3d5"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/rus_internalpassport/train_half0/median.png",
+          "sha256": "3322e6a700fdb6a5f033800dc618618c7f8c674f80a9c6f415b6b28535485bfb"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/rus_internalpassport/train_half0/target.png",
+          "sha256": "13b67a5c0b69057564f0371d22620e0292340e324e98c92a03152a97f9291638"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/rus_internalpassport/train_half0/target_coverage.png",
+          "sha256": "006093769629cb8641d182d7b24ae53266a133ba0ffbccad52df407afa1de4a4"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/rus_internalpassport/train_half0/target_valid.png",
+          "sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/rus_internalpassport/train_half0/valid.png",
+          "sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/rus_internalpassport/train_half0/zone.png",
+          "sha256": "d6e145de880aa55ca4c6517136adb9d58d84e11549c1f9953cd33d2876a61bb1"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          0.9999908734470501,
+          -5.115940579776525e-05,
+          0.00026405051594932845
+        ],
+        [
+          5.115940579776525e-05,
+          0.9999908734470501,
+          -0.00963693626321926
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "b8f2c0559f20f624596185790f400beecb814f13d1d3d617b4defa4698539511",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/rus_internalpassport_00"
+    },
+    "sidtd_srb_passport_00": {
+      "bank": "train_half0",
+      "design_id": "sidtd/srb_passport",
+      "fold": 0,
+      "image_id": "sidtd_srb_passport_00",
+      "inliers": 760,
+      "key": "e4ea33baa82ecf79a5cc654d964082c54cc8c687a5829f1008c8cb03a77d97b1",
+      "path": "sidtd/templates/Images/reals/srb_passport_00.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/srb_passport/train_half0/coverage.png",
+          "sha256": "b88ee744c323fca3407375dcfe11cafbf46e289d3404e985028e75bfb4a1128b"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/srb_passport/train_half0/geometry.json",
+          "sha256": "a2ad540a0ad32962ecf4ea923ccf46c44d54f8181844d270ded438cabb4c2663"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/srb_passport/train_half0/manifest.json",
+          "sha256": "8a98aa577f2e42324f9581b1ba5df24b02e259e64edcc974e9d60e2ace5c7222"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/srb_passport/train_half0/median.png",
+          "sha256": "630cfbbbd3feb8ea4e02106d1ba5494e566e6af07d374c33da18987315bd2e47"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/srb_passport/train_half0/target.png",
+          "sha256": "5847ec8d872675d14bccd52f46be32144784c8c23904eaa5a04537a6d6ed2473"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/srb_passport/train_half0/target_coverage.png",
+          "sha256": "8a3d0e776710c427de5da924e8029e9cc90317413968329bd0c7b7361059b18e"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/srb_passport/train_half0/target_valid.png",
+          "sha256": "139c015984fe9ed30bf9f75e9881aba2220af3f9889c4cd33d2f150628499e31"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/srb_passport/train_half0/valid.png",
+          "sha256": "139c015984fe9ed30bf9f75e9881aba2220af3f9889c4cd33d2f150628499e31"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/srb_passport/train_half0/zone.png",
+          "sha256": "2bef7023dffc82ba2ca9297590084cb161119abf33a0d34a7f626109081cc796"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          1.0002475364242536,
+          0.00014341178183138644,
+          -0.1088607845981292
+        ],
+        [
+          -0.00014341178183138644,
+          1.0002475364242536,
+          0.03973722622030972
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "41eab1398a61689009eb3d7be00a8a2b5d5d44591111bfaef5a7f2872be790ae",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/srb_passport_00"
+    },
+    "sidtd_svk_id_01": {
+      "bank": "train_half0",
+      "design_id": "sidtd/svk_id",
+      "fold": 0,
+      "image_id": "sidtd_svk_id_01",
+      "inliers": 1087,
+      "key": "65957c0d24dc1847381291596f9b0133af45986e75f8bf8a536a28c15a62bcff",
+      "path": "sidtd/templates/Images/reals/svk_id_01.jpg",
+      "policy": {
+        "canvas_hw": [
+          512,
+          800
+        ],
+        "geometry": "bank_similarity_v1",
+        "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+        "min_inliers": 40,
+        "n_features": 3000,
+        "opencv_version": "4.11.0",
+        "ransac_px": 3.0,
+        "ratio": 0.75,
+        "version": "direct_reference_query_canvas_v1"
+      },
+      "preprocess_sha256": "99e2a95d7b73f22e00e0d4ccf1aff787bf92dccc0b570069e88ce0714e5e5876",
+      "products": {
+        "coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/svk_id/train_half0/coverage.png",
+          "sha256": "91a257ba7daab8b45af4a82fb1662bf50fdcc6f98cf35f8f7950742a7758d838"
+        },
+        "geometry": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/svk_id/train_half0/geometry.json",
+          "sha256": "04a3a839aacbfca3c91a0ec2e00e2d2394a329f930f435afb06ff8f90a744358"
+        },
+        "manifest": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/svk_id/train_half0/manifest.json",
+          "sha256": "f46df780c324e30005f517fb66c33cc84d5168b3a6f57dc9b219852fb0e83da1"
+        },
+        "median": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/svk_id/train_half0/median.png",
+          "sha256": "20029d34955d4056615aa443145c5d8bb62958b536c71fdacf091b84f2b7760a"
+        },
+        "target": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/svk_id/train_half0/target.png",
+          "sha256": "9452241d7bacef230ff2364f2b87a67c9e351730039c1b9157f8216f8351ccb9"
+        },
+        "target_coverage": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/svk_id/train_half0/target_coverage.png",
+          "sha256": "91a257ba7daab8b45af4a82fb1662bf50fdcc6f98cf35f8f7950742a7758d838"
+        },
+        "target_valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/svk_id/train_half0/target_valid.png",
+          "sha256": "5e9760f623224a5e47add30641332bce620c486648644e15ee4d5e0008d63f88"
+        },
+        "valid": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/svk_id/train_half0/valid.png",
+          "sha256": "5e9760f623224a5e47add30641332bce620c486648644e15ee4d5e0008d63f88"
+        },
+        "zone": {
+          "path": "/scratch/b00090279/direct-reference-diagnostic-38031/enrollment/fold0/sidtd/svk_id/train_half0/zone.png",
+          "sha256": "06a71d28071674b8b38a58784254c1c27488086a403d660503d863444c2e3ff7"
+        }
+      },
+      "query_canvas_to_bank": [
+        [
+          0.9999947184225423,
+          3.592365962012339e-05,
+          -0.0038746040388425527
+        ],
+        [
+          -3.592365962012339e-05,
+          0.9999947184225423,
+          0.009855786344492004
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "query_sha256": "84055117d72a615cd286741437871eb87abe46442c3535c77d86d82a21348547",
+      "reason": "fit",
+      "role": "train",
+      "status": "fit",
+      "training_component": "sidtd/svk_id_01"
+    }
+  },
+  "policy": {
+    "canvas_hw": [
+      512,
+      800
+    ],
+    "geometry": "bank_similarity_v1",
+    "implementation_sha256": "ae7bcd8e983dd013a928e65029fa23ec956a67fd5e73cd7f99a4fe557ab99ae2",
+    "min_inliers": 40,
+    "n_features": 3000,
+    "opencv_version": "4.11.0",
+    "ransac_px": 3.0,
+    "ratio": 0.75,
+    "version": "direct_reference_query_canvas_v1"
+  },
+  "preprocess": {
+    "enrollment_authority": {
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/inputs/enrollment.json",
+      "sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8"
+    },
+    "phase_authority": {
+      "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-diagnostic-38031/diagnostic/coordinate/phase-authority.json",
+      "sha256": "1b92c301e7748d6eb748951be127439f8b40ae3576b1e5c4256d5fee7e0a5058"
+    },
+    "product_root_authority": {
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/inputs/product-root.json",
+      "sha256": "ad56e9a9aeedb0c41f40dbe9a376927a512ebb1c0c4eec776046d5940575b5d8"
+    },
+    "raw_root": "/scratch/b00090279/direct-reference-diagnostic-38031/raw",
+    "recipe_sha256": "7a87ddefc956dd6026e2d29c8459d9bcb8251cbc9105218926b6d67e5abaa1a5",
+    "records_authority": {
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/inputs/records.csv",
+      "sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276"
+    },
+    "source_sha256": "89f6c70266d1f9dce8d1e433dbb091ca310f79ef5a0b02eeecba8038ef8ff9e0",
+    "split_authority": {
+      "path": "/scratch/b00090279/direct-reference-diagnostic-38031/inputs/split.csv",
+      "sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9"
+    },
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "schema_version": "direct_reference_registration_v1"
+}
