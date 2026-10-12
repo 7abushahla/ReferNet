@@ -4,6 +4,9 @@ Consume a context authenticated by the diagnostic staging loader and an
 externally hashed successful same-source both-arm diagnostic receipt. Adding
 this source requires new diagnostics. Existing receipts never waive source
 identity. No diagnostic checkpoint, resume path or epoch override is accepted.
+Training receipts must include full provenance bound by their original full
+initialization hash. Only base.checkpoint_path is excluded from cross-allocation
+comparison; the current path still must match its authenticated weights authority.
 
 prepare_training builds an independent 1778-train/222-val registration table,
 with training entries first. Pass its returned prepared value to both calls of
@@ -61,6 +64,7 @@ def _inputs(context, gate_binding):
         require(isinstance(gates,dict) and set(gates) == {"off","on"}, f"both-mode {name} required")
         for arm, enabled in (("off",False),("on",True)):
             bridge._gate(gates[arm],authenticated["identities"],authenticated["weights_sha256"],enabled,smoke)
+            if not smoke: _receipt_initialization(gates[arm])
     authorities = authenticated["manifest"]["authorities"]
     records, split = bridge._bytes(authorities["records"]), bridge._bytes(authorities["split"])
     rows = {role: load_role_rows(BytesIO(records),BytesIO(split),role) for role in ("train","val")}
@@ -112,11 +116,30 @@ def prepare_training(context, gate_binding):
     return _load_prepared(context,receipt,rows,gate_binding,dict(preprocess=preprocess,table_binding=table_binding))
 
 
+def _receipt_initialization(binding):
+    initialization = bridge._json(binding).get("initialization")
+    require(isinstance(initialization,dict), "full initialization receipt required")
+    provenance = initialization.get("provenance")
+    require(isinstance(provenance,dict) and json_sha256(provenance) == initialization.get("initialization_sha256"),
+            "initialization provenance payload/hash mismatch")
+    base = provenance.get("base")
+    require(isinstance(base,dict) and isinstance(base.get("checkpoint_path"),str)
+            and Path(base["checkpoint_path"]).is_absolute(), "initialization checkpoint location required")
+    return initialization
+
+
 def _fresh_model(context, enabled, receipt):
+    initialization = _receipt_initialization(receipt["training_gates"]["on" if enabled else "off"])
     model = _model(context,enabled)
-    initialization = bridge._json(receipt["training_gates"]["on" if enabled else "off"])["initialization"]
     require(tensor_sha256(model.state_dict()) == initialization["state_sha256"], "training must reset original model tensors")
-    require(json_sha256(model.initialization_provenance) == initialization["initialization_sha256"], "fresh initialization provenance mismatch")
+    current = copy.deepcopy(model.initialization_provenance)
+    prior = copy.deepcopy(initialization["provenance"])
+    weights = context["manifest"]["authorities"]["weights"]
+    require(current["base"].get("checkpoint_path") == str(bridge._path(weights["path"])), "current initialization weights path mismatch")
+    require(current["base"].get("checkpoint_sha256") == weights["sha256"] == context["weights_sha256"], "current initialization weights hash mismatch")
+    current["base"].pop("checkpoint_path")
+    prior["base"].pop("checkpoint_path")
+    require(current == prior, "fresh initialization scientific provenance mismatch")
     return model
 
 

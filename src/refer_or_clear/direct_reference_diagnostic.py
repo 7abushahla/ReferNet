@@ -133,6 +133,12 @@ def _model(context, enabled):
     return model.to(context["device"])
 
 
+def _initialization_receipt(model):
+    provenance = copy.deepcopy(model.initialization_provenance)
+    return {"state_sha256": tensor_sha256(model.state_dict()),
+            "initialization_sha256": json_sha256(provenance), "provenance": provenance}
+
+
 @contextmanager
 def pixel_audit(context, allowed):
     original = bridge._image
@@ -275,8 +281,7 @@ class Diagnostic:
                 coordinate_details.append({"image_id": item["meta"]["image_id"], "bank": item["meta"]["bank"],
                                            "available": True, "query_pixels_unchanged": True})
             model = _model(context, enabled)
-            initial = {"state_sha256": tensor_sha256(model.state_dict()),
-                       "initialization_sha256": json_sha256(model.initialization_provenance)}
+            initial = _initialization_receipt(model)
             train_dataset = _dataset(context, prepared, probes, enabled)
             eval_dataset = _dataset(context, prepared, probes, enabled)
             optimizer = make_pilot_optimizer(model, {"track": "D_running_pilot"}, "overfit")

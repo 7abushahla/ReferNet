@@ -642,3 +642,17 @@ def test_engine_passes_native_role_boolean_to_authenticated_dataset(diagnostic, 
     prepared = {"preprocess": {"raw_root": "/synthetic/raw"}, "enrollment": {}, "table": {}}
     rows = pd.DataFrame({"role": [role]})
     assert module._dataset(context, prepared, rows, False) == "validated"
+
+
+@pytest.mark.parametrize("enabled", [False,True])
+def test_initialization_receipt_emits_full_hash_bound_detached_provenance(diagnostic, enabled):
+    model = CoreClassifier(enabled)
+    model.initialization_provenance["base"]["checkpoint_path"] = "/synthetic/diagnostic-11/inputs/weights.pth"
+    expected = copy.deepcopy(model.initialization_provenance)
+    receipt = diagnostic._initialization_receipt(model)
+    assert receipt["provenance"] == expected
+    assert receipt["initialization_sha256"] == json_sha256(expected)
+    assert receipt["state_sha256"] == tensor_sha256(model.state_dict())
+    model.initialization_provenance["base"]["checkpoint_path"] = "/synthetic/control-22/inputs/weights.pth"
+    assert receipt["provenance"] == expected
+    assert receipt["initialization_sha256"] == json_sha256(receipt["provenance"])

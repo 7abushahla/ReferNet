@@ -36,6 +36,7 @@ def setup(service, tmp_path, monkeypatch):
                    manifest=dict(authorities={}, paths=dict(raw_root=str(tmp_path / "raw"))))
     context["manifest"]["authorities"] = {name: write_receipt(tmp_path / f"{name}.json", {})
                                             for name in ("records", "split", "enrollment", "weights")}
+    context["manifest"]["authorities"]["weights"]["sha256"] = bridge.WEIGHTS_SHA256
     context["manifest"]["product_root_authority"] = write_receipt(tmp_path / "root.json", {})
     rows = {role: pd.DataFrame([dict(image_id=f"{role}{index:04d}", role=role, path=f"{role}{index:04d}.png",
             design_id=f"design{index % 10}", label=index % 2, attack_family="text_copy" if index % 2 else "",
@@ -47,8 +48,10 @@ def setup(service, tmp_path, monkeypatch):
     for arm, enabled in (("off",False),("on",True)):
         receipt = payload(context, enabled)
         model = SyntheticClassifier(enabled)
+        model.initialization_provenance["base"]["checkpoint_path"] = context["manifest"]["authorities"]["weights"]["path"]
         receipt["initialization"] = dict(state_sha256=tensor_sha256(model.state_dict()),
-                                          initialization_sha256=json_sha256(model.initialization_provenance))
+                                          initialization_sha256=json_sha256(model.initialization_provenance),
+                                          provenance=copy.deepcopy(model.initialization_provenance))
         training[arm] = write_receipt(tmp_path / f"training-{arm}.json", receipt)
         smoke[arm] = write_receipt(tmp_path / f"smoke-{arm}.json", payload(context, enabled, True))
     gate = dict(schema_version="direct_reference_diagnostic_v1", diagnostic_only=True, passed=True,
@@ -82,6 +85,7 @@ def setup(service, tmp_path, monkeypatch):
     def model(context, enabled):
         events.append(("fresh-model",enabled))
         value = SyntheticClassifier(enabled)
+        value.initialization_provenance["base"]["checkpoint_path"] = context["manifest"]["authorities"]["weights"]["path"]
         models.append(value)
         return value
     monkeypatch.setattr(service, "_model", model)
@@ -261,3 +265,59 @@ def test_selected_replay_rejects_smoke_phase_before_loading_model_state(service,
     with pytest.raises(ValueError,match="selected training checkpoint"):
         service.run_training(setup["context"],False,setup["gate_binding"])
     assert len(setup["models"]) == 1
+
+
+@pytest.mark.parametrize("enabled", [False,True])
+def test_fresh_model_allows_only_authenticated_allocation_location_change(service, setup, enabled):
+    arm = "on" if enabled else "off"
+    binding = setup["gate"]["training_gates"][arm]
+    receipt = json.loads(Path(binding["path"]).read_text())
+    initial = receipt["initialization"]
+    initial["provenance"]["base"]["checkpoint_path"] = str(setup["tmp"] / "diagnostic-11/inputs/weights.pth")
+    initial["initialization_sha256"] = json_sha256(initial["provenance"])
+    setup["gate"]["training_gates"][arm] = write_receipt(Path(binding["path"]),receipt)
+    before = copy.deepcopy(receipt)
+    model = service._fresh_model(setup["context"],enabled,setup["gate"])
+    assert model.initialization_provenance["base"]["checkpoint_path"] == setup["context"]["manifest"]["authorities"]["weights"]["path"]
+    assert bridge._json(setup["gate"]["training_gates"][arm]) == before
+
+
+@pytest.mark.parametrize("mutation", ["legacy","payload-hash","state","weight","head-seed","adapter-seed","bn-policy","arm","current-path"])
+def test_location_normalization_preserves_all_other_guards(service, setup, monkeypatch, mutation):
+    binding = setup["gate"]["training_gates"]["off"]
+    receipt = json.loads(Path(binding["path"]).read_text())
+    initial = receipt["initialization"]
+    if mutation == "legacy": del initial["provenance"]
+    elif mutation == "payload-hash": initial["provenance"]["base"]["checkpoint_path"] = "/different/weights.pth"
+    elif mutation == "state": initial["state_sha256"] = "0"*64
+    elif mutation != "current-path":
+        prior = initial["provenance"]
+        if mutation == "weight": prior["base"]["checkpoint_sha256"] = "0"*64
+        if mutation == "head-seed": prior["base"]["head_seed"] = 43
+        if mutation == "adapter-seed": prior["adapter_seed"] = 43
+        if mutation == "bn-policy": prior["base"]["bn_policy"] = "different"
+        if mutation == "arm": prior["reference_enabled"] = True
+        initial["initialization_sha256"] = json_sha256(prior)
+    else:
+        original = service._model
+        def wrong_path(context,enabled):
+            model = original(context,enabled)
+            model.initialization_provenance["base"]["checkpoint_path"] = "/unbound/weights.pth"
+            return model
+        monkeypatch.setattr(service,"_model",wrong_path)
+    setup["gate"]["training_gates"]["off"] = write_receipt(Path(binding["path"]),receipt)
+    with pytest.raises(ValueError): service._fresh_model(setup["context"],False,setup["gate"])
+
+
+@pytest.mark.parametrize("mutation", ["legacy","payload-hash"])
+def test_initialization_payload_authenticated_for_both_arms_before_pixels(service, setup, monkeypatch, mutation):
+    gate = copy.deepcopy(setup["gate"])
+    binding = gate["training_gates"]["on"]
+    child = bridge._json(binding)
+    if mutation == "legacy": del child["initialization"]["provenance"]
+    else: child["initialization"]["provenance"]["base"]["checkpoint_path"] = "/altered/weights.pth"
+    gate["training_gates"]["on"] = write_receipt(Path(binding["path"]),child)
+    gate_binding = write_receipt(Path(setup["gate_binding"]["path"]),gate)
+    monkeypatch.setattr(bridge,"build_registration_table",lambda *args,**kwargs: pytest.fail("registration pixels before provenance authentication"))
+    with pytest.raises(ValueError): service.run_training(setup["context"],False,gate_binding)
+    assert not setup["events"]
