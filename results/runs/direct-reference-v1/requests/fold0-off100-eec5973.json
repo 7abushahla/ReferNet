@@ -1,0 +1,14 @@
+{
+  "schema_version": "direct_reference_control_request_v1",
+  "source_sha256": "a5ff28ae2a332b977551241f2d07641d51df78d54a4cc1b58169c7338ce11292",
+  "config_sha256": "a89c6213a1877632510f66f49cf843c7e0c5a9e585b434da08abbecb8abf7b39",
+  "diagnostic_request_sha256": "2f6d479835003242790f6d10f44249d73aa9a43f6a465132e618bc99c24c87b9",
+  "arm": "off",
+  "epochs": 100,
+  "fold": 0,
+  "seed": 42,
+  "diagnostic_gate": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-diagnostic-38040/diagnostic-gate.json",
+    "sha256": "66ea5c3bc31831a64cdcb4dd2de474cf33d5a06d558084b4669204b32e0227e0"
+  }
+}

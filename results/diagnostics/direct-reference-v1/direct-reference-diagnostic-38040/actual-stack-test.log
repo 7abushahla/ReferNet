@@ -1,0 +1,28 @@
+.
+=============================== warnings summary ===============================
+../../../../shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmdet/models/backbones/trident_resnet.py:236
+  /shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmdet/models/backbones/trident_resnet.py:236: DeprecationWarning: invalid escape sequence '\ '
+    """The stem layer, stage 1 and stage 2 in Trident ResNet are identical to
+
+../../../../shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmpretrain/evaluation/metrics/vqa.py:20
+  /shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmpretrain/evaluation/metrics/vqa.py:20: DeprecationWarning: invalid escape sequence '\d'
+    commaStrip = re.compile('(\d)(,)(\d)')  # noqa: W605
+
+../../../../shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmpretrain/evaluation/metrics/vqa.py:21
+  /shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmpretrain/evaluation/metrics/vqa.py:21: DeprecationWarning: invalid escape sequence '\d'
+    periodStrip = re.compile('(?!<=\d)(\.)(?!\d)')  # noqa: W605
+
+../../../../shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmdet/models/dense_heads/free_anchor_retina_head.py:288
+  /shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmdet/models/dense_heads/free_anchor_retina_head.py:288: DeprecationWarning: invalid escape sequence '\i'
+    """Compute negative bag loss.
+
+tests/test_direct_reference_model.py::test_actual_direct_reference_gpu_integration
+  /shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+    return self.fget.__get__(instance, owner)()
+
+../../../../shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/_pytest/cacheprovider.py:469
+  /shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/_pytest/cacheprovider.py:469: PytestCacheWarning: could not create cache path /scratch/b00090279/direct-reference-diagnostic-38040/code/.pytest_cache/v/cache/nodeids: [Errno 13] Permission denied: '/scratch/b00090279/direct-reference-diagnostic-38040/code/pytest-cache-files-d1nhala4'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1 passed, 6 warnings in 48.58s

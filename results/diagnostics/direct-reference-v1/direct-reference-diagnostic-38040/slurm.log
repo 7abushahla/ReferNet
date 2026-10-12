@@ -1,0 +1,59 @@
+NVIDIA A10G
+pytest 9.1.1
+.
+=============================== warnings summary ===============================
+../../../../shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmdet/models/backbones/trident_resnet.py:236
+  /shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmdet/models/backbones/trident_resnet.py:236: DeprecationWarning: invalid escape sequence '\ '
+    """The stem layer, stage 1 and stage 2 in Trident ResNet are identical to
+
+../../../../shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmpretrain/evaluation/metrics/vqa.py:20
+  /shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmpretrain/evaluation/metrics/vqa.py:20: DeprecationWarning: invalid escape sequence '\d'
+    commaStrip = re.compile('(\d)(,)(\d)')  # noqa: W605
+
+../../../../shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmpretrain/evaluation/metrics/vqa.py:21
+  /shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmpretrain/evaluation/metrics/vqa.py:21: DeprecationWarning: invalid escape sequence '\d'
+    periodStrip = re.compile('(?!<=\d)(\.)(?!\d)')  # noqa: W605
+
+../../../../shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmdet/models/dense_heads/free_anchor_retina_head.py:288
+  /shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/mmdet/models/dense_heads/free_anchor_retina_head.py:288: DeprecationWarning: invalid escape sequence '\i'
+    """Compute negative bag loss.
+
+tests/test_direct_reference_model.py::test_actual_direct_reference_gpu_integration
+  /shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+    return self.fget.__get__(instance, owner)()
+
+../../../../shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/_pytest/cacheprovider.py:469
+  /shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/_pytest/cacheprovider.py:469: PytestCacheWarning: could not create cache path /scratch/b00090279/direct-reference-diagnostic-38040/code/.pytest_cache/v/cache/nodeids: [Errno 13] Permission denied: '/scratch/b00090279/direct-reference-diagnostic-38040/code/pytest-cache-files-d1nhala4'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1 passed, 6 warnings in 48.58s
+{"stage": "overfit", "arm": "off", "updates": 2, "n_correct": 8, "image_loss": 0.6922677010297775}
+{"stage": "overfit", "arm": "off", "updates": 4, "n_correct": 8, "image_loss": 0.6913431696593761}
+{"stage": "overfit", "arm": "off", "updates": 6, "n_correct": 8, "image_loss": 0.6837523244321346}
+{"stage": "overfit", "arm": "off", "updates": 8, "n_correct": 11, "image_loss": 0.662292193621397}
+{"stage": "overfit", "arm": "off", "updates": 10, "n_correct": 11, "image_loss": 0.6466625779867172}
+{"stage": "overfit", "arm": "off", "updates": 12, "n_correct": 10, "image_loss": 0.6227232217788696}
+{"stage": "overfit", "arm": "off", "updates": 14, "n_correct": 9, "image_loss": 0.6208834946155548}
+{"stage": "overfit", "arm": "off", "updates": 16, "n_correct": 9, "image_loss": 0.6023585638031363}
+{"stage": "overfit", "arm": "off", "updates": 18, "n_correct": 11, "image_loss": 0.5481713730841875}
+{"stage": "overfit", "arm": "off", "updates": 20, "n_correct": 9, "image_loss": 0.5383020117878914}
+{"stage": "overfit", "arm": "off", "updates": 22, "n_correct": 9, "image_loss": 0.5155806285329163}
+{"stage": "overfit", "arm": "off", "updates": 24, "n_correct": 8, "image_loss": 0.5903089507482946}
+{"stage": "overfit", "arm": "off", "updates": 26, "n_correct": 9, "image_loss": 0.5508982128812931}
+{"stage": "overfit", "arm": "off", "updates": 28, "n_correct": 9, "image_loss": 0.5389049351797439}
+{"stage": "overfit", "arm": "off", "updates": 30, "n_correct": 12, "image_loss": 0.41971415173611604}
+{"stage": "overfit", "arm": "off", "updates": 32, "n_correct": 9, "image_loss": 0.62167984219559}
+{"stage": "overfit", "arm": "off", "updates": 34, "n_correct": 16, "image_loss": 0.17113000426616054}
+{"stage": "overfit", "arm": "off", "updates": 36, "n_correct": 16, "image_loss": 0.06056979967979714}
+{"stage": "overfit", "arm": "on", "updates": 2, "n_correct": 8, "image_loss": 0.6914536841213703}
+{"stage": "overfit", "arm": "on", "updates": 4, "n_correct": 8, "image_loss": 0.6843905225396156}
+{"stage": "overfit", "arm": "on", "updates": 6, "n_correct": 8, "image_loss": 0.6715425811707973}
+{"stage": "overfit", "arm": "on", "updates": 8, "n_correct": 11, "image_loss": 0.6397530995309353}
+{"stage": "overfit", "arm": "on", "updates": 10, "n_correct": 11, "image_loss": 0.6057453025132418}
+{"stage": "overfit", "arm": "on", "updates": 12, "n_correct": 14, "image_loss": 0.5414349175989628}
+{"stage": "overfit", "arm": "on", "updates": 14, "n_correct": 15, "image_loss": 0.4566397313028574}
+{"stage": "overfit", "arm": "on", "updates": 16, "n_correct": 16, "image_loss": 0.3552658362314105}
+{"stage": "overfit", "arm": "on", "updates": 18, "n_correct": 16, "image_loss": 0.26459542848169804}
+{"stage": "overfit", "arm": "on", "updates": 20, "n_correct": 16, "image_loss": 0.2687164777889848}
+{"stage": "overfit", "arm": "on", "updates": 22, "n_correct": 16, "image_loss": 0.13622225378639996}

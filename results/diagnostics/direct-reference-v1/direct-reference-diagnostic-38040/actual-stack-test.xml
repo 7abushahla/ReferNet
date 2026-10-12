@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="48.577" timestamp="2026-10-12T09:20:36.142394+00:00" hostname="gpu-dy-g5-0-16"><testcase classname="tests.test_direct_reference_model" name="test_actual_direct_reference_gpu_integration" time="9.871" /></testsuite></testsuites>
