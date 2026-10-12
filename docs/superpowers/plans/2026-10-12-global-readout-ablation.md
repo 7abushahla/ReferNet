@@ -12,7 +12,7 @@ The original OFF supervises a global-plus-local sum. This comparison supervises 
 
 ## Implementation and launch order
 
-1. Feynman owns `scripts/train_direct_reference_global.py` and `tests/test_direct_reference_global.py`. Publish a separate external request, checkpoint, and result schema. Reuse the pinned original-source authentication helper. Implement `smoke`, `train`, and fresh-process `replay` phases. Preserve current scientific modules and earlier execution contracts.
+1. The coordinator owns `scripts/train_direct_reference_global.py`; McClintock owns `tests/test_direct_reference_global.py`. This replaces the initial Feynman assignment, which produced no files before reassignment. Publish a separate external request, checkpoint, and result schema. Reuse the pinned original-source authentication helper. Implement `smoke`, `train`, and fresh-process `replay` phases. Preserve current scientific modules and earlier execution contracts.
 2. Turing owns `scripts/cluster/train_direct_reference_global.sh` and `tests/test_direct_reference_global_cluster.py`. Reuse the reviewed original-input archive restoration, environment, allocation, and protected-output checks. Coordinator alone deploys and submits.
 3. Synthetic verification covers exact initial global outputs, absent local execution/gradients, optimizer membership, one backbone traversal and BN updates, evaluation invariance, unchanged original inputs, deterministic sampler/augmentation initialization, partial-batch accounting, selection, and checkpoint replay. Run tests before claiming readiness.
 4. Independently review the new external runner and wrapper. Execute one fresh 32-train/32-validation epoch on an allocated GPU, with gradient/update and companion-invariance checks plus fresh-process selected replay. All smokes start from original initialization. The full training phase must reset model, optimizer, scheduler, and dataset RNGs.
@@ -20,5 +20,15 @@ The original OFF supervises a global-plus-local sum. This comparison supervises 
 6. Record source/helper/launcher/request/data hashes, job IDs, selected validation predictions, query/correction outputs, attack subsets, genuine false positives, and fresh-process replay. Interpretation compares this trained global-only model with the original trained global-plus-local OFF model. It does not make either model a demonstrated final family.
 
 ## Scope of the decision
+
+### Evidence and competing explanations
+
+The completed original control selected epoch 66 with validation accuracy 0.9279279279 and AUC 0.9746721311. Both in-process and fresh-process selected prediction replays passed with zero recorded logit difference. This establishes a reproducible performance gap, not its cause. Historical D differs in input/support geometry, zone provenance, augmentation, and local readout, so that historical comparison is not a single-factor ablation.
+
+The sum of two jointly trained logits does not uniquely determine the competence of either component in isolation. The low saved global-component score is therefore not evidence of a broken global classifier. Deleting the correction at inference is not the proposed experiment.
+
+The primary hypothesis is that joint optimization of the local path contributes to reduced global-only competence under the current inputs. Fresh global-only training tests that path as a whole, including its participation in shared gradients and gradient clipping. It cannot distinguish those mechanisms by itself. If performance recovers, retain the current fold-safe inputs and investigate a reference extension that preserves competent query evidence. If it does not recover, prioritize differences shared by both current runs, including input geometry, zone construction, and augmentation, rather than adding another local-head remedy. Neither branch licenses attribution exclusively to compression or restoration of evaluation-informed support products.
+
+Finite-sample and seed variation remain alternative explanations. The copy subset contains only 16 altered validation images. One seed is a directional development comparison, not a replicated causal conclusion. Existing accuracy-first/AUC-second checkpoint selection and unchanged validation membership govern the comparison; test data and Protocol B outcomes do not select this intervention. No additional architecture or loss change is approved by this hypothesis ledger.
 
 If global-only competence improves substantially, the local training path becomes a supported explanation to investigate and the reference-extension design can be reconsidered around the competent query route. If it remains weak, changes shared by both current models, including input geometry, fold-safe zones, and augmentation, remain candidates. One seed does not establish a universal causal effect. Do not alter thresholds, tune on test data, or weaken support isolation to reproduce the historical score.
