@@ -82,10 +82,13 @@ def test_build_dispatch_is_frozen_metadata_only_staging_and_group_bound(job):
     result = run(job)
     assert result.returncode == 0, result.stderr
     call = json.loads((job["run"] / "preparation/builder_call.json").read_text())
-    assert call["arguments"] == dict(records=str(job["stage"] / "inputs/records.csv"),
-                                    records_sha256=job["arguments"][2], split=str(job["stage"] / "inputs/split.csv"),
+    assert call["arguments"] == dict(records=str(job["run"] / "inputs/records.csv"),
+                                    records_sha256=job["arguments"][2], split=str(job["run"] / "inputs/split.csv"),
                                     raw_root=str(job["raw"]), output_root=str(job["run"] / "preparation"),
                                     group=0, build=True)
+    for name in ("records", "split"):
+        durable = Path(call["arguments"][name])
+        assert durable.is_file() and durable.stat().st_mode & 0o222 == 0
     assert call["script"] == str(job["stage"] / "code/scripts/prepare_protocol_b.py")
     assert call["cwd"] == str(job["stage"] / "code")
     assert call["records"] == job["records"].read_text() and call["split"] == job["split"].read_text()

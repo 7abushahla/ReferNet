@@ -67,5 +67,5 @@ code_root="$scratch/code"
 export PYTHONPATH="$code_root/src"
 cd "$code_root"
 "$python_bin" "$code_root/scripts/prepare_protocol_b.py" \
-    --records "$scratch/inputs/records.csv" --records-sha256 "$3" --split "$scratch/inputs/split.csv" \
+    --records "$run_dir/inputs/records.csv" --records-sha256 "$3" --split "$run_dir/inputs/split.csv" \
     --group "$group" --raw-root "$raw_root" --output-root "$run_dir/preparation" --build
