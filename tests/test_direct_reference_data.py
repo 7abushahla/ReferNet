@@ -462,6 +462,98 @@ def test_dataset_owns_table_before_validation_alias_boundary(api, inputs, monkey
     assert consumer.table.authority_sha256 == content_sha256
 
 
+def test_mask_cache_decodes_once_but_authenticates_every_access(api, inputs, monkeypatch):
+    binding = inputs["manifest"]["banks"]["sidtd/example"]["train_half1"]["products"]["zone"]
+    cache, decodes, authentications = {}, [], []
+    original_decode, original_bytes = cv2.imdecode, api._bytes
+    def decode(*args):
+        decodes.append(True)
+        return original_decode(*args)
+    def authenticated(item):
+        authentications.append(item["path"])
+        return original_bytes(item)
+    monkeypatch.setattr(cv2, "imdecode", decode)
+    monkeypatch.setattr(api, "_bytes", authenticated)
+    planes = [api._plane(binding, _cache=cache) for _ in range(3)]
+    assert len(decodes) == 1
+    assert authentications == [binding["path"]] * 3
+    assert len(cache) == 1
+    assert all(type(value) is bytes for value in cache.values())
+    for plane in planes:
+        with pytest.raises(ValueError): plane.setflags(write=True)
+        with pytest.raises(ValueError): plane[0, 0] = 0
+    planes[0].shape = (800, 512)
+    assert planes[1].shape == (512, 800)
+    assert api._plane(binding, _cache=cache).shape == (512, 800)
+
+
+@pytest.mark.parametrize("mutation", ["corrupt", "symlink"])
+def test_warm_mask_cache_rejects_changed_original(api, inputs, monkeypatch, mutation):
+    binding = inputs["manifest"]["banks"]["sidtd/example"]["train_half1"]["products"]["zone"]
+    cache = {}
+    api._plane(binding, _cache=cache)
+    path = Path(binding["path"])
+    if mutation == "corrupt": path.write_bytes(b"changed")
+    else:
+        replacement = path.with_name("replacement.png")
+        path.rename(replacement)
+        path.symlink_to(replacement)
+    monkeypatch.setattr(cv2, "imdecode", lambda *args: pytest.fail("changed mask decoded"))
+    with pytest.raises(ValueError): api._plane(binding, _cache=cache)
+
+
+@pytest.mark.parametrize("enabled", [False, True])
+def test_cached_masks_match_uncached_tensors_rng_and_query_reads(api, inputs, monkeypatch, enabled):
+    import yaml
+    augment = yaml.safe_load((ROOT / "configs/direct_reference_pilot.yaml").read_text())["augment"]
+    table = build(api, inputs)
+    cached, uncached = [dataset(api, inputs, table, enabled, augment=augment) for _ in range(2)]
+    uncached._mask_planes = None
+    original_image, original_bytes = api._image, api._bytes
+    query_reads, mask_reads = [], []
+    mask_paths = {bank["products"][name]["path"] for bank in inputs["manifest"]["banks"]["sidtd/example"].values()
+                  for name in ("target_valid", "valid", "zone")}
+    def image(binding, flags):
+        if Path(binding["path"]).parent == inputs["raw"]: query_reads.append(binding["path"])
+        return original_image(binding, flags)
+    def authenticated(binding):
+        if binding["path"] in mask_paths: mask_reads.append(binding["path"])
+        return original_bytes(binding)
+    monkeypatch.setattr(api, "_image", image)
+    monkeypatch.setattr(api, "_bytes", authenticated)
+    global_state = random.getstate()
+    for index in (0, 1, 0, 1):
+        query_reads.clear(); mask_reads.clear()
+        first = cached[index]
+        cached_queries, cached_masks = list(query_reads), list(mask_reads)
+        query_reads.clear(); mask_reads.clear()
+        second = uncached[index]
+        assert cached_queries == query_reads == [str(inputs["raw"] / f"query{index}.png")]
+        assert cached_masks == mask_reads and len(mask_reads) == 3
+        assert first["meta"] == second["meta"]
+        for key in ("query", "overlap", "context_available", "label") + (("reference",) if enabled else ()):
+            assert np.array_equal(np.asarray(first[key]), np.asarray(second[key]))
+        assert cached.geometry_rng.getstate() == uncached.geometry_rng.getstate()
+        assert cached.photometry_rng.getstate() == uncached.photometry_rng.getstate()
+        first["query"].zero_(); first["overlap"].zero_()
+        if enabled: first["reference"].zero_()
+    assert random.getstate() == global_state
+    assert len(cached._mask_planes) == 3
+
+
+def test_mask_cache_retained_memory_is_bounded(api, inputs):
+    binding = inputs["manifest"]["banks"]["sidtd/example"]["train_half1"]["products"]["zone"]
+    original = Path(binding["path"]).read_bytes()
+    cache = {}
+    for index in range(91):
+        path = inputs["tmp"] / f"mask-{index}.png"
+        path.write_bytes(original)
+        plane = api._plane(authority(path), _cache=cache)
+        assert plane.shape == (512, 800) and not plane.flags.writeable
+    assert len(cache) == 90
+    assert sum(len(value) for value in cache.values()) == 90 * 512 * 800
+
+
 @pytest.mark.parametrize("mutation", ["query", "product", "table-file", "row"])
 def test_snapshot_preserves_getter_authentication_guards(api, inputs, monkeypatch, mutation):
     table = build(api, inputs)

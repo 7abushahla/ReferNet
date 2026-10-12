@@ -37,6 +37,10 @@ The dataset table is a detached recursively immutable snapshot. Nested mutation
 is rejected immediately, before any getter or pixel read, rather than detected
 by rehashing the entire table per sample. Original content/authority hashes stay
 unchanged. Manifest/preprocess mutation checks and per-file hashes remain active.
+Each dataset caches at most 90 validated static binary mask planes as immutable
+bytes. Cache hits still read and authenticate original files before exposing a
+fresh read-only array view. Query/reference RGB and registration defaults are
+not cached, and augmentation outputs never alias the stored mask bytes.
 """
 from __future__ import annotations
 
@@ -237,20 +241,28 @@ def _image(binding, flags):
     return image
 
 
-def _plane(binding):
+def _plane(binding, *, _cache=None):
+    key = (binding["path"], binding["sha256"])
+    if _cache is not None and key in _cache:
+        _bytes(binding)
+        return np.frombuffer(_cache[key], np.uint8).reshape(512, 800)
     image = _image(binding, cv2.IMREAD_GRAYSCALE)
     _require(image.shape == (512, 800) and np.isin(image, [0, 255]).all(), "context masks must be binary 512x800")
+    if _cache is not None:
+        content = image.tobytes()
+        if len(_cache) < 90: _cache[key] = content
+        return np.frombuffer(content, np.uint8).reshape(512, 800)
     return image
 
 
-def _common(products, registration=True):
+def _common(products, registration=True, *, _plane_cache=None):
     for name in ("geometry", "manifest"):
         _json(products[name])
     target = None
     if registration:
         target = _image(products["target"], cv2.IMREAD_COLOR)
         _require(target.shape == (512, 800, 3), "bank target must be 512x800 BGR")
-    return target, {name: _plane(products[name]) for name in ("target_valid", "valid", "zone")}
+    return target, {name: _plane(products[name], _cache=_plane_cache) for name in ("target_valid", "valid", "zone")}
 
 
 def _policy():
@@ -449,6 +461,7 @@ class DirectReferenceDataset(Dataset):
             self.augment = _augmentation(supplied)
             self.crop, self.affine_px = None, self.augment["affine_px"]
             self.geometry_rng, self.photometry_rng = random.Random(seed), random.Random(seed + 1)
+            self._mask_planes = {}
             self.metadata_sha256 = _digest(dict(manifest=self.manifest, preprocess=self.preprocess))
             self.authority_files = copy.deepcopy(_authority_bindings(preprocess, context["phase"]))
             if registration_table.file_binding: self.authority_files.append(copy.deepcopy(registration_table.file_binding))
@@ -481,7 +494,7 @@ class DirectReferenceDataset(Dataset):
         _rows(pd.DataFrame([row]), context)
         entry = self.table["entries"][row["image_id"]]
         products = _products(_bank(self.manifest, row, context), context)
-        _, masks = _common(products, registration=False)
+        _, masks = _common(products, registration=False, _plane_cache=self._mask_planes)
         raw = _image(dict(path=str(self.raw_root / row["path"]), sha256=entry["query_sha256"]), cv2.IMREAD_COLOR)
         query, query_valid, _ = to_canvas(raw)
         reference = None
