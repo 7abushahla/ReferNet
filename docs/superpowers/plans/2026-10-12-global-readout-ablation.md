@@ -1,5 +1,7 @@
 # Global-readout comparison on the current Protocol A inputs
 
+Execution amendment, 13 October. The user now accepts a measured query-only trade-off and authorizes parallel reference-study execution. The [deadline-bounded parallel plan](2026-10-13-parallel-study-execution.md) supersedes the statistical advancement gate below. The global-only experiment itself remains unchanged; it no longer blocks the formal matched reference run.
+
 The user approved the focused comparison after reviewing the current OFF performance gap. Its purpose is to test whether training the added local query branch contributes to that gap. This is one fold-zero, seed-42 development comparison. It does not test unseen nationalities or authorize a sweep.
 
 ## Fixed comparison

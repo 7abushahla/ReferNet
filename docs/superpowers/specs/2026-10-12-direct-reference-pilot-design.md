@@ -1,5 +1,7 @@
 # Direct Reference Pilot Design Proposal
 
+Execution amendment, 13 October. The user accepts an explicitly reported query-only trade-off. The 0.97 accuracy and 0.99 AUC targets no longer block the matched reference run. All data isolation, initialization, selection, and replay requirements remain. The operative parallel sequence is [the deadline-bounded execution plan](../plans/2026-10-13-parallel-study-execution.md). Historical approval and outcome statements below retain their original scope.
+
 Date 12 October 2026. **Status, reviewed-design amendment and implementation preparation.** User continuation approves the declared design and bounded implementation/test preparation, including the separately assigned pure-library model task. This document does not implement a model or authorize an allocation, a new 100-epoch run, or a sweep. D/N independent outcome reviews have passed. Integrated execution remains separately gated and reviewed.
 
 ## 1. Recommendation and Evidence
