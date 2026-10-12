@@ -1,5 +1,18 @@
 # Compute plan (10 October 2026, deadline 15 October)
 
+> Historical plan. The estimates and Protocol A–D definitions below were superseded. For current execution, use `anchor-pilot-execution-2026-10-11.md` and the 12 October priorities immediately below. Do not submit the historical campaigns or use their runtime estimates.
+
+## Active priorities, 12 October
+
+1. Complete the existing direct-reference OFF pilot, job 38041. It uses the official fold-zero train/validation population, 100 epochs, and the current direct classifier with its local query adapter. At 13:45 UTC, 38 epochs had completed. The approximate remaining time is six hours at the observed cadence, subject to actual progress. Inspect the selected validation checkpoint, both attack subsets, genuine false positives, context availability, and fresh-process replay when complete. The agreed competence criteria remain selected accuracy at least 0.97 and AUC at least 0.99.
+2. Use the waiting interval to reduce repeat input processing for subsequent experiments. The completed 38062 benchmark measured 6.437 end-to-end images/s at batch eight, versus 36.736 images/s for a preloaded batch. Batch 32 improved end-to-end speed by only 9.36 percent. The current loader correction does not justify restarting 38041. The next bounded correction caches validated immutable binary support masks while authenticating their bytes on every access. Preserve the image tensors, augmentation stream, sample order, batch size, and model recipe. Check equivalence and measure any gain before using it for training.
+3. Prepare reference-on execution while the control trains. Reuse the same scientific implementation, original initialization, official membership, support products, and registration as the control. Independently rebuilding a registration table in a new allocation is not automatically a matched comparison because the present registration key includes path-bound preprocessing. Resolve snapshot/restaging and selected-checkpoint replay before launch. Preparation does not waive the agreed completed-control gate or authorize ON100 or a sweep.
+4. Produce a same-day decision from the completed control. If it clears the agreed gate, the next scientific experiment is the matched reference-on pilot. If it does not, use its completed validation evidence to identify the remaining limitation before a sweep. Prepare collection and comparison scripts during training so result interpretation adds minutes rather than another implementation cycle.
+
+The immediate deliverables are a completed control verdict, measured input-pipeline improvements, and a reviewable reference-on launch path. Full Protocol A folds and later protocols depend on that result. Training remains on allocated GPU nodes; CPU-only work uses the CPU partition. Access the cluster through `ssh b00090279@hpc-gpu.aus.edu`.
+
+## Superseded plan retained for history
+
 Cluster: AWS SLURM, account `acc-mialhajri`, partition `gpu`, one A10G (24 GB) per job, 4 CPUs, 8 GB RAM per job. Local GPU for smoke tests: the lab laptop RTX 3080 (16 GB, `aric@192.168.1.202`).
 
 ## Cost of one run (to be measured in the smoke test, placeholders until then)
