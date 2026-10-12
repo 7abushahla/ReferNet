@@ -1,0 +1,4539 @@
+{
+  "arm": "off",
+  "buffers_unchanged": true,
+  "checkpoint": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/direct-reference-control-38041/training/off/best.pt",
+    "sha256": "ca04c8b3f488a69ab62b0a9557a061b0203501a74292da1719ce0b1ceac31a04"
+  },
+  "control_request": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/requests/fold0-off100-eec5973.json",
+    "sha256": "7f92ecf587dc46b13836a5722ca9bb6a6d93fcfce214947023307308cbefc3c3"
+  },
+  "fresh_process": true,
+  "history": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/direct-reference-control-38041/training/off/log.csv",
+    "sha256": "531e4405df4e484dc6bafaa59dc6e626457739ec30ec7dc506d35a47a4ea8ad4"
+  },
+  "identities": {
+    "config_sha256": "7a87ddefc956dd6026e2d29c8459d9bcb8251cbc9105218926b6d67e5abaa1a5",
+    "enrollment_sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8",
+    "initialization_sha256": "93086fd2832d7b83c9387cf99f8ef14d0f97f947fdc6c6beea4b0f1fd4b90a08",
+    "phase_authority_sha256": "b711bcdb259f684f26a30bbad31b59bf5d4f5185f0f03138bd0f8166c1b40cc5",
+    "preprocess_sha256": "4e71b159274fba1d38b65ed5973959028c5f9588df511a451679c24f64d43844",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "registration_sha256": "759ccb75eb621bf1a6395ebfd765f64142d8e005bdfd06ceee4ee30d019ed47a",
+    "source_sha256": "a5ff28ae2a332b977551241f2d07641d51df78d54a4cc1b58169c7338ce11292",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "image_ids": [
+    "sidtd_alb_id_03_fake_6_87",
+    "sidtd_alb_id_13",
+    "sidtd_alb_id_17_fake_6_98",
+    "sidtd_alb_id_19",
+    "sidtd_alb_id_20_fake_6_51",
+    "sidtd_alb_id_24_fake_6_100",
+    "sidtd_alb_id_33_fake_6_10",
+    "sidtd_alb_id_37",
+    "sidtd_alb_id_41",
+    "sidtd_alb_id_42_fake_6_94",
+    "sidtd_alb_id_45_fake_6_62",
+    "sidtd_alb_id_53_fake_6_33",
+    "sidtd_alb_id_54_fake_6_24",
+    "sidtd_alb_id_59_fake_6_7",
+    "sidtd_alb_id_61",
+    "sidtd_alb_id_63",
+    "sidtd_alb_id_66_fake_6_21",
+    "sidtd_alb_id_69_fake_6_3",
+    "sidtd_alb_id_70_fake_6_55",
+    "sidtd_alb_id_75",
+    "sidtd_alb_id_80_fake_6_57",
+    "sidtd_alb_id_81_fake_6_63",
+    "sidtd_alb_id_81_fake_6_91",
+    "sidtd_alb_id_83",
+    "sidtd_alb_id_83_fake_6_35",
+    "sidtd_alb_id_89",
+    "sidtd_alb_id_90",
+    "sidtd_aze_passport_00_fake_3_105",
+    "sidtd_aze_passport_10",
+    "sidtd_aze_passport_17",
+    "sidtd_aze_passport_27",
+    "sidtd_aze_passport_33",
+    "sidtd_aze_passport_34",
+    "sidtd_aze_passport_35_fake_3_85",
+    "sidtd_aze_passport_38_fake_3_43",
+    "sidtd_aze_passport_39_fake_3_23",
+    "sidtd_aze_passport_40_fake_3_100",
+    "sidtd_aze_passport_43",
+    "sidtd_aze_passport_54_fake_3_42",
+    "sidtd_aze_passport_63_fake_3_15",
+    "sidtd_aze_passport_65_fake_3_87",
+    "sidtd_aze_passport_71_fake_3_94",
+    "sidtd_aze_passport_75",
+    "sidtd_aze_passport_75_fake_3_107",
+    "sidtd_aze_passport_77",
+    "sidtd_aze_passport_82",
+    "sidtd_aze_passport_96",
+    "sidtd_aze_passport_96_fake_3_33",
+    "sidtd_aze_passport_97_fake_3_115",
+    "sidtd_esp_id_08",
+    "sidtd_esp_id_09_fake_2_63",
+    "sidtd_esp_id_16_fake_2_72",
+    "sidtd_esp_id_17_fake_2_51",
+    "sidtd_esp_id_23_fake_2_78",
+    "sidtd_esp_id_35_fake_2_71",
+    "sidtd_esp_id_37",
+    "sidtd_esp_id_39_fake_2_42",
+    "sidtd_esp_id_40_fake_2_22",
+    "sidtd_esp_id_41",
+    "sidtd_esp_id_44",
+    "sidtd_esp_id_48_fake_2_21",
+    "sidtd_esp_id_56_fake_2_107",
+    "sidtd_esp_id_58",
+    "sidtd_esp_id_61_fake_2_27",
+    "sidtd_esp_id_63_fake_2_112",
+    "sidtd_esp_id_69",
+    "sidtd_esp_id_74_fake_2_99",
+    "sidtd_esp_id_77_fake_2_103",
+    "sidtd_esp_id_80",
+    "sidtd_esp_id_84",
+    "sidtd_esp_id_96",
+    "sidtd_esp_id_96_fake_2_24",
+    "sidtd_est_id_06",
+    "sidtd_est_id_07",
+    "sidtd_est_id_10_fake_9_63",
+    "sidtd_est_id_36",
+    "sidtd_est_id_37",
+    "sidtd_est_id_38_fake_9_35",
+    "sidtd_est_id_40",
+    "sidtd_est_id_42",
+    "sidtd_est_id_44",
+    "sidtd_est_id_44_fake_9_2",
+    "sidtd_est_id_51",
+    "sidtd_est_id_53_fake_9_68",
+    "sidtd_est_id_55",
+    "sidtd_est_id_55_fake_9_90",
+    "sidtd_est_id_57_fake_9_72",
+    "sidtd_est_id_60_fake_9_32",
+    "sidtd_est_id_61",
+    "sidtd_est_id_62_fake_9_113",
+    "sidtd_est_id_67",
+    "sidtd_est_id_69_fake_9_96",
+    "sidtd_est_id_70",
+    "sidtd_est_id_74_fake_9_115",
+    "sidtd_est_id_75",
+    "sidtd_est_id_76",
+    "sidtd_est_id_88",
+    "sidtd_fin_id_00_fake_7_72",
+    "sidtd_fin_id_03_fake_7_31",
+    "sidtd_fin_id_09",
+    "sidtd_fin_id_11",
+    "sidtd_fin_id_11_fake_7_101",
+    "sidtd_fin_id_11_fake_7_69",
+    "sidtd_fin_id_18_fake_7_110",
+    "sidtd_fin_id_18_fake_7_79",
+    "sidtd_fin_id_19_fake_7_60",
+    "sidtd_fin_id_21_fake_7_91",
+    "sidtd_fin_id_30_fake_7_15",
+    "sidtd_fin_id_36_fake_7_61",
+    "sidtd_fin_id_37",
+    "sidtd_fin_id_49",
+    "sidtd_fin_id_53",
+    "sidtd_fin_id_58",
+    "sidtd_fin_id_59",
+    "sidtd_fin_id_63",
+    "sidtd_fin_id_74_fake_7_113",
+    "sidtd_fin_id_74_fake_7_114",
+    "sidtd_fin_id_74_fake_7_40",
+    "sidtd_fin_id_76_fake_7_11",
+    "sidtd_fin_id_78_fake_7_53",
+    "sidtd_fin_id_84_fake_7_104",
+    "sidtd_fin_id_85_fake_7_51",
+    "sidtd_fin_id_86_fake_7_47",
+    "sidtd_fin_id_88",
+    "sidtd_fin_id_92",
+    "sidtd_fin_id_96",
+    "sidtd_fin_id_97",
+    "sidtd_grc_passport_07_fake_4_101",
+    "sidtd_grc_passport_08_fake_4_85",
+    "sidtd_grc_passport_12_fake_4_53",
+    "sidtd_grc_passport_22_fake_4_4",
+    "sidtd_grc_passport_26",
+    "sidtd_grc_passport_30_fake_4_108",
+    "sidtd_grc_passport_42",
+    "sidtd_grc_passport_43_fake_4_65",
+    "sidtd_grc_passport_44_fake_4_24",
+    "sidtd_grc_passport_48",
+    "sidtd_grc_passport_52_fake_4_84",
+    "sidtd_grc_passport_54",
+    "sidtd_grc_passport_55",
+    "sidtd_grc_passport_58",
+    "sidtd_grc_passport_58_fake_4_10",
+    "sidtd_grc_passport_60",
+    "sidtd_grc_passport_72",
+    "sidtd_grc_passport_77_fake_4_83",
+    "sidtd_grc_passport_79",
+    "sidtd_grc_passport_83_fake_4_49",
+    "sidtd_grc_passport_86_fake_4_7",
+    "sidtd_grc_passport_90_fake_4_77",
+    "sidtd_grc_passport_94_fake_4_106",
+    "sidtd_grc_passport_94_fake_4_88",
+    "sidtd_grc_passport_95",
+    "sidtd_grc_passport_96",
+    "sidtd_grc_passport_97",
+    "sidtd_lva_passport_07",
+    "sidtd_lva_passport_07_fake_0_16",
+    "sidtd_lva_passport_14_fake_0_45",
+    "sidtd_lva_passport_22",
+    "sidtd_lva_passport_28_fake_0_44",
+    "sidtd_lva_passport_30",
+    "sidtd_lva_passport_39_fake_0_50",
+    "sidtd_lva_passport_41",
+    "sidtd_lva_passport_51_fake_0_114",
+    "sidtd_lva_passport_66_fake_0_36",
+    "sidtd_lva_passport_71_fake_0_114",
+    "sidtd_lva_passport_82_fake_0_72",
+    "sidtd_lva_passport_83",
+    "sidtd_lva_passport_85_fake_0_13",
+    "sidtd_lva_passport_92",
+    "sidtd_lva_passport_93_fake_0_26",
+    "sidtd_rus_internalpassport_00_fake_1_67",
+    "sidtd_rus_internalpassport_12",
+    "sidtd_rus_internalpassport_21_fake_1_31",
+    "sidtd_rus_internalpassport_31",
+    "sidtd_rus_internalpassport_43",
+    "sidtd_rus_internalpassport_49_fake_1_83",
+    "sidtd_rus_internalpassport_50",
+    "sidtd_rus_internalpassport_54",
+    "sidtd_rus_internalpassport_65_fake_1_17",
+    "sidtd_rus_internalpassport_67",
+    "sidtd_rus_internalpassport_68_fake_1_55",
+    "sidtd_rus_internalpassport_74_fake_1_9",
+    "sidtd_rus_internalpassport_75",
+    "sidtd_rus_internalpassport_77",
+    "sidtd_rus_internalpassport_82",
+    "sidtd_rus_internalpassport_83",
+    "sidtd_rus_internalpassport_85_fake_1_5",
+    "sidtd_rus_internalpassport_93",
+    "sidtd_rus_internalpassport_96",
+    "sidtd_rus_internalpassport_98_fake_1_74",
+    "sidtd_srb_passport_02_fake_5_63",
+    "sidtd_srb_passport_23",
+    "sidtd_srb_passport_26_fake_5_18",
+    "sidtd_srb_passport_29",
+    "sidtd_srb_passport_35_fake_5_39",
+    "sidtd_srb_passport_36",
+    "sidtd_srb_passport_39_fake_5_96",
+    "sidtd_srb_passport_41_fake_5_21",
+    "sidtd_srb_passport_47",
+    "sidtd_srb_passport_59",
+    "sidtd_srb_passport_66",
+    "sidtd_srb_passport_68_fake_5_23",
+    "sidtd_srb_passport_79_fake_5_71",
+    "sidtd_srb_passport_84_fake_5_98",
+    "sidtd_srb_passport_87_fake_5_100",
+    "sidtd_svk_id_00",
+    "sidtd_svk_id_03_fake_8_69",
+    "sidtd_svk_id_09_fake_8_97",
+    "sidtd_svk_id_23",
+    "sidtd_svk_id_34_fake_8_103",
+    "sidtd_svk_id_35",
+    "sidtd_svk_id_39",
+    "sidtd_svk_id_48",
+    "sidtd_svk_id_55",
+    "sidtd_svk_id_66_fake_8_25",
+    "sidtd_svk_id_69_fake_8_49",
+    "sidtd_svk_id_75",
+    "sidtd_svk_id_85_fake_8_71",
+    "sidtd_svk_id_86",
+    "sidtd_svk_id_88_fake_8_62",
+    "sidtd_svk_id_93_fake_8_63",
+    "sidtd_svk_id_95_fake_8_80"
+  ],
+  "max_abs_difference": 0.0,
+  "n_images": 222,
+  "passed": true,
+  "phase": "train",
+  "pid": 41472,
+  "predictions": [
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 21.84343147277832,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 28.136789321899414,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_03_fake_6_87",
+      "label": 1,
+      "query_logit": -6.293357849121094,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -7.337071418762207,
+      "attack_probability": 0.000650530681014061,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9993494693189859,
+      "context_available": true,
+      "correction_logit": -2.529611349105835,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_13",
+      "label": 0,
+      "query_logit": -4.807459831237793,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 15.764505386352539,
+      "attack_probability": 0.9999998807907104,
+      "availability_reason": "fit",
+      "bonafide_score": 1.1920928955078125e-07,
+      "context_available": true,
+      "correction_logit": 21.950946807861328,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_17_fake_6_98",
+      "label": 1,
+      "query_logit": -6.186441421508789,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -5.683905601501465,
+      "attack_probability": 0.0033887296449393034,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9966112703550607,
+      "context_available": true,
+      "correction_logit": -1.7652642726898193,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_19",
+      "label": 0,
+      "query_logit": -3.9186410903930664,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 24.16792106628418,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 29.00351333618164,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_20_fake_6_51",
+      "label": 1,
+      "query_logit": -4.835592269897461,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 13.825464248657227,
+      "attack_probability": 0.9999990463256836,
+      "availability_reason": "fit",
+      "bonafide_score": 9.5367431640625e-07,
+      "context_available": true,
+      "correction_logit": 17.948543548583984,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_24_fake_6_100",
+      "label": 1,
+      "query_logit": -4.123079299926758,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 11.848615646362305,
+      "attack_probability": 0.999992847442627,
+      "availability_reason": "fit",
+      "bonafide_score": 7.152557373046875e-06,
+      "context_available": true,
+      "correction_logit": 17.541257858276367,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_33_fake_6_10",
+      "label": 1,
+      "query_logit": -5.692641735076904,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -9.022223472595215,
+      "attack_probability": 0.00012068288924638182,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998793171107536,
+      "context_available": true,
+      "correction_logit": -3.3026230335235596,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_37",
+      "label": 0,
+      "query_logit": -5.719600677490234,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.927878379821777,
+      "attack_probability": 0.0001326215424342081,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998673784575658,
+      "context_available": true,
+      "correction_logit": -2.422804832458496,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_41",
+      "label": 0,
+      "query_logit": -6.505073547363281,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 16.28331756591797,
+      "attack_probability": 0.9999998807907104,
+      "availability_reason": "fit",
+      "bonafide_score": 1.1920928955078125e-07,
+      "context_available": true,
+      "correction_logit": 20.13502311706543,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_42_fake_6_94",
+      "label": 1,
+      "query_logit": -3.8517045974731445,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 11.98404312133789,
+      "attack_probability": 0.9999938011169434,
+      "availability_reason": "fit",
+      "bonafide_score": 6.198883056640625e-06,
+      "context_available": true,
+      "correction_logit": 16.106128692626953,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_45_fake_6_62",
+      "label": 1,
+      "query_logit": -4.122086048126221,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 17.431119918823242,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 21.83836555480957,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_53_fake_6_33",
+      "label": 1,
+      "query_logit": -4.407246112823486,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 12.995036125183105,
+      "attack_probability": 0.9999977350234985,
+      "availability_reason": "fit",
+      "bonafide_score": 2.2649765014648438e-06,
+      "context_available": true,
+      "correction_logit": 18.09429168701172,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_54_fake_6_24",
+      "label": 1,
+      "query_logit": -5.099255561828613,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 14.111909866333008,
+      "attack_probability": 0.9999992847442627,
+      "availability_reason": "fit",
+      "bonafide_score": 7.152557373046875e-07,
+      "context_available": true,
+      "correction_logit": 18.751962661743164,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_59_fake_6_7",
+      "label": 1,
+      "query_logit": -4.640052795410156,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -7.553308010101318,
+      "attack_probability": 0.0005240977625362575,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9994759022374637,
+      "context_available": true,
+      "correction_logit": -2.506193161010742,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_61",
+      "label": 0,
+      "query_logit": -5.047114849090576,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": 2.3291056156158447,
+      "attack_probability": 0.9112590551376343,
+      "availability_reason": "fit",
+      "bonafide_score": 0.08874094486236572,
+      "context_available": true,
+      "correction_logit": 6.107161521911621,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_63",
+      "label": 0,
+      "query_logit": -3.7780559062957764,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 14.16769790649414,
+      "attack_probability": 0.9999992847442627,
+      "availability_reason": "fit",
+      "bonafide_score": 7.152557373046875e-07,
+      "context_available": true,
+      "correction_logit": 19.0880069732666,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_66_fake_6_21",
+      "label": 1,
+      "query_logit": -4.920309543609619,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 21.126590728759766,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 23.50336456298828,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_69_fake_6_3",
+      "label": 1,
+      "query_logit": -2.376774311065674,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 17.041667938232422,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 22.45430564880371,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_70_fake_6_55",
+      "label": 1,
+      "query_logit": -5.4126386642456055,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -6.2216644287109375,
+      "attack_probability": 0.0019820008892565966,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9980179991107434,
+      "context_available": true,
+      "correction_logit": -1.7819361686706543,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_75",
+      "label": 0,
+      "query_logit": -4.439728260040283,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 18.64802360534668,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 21.809297561645508,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_80_fake_6_57",
+      "label": 1,
+      "query_logit": -3.1612741947174072,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 14.738630294799805,
+      "attack_probability": 0.9999996423721313,
+      "availability_reason": "fit",
+      "bonafide_score": 3.5762786865234375e-07,
+      "context_available": true,
+      "correction_logit": 18.3857421875,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_81_fake_6_63",
+      "label": 1,
+      "query_logit": -3.647111415863037,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 3.354170799255371,
+      "attack_probability": 0.9662411212921143,
+      "availability_reason": "fit",
+      "bonafide_score": 0.03375887870788574,
+      "context_available": true,
+      "correction_logit": 7.4262189865112305,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_81_fake_6_91",
+      "label": 1,
+      "query_logit": -4.072048187255859,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -1.5743763446807861,
+      "attack_probability": 0.17159341275691986,
+      "availability_reason": "fit",
+      "bonafide_score": 0.8284065872430801,
+      "context_available": true,
+      "correction_logit": 0.9775007367134094,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_83",
+      "label": 0,
+      "query_logit": -2.551877021789551,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 20.654176712036133,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 22.351865768432617,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_83_fake_6_35",
+      "label": 1,
+      "query_logit": -1.6976897716522217,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -7.586315155029297,
+      "attack_probability": 0.0005070898332633078,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9994929101667367,
+      "context_available": true,
+      "correction_logit": -2.072450637817383,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_89",
+      "label": 0,
+      "query_logit": -5.513864517211914,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -6.7854509353637695,
+      "attack_probability": 0.0011288223322480917,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9988711776677519,
+      "context_available": true,
+      "correction_logit": -2.5890560150146484,
+      "design_id": "sidtd/alb_id",
+      "image_id": "sidtd_alb_id_90",
+      "label": 0,
+      "query_logit": -4.196394920349121,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": 3.9054760932922363,
+      "attack_probability": 0.9802659153938293,
+      "availability_reason": "fit",
+      "bonafide_score": 0.019734084606170654,
+      "context_available": true,
+      "correction_logit": 3.9981563091278076,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_00_fake_3_105",
+      "label": 1,
+      "query_logit": -0.09268011152744293,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": 5.9950947761535645,
+      "attack_probability": 0.9975152015686035,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0024847984313964844,
+      "context_available": true,
+      "correction_logit": 4.573296546936035,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_10",
+      "label": 0,
+      "query_logit": 1.4217981100082397,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -6.177889347076416,
+      "attack_probability": 0.0020705063361674547,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9979294936638325,
+      "context_available": true,
+      "correction_logit": -1.6147551536560059,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_17",
+      "label": 0,
+      "query_logit": -4.56313419342041,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -6.6378397941589355,
+      "attack_probability": 0.0013081403449177742,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9986918596550822,
+      "context_available": true,
+      "correction_logit": -0.5446390509605408,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_27",
+      "label": 0,
+      "query_logit": -6.09320068359375,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -1.3810100555419922,
+      "attack_probability": 0.2008468210697174,
+      "availability_reason": "fit",
+      "bonafide_score": 0.7991531789302826,
+      "context_available": true,
+      "correction_logit": 1.4618308544158936,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_33",
+      "label": 0,
+      "query_logit": -2.8428409099578857,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -3.2584657669067383,
+      "attack_probability": 0.0370238721370697,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9629761278629303,
+      "context_available": true,
+      "correction_logit": -0.39873671531677246,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_34",
+      "label": 0,
+      "query_logit": -2.859729051589966,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 8.942773818969727,
+      "attack_probability": 0.9998693466186523,
+      "availability_reason": "fit",
+      "bonafide_score": 0.00013065338134765625,
+      "context_available": true,
+      "correction_logit": 16.87559700012207,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_35_fake_3_85",
+      "label": 1,
+      "query_logit": -7.9328227043151855,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 19.247045516967773,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 24.09260368347168,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_38_fake_3_43",
+      "label": 1,
+      "query_logit": -4.8455586433410645,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 12.936258316040039,
+      "attack_probability": 0.999997615814209,
+      "availability_reason": "fit",
+      "bonafide_score": 2.384185791015625e-06,
+      "context_available": true,
+      "correction_logit": 18.548892974853516,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_39_fake_3_23",
+      "label": 1,
+      "query_logit": -5.612634658813477,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 14.222360610961914,
+      "attack_probability": 0.9999992847442627,
+      "availability_reason": "fit",
+      "bonafide_score": 7.152557373046875e-07,
+      "context_available": true,
+      "correction_logit": 17.48555564880371,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_40_fake_3_100",
+      "label": 1,
+      "query_logit": -3.263195037841797,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -3.1171674728393555,
+      "attack_probability": 0.04240464046597481,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9575953595340252,
+      "context_available": true,
+      "correction_logit": -0.027775242924690247,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_43",
+      "label": 0,
+      "query_logit": -3.0893921852111816,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 4.962400436401367,
+      "attack_probability": 0.9930524230003357,
+      "availability_reason": "fit",
+      "bonafide_score": 0.006947576999664307,
+      "context_available": true,
+      "correction_logit": 11.204795837402344,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_54_fake_3_42",
+      "label": 1,
+      "query_logit": -6.242395401000977,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 2.520618438720703,
+      "attack_probability": 0.9255746603012085,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0744253396987915,
+      "context_available": true,
+      "correction_logit": 10.567448616027832,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_63_fake_3_15",
+      "label": 1,
+      "query_logit": -8.046830177307129,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 8.140422821044922,
+      "attack_probability": 0.9997085928916931,
+      "availability_reason": "fit",
+      "bonafide_score": 0.00029140710830688477,
+      "context_available": true,
+      "correction_logit": 14.528042793273926,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_65_fake_3_87",
+      "label": 1,
+      "query_logit": -6.387620449066162,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 15.193267822265625,
+      "attack_probability": 0.9999997615814209,
+      "availability_reason": "fit",
+      "bonafide_score": 2.384185791015625e-07,
+      "context_available": true,
+      "correction_logit": 19.71722984313965,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_71_fake_3_94",
+      "label": 1,
+      "query_logit": -4.523962497711182,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": 1.0048131942749023,
+      "attack_probability": 0.7320038676261902,
+      "availability_reason": "fit",
+      "bonafide_score": 0.2679961323738098,
+      "context_available": true,
+      "correction_logit": 0.3553658723831177,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_75",
+      "label": 0,
+      "query_logit": 0.6494472622871399,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": 13.333793640136719,
+      "attack_probability": 0.9999983310699463,
+      "availability_reason": "fit",
+      "bonafide_score": 1.6689300537109375e-06,
+      "context_available": true,
+      "correction_logit": 16.011926651000977,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_75_fake_3_107",
+      "label": 1,
+      "query_logit": -2.678133487701416,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -1.9654622077941895,
+      "attack_probability": 0.12287711352109909,
+      "availability_reason": "fit",
+      "bonafide_score": 0.8771228864789009,
+      "context_available": true,
+      "correction_logit": -0.3499302268028259,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_77",
+      "label": 0,
+      "query_logit": -1.6155319213867188,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -2.16597580909729,
+      "attack_probability": 0.10284776240587234,
+      "availability_reason": "fit",
+      "bonafide_score": 0.8971522375941277,
+      "context_available": true,
+      "correction_logit": 1.4294393062591553,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_82",
+      "label": 0,
+      "query_logit": -3.5954151153564453,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -4.448978424072266,
+      "attack_probability": 0.011555415578186512,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9884445844218135,
+      "context_available": true,
+      "correction_logit": -1.0680205821990967,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_96",
+      "label": 0,
+      "query_logit": -3.38095760345459,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 25.07610321044922,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 29.006393432617188,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_96_fake_3_33",
+      "label": 1,
+      "query_logit": -3.9302892684936523,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": -5.745908737182617,
+      "attack_probability": 0.0031856480054557323,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9968143519945443,
+      "context_available": true,
+      "correction_logit": -0.48862481117248535,
+      "design_id": "sidtd/aze_passport",
+      "image_id": "sidtd_aze_passport_97_fake_3_115",
+      "label": 1,
+      "query_logit": -5.257284164428711,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.84079360961914,
+      "attack_probability": 0.00014468692825175822,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998553130717482,
+      "context_available": true,
+      "correction_logit": -2.2036855220794678,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_08",
+      "label": 0,
+      "query_logit": -6.637108325958252,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 33.126285552978516,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 26.389875411987305,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_09_fake_2_63",
+      "label": 1,
+      "query_logit": 6.7364115715026855,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 23.620975494384766,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 22.25023078918457,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_16_fake_2_72",
+      "label": 1,
+      "query_logit": 1.3707441091537476,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 18.665142059326172,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 19.249286651611328,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_17_fake_2_51",
+      "label": 1,
+      "query_logit": -0.5841455459594727,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 29.556190490722656,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 20.90107536315918,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_23_fake_2_78",
+      "label": 1,
+      "query_logit": 8.65511417388916,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 21.36347007751465,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 21.529016494750977,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_35_fake_2_71",
+      "label": 1,
+      "query_logit": -0.16554616391658783,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -11.053348541259766,
+      "attack_probability": 1.5833787983865477e-05,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999841662120161,
+      "context_available": true,
+      "correction_logit": -1.0442978143692017,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_37",
+      "label": 0,
+      "query_logit": -10.009050369262695,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 26.735885620117188,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 21.293441772460938,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_39_fake_2_42",
+      "label": 1,
+      "query_logit": 5.442443370819092,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 22.46169662475586,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 21.328710556030273,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_40_fake_2_22",
+      "label": 1,
+      "query_logit": 1.132986068725586,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -11.944818496704102,
+      "attack_probability": 6.492746251751669e-06,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999935072537482,
+      "context_available": true,
+      "correction_logit": -2.7316207885742188,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_41",
+      "label": 0,
+      "query_logit": -9.213197708129883,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -9.600666999816895,
+      "attack_probability": 6.76789932185784e-05,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999323210067814,
+      "context_available": true,
+      "correction_logit": -1.2999827861785889,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_44",
+      "label": 0,
+      "query_logit": -8.300683975219727,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 24.197057723999023,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 22.301408767700195,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_48_fake_2_21",
+      "label": 1,
+      "query_logit": 1.8956482410430908,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 0.45962047576904297,
+      "attack_probability": 0.6129241585731506,
+      "availability_reason": "fit",
+      "bonafide_score": 0.38707584142684937,
+      "context_available": true,
+      "correction_logit": 0.19985423982143402,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_56_fake_2_107",
+      "label": 1,
+      "query_logit": 0.25976622104644775,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -13.950645446777344,
+      "attack_probability": 8.735972301110451e-07,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999991264027699,
+      "context_available": true,
+      "correction_logit": -1.7947053909301758,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_58",
+      "label": 0,
+      "query_logit": -12.155940055847168,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 26.666515350341797,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 21.236661911010742,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_61_fake_2_27",
+      "label": 1,
+      "query_logit": 5.429853439331055,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": 0.8372247219085693,
+      "attack_probability": 0.6978803873062134,
+      "availability_reason": "fit",
+      "bonafide_score": 0.3021196126937866,
+      "context_available": true,
+      "correction_logit": -1.7237646579742432,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_63_fake_2_112",
+      "label": 1,
+      "query_logit": 2.5609893798828125,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -11.254241943359375,
+      "attack_probability": 1.2952070392202586e-05,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999870479296078,
+      "context_available": true,
+      "correction_logit": -2.3230481147766113,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_69",
+      "label": 0,
+      "query_logit": -8.931193351745605,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 7.388089656829834,
+      "attack_probability": 0.9993817806243896,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0006182193756103516,
+      "context_available": true,
+      "correction_logit": -0.9913535118103027,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_74_fake_2_99",
+      "label": 1,
+      "query_logit": 8.379443168640137,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": 5.592279434204102,
+      "attack_probability": 0.9962873458862305,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0037126541137695312,
+      "context_available": true,
+      "correction_logit": -2.3516619205474854,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_77_fake_2_103",
+      "label": 1,
+      "query_logit": 7.943941593170166,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.541559219360352,
+      "attack_probability": 0.00019514758605509996,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998048524139449,
+      "context_available": true,
+      "correction_logit": -0.956123948097229,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_80",
+      "label": 0,
+      "query_logit": -7.585435390472412,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -9.587702751159668,
+      "attack_probability": 6.8562054366339e-05,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999314379456337,
+      "context_available": true,
+      "correction_logit": -1.800285816192627,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_84",
+      "label": 0,
+      "query_logit": -7.787416934967041,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -9.249783515930176,
+      "attack_probability": 9.61232217377983e-05,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999038767782622,
+      "context_available": true,
+      "correction_logit": 0.05941556394100189,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_96",
+      "label": 0,
+      "query_logit": -9.309199333190918,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 29.55338478088379,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 26.642160415649414,
+      "design_id": "sidtd/esp_id",
+      "image_id": "sidtd_esp_id_96_fake_2_24",
+      "label": 1,
+      "query_logit": 2.911223888397217,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.930302619934082,
+      "attack_probability": 0.00013230048352852464,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998676995164715,
+      "context_available": true,
+      "correction_logit": -1.755090594291687,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_06",
+      "label": 0,
+      "query_logit": -7.1752119064331055,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.941461563110352,
+      "attack_probability": 0.0001308325445279479,
+      "availability_reason": "fit",
+      "bonafide_score": 0.999869167455472,
+      "context_available": true,
+      "correction_logit": -3.203390598297119,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_07",
+      "label": 0,
+      "query_logit": -5.738070487976074,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 5.970407009124756,
+      "attack_probability": 0.9974532723426819,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0025467276573181152,
+      "context_available": true,
+      "correction_logit": 9.545063972473145,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_10_fake_9_63",
+      "label": 1,
+      "query_logit": -3.5746569633483887,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -9.002419471740723,
+      "attack_probability": 0.00012309642625041306,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998769035737496,
+      "context_available": true,
+      "correction_logit": -2.577730894088745,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_36",
+      "label": 0,
+      "query_logit": -6.424688816070557,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.808547973632812,
+      "attack_probability": 0.0001494277676101774,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998505722323898,
+      "context_available": true,
+      "correction_logit": -1.7119927406311035,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_37",
+      "label": 0,
+      "query_logit": -7.096555709838867,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 8.371271133422852,
+      "attack_probability": 0.9997686743736267,
+      "availability_reason": "fit",
+      "bonafide_score": 0.00023132562637329102,
+      "context_available": true,
+      "correction_logit": 14.796576499938965,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_38_fake_9_35",
+      "label": 1,
+      "query_logit": -6.425305366516113,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.958130836486816,
+      "attack_probability": 0.00012867001350969076,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998713299864903,
+      "context_available": true,
+      "correction_logit": -1.8410232067108154,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_40",
+      "label": 0,
+      "query_logit": -7.117107391357422,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -7.340958595275879,
+      "attack_probability": 0.0006480084848590195,
+      "availability_reason": "fit",
+      "bonafide_score": 0.999351991515141,
+      "context_available": true,
+      "correction_logit": -2.661648750305176,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_42",
+      "label": 0,
+      "query_logit": -4.679309844970703,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -10.078094482421875,
+      "attack_probability": 4.198758688289672e-05,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999580124131171,
+      "context_available": true,
+      "correction_logit": -2.6289985179901123,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_44",
+      "label": 0,
+      "query_logit": -7.449096202850342,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 21.552839279174805,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 25.339160919189453,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_44_fake_9_2",
+      "label": 1,
+      "query_logit": -3.7863223552703857,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.627845764160156,
+      "attack_probability": 0.00017901789397001266,
+      "availability_reason": "fit",
+      "bonafide_score": 0.99982098210603,
+      "context_available": true,
+      "correction_logit": -2.4017715454101562,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_51",
+      "label": 0,
+      "query_logit": -6.22607421875,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 19.307239532470703,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 26.92192840576172,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_53_fake_9_68",
+      "label": 1,
+      "query_logit": -7.614689826965332,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -11.136388778686523,
+      "attack_probability": 1.4572078725905158e-05,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999854279212741,
+      "context_available": true,
+      "correction_logit": -4.030594348907471,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_55",
+      "label": 0,
+      "query_logit": -7.1057939529418945,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 19.397714614868164,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 25.993833541870117,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_55_fake_9_90",
+      "label": 1,
+      "query_logit": -6.596119403839111,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 8.682674407958984,
+      "attack_probability": 0.9998304843902588,
+      "availability_reason": "fit",
+      "bonafide_score": 0.00016951560974121094,
+      "context_available": true,
+      "correction_logit": 17.46439552307129,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_57_fake_9_72",
+      "label": 1,
+      "query_logit": -8.781721115112305,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 4.094448089599609,
+      "attack_probability": 0.9836081862449646,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0163918137550354,
+      "context_available": true,
+      "correction_logit": 9.831542015075684,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_60_fake_9_32",
+      "label": 1,
+      "query_logit": -5.737093925476074,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -9.634528160095215,
+      "attack_probability": 6.542581832036376e-05,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999345741816796,
+      "context_available": true,
+      "correction_logit": -0.5912677645683289,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_61",
+      "label": 0,
+      "query_logit": -9.04326057434082,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": -8.807839393615723,
+      "attack_probability": 0.00014953367644920945,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998504663235508,
+      "context_available": true,
+      "correction_logit": -2.8315203189849854,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_62_fake_9_113",
+      "label": 1,
+      "query_logit": -5.976319313049316,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -9.35509204864502,
+      "attack_probability": 8.651622920297086e-05,
+      "availability_reason": "fit",
+      "bonafide_score": 0.999913483770797,
+      "context_available": true,
+      "correction_logit": -2.2680928707122803,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_67",
+      "label": 0,
+      "query_logit": -7.08699893951416,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 11.155831336975098,
+      "attack_probability": 0.9999856948852539,
+      "availability_reason": "fit",
+      "bonafide_score": 1.430511474609375e-05,
+      "context_available": true,
+      "correction_logit": 14.849749565124512,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_69_fake_9_96",
+      "label": 1,
+      "query_logit": -3.693917989730835,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.721269607543945,
+      "attack_probability": 0.00016305342433042824,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998369465756696,
+      "context_available": true,
+      "correction_logit": -3.307651996612549,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_70",
+      "label": 0,
+      "query_logit": -5.413617134094238,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": -4.188539505004883,
+      "attack_probability": 0.014941778033971786,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9850582219660282,
+      "context_available": true,
+      "correction_logit": -2.353165626525879,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_74_fake_9_115",
+      "label": 1,
+      "query_logit": -1.835373878479004,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -10.061491012573242,
+      "attack_probability": 4.269051714800298e-05,
+      "availability_reason": "fit",
+      "bonafide_score": 0.999957309482852,
+      "context_available": true,
+      "correction_logit": -3.3864071369171143,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_75",
+      "label": 0,
+      "query_logit": -6.675084114074707,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -7.993268013000488,
+      "attack_probability": 0.00033761453232727945,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9996623854676727,
+      "context_available": true,
+      "correction_logit": -2.312302350997925,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_76",
+      "label": 0,
+      "query_logit": -5.680965423583984,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -9.355636596679688,
+      "attack_probability": 8.646913192933425e-05,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999135308680707,
+      "context_available": true,
+      "correction_logit": -1.1986202001571655,
+      "design_id": "sidtd/est_id",
+      "image_id": "sidtd_est_id_88",
+      "label": 0,
+      "query_logit": -8.15701675415039,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 20.341901779174805,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 17.638750076293945,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_00_fake_7_72",
+      "label": 1,
+      "query_logit": 2.703150987625122,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 30.17253875732422,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 25.274282455444336,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_03_fake_7_31",
+      "label": 1,
+      "query_logit": 4.898257255554199,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -15.933647155761719,
+      "attack_probability": 1.202554784640597e-07,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999998797445215,
+      "context_available": true,
+      "correction_logit": -3.1635780334472656,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_09",
+      "label": 0,
+      "query_logit": -12.770069122314453,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -12.815290451049805,
+      "attack_probability": 2.718872792684124e-06,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999972811272073,
+      "context_available": true,
+      "correction_logit": -2.699969530105591,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_11",
+      "label": 0,
+      "query_logit": -10.115321159362793,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 1.804028868675232,
+      "attack_probability": 0.8586387038230896,
+      "availability_reason": "fit",
+      "bonafide_score": 0.1413612961769104,
+      "context_available": true,
+      "correction_logit": -1.6091245412826538,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_11_fake_7_101",
+      "label": 1,
+      "query_logit": 3.4131534099578857,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 25.87317657470703,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 22.685457229614258,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_11_fake_7_69",
+      "label": 1,
+      "query_logit": 3.187718391418457,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": -0.05494427680969238,
+      "attack_probability": 0.4862673580646515,
+      "availability_reason": "fit",
+      "bonafide_score": 0.5137326419353485,
+      "context_available": true,
+      "correction_logit": -2.5840728282928467,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_18_fake_7_110",
+      "label": 1,
+      "query_logit": 2.5291285514831543,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 21.9655704498291,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 19.108356475830078,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_18_fake_7_79",
+      "label": 1,
+      "query_logit": 2.8572139739990234,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 12.186320304870605,
+      "attack_probability": 0.9999948740005493,
+      "availability_reason": "fit",
+      "bonafide_score": 5.125999450683594e-06,
+      "context_available": true,
+      "correction_logit": 10.054533004760742,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_19_fake_7_60",
+      "label": 1,
+      "query_logit": 2.1317875385284424,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 3.5057015419006348,
+      "attack_probability": 0.9708495140075684,
+      "availability_reason": "fit",
+      "bonafide_score": 0.02915048599243164,
+      "context_available": true,
+      "correction_logit": -1.6140851974487305,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_21_fake_7_91",
+      "label": 1,
+      "query_logit": 5.119786739349365,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 2.2042362689971924,
+      "attack_probability": 0.9006292819976807,
+      "availability_reason": "fit",
+      "bonafide_score": 0.09937071800231934,
+      "context_available": true,
+      "correction_logit": -2.098820924758911,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_30_fake_7_15",
+      "label": 1,
+      "query_logit": 4.3030571937561035,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 25.928218841552734,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 21.83627700805664,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_36_fake_7_61",
+      "label": 1,
+      "query_logit": 4.091942310333252,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -10.85666561126709,
+      "attack_probability": 1.9275321392342448e-05,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999807246786077,
+      "context_available": true,
+      "correction_logit": -1.3308290243148804,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_37",
+      "label": 0,
+      "query_logit": -9.525836944580078,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -12.599336624145508,
+      "attack_probability": 3.3742417144821957e-06,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999966257582855,
+      "context_available": true,
+      "correction_logit": -2.8759474754333496,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_49",
+      "label": 0,
+      "query_logit": -9.723389625549316,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -12.568249702453613,
+      "attack_probability": 3.480783334453008e-06,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999965192166655,
+      "context_available": true,
+      "correction_logit": -1.8982317447662354,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_53",
+      "label": 0,
+      "query_logit": -10.670018196105957,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -12.055484771728516,
+      "attack_probability": 5.812553354189731e-06,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999941874466458,
+      "context_available": true,
+      "correction_logit": -2.3594722747802734,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_58",
+      "label": 0,
+      "query_logit": -9.696012496948242,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -11.326684951782227,
+      "attack_probability": 1.2046974916302133e-05,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999879530250837,
+      "context_available": true,
+      "correction_logit": -1.9833184480667114,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_59",
+      "label": 0,
+      "query_logit": -9.343366622924805,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -11.646262168884277,
+      "attack_probability": 8.751626410230529e-06,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999912483735898,
+      "context_available": true,
+      "correction_logit": -1.5375584363937378,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_63",
+      "label": 0,
+      "query_logit": -10.10870361328125,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": 12.29857063293457,
+      "attack_probability": 0.9999954700469971,
+      "availability_reason": "fit",
+      "bonafide_score": 4.5299530029296875e-06,
+      "context_available": true,
+      "correction_logit": 9.725340843200684,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_74_fake_7_113",
+      "label": 1,
+      "query_logit": 2.573230266571045,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": 8.049796104431152,
+      "attack_probability": 0.9996809959411621,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0003190040588378906,
+      "context_available": true,
+      "correction_logit": 10.182353019714355,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_74_fake_7_114",
+      "label": 1,
+      "query_logit": -2.1325571537017822,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 0.9248275756835938,
+      "attack_probability": 0.7160247564315796,
+      "availability_reason": "fit",
+      "bonafide_score": 0.2839752435684204,
+      "context_available": true,
+      "correction_logit": -2.8336429595947266,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_74_fake_7_40",
+      "label": 1,
+      "query_logit": 3.7584705352783203,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 24.666423797607422,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 20.630632400512695,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_76_fake_7_11",
+      "label": 1,
+      "query_logit": 4.035791397094727,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 21.1602783203125,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 16.455419540405273,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_78_fake_7_53",
+      "label": 1,
+      "query_logit": 4.70485782623291,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 1.4161174297332764,
+      "attack_probability": 0.8047290444374084,
+      "availability_reason": "fit",
+      "bonafide_score": 0.19527095556259155,
+      "context_available": true,
+      "correction_logit": -0.302564799785614,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_84_fake_7_104",
+      "label": 1,
+      "query_logit": 1.7186822891235352,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 25.435504913330078,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 20.031356811523438,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_85_fake_7_51",
+      "label": 1,
+      "query_logit": 5.404148578643799,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 18.420703887939453,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 15.458390235900879,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_86_fake_7_47",
+      "label": 1,
+      "query_logit": 2.962312698364258,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -12.032663345336914,
+      "attack_probability": 5.946728379058186e-06,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999940532716209,
+      "context_available": true,
+      "correction_logit": -2.1017441749572754,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_88",
+      "label": 0,
+      "query_logit": -9.93091869354248,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -11.445176124572754,
+      "attack_probability": 1.0700855455070268e-05,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999892991445449,
+      "context_available": true,
+      "correction_logit": -2.212458372116089,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_92",
+      "label": 0,
+      "query_logit": -9.232717514038086,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -11.817401885986328,
+      "attack_probability": 7.375040240731323e-06,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9999926249597593,
+      "context_available": true,
+      "correction_logit": -1.9074345827102661,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_96",
+      "label": 0,
+      "query_logit": -9.909967422485352,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -13.059908866882324,
+      "attack_probability": 2.128887444996508e-06,
+      "availability_reason": "fit",
+      "bonafide_score": 0.999997871112555,
+      "context_available": true,
+      "correction_logit": -2.571070432662964,
+      "design_id": "sidtd/fin_id",
+      "image_id": "sidtd_fin_id_97",
+      "label": 0,
+      "query_logit": -10.488838195800781,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": -5.340686798095703,
+      "attack_probability": 0.004769718740135431,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9952302812598646,
+      "context_available": true,
+      "correction_logit": -1.6814777851104736,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_07_fake_4_101",
+      "label": 1,
+      "query_logit": -3.6592087745666504,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 5.02553653717041,
+      "attack_probability": 0.9934747815132141,
+      "availability_reason": "fit",
+      "bonafide_score": 0.006525218486785889,
+      "context_available": true,
+      "correction_logit": 12.301797866821289,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_08_fake_4_85",
+      "label": 1,
+      "query_logit": -7.276261329650879,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 17.651750564575195,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 20.21856117248535,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_12_fake_4_53",
+      "label": 1,
+      "query_logit": -2.5668113231658936,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 19.28119659423828,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 21.573789596557617,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_22_fake_4_4",
+      "label": 1,
+      "query_logit": -2.2925925254821777,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -6.770090103149414,
+      "attack_probability": 0.001146275782957673,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9988537242170423,
+      "context_available": true,
+      "correction_logit": -1.2067739963531494,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_26",
+      "label": 0,
+      "query_logit": -5.563316345214844,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": -4.872839450836182,
+      "attack_probability": 0.007593505550175905,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9924064944498241,
+      "context_available": true,
+      "correction_logit": 0.37359344959259033,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_30_fake_4_108",
+      "label": 1,
+      "query_logit": -5.246432781219482,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.687189102172852,
+      "attack_probability": 0.00016870518447831273,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998312948155217,
+      "context_available": true,
+      "correction_logit": -4.548280239105225,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_42",
+      "label": 0,
+      "query_logit": -4.138909339904785,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 15.050008773803711,
+      "attack_probability": 0.9999997615814209,
+      "availability_reason": "fit",
+      "bonafide_score": 2.384185791015625e-07,
+      "context_available": true,
+      "correction_logit": 19.40239143371582,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_43_fake_4_65",
+      "label": 1,
+      "query_logit": -4.352383136749268,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 6.189004898071289,
+      "attack_probability": 0.9979523420333862,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0020476579666137695,
+      "context_available": true,
+      "correction_logit": 13.60197925567627,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_44_fake_4_24",
+      "label": 1,
+      "query_logit": -7.4129743576049805,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -5.6984171867370605,
+      "attack_probability": 0.0033400722313672304,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9966599277686328,
+      "context_available": true,
+      "correction_logit": -1.0529581308364868,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_48",
+      "label": 0,
+      "query_logit": -4.645459175109863,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 25.475582122802734,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 27.381620407104492,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_52_fake_4_84",
+      "label": 1,
+      "query_logit": -1.9060391187667847,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -5.014439582824707,
+      "attack_probability": 0.006597536150366068,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9934024638496339,
+      "context_available": true,
+      "correction_logit": -2.3884739875793457,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_54",
+      "label": 0,
+      "query_logit": -2.6259655952453613,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -6.265896797180176,
+      "attack_probability": 0.0018964053597301245,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9981035946402699,
+      "context_available": true,
+      "correction_logit": -2.52534818649292,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_55",
+      "label": 0,
+      "query_logit": -3.740548610687256,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -5.121687889099121,
+      "attack_probability": 0.005930562969297171,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9940694370307028,
+      "context_available": true,
+      "correction_logit": -1.6862996816635132,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_58",
+      "label": 0,
+      "query_logit": -3.4353880882263184,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 18.80738639831543,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 22.02851104736328,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_58_fake_4_10",
+      "label": 1,
+      "query_logit": -3.2211251258850098,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -7.47480583190918,
+      "attack_probability": 0.000566874397918582,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9994331256020814,
+      "context_available": true,
+      "correction_logit": -3.0278689861297607,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_60",
+      "label": 0,
+      "query_logit": -4.446937084197998,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -4.822004318237305,
+      "attack_probability": 0.00798633974045515,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9920136602595448,
+      "context_available": true,
+      "correction_logit": -2.7405459880828857,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_72",
+      "label": 0,
+      "query_logit": -2.081458568572998,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 22.979236602783203,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 28.21540641784668,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_77_fake_4_83",
+      "label": 1,
+      "query_logit": -5.236170768737793,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -7.284976482391357,
+      "attack_probability": 0.0006852944497950375,
+      "availability_reason": "fit",
+      "bonafide_score": 0.999314705550205,
+      "context_available": true,
+      "correction_logit": -1.8382126092910767,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_79",
+      "label": 0,
+      "query_logit": -5.44676399230957,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 3.676900863647461,
+      "attack_probability": 0.9753231406211853,
+      "availability_reason": "fit",
+      "bonafide_score": 0.024676859378814697,
+      "context_available": true,
+      "correction_logit": 6.687881946563721,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_83_fake_4_49",
+      "label": 1,
+      "query_logit": -3.0109810829162598,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 18.10167694091797,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 21.860305786132812,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_86_fake_4_7",
+      "label": 1,
+      "query_logit": -3.7586286067962646,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 20.404237747192383,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 23.067384719848633,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_90_fake_4_77",
+      "label": 1,
+      "query_logit": -2.663147449493408,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": -3.2962846755981445,
+      "attack_probability": 0.03569886460900307,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9643011353909969,
+      "context_available": true,
+      "correction_logit": -2.373105525970459,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_94_fake_4_106",
+      "label": 1,
+      "query_logit": -0.9231792688369751,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 25.236751556396484,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 30.131778717041016,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_94_fake_4_88",
+      "label": 1,
+      "query_logit": -4.895028114318848,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -5.358611106872559,
+      "attack_probability": 0.004685383290052414,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9953146167099476,
+      "context_available": true,
+      "correction_logit": -1.7655844688415527,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_95",
+      "label": 0,
+      "query_logit": -3.593026638031006,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -7.1598968505859375,
+      "attack_probability": 0.0007765312329865992,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9992234687670134,
+      "context_available": true,
+      "correction_logit": -3.0481560230255127,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_96",
+      "label": 0,
+      "query_logit": -4.111741065979004,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -3.967552423477173,
+      "attack_probability": 0.0185683760792017,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9814316239207983,
+      "context_available": true,
+      "correction_logit": -1.6512773036956787,
+      "design_id": "sidtd/grc_passport",
+      "image_id": "sidtd_grc_passport_97",
+      "label": 0,
+      "query_logit": -2.316275119781494,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -6.395468711853027,
+      "attack_probability": 0.0016663222340866923,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9983336777659133,
+      "context_available": true,
+      "correction_logit": -1.3549214601516724,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_07",
+      "label": 0,
+      "query_logit": -5.0405473709106445,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 19.7879581451416,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 24.572484970092773,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_07_fake_0_16",
+      "label": 1,
+      "query_logit": -4.784526824951172,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 7.083239555358887,
+      "attack_probability": 0.9991617202758789,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0008382797241210938,
+      "context_available": true,
+      "correction_logit": 10.431782722473145,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_14_fake_0_45",
+      "label": 1,
+      "query_logit": -3.348543167114258,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -6.795835494995117,
+      "attack_probability": 0.0011171736987307668,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9988828263012692,
+      "context_available": true,
+      "correction_logit": -1.7269251346588135,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_22",
+      "label": 0,
+      "query_logit": -5.068910598754883,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 17.131040573120117,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 22.148237228393555,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_28_fake_0_44",
+      "label": 1,
+      "query_logit": -5.0171966552734375,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -5.158234119415283,
+      "attack_probability": 0.005718952976167202,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9942810470238328,
+      "context_available": true,
+      "correction_logit": -1.9265496730804443,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_30",
+      "label": 0,
+      "query_logit": -3.231684446334839,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 17.920183181762695,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 23.784578323364258,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_39_fake_0_50",
+      "label": 1,
+      "query_logit": -5.8643951416015625,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -7.831377029418945,
+      "attack_probability": 0.00039692071732133627,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9996030792826787,
+      "context_available": true,
+      "correction_logit": -2.0432844161987305,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_41",
+      "label": 0,
+      "query_logit": -5.788092613220215,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": -3.7878918647766113,
+      "attack_probability": 0.022141920402646065,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9778580795973539,
+      "context_available": true,
+      "correction_logit": 0.3692277669906616,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_51_fake_0_114",
+      "label": 1,
+      "query_logit": -4.1571197509765625,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 16.306615829467773,
+      "attack_probability": 0.9999998807907104,
+      "availability_reason": "fit",
+      "bonafide_score": 1.1920928955078125e-07,
+      "context_available": true,
+      "correction_logit": 22.740774154663086,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_66_fake_0_36",
+      "label": 1,
+      "query_logit": -6.4341583251953125,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 11.292245864868164,
+      "attack_probability": 0.9999874830245972,
+      "availability_reason": "fit",
+      "bonafide_score": 1.2516975402832031e-05,
+      "context_available": true,
+      "correction_logit": 18.617868423461914,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_71_fake_0_114",
+      "label": 1,
+      "query_logit": -7.325622081756592,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 19.7023983001709,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 25.462480545043945,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_82_fake_0_72",
+      "label": 1,
+      "query_logit": -5.760082721710205,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.383764266967773,
+      "attack_probability": 0.00022849578817840666,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9997715042118216,
+      "context_available": true,
+      "correction_logit": -2.4890153408050537,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_83",
+      "label": 0,
+      "query_logit": -5.894749164581299,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 12.12049674987793,
+      "attack_probability": 0.9999945163726807,
+      "availability_reason": "fit",
+      "bonafide_score": 5.4836273193359375e-06,
+      "context_available": true,
+      "correction_logit": 17.03785514831543,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_85_fake_0_13",
+      "label": 1,
+      "query_logit": -4.9173583984375,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.28658676147461,
+      "attack_probability": 0.00025180928059853613,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9997481907194015,
+      "context_available": true,
+      "correction_logit": -2.628689765930176,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_92",
+      "label": 0,
+      "query_logit": -5.657896995544434,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 21.353626251220703,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 27.4003963470459,
+      "design_id": "sidtd/lva_passport",
+      "image_id": "sidtd_lva_passport_93_fake_0_26",
+      "label": 1,
+      "query_logit": -6.046770095825195,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 21.855487823486328,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 24.51930046081543,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_00_fake_1_67",
+      "label": 1,
+      "query_logit": -2.6638131141662598,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -1.898956060409546,
+      "attack_probability": 0.13022667169570923,
+      "availability_reason": "fit",
+      "bonafide_score": 0.8697733283042908,
+      "context_available": true,
+      "correction_logit": 0.2476189285516739,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_12",
+      "label": 0,
+      "query_logit": -2.1465749740600586,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 7.994039535522461,
+      "attack_probability": 0.9996626377105713,
+      "availability_reason": "fit",
+      "bonafide_score": 0.00033736228942871094,
+      "context_available": true,
+      "correction_logit": 10.485705375671387,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_21_fake_1_31",
+      "label": 1,
+      "query_logit": -2.491665840148926,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -5.978485107421875,
+      "attack_probability": 0.0025262620765715837,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9974737379234284,
+      "context_available": true,
+      "correction_logit": -2.8113744258880615,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_31",
+      "label": 0,
+      "query_logit": -3.1671106815338135,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -3.588225841522217,
+      "attack_probability": 0.02690352499485016,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9730964750051498,
+      "context_available": true,
+      "correction_logit": -1.8062387704849243,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_43",
+      "label": 0,
+      "query_logit": -1.7819870710372925,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": -3.336191177368164,
+      "attack_probability": 0.03435027599334717,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9656497240066528,
+      "context_available": true,
+      "correction_logit": 2.245303153991699,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_49_fake_1_83",
+      "label": 1,
+      "query_logit": -5.581494331359863,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -2.882930278778076,
+      "attack_probability": 0.053003858774900436,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9469961412250996,
+      "context_available": true,
+      "correction_logit": -1.6121264696121216,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_50",
+      "label": 0,
+      "query_logit": -1.2708039283752441,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -4.7830352783203125,
+      "attack_probability": 0.008301068097352982,
+      "availability_reason": "fit",
+      "bonafide_score": 0.991698931902647,
+      "context_available": true,
+      "correction_logit": -2.3800625801086426,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_54",
+      "label": 0,
+      "query_logit": -2.402972459793091,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 20.978466033935547,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 24.405969619750977,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_65_fake_1_17",
+      "label": 1,
+      "query_logit": -3.4275031089782715,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -7.43617057800293,
+      "attack_probability": 0.0005891910986974835,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9994108089013025,
+      "context_available": true,
+      "correction_logit": -2.9233951568603516,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_67",
+      "label": 0,
+      "query_logit": -4.512775421142578,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 10.092936515808105,
+      "attack_probability": 0.9999586343765259,
+      "availability_reason": "fit",
+      "bonafide_score": 4.1365623474121094e-05,
+      "context_available": true,
+      "correction_logit": 11.905705451965332,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_68_fake_1_55",
+      "label": 1,
+      "query_logit": -1.812768578529358,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 21.61176109313965,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 24.40110206604004,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_74_fake_1_9",
+      "label": 1,
+      "query_logit": -2.7893409729003906,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -3.321436882019043,
+      "attack_probability": 0.03484305366873741,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9651569463312626,
+      "context_available": true,
+      "correction_logit": 0.8163814544677734,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_75",
+      "label": 0,
+      "query_logit": -4.137818336486816,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": 5.211471080780029,
+      "attack_probability": 0.9945759773254395,
+      "availability_reason": "fit",
+      "bonafide_score": 0.005424022674560547,
+      "context_available": true,
+      "correction_logit": 5.20560359954834,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_77",
+      "label": 0,
+      "query_logit": 0.005867529660463333,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -6.352343559265137,
+      "attack_probability": 0.0017396267503499985,
+      "availability_reason": "fit",
+      "bonafide_score": 0.99826037324965,
+      "context_available": true,
+      "correction_logit": -3.84200119972229,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_82",
+      "label": 0,
+      "query_logit": -2.5103421211242676,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -4.680654048919678,
+      "attack_probability": 0.009187749586999416,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9908122504130006,
+      "context_available": true,
+      "correction_logit": -3.4747350215911865,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_83",
+      "label": 0,
+      "query_logit": -1.2059189081192017,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 20.0443115234375,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 22.9720401763916,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_85_fake_1_5",
+      "label": 1,
+      "query_logit": -2.9277291297912598,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -6.1831769943237305,
+      "attack_probability": 0.0020596098620444536,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9979403901379555,
+      "context_available": true,
+      "correction_logit": -2.3368539810180664,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_93",
+      "label": 0,
+      "query_logit": -3.846323251724243,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -5.878435134887695,
+      "attack_probability": 0.002791348611935973,
+      "availability_reason": "fit",
+      "bonafide_score": 0.997208651388064,
+      "context_available": true,
+      "correction_logit": -2.0187079906463623,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_96",
+      "label": 0,
+      "query_logit": -3.859727382659912,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 5.406266689300537,
+      "attack_probability": 0.9955316781997681,
+      "availability_reason": "fit",
+      "bonafide_score": 0.004468321800231934,
+      "context_available": true,
+      "correction_logit": 10.88187313079834,
+      "design_id": "sidtd/rus_internalpassport",
+      "image_id": "sidtd_rus_internalpassport_98_fake_1_74",
+      "label": 1,
+      "query_logit": -5.475606441497803,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 11.061307907104492,
+      "attack_probability": 0.9999842643737793,
+      "availability_reason": "fit",
+      "bonafide_score": 1.5735626220703125e-05,
+      "context_available": true,
+      "correction_logit": 16.273603439331055,
+      "design_id": "sidtd/srb_passport",
+      "image_id": "sidtd_srb_passport_02_fake_5_63",
+      "label": 1,
+      "query_logit": -5.212295055389404,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -9.1549072265625,
+      "attack_probability": 0.00010568866127869114,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998943113387213,
+      "context_available": true,
+      "correction_logit": -1.0345903635025024,
+      "design_id": "sidtd/srb_passport",
+      "image_id": "sidtd_srb_passport_23",
+      "label": 0,
+      "query_logit": -8.120316505432129,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 19.64270782470703,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 25.528398513793945,
+      "design_id": "sidtd/srb_passport",
+      "image_id": "sidtd_srb_passport_26_fake_5_18",
+      "label": 1,
+      "query_logit": -5.885689735412598,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.423760414123535,
+      "attack_probability": 0.000219539157114923,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9997804608428851,
+      "context_available": true,
+      "correction_logit": -1.2269905805587769,
+      "design_id": "sidtd/srb_passport",
+      "image_id": "sidtd_srb_passport_29",
+      "label": 0,
+      "query_logit": -7.196769714355469,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 12.274210929870605,
+      "attack_probability": 0.9999953508377075,
+      "availability_reason": "fit",
+      "bonafide_score": 4.649162292480469e-06,
+      "context_available": true,
+      "correction_logit": 17.070451736450195,
+      "design_id": "sidtd/srb_passport",
+      "image_id": "sidtd_srb_passport_35_fake_5_39",
+      "label": 1,
+      "query_logit": -4.79624080657959,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -2.4134674072265625,
+      "attack_probability": 0.08215148746967316,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9178485125303268,
+      "context_available": true,
+      "correction_logit": -0.6978182196617126,
+      "design_id": "sidtd/srb_passport",
+      "image_id": "sidtd_srb_passport_36",
+      "label": 0,
+      "query_logit": -1.715649127960205,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 14.690058708190918,
+      "attack_probability": 0.9999996423721313,
+      "availability_reason": "fit",
+      "bonafide_score": 3.5762786865234375e-07,
+      "context_available": true,
+      "correction_logit": 20.268991470336914,
+      "design_id": "sidtd/srb_passport",
+      "image_id": "sidtd_srb_passport_39_fake_5_96",
+      "label": 1,
+      "query_logit": -5.578932762145996,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 14.267114639282227,
+      "attack_probability": 0.9999994039535522,
+      "availability_reason": "fit",
+      "bonafide_score": 5.960464477539062e-07,
+      "context_available": true,
+      "correction_logit": 21.2047061920166,
+      "design_id": "sidtd/srb_passport",
+      "image_id": "sidtd_srb_passport_41_fake_5_21",
+      "label": 1,
+      "query_logit": -6.937591075897217,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.333972930908203,
+      "attack_probability": 0.00024015808594413102,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9997598419140559,
+      "context_available": true,
+      "correction_logit": -1.1531014442443848,
+      "design_id": "sidtd/srb_passport",
+      "image_id": "sidtd_srb_passport_47",
+      "label": 0,
+      "query_logit": -7.18087100982666,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -7.25338077545166,
+      "attack_probability": 0.000707276922184974,
+      "availability_reason": "fit",
+      "bonafide_score": 0.999292723077815,
+      "context_available": true,
+      "correction_logit": -1.528727650642395,
+      "design_id": "sidtd/srb_passport",
+      "image_id": "sidtd_srb_passport_59",
+      "label": 0,
+      "query_logit": -5.724653244018555,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.661707878112793,
+      "attack_probability": 0.00017305847723037004,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998269415227696,
+      "context_available": true,
+      "correction_logit": -1.3580429553985596,
+      "design_id": "sidtd/srb_passport",
+      "image_id": "sidtd_srb_passport_66",
+      "label": 0,
+      "query_logit": -7.303664684295654,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 21.652793884277344,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 27.21637535095215,
+      "design_id": "sidtd/srb_passport",
+      "image_id": "sidtd_srb_passport_68_fake_5_23",
+      "label": 1,
+      "query_logit": -5.5635809898376465,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 11.243589401245117,
+      "attack_probability": 0.9999868869781494,
+      "availability_reason": "fit",
+      "bonafide_score": 1.3113021850585938e-05,
+      "context_available": true,
+      "correction_logit": 16.33011817932129,
+      "design_id": "sidtd/srb_passport",
+      "image_id": "sidtd_srb_passport_79_fake_5_71",
+      "label": 1,
+      "query_logit": -5.086528778076172,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 7.590455532073975,
+      "attack_probability": 0.9994950294494629,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0005049705505371094,
+      "context_available": true,
+      "correction_logit": 14.425751686096191,
+      "design_id": "sidtd/srb_passport",
+      "image_id": "sidtd_srb_passport_84_fake_5_98",
+      "label": 1,
+      "query_logit": -6.835296154022217,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": -4.250502586364746,
+      "attack_probability": 0.014056661166250706,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9859433388337493,
+      "context_available": true,
+      "correction_logit": -0.43773216009140015,
+      "design_id": "sidtd/srb_passport",
+      "image_id": "sidtd_srb_passport_87_fake_5_100",
+      "label": 1,
+      "query_logit": -3.812770366668701,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.684366226196289,
+      "attack_probability": 0.00016918200708460063,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998308179929154,
+      "context_available": true,
+      "correction_logit": -1.819347858428955,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_00",
+      "label": 0,
+      "query_logit": -6.865018367767334,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 15.812997817993164,
+      "attack_probability": 0.9999998807907104,
+      "availability_reason": "fit",
+      "bonafide_score": 1.1920928955078125e-07,
+      "context_available": true,
+      "correction_logit": 21.57898712158203,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_03_fake_8_69",
+      "label": 1,
+      "query_logit": -5.765989303588867,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 19.424318313598633,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 26.34784698486328,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_09_fake_8_97",
+      "label": 1,
+      "query_logit": -6.923528671264648,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -7.210546493530273,
+      "attack_probability": 0.0007382079493254423,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9992617920506746,
+      "context_available": true,
+      "correction_logit": -1.7903602123260498,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_23",
+      "label": 0,
+      "query_logit": -5.4201860427856445,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_copy",
+      "attack_logit": -8.10011100769043,
+      "attack_probability": 0.0003034133405890316,
+      "availability_reason": "fit",
+      "bonafide_score": 0.999696586659411,
+      "context_available": true,
+      "correction_logit": -1.8667705059051514,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_34_fake_8_103",
+      "label": 1,
+      "query_logit": -6.233340263366699,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -6.9597649574279785,
+      "attack_probability": 0.0009484192705713212,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9990515807294287,
+      "context_available": true,
+      "correction_logit": -1.2326154708862305,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_35",
+      "label": 0,
+      "query_logit": -5.727149486541748,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -6.605879783630371,
+      "attack_probability": 0.0013505663955584168,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9986494336044416,
+      "context_available": true,
+      "correction_logit": -2.2310335636138916,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_39",
+      "label": 0,
+      "query_logit": -4.374846458435059,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.351301193237305,
+      "attack_probability": 0.00023603340378031135,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9997639665962197,
+      "context_available": true,
+      "correction_logit": -2.0325660705566406,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_48",
+      "label": 0,
+      "query_logit": -6.318735599517822,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.996075630187988,
+      "attack_probability": 0.00012387971219141036,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998761202878086,
+      "context_available": true,
+      "correction_logit": -2.3557651042938232,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_55",
+      "label": 0,
+      "query_logit": -6.640310287475586,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 20.74983787536621,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 27.443071365356445,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_66_fake_8_25",
+      "label": 1,
+      "query_logit": -6.693233489990234,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 14.02580738067627,
+      "attack_probability": 0.9999991655349731,
+      "availability_reason": "fit",
+      "bonafide_score": 8.344650268554688e-07,
+      "context_available": true,
+      "correction_logit": 19.931617736816406,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_69_fake_8_49",
+      "label": 1,
+      "query_logit": -5.905810356140137,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -8.772507667541504,
+      "attack_probability": 0.00015491056547034532,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9998450894345297,
+      "context_available": true,
+      "correction_logit": -2.0715808868408203,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_75",
+      "label": 0,
+      "query_logit": -6.700926780700684,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 6.513667583465576,
+      "attack_probability": 0.9985191226005554,
+      "availability_reason": "fit",
+      "bonafide_score": 0.00148087739944458,
+      "context_available": true,
+      "correction_logit": 13.668317794799805,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_85_fake_8_71",
+      "label": 1,
+      "query_logit": -7.1546502113342285,
+      "referral_required": false
+    },
+    {
+      "attack_family": "",
+      "attack_logit": -7.540981769561768,
+      "attack_probability": 0.0005305944941937923,
+      "availability_reason": "fit",
+      "bonafide_score": 0.9994694055058062,
+      "context_available": true,
+      "correction_logit": -0.2936464548110962,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_86",
+      "label": 0,
+      "query_logit": -7.247335433959961,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": -1.1028094291687012,
+      "attack_probability": 0.24921384453773499,
+      "availability_reason": "fit",
+      "bonafide_score": 0.750786155462265,
+      "context_available": true,
+      "correction_logit": 5.388500690460205,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_88_fake_8_62",
+      "label": 1,
+      "query_logit": -6.491310119628906,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 17.686931610107422,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 23.299531936645508,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_93_fake_8_63",
+      "label": 1,
+      "query_logit": -5.612600803375244,
+      "referral_required": false
+    },
+    {
+      "attack_family": "text_inpaint",
+      "attack_logit": 18.142786026000977,
+      "attack_probability": 1.0,
+      "availability_reason": "fit",
+      "bonafide_score": 0.0,
+      "context_available": true,
+      "correction_logit": 23.790502548217773,
+      "design_id": "sidtd/svk_id",
+      "image_id": "sidtd_svk_id_95_fake_8_80",
+      "label": 1,
+      "query_logit": -5.647716999053955,
+      "referral_required": false
+    }
+  ],
+  "query_reads": [
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_87",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_87.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_13",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/alb_id_13.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_17_fake_6_98",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_17_fake_6_98.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_19",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/alb_id_19.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_20_fake_6_51",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_20_fake_6_51.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_24_fake_6_100",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_24_fake_6_100.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_33_fake_6_10",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_33_fake_6_10.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_37",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/alb_id_37.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_41",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/alb_id_41.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_42_fake_6_94",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_42_fake_6_94.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_45_fake_6_62",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_45_fake_6_62.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_53_fake_6_33",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_53_fake_6_33.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_54_fake_6_24",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_54_fake_6_24.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_59_fake_6_7",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_59_fake_6_7.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_61",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/alb_id_61.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_63",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/alb_id_63.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_66_fake_6_21",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_66_fake_6_21.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_69_fake_6_3",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_69_fake_6_3.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_70_fake_6_55",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_70_fake_6_55.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_75",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/alb_id_75.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_80_fake_6_57",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_80_fake_6_57.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_81_fake_6_63",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_81_fake_6_63.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_81_fake_6_91",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_81_fake_6_91.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_83",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/alb_id_83.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_83_fake_6_35",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/alb_id_83_fake_6_35.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_89",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/alb_id_89.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_alb_id_90",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/alb_id_90.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_00_fake_3_105",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/aze_passport_00_fake_3_105.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_10",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/aze_passport_10.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_17",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/aze_passport_17.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_27",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/aze_passport_27.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_33",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/aze_passport_33.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_34",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/aze_passport_34.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_35_fake_3_85",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/aze_passport_35_fake_3_85.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_38_fake_3_43",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/aze_passport_38_fake_3_43.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_39_fake_3_23",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/aze_passport_39_fake_3_23.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_40_fake_3_100",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/aze_passport_40_fake_3_100.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_43",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/aze_passport_43.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_54_fake_3_42",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/aze_passport_54_fake_3_42.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_63_fake_3_15",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/aze_passport_63_fake_3_15.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_65_fake_3_87",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/aze_passport_65_fake_3_87.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_71_fake_3_94",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/aze_passport_71_fake_3_94.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_75",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/aze_passport_75.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_75_fake_3_107",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/aze_passport_75_fake_3_107.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_77",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/aze_passport_77.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_82",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/aze_passport_82.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_96",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/aze_passport_96.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_96_fake_3_33",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/aze_passport_96_fake_3_33.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_aze_passport_97_fake_3_115",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/aze_passport_97_fake_3_115.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_08",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/esp_id_08.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_09_fake_2_63",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/esp_id_09_fake_2_63.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_16_fake_2_72",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/esp_id_16_fake_2_72.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_17_fake_2_51",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/esp_id_17_fake_2_51.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_23_fake_2_78",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/esp_id_23_fake_2_78.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_35_fake_2_71",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/esp_id_35_fake_2_71.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_37",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/esp_id_37.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_39_fake_2_42",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/esp_id_39_fake_2_42.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_40_fake_2_22",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/esp_id_40_fake_2_22.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_41",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/esp_id_41.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_44",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/esp_id_44.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_48_fake_2_21",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/esp_id_48_fake_2_21.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_56_fake_2_107",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/esp_id_56_fake_2_107.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_58",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/esp_id_58.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_61_fake_2_27",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/esp_id_61_fake_2_27.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_63_fake_2_112",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/esp_id_63_fake_2_112.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_69",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/esp_id_69.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_74_fake_2_99",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/esp_id_74_fake_2_99.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_77_fake_2_103",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/esp_id_77_fake_2_103.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_80",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/esp_id_80.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_84",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/esp_id_84.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_96",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/esp_id_96.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_esp_id_96_fake_2_24",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/esp_id_96_fake_2_24.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_06",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/est_id_06.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_07",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/est_id_07.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_10_fake_9_63",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/est_id_10_fake_9_63.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_36",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/est_id_36.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_37",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/est_id_37.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_38_fake_9_35",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/est_id_38_fake_9_35.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_40",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/est_id_40.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_42",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/est_id_42.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_44",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/est_id_44.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_44_fake_9_2",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/est_id_44_fake_9_2.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_51",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/est_id_51.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_53_fake_9_68",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/est_id_53_fake_9_68.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_55",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/est_id_55.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_55_fake_9_90",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/est_id_55_fake_9_90.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_57_fake_9_72",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/est_id_57_fake_9_72.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_60_fake_9_32",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/est_id_60_fake_9_32.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_61",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/est_id_61.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_62_fake_9_113",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/est_id_62_fake_9_113.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_67",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/est_id_67.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_69_fake_9_96",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/est_id_69_fake_9_96.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_70",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/est_id_70.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_74_fake_9_115",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/est_id_74_fake_9_115.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_75",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/est_id_75.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_76",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/est_id_76.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_est_id_88",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/est_id_88.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_00_fake_7_72",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_00_fake_7_72.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_03_fake_7_31",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_03_fake_7_31.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_09",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/fin_id_09.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_11",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/fin_id_11.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_11_fake_7_101",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_11_fake_7_101.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_11_fake_7_69",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_11_fake_7_69.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_18_fake_7_110",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_18_fake_7_110.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_18_fake_7_79",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_18_fake_7_79.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_19_fake_7_60",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_19_fake_7_60.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_21_fake_7_91",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_21_fake_7_91.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_30_fake_7_15",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_30_fake_7_15.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_36_fake_7_61",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_36_fake_7_61.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_37",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/fin_id_37.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_49",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/fin_id_49.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_53",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/fin_id_53.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_58",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/fin_id_58.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_59",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/fin_id_59.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_63",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/fin_id_63.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_74_fake_7_113",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_74_fake_7_113.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_74_fake_7_114",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_74_fake_7_114.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_74_fake_7_40",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_74_fake_7_40.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_76_fake_7_11",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_76_fake_7_11.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_78_fake_7_53",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_78_fake_7_53.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_84_fake_7_104",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_84_fake_7_104.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_85_fake_7_51",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_85_fake_7_51.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_86_fake_7_47",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/fin_id_86_fake_7_47.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_88",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/fin_id_88.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_92",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/fin_id_92.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_96",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/fin_id_96.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_fin_id_97",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/fin_id_97.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_07_fake_4_101",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/grc_passport_07_fake_4_101.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_08_fake_4_85",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/grc_passport_08_fake_4_85.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_12_fake_4_53",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/grc_passport_12_fake_4_53.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_22_fake_4_4",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/grc_passport_22_fake_4_4.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_26",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/grc_passport_26.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_30_fake_4_108",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/grc_passport_30_fake_4_108.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_42",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/grc_passport_42.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_43_fake_4_65",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/grc_passport_43_fake_4_65.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_44_fake_4_24",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/grc_passport_44_fake_4_24.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_48",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/grc_passport_48.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_52_fake_4_84",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/grc_passport_52_fake_4_84.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_54",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/grc_passport_54.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_55",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/grc_passport_55.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_58",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/grc_passport_58.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_58_fake_4_10",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/grc_passport_58_fake_4_10.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_60",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/grc_passport_60.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_72",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/grc_passport_72.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_77_fake_4_83",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/grc_passport_77_fake_4_83.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_79",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/grc_passport_79.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_83_fake_4_49",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/grc_passport_83_fake_4_49.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_86_fake_4_7",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/grc_passport_86_fake_4_7.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_90_fake_4_77",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/grc_passport_90_fake_4_77.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_94_fake_4_106",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/grc_passport_94_fake_4_106.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_94_fake_4_88",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/grc_passport_94_fake_4_88.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_95",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/grc_passport_95.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_96",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/grc_passport_96.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_grc_passport_97",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/grc_passport_97.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_07",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/lva_passport_07.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_07_fake_0_16",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/lva_passport_07_fake_0_16.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_14_fake_0_45",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/lva_passport_14_fake_0_45.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_22",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/lva_passport_22.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_28_fake_0_44",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/lva_passport_28_fake_0_44.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_30",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/lva_passport_30.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_39_fake_0_50",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/lva_passport_39_fake_0_50.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_41",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/lva_passport_41.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_51_fake_0_114",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/lva_passport_51_fake_0_114.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_66_fake_0_36",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/lva_passport_66_fake_0_36.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_71_fake_0_114",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/lva_passport_71_fake_0_114.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_82_fake_0_72",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/lva_passport_82_fake_0_72.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_83",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/lva_passport_83.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_85_fake_0_13",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/lva_passport_85_fake_0_13.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_92",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/lva_passport_92.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_lva_passport_93_fake_0_26",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/lva_passport_93_fake_0_26.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_00_fake_1_67",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/rus_internalpassport_00_fake_1_67.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_12",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/rus_internalpassport_12.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_21_fake_1_31",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/rus_internalpassport_21_fake_1_31.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_31",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/rus_internalpassport_31.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_43",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/rus_internalpassport_43.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_49_fake_1_83",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/rus_internalpassport_49_fake_1_83.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_50",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/rus_internalpassport_50.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_54",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/rus_internalpassport_54.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_65_fake_1_17",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/rus_internalpassport_65_fake_1_17.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_67",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/rus_internalpassport_67.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_68_fake_1_55",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/rus_internalpassport_68_fake_1_55.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_74_fake_1_9",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/rus_internalpassport_74_fake_1_9.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_75",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/rus_internalpassport_75.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_77",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/rus_internalpassport_77.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_82",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/rus_internalpassport_82.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_83",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/rus_internalpassport_83.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_85_fake_1_5",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/rus_internalpassport_85_fake_1_5.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_93",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/rus_internalpassport_93.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_96",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/rus_internalpassport_96.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_rus_internalpassport_98_fake_1_74",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/rus_internalpassport_98_fake_1_74.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_srb_passport_02_fake_5_63",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/srb_passport_02_fake_5_63.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_srb_passport_23",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/srb_passport_23.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_srb_passport_26_fake_5_18",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/srb_passport_26_fake_5_18.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_srb_passport_29",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/srb_passport_29.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_srb_passport_35_fake_5_39",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/srb_passport_35_fake_5_39.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_srb_passport_36",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/srb_passport_36.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_srb_passport_39_fake_5_96",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/srb_passport_39_fake_5_96.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_srb_passport_41_fake_5_21",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/srb_passport_41_fake_5_21.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_srb_passport_47",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/srb_passport_47.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_srb_passport_59",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/srb_passport_59.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_srb_passport_66",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/srb_passport_66.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_srb_passport_68_fake_5_23",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/srb_passport_68_fake_5_23.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_srb_passport_79_fake_5_71",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/srb_passport_79_fake_5_71.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_srb_passport_84_fake_5_98",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/srb_passport_84_fake_5_98.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_srb_passport_87_fake_5_100",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/srb_passport_87_fake_5_100.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_00",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/svk_id_00.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_03_fake_8_69",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/svk_id_03_fake_8_69.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_09_fake_8_97",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/svk_id_09_fake_8_97.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_23",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/svk_id_23.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_34_fake_8_103",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/svk_id_34_fake_8_103.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_35",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/svk_id_35.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_39",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/svk_id_39.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_48",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/svk_id_48.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_55",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/svk_id_55.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_66_fake_8_25",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/svk_id_66_fake_8_25.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_69_fake_8_49",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/svk_id_69_fake_8_49.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_75",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/svk_id_75.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_85_fake_8_71",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/svk_id_85_fake_8_71.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_86",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/reals/svk_id_86.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_88_fake_8_62",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/svk_id_88_fake_8_62.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_93_fake_8_63",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/svk_id_93_fake_8_63.jpg",
+      "role": "val"
+    },
+    {
+      "image_id": "sidtd_svk_id_95_fake_8_80",
+      "path": "/scratch/b00090279/direct-reference-control-38041/raw/sidtd/templates/Images/fakes/svk_id_95_fake_8_80.jpg",
+      "role": "val"
+    }
+  ],
+  "query_reads_scope": "query_decode_helper_reads",
+  "replay": {
+    "atol": 1e-05,
+    "max_abs_difference": 0.0,
+    "n_images": 222,
+    "passed": true,
+    "rtol": 0.0001
+  },
+  "schema_version": "direct_reference_control_replay_v1",
+  "summary": {
+    "accuracy": 0.9279279279279279,
+    "altered_misses": [
+      "sidtd_aze_passport_97_fake_3_115",
+      "sidtd_est_id_62_fake_9_113",
+      "sidtd_est_id_74_fake_9_115",
+      "sidtd_fin_id_18_fake_7_110",
+      "sidtd_grc_passport_07_fake_4_101",
+      "sidtd_grc_passport_30_fake_4_108",
+      "sidtd_grc_passport_94_fake_4_106",
+      "sidtd_lva_passport_51_fake_0_114",
+      "sidtd_rus_internalpassport_49_fake_1_83",
+      "sidtd_srb_passport_87_fake_5_100",
+      "sidtd_svk_id_34_fake_8_103",
+      "sidtd_svk_id_88_fake_8_62"
+    ],
+    "auc": 0.974672131147541,
+    "buffers_unchanged": true,
+    "genuine_false_positives": [
+      "sidtd_alb_id_63",
+      "sidtd_aze_passport_10",
+      "sidtd_aze_passport_75",
+      "sidtd_rus_internalpassport_77"
+    ],
+    "image_loss": 0.3244064307890738,
+    "n_altered": 122,
+    "n_context_available": 222,
+    "n_context_unavailable": 0,
+    "n_genuine": 100,
+    "n_images": 222,
+    "referral_ids": [],
+    "subgroups": {
+      "copy": {
+        "accuracy": 0.8793103448275862,
+        "auc": 0.83875,
+        "n_altered": 16,
+        "n_genuine": 100
+      },
+      "inpainting": {
+        "accuracy": 0.970873786407767,
+        "auc": 0.9951886792452831,
+        "n_altered": 106,
+        "n_genuine": 100
+      }
+    }
+  },
+  "train_result": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/direct-reference-control-38041/training/off/train.json",
+    "sha256": "b04fea3b603a20fcd540c59ea4dcb5f373a90c06431f976f4a8a7d66172bd5ce"
+  }
+}

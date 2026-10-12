@@ -508,4 +508,12 @@ Job `38105` completed with exit `0:0` in 1 hour 13 minutes 19 seconds. Its final
 
 The declared accuracy-first, AUC-second selection chose epoch zero, before adapter training. Selected reference-on validation accuracy is 0.9279279279 and AUC is 0.9631147541. The unchanged original OFF snapshot and selected reference-disabled inference both give accuracy 0.9279279279 and AUC 0.9637704918. Epoch two reached AUC 0.9709016393 but accuracy 0.9189189189, so it is not the selected result. No trained epoch exceeded epoch zero's accuracy. The exploratory training therefore produced no improvement under the declared selection rule. This does not establish that independently trained end-to-end reference conditioning cannot help. Formal matched training and sweep gates remain unchanged.
 
-At this completion check, original OFF job `38041` remained running with 75 epochs recorded. Its completed-control outcome and fresh-process replay remain pending.
+At this completion check, original OFF job `38041` remained running with 75 epochs recorded. Its completed-control outcome and fresh-process replay remained pending at that time.
+
+### Original OFF100 job 38041 completed
+
+Job `38041` completed with exit `0:0` in 10 hours 44 minutes 37 seconds. All 100 epochs and 22,200 optimizer updates finished. Accuracy-first validation selection retained epoch 66, with accuracy 0.9279279279 and AUC 0.9746721311 across all 222 official validation images. Genuine false-positive rate is 0.04. Copy-subset AUC is 0.83875 (16 altered images plus 100 genuine); inpainting-subset AUC is 0.9951886792 (106 altered plus the same 100 genuine). These are validation results, not official aggregate test results.
+
+The original completion and fresh-process replay receipts succeeded without a recovery patch. Completion receipt SHA256 is `1bb2a8e9901cb703568c35d0f65eb7df2bd04f34ae20e76b4c9c638d446eadf0`; input manifest SHA256 is `dbe33a68c945cb5f6b5c4140fb6000e293342150537bef4d09ff2304d46d613a`. Metadata and prediction CSVs are preserved under `results/runs/direct-reference-v1/direct-reference-control-38041`. The metadata-only authenticated report is `evidence/direct-reference-control-38041-completed-2026-10-13.json` with its Markdown companion.
+
+The agreed competence targets remain unmet. The approved fresh global-readout comparison therefore remains warranted, conditional on its independent review and GPU smoke. The original jointly trained query component alone is not an independently trained classifier, and its lower score does not prove an implementation defect. No formal reference run or sweep is authorized by this completed control.

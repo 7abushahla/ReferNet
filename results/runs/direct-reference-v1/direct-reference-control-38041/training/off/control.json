@@ -1,0 +1,35 @@
+{
+  "arm": "off",
+  "checkpoint": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/direct-reference-control-38041/training/off/best.pt",
+    "sha256": "ca04c8b3f488a69ab62b0a9557a061b0203501a74292da1719ce0b1ceac31a04"
+  },
+  "control_request": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/requests/fold0-off100-eec5973.json",
+    "sha256": "7f92ecf587dc46b13836a5722ca9bb6a6d93fcfce214947023307308cbefc3c3"
+  },
+  "epochs_completed": 100,
+  "fresh_replay": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/direct-reference-control-38041/training/off/fresh-replay.json",
+    "sha256": "60ebd4d386d12918a1ec1b2728aa6bc7663c6743cf350140981abbcc490be9ff"
+  },
+  "identities": {
+    "config_sha256": "7a87ddefc956dd6026e2d29c8459d9bcb8251cbc9105218926b6d67e5abaa1a5",
+    "enrollment_sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8",
+    "initialization_sha256": "93086fd2832d7b83c9387cf99f8ef14d0f97f947fdc6c6beea4b0f1fd4b90a08",
+    "phase_authority_sha256": "b711bcdb259f684f26a30bbad31b59bf5d4f5185f0f03138bd0f8166c1b40cc5",
+    "preprocess_sha256": "4e71b159274fba1d38b65ed5973959028c5f9588df511a451679c24f64d43844",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "registration_sha256": "759ccb75eb621bf1a6395ebfd765f64142d8e005bdfd06ceee4ee30d019ed47a",
+    "source_sha256": "a5ff28ae2a332b977551241f2d07641d51df78d54a4cc1b58169c7338ce11292",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "passed": true,
+  "phase": "train",
+  "schema_version": "direct_reference_control_result_v1",
+  "train_result": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/direct-reference-control-38041/training/off/train.json",
+    "sha256": "b04fea3b603a20fcd540c59ea4dcb5f373a90c06431f976f4a8a7d66172bd5ce"
+  }
+}
