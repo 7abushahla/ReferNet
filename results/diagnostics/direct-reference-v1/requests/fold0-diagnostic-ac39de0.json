@@ -1,0 +1,26 @@
+{
+  "schema_version": "direct_reference_diagnostic_request_v1",
+  "source_sha256": "89f6c70266d1f9dce8d1e433dbb091ca310f79ef5a0b02eeecba8038ef8ff9e0",
+  "config": {
+    "path": "/shared/b00090279/refer-or-clear/results/source/direct-reference-ac39de0a3c8683ba67dd95ff5046a78edebf34cc/code/configs/direct_reference_pilot.yaml",
+    "sha256": "a89c6213a1877632510f66f49cf843c7e0c5a9e585b434da08abbecb8abf7b39"
+  },
+  "records": {
+    "path": "/shared/b00090279/refer-or-clear/data/processed/records.csv",
+    "sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276"
+  },
+  "split": {
+    "path": "/shared/b00090279/refer-or-clear/data/processed/splits/protocol_a_it0.csv",
+    "sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9"
+  },
+  "weights": {
+    "path": "/shared/b00090279/refer-or-clear/checkpoints/pretrained/ChangerEx_r18-512x512_40k_levircd_20221223_120511.pth",
+    "sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "enrollment": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold0-37973/enrollment/manifest.json",
+    "sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8"
+  },
+  "raw_root": "/shared/b00090279/refer-or-clear/data/raw",
+  "product_root": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold0-37973/enrollment"
+}
