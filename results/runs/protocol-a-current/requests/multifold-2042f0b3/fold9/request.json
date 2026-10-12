@@ -1,0 +1,37 @@
+{
+  "cache_bytes": 4294967296,
+  "config": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/multifold-2042f0b3/fold9/config.yaml",
+    "sha256": "5e2432239378b2743445e080f403b66a91214e57a91d911f6537821ee9cbc9f1"
+  },
+  "enrollment": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold9-38087/enrollment/manifest.json",
+    "sha256": "0e9581f541c9acb9821632b0ec8b4ea78e6bb820d292742d730efc05f8d64a11"
+  },
+  "fold": 9,
+  "metadata_relocation": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/multifold-2042f0b3/fold9/metadata-relocation.json",
+    "sha256": "528c976a9f43b2231a4a116b4063536ea87b0d8141d74345fe5f9aacb4d9b77b"
+  },
+  "output_root": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/fold9-study-2042f0b3",
+  "protocol": "A",
+  "raw_root": "/shared/b00090279/refer-or-clear/data/raw",
+  "records": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold9-38087/inputs/records.csv",
+    "sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276"
+  },
+  "root": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/multifold-2042f0b3/fold9/product-root.json",
+    "sha256": "8dca1a8b1ca297b23c0768223014004a7a6bd8570360c2f47bd31cfd4ab08416"
+  },
+  "schema_version": "protocol_a_request_v1",
+  "source_sha256": "2042f0b3c777f1e51ecb261b4e18c28e32a62f8b13feb1ba7cd5498ff5a5d9a0",
+  "split": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold9-38087/inputs/split.csv",
+    "sha256": "a47b0573c46bc9463ed187369bfe43dd6d683cce83a9e59fa0a07a51700d17af"
+  },
+  "weights": {
+    "path": "/shared/b00090279/refer-or-clear/results/source/study-shared-assets/weights.pth",
+    "sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  }
+}

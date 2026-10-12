@@ -1,0 +1,18 @@
+{
+  "enrollment_manifest_sha256": "eabb50175e3ea300dffa2c9fe2af65c4fef173912ab3cf4ddd370ed9e57b263d",
+  "fold": 5,
+  "protocol": "A",
+  "relocations": {
+    "records": {
+      "original_path": "/tmp/b00090279/anchor-enrollment-fold5-38083/inputs/records.csv",
+      "path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/inputs/records.csv",
+      "sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276"
+    },
+    "split": {
+      "original_path": "/tmp/b00090279/anchor-enrollment-fold5-38083/inputs/split.csv",
+      "path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/inputs/split.csv",
+      "sha256": "ce9f413e18fafb53191b2a4f77e9b1c7df5b00fb02043f3985726b7281b2fb09"
+    }
+  },
+  "schema_version": "protocol_a_metadata_relocation_v1"
+}
