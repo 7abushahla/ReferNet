@@ -20,6 +20,8 @@ Download job 38155 failed before transfer because the CPU node does not have the
 
 Manuscript working fragments for the current method and provenance-separated development evidence were committed and pushed in the paper repository as `173ede5`. Both fragments compiled together successfully through two LaTeX passes. They are not integrated into `main.tex` and do not present development validation as final test or transfer results.
 
+The corrected CPU downloader was submitted as jobs 38159 (FantasyID) and 38160 (WV). The user then took ownership of downloads, so both jobs were cancelled by the coordinator. No further download submission is authorized by this handoff. Only WV.zip remains requested from the user; AZ and FantasyID already exist locally. The existing AZ laptop-to-cluster transfer is separate from archive downloading and remains in progress. Partial archives are not treated as verified datasets.
+
 Plan `docs/superpowers/plans/2026-10-11-classification-centered-anchor.md`.
 
 Starting revision `60a3adf`. Implementation and parallel delegation are authorized. Codex owns integration, commits, pushes and all submissions. External review owns milestone/gate assessment and makes no repository changes. Existing jobs and historical artifacts remain untouched.
