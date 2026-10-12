@@ -1,0 +1,128 @@
+{
+  "checkpoint_path": "/shared/b00090279/refer-or-clear/results/runs/direct-reference-v1/direct-reference-control-38041/training/off/best.pt",
+  "checkpoint_sha256": "3230b5e81af26fc4c3019db39a1c9076833e7310e612433d106011f4366fa59e",
+  "counters": {
+    "base.backbone.layer1.0.bn1.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer1.0.bn2.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer1.1.bn1.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer1.1.bn2.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer2.0.bn1.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer2.0.bn2.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer2.0.downsample.1.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer2.1.bn1.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer2.1.bn2.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer3.0.bn1.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer3.0.bn2.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer3.0.downsample.1.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer3.1.bn1.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer3.1.bn2.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer4.0.bn1.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer4.0.bn2.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer4.0.downsample.1.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer4.1.bn1.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.layer4.1.bn2.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.stem.1.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.stem.4.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    },
+    "base.backbone.stem.7.num_batches_tracked": {
+      "increment": 11100,
+      "initial": 80000,
+      "observed": 91100
+    }
+  },
+  "epoch": 50,
+  "expected_increment": 11100,
+  "forward_calls": 0,
+  "job_id": "38100",
+  "model_constructed": false,
+  "node": "cpu-dy-c5-0-3",
+  "partition": "cpu",
+  "passed": true,
+  "pixels_decoded": false,
+  "schema_version": "direct_reference_bn_counter_inspection_v1",
+  "scope": "saved checkpoint counter deltas only; not a per-epoch or inference-buffer-invariance proof",
+  "training_modified": false
+}

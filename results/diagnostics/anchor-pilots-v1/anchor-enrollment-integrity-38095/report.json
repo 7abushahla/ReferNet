@@ -1,0 +1,2728 @@
+{
+  "actual_manifest_sha256": "eabb50175e3ea300dffa2c9fe2af65c4fef173912ab3cf4ddd370ed9e57b263d",
+  "counts": {
+    "bank_json_pairs_checked": 30,
+    "banks_checked": 30,
+    "designs_declared": 10,
+    "products_declared": 270,
+    "products_hashed": 270,
+    "products_matched": 270,
+    "products_missing": 0,
+    "registered_supports": 1140
+  },
+  "declared_output_root": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment",
+  "detector_clearance": false,
+  "error_count": 0,
+  "errors": [],
+  "expected_fold": 5,
+  "expected_manifest_sha256": "eabb50175e3ea300dffa2c9fe2af65c4fef173912ab3cf4ddd370ed9e57b263d",
+  "manifest_path": "/tmp/b00090279/anchor-enrollment-integrity-38095/inputs/manifest.json",
+  "passed": true,
+  "pixels_decoded": false,
+  "products": [
+    {
+      "actual_sha256": "69d5dab728e59ddc786b38dadaff1f3f825d4ecdc6af21aceeb3b070eca64942",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/coverage.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "69d5dab728e59ddc786b38dadaff1f3f825d4ecdc6af21aceeb3b070eca64942",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/coverage.png"
+    },
+    {
+      "actual_sha256": "dde5ee9d6b74f1da22031622417bd5d55d63205150cd2a11f087e2af04ee4f74",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/geometry.json",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "dde5ee9d6b74f1da22031622417bd5d55d63205150cd2a11f087e2af04ee4f74",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/geometry.json"
+    },
+    {
+      "actual_sha256": "1d7b3338f1acac4b7d00d03968b367ed21ce4e26cf9f0f231d6df6b9fc3d8f74",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/manifest.json",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "1d7b3338f1acac4b7d00d03968b367ed21ce4e26cf9f0f231d6df6b9fc3d8f74",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/manifest.json"
+    },
+    {
+      "actual_sha256": "9c63347751ecc8c1fefa33262b03e73db6e4ce1571b4447feeffe821da432b9e",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/median.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "9c63347751ecc8c1fefa33262b03e73db6e4ce1571b4447feeffe821da432b9e",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/median.png"
+    },
+    {
+      "actual_sha256": "1a48b85439850e02ecc8dc3ed0759cf03970044c4826bc53311a60ce1cd2c40e",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/target.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "1a48b85439850e02ecc8dc3ed0759cf03970044c4826bc53311a60ce1cd2c40e",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/target.png"
+    },
+    {
+      "actual_sha256": "f116650cf11076ebddd38ca330e4c13b9393651ed820e3c90ab74a7adb005e2e",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/target_coverage.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "f116650cf11076ebddd38ca330e4c13b9393651ed820e3c90ab74a7adb005e2e",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/target_coverage.png"
+    },
+    {
+      "actual_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/target_valid.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/target_valid.png"
+    },
+    {
+      "actual_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/valid.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/valid.png"
+    },
+    {
+      "actual_sha256": "64e8f803fe95eb55e3f14fa60776d522c9680ddf6d38791f09132a06e8be54d4",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/zone.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "64e8f803fe95eb55e3f14fa60776d522c9680ddf6d38791f09132a06e8be54d4",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/enrollment/zone.png"
+    },
+    {
+      "actual_sha256": "5d18b5586f3d4f439645742fa06344cbd9d8946a22c384a696f5f37cf30909db",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/coverage.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "5d18b5586f3d4f439645742fa06344cbd9d8946a22c384a696f5f37cf30909db",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/coverage.png"
+    },
+    {
+      "actual_sha256": "227aad005cdad325b8de3594fa727fde8e0f2bb9e9e5dda378cd0f1ed01973da",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/geometry.json",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "227aad005cdad325b8de3594fa727fde8e0f2bb9e9e5dda378cd0f1ed01973da",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/geometry.json"
+    },
+    {
+      "actual_sha256": "71bae9e509c49cf9a9caa15f6ebb119b7485dc3523c6f7656b310c01fda74023",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/manifest.json",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "71bae9e509c49cf9a9caa15f6ebb119b7485dc3523c6f7656b310c01fda74023",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/manifest.json"
+    },
+    {
+      "actual_sha256": "25568f3856bb59a0b46ece3b019713e20c43982c97122dc1bb2d15194db54c64",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/median.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "25568f3856bb59a0b46ece3b019713e20c43982c97122dc1bb2d15194db54c64",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/median.png"
+    },
+    {
+      "actual_sha256": "80502092d5ae1d7ccb3e2f8178aa173f15c0c0ad1dec5f3f271c691b134f0c08",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/target.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "80502092d5ae1d7ccb3e2f8178aa173f15c0c0ad1dec5f3f271c691b134f0c08",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/target.png"
+    },
+    {
+      "actual_sha256": "f3087e2f4c32fbd66953f707bd03eb694a10aa601526293f664557266d9b6de0",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/target_coverage.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "f3087e2f4c32fbd66953f707bd03eb694a10aa601526293f664557266d9b6de0",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/target_coverage.png"
+    },
+    {
+      "actual_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/target_valid.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/target_valid.png"
+    },
+    {
+      "actual_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/valid.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/valid.png"
+    },
+    {
+      "actual_sha256": "38e2ee7e9b2c0995d75681343478e9f78272303ff8828e48de34da6584eab69f",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/zone.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "38e2ee7e9b2c0995d75681343478e9f78272303ff8828e48de34da6584eab69f",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half0/zone.png"
+    },
+    {
+      "actual_sha256": "87420c7d8dc43e62e0c807e84b347dbea2bbba43308be1fdf4228adc1ea76980",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/coverage.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "87420c7d8dc43e62e0c807e84b347dbea2bbba43308be1fdf4228adc1ea76980",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/coverage.png"
+    },
+    {
+      "actual_sha256": "b03d458ff09847beed0ba8667ac3fa0145f7025d88894701737f01f26cce380e",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/geometry.json",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "b03d458ff09847beed0ba8667ac3fa0145f7025d88894701737f01f26cce380e",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/geometry.json"
+    },
+    {
+      "actual_sha256": "d4a85192dae737e0df493b823c88ed5a68d90e21a333f90635540ac83868a930",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/manifest.json",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "d4a85192dae737e0df493b823c88ed5a68d90e21a333f90635540ac83868a930",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/manifest.json"
+    },
+    {
+      "actual_sha256": "3d54b95eb43da1cd510b742983ba3ba080787fce56a7e7503a7fa6d3b2811825",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/median.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "3d54b95eb43da1cd510b742983ba3ba080787fce56a7e7503a7fa6d3b2811825",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/median.png"
+    },
+    {
+      "actual_sha256": "35ea1dce07c557468365fddca9020241a162da61ee9f37baf647f73fae16d2f7",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/target.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "35ea1dce07c557468365fddca9020241a162da61ee9f37baf647f73fae16d2f7",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/target.png"
+    },
+    {
+      "actual_sha256": "fb1320f374d1cfd1e761d0ca91562676a8eae617818fbbce6fa299898458487b",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/target_coverage.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "fb1320f374d1cfd1e761d0ca91562676a8eae617818fbbce6fa299898458487b",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/target_coverage.png"
+    },
+    {
+      "actual_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/target_valid.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/target_valid.png"
+    },
+    {
+      "actual_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/valid.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/valid.png"
+    },
+    {
+      "actual_sha256": "37c09882efa60bc7f14e8d82bf230cd301b0c4cf6ac1ff2812ba0e524d0d6fd2",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/zone.png",
+      "design": "sidtd/alb_id",
+      "expected_sha256": "37c09882efa60bc7f14e8d82bf230cd301b0c4cf6ac1ff2812ba0e524d0d6fd2",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/alb_id/train_half1/zone.png"
+    },
+    {
+      "actual_sha256": "06ab5aa077e36c7c766ca42ff573c53d8e6b2c93af2a79e501623fceeb538692",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/coverage.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "06ab5aa077e36c7c766ca42ff573c53d8e6b2c93af2a79e501623fceeb538692",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/coverage.png"
+    },
+    {
+      "actual_sha256": "554f606896860779b396072bad583b5e8c70901f6e050ea8654f12808a1157fd",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/geometry.json",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "554f606896860779b396072bad583b5e8c70901f6e050ea8654f12808a1157fd",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/geometry.json"
+    },
+    {
+      "actual_sha256": "108aac9cf5ade3877b799afe97fe0bce814ab35cfe88670edca9d0339311f3f9",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/manifest.json",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "108aac9cf5ade3877b799afe97fe0bce814ab35cfe88670edca9d0339311f3f9",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/manifest.json"
+    },
+    {
+      "actual_sha256": "7c9ccb6a6749f9ecd65b7c039b63b147c1ca47318b611f63df5d4a10faeaeb97",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/median.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "7c9ccb6a6749f9ecd65b7c039b63b147c1ca47318b611f63df5d4a10faeaeb97",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/median.png"
+    },
+    {
+      "actual_sha256": "36c97e8b57c3c058cfb05772a6614f9b0ae2ce29c874d322764e4e09c7692e46",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/target.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "36c97e8b57c3c058cfb05772a6614f9b0ae2ce29c874d322764e4e09c7692e46",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/target.png"
+    },
+    {
+      "actual_sha256": "06ab5aa077e36c7c766ca42ff573c53d8e6b2c93af2a79e501623fceeb538692",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/target_coverage.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "06ab5aa077e36c7c766ca42ff573c53d8e6b2c93af2a79e501623fceeb538692",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/target_coverage.png"
+    },
+    {
+      "actual_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/target_valid.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/target_valid.png"
+    },
+    {
+      "actual_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/valid.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/valid.png"
+    },
+    {
+      "actual_sha256": "b5a70951d41823f0d1a612e180a5d0d83f18ec00901e3f71d4313166d66450f8",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/zone.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "b5a70951d41823f0d1a612e180a5d0d83f18ec00901e3f71d4313166d66450f8",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/enrollment/zone.png"
+    },
+    {
+      "actual_sha256": "51e7db5684e786a4c781d21dcc9a123afb70558e57c931cd293695cc87ed6db5",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/coverage.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "51e7db5684e786a4c781d21dcc9a123afb70558e57c931cd293695cc87ed6db5",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/coverage.png"
+    },
+    {
+      "actual_sha256": "8acfec29a83fafcbb38c6a4affa256d75b61ed28c0bf423a714238b439299b49",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/geometry.json",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "8acfec29a83fafcbb38c6a4affa256d75b61ed28c0bf423a714238b439299b49",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/geometry.json"
+    },
+    {
+      "actual_sha256": "6821cc40e878b5918042ce91e0ce33c690eff53a1d50552f407ec237abc6363b",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/manifest.json",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "6821cc40e878b5918042ce91e0ce33c690eff53a1d50552f407ec237abc6363b",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/manifest.json"
+    },
+    {
+      "actual_sha256": "bc03375aefdfc6b7331e15a701e7536069a79c353757f4851bf0e56c07b42200",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/median.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "bc03375aefdfc6b7331e15a701e7536069a79c353757f4851bf0e56c07b42200",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/median.png"
+    },
+    {
+      "actual_sha256": "80958265dbd11af44be0113a712d9bbcb9128a8809b62948ede2b120121456ee",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/target.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "80958265dbd11af44be0113a712d9bbcb9128a8809b62948ede2b120121456ee",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/target.png"
+    },
+    {
+      "actual_sha256": "51e7db5684e786a4c781d21dcc9a123afb70558e57c931cd293695cc87ed6db5",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/target_coverage.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "51e7db5684e786a4c781d21dcc9a123afb70558e57c931cd293695cc87ed6db5",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/target_coverage.png"
+    },
+    {
+      "actual_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/target_valid.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/target_valid.png"
+    },
+    {
+      "actual_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/valid.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/valid.png"
+    },
+    {
+      "actual_sha256": "95b6bac77cbe2f028177f30e80ecc591cdd8866b1a9a5d845ac142859c77ac4f",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/zone.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "95b6bac77cbe2f028177f30e80ecc591cdd8866b1a9a5d845ac142859c77ac4f",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half0/zone.png"
+    },
+    {
+      "actual_sha256": "3f16fd46bd87cdcbe787a242aa74223123c26803b622dbf16b42017b21e5013d",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/coverage.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "3f16fd46bd87cdcbe787a242aa74223123c26803b622dbf16b42017b21e5013d",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/coverage.png"
+    },
+    {
+      "actual_sha256": "ea698a00489f8308c651e5cfb75983841aaf700512444da9860849169237056e",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/geometry.json",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "ea698a00489f8308c651e5cfb75983841aaf700512444da9860849169237056e",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/geometry.json"
+    },
+    {
+      "actual_sha256": "fc9ddc8a50bf8f6e31880382a9f98a61ac52c3f144108bc2c904b54d39cd46f1",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/manifest.json",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "fc9ddc8a50bf8f6e31880382a9f98a61ac52c3f144108bc2c904b54d39cd46f1",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/manifest.json"
+    },
+    {
+      "actual_sha256": "f94526f3d190f0997fdf2b385099a3426b15028ac593fed29051b9f9bf059801",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/median.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "f94526f3d190f0997fdf2b385099a3426b15028ac593fed29051b9f9bf059801",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/median.png"
+    },
+    {
+      "actual_sha256": "86f783c82221a052ab0cb871b1d4ccf09dcd998829d3c8ba8d67ce23deaf6628",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/target.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "86f783c82221a052ab0cb871b1d4ccf09dcd998829d3c8ba8d67ce23deaf6628",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/target.png"
+    },
+    {
+      "actual_sha256": "3f16fd46bd87cdcbe787a242aa74223123c26803b622dbf16b42017b21e5013d",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/target_coverage.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "3f16fd46bd87cdcbe787a242aa74223123c26803b622dbf16b42017b21e5013d",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/target_coverage.png"
+    },
+    {
+      "actual_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/target_valid.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/target_valid.png"
+    },
+    {
+      "actual_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/valid.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/valid.png"
+    },
+    {
+      "actual_sha256": "f0c9d0419882e574450434552161a940cfa27f568859ceb63324887b753c17e3",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/zone.png",
+      "design": "sidtd/aze_passport",
+      "expected_sha256": "f0c9d0419882e574450434552161a940cfa27f568859ceb63324887b753c17e3",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/aze_passport/train_half1/zone.png"
+    },
+    {
+      "actual_sha256": "e24df7438a760b4aa256f707788b78a3ce8ff18f4ce12580247e2dbe41c55496",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/coverage.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "e24df7438a760b4aa256f707788b78a3ce8ff18f4ce12580247e2dbe41c55496",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/coverage.png"
+    },
+    {
+      "actual_sha256": "9b3445fe3914c1f00484bcb609ef5ba5387d71edb4bb7eedb4c0221b42b0c0bb",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/geometry.json",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "9b3445fe3914c1f00484bcb609ef5ba5387d71edb4bb7eedb4c0221b42b0c0bb",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/geometry.json"
+    },
+    {
+      "actual_sha256": "b51c6d517539d23152e84b578ba0a014b4af30cefd5493e41656869cb3ce6685",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/manifest.json",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "b51c6d517539d23152e84b578ba0a014b4af30cefd5493e41656869cb3ce6685",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/manifest.json"
+    },
+    {
+      "actual_sha256": "b44f52037cf0bb918ba3de1291e28fd2c32c00cf51c25c84d3c64a8ea506b4ef",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/median.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "b44f52037cf0bb918ba3de1291e28fd2c32c00cf51c25c84d3c64a8ea506b4ef",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/median.png"
+    },
+    {
+      "actual_sha256": "8bf234014a13a1ae2f2fe0a8564974bfc8fadcc2162b060108c46baf5b851e02",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/target.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "8bf234014a13a1ae2f2fe0a8564974bfc8fadcc2162b060108c46baf5b851e02",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/target.png"
+    },
+    {
+      "actual_sha256": "e24df7438a760b4aa256f707788b78a3ce8ff18f4ce12580247e2dbe41c55496",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/target_coverage.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "e24df7438a760b4aa256f707788b78a3ce8ff18f4ce12580247e2dbe41c55496",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/target_coverage.png"
+    },
+    {
+      "actual_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/target_valid.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/target_valid.png"
+    },
+    {
+      "actual_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/valid.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/valid.png"
+    },
+    {
+      "actual_sha256": "1c8698dc70943cbc3a6a4dca0b8b7564e96116b439001f0859fe767fa6854b17",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/zone.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "1c8698dc70943cbc3a6a4dca0b8b7564e96116b439001f0859fe767fa6854b17",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/enrollment/zone.png"
+    },
+    {
+      "actual_sha256": "fdef3cc4cd9e46dcb3a31046dee42390cca1876e86cedcaec805b6a1bb095e05",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/coverage.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "fdef3cc4cd9e46dcb3a31046dee42390cca1876e86cedcaec805b6a1bb095e05",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/coverage.png"
+    },
+    {
+      "actual_sha256": "2e97f4e50b836fd678f552d5aecc9b2894c4a621b1849745f2cec19d701eaa9e",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/geometry.json",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "2e97f4e50b836fd678f552d5aecc9b2894c4a621b1849745f2cec19d701eaa9e",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/geometry.json"
+    },
+    {
+      "actual_sha256": "67e5c24ffb8d00ad1fc206154d0485874083141a4f20fc0d0b2fda53115c266e",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/manifest.json",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "67e5c24ffb8d00ad1fc206154d0485874083141a4f20fc0d0b2fda53115c266e",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/manifest.json"
+    },
+    {
+      "actual_sha256": "35b5c09a6b02d4ed2ffe21306e28e5c522736576dabc3817e3fdb5ff152358f4",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/median.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "35b5c09a6b02d4ed2ffe21306e28e5c522736576dabc3817e3fdb5ff152358f4",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/median.png"
+    },
+    {
+      "actual_sha256": "d9dd08422fd7dda08b6edea8706ef5814908ff1f4a6675fc31ad6044e2d9758d",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/target.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "d9dd08422fd7dda08b6edea8706ef5814908ff1f4a6675fc31ad6044e2d9758d",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/target.png"
+    },
+    {
+      "actual_sha256": "fdef3cc4cd9e46dcb3a31046dee42390cca1876e86cedcaec805b6a1bb095e05",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/target_coverage.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "fdef3cc4cd9e46dcb3a31046dee42390cca1876e86cedcaec805b6a1bb095e05",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/target_coverage.png"
+    },
+    {
+      "actual_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/target_valid.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/target_valid.png"
+    },
+    {
+      "actual_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/valid.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/valid.png"
+    },
+    {
+      "actual_sha256": "bdc742c27fcc950a092489575876f5c73d795ceeac002abe572c419e873d3996",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/zone.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "bdc742c27fcc950a092489575876f5c73d795ceeac002abe572c419e873d3996",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half0/zone.png"
+    },
+    {
+      "actual_sha256": "1d4c777a6229c1fadb8b519383dd3518c62b8bb2f2327edbb80af05f5701bf77",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/coverage.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "1d4c777a6229c1fadb8b519383dd3518c62b8bb2f2327edbb80af05f5701bf77",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/coverage.png"
+    },
+    {
+      "actual_sha256": "acb69714ca383b14a197d6827436732d92386c38a72979607f1e88c74ac00205",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/geometry.json",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "acb69714ca383b14a197d6827436732d92386c38a72979607f1e88c74ac00205",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/geometry.json"
+    },
+    {
+      "actual_sha256": "8a89fe0300febf4fba3fcc2a59f6120118c775108ff95b86000815ee67c97d7b",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/manifest.json",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "8a89fe0300febf4fba3fcc2a59f6120118c775108ff95b86000815ee67c97d7b",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/manifest.json"
+    },
+    {
+      "actual_sha256": "dbbade6f564d0a6f9247d6b8ddaf0f37c96f00c0088aebd152db10de20482c7d",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/median.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "dbbade6f564d0a6f9247d6b8ddaf0f37c96f00c0088aebd152db10de20482c7d",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/median.png"
+    },
+    {
+      "actual_sha256": "243b7af659b60611eba464ab4cdf214b479abdeef0205ae6b6dfdb0ce07f94a7",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/target.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "243b7af659b60611eba464ab4cdf214b479abdeef0205ae6b6dfdb0ce07f94a7",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/target.png"
+    },
+    {
+      "actual_sha256": "1d4c777a6229c1fadb8b519383dd3518c62b8bb2f2327edbb80af05f5701bf77",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/target_coverage.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "1d4c777a6229c1fadb8b519383dd3518c62b8bb2f2327edbb80af05f5701bf77",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/target_coverage.png"
+    },
+    {
+      "actual_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/target_valid.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/target_valid.png"
+    },
+    {
+      "actual_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/valid.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/valid.png"
+    },
+    {
+      "actual_sha256": "96611efa78c0d5f3aa24a453b15edcf38dc61bab5497091c0894ae704dba3244",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/zone.png",
+      "design": "sidtd/esp_id",
+      "expected_sha256": "96611efa78c0d5f3aa24a453b15edcf38dc61bab5497091c0894ae704dba3244",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/esp_id/train_half1/zone.png"
+    },
+    {
+      "actual_sha256": "5083291386c0643b3d9f4a6a4e908aee13184871e4e312a138d5642aa6efa213",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/coverage.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "5083291386c0643b3d9f4a6a4e908aee13184871e4e312a138d5642aa6efa213",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/coverage.png"
+    },
+    {
+      "actual_sha256": "5fbe0a99efba1e1268e87ff8c6c3182ebc34af4b5b408e5fd8a0abe97e50d57d",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/geometry.json",
+      "design": "sidtd/est_id",
+      "expected_sha256": "5fbe0a99efba1e1268e87ff8c6c3182ebc34af4b5b408e5fd8a0abe97e50d57d",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/geometry.json"
+    },
+    {
+      "actual_sha256": "c42ef91a6c3b4d81cff49136c0c32fdff5e5d51df5c2c235ccff92f82832e70d",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/manifest.json",
+      "design": "sidtd/est_id",
+      "expected_sha256": "c42ef91a6c3b4d81cff49136c0c32fdff5e5d51df5c2c235ccff92f82832e70d",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/manifest.json"
+    },
+    {
+      "actual_sha256": "38d85d4d076e2d9a65091dc1c65748e96babcddc81417c9824c881537631d8d2",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/median.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "38d85d4d076e2d9a65091dc1c65748e96babcddc81417c9824c881537631d8d2",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/median.png"
+    },
+    {
+      "actual_sha256": "d58a2643932f98b0107672e1dce8b4219b8ca0730e39f221fef0b652abf8b5e8",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/target.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "d58a2643932f98b0107672e1dce8b4219b8ca0730e39f221fef0b652abf8b5e8",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/target.png"
+    },
+    {
+      "actual_sha256": "5083291386c0643b3d9f4a6a4e908aee13184871e4e312a138d5642aa6efa213",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/target_coverage.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "5083291386c0643b3d9f4a6a4e908aee13184871e4e312a138d5642aa6efa213",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/target_coverage.png"
+    },
+    {
+      "actual_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/target_valid.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/target_valid.png"
+    },
+    {
+      "actual_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/valid.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/valid.png"
+    },
+    {
+      "actual_sha256": "c3f82677ff8c2ab938abc4453e1d7ea36aa0db623e736f3c1215bdf75e481bfa",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/zone.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "c3f82677ff8c2ab938abc4453e1d7ea36aa0db623e736f3c1215bdf75e481bfa",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/enrollment/zone.png"
+    },
+    {
+      "actual_sha256": "5e93b965dbc714f4a5d8e6ca9e2c66402ea7acd4fee800afbf3fd08fbb908485",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/coverage.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "5e93b965dbc714f4a5d8e6ca9e2c66402ea7acd4fee800afbf3fd08fbb908485",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/coverage.png"
+    },
+    {
+      "actual_sha256": "de65946a2a5ab057970540bc888278cd31ceea788f460e0b15a937b2c5daf029",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/geometry.json",
+      "design": "sidtd/est_id",
+      "expected_sha256": "de65946a2a5ab057970540bc888278cd31ceea788f460e0b15a937b2c5daf029",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/geometry.json"
+    },
+    {
+      "actual_sha256": "5f7cd42e9a28f7c02c43ebef96e122801eaa5a9b63e8b28791177edac7c6d869",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/manifest.json",
+      "design": "sidtd/est_id",
+      "expected_sha256": "5f7cd42e9a28f7c02c43ebef96e122801eaa5a9b63e8b28791177edac7c6d869",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/manifest.json"
+    },
+    {
+      "actual_sha256": "1ea481ffb779aa07c6ec2895ccdbac72c2463a11ec1193ec7e66e574842462bc",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/median.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "1ea481ffb779aa07c6ec2895ccdbac72c2463a11ec1193ec7e66e574842462bc",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/median.png"
+    },
+    {
+      "actual_sha256": "a51fc24a4bbede576fbbcc9e181dceccfe49672d8e125912635cf4f20e657928",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/target.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "a51fc24a4bbede576fbbcc9e181dceccfe49672d8e125912635cf4f20e657928",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/target.png"
+    },
+    {
+      "actual_sha256": "5e93b965dbc714f4a5d8e6ca9e2c66402ea7acd4fee800afbf3fd08fbb908485",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/target_coverage.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "5e93b965dbc714f4a5d8e6ca9e2c66402ea7acd4fee800afbf3fd08fbb908485",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/target_coverage.png"
+    },
+    {
+      "actual_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/target_valid.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/target_valid.png"
+    },
+    {
+      "actual_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/valid.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/valid.png"
+    },
+    {
+      "actual_sha256": "1e13c97e1f8cd98107b3e747a4fa7209355429c6025a5db968d646ccfd5d0d79",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/zone.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "1e13c97e1f8cd98107b3e747a4fa7209355429c6025a5db968d646ccfd5d0d79",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half0/zone.png"
+    },
+    {
+      "actual_sha256": "8c53d236a9395fc6ce7a171b6b86df8ab68c6b4161346545659c232630a758dd",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/coverage.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "8c53d236a9395fc6ce7a171b6b86df8ab68c6b4161346545659c232630a758dd",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/coverage.png"
+    },
+    {
+      "actual_sha256": "6e3d3b87854b4901a07e9d1a380efd93990b78f55e794e241f9f05495c4f34f6",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/geometry.json",
+      "design": "sidtd/est_id",
+      "expected_sha256": "6e3d3b87854b4901a07e9d1a380efd93990b78f55e794e241f9f05495c4f34f6",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/geometry.json"
+    },
+    {
+      "actual_sha256": "00ff0da1da9e4c82f58fb21478d7f1e8c34728f0b67aa5aa9727e104d5fe8525",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/manifest.json",
+      "design": "sidtd/est_id",
+      "expected_sha256": "00ff0da1da9e4c82f58fb21478d7f1e8c34728f0b67aa5aa9727e104d5fe8525",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/manifest.json"
+    },
+    {
+      "actual_sha256": "754940331c1cdd82e4b86e82197f1e09ffda92f3588528638d42a687bc1ffd57",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/median.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "754940331c1cdd82e4b86e82197f1e09ffda92f3588528638d42a687bc1ffd57",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/median.png"
+    },
+    {
+      "actual_sha256": "35c0e7e39c9678e8c200902a3b228f182ebec29283f5681b886b437186523ed2",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/target.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "35c0e7e39c9678e8c200902a3b228f182ebec29283f5681b886b437186523ed2",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/target.png"
+    },
+    {
+      "actual_sha256": "8c53d236a9395fc6ce7a171b6b86df8ab68c6b4161346545659c232630a758dd",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/target_coverage.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "8c53d236a9395fc6ce7a171b6b86df8ab68c6b4161346545659c232630a758dd",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/target_coverage.png"
+    },
+    {
+      "actual_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/target_valid.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/target_valid.png"
+    },
+    {
+      "actual_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/valid.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "260820d61276267ff025dd4c2e49bb5d4bc0cae2298fb3310135d386cfd018d0",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/valid.png"
+    },
+    {
+      "actual_sha256": "6f6d8b66e7835a4c538e43d2b26d00dad3500a3a68f13ee76d31d3cd5f3cdc03",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/zone.png",
+      "design": "sidtd/est_id",
+      "expected_sha256": "6f6d8b66e7835a4c538e43d2b26d00dad3500a3a68f13ee76d31d3cd5f3cdc03",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/est_id/train_half1/zone.png"
+    },
+    {
+      "actual_sha256": "1ea0be93e147724001ebb2df58b0e7c2b99981066d8bd2f83d278f6d66e2a40c",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/coverage.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "1ea0be93e147724001ebb2df58b0e7c2b99981066d8bd2f83d278f6d66e2a40c",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/coverage.png"
+    },
+    {
+      "actual_sha256": "6415dd50a42e754fb3e83a69e7482edc11b4d09ec5d2f5703084bab0310e9380",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/geometry.json",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "6415dd50a42e754fb3e83a69e7482edc11b4d09ec5d2f5703084bab0310e9380",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/geometry.json"
+    },
+    {
+      "actual_sha256": "81a7ecb8b1d65939e9555c096bebd8102138a78171a35561fd7cb33cd9d4b81b",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/manifest.json",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "81a7ecb8b1d65939e9555c096bebd8102138a78171a35561fd7cb33cd9d4b81b",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/manifest.json"
+    },
+    {
+      "actual_sha256": "308f6a740e1e5b92e78471e354d60502a55c1daff9ee4be60568af96c4f83c17",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/median.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "308f6a740e1e5b92e78471e354d60502a55c1daff9ee4be60568af96c4f83c17",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/median.png"
+    },
+    {
+      "actual_sha256": "b046fd17b904b0453a6ddc4863e743190873d6993b2247f536a74d00a87beb0f",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/target.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "b046fd17b904b0453a6ddc4863e743190873d6993b2247f536a74d00a87beb0f",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/target.png"
+    },
+    {
+      "actual_sha256": "1ea0be93e147724001ebb2df58b0e7c2b99981066d8bd2f83d278f6d66e2a40c",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/target_coverage.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "1ea0be93e147724001ebb2df58b0e7c2b99981066d8bd2f83d278f6d66e2a40c",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/target_coverage.png"
+    },
+    {
+      "actual_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/target_valid.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/target_valid.png"
+    },
+    {
+      "actual_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/valid.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/valid.png"
+    },
+    {
+      "actual_sha256": "819d401ff50d2bb1732bf857394d9fe9ab9989af3103794e079270801e1ae7d5",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/zone.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "819d401ff50d2bb1732bf857394d9fe9ab9989af3103794e079270801e1ae7d5",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/enrollment/zone.png"
+    },
+    {
+      "actual_sha256": "817abb27d213dc874321ff14c5802dfd9f38f3b98b30d04e1220f007ad0c6b65",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/coverage.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "817abb27d213dc874321ff14c5802dfd9f38f3b98b30d04e1220f007ad0c6b65",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/coverage.png"
+    },
+    {
+      "actual_sha256": "4a6b380c0a3ba1753caca30cf0ea7e2c21cb65b4e53af3a1c8703708f353e202",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/geometry.json",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "4a6b380c0a3ba1753caca30cf0ea7e2c21cb65b4e53af3a1c8703708f353e202",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/geometry.json"
+    },
+    {
+      "actual_sha256": "c3dcd1abb2af9c10ebe7a4a6e2ae798d3e525405f25d0b6f6ac2ced10a53b948",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/manifest.json",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "c3dcd1abb2af9c10ebe7a4a6e2ae798d3e525405f25d0b6f6ac2ced10a53b948",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/manifest.json"
+    },
+    {
+      "actual_sha256": "33ec6c227b4752bf359396041eab77ddbe9923cb8ee20435f251497d91608f25",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/median.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "33ec6c227b4752bf359396041eab77ddbe9923cb8ee20435f251497d91608f25",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/median.png"
+    },
+    {
+      "actual_sha256": "301a924f3e618e7750372e17f5cabae7c4bd1de4a93d26b04eceb9de677ad556",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/target.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "301a924f3e618e7750372e17f5cabae7c4bd1de4a93d26b04eceb9de677ad556",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/target.png"
+    },
+    {
+      "actual_sha256": "817abb27d213dc874321ff14c5802dfd9f38f3b98b30d04e1220f007ad0c6b65",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/target_coverage.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "817abb27d213dc874321ff14c5802dfd9f38f3b98b30d04e1220f007ad0c6b65",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/target_coverage.png"
+    },
+    {
+      "actual_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/target_valid.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/target_valid.png"
+    },
+    {
+      "actual_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/valid.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/valid.png"
+    },
+    {
+      "actual_sha256": "650680658217e14fc8c601df824496fb8e1c508e05b7b7ec9feff0c50ad39d8e",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/zone.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "650680658217e14fc8c601df824496fb8e1c508e05b7b7ec9feff0c50ad39d8e",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half0/zone.png"
+    },
+    {
+      "actual_sha256": "c6845981366f057f210b88cad8469ae8f890cb38ff03b47242b1758f4246a8bf",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/coverage.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "c6845981366f057f210b88cad8469ae8f890cb38ff03b47242b1758f4246a8bf",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/coverage.png"
+    },
+    {
+      "actual_sha256": "9bd61404e99e47d531afc2a2dea7c49c6ed5b5e14e457feb915ceb5fc9e47dae",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/geometry.json",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "9bd61404e99e47d531afc2a2dea7c49c6ed5b5e14e457feb915ceb5fc9e47dae",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/geometry.json"
+    },
+    {
+      "actual_sha256": "f4bd785ac3ac025a43ad15a04b20fca14a0e2d56b6c5505b7cbfdd5a03c41db3",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/manifest.json",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "f4bd785ac3ac025a43ad15a04b20fca14a0e2d56b6c5505b7cbfdd5a03c41db3",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/manifest.json"
+    },
+    {
+      "actual_sha256": "346edd095c4675924e81cfe4f9cb377876277474051542dde78b06e86826e925",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/median.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "346edd095c4675924e81cfe4f9cb377876277474051542dde78b06e86826e925",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/median.png"
+    },
+    {
+      "actual_sha256": "61c85565798663e0ec7805b41d78d38c11a278025696cc76e17ab5d84c03464c",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/target.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "61c85565798663e0ec7805b41d78d38c11a278025696cc76e17ab5d84c03464c",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/target.png"
+    },
+    {
+      "actual_sha256": "c6845981366f057f210b88cad8469ae8f890cb38ff03b47242b1758f4246a8bf",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/target_coverage.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "c6845981366f057f210b88cad8469ae8f890cb38ff03b47242b1758f4246a8bf",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/target_coverage.png"
+    },
+    {
+      "actual_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/target_valid.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/target_valid.png"
+    },
+    {
+      "actual_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/valid.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "1418f05db40eb6de8e4da736ed6f198512072b1244de7afb1cbee4ec52b7b986",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/valid.png"
+    },
+    {
+      "actual_sha256": "bb98e6f47eb7d562cae663a99d680a78db9e0331840980fc1ee39af90b3a4bc1",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/zone.png",
+      "design": "sidtd/fin_id",
+      "expected_sha256": "bb98e6f47eb7d562cae663a99d680a78db9e0331840980fc1ee39af90b3a4bc1",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/fin_id/train_half1/zone.png"
+    },
+    {
+      "actual_sha256": "de093b7ea25594f36120188ad1c5fc0c03899e5d6329197ca903f708a6d10853",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/coverage.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "de093b7ea25594f36120188ad1c5fc0c03899e5d6329197ca903f708a6d10853",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/coverage.png"
+    },
+    {
+      "actual_sha256": "da55cef89d714db0105c6b8db7cdc4a7683497e9be906936ce7b11d9e7140f28",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/geometry.json",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "da55cef89d714db0105c6b8db7cdc4a7683497e9be906936ce7b11d9e7140f28",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/geometry.json"
+    },
+    {
+      "actual_sha256": "d86c8ff432f9f029b3c1dbf24fb449a3a24a2827cc74e9dc7f3d0b5bcaec2f14",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/manifest.json",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "d86c8ff432f9f029b3c1dbf24fb449a3a24a2827cc74e9dc7f3d0b5bcaec2f14",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/manifest.json"
+    },
+    {
+      "actual_sha256": "298d6ffbd2873a2decac30b06a84e51573d1117c8060aa1f2210270f09c17975",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/median.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "298d6ffbd2873a2decac30b06a84e51573d1117c8060aa1f2210270f09c17975",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/median.png"
+    },
+    {
+      "actual_sha256": "c0b77bec20148d995f2b69ed4a5a1299b9768e451d77c530e93a8c6a98bc5bdb",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/target.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "c0b77bec20148d995f2b69ed4a5a1299b9768e451d77c530e93a8c6a98bc5bdb",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/target.png"
+    },
+    {
+      "actual_sha256": "de093b7ea25594f36120188ad1c5fc0c03899e5d6329197ca903f708a6d10853",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/target_coverage.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "de093b7ea25594f36120188ad1c5fc0c03899e5d6329197ca903f708a6d10853",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/target_coverage.png"
+    },
+    {
+      "actual_sha256": "cf6437b7f5e1f025d93e21aa3d99654c4fc3a500eee05fef83fbd37721a4830a",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/target_valid.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "cf6437b7f5e1f025d93e21aa3d99654c4fc3a500eee05fef83fbd37721a4830a",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/target_valid.png"
+    },
+    {
+      "actual_sha256": "cf6437b7f5e1f025d93e21aa3d99654c4fc3a500eee05fef83fbd37721a4830a",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/valid.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "cf6437b7f5e1f025d93e21aa3d99654c4fc3a500eee05fef83fbd37721a4830a",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/valid.png"
+    },
+    {
+      "actual_sha256": "66e23ee02bfa05117a7b84f7bdac4dc2ba202abdc97f6e102bec9ee93f90a1d9",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/zone.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "66e23ee02bfa05117a7b84f7bdac4dc2ba202abdc97f6e102bec9ee93f90a1d9",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/enrollment/zone.png"
+    },
+    {
+      "actual_sha256": "be706cb1c8f37df0b5d785d345f564b11f4ffe174825688ce3c785ecd4bd0c9c",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/coverage.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "be706cb1c8f37df0b5d785d345f564b11f4ffe174825688ce3c785ecd4bd0c9c",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/coverage.png"
+    },
+    {
+      "actual_sha256": "fc373dd38893e1caac0f211fc681fa5449a852dbe84ccded67bc28d9e8a12213",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/geometry.json",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "fc373dd38893e1caac0f211fc681fa5449a852dbe84ccded67bc28d9e8a12213",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/geometry.json"
+    },
+    {
+      "actual_sha256": "3a99dcdb55d559c90d197b1aa1e40823cd0f460a782e5d4a79bb2b961a5a3667",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/manifest.json",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "3a99dcdb55d559c90d197b1aa1e40823cd0f460a782e5d4a79bb2b961a5a3667",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/manifest.json"
+    },
+    {
+      "actual_sha256": "32d465e603e55dbe0e97545ad4533b8f1a288558a906b4f04f6875f77bdc454f",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/median.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "32d465e603e55dbe0e97545ad4533b8f1a288558a906b4f04f6875f77bdc454f",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/median.png"
+    },
+    {
+      "actual_sha256": "1c20aec04a31976f295afd07783c1c0ba85215bb234532b8bfa560abb96cbccf",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/target.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "1c20aec04a31976f295afd07783c1c0ba85215bb234532b8bfa560abb96cbccf",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/target.png"
+    },
+    {
+      "actual_sha256": "be706cb1c8f37df0b5d785d345f564b11f4ffe174825688ce3c785ecd4bd0c9c",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/target_coverage.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "be706cb1c8f37df0b5d785d345f564b11f4ffe174825688ce3c785ecd4bd0c9c",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/target_coverage.png"
+    },
+    {
+      "actual_sha256": "cf6437b7f5e1f025d93e21aa3d99654c4fc3a500eee05fef83fbd37721a4830a",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/target_valid.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "cf6437b7f5e1f025d93e21aa3d99654c4fc3a500eee05fef83fbd37721a4830a",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/target_valid.png"
+    },
+    {
+      "actual_sha256": "cf6437b7f5e1f025d93e21aa3d99654c4fc3a500eee05fef83fbd37721a4830a",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/valid.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "cf6437b7f5e1f025d93e21aa3d99654c4fc3a500eee05fef83fbd37721a4830a",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/valid.png"
+    },
+    {
+      "actual_sha256": "ec2bfb60731882f95cd16e7214f01dd84cbc1fc0b5b78a3f62c5cfbd1799bc5c",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/zone.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "ec2bfb60731882f95cd16e7214f01dd84cbc1fc0b5b78a3f62c5cfbd1799bc5c",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half0/zone.png"
+    },
+    {
+      "actual_sha256": "fd1b4593799923a34ce374285159f4a19a2757d792c90a2ad97f04d15e7779bf",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/coverage.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "fd1b4593799923a34ce374285159f4a19a2757d792c90a2ad97f04d15e7779bf",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/coverage.png"
+    },
+    {
+      "actual_sha256": "4c4ba02a1f8a2d4c5c3e419ab531ce73f67abcfaabbe59ec638281c9c40ee47c",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/geometry.json",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "4c4ba02a1f8a2d4c5c3e419ab531ce73f67abcfaabbe59ec638281c9c40ee47c",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/geometry.json"
+    },
+    {
+      "actual_sha256": "e50d3c042f6c625919bab625460210fc5a755ee7121ba5b75b7aa2e94f572c80",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/manifest.json",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "e50d3c042f6c625919bab625460210fc5a755ee7121ba5b75b7aa2e94f572c80",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/manifest.json"
+    },
+    {
+      "actual_sha256": "f4a18d9509f9c7e3ecbb1cb6e9cdbed864c8f82ef9a09994555570127bcbc286",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/median.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "f4a18d9509f9c7e3ecbb1cb6e9cdbed864c8f82ef9a09994555570127bcbc286",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/median.png"
+    },
+    {
+      "actual_sha256": "1f14c2ca0c6e2ffa6c4cea1d5b82ed08bec973877b9235c0b5e86c59c418bfdf",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/target.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "1f14c2ca0c6e2ffa6c4cea1d5b82ed08bec973877b9235c0b5e86c59c418bfdf",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/target.png"
+    },
+    {
+      "actual_sha256": "fd1b4593799923a34ce374285159f4a19a2757d792c90a2ad97f04d15e7779bf",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/target_coverage.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "fd1b4593799923a34ce374285159f4a19a2757d792c90a2ad97f04d15e7779bf",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/target_coverage.png"
+    },
+    {
+      "actual_sha256": "cf6437b7f5e1f025d93e21aa3d99654c4fc3a500eee05fef83fbd37721a4830a",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/target_valid.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "cf6437b7f5e1f025d93e21aa3d99654c4fc3a500eee05fef83fbd37721a4830a",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/target_valid.png"
+    },
+    {
+      "actual_sha256": "cf6437b7f5e1f025d93e21aa3d99654c4fc3a500eee05fef83fbd37721a4830a",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/valid.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "cf6437b7f5e1f025d93e21aa3d99654c4fc3a500eee05fef83fbd37721a4830a",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/valid.png"
+    },
+    {
+      "actual_sha256": "02053148fbd582033d8b2cb755863870568076ed655c5822ce772a5d12ce0b26",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/zone.png",
+      "design": "sidtd/grc_passport",
+      "expected_sha256": "02053148fbd582033d8b2cb755863870568076ed655c5822ce772a5d12ce0b26",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/grc_passport/train_half1/zone.png"
+    },
+    {
+      "actual_sha256": "fcb8227ad2b007cb1d47de221435403a59219e533f36a24ac74d5a2414eac1a3",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/coverage.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "fcb8227ad2b007cb1d47de221435403a59219e533f36a24ac74d5a2414eac1a3",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/coverage.png"
+    },
+    {
+      "actual_sha256": "d8023b1902c483660c72eda0bbc30f7edd3a1115d51e6c2a63dda93d4d2a0883",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/geometry.json",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "d8023b1902c483660c72eda0bbc30f7edd3a1115d51e6c2a63dda93d4d2a0883",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/geometry.json"
+    },
+    {
+      "actual_sha256": "5632a95fef42927188325b6ecb46143cefe0d8c07b2af77a7c184967dca263b4",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/manifest.json",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "5632a95fef42927188325b6ecb46143cefe0d8c07b2af77a7c184967dca263b4",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/manifest.json"
+    },
+    {
+      "actual_sha256": "2adc6c49aae5065d0d16502d17a5d667593d9477fdc3359567edb9bcfa382968",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/median.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "2adc6c49aae5065d0d16502d17a5d667593d9477fdc3359567edb9bcfa382968",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/median.png"
+    },
+    {
+      "actual_sha256": "389a1d689e42b8dfd55dc783d1fd17358814fe98afb568201ff842f5b71bbb80",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/target.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "389a1d689e42b8dfd55dc783d1fd17358814fe98afb568201ff842f5b71bbb80",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/target.png"
+    },
+    {
+      "actual_sha256": "fcb8227ad2b007cb1d47de221435403a59219e533f36a24ac74d5a2414eac1a3",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/target_coverage.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "fcb8227ad2b007cb1d47de221435403a59219e533f36a24ac74d5a2414eac1a3",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/target_coverage.png"
+    },
+    {
+      "actual_sha256": "75c21031e41247ac1fe83333eed5e27ed35004884754c83c64c824125083bb7f",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/target_valid.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "75c21031e41247ac1fe83333eed5e27ed35004884754c83c64c824125083bb7f",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/target_valid.png"
+    },
+    {
+      "actual_sha256": "75c21031e41247ac1fe83333eed5e27ed35004884754c83c64c824125083bb7f",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/valid.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "75c21031e41247ac1fe83333eed5e27ed35004884754c83c64c824125083bb7f",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/valid.png"
+    },
+    {
+      "actual_sha256": "d4cda06b67ea7734574aa6bad22dfbaf044fc1be7a167e7c9cd69f7b6da6af5c",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/zone.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "d4cda06b67ea7734574aa6bad22dfbaf044fc1be7a167e7c9cd69f7b6da6af5c",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/enrollment/zone.png"
+    },
+    {
+      "actual_sha256": "e50862cc81ed7f634846c6e0fe4a8ad3be9d1d55c26dccbb6414157c87d21b35",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/coverage.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "e50862cc81ed7f634846c6e0fe4a8ad3be9d1d55c26dccbb6414157c87d21b35",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/coverage.png"
+    },
+    {
+      "actual_sha256": "93017f005971d33ced21a8a051cd975c5778184406d310246d3302416ceb31d3",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/geometry.json",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "93017f005971d33ced21a8a051cd975c5778184406d310246d3302416ceb31d3",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/geometry.json"
+    },
+    {
+      "actual_sha256": "049b1d750a30631072972d7ca4721e7cc518dc12b417155b129473956ef42ae8",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/manifest.json",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "049b1d750a30631072972d7ca4721e7cc518dc12b417155b129473956ef42ae8",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/manifest.json"
+    },
+    {
+      "actual_sha256": "0c4a8b548392ae2d681beea3142dd86411face696a3db5a91bbe5071e4152038",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/median.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "0c4a8b548392ae2d681beea3142dd86411face696a3db5a91bbe5071e4152038",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/median.png"
+    },
+    {
+      "actual_sha256": "4c875a5cdf9e3e2aff728107c572d366835c9dad1641c4cd46c8c3ed7090962d",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/target.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "4c875a5cdf9e3e2aff728107c572d366835c9dad1641c4cd46c8c3ed7090962d",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/target.png"
+    },
+    {
+      "actual_sha256": "e50862cc81ed7f634846c6e0fe4a8ad3be9d1d55c26dccbb6414157c87d21b35",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/target_coverage.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "e50862cc81ed7f634846c6e0fe4a8ad3be9d1d55c26dccbb6414157c87d21b35",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/target_coverage.png"
+    },
+    {
+      "actual_sha256": "75c21031e41247ac1fe83333eed5e27ed35004884754c83c64c824125083bb7f",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/target_valid.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "75c21031e41247ac1fe83333eed5e27ed35004884754c83c64c824125083bb7f",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/target_valid.png"
+    },
+    {
+      "actual_sha256": "75c21031e41247ac1fe83333eed5e27ed35004884754c83c64c824125083bb7f",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/valid.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "75c21031e41247ac1fe83333eed5e27ed35004884754c83c64c824125083bb7f",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/valid.png"
+    },
+    {
+      "actual_sha256": "b129c64c7c615850988b0819cfaf3d667af1519870a6ef0be57871eeada6dbea",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/zone.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "b129c64c7c615850988b0819cfaf3d667af1519870a6ef0be57871eeada6dbea",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half0/zone.png"
+    },
+    {
+      "actual_sha256": "b27ae20a332dc2c7ceb74cf95d523248576c2e17eb7ef59ba54e40633c71bece",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/coverage.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "b27ae20a332dc2c7ceb74cf95d523248576c2e17eb7ef59ba54e40633c71bece",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/coverage.png"
+    },
+    {
+      "actual_sha256": "7f9c630b2933210cd6fd6a033d61c403bfc595ccd394be7a094a15159c0b110d",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/geometry.json",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "7f9c630b2933210cd6fd6a033d61c403bfc595ccd394be7a094a15159c0b110d",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/geometry.json"
+    },
+    {
+      "actual_sha256": "9c551d809d91d0e4bc931b08b9a986c1fae1f01fddd85088942f59af8e10c794",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/manifest.json",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "9c551d809d91d0e4bc931b08b9a986c1fae1f01fddd85088942f59af8e10c794",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/manifest.json"
+    },
+    {
+      "actual_sha256": "ba49e86412d76cf80d2049349d13c8ccc28350901d579a81660c0e60ff50fe2c",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/median.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "ba49e86412d76cf80d2049349d13c8ccc28350901d579a81660c0e60ff50fe2c",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/median.png"
+    },
+    {
+      "actual_sha256": "a2ace890a6bfa33abc67511be62d2e12b7d5b826e7538506c7cab9c7bf115c30",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/target.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "a2ace890a6bfa33abc67511be62d2e12b7d5b826e7538506c7cab9c7bf115c30",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/target.png"
+    },
+    {
+      "actual_sha256": "b27ae20a332dc2c7ceb74cf95d523248576c2e17eb7ef59ba54e40633c71bece",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/target_coverage.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "b27ae20a332dc2c7ceb74cf95d523248576c2e17eb7ef59ba54e40633c71bece",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/target_coverage.png"
+    },
+    {
+      "actual_sha256": "75c21031e41247ac1fe83333eed5e27ed35004884754c83c64c824125083bb7f",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/target_valid.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "75c21031e41247ac1fe83333eed5e27ed35004884754c83c64c824125083bb7f",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/target_valid.png"
+    },
+    {
+      "actual_sha256": "75c21031e41247ac1fe83333eed5e27ed35004884754c83c64c824125083bb7f",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/valid.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "75c21031e41247ac1fe83333eed5e27ed35004884754c83c64c824125083bb7f",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/valid.png"
+    },
+    {
+      "actual_sha256": "9a585c4e9a15c178cfa650f4d4d7b91476d40f99a2e83cc470380099d97e7c3e",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/zone.png",
+      "design": "sidtd/lva_passport",
+      "expected_sha256": "9a585c4e9a15c178cfa650f4d4d7b91476d40f99a2e83cc470380099d97e7c3e",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/lva_passport/train_half1/zone.png"
+    },
+    {
+      "actual_sha256": "e8f717715ce0e610658b3e07facc1c8dddf601247eea6dd082b93c6eb8d7a4d5",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/coverage.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "e8f717715ce0e610658b3e07facc1c8dddf601247eea6dd082b93c6eb8d7a4d5",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/coverage.png"
+    },
+    {
+      "actual_sha256": "9251383bc69631a4cb90b9424abace1fcdecf23f9dc112196080f66fa9cedd70",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/geometry.json",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "9251383bc69631a4cb90b9424abace1fcdecf23f9dc112196080f66fa9cedd70",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/geometry.json"
+    },
+    {
+      "actual_sha256": "d0ffa35fa92e773c7d44512f787b0b9f77bd0a87f754dba033047cea6b5e484d",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/manifest.json",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "d0ffa35fa92e773c7d44512f787b0b9f77bd0a87f754dba033047cea6b5e484d",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/manifest.json"
+    },
+    {
+      "actual_sha256": "f32181a38ef3e08d886801682cc39003e6919afd264b0a7cf878ef7593b60293",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/median.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "f32181a38ef3e08d886801682cc39003e6919afd264b0a7cf878ef7593b60293",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/median.png"
+    },
+    {
+      "actual_sha256": "457b1877c54fe7088b12fe5c0e545d4475bd3033b7c47346dd91c026b4b68f34",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/target.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "457b1877c54fe7088b12fe5c0e545d4475bd3033b7c47346dd91c026b4b68f34",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/target.png"
+    },
+    {
+      "actual_sha256": "e8f717715ce0e610658b3e07facc1c8dddf601247eea6dd082b93c6eb8d7a4d5",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/target_coverage.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "e8f717715ce0e610658b3e07facc1c8dddf601247eea6dd082b93c6eb8d7a4d5",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/target_coverage.png"
+    },
+    {
+      "actual_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/target_valid.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/target_valid.png"
+    },
+    {
+      "actual_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/valid.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/valid.png"
+    },
+    {
+      "actual_sha256": "987847dad31500d018d076229b50a23b49281079a8fdcc11e86946c8ea30230d",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/zone.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "987847dad31500d018d076229b50a23b49281079a8fdcc11e86946c8ea30230d",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/enrollment/zone.png"
+    },
+    {
+      "actual_sha256": "24fefd3dcae97995d2988c989d9fccb06f004f979f98199c00c6dd50e1fef48f",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/coverage.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "24fefd3dcae97995d2988c989d9fccb06f004f979f98199c00c6dd50e1fef48f",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/coverage.png"
+    },
+    {
+      "actual_sha256": "8e5f83fcd2d6da57d8c5eac0a0f6a4c561c166ef6cd979abfc0234db7d31abf2",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/geometry.json",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "8e5f83fcd2d6da57d8c5eac0a0f6a4c561c166ef6cd979abfc0234db7d31abf2",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/geometry.json"
+    },
+    {
+      "actual_sha256": "ae377f8ab3eea640565a2f7ee48e3c3b26b7b8737cfc9f3e12da1d18d8392ef2",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/manifest.json",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "ae377f8ab3eea640565a2f7ee48e3c3b26b7b8737cfc9f3e12da1d18d8392ef2",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/manifest.json"
+    },
+    {
+      "actual_sha256": "6cdfb3aa44bc05864df03302ffd23e0dc43a3097f23ec2987f386c9fb5e6791f",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/median.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "6cdfb3aa44bc05864df03302ffd23e0dc43a3097f23ec2987f386c9fb5e6791f",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/median.png"
+    },
+    {
+      "actual_sha256": "447778c49897e158e726b661bbac8be062ab60567c52458a66e254cd224113aa",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/target.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "447778c49897e158e726b661bbac8be062ab60567c52458a66e254cd224113aa",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/target.png"
+    },
+    {
+      "actual_sha256": "24fefd3dcae97995d2988c989d9fccb06f004f979f98199c00c6dd50e1fef48f",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/target_coverage.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "24fefd3dcae97995d2988c989d9fccb06f004f979f98199c00c6dd50e1fef48f",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/target_coverage.png"
+    },
+    {
+      "actual_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/target_valid.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/target_valid.png"
+    },
+    {
+      "actual_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/valid.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/valid.png"
+    },
+    {
+      "actual_sha256": "4afa7afe5ae6a6bada647cf547aee9504d61037a2a11bdf99588a0a092eb33ee",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/zone.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "4afa7afe5ae6a6bada647cf547aee9504d61037a2a11bdf99588a0a092eb33ee",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half0/zone.png"
+    },
+    {
+      "actual_sha256": "0141c653953d2d33534dd36b1163d03e7e4338e47cc3de520d020a350e0dad16",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/coverage.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "0141c653953d2d33534dd36b1163d03e7e4338e47cc3de520d020a350e0dad16",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/coverage.png"
+    },
+    {
+      "actual_sha256": "2c8d23238750988970c80fec109217fc4c4f369784680c28d64d8ea3a06aa87d",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/geometry.json",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "2c8d23238750988970c80fec109217fc4c4f369784680c28d64d8ea3a06aa87d",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/geometry.json"
+    },
+    {
+      "actual_sha256": "df593f00513c382bd30f6cd150d32a5b1d816684999f66507fbae6e35b5ef938",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/manifest.json",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "df593f00513c382bd30f6cd150d32a5b1d816684999f66507fbae6e35b5ef938",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/manifest.json"
+    },
+    {
+      "actual_sha256": "6def7d52eed69aacce4e1f44068da12d5cddd7accfcc3eb3e74ab0d376a25dd0",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/median.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "6def7d52eed69aacce4e1f44068da12d5cddd7accfcc3eb3e74ab0d376a25dd0",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/median.png"
+    },
+    {
+      "actual_sha256": "25b8b84d110fa0d4a93b545dbb0a219cc0755bba0caaafeec6d5b577ea1116a9",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/target.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "25b8b84d110fa0d4a93b545dbb0a219cc0755bba0caaafeec6d5b577ea1116a9",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/target.png"
+    },
+    {
+      "actual_sha256": "0141c653953d2d33534dd36b1163d03e7e4338e47cc3de520d020a350e0dad16",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/target_coverage.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "0141c653953d2d33534dd36b1163d03e7e4338e47cc3de520d020a350e0dad16",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/target_coverage.png"
+    },
+    {
+      "actual_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/target_valid.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/target_valid.png"
+    },
+    {
+      "actual_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/valid.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "a41a59efbb2c0c18c7a46b953532bdbe054906fab95dcad986b37f7d7736d64a",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/valid.png"
+    },
+    {
+      "actual_sha256": "0fa8bf35046667be7d212e556651c5762849e2a9a8632572516c2203edbb47bd",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/zone.png",
+      "design": "sidtd/rus_internalpassport",
+      "expected_sha256": "0fa8bf35046667be7d212e556651c5762849e2a9a8632572516c2203edbb47bd",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/rus_internalpassport/train_half1/zone.png"
+    },
+    {
+      "actual_sha256": "a274bab60c5de91242fc09ca4c682e3e47028fca1d90bc3cd8035600461655d7",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/coverage.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "a274bab60c5de91242fc09ca4c682e3e47028fca1d90bc3cd8035600461655d7",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/coverage.png"
+    },
+    {
+      "actual_sha256": "ff77669431b0e3e145b78b7cd1bdd64011fbd402145672ff29fc9272277b426b",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/geometry.json",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "ff77669431b0e3e145b78b7cd1bdd64011fbd402145672ff29fc9272277b426b",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/geometry.json"
+    },
+    {
+      "actual_sha256": "3c990c4e40fa890f0abb0db40c5a10201f0a104f0c7dc28fc2482486e0a939d1",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/manifest.json",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "3c990c4e40fa890f0abb0db40c5a10201f0a104f0c7dc28fc2482486e0a939d1",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/manifest.json"
+    },
+    {
+      "actual_sha256": "39169bb01535c50a4ab680a5d819088a7a1def631b19ac1935f33a14983bb6f3",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/median.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "39169bb01535c50a4ab680a5d819088a7a1def631b19ac1935f33a14983bb6f3",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/median.png"
+    },
+    {
+      "actual_sha256": "ccae0049727c1775364cc3759ca4c4d5f5b297ec02b42179387688771b84a97c",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/target.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "ccae0049727c1775364cc3759ca4c4d5f5b297ec02b42179387688771b84a97c",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/target.png"
+    },
+    {
+      "actual_sha256": "6b21cf305e5a55b6efc820eefb4faca81d040d7580345e4382dbc7bbbbd3d17e",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/target_coverage.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "6b21cf305e5a55b6efc820eefb4faca81d040d7580345e4382dbc7bbbbd3d17e",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/target_coverage.png"
+    },
+    {
+      "actual_sha256": "139c015984fe9ed30bf9f75e9881aba2220af3f9889c4cd33d2f150628499e31",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/target_valid.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "139c015984fe9ed30bf9f75e9881aba2220af3f9889c4cd33d2f150628499e31",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/target_valid.png"
+    },
+    {
+      "actual_sha256": "139c015984fe9ed30bf9f75e9881aba2220af3f9889c4cd33d2f150628499e31",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/valid.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "139c015984fe9ed30bf9f75e9881aba2220af3f9889c4cd33d2f150628499e31",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/valid.png"
+    },
+    {
+      "actual_sha256": "0a91b3513de1758e730586811316c6e46d166d0f32f4b052679a0c18dfc6ab77",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/zone.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "0a91b3513de1758e730586811316c6e46d166d0f32f4b052679a0c18dfc6ab77",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/enrollment/zone.png"
+    },
+    {
+      "actual_sha256": "d7a5e440f8febb821ed83e4fbfd759b6898ad1866fbd126e0012c524d8ac053e",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/coverage.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "d7a5e440f8febb821ed83e4fbfd759b6898ad1866fbd126e0012c524d8ac053e",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/coverage.png"
+    },
+    {
+      "actual_sha256": "6ca3fcefc40e0d1a61e4e9d273faa9f33bf121dc60aeb7e9bb47c9570cbb47ec",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/geometry.json",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "6ca3fcefc40e0d1a61e4e9d273faa9f33bf121dc60aeb7e9bb47c9570cbb47ec",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/geometry.json"
+    },
+    {
+      "actual_sha256": "e23aa2ec68ac560256792411cd5d93b122474b8aba7123f312c8f1402ddbf0bf",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/manifest.json",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "e23aa2ec68ac560256792411cd5d93b122474b8aba7123f312c8f1402ddbf0bf",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/manifest.json"
+    },
+    {
+      "actual_sha256": "37ec1698917f4347e1450349e3af8abdfc4683a6e4e29b5425e96096b76e2e9b",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/median.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "37ec1698917f4347e1450349e3af8abdfc4683a6e4e29b5425e96096b76e2e9b",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/median.png"
+    },
+    {
+      "actual_sha256": "3e7ad9b2b9ba65dc6c34a6f999d81057f9e69ab7ef3e34a6c1fe8380ded689f7",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/target.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "3e7ad9b2b9ba65dc6c34a6f999d81057f9e69ab7ef3e34a6c1fe8380ded689f7",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/target.png"
+    },
+    {
+      "actual_sha256": "8a3d0e776710c427de5da924e8029e9cc90317413968329bd0c7b7361059b18e",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/target_coverage.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "8a3d0e776710c427de5da924e8029e9cc90317413968329bd0c7b7361059b18e",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/target_coverage.png"
+    },
+    {
+      "actual_sha256": "139c015984fe9ed30bf9f75e9881aba2220af3f9889c4cd33d2f150628499e31",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/target_valid.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "139c015984fe9ed30bf9f75e9881aba2220af3f9889c4cd33d2f150628499e31",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/target_valid.png"
+    },
+    {
+      "actual_sha256": "139c015984fe9ed30bf9f75e9881aba2220af3f9889c4cd33d2f150628499e31",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/valid.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "139c015984fe9ed30bf9f75e9881aba2220af3f9889c4cd33d2f150628499e31",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/valid.png"
+    },
+    {
+      "actual_sha256": "ead9ec72a4b8c0abe4333cd911d4fc09033b34e0525b1c1e78834c59e7ba82c7",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/zone.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "ead9ec72a4b8c0abe4333cd911d4fc09033b34e0525b1c1e78834c59e7ba82c7",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half0/zone.png"
+    },
+    {
+      "actual_sha256": "fd4403706b32494d8ee78b48e6003e3aa0c9212d205ff67edcaf48e48fff84b5",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/coverage.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "fd4403706b32494d8ee78b48e6003e3aa0c9212d205ff67edcaf48e48fff84b5",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/coverage.png"
+    },
+    {
+      "actual_sha256": "d978d9d04de8d93ca1327c4231a8c9aea00b105a9026ea3df22e9adae45ff81e",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/geometry.json",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "d978d9d04de8d93ca1327c4231a8c9aea00b105a9026ea3df22e9adae45ff81e",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/geometry.json"
+    },
+    {
+      "actual_sha256": "27d359e1ec2c9d5516af16167e39c175f53f34160c143c3dd07e23ebf8487913",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/manifest.json",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "27d359e1ec2c9d5516af16167e39c175f53f34160c143c3dd07e23ebf8487913",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/manifest.json"
+    },
+    {
+      "actual_sha256": "eaa43c526a11cd2a2a53de83c10f413a7496ed658a64b2b932a4d96261105458",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/median.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "eaa43c526a11cd2a2a53de83c10f413a7496ed658a64b2b932a4d96261105458",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/median.png"
+    },
+    {
+      "actual_sha256": "354f68c20d16c0a66c061470415436ddca1c22e0fcea7145ace065542ef40262",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/target.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "354f68c20d16c0a66c061470415436ddca1c22e0fcea7145ace065542ef40262",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/target.png"
+    },
+    {
+      "actual_sha256": "87ebb2b7607fef11183efcfe389a03e5dd0162b2839ca229208810be9af46d8a",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/target_coverage.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "87ebb2b7607fef11183efcfe389a03e5dd0162b2839ca229208810be9af46d8a",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/target_coverage.png"
+    },
+    {
+      "actual_sha256": "139c015984fe9ed30bf9f75e9881aba2220af3f9889c4cd33d2f150628499e31",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/target_valid.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "139c015984fe9ed30bf9f75e9881aba2220af3f9889c4cd33d2f150628499e31",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/target_valid.png"
+    },
+    {
+      "actual_sha256": "139c015984fe9ed30bf9f75e9881aba2220af3f9889c4cd33d2f150628499e31",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/valid.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "139c015984fe9ed30bf9f75e9881aba2220af3f9889c4cd33d2f150628499e31",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/valid.png"
+    },
+    {
+      "actual_sha256": "334e3344df2dd5f8210b64ab8752faff20f996328e836305c3845c76f579f0b7",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/zone.png",
+      "design": "sidtd/srb_passport",
+      "expected_sha256": "334e3344df2dd5f8210b64ab8752faff20f996328e836305c3845c76f579f0b7",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/srb_passport/train_half1/zone.png"
+    },
+    {
+      "actual_sha256": "79c6ceaa2f8842d89cf7192292847df2e64cb71e3c36cf6cec23f83a6152238e",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/coverage.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "79c6ceaa2f8842d89cf7192292847df2e64cb71e3c36cf6cec23f83a6152238e",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/coverage.png"
+    },
+    {
+      "actual_sha256": "4f4766d95c5bd667466b9fbd6567205396c6857ad8186483dc950761395de8ea",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/geometry.json",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "4f4766d95c5bd667466b9fbd6567205396c6857ad8186483dc950761395de8ea",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/geometry.json"
+    },
+    {
+      "actual_sha256": "0e5ec7d1b206c78540b6ed57027d406f98c85c04481762a5a3022c59d18b117e",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/manifest.json",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "0e5ec7d1b206c78540b6ed57027d406f98c85c04481762a5a3022c59d18b117e",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/manifest.json"
+    },
+    {
+      "actual_sha256": "2efcb68c229ed25866af6ff6f66adaade0c35a282e994a515247bb00d5598a12",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/median.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "2efcb68c229ed25866af6ff6f66adaade0c35a282e994a515247bb00d5598a12",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/median.png"
+    },
+    {
+      "actual_sha256": "4400fd161ee1cfdb886fcfc2772a1f986fe3152f5a7d5b0804f032cf4bcd5cee",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/target.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "4400fd161ee1cfdb886fcfc2772a1f986fe3152f5a7d5b0804f032cf4bcd5cee",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/target.png"
+    },
+    {
+      "actual_sha256": "79c6ceaa2f8842d89cf7192292847df2e64cb71e3c36cf6cec23f83a6152238e",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/target_coverage.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "79c6ceaa2f8842d89cf7192292847df2e64cb71e3c36cf6cec23f83a6152238e",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/target_coverage.png"
+    },
+    {
+      "actual_sha256": "5e9760f623224a5e47add30641332bce620c486648644e15ee4d5e0008d63f88",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/target_valid.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "5e9760f623224a5e47add30641332bce620c486648644e15ee4d5e0008d63f88",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/target_valid.png"
+    },
+    {
+      "actual_sha256": "5e9760f623224a5e47add30641332bce620c486648644e15ee4d5e0008d63f88",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/valid.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "5e9760f623224a5e47add30641332bce620c486648644e15ee4d5e0008d63f88",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/valid.png"
+    },
+    {
+      "actual_sha256": "36ee0140eef8f9da710e0c1b80812361461d6b4e8a56204808e40fbfe542732c",
+      "bank": "enrollment",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/zone.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "36ee0140eef8f9da710e0c1b80812361461d6b4e8a56204808e40fbfe542732c",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/enrollment/zone.png"
+    },
+    {
+      "actual_sha256": "42350b97c9937a69dc64d2edcaee3f1fce108ad1852503b32ee99df7cc70d33d",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/coverage.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "42350b97c9937a69dc64d2edcaee3f1fce108ad1852503b32ee99df7cc70d33d",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/coverage.png"
+    },
+    {
+      "actual_sha256": "3dc3cb3aec4062f221965d8fd3e79644f4f948a1383ebb94e9e29e439df308fd",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/geometry.json",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "3dc3cb3aec4062f221965d8fd3e79644f4f948a1383ebb94e9e29e439df308fd",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/geometry.json"
+    },
+    {
+      "actual_sha256": "8d3dfb0216ad7a6465eb9ac949cb7d58b0bee21cc3cc11ee1412ff4ae5a2c464",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/manifest.json",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "8d3dfb0216ad7a6465eb9ac949cb7d58b0bee21cc3cc11ee1412ff4ae5a2c464",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/manifest.json"
+    },
+    {
+      "actual_sha256": "fea91530801f8c409fcac7e995cb74758a60ccdde41643888d5aa9ce9865cde2",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/median.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "fea91530801f8c409fcac7e995cb74758a60ccdde41643888d5aa9ce9865cde2",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/median.png"
+    },
+    {
+      "actual_sha256": "750c2a6cac4876086dde5536316c503687085dafd9b51d3cc18897054a02e861",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/target.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "750c2a6cac4876086dde5536316c503687085dafd9b51d3cc18897054a02e861",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/target.png"
+    },
+    {
+      "actual_sha256": "42350b97c9937a69dc64d2edcaee3f1fce108ad1852503b32ee99df7cc70d33d",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/target_coverage.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "42350b97c9937a69dc64d2edcaee3f1fce108ad1852503b32ee99df7cc70d33d",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/target_coverage.png"
+    },
+    {
+      "actual_sha256": "5e9760f623224a5e47add30641332bce620c486648644e15ee4d5e0008d63f88",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/target_valid.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "5e9760f623224a5e47add30641332bce620c486648644e15ee4d5e0008d63f88",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/target_valid.png"
+    },
+    {
+      "actual_sha256": "5e9760f623224a5e47add30641332bce620c486648644e15ee4d5e0008d63f88",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/valid.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "5e9760f623224a5e47add30641332bce620c486648644e15ee4d5e0008d63f88",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/valid.png"
+    },
+    {
+      "actual_sha256": "b9a6dc2c0f76fb392b12b25ffe92ff083a608917c043bf62c09a369612db575c",
+      "bank": "train_half0",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/zone.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "b9a6dc2c0f76fb392b12b25ffe92ff083a608917c043bf62c09a369612db575c",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half0/zone.png"
+    },
+    {
+      "actual_sha256": "d20c4ea754508bb61bc7df9b1b96d4fa298fafbfaad2daad887221f336c4842f",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/coverage.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "d20c4ea754508bb61bc7df9b1b96d4fa298fafbfaad2daad887221f336c4842f",
+      "matched": true,
+      "product": "coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/coverage.png"
+    },
+    {
+      "actual_sha256": "4675805a99f9ad6438e8bce0a8de06966a55d2db345cb8e51203b3e4c39e78b6",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/geometry.json",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "4675805a99f9ad6438e8bce0a8de06966a55d2db345cb8e51203b3e4c39e78b6",
+      "matched": true,
+      "product": "geometry",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/geometry.json"
+    },
+    {
+      "actual_sha256": "d7ac1e09caed2079222c62d9ea66c9d8301c53b53f8f7edfa63ef2bae7f4ea54",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/manifest.json",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "d7ac1e09caed2079222c62d9ea66c9d8301c53b53f8f7edfa63ef2bae7f4ea54",
+      "matched": true,
+      "product": "manifest",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/manifest.json"
+    },
+    {
+      "actual_sha256": "000739e2cad5545cf2ad4ec2ffbb653f291c6a8549a4cdc626917c3b5c9d70b8",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/median.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "000739e2cad5545cf2ad4ec2ffbb653f291c6a8549a4cdc626917c3b5c9d70b8",
+      "matched": true,
+      "product": "median",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/median.png"
+    },
+    {
+      "actual_sha256": "4a2fe49dcdf5e9de674fe71571fdd2b788f985204b91570ec5f592efe5ec027e",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/target.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "4a2fe49dcdf5e9de674fe71571fdd2b788f985204b91570ec5f592efe5ec027e",
+      "matched": true,
+      "product": "target",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/target.png"
+    },
+    {
+      "actual_sha256": "d20c4ea754508bb61bc7df9b1b96d4fa298fafbfaad2daad887221f336c4842f",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/target_coverage.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "d20c4ea754508bb61bc7df9b1b96d4fa298fafbfaad2daad887221f336c4842f",
+      "matched": true,
+      "product": "target_coverage",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/target_coverage.png"
+    },
+    {
+      "actual_sha256": "5e9760f623224a5e47add30641332bce620c486648644e15ee4d5e0008d63f88",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/target_valid.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "5e9760f623224a5e47add30641332bce620c486648644e15ee4d5e0008d63f88",
+      "matched": true,
+      "product": "target_valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/target_valid.png"
+    },
+    {
+      "actual_sha256": "5e9760f623224a5e47add30641332bce620c486648644e15ee4d5e0008d63f88",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/valid.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "5e9760f623224a5e47add30641332bce620c486648644e15ee4d5e0008d63f88",
+      "matched": true,
+      "product": "valid",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/valid.png"
+    },
+    {
+      "actual_sha256": "a95eb1efe82384d12087ed4fb51058e1827e6a05998d08bd283254cc7e05763a",
+      "bank": "train_half1",
+      "declared_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/zone.png",
+      "design": "sidtd/svk_id",
+      "expected_sha256": "a95eb1efe82384d12087ed4fb51058e1827e6a05998d08bd283254cc7e05763a",
+      "matched": true,
+      "product": "zone",
+      "verified_path": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment/fold5/sidtd/svk_id/train_half1/zone.png"
+    }
+  ],
+  "raw_or_query_files_opened": false,
+  "schema_version": "anchor_enrollment_integrity_v1",
+  "scope": "bank_product_integrity_only",
+  "verification_output_root": "/shared/b00090279/refer-or-clear/results/diagnostics/anchor-pilots-v1/anchor-enrollment-fold5-38083/enrollment"
+}
