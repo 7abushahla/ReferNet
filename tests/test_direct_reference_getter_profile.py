@@ -4,6 +4,7 @@ import importlib.util
 import json
 from pathlib import Path
 import random
+import sys
 from types import SimpleNamespace
 
 import pandas as pd
@@ -15,11 +16,23 @@ SCRIPT = Path(__file__).resolve().parents[1] / "scripts/profile_direct_reference
 
 @pytest.fixture
 def profiler():
-    assert SCRIPT.is_file(), "external getter profiler missing"
-    spec = importlib.util.spec_from_file_location("getter_profile_test", SCRIPT)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
+    scientific_modules = {
+        name: module for name, module in sys.modules.copy().items()
+        if name == "refer_or_clear" or name.startswith("refer_or_clear.")
+    }
+    for name in scientific_modules:
+        del sys.modules[name]
+    try:
+        assert SCRIPT.is_file(), "external getter profiler missing"
+        spec = importlib.util.spec_from_file_location("getter_profile_test", SCRIPT)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        yield module
+    finally:
+        for name in tuple(sys.modules):
+            if name == "refer_or_clear" or name.startswith("refer_or_clear."):
+                del sys.modules[name]
+        sys.modules.update(scientific_modules)
 
 
 def binding(path, value):
@@ -70,6 +83,16 @@ def test_authenticated_bootstrap_guards_before_runtime(profiler, frozen):
     args, events, *_ = frozen
     profiler.bootstrap(args)
     assert events.index("guard") < events.index("runtime")
+
+
+def test_bootstrap_rejects_preloaded_scientific_modules(profiler, frozen, monkeypatch):
+    args, events, *_ = frozen
+    for name in ("refer_or_clear", "refer_or_clear.direct_reference_data"):
+        with monkeypatch.context() as imports:
+            imports.setitem(sys.modules, name, SimpleNamespace())
+            with pytest.raises(ValueError, match="scientific package already imported"):
+                profiler.bootstrap(args)
+        assert events == []
 
 
 @pytest.mark.parametrize("failure", ["source", "report", "request", "manifest", "gone", "node", "overlap", "symlink", "extra_source", "bytecode"])

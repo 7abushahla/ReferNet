@@ -1,0 +1,959 @@
+{
+  "allocation": {
+    "SLURMD_NODENAME": "gpu-dy-g5-0-17",
+    "SLURM_CPUS_PER_TASK": "4",
+    "SLURM_JOB_ID": "38102",
+    "SLURM_JOB_PARTITION": "gpu"
+  },
+  "arm": "off",
+  "completed": true,
+  "constructor_seconds": 10.03458563800001,
+  "end_to_end_seconds": 4.9007516639999835,
+  "execution_probe_only": true,
+  "getter_seconds": 3.5768115629999784,
+  "gpu_step_seconds": 1.1242024840000795,
+  "identities": {
+    "enrollment_manifest_sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8",
+    "recipe_sha256": "7a87ddefc956dd6026e2d29c8459d9bcb8251cbc9105218926b6d67e5abaa1a5",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "c1c59cefd2dce9a1815b235f81f763eb8781667853a8d80bf36666a71074f815",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9"
+  },
+  "input_manifest_sha256": "2d00467a322f5fd7c1c2b2a99a0cc20522d17adb582294d024822b839e7db627",
+  "input_shape": [
+    8,
+    4,
+    512,
+    800
+  ],
+  "instrumentation": {
+    "path": "/shared/b00090279/refer-or-clear/results/source/getter-profiler-2844ccf/profile_direct_reference_getter.py",
+    "sha256": "d9a8ce0e648f7723a186e504daba5d4d06fbcd4f1735671c1e827432f36dc043"
+  },
+  "no_val_test_open": true,
+  "optimizer_steps": 6,
+  "original_report": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-throughput-38088/throughput/report.json",
+    "sha256": "70dda430267086ceb884013e2a70a3e0aa88f5cf78e419b08b597f785088766f"
+  },
+  "path_checks": [
+    {
+      "calls": 992,
+      "cumulative_seconds": 0.29973668600000003,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/direct_reference.py",
+      "function": "_path",
+      "line": 94,
+      "primitive_calls": 992,
+      "self_seconds": 0.0019526620000000002
+    },
+    {
+      "calls": 192,
+      "cumulative_seconds": 0.047453463,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/direct_reference.py",
+      "function": "_fingerprint",
+      "line": 427,
+      "primitive_calls": 192,
+      "self_seconds": 0.0005117230000000001
+    },
+    {
+      "calls": 992,
+      "cumulative_seconds": 0.130073784,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/pathlib.py",
+      "function": "resolve",
+      "line": 1064,
+      "primitive_calls": 992,
+      "self_seconds": 0.002444663
+    },
+    {
+      "calls": 13664,
+      "cumulative_seconds": 0.102741199,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/pathlib.py",
+      "function": "stat",
+      "line": 1092,
+      "primitive_calls": 13664,
+      "self_seconds": 0.0051164570000000005
+    },
+    {
+      "calls": 12480,
+      "cumulative_seconds": 0.097656633,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/pathlib.py",
+      "function": "lstat",
+      "line": 1217,
+      "primitive_calls": 12480,
+      "self_seconds": 0.005672269000000001
+    },
+    {
+      "calls": 12480,
+      "cumulative_seconds": 0.10925630900000001,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/pathlib.py",
+      "function": "is_symlink",
+      "line": 1353,
+      "primitive_calls": 12480,
+      "self_seconds": 0.009988806000000001
+    }
+  ],
+  "phase_authority": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-throughput-38088/throughput/phase-authority.json",
+    "sha256": "e9c4f2327210a1a7a8017902c82c5b83d7d03e4c01d58056243ff2a6f792af8c"
+  },
+  "query_reads": [
+    {
+      "image_id": "sidtd_alb_id_00",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_00.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_01.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_56",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_01_fake_6_61",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_02.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_44",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_49",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_02_fake_6_88",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_03.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_03_fake_6_69",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_04",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_04.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_05.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_05_fake_6_60",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_05_fake_6_60.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_06",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_06.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_07",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_07.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_08",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_08.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_09",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_09.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_10",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_10.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_10_fake_6_67",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_10_fake_6_67.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_11",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_11.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_12",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_12.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_12_fake_6_29",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_12_fake_6_29.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_13_fake_6_18",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_13_fake_6_18.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_14",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_14.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_15",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_15.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_15_fake_6_111",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_15_fake_6_111.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_17",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_17.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_18",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_18.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_18_fake_6_78",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_18_fake_6_78.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_19_fake_6_16",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_19_fake_6_16.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_20",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_20.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_21",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_21.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_21_fake_6_43",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_21_fake_6_43.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_21_fake_6_70",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_21_fake_6_70.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_22",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_22.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_22_fake_6_0",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_22_fake_6_0.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_22_fake_6_26",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_22_fake_6_26.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_22_fake_6_72",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_22_fake_6_72.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_23.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_105",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_106",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_23_fake_6_81",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_23_fake_6_81.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_24",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_24.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_24_fake_6_53",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_24_fake_6_53.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_24_fake_6_80",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_24_fake_6_80.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_25",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_25.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_25_fake_6_22",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/fakes/alb_id_25_fake_6_22.jpg",
+      "role": "train"
+    },
+    {
+      "image_id": "sidtd_alb_id_26",
+      "path": "/scratch/b00090279/direct-reference-throughput-38088/raw/sidtd/templates/Images/reals/alb_id_26.jpg",
+      "role": "train"
+    }
+  ],
+  "query_reads_scope": "query_decode_helper_reads, not staging bytes or syscall audit",
+  "raw_pstats": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/getter-profile-38102/raw.pstats",
+    "sha256": "dc6f2a4d3c4975c9a0843ff88ac4a69035c4c46b7d5fb0dc22fd7c763d7d504b"
+  },
+  "registration": {
+    "path": "/shared/b00090279/refer-or-clear/results/diagnostics/direct-reference-v1/direct-reference-throughput-38088/throughput/registration.json",
+    "sha256": "1f7be580147ee134f5d733486b4e2be15b320324c4ec0e0d90de0f5a0f2bb188"
+  },
+  "registration_population": 1778,
+  "request": {
+    "path": "/scratch/b00090279/direct-reference-throughput-38088/inputs/request.json",
+    "sha256": "36247e1ac7ef13dd9944dd5fd6aa6d191765ce28e4e2362648cc69171a6a8ba8"
+  },
+  "rng_final_sha256": {
+    "geometry_rng": "ab6cd8844c95e2cd9153113f2c16a0fe6a59dfa115b00ccf8dd50cedd966951b",
+    "photometry_rng": "fe6b7783d65311de37ce1dbfae205d7ab6e9602e92a0c24cd1cfc4a54b76b7e0"
+  },
+  "schema_version": "external_direct_reference_getter_profile_v1",
+  "scientific_pilot": false,
+  "selected_train_ids": [
+    "sidtd_alb_id_00",
+    "sidtd_alb_id_01",
+    "sidtd_alb_id_01_fake_6_56",
+    "sidtd_alb_id_01_fake_6_61",
+    "sidtd_alb_id_02",
+    "sidtd_alb_id_02_fake_6_44",
+    "sidtd_alb_id_02_fake_6_49",
+    "sidtd_alb_id_02_fake_6_88",
+    "sidtd_alb_id_03",
+    "sidtd_alb_id_03_fake_6_69",
+    "sidtd_alb_id_04",
+    "sidtd_alb_id_05",
+    "sidtd_alb_id_05_fake_6_60",
+    "sidtd_alb_id_06",
+    "sidtd_alb_id_07",
+    "sidtd_alb_id_08",
+    "sidtd_alb_id_09",
+    "sidtd_alb_id_10",
+    "sidtd_alb_id_10_fake_6_67",
+    "sidtd_alb_id_11",
+    "sidtd_alb_id_12",
+    "sidtd_alb_id_12_fake_6_29",
+    "sidtd_alb_id_13_fake_6_18",
+    "sidtd_alb_id_14",
+    "sidtd_alb_id_15",
+    "sidtd_alb_id_15_fake_6_111",
+    "sidtd_alb_id_17",
+    "sidtd_alb_id_18",
+    "sidtd_alb_id_18_fake_6_78",
+    "sidtd_alb_id_19_fake_6_16",
+    "sidtd_alb_id_20",
+    "sidtd_alb_id_21",
+    "sidtd_alb_id_21_fake_6_43",
+    "sidtd_alb_id_21_fake_6_70",
+    "sidtd_alb_id_22",
+    "sidtd_alb_id_22_fake_6_0",
+    "sidtd_alb_id_22_fake_6_26",
+    "sidtd_alb_id_22_fake_6_72",
+    "sidtd_alb_id_23",
+    "sidtd_alb_id_23_fake_6_105",
+    "sidtd_alb_id_23_fake_6_106",
+    "sidtd_alb_id_23_fake_6_81",
+    "sidtd_alb_id_24",
+    "sidtd_alb_id_24_fake_6_53",
+    "sidtd_alb_id_24_fake_6_80",
+    "sidtd_alb_id_25",
+    "sidtd_alb_id_25_fake_6_22",
+    "sidtd_alb_id_26"
+  ],
+  "table_load_seconds": 14.529889893000018,
+  "timed_images": 32,
+  "timing_scope": "getter-only cProfile; GPU step includes transfer/host guards/backward/clip/optimizer/scheduler; end-to-end includes profiler overhead; no checkpoint or replay",
+  "top_cumulative": [
+    {
+      "calls": 32,
+      "cumulative_seconds": 3.571143374,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/direct_reference.py",
+      "function": "__getitem__",
+      "line": 484,
+      "primitive_calls": 32,
+      "self_seconds": 0.10825692
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.855386784,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/direct_reference_diagnostic.py",
+      "function": "read",
+      "line": 149,
+      "primitive_calls": 32,
+      "self_seconds": 0.000270407
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.8539286530000001,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/direct_reference.py",
+      "function": "_image",
+      "line": 238,
+      "primitive_calls": 32,
+      "self_seconds": 0.00024680000000000004
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.8295879030000001,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/direct_reference.py",
+      "function": "_digest",
+      "line": 90,
+      "primitive_calls": 32,
+      "self_seconds": 0.00046550300000000003
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.8075643180000001,
+      "file": "~",
+      "function": "<imdecode>",
+      "line": 0,
+      "primitive_calls": 32,
+      "self_seconds": 0.8075643180000001
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.754284351,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/json/__init__.py",
+      "function": "dumps",
+      "line": 183,
+      "primitive_calls": 32,
+      "self_seconds": 0.000313083
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.7538874940000001,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/json/encoder.py",
+      "function": "encode",
+      "line": 182,
+      "primitive_calls": 32,
+      "self_seconds": 0.000370562
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.7446217310000001,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/json/encoder.py",
+      "function": "iterencode",
+      "line": 204,
+      "primitive_calls": 32,
+      "self_seconds": 0.7446217310000001
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.30353846700000003,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/dataset.py",
+      "function": "_photometric",
+      "line": 30,
+      "primitive_calls": 32,
+      "self_seconds": 0.192477226
+    },
+    {
+      "calls": 992,
+      "cumulative_seconds": 0.29973668600000003,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/direct_reference.py",
+      "function": "_path",
+      "line": 94,
+      "primitive_calls": 992,
+      "self_seconds": 0.0019526620000000002
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.27835165900000003,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/rectify.py",
+      "function": "to_canvas",
+      "line": 24,
+      "primitive_calls": 32,
+      "self_seconds": 0.0027736790000000002
+    },
+    {
+      "calls": 64,
+      "cumulative_seconds": 0.272598214,
+      "file": "~",
+      "function": "<resize>",
+      "line": 0,
+      "primitive_calls": 64,
+      "self_seconds": 0.272598214
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.23915775700000003,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/direct_reference.py",
+      "function": "_common",
+      "line": 258,
+      "primitive_calls": 32,
+      "self_seconds": 0.0016090490000000002
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.217099492,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/direct_reference.py",
+      "function": "_products",
+      "line": 227,
+      "primitive_calls": 32,
+      "self_seconds": 0.0026544750000000003
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.20686434,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/dataset.py",
+      "function": "_normalize",
+      "line": 47,
+      "primitive_calls": 32,
+      "self_seconds": 0.195687457
+    },
+    {
+      "calls": 64,
+      "cumulative_seconds": 0.194491834,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/direct_reference.py",
+      "function": "_json",
+      "line": 108,
+      "primitive_calls": 64,
+      "self_seconds": 0.00021702300000000003
+    },
+    {
+      "calls": 1184,
+      "cumulative_seconds": 0.167563327,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/scripts/verify_anchor_enrollment_products.py",
+      "function": "_no_symlinks",
+      "line": 42,
+      "primitive_calls": 1184,
+      "self_seconds": 0.009191336000000001
+    },
+    {
+      "calls": 228,
+      "cumulative_seconds": 0.142968542,
+      "file": "~",
+      "function": "<warpAffine>",
+      "line": 0,
+      "primitive_calls": 228,
+      "self_seconds": 0.142968542
+    },
+    {
+      "calls": 992,
+      "cumulative_seconds": 0.130073784,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/pathlib.py",
+      "function": "resolve",
+      "line": 1064,
+      "primitive_calls": 992,
+      "self_seconds": 0.002444663
+    },
+    {
+      "calls": 110188,
+      "cumulative_seconds": 0.12817282700000002,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/direct_reference.py",
+      "function": "finite",
+      "line": 110,
+      "primitive_calls": 64,
+      "self_seconds": 0.090452656
+    },
+    {
+      "calls": 192,
+      "cumulative_seconds": 0.11992271500000001,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/direct_reference.py",
+      "function": "_bytes",
+      "line": 100,
+      "primitive_calls": 192,
+      "self_seconds": 0.0013567450000000001
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.11631930100000001,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/direct_reference.py",
+      "function": "_bank",
+      "line": 214,
+      "primitive_calls": 32,
+      "self_seconds": 0.0043311370000000005
+    },
+    {
+      "calls": 12480,
+      "cumulative_seconds": 0.10925630900000001,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/pathlib.py",
+      "function": "is_symlink",
+      "line": 1353,
+      "primitive_calls": 12480,
+      "self_seconds": 0.009988806000000001
+    },
+    {
+      "calls": 13664,
+      "cumulative_seconds": 0.102741199,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/pathlib.py",
+      "function": "stat",
+      "line": 1092,
+      "primitive_calls": 13664,
+      "self_seconds": 0.0051164570000000005
+    },
+    {
+      "calls": 992,
+      "cumulative_seconds": 0.101634214,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/posixpath.py",
+      "function": "realpath",
+      "line": 389,
+      "primitive_calls": 992,
+      "self_seconds": 0.0018458860000000001
+    },
+    {
+      "calls": 12480,
+      "cumulative_seconds": 0.097656633,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/pathlib.py",
+      "function": "lstat",
+      "line": 1217,
+      "primitive_calls": 12480,
+      "self_seconds": 0.005672269000000001
+    },
+    {
+      "calls": 13664,
+      "cumulative_seconds": 0.097624742,
+      "file": "~",
+      "function": "<built-in method posix.stat>",
+      "line": 0,
+      "primitive_calls": 13664,
+      "self_seconds": 0.062653928
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.094443038,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/direct_reference.py",
+      "function": "_rows",
+      "line": 196,
+      "primitive_calls": 32,
+      "self_seconds": 0.002474594
+    },
+    {
+      "calls": 992,
+      "cumulative_seconds": 0.08700405800000001,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/posixpath.py",
+      "function": "_joinrealpath",
+      "line": 398,
+      "primitive_calls": 992,
+      "self_seconds": 0.018311526
+    },
+    {
+      "calls": 2206,
+      "cumulative_seconds": 0.080328641,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/pandas/core/indexing.py",
+      "function": "__getitem__",
+      "line": 1177,
+      "primitive_calls": 2206,
+      "self_seconds": 0.007458254
+    }
+  ],
+  "top_self": [
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.8075643180000001,
+      "file": "~",
+      "function": "<imdecode>",
+      "line": 0,
+      "primitive_calls": 32,
+      "self_seconds": 0.8075643180000001
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.7446217310000001,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/json/encoder.py",
+      "function": "iterencode",
+      "line": 204,
+      "primitive_calls": 32,
+      "self_seconds": 0.7446217310000001
+    },
+    {
+      "calls": 64,
+      "cumulative_seconds": 0.272598214,
+      "file": "~",
+      "function": "<resize>",
+      "line": 0,
+      "primitive_calls": 64,
+      "self_seconds": 0.272598214
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.20686434,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/dataset.py",
+      "function": "_normalize",
+      "line": 47,
+      "primitive_calls": 32,
+      "self_seconds": 0.195687457
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.30353846700000003,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/dataset.py",
+      "function": "_photometric",
+      "line": 30,
+      "primitive_calls": 32,
+      "self_seconds": 0.192477226
+    },
+    {
+      "calls": 228,
+      "cumulative_seconds": 0.142968542,
+      "file": "~",
+      "function": "<warpAffine>",
+      "line": 0,
+      "primitive_calls": 228,
+      "self_seconds": 0.142968542
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 3.571143374,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/direct_reference.py",
+      "function": "__getitem__",
+      "line": 484,
+      "primitive_calls": 32,
+      "self_seconds": 0.10825692
+    },
+    {
+      "calls": 110188,
+      "cumulative_seconds": 0.12817282700000002,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/src/refer_or_clear/data/direct_reference.py",
+      "function": "finite",
+      "line": 110,
+      "primitive_calls": 64,
+      "self_seconds": 0.090452656
+    },
+    {
+      "calls": 224,
+      "cumulative_seconds": 0.067534229,
+      "file": "~",
+      "function": "<built-in method _hashlib.openssl_sha256>",
+      "line": 0,
+      "primitive_calls": 224,
+      "self_seconds": 0.067534229
+    },
+    {
+      "calls": 13664,
+      "cumulative_seconds": 0.097624742,
+      "file": "~",
+      "function": "<built-in method posix.stat>",
+      "line": 0,
+      "primitive_calls": 13664,
+      "self_seconds": 0.062653928
+    },
+    {
+      "calls": 64,
+      "cumulative_seconds": 0.054596434000000006,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/site-packages/numpy/core/_methods.py",
+      "function": "_clip",
+      "line": 90,
+      "primitive_calls": 64,
+      "self_seconds": 0.054596434000000006
+    },
+    {
+      "calls": 416,
+      "cumulative_seconds": 0.044355053000000005,
+      "file": "~",
+      "function": "<method 'astype' of 'numpy.ndarray' objects>",
+      "line": 0,
+      "primitive_calls": 416,
+      "self_seconds": 0.044355053000000005
+    },
+    {
+      "calls": 388266,
+      "cumulative_seconds": 0.046513908,
+      "file": "~",
+      "function": "<built-in method builtins.isinstance>",
+      "line": 0,
+      "primitive_calls": 388010,
+      "self_seconds": 0.041293031
+    },
+    {
+      "calls": 9568,
+      "cumulative_seconds": 0.038965917,
+      "file": "~",
+      "function": "<built-in method posix.lstat>",
+      "line": 0,
+      "primitive_calls": 9568,
+      "self_seconds": 0.038965917
+    },
+    {
+      "calls": 29364,
+      "cumulative_seconds": 0.053529349000000004,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/copy.py",
+      "function": "deepcopy",
+      "line": 128,
+      "primitive_calls": 64,
+      "self_seconds": 0.029576260000000004
+    },
+    {
+      "calls": 1600,
+      "cumulative_seconds": 0.027526762000000003,
+      "file": "~",
+      "function": "<method 'reduce' of 'numpy.ufunc' objects>",
+      "line": 0,
+      "primitive_calls": 1600,
+      "self_seconds": 0.027526762000000003
+    },
+    {
+      "calls": 32,
+      "cumulative_seconds": 0.027435102000000003,
+      "file": "~",
+      "function": "<built-in method numpy.ascontiguousarray>",
+      "line": 0,
+      "primitive_calls": 32,
+      "self_seconds": 0.027435102000000003
+    },
+    {
+      "calls": 64,
+      "cumulative_seconds": 0.03248277,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/json/decoder.py",
+      "function": "raw_decode",
+      "line": 343,
+      "primitive_calls": 64,
+      "self_seconds": 0.026894925
+    },
+    {
+      "calls": 207,
+      "cumulative_seconds": 0.026876189,
+      "file": "~",
+      "function": "<method 'update' of '_hashlib.HASH' objects>",
+      "line": 0,
+      "primitive_calls": 207,
+      "self_seconds": 0.026876189
+    },
+    {
+      "calls": 3872,
+      "cumulative_seconds": 0.036812346,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/pathlib.py",
+      "function": "parse_parts",
+      "line": 56,
+      "primitive_calls": 3872,
+      "self_seconds": 0.021932986
+    },
+    {
+      "calls": 992,
+      "cumulative_seconds": 0.08700405800000001,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/posixpath.py",
+      "function": "_joinrealpath",
+      "line": 398,
+      "primitive_calls": 992,
+      "self_seconds": 0.018311526
+    },
+    {
+      "calls": 15776,
+      "cumulative_seconds": 0.031072249000000003,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/pathlib.py",
+      "function": "__str__",
+      "line": 621,
+      "primitive_calls": 15776,
+      "self_seconds": 0.017522424
+    },
+    {
+      "calls": 9568,
+      "cumulative_seconds": 0.024166668000000002,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/posixpath.py",
+      "function": "join",
+      "line": 71,
+      "primitive_calls": 9568,
+      "self_seconds": 0.015474437
+    },
+    {
+      "calls": 12480,
+      "cumulative_seconds": 0.040792342,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/pathlib.py",
+      "function": "__getitem__",
+      "line": 525,
+      "primitive_calls": 12480,
+      "self_seconds": 0.015369463000000002
+    },
+    {
+      "calls": 14688,
+      "cumulative_seconds": 0.012806497,
+      "file": "~",
+      "function": "<method 'join' of 'str' objects>",
+      "line": 0,
+      "primitive_calls": 14688,
+      "self_seconds": 0.012806497
+    },
+    {
+      "calls": 66942,
+      "cumulative_seconds": 0.021065164,
+      "file": "~",
+      "function": "<built-in method builtins.len>",
+      "line": 0,
+      "primitive_calls": 40126,
+      "self_seconds": 0.012197494000000001
+    },
+    {
+      "calls": 12480,
+      "cumulative_seconds": 0.10925630900000001,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/pathlib.py",
+      "function": "is_symlink",
+      "line": 1353,
+      "primitive_calls": 12480,
+      "self_seconds": 0.009988806000000001
+    },
+    {
+      "calls": 13664,
+      "cumulative_seconds": 0.013549825000000001,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/pathlib.py",
+      "function": "_format_parsed_parts",
+      "line": 608,
+      "primitive_calls": 13664,
+      "self_seconds": 0.009942421
+    },
+    {
+      "calls": 1663,
+      "cumulative_seconds": 0.053074784,
+      "file": "/shared/b00090279/conda/envs/refer-or-clear/lib/python3.10/copy.py",
+      "function": "_deepcopy_dict",
+      "line": 227,
+      "primitive_calls": 64,
+      "self_seconds": 0.009490982
+    },
+    {
+      "calls": 1184,
+      "cumulative_seconds": 0.167563327,
+      "file": "/scratch/b00090279/direct-reference-throughput-38088/code/scripts/verify_anchor_enrollment_products.py",
+      "function": "_no_symlinks",
+      "line": 42,
+      "primitive_calls": 1184,
+      "self_seconds": 0.009191336000000001
+    }
+  ],
+  "warmup_images": 16
+}
