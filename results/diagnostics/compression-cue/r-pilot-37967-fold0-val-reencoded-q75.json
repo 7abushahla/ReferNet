@@ -1,0 +1,30 @@
+{
+ "checkpoint_epoch": 55,
+ "n": 222,
+ "native": {
+  "accuracy": 1.0,
+  "auc": 1.0,
+  "genuine_fp": 0.0,
+  "text_copy": {
+   "recall": 1.0,
+   "auc": 1.0
+  },
+  "text_inpaint": {
+   "recall": 1.0,
+   "auc": 1.0
+  }
+ },
+ "q75": {
+  "accuracy": 0.5495495495495496,
+  "auc": 0.6923770491803278,
+  "genuine_fp": 1.0,
+  "text_copy": {
+   "recall": 1.0,
+   "auc": 0.5984375000000001
+  },
+  "text_inpaint": {
+   "recall": 1.0,
+   "auc": 0.706556603773585
+  }
+ }
+}
