@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>org.refer-or-clear.replication-resume-faa8a0e2</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/private/tmp/roc-anchor-dev/bin/python</string>
+        <string>-B</string>
+        <string>/private/tmp/roc-replication-tools.ghSmEn/scripts/resume_reviewed_replications.py</string>
+        <string>--manifest</string>
+        <string>/Users/hamza/Documents/GitHub/refer-or-clear/results/monitoring/replication-resume-faa8a0e2.json</string>
+        <string>--manifest-sha256</string>
+        <string>2bbdea093e81bd266c1a9c3bcb06ebe47bbadb976e872eb303ff27738b830ecc</string>
+        <string>--watch</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/hamza/Documents/GitHub/refer-or-clear</string>
+    <key>StandardOutPath</key>
+    <string>/Users/hamza/Documents/GitHub/refer-or-clear/results/monitoring/replication-resume-launchd-faa8a0e2.oneshot.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/hamza/Documents/GitHub/refer-or-clear/results/monitoring/replication-resume-launchd-faa8a0e2.oneshot.err</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <false/>
+</dict>
+</plist>
