@@ -1,0 +1,34 @@
+{
+  "authorization": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-v2corrnoaux-912ddaa/evaluation/authorization.json",
+    "sha256": "09229329313fbec2e888cd62aa356ba8b7be27a5febc84e6564fcfadeb17e245"
+  },
+  "group": 0,
+  "native": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-v2corrnoaux-912ddaa/evaluation/result.json",
+    "sha256": "935c533bae9477094214e0e84f10d50a0b6f8205adb0bce596e06d30e3a823fd"
+  },
+  "passed": true,
+  "protocol": "B",
+  "request": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/v2corrnoaux-912ddaa/group0/request.json",
+    "sha256": "9d08418a3a98679dbfd63fb5d8392497a5b0ebe8f1e6884ae33225d7898222b4"
+  },
+  "schema_version": "protocol_b_reencoded_evaluation_result_v1",
+  "summaries": {
+    "off": {
+      "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-v2corrnoaux-912ddaa/evaluation-q75/off/test_summary.json",
+      "sha256": "67804c6cd87d61d12355b65717edf138900cab67c04c082a024a0944ec09f2d4"
+    },
+    "on": {
+      "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-v2corrnoaux-912ddaa/evaluation-q75/on/test_summary.json",
+      "sha256": "838d1841665dc726767dedffa27faa1671d8bb6bc90d64c6d83253c9f88f2b30"
+    }
+  },
+  "treatment": {
+    "encoder": "opencv_4.11.0_imencode_jpg",
+    "kind": "query_jpeg_reencode",
+    "quality": 75,
+    "scope": "raw_root_color_queries_after_decode_before_canvas"
+  }
+}

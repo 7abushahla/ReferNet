@@ -1,0 +1,25 @@
+{
+  "authorization": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-v2corr-912ddaa/evaluation/authorization.json",
+    "sha256": "bdedc6de9a6749a7a1e285c09f4f568667363f0754a8e661e12b462d3b8a365f"
+  },
+  "group": 0,
+  "passed": true,
+  "protocol": "B",
+  "request": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/v2corr-912ddaa/group0/request.json",
+    "sha256": "46a1c95c40175c2f77563d75b0d8e9aadc42d89342d1f495897d3e57cb357d05"
+  },
+  "same_query_population": true,
+  "schema_version": "protocol_b_evaluation_result_v1",
+  "summaries": {
+    "off": {
+      "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-v2corr-912ddaa/evaluation/off/test_summary.json",
+      "sha256": "07ce918fa311cf62ad6c02ba7ea9ef931c3502571344d97b8baae4cf41048120"
+    },
+    "on": {
+      "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-v2corr-912ddaa/evaluation/on/test_summary.json",
+      "sha256": "80b28e2b2dbc13d5fc040e32c5c36486e2b9396f5d8e3d1939ad2fe1bf97a0dc"
+    }
+  }
+}
