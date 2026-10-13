@@ -81,13 +81,26 @@ class DirectReferenceClassifier(nn.Module):
     architecture_id = "anchor_direct_reference_ia18_v1"
     normalization_policy = "shared_sequential_train_bn_stored_eval_v1"
 
+    reference_bn_policies = ("shared", "stored")
+
     def __init__(
         self,
         base: AnchorChanger,
         *,
         reference_enabled: bool,
         adapter_seed: int = 42,
+        local_enabled: bool = True,
+        reference_bn: str = "shared",
     ):
+        """Global query classifier with an optional local reference correction.
+
+        ``local_enabled=False`` keeps the adapter tensors (same seeded
+        initialization, so both arms share identical initial state) but
+        freezes them and bypasses the local branch: the output is the global
+        query logit alone. ``reference_bn="stored"`` runs the reference prefix
+        under the stored BatchNorm statistics without updating them, so only
+        query images shape the running moments used at evaluation.
+        """
         super().__init__()
         if not isinstance(base, AnchorChanger) or base.track != "D_running_pilot" or base.bn_policy != "running":
             raise ValueError("Direct reference requires an internal D_running_pilot AnchorChanger")
@@ -95,19 +108,47 @@ class DirectReferenceClassifier(nn.Module):
             raise ValueError("reference_enabled must be bool")
         if type(adapter_seed) is not int or not 0 <= adapter_seed < 2**32:
             raise ValueError("adapter_seed must be an integer in [0, 2**32)")
+        if type(local_enabled) is not bool:
+            raise ValueError("local_enabled must be bool")
+        if reference_bn not in self.reference_bn_policies:
+            raise ValueError("reference_bn must be 'shared' or 'stored'")
+        if reference_enabled and not local_enabled:
+            raise ValueError("a reference-enabled arm requires the local branch")
         self.base = base
         self.reference_enabled = reference_enabled
+        self.local_enabled = local_enabled
+        self.reference_bn = reference_bn
         with _seeded_construction(adapter_seed):
             self.adapter = _LocalAdapter()
+        if not local_enabled:
+            for parameter in self.adapter.parameters():
+                parameter.requires_grad_(False)
         self.initialization_provenance = {
             "base": deepcopy(base.initialization_provenance),
             "architecture_id": self.architecture_id,
             "base_architecture_id": base.architecture_id,
             "normalization_policy": self.normalization_policy,
             "reference_enabled": reference_enabled,
+            "local_enabled": local_enabled,
+            "reference_bn": reference_bn,
             "adapter_seed": adapter_seed,
             "adapter_tensor_sha256": _tensor_sha256(self.adapter.state_dict()),
         }
+
+    def _reference_prefix(self, reference_input: Tensor) -> Tensor:
+        backbone = self.base.backbone
+        prefix = (backbone.stem, backbone.layer1, backbone.layer2)
+        normalizers = [module for stage in prefix for module in stage.modules()
+                       if isinstance(module, nn.modules.batchnorm._BatchNorm)]
+        restore = [module.training for module in normalizers]
+        if self.reference_bn == "stored":
+            for module in normalizers:
+                module.eval()
+        try:
+            return backbone.layer2(backbone.layer1(backbone.maxpool(backbone.stem(reference_input))))
+        finally:
+            for module, training in zip(normalizers, restore):
+                module.train(training)
 
     def parameter_groups(self) -> tuple[list[nn.Parameter], list[nn.Parameter]]:
         pretrained = [parameter for parameter in self.base.backbone.parameters() if parameter.requires_grad]
@@ -166,15 +207,14 @@ class DirectReferenceClassifier(nn.Module):
         stages = encode_query(self.base.backbone, query)
         query_logit = self.base.classifier(stages[-1].mean(dim=(2, 3))).squeeze(1)
         correction_logit = torch.zeros_like(query_logit)
-        if available.any():
+        if self.local_enabled and available.any():
             indices = available.nonzero(as_tuple=True)[0]
             projected_query = self.adapter.projection(stages[1][available])
             projected_reference = torch.zeros_like(projected_query)
             difference = torch.zeros_like(projected_query)
             if self.reference_enabled:
                 reference_input = torch.cat((reference[available], query[available, 3:4]), dim=1)
-                backbone = self.base.backbone
-                reference_features = backbone.layer2(backbone.layer1(backbone.maxpool(backbone.stem(reference_input))))
+                reference_features = self._reference_prefix(reference_input)
                 projected_reference = self.adapter.projection(reference_features)
                 difference = (projected_query - projected_reference).abs()
             zone = functional.interpolate(query[available, 3:4].clamp(0, 1), size=projected_query.shape[2:], mode="nearest")
@@ -194,6 +234,9 @@ def build_direct_reference_model(
     reference_enabled: bool,
     head_seed: int = 42,
     adapter_seed: int = 42,
+    local_enabled: bool = True,
+    reference_bn: str = "shared",
 ) -> DirectReferenceClassifier:
     base = build_anchor_changer("D_running_pilot", levir_path, expected_sha256, head_seed)
-    return DirectReferenceClassifier(base, reference_enabled=reference_enabled, adapter_seed=adapter_seed)
+    return DirectReferenceClassifier(base, reference_enabled=reference_enabled, adapter_seed=adapter_seed,
+                                     local_enabled=local_enabled, reference_bn=reference_bn)

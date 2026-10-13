@@ -98,7 +98,7 @@ def setup(service, tmp_path, monkeypatch):
 
     monkeypatch.setattr(service, "ProtocolBReferenceDataset", dataset)
 
-    def fresh(path, sha, *, reference_enabled, head_seed, adapter_seed):
+    def fresh(path, sha, *, reference_enabled, head_seed, adapter_seed, local_enabled=True, reference_bn="shared"):
         events.append("fresh-model")
         assert Path(path) == weights_path and sha == weights["sha256"]
         assert head_seed == adapter_seed == 42
@@ -109,7 +109,7 @@ def setup(service, tmp_path, monkeypatch):
 
     monkeypatch.setattr(service, "build_direct_reference_model", fresh)
 
-    def train(model, loader, optimizer, scheduler, device):
+    def train(model, loader, optimizer, scheduler, device, auxiliary_query_weight=0.):
         assert device == "cpu" and loader.batch_size == 8 and loader.drop_last
         assert loader.num_workers == 0 and len(loader) == 4
         order = list(loader.sampler)
@@ -316,7 +316,7 @@ def test_failed_actual_execution_never_writes_success_receipt(service, setup, mo
 
         monkeypatch.setattr(service, "evaluate_direct_reference", evaluate)
     elif failure == "epoch-accounting":
-        monkeypatch.setattr(service, "train_direct_reference_epoch", lambda *args: dict(n_images=17, optimizer_steps=2))
+        monkeypatch.setattr(service, "train_direct_reference_epoch", lambda *args, **kwargs: dict(n_images=17, optimizer_steps=2))
     else:
         original = service.replay_direct_reference_checkpoint
 
@@ -431,3 +431,18 @@ def test_training_receipt_binds_history_summary_parent_and_process(service, setu
     for name, filename in (("history", "log.csv"), ("summary", "val_summary.json"), ("in_process_replay", "replay.json")):
         path = setup["output"] / "training/off" / filename
         assert receipt[name] == dict(path=str(path), sha256=hashlib.sha256(path.read_bytes()).hexdigest())
+
+
+def test_arm_recipe_enters_effective_config_and_models(service, setup):
+    config = copy.deepcopy(setup["config"])
+    config["arm_recipe"] = dict(off=dict(local_branch=False), on=dict(auxiliary_query_weight=.5, reference_bn="stored"))
+    off = service.effective_config(config, setup["context"], False)
+    on = service.effective_config(config, setup["context"], True)
+    assert "arm_recipe" not in off and "arm_recipe" not in on
+    assert off["local_branch"] is False and off["auxiliary_query_weight"] == 0. and off["reference_bn"] == "shared"
+    assert on["local_branch"] is True and on["auxiliary_query_weight"] == .5 and on["reference_bn"] == "stored"
+    plain = service.effective_config(setup["config"], setup["context"], True)
+    assert plain["local_branch"] is True and plain["auxiliary_query_weight"] == 0. and plain["reference_bn"] == "shared"
+    config["arm_recipe"] = dict(on=dict(local_branch=False))
+    with pytest.raises(ValueError):
+        service.effective_config(config, setup["context"], True)

@@ -23,6 +23,7 @@ from .data.protocol_b_reference import (
     ProtocolBReferenceDataset, ReferenceContext, load_protocol_b_registration,
 )
 from .direct_reference_pilot import (
+    arm_recipe,
     _validate_contract, _validate_initialization, _validate_model,
     evaluate_direct_reference, read_direct_reference_checkpoint,
     replay_direct_reference_checkpoint, save_direct_reference_checkpoint,
@@ -76,6 +77,7 @@ def effective_config(base, context, enabled):
              "Protocol B context and boolean arm required")
     _require(isinstance(base, dict), "base config must be a mapping")
     permitted = set(_FIXED) | {"protocol", "group", "fold", "arm", "reference_enabled", "data_contract",
+                              "arm_recipe", "local_branch", "auxiliary_query_weight", "reference_bn",
                               "records_csv", "split_csv", "records_sha256", "split_sha256", "enrollment_sha256"}
     _require(set(base) <= permitted, "unknown recipe fields or checkpoint/resume inputs")
     for key, value in _FIXED.items():
@@ -101,6 +103,9 @@ def effective_config(base, context, enabled):
              and bindings[3]["sha256"] == _sha(metadata.get("enrollment_manifest_sha256")),
              "context authorities mismatch")
     result = copy.deepcopy(base)
+    for key in ("arm_recipe", "local_branch", "auxiliary_query_weight", "reference_bn"):
+        result.pop(key, None)
+    result.update(arm_recipe(base, enabled))
     result.pop("fold", None)
     result.update(protocol="B", group=context.contract.group, arm="on" if enabled else "off",
                   reference_enabled=enabled, data_contract="protocol_b_query_canvas_v1",
@@ -216,7 +221,8 @@ def run_training(context, config, weights_binding, registration_binding, output_
         configure_precision(device, "D_running_pilot")
         return build_direct_reference_model(Path(weights_binding["path"]), weights_binding["sha256"],
                     reference_enabled=reference_enabled, head_seed=effective["head_seed"],
-                    adapter_seed=effective["adapter_seed"]).to(device)
+                    adapter_seed=effective["adapter_seed"], local_enabled=effective["local_branch"],
+                    reference_bn=effective["reference_bn"]).to(device)
 
     model = fresh_model()
     checkpoint_ids = dict(source_sha256=source_sha256, config_sha256=json_sha256(effective),
@@ -251,7 +257,8 @@ def run_training(context, config, weights_binding, registration_binding, output_
         omissions.append(dict(epoch=epoch, image_ids=rows["train"].iloc[order[accounting.images_per_epoch:]].image_id.tolist()))
         loader = DataLoader(train_dataset, batch_size=8, sampler=order, drop_last=True, num_workers=0,
                             generator=torch.Generator().manual_seed(effective["seed"] + 2001 + epoch))
-        stats = train_direct_reference_epoch(model, loader, optimizer, scheduler, device)
+        stats = train_direct_reference_epoch(model, loader, optimizer, scheduler, device,
+                                             auxiliary_query_weight=effective["auxiliary_query_weight"])
         _require(type(stats.get("n_images")) is int and stats["n_images"] == accounting.images_per_epoch
                  and type(stats.get("optimizer_steps")) is int and stats["optimizer_steps"] == accounting.batches_per_epoch,
                  "full epoch update/drop-last mismatch")

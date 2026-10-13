@@ -230,14 +230,14 @@ def validate_training_gate(gate_binding, context, config, weights_binding, regis
             _sha(smoke.get("fresh_initial_state_sha256"))
             initial_states.append(smoke["fresh_initial_state_sha256"])
             initial_provenance.append({name: value for name, value in smoke["initialization"].items()
-                                       if name != "reference_enabled"})
+                                       if name not in ("reference_enabled", "local_enabled", "reference_bn")})
             for role in ("train", "val"):
                 _require(smoke.get(f"source_{role}_ids") == rows[role].image_id.tolist(), "smoke exact source membership mismatch")
             stats = smoke["stats"]
             _count(stats, "n_images", 32)
             _count(stats, "optimizer_steps", 4)
             _require(_number(stats.get("loss")) and stats["loss"] >= 0
-                     and _close(stats.get("image_loss"), stats["loss"]), "classification-only smoke loss evidence mismatch")
+                     and _loss_consistent(stats, effective["auxiliary_query_weight"]), "classification-only smoke loss evidence mismatch")
             invariant = smoke["batch_invariance"]
             _require(invariant.get("passed") is True and invariant.get("buffers_unchanged") is True
                      and _number(invariant.get("max_abs_difference")) and invariant["max_abs_difference"] >= 0,
@@ -263,7 +263,14 @@ def _binding(path):
     return dict(path=str(_path(str(path))), sha256=_verifier._read_file(_path(str(path)))[0])
 
 
-def _history(binding, path, accounting):
+def _loss_consistent(row, auxiliary_query_weight):
+    """Fused BCE is ``image_loss``; ``loss`` adds the weighted auxiliary query BCE when configured."""
+    if float(auxiliary_query_weight) == 0.:
+        return _close(row["loss"], row["image_loss"])
+    return _number(row["loss"]) and _number(row["image_loss"]) and row["loss"] >= row["image_loss"] - 1e-6
+
+
+def _history(binding, path, accounting, auxiliary_query_weight=0.):
     _canonical(binding, path)
     history = list(csv.DictReader(StringIO(_bytes(binding).decode("utf-8"))))
     _require(len(history) == 100, "complete 100-epoch history required")
@@ -275,7 +282,7 @@ def _history(binding, path, accounting):
         for name in ("loss", "image_loss", "val_image_loss", "lr_pretrained", "lr_new"):
             row[name] = float(row[name])
             _require(_number(row[name]) and row[name] >= 0, f"invalid history {name}")
-        _require(_close(row["loss"], row["image_loss"]) and row["bce_map"] == row["dice_map"] == "",
+        _require(_loss_consistent(row, auxiliary_query_weight) and row["bce_map"] == row["dice_map"] == "",
                  "classification-only history required")
         for name in ("val_accuracy", "val_auc"):
             row[name] = float(row[name]) if row[name] else None
@@ -328,7 +335,8 @@ def validate_completed_training(context, request, base, arm, output, gate_bindin
         ids = expected_identities(context, config, request["weights"], registration, request["source_sha256"],
                                   gate_binding, result["initialization"])
         _require(result.get("identities") == ids, "completed identities differ from current authorities")
-        history, key, epoch = _history(result["history"], directory / "log.csv", accounting)
+        history, key, epoch = _history(result["history"], directory / "log.csv", accounting,
+                                       config["auxiliary_query_weight"])
         _count(result, "selected_epoch", epoch)
         _require(result.get("selection_key") == _selection_record(key), "earliest accuracy/AUC selection mismatch")
         omissions = result["omitted_train_ids"]

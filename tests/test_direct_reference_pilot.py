@@ -321,3 +321,44 @@ def test_replay_rejects_wrong_contract_before_loading_and_wrong_order(runtime, c
     assert wrong_model.head.item() == 7.
     with pytest.raises(ValueError, match="replay"):
         runtime.replay_direct_reference_checkpoint(path, model, loader, "cpu", config=config, identities=authority, expected_predictions=list(reversed(expected)))
+
+
+def test_auxiliary_query_loss_is_added_to_fused_loss_and_logged(runtime):
+    rows = samples(True)
+    rows[0]["reference"].fill_(3.)
+    model = SyntheticClassifier(True)
+    optimizer = torch.optim.SGD(model.parameters(), lr=0.)
+    result = runtime.train_direct_reference_epoch(model, DataLoader(rows, batch_size=5), optimizer, None, "cpu",
+                                                  auxiliary_query_weight=.5)
+    labels = torch.tensor([0., 1., 0., 1., 1.])
+    query = torch.tensor([-2., 2., 0., 0., 1.])
+    fused = query.clone()
+    fused[0] += 3.
+    image = nn.functional.binary_cross_entropy_with_logits(fused, labels).item()
+    auxiliary = .5 * nn.functional.binary_cross_entropy_with_logits(query, labels).item()
+    assert result["image_loss"] == pytest.approx(image)
+    assert result["aux_query_loss"] == pytest.approx(auxiliary)
+    assert result["loss"] == pytest.approx(image + auxiliary)
+    plain = runtime.train_direct_reference_epoch(SyntheticClassifier(True), DataLoader(rows, batch_size=5),
+                                                 optimizer, None, "cpu")
+    assert plain["aux_query_loss"] == 0. and plain["loss"] == pytest.approx(plain["image_loss"])
+    for weight in (-1., 11., True, "0.5"):
+        with pytest.raises(ValueError):
+            runtime.train_direct_reference_epoch(SyntheticClassifier(True), DataLoader(rows, batch_size=5),
+                                                 optimizer, None, "cpu", auxiliary_query_weight=weight)
+
+
+@pytest.mark.parametrize("enabled", [False, True])
+def test_arm_recipe_defaults_and_overrides(runtime, enabled):
+    assert runtime.arm_recipe({}, enabled) == dict(local_branch=True, auxiliary_query_weight=0., reference_bn="shared")
+    base = dict(arm_recipe=dict(off=dict(local_branch=False), on=dict(auxiliary_query_weight=.5, reference_bn="stored")))
+    expected = dict(local_branch=True, auxiliary_query_weight=.5, reference_bn="stored") if enabled else \
+        dict(local_branch=False, auxiliary_query_weight=0., reference_bn="shared")
+    assert runtime.arm_recipe(base, enabled) == expected
+    for bad in (dict(arm_recipe=dict(both=dict())), dict(arm_recipe=dict(off=dict(dropout=.1))),
+                dict(arm_recipe=dict(off=dict(reference_bn="x"))), dict(arm_recipe=dict(off=dict(auxiliary_query_weight=-1.))),
+                dict(arm_recipe=dict(off=dict(local_branch=1))), dict(arm_recipe=[])):
+        with pytest.raises(ValueError):
+            runtime.arm_recipe(bad, enabled)
+    with pytest.raises(ValueError):
+        runtime.arm_recipe(dict(arm_recipe=dict(on=dict(local_branch=False))), enabled)

@@ -195,7 +195,7 @@ def synthetic_run(cli, tmp_path, monkeypatch):
         return dict(copy.deepcopy(config), protocol="A", fold=context.contract.fold,
                     data_contract="protocol_a_query_canvas_v1", reference_enabled=enabled, arm="on" if enabled else "off")
 
-    def fresh(request_arg, enabled):
+    def fresh(request_arg, enabled, **unused_recipe):
         assert request_arg == request
         model = SyntheticClassifier(enabled)
         model.initialization_provenance["base"]["checkpoint_path"] = str(weights)
@@ -228,7 +228,7 @@ def synthetic_run(cli, tmp_path, monkeypatch):
     original_replay = cli.core.replay_direct_reference_checkpoint
     original_inputs = cli.core._batch_inputs
     original_loader = cli.load_request
-    monkeypatch.setattr(cli.core, "train_direct_reference_epoch", lambda model, loader, optimizer, scheduler, device:
+    monkeypatch.setattr(cli.core, "train_direct_reference_epoch", lambda model, loader, optimizer, scheduler, device, auxiliary_query_weight=0.:
         original_train(model, loader, optimizer, scheduler, "cpu"))
     monkeypatch.setattr(cli.core, "evaluate_direct_reference", lambda model, loader, device: original_evaluate(model, loader, "cpu"))
     monkeypatch.setattr(cli.core, "replay_direct_reference_checkpoint", lambda path, model, loader, device, **kwargs:
@@ -487,7 +487,8 @@ def test_fresh_factory_isolated_between_arms_with_official_fixed_seeds(cli, monk
     assert first is not second and len(factories) == 2
     for enabled, invocation in zip((False, True), factories):
         assert invocation[:3] == (Path(request["weights"]["path"]), "a" * 64,
-                                 dict(reference_enabled=enabled, head_seed=42, adapter_seed=42))
+                                 dict(reference_enabled=enabled, head_seed=42, adapter_seed=42,
+                                      local_enabled=True, reference_bn="shared"))
     assert factories[0][3:] == factories[1][3:]
 
 

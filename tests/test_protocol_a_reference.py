@@ -406,6 +406,7 @@ def test_cache_hit_reads_no_input_files_cold_build_reads_all(api, inputs, monkey
     registration = table(api, inputs, value)
     warm = dataset(api, value, registration, True, cache_bytes=64 * 1024**2)
     warm[0]
+    cold = dataset(api, value, registration, True, cache_bytes=0)
     observed = []
     original = api._bytes
     def audited(binding):
@@ -414,7 +415,6 @@ def test_cache_hit_reads_no_input_files_cold_build_reads_all(api, inputs, monkey
     monkeypatch.setattr(api, "_bytes", audited)
     warm[0]
     assert observed == []
-    cold = dataset(api, value, registration, True, cache_bytes=0)
     cold[0]
     row = value.rows("train").iloc[0]
     products = registration["entries"][row.image_id]["products"]

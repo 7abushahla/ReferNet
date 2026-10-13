@@ -91,7 +91,7 @@ def test_header_matches_approved_gpu_resources_and_no_submission():
                    if line.startswith("#SBATCH --") and "=" in line)
     assert {key: options[key] for key in ("account", "partition", "nodes", "ntasks", "gres", "cpus-per-task", "mem", "time", "exclude")} == {
         "account": "acc-mialhajri", "partition": "gpu", "nodes": "1", "ntasks": "1", "gres": "gpu:1",
-        "cpus-per-task": "4", "mem": "12G", "time": "12:00:00", "exclude": "gpu-dy-g5-0-16"}
+        "cpus-per-task": "4", "mem": "14G", "time": "12:00:00", "exclude": "gpu-dy-g5-0-16"}
     assert "source /opt/miniconda/etc/profile.d/conda.sh" in content
     assert "sbatch " not in content and "ssh " not in content and "git " not in content
     assert subprocess.run(["bash", "-n", str(WRAPPER)], capture_output=True).returncode == 0

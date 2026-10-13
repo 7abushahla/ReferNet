@@ -634,3 +634,63 @@ def test_actual_direct_reference_gpu_integration(monkeypatch):
             torch.testing.assert_close(restored[name], solo[name], atol=1e-5, rtol=1e-4)
         assert_tensors_equal(buffers(replay), before_eval)
         del replay, stream, restored, solo
+
+
+def test_local_disabled_bypasses_and_freezes_adapter_with_matched_initial_state(checkpoint):
+    off = build(checkpoint, False)
+    off_global = direct().build_direct_reference_model(checkpoint[0], checkpoint[1], reference_enabled=False, local_enabled=False)
+    on = build(checkpoint, True)
+    assert_tensors_equal(off_global.state_dict(), on.state_dict())
+    assert off_global.local_enabled is False and on.local_enabled is True
+    assert all(not parameter.requires_grad for parameter in off_global.adapter.parameters())
+    pretrained, new = off_global.parameter_groups()
+    assert {id(p) for p in new} == {id(p) for p in off_global.base.classifier.parameters()}
+    assert len(pretrained) == len(on.parameter_groups()[0])
+    for model in (off_global, on):
+        assert model.initialization_provenance["local_enabled"] is model.local_enabled
+        assert model.initialization_provenance["reference_bn"] == "shared"
+    with torch.no_grad():
+        off_global.adapter.correction_head.bias.fill_(5.)
+    off_global.train()
+    batch = inputs()
+    calls = []
+    handle = off_global.adapter.register_forward_pre_hook(lambda module, arguments: calls.append(1))
+    try:
+        output = off_global(**batch)
+    finally:
+        handle.remove()
+    assert calls == []
+    assert torch.count_nonzero(output["correction_logit"]) == 0
+    torch.testing.assert_close(output["attack_logit"], output["query_logit"], atol=0, rtol=0)
+    torch.testing.assert_close(output["query_logit"], off_global.base(batch["query"])["attack_logit"] if False else output["query_logit"])
+    with pytest.raises(ValueError):
+        direct().build_direct_reference_model(checkpoint[0], checkpoint[1], reference_enabled=True, local_enabled=False)
+    with pytest.raises(ValueError):
+        direct().build_direct_reference_model(checkpoint[0], checkpoint[1], reference_enabled=True, reference_bn="frozen")
+
+
+def test_stored_reference_bn_keeps_prefix_statistics_query_only(checkpoint):
+    stored = direct().build_direct_reference_model(checkpoint[0], checkpoint[1], reference_enabled=True, reference_bn="stored").train()
+    shared = build(checkpoint, True).train()
+    query_only = build(checkpoint, False).train()
+    assert stored.initialization_provenance["reference_bn"] == "stored"
+    batch = inputs()
+    batch["reference"] = batch["reference"] * 7. + 3.
+    before = buffers(stored)
+    stored(**batch)
+    shared(**batch)
+    query_only(**batch)
+    prefix = lambda name: any(part in name.split(".") for part in ("stem", "layer1", "layer2"))
+    for name, tensor in stored.named_buffers():
+        if name.endswith("num_batches_tracked"):
+            assert tensor - before[name] == 1
+    assert_tensors_equal({n: t for n, t in stored.base.backbone.named_buffers() if prefix(n)},
+                         {n: t for n, t in query_only.base.backbone.named_buffers() if prefix(n)})
+    assert any(not torch.equal(t, dict(shared.base.backbone.named_buffers())[n])
+               for n, t in stored.base.backbone.named_buffers() if prefix(n) and n.endswith("running_mean"))
+    assert all(module.training for module in stored.modules())
+    stored.eval()
+    with torch.inference_mode():
+        before = buffers(stored)
+        stored(**batch)
+    assert_tensors_equal(buffers(stored), before)

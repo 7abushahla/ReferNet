@@ -29,6 +29,42 @@ IDENTITY_FIELDS = (
 )
 
 
+ARM_RECIPE_DEFAULTS = dict(local_branch=True, auxiliary_query_weight=0., reference_bn="shared")
+
+
+def arm_recipe(base, enabled):
+    """Resolve the per-arm recipe (local branch, auxiliary query BCE, reference BN policy).
+
+    ``base["arm_recipe"]`` may hold ``{"off": {...}, "on": {...}}`` overrides of
+    ``ARM_RECIPE_DEFAULTS``; absent keys keep the original DirectReference recipe.
+    """
+    if type(enabled) is not bool:
+        raise ValueError("arm must be a boolean")
+    recipes = base.get("arm_recipe")
+    if recipes is None:
+        recipes = {}
+    if not isinstance(recipes, dict) or not set(recipes) <= {"off", "on"}:
+        raise ValueError("arm_recipe must map 'off'/'on' to recipe overrides")
+    resolved = {}
+    for arm in ("off", "on"):
+        overrides = recipes.get(arm, {})
+        if not isinstance(overrides, dict) or not set(overrides) <= set(ARM_RECIPE_DEFAULTS):
+            raise ValueError(f"unknown arm_recipe fields for {arm}")
+        values = dict(ARM_RECIPE_DEFAULTS, **overrides)
+        if type(values["local_branch"]) is not bool:
+            raise ValueError("local_branch must be boolean")
+        weight = values["auxiliary_query_weight"]
+        if type(weight) not in (int, float) or not 0. <= float(weight) <= 10.:
+            raise ValueError("auxiliary_query_weight must be a number in [0, 10]")
+        values["auxiliary_query_weight"] = float(weight)
+        if values["reference_bn"] not in ("shared", "stored"):
+            raise ValueError("reference_bn must be 'shared' or 'stored'")
+        if arm == "on" and not values["local_branch"]:
+            raise ValueError("the reference-enabled arm requires local_branch")
+        resolved[arm] = values
+    return resolved["on" if enabled else "off"]
+
+
 def _strict_fp32(model, device):
     device = torch.device(device)
     if torch.is_autocast_enabled() or torch.is_autocast_cpu_enabled():
@@ -86,15 +122,28 @@ def _forward(model, inputs):
     return outputs
 
 
-def train_direct_reference_epoch(model, loader, optimizer, scheduler, device):
+def auxiliary_query_loss(outputs, labels, weight):
+    """Weighted BCE on the global query logit alone; zero weight contributes nothing."""
+    if type(weight) not in (int, float) or isinstance(weight, bool) or not 0. <= float(weight) <= 10.:
+        raise ValueError("auxiliary_query_weight must be a number in [0, 10]")
+    if float(weight) == 0.:
+        return None
+    return float(weight) * _image_loss({"attack_logit": outputs["query_logit"]}, labels, track=RECIPE_TRACK)
+
+
+def train_direct_reference_epoch(model, loader, optimizer, scheduler, device, *, auxiliary_query_weight=0.):
+    """One epoch; ``loss`` is the fused BCE plus the weighted auxiliary query BCE."""
     _strict_fp32(model, device)
+    auxiliary_query_loss({"query_logit": torch.zeros(1)}, torch.zeros(1), auxiliary_query_weight)
     model.train()
-    loss_sum, n_images, updates = 0., 0, 0
+    loss_sum, image_sum, aux_sum, n_images, updates = 0., 0., 0., 0, 0
     for batch in loader:
         inputs, labels = _batch_inputs(model, batch, device)
         optimizer.zero_grad(set_to_none=True)
         outputs = _forward(model, inputs)
-        loss = _image_loss(outputs, labels, track=RECIPE_TRACK)
+        image_loss = _image_loss(outputs, labels, track=RECIPE_TRACK)
+        auxiliary = auxiliary_query_loss(outputs, labels, auxiliary_query_weight)
+        loss = image_loss if auxiliary is None else image_loss + auxiliary
         if not torch.isfinite(loss):
             raise ValueError("non-finite training loss")
         loss.backward()
@@ -105,12 +154,14 @@ def train_direct_reference_epoch(model, loader, optimizer, scheduler, device):
         if scheduler is not None:
             scheduler.step()
         loss_sum += loss.item() * len(labels)
+        image_sum += image_loss.item() * len(labels)
+        aux_sum += (0. if auxiliary is None else auxiliary.item()) * len(labels)
         n_images += len(labels)
         updates += 1
     if not n_images:
         raise ValueError("training loader has no images")
-    return {"loss": loss_sum / n_images, "image_loss": loss_sum / n_images, "bce_map": None,
-            "dice_map": None, "n_images": n_images, "optimizer_steps": updates}
+    return {"loss": loss_sum / n_images, "image_loss": image_sum / n_images, "aux_query_loss": aux_sum / n_images,
+            "bce_map": None, "dice_map": None, "n_images": n_images, "optimizer_steps": updates}
 
 
 def evaluate_direct_reference(model, loader, device):

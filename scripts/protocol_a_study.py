@@ -78,7 +78,7 @@ def load_request(binding, *, evaluation_binding=None):
         raw_root=Path(request["raw_root"]), evaluation_binding=evaluation_binding, **relocation)
     for name, expected in (("records", context.contract.records_sha256), ("split", context.contract.split_sha256)):
         _require(request[name]["sha256"] == expected, "request membership hash mismatch")
-    _require(type(request.get("cache_bytes")) is int and 0 <= request["cache_bytes"] <= 6 * 1024**3,
+    _require(type(request.get("cache_bytes")) is int and 0 <= request["cache_bytes"] <= 8 * 1024**3,
              "bounded cache payload required")
     output = _path(request["output_root"])
     _require(not output.is_relative_to(ROOT) and not ROOT.is_relative_to(output), "source/output overlap")
@@ -89,7 +89,7 @@ def load_request(binding, *, evaluation_binding=None):
     return request, context, config, output
 
 
-def fresh_model(request, enabled):
+def fresh_model(request, enabled, *, local_branch=True, reference_bn="shared"):
     random.seed(42)
     np.random.seed(42)
     torch.manual_seed(42)
@@ -97,7 +97,14 @@ def fresh_model(request, enabled):
     configure_precision("cuda", "D_running_pilot")
     _bytes(request["weights"])
     return build_direct_reference_model(Path(request["weights"]["path"]), request["weights"]["sha256"],
-                                        reference_enabled=enabled, head_seed=42, adapter_seed=42).cuda()
+                                        reference_enabled=enabled, head_seed=42, adapter_seed=42,
+                                        local_enabled=local_branch, reference_bn=reference_bn).cuda()
+
+
+def arm_model(request, config):
+    recipe = dict(core.ARM_RECIPE_DEFAULTS, **{key: config[key] for key in core.ARM_RECIPE_DEFAULTS if key in config})
+    return fresh_model(request, config["reference_enabled"], local_branch=recipe["local_branch"],
+                       reference_bn=recipe["reference_bn"])
 
 
 def checkpoint_ids(request, context, config, registration, phase_binding, model):
@@ -160,14 +167,15 @@ def smoke(binding):
     arm_reports = {}
     for arm, enabled in (("off", False), ("on", True)):
         config = service.effective_config(base, context, enabled)
-        model = fresh_model(request, enabled)
+        model = arm_model(request, config)
         initial_state = tensor_sha256(model.state_dict())
         identities = checkpoint_ids(request, context, config, registration, binding, model)
         optimizer = core.make_pilot_optimizer(model, {"track": "D_running_pilot"}, "train")
         scheduler = make_protocol_a_scheduler(optimizer, context.contract, config)
         train_loader, unused_train = subset_loader(context, table, config, enabled, "train", request["cache_bytes"])
         val_loader, unused_val = subset_loader(context, table, config, enabled, "val", 0)
-        stats = core.train_direct_reference_epoch(model, train_loader, optimizer, scheduler, "cuda")
+        stats = core.train_direct_reference_epoch(model, train_loader, optimizer, scheduler, "cuda",
+                                                  auxiliary_query_weight=config.get("auxiliary_query_weight", 0.))
         _require(stats["n_images"] == 32 and stats["optimizer_steps"] == 4, "incomplete smoke training")
         summary, predictions = core.evaluate_direct_reference(model, val_loader, "cuda")
         key = selection_key("accuracy", summary["accuracy"], summary["auc"], summary["image_loss"], stats["loss"])
@@ -238,7 +246,7 @@ def replay(binding, arm, phase, gate_sha256=None):
     _require(result.get("passed") is True and result["identities"]["source_sha256"] == request["source_sha256"], "unsafe replay result")
     registration = bind(output / "registration.json")
     table = bridge.load_protocol_a_registration(context, registration, roles=["train", "val"])
-    model = fresh_model(request, arm == "on")
+    model = arm_model(request, config)
     phase_binding = binding if phase == "smoke" else pinned_gate(output, gate_sha256)
     expected_ids = checkpoint_ids(request, context, config, registration, phase_binding, model)
     _require(result.get("identities") == expected_ids, "replay current source/data/initialization identities differ")
@@ -318,7 +326,7 @@ def evaluate(binding, gate_sha256=None):
     table = bridge.build_protocol_a_registration(context, roles=["test"], output_path=output / "evaluation/registration.json")
     results = {}
     for arm, (receipt, config) in completed.items():
-        model = fresh_model(request, arm == "on")
+        model = arm_model(request, config)
         checkpoint = core.read_direct_reference_checkpoint(Path(receipt["checkpoint"]["path"]), config, receipt["identities"])
         model.load_state_dict(checkpoint["state_dict"], strict=True)
         data = bridge.ProtocolAReferenceDataset(context, table, role="test", reference_enabled=arm == "on",
