@@ -8,7 +8,7 @@ Reference-conditioned detection of altered travel documents on designs never see
 
 ```
 refer-or-clear/
-├── paper/          award submission (LuaLaTeX, Overleaf-ready): build.sh, wordcount.sh, to_docx.sh
+├── proposal/       research proposal (LuaLaTeX); the award manuscript lives in the separate GDRFA-Award-Paper repository
 ├── proposal/       full proposal and DESIGN.md (the plan every folder below implements)
 ├── evidence/       literature and evidence sweeps with source URLs
 ├── data/           raw/ interim/ processed/ (not committed; see data/README.md)

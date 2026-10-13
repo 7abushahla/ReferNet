@@ -1,6 +1,6 @@
 # Reference timeline: Refer or Clear (started 10 October 2026)
 
-Every source cited in `paper/main.tex`, with its first public appearance, its peer-reviewed version, the version actually read for this paper, and whether the claim we draw from it has been checked. Kept under the authors' standing rule (10 Oct 2026): track versions and dates for every source, never present older work as recent, and prefer the peer-reviewed version. arXiv identifiers encode the year and month of version 1 (YYMM).
+Every source cited in `main.tex` of the GDRFA-Award-Paper repository, with its first public appearance, its peer-reviewed version, the version actually read for this paper, and whether the claim we draw from it has been checked. Kept under the authors' standing rule (10 Oct 2026): track versions and dates for every source, never present older work as recent, and prefer the peer-reviewed version. arXiv identifiers encode the year and month of version 1 (YYMM).
 
 Status words: **checked** (the number or claim was read in the source on the date given), **from notes** (taken from the plan, the study brief or the evidence summaries, not yet re-read in the source), **needs PDF** (the peer-reviewed version could not be accessed; the authors can download it into `/shared/b00088568/gdrfa_award_work/papers/`).
 
