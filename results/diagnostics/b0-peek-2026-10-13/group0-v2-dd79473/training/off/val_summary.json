@@ -1,0 +1,32 @@
+{
+  "accuracy": 1.0,
+  "altered_misses": [],
+  "auc": 1.0,
+  "buffers_unchanged": true,
+  "genuine_false_positives": [],
+  "group": 0,
+  "image_loss": 0.006483067683329525,
+  "n_altered": 75,
+  "n_context_available": 130,
+  "n_context_unavailable": 0,
+  "n_genuine": 55,
+  "n_images": 130,
+  "protocol": "B",
+  "referral_ids": [],
+  "role": "val",
+  "selected_epoch": 60,
+  "subgroups": {
+    "copy": {
+      "accuracy": 1.0,
+      "auc": 1.0,
+      "n_altered": 3,
+      "n_genuine": 55
+    },
+    "inpainting": {
+      "accuracy": 1.0,
+      "auc": 1.0,
+      "n_altered": 72,
+      "n_genuine": 55
+    }
+  }
+}
