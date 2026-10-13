@@ -103,9 +103,9 @@ def validate_predictions(predictions, rows):
         driver.require(type(actual.get('context_available')) is bool and type(actual.get('referral_required')) is bool
                        and actual['referral_required'] is not actual['context_available'],
                        'availability/referral mismatch')
-        probability = torch.tensor(actual['attack_logit'], dtype=torch.float32).sigmoid().item()
-        driver.require(abs(actual['attack_probability'] - probability) <= 1e-7
-                       and abs(actual['bonafide_score'] - (1. - probability)) <= 1e-7,
+        logit = torch.tensor(actual['attack_logit'], dtype=torch.float64)
+        driver.require(abs(actual['attack_probability'] - logit.sigmoid().item()) <= 1e-7
+                       and abs(actual['bonafide_score'] - (-logit).sigmoid().item()) <= 1e-7,
                        'prediction score/logit mismatch')
         driver.require(math.isclose(actual['attack_logit'], actual['query_logit'] + actual['correction_logit'],
                                      abs_tol=driver.pilots.ATOL, rel_tol=driver.pilots.RTOL),
@@ -161,13 +161,16 @@ def evaluate(model, loader, device):
             loss = core._image_loss(outputs, labels, track=core.RECIPE_TRACK, reduction='sum')
             driver.require(bool(torch.isfinite(loss)), 'non-finite evaluation loss')
             loss_sum += loss.item()
-            probabilities = outputs['attack_logit'].sigmoid().cpu().tolist()
+            # Float64 and sigmoid(-logit), mirroring core.evaluate_direct_reference: a float32 sigmoid ties large logits.
+            attack_logits = outputs['attack_logit'].detach().double()
+            probabilities = attack_logits.sigmoid().cpu().tolist()
+            bonafide = (-attack_logits).sigmoid().cpu().tolist()
             logits = {key: outputs[key].cpu().tolist() for key in ('attack_logit', 'query_logit', 'correction_logit')}
             for index, probability in enumerate(probabilities):
                 meta = {key: str(batch['meta'][key][index]) for key in ('image_id', 'design_id', 'attack_family')}
                 available = bool(inputs['context_available'][index].item())
                 row = dict(meta, label=int(labels[index].item()), attack_probability=probability,
-                           bonafide_score=1. - probability, context_available=available, referral_required=not available)
+                           bonafide_score=bonafide[index], context_available=available, referral_required=not available)
                 row.update({key: logits[key][index] for key in logits})
                 if 'availability_reason' in batch['meta']:
                     row['availability_reason'] = str(batch['meta']['availability_reason'][index])
