@@ -181,13 +181,17 @@ def evaluate_direct_reference(model, loader, device):
             if not torch.isfinite(loss):
                 raise ValueError("non-finite evaluation loss")
             loss_sum += loss.item()
-            probabilities = outputs["attack_logit"].sigmoid().cpu().tolist()
+            # Float64 and sigmoid(-logit) for the bona fide score: a float32 sigmoid saturates above ~17 logits and
+            # 1 - p cancels, which ties large logits and understates the AUC. Ranking must follow the logit.
+            attack_logits = outputs["attack_logit"].detach().double()
+            probabilities = attack_logits.sigmoid().cpu().tolist()
+            bonafide = (-attack_logits).sigmoid().cpu().tolist()
             logits = {key: outputs[key].cpu().tolist() for key in ("attack_logit", "query_logit", "correction_logit")}
             for index, probability in enumerate(probabilities):
                 meta = {key: str(batch["meta"][key][index]) for key in ("image_id", "design_id", "attack_family")}
                 available = bool(inputs["context_available"][index].item())
                 row = dict(meta, label=int(labels[index].item()), attack_probability=probability,
-                           bonafide_score=1. - probability, context_available=available, referral_required=not available)
+                           bonafide_score=bonafide[index], context_available=available, referral_required=not available)
                 row.update({key: logits[key][index] for key in ("attack_logit", "query_logit", "correction_logit")})
                 if "availability_reason" in batch["meta"]:
                     row["availability_reason"] = str(batch["meta"]["availability_reason"][index])
