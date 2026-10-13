@@ -157,6 +157,23 @@ def arm_model(a_request, arm, device):
     return model
 
 
+def source_inputs(request, a_request):
+    """Records and source-split bindings for the C consumer: the paths the C enrollment manifest was built with,
+    required to hash to the A study's records and split (same content, possibly another copy; the consumer compares
+    the manifest's contract paths verbatim)."""
+    manifest = driver.document(request['enrollment'])
+    contract = manifest.get('contract')
+    require(isinstance(contract, dict) and isinstance(contract.get('records_path'), str)
+            and isinstance(contract.get('source_split_path'), str), 'C enrollment manifest contract paths required')
+    bindings = []
+    for name, key in (('records', 'records_path'), ('split', 'source_split_path')):
+        path = driver.absolute(contract[key])
+        require(path.is_file() and driver.digest(path) == a_request[name]['sha256'],
+                f'C enrollment {key} must hash to the A study {name}')
+        bindings.append(dict(path=str(path), sha256=a_request[name]['sha256']))
+    return tuple(bindings)
+
+
 def score(binding, device='cuda'):
     request = load_request(binding)
     study_run = authenticate_arms(request)
@@ -172,7 +189,7 @@ def score(binding, device='cuda'):
         protected.append(arms[arm]['fresh_replay'])
     for item in protected:
         driver.authenticate(item)
-    records, split = a_request['records'], a_request['split']
+    records, split = source_inputs(request, a_request)
     contract = contract_api.load_protocol_c_contract(records['path'], split['path'], request['target_split']['path'],
                                                      records_sha256=records['sha256'])
     target = contract_api.load_target_enrollment(contract, request['target_enrollment']['path'],
@@ -201,6 +218,7 @@ def score(binding, device='cuda'):
         enrollment_manifest_sha256=request['enrollment']['sha256'], authorized_image_ids=identifiers,
         a_request=study_run['binding'], a_gate=study_run['gate'],
         checkpoints={arm: arms[arm]['checkpoint'] for arm in ('off', 'on')},
+        consumer_inputs=dict(records=records, split=split),
         selected_epochs={arm: arms[arm]['selected_epoch'] for arm in ('off', 'on')},
         fresh_replays={arm: arms[arm]['fresh_replay'] for arm in ('off', 'on')})
     evaluation_root.mkdir(parents=True, exist_ok=False)

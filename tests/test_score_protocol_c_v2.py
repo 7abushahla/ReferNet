@@ -109,7 +109,11 @@ def ready(module, tmp_path, monkeypatch):
     target_split = put(tmp / "c-target-split.json", {"synthetic": "target split"})
     monkeypatch.setattr(module.contract_api, "TARGET_SPLIT_SHA256", target_split["sha256"])
     target = put(tmp / "c-target.json", {"query_ids": frame.image_id.tolist()})
-    enrollment = put(tmp / "c-enrollment.json", {"output_root": str(tmp / "c-original")})
+    # the C enrollment manifest was built from its own copies of the A records and split (same content, other paths)
+    inputs = {name: put(tmp / f"c-inputs/{name}.json", {"synthetic": name}) for name in ("records", "split")}
+    enrollment = put(tmp / "c-enrollment.json", {"output_root": str(tmp / "c-original"),
+                                                 "contract": {"records_path": inputs["records"]["path"],
+                                                              "source_split_path": inputs["split"]["path"]}})
     root = put(tmp / "c-root.json", {"original_root": str(tmp / "c-original"), "relocated_root": str(tmp / "c-relocated")})
     request = dict(schema_version="protocol_c_v2_score_v1", protocol="C", seed=42, eval_batch_size=1,
                    source_sha256=source_sha, a_request=a_binding, a_gate_sha256=gate_binding["sha256"],
@@ -259,7 +263,9 @@ def wire_c_side(ready, monkeypatch, defect=None):
     monkeypatch.setattr(module.core, "read_direct_reference_checkpoint", read_checkpoint)
 
     def context(records, split, target_split, **kwargs):
-        assert records == ready["a_request"]["records"]["path"] and split == ready["a_request"]["split"]["path"]
+        manifest = module.driver.document(ready["request"]["enrollment"])["contract"]
+        assert records == manifest["records_path"] and split == manifest["source_split_path"]
+        assert records != ready["a_request"]["records"]["path"] and split != ready["a_request"]["split"]["path"]
         authority = module.driver.document(kwargs["evaluation_binding"])
         assert authority["authorized_image_ids"] == frame.image_id.tolist()
         assert authority["checkpoints"] == {arm: ready["receipts"][arm]["checkpoint"] for arm in ("off", "on")}
@@ -382,3 +388,16 @@ def test_wrapper_matches_study_wrapper_guards():
     for guard in ("Compute work is forbidden on login nodes", "Allocated GPU visibility required",
                   "readonly non-symlink scientific source required", "conda activate", 'export PYTHONPATH="$source_dir/src:$source_dir/scripts"'):
         assert guard in study and guard in content
+
+
+@pytest.mark.parametrize("name", ["records", "split"])
+def test_consumer_inputs_must_hash_to_the_a_study(ready, monkeypatch, name):
+    """The manifest's contract paths are used verbatim by the consumer, so they must carry the A study's bytes."""
+    module = ready["module"]
+    wire_c_side(ready, monkeypatch)
+    manifest_path = Path(ready["request"]["enrollment"]["path"])
+    manifest = json.loads(manifest_path.read_text())
+    key = "records_path" if name == "records" else "source_split_path"
+    Path(manifest["contract"][key]).write_text(json.dumps({"synthetic": "other content"}))
+    with pytest.raises(ValueError, match=f"C enrollment {key} must hash to the A study {name}"):
+        module.score(ready["binding"], device="cpu")
