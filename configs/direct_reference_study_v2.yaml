@@ -70,11 +70,11 @@ comparison: matched_reference_bridge
 # v2 (13 Oct 2026): OFF is the global query classifier (adapter frozen and bypassed);
 # ON adds the reference correction and an auxiliary BCE on the global query logit.
 arm_recipe:
-  off:
+  "off":
     local_branch: false
     auxiliary_query_weight: 0.0
     reference_bn: shared
-  on:
+  "on":
     local_branch: true
     auxiliary_query_weight: 0.5
     reference_bn: shared

@@ -43,6 +43,10 @@ def arm_recipe(base, enabled):
     recipes = base.get("arm_recipe")
     if recipes is None:
         recipes = {}
+    if isinstance(recipes, dict):
+        # YAML 1.1 reads unquoted ``off``/``on`` keys as booleans; accept both spellings.
+        recipes = {{False: "off", True: "on"}.get(key, key) if type(key) is bool else key: value
+                   for key, value in recipes.items()}
     if not isinstance(recipes, dict) or not set(recipes) <= {"off", "on"}:
         raise ValueError("arm_recipe must map 'off'/'on' to recipe overrides")
     resolved = {}

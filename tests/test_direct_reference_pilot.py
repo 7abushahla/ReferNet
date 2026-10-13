@@ -362,3 +362,15 @@ def test_arm_recipe_defaults_and_overrides(runtime, enabled):
             runtime.arm_recipe(bad, enabled)
     with pytest.raises(ValueError):
         runtime.arm_recipe(dict(arm_recipe=dict(on=dict(local_branch=False))), enabled)
+
+
+@pytest.mark.parametrize("name", ["direct_reference_study_v2.yaml", "direct_reference_study_v2_storedbn.yaml",
+                                  "direct_reference_study_v2_storedbn_noaux.yaml"])
+def test_v2_configs_resolve_arm_recipes_after_yaml_parsing(runtime, name):
+    base = yaml.safe_load((Path(__file__).resolve().parents[1] / "configs" / name).read_text())
+    off, on = runtime.arm_recipe(base, False), runtime.arm_recipe(base, True)
+    assert off == dict(local_branch=False, auxiliary_query_weight=0., reference_bn="shared")
+    assert on["local_branch"] is True
+    assert on["reference_bn"] == ("shared" if name == "direct_reference_study_v2.yaml" else "stored")
+    assert on["auxiliary_query_weight"] == (0. if name.endswith("noaux.yaml") else .5)
+    assert runtime.arm_recipe(dict(arm_recipe={False: dict(local_branch=False), True: {}}), False)["local_branch"] is False
