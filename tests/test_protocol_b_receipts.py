@@ -525,3 +525,36 @@ def test_initialization_provenance_identity_required(api, setup):
     update_child(setup, "off", "smoke")
     with pytest.raises(ValueError):
         validate(api, setup)
+
+
+def _fused_rows(context, fused_query_weight):
+    rows = context.rows("val").head(4).to_dict("records")
+    predictions = []
+    for index, row in enumerate(rows):
+        available = index % 2 == 0
+        query, correction = (3. if row["label"] else -3.), (1.5 if row["label"] else -1.5)
+        logit = (fused_query_weight if available else 1.) * query + correction
+        probability = 1. / (1. + math.exp(-logit))
+        predictions.append(dict(image_id=row["image_id"], design_id=row["design_id"], label=row["label"],
+            attack_family=row["attack_family"], attack_logit=logit, query_logit=query, correction_logit=correction,
+            attack_probability=probability, bonafide_score=1. - probability,
+            context_available=available, referral_required=not available, availability_reason="fit" if available else "no_fit"))
+    return predictions
+
+
+@pytest.mark.parametrize("weight", [0., .5])
+def test_read_predictions_applies_fused_query_weight_only_with_context(api, setup, tmp_path, weight):
+    context = setup["context"]
+    predictions = _fused_rows(context, weight)
+    path = tmp_path / "fused_predictions.csv"
+    with path.open("w", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=list(predictions[0]))
+        writer.writeheader()
+        writer.writerows(predictions)
+    rows = context.rows("val").head(4)
+    accepted = api.read_predictions(bind(path), rows, weight)
+    assert [row["attack_logit"] for row in accepted] == [row["attack_logit"] for row in predictions]
+    with pytest.raises(ValueError, match="score/logit/referral"):
+        api.read_predictions(bind(path), rows)
+    with pytest.raises(ValueError, match="fused_query_weight"):
+        api.read_predictions(bind(path), rows, 1.5)

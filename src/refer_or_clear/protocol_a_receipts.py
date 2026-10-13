@@ -77,8 +77,13 @@ def expected_identities(context, config, weights_binding, registration_binding, 
     return result
 
 
-def read_predictions(binding, rows):
-    """Authenticate scores and join exact ordered source metadata, without pixels."""
+def read_predictions(binding, rows, fused_query_weight=1.):
+    """Authenticate scores and join exact ordered source metadata, without pixels.
+
+    ``fused_query_weight`` is the arm recipe's scale on the query logit for rows with
+    reference context; rows without context always carry the query logit alone.
+    """
+    _require(_number(fused_query_weight) and 0. <= fused_query_weight <= 1., "fused_query_weight must be a number in [0, 1]")
     try:
         predictions = list(csv.DictReader(StringIO(_bytes(binding).decode("utf-8"))))
         _require(len(predictions) == len(rows), "prediction population mismatch")
@@ -98,7 +103,8 @@ def read_predictions(binding, rows):
             _require(0 <= prediction["attack_probability"] <= 1 and 0 <= prediction["bonafide_score"] <= 1
                      and _close(prediction["attack_probability"], probability)
                      and _close(prediction["bonafide_score"], 1. - prediction["attack_probability"])
-                     and _close(logit, prediction["query_logit"] + prediction["correction_logit"])
+                     and _close(logit, (fused_query_weight if prediction["context_available"] else 1.)
+                                * prediction["query_logit"] + prediction["correction_logit"])
                      and prediction["context_available"] is not prediction["referral_required"],
                      "prediction score/logit/referral mismatch")
         return predictions
@@ -256,7 +262,7 @@ def validate_training_gate(gate_binding, context, config, weights_binding, regis
                      "stored-buffer companion invariance evidence required")
             _count(invariant, "n_images", 4)
             _canonical(smoke["predictions"], directory / "val_predictions.csv")
-            predictions = read_predictions(smoke["predictions"], rows["val"])
+            predictions = read_predictions(smoke["predictions"], rows["val"], effective["fused_query_weight"])
             _require(invariant["max_abs_difference"] <= ATOL + RTOL * max(abs(row["attack_logit"]) for row in predictions[:4]),
                      "invariance maximum logit difference exceeds authenticated singleton tolerance")
             _verify_summary(smoke["summary"], predictions)
@@ -361,7 +367,7 @@ def validate_completed_training(context, request, base, arm, output, gate_bindin
                      and len(values) == accounting.n_train - accounting.images_per_epoch
                      and len(set(values)) == len(values) and set(values) <= train_ids, "invalid training omissions")
         _canonical(result["predictions"], directory / "val_predictions.csv")
-        predictions = read_predictions(result["predictions"], context.rows("val"))
+        predictions = read_predictions(result["predictions"], context.rows("val"), config["fused_query_weight"])
         _canonical(result["summary"], directory / "val_summary.json")
         summary = _json(result["summary"])
         _verify_summary(summary, predictions)
