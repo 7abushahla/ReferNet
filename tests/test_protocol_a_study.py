@@ -568,3 +568,18 @@ def test_reencoded_evaluation_requires_native_evaluation_first(cli, tmp_path, mo
     with pytest.raises((ValueError, FileNotFoundError)):
         cli.evaluate_reencoded(dict(path=str(tmp_path / "request.json"), sha256="a" * 64), "b" * 64, 75)
     assert not (output / "evaluation-q75").exists()
+
+
+def test_training_source_may_be_named_by_a_later_scoring_source(cli, tmp_path, monkeypatch):
+    """Protocol C scoring from a later frozen source names the training source instead of its own inventory."""
+    request = dict(schema_version="protocol_a_request_v1", protocol="A", fold=0, source_sha256="d" * 64)
+    monkeypatch.setattr(cli, "_json", lambda binding: request)
+    monkeypatch.setattr(cli, "source_entries", lambda root: [])
+    with pytest.raises(ValueError, match="immutable scientific source differs"):
+        cli.load_request(dict(path="request", sha256="a" * 64))
+    with pytest.raises(ValueError, match="lowercase training source"):
+        cli.load_request(dict(path="request", sha256="a" * 64), training_source_sha256="D" * 64)
+    with pytest.raises(ValueError, match="immutable scientific source differs"):
+        cli.load_request(dict(path="request", sha256="a" * 64), training_source_sha256="e" * 64)
+    with pytest.raises(KeyError, match="config"):  # the source check passed; the request is read further
+        cli.load_request(dict(path="request", sha256="a" * 64), training_source_sha256="d" * 64)

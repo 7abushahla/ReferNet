@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import random
 import subprocess
+import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -54,7 +55,9 @@ def write(path, value):
     return bind(path)
 
 
-def load_request(binding, *, evaluation_binding=None):
+def load_request(binding, *, evaluation_binding=None, training_source_sha256=None):
+    """``training_source_sha256``: a later frozen source may read a completed study (Protocol C scoring); it names
+    the training source the request, receipts and checkpoints are bound to, instead of this source's own inventory."""
     request = _json(binding)
     _require(request.get("schema_version") == "protocol_a_request_v1"
              and request.get("protocol") == "A" and type(request.get("fold")) is int
@@ -63,7 +66,12 @@ def load_request(binding, *, evaluation_binding=None):
     allowed = {"schema_version", "protocol", "fold", "source_sha256", "config", "weights",
                "records", "split", "enrollment", "root", "metadata_relocation", "raw_root", "output_root", "cache_bytes"}
     _require(set(request) <= allowed, "unknown or foreign request authority")
-    observed = object_sha256(source_entries(ROOT))
+    if training_source_sha256 is None:
+        observed = object_sha256(source_entries(ROOT))
+    else:
+        _require(isinstance(training_source_sha256, str) and re.fullmatch("[0-9a-f]{64}", training_source_sha256) is not None,
+                 "lowercase training source SHA256 required")
+        observed = training_source_sha256
     _require(request.get("source_sha256") == observed, "immutable scientific source differs from request")
     config = yaml.safe_load(_bytes(request["config"]))
     _require(isinstance(request.get("weights"), dict)

@@ -92,8 +92,12 @@ def ready(module, tmp_path, monkeypatch):
     base = {"synthetic": "base"}
     events = []
 
+    c_request_holder = []  # the C request dict, appended below; tests mutate it in place
+
     def load_request(binding, **kwargs):
-        assert binding == a_binding and kwargs == {}
+        assert binding == a_binding
+        foreign = "scoring_source_sha256" in c_request_holder[0]
+        assert kwargs == ({"training_source_sha256": a_request["source_sha256"]} if foreign else {})
         events.append("a-request")
         return copy.deepcopy(a_request), context, base, a_output
 
@@ -119,6 +123,7 @@ def ready(module, tmp_path, monkeypatch):
                    source_sha256=source_sha, a_request=a_binding, a_gate_sha256=gate_binding["sha256"],
                    target_split=target_split, target_enrollment=target, enrollment=enrollment, root=root,
                    raw_root=str(tmp / "never-open-c-raw"), output_root=str(tmp / "c-score"))
+    c_request_holder.append(request)
     binding = put(tmp / "c-request.json", request)
     monkeypatch.setattr(module.contract_api, "load_protocol_c_contract", lambda *args, **kwargs: pytest.fail("C contract opened"))
     monkeypatch.setattr(module.consumer, "load_reference_context", lambda *args, **kwargs: pytest.fail("C context opened"))
@@ -412,6 +417,9 @@ def test_scoring_source_may_differ_from_the_training_source(ready, monkeypatch):
     monkeypatch.setattr(module, "object_sha256", lambda entries: "b" * 64)
     request = module.load_request(rebind(ready))
     assert request["scoring_source_sha256"] == "b" * 64 and request["source_sha256"] == ready["a_request"]["source_sha256"]
+    wire_c_side(ready, monkeypatch)  # the A study is then read with the training source named explicitly
+    module.score(rebind(ready), device="cpu")
+    assert (Path(ready["request"]["output_root"]) / "evaluation/result.json").exists()
     ready["request"]["unknown_field"] = 1
     with pytest.raises(ValueError, match="strict C v2 scoring request fields"):
         module.load_request(rebind(ready))

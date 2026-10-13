@@ -113,7 +113,8 @@ def validate_pair(arms):
 def authenticate_arms(request):
     """Authenticate the fold-0 A study and both completed arms through the study's receipt chain."""
     a_binding = request['a_request']
-    a_request, context, base, a_output = study.load_request(a_binding)
+    foreign = {} if 'scoring_source_sha256' not in request else {'training_source_sha256': request['source_sha256']}
+    a_request, context, base, a_output = study.load_request(a_binding, **foreign)
     require(type(a_request.get('fold')) is int and a_request['fold'] == 0 and context.contract.fold == 0,
             'fold-0 Protocol A study required')
     require(a_request.get('source_sha256') == request['source_sha256'], 'A study source differs from C request source')
