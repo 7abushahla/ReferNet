@@ -1,0 +1,204 @@
+{
+  "associations": {
+    "format": {
+      "class_disjoint": false,
+      "eligible": 11957,
+      "excluded": 1,
+      "full_coverage": false,
+      "population_class_disjoint": null,
+      "signatures": [
+        {
+          "fraud1": 5979,
+          "genuine": 5978,
+          "signature": "PNG"
+        }
+      ]
+    },
+    "header_signature": {
+      "class_disjoint": false,
+      "eligible": 11957,
+      "excluded": 1,
+      "full_coverage": false,
+      "population_class_disjoint": null,
+      "signatures": [
+        {
+          "fraud1": 5979,
+          "genuine": 5978,
+          "signature": "2c4940fa3bad56d6252c3d7732ef33455eb944c9ee18353c85ee42d7f1375c3f"
+        }
+      ]
+    },
+    "sampling_signature": {
+      "class_disjoint": null,
+      "eligible": 0,
+      "excluded": 11958,
+      "full_coverage": false,
+      "population_class_disjoint": null,
+      "signatures": []
+    },
+    "table_signature": {
+      "class_disjoint": null,
+      "eligible": 0,
+      "excluded": 11958,
+      "full_coverage": false,
+      "population_class_disjoint": null,
+      "signatures": []
+    }
+  },
+  "authorities": {
+    "fraud1_copy_and_move": {
+      "n_images": 5979,
+      "path": "/Users/hamza/Downloads/AZ/meta/detailed_with_fraud_info/AZ_textfieldreplacement_annotation.json",
+      "sha256": "382e73dfe8940d8a13e9979037cebc0d4d9131cd7849a5fb4e834a48b4734bcc"
+    },
+    "positive": {
+      "n_images": 5979,
+      "path": "/Users/hamza/Downloads/AZ/meta/detailed_with_fraud_info/AZ_original_annotation.json",
+      "sha256": "5343ae88326ea585d7b8e8a3ff19570b10552b604e17a884794a613aed19c878"
+    }
+  },
+  "classes": {
+    "fraud1_copy_and_move": {
+      "formats": {
+        "PNG": 5979
+      },
+      "header_signatures": {
+        "2c4940fa3bad56d6252c3d7732ef33455eb944c9ee18353c85ee42d7f1375c3f": 5979
+      },
+      "height_range": [
+        375,
+        375
+      ],
+      "label": 1,
+      "mode_counts": {
+        "RGB": 5979
+      },
+      "n_images": 5979,
+      "quantization_eligible": 0,
+      "sampling_eligible": 0,
+      "statuses": {
+        "ok": 5979
+      },
+      "width_range": [
+        600,
+        600
+      ]
+    },
+    "positive": {
+      "formats": {
+        "PNG": 5978
+      },
+      "header_signatures": {
+        "2c4940fa3bad56d6252c3d7732ef33455eb944c9ee18353c85ee42d7f1375c3f": 5978
+      },
+      "height_range": [
+        375,
+        375
+      ],
+      "label": 0,
+      "mode_counts": {
+        "RGB": 5978
+      },
+      "n_images": 5979,
+      "quantization_eligible": 0,
+      "sampling_eligible": 0,
+      "statuses": {
+        "empty_file": 1,
+        "ok": 5978
+      },
+      "width_range": [
+        600,
+        600
+      ]
+    }
+  },
+  "complete_selected_headers": false,
+  "date": "2026-10-13",
+  "failures": [
+    {
+      "annotation_key": "generated.photos_v3_0768249.png",
+      "error": "zero-byte file; no readable header",
+      "file_size": 0,
+      "image_id": "idnet_AZ_positive_generated.photos_v3_0768249",
+      "label": 0,
+      "path": "positive/generated.photos_v3_0768249.png",
+      "status": "empty_file"
+    }
+  ],
+  "header_inventory": {
+    "2c4940fa3bad56d6252c3d7732ef33455eb944c9ee18353c85ee42d7f1375c3f": {
+      "components": [],
+      "format": "PNG",
+      "height": 375,
+      "mode": "RGB",
+      "png_ihdr": {
+        "bit_depth": 8,
+        "color_type": 2,
+        "compression": 0,
+        "filter": 0,
+        "interlace": 0
+      },
+      "quantization_tables": {},
+      "width": 600
+    }
+  },
+  "header_observations_sha256": "b2a2b30589e76a32760cad489220827db039ad3b7c9321c54b3280c81eec6915",
+  "limitations": [
+    "One empty original file prevents complete population-header coverage.",
+    "Header validity does not assert complete pixel-payload integrity or release authenticity.",
+    "JPEG-family MPO inspection would concern only the primary header.",
+    "PNG has no JPEG quantization tables or JPEG component subsampling; nonapplicability is not JPEG table equality.",
+    "Inspected fields cannot establish absence of other acquisition, encoding, rendering or pixel shortcuts.",
+    "Header association is not CNN reliance or a causal intervention.",
+    "No WV availability, split, support, Protocol D authorization or model outcome is established."
+  ],
+  "matched_document_pairs": {
+    "format": {
+      "eligible_pairs": 5978,
+      "equal_pairs": 5978,
+      "excluded_pairs": 1
+    },
+    "header_signature": {
+      "eligible_pairs": 5978,
+      "equal_pairs": 5978,
+      "excluded_pairs": 1
+    },
+    "sampling_signature": {
+      "eligible_pairs": 0,
+      "equal_pairs": 0,
+      "excluded_pairs": 5979
+    },
+    "table_signature": {
+      "eligible_pairs": 0,
+      "equal_pairs": 0,
+      "excluded_pairs": 5979
+    }
+  },
+  "membership_sha256": "4780bdbaba60eee4d1c870372888f35192f327645029b705647361d505810666",
+  "method": {
+    "canonical_digest_serialization": "UTF-8 JSON sorted keys, separators=(comma,colon), allow_nan=False, no newline",
+    "change_check": "fstat before/after and path stat device,inode,size,mtime_ns,ctime_ns equality for readable headers",
+    "classification_or_threshold_tuning": false,
+    "elapsed_seconds": 8.825,
+    "independent_pillow_open": true,
+    "pillow": "12.3.0",
+    "pillow_formats": [
+      "PNG",
+      "JPEG"
+    ],
+    "pixel_arrays_or_tensors": false,
+    "pixel_load_attempts": 0,
+    "pixel_load_guarded": true,
+    "python": "3.10.20",
+    "whole_image_file_hashes": false
+  },
+  "population": {
+    "fraud1_copy_and_move": 5979,
+    "positive": 5979,
+    "scope": "all local annotation-matched original/fraud1 entries; no roles or splits assigned",
+    "total": 11958
+  },
+  "root": "/Users/hamza/Downloads/AZ",
+  "schema_version": "idnet_az_text_header_audit_v1",
+  "sorted_image_ids_sha256": "d6923a4b4f4c48d38dcaacb872fb29d94c4325e79dcaccf5d9119d0765ff36ad"
+}
