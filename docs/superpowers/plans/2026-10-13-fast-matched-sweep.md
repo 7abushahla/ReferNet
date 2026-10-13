@@ -51,3 +51,16 @@ Existing 38146 (global-only, old loader) and 38152 (adapter, aux 0, shared BN) c
 2x2 on the ON side. Predeclared rule: fold-0 validation accuracy, then AUC, earliest epoch;
 copy-attack recall and genuine false positives reported. Then all A folds and B groups 1-9
 run with the selected recipe in one wave. C evaluation uses the frozen fold-0 models.
+
+## Compression-cue rows (user design, confirmed 13 Oct)
+
+| Row | Published models | Ours |
+|---|---|---|
+| With cue (native files) | Table 5 ResNet50 98.1/.99; released checkpoints rescored raw 98.1/1.000 (10 folds) | R reproduction, published recipe, fold 0 val 1.000/1.000; v2 OFF/ON native A folds |
+| Cue removed (test files re-encoded at IJG Q75, same frozen checkpoints) | released checkpoints 57.2/.655 and 55.2/.539 | v2 OFF/ON scored on re-encoded A fold tests and B queries (inference only, to implement as an evaluate mode: re-encode the decoded query at Q75 before the canvas; references unchanged) |
+
+Training never sees re-encoded files. The re-encoded row is a sensitivity analysis on frozen checkpoints, reported next to the native row.
+
+## Copy-and-replace and the reference
+
+The enrollment products are design-level (median RGB, zone, valid masks); a sharp single exemplar or a blank specimen is also design-level. None knows the correct personal values, so the reference branch cannot verify a pasted value. It can see the alignment of the pasted field against the design (SIDTD shifts pastes by up to 10 px), which is why B0 copy AUC rose from .45 (OFF) to .72 (ON) on unseen nationalities. Report copy as weak-but-nonzero for ON and as the global branch's job on familiar designs.
