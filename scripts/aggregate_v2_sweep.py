@@ -3,6 +3,7 @@
 Reads the receipts written by scripts/protocol_a_study.py, scripts/protocol_b_study.py and the C scorer:
   <root>/training/{off,on}/val_summary.json      selected source-validation summary (+selected_epoch)
   <root>/evaluation/{off,on}/test_summary.json   locked target/test summary (if evaluated)
+  <root>/evaluation-q75/{off,on}/test_summary.json  same checkpoints, queries re-encoded at IJG quality 75 (if run)
 Writes Markdown and LaTeX tables plus a JSON digest. Metadata only; no model execution.
 
 Usage:
@@ -33,7 +34,8 @@ def row_metrics(summary):
     out = dict(acc=summary["accuracy"], auc=summary["auc"], bce=summary.get("image_loss"),
                fp=len(summary.get("genuine_false_positives", [])), misses=len(summary.get("altered_misses", [])),
                n_genuine=summary.get("n_genuine"), n_altered=summary.get("n_altered"), epoch=summary.get("selected_epoch"),
-               n_unavailable=summary.get("n_context_unavailable"))
+               n_unavailable=summary.get("n_context_unavailable"), support=summary.get("n_target_support"),
+               excluded=summary.get("n_target_excluded"), queries=summary.get("query_count"))
     for name, value in sub.items():
         if isinstance(value, dict):
             out[f"{name}_auc"] = value.get("auc")
@@ -52,6 +54,7 @@ def collect(pattern, unit):
         for arm in ("off", "on"):
             entry[f"val_{arm}"] = row_metrics(load(root / "training" / arm / "val_summary.json"))
             entry[f"test_{arm}"] = row_metrics(load(root / "evaluation" / arm / "test_summary.json"))
+            entry[f"q75_{arm}"] = row_metrics(load(root / "evaluation-q75" / arm / "test_summary.json"))
         rows.append(entry)
     return rows
 
@@ -120,13 +123,15 @@ def main(argv=None):
     if args.a:
         rows = collect(args.a, "fold")
         digest["A"] = rows
-        for phase, title in (("val", "Protocol A, selected source validation"), ("test", "Protocol A, official test")):
+        for phase, title in (("val", "Protocol A, selected source validation"), ("test", "Protocol A, official test"),
+                             ("q75", "Protocol A, official test re-encoded at quality 75")):
             md.append(f"## {title}\n\n" + table(rows, phase, "fold", ["copy", "inpainting"]))
             tex.append(f"% {title}\n" + table(rows, phase, "fold", ["copy", "inpainting"], markdown=False))
     if args.b:
         rows = collect(args.b, "group")
         digest["B"] = rows
-        for phase, title in (("val", "Protocol B, selected source validation"), ("test", "Protocol B, held-out nationality queries")):
+        for phase, title in (("val", "Protocol B, selected source validation"), ("test", "Protocol B, held-out nationality queries"),
+                             ("q75", "Protocol B, held-out nationality queries re-encoded at quality 75")):
             md.append(f"## {title}\n\n" + table(rows, phase, "group", ["copy", "inpainting"]))
             tex.append(f"% {title}\n" + table(rows, phase, "group", ["copy", "inpainting"], markdown=False))
     if args.c:
