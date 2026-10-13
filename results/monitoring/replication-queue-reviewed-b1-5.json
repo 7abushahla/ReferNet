@@ -1,0 +1,402 @@
+{
+  "ledger_path": "/shared/b00090279/refer-or-clear/results/monitoring/replication-queue-ledger.jsonl",
+  "priority_policy": "aws_capacity_a_first_v1",
+  "schema_version": "protocol_replication_queue_v1",
+  "submit_cwd": "/shared/b00090279/refer-or-clear",
+  "units": [
+    {
+      "index": 1,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38204
+      },
+      "protocol": "A",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/multifold-2042f0b3/fold1/request.json",
+        "sha256": "3abcd393e8923d5f1302af9afb960a366e9e75c52146666f183a7e636facab9d"
+      },
+      "review": null,
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3",
+      "source_sha256": "2042f0b3c777f1e51ecb261b4e18c28e32a62f8b13feb1ba7cd5498ff5a5d9a0",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3/scripts/cluster/protocol_a_study.sh",
+        "sha256": "4a97d876337a9bdafbe39ee6e51aea34ba687e0b37f911d8a412f35e21af902e"
+      }
+    },
+    {
+      "index": 2,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38205
+      },
+      "protocol": "A",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/multifold-2042f0b3/fold2/request.json",
+        "sha256": "2baa46f89421bb362079e3c3d13ac3690cbbe5e804a5739b38216fa35b2bdf45"
+      },
+      "review": null,
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3",
+      "source_sha256": "2042f0b3c777f1e51ecb261b4e18c28e32a62f8b13feb1ba7cd5498ff5a5d9a0",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3/scripts/cluster/protocol_a_study.sh",
+        "sha256": "4a97d876337a9bdafbe39ee6e51aea34ba687e0b37f911d8a412f35e21af902e"
+      }
+    },
+    {
+      "index": 3,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38206
+      },
+      "protocol": "A",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/multifold-2042f0b3/fold3/request.json",
+        "sha256": "0ef0e1b3a07799125c84afca0b2cec6e0ac7932b5de5608f67a3c42514f1563d"
+      },
+      "review": null,
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3",
+      "source_sha256": "2042f0b3c777f1e51ecb261b4e18c28e32a62f8b13feb1ba7cd5498ff5a5d9a0",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3/scripts/cluster/protocol_a_study.sh",
+        "sha256": "4a97d876337a9bdafbe39ee6e51aea34ba687e0b37f911d8a412f35e21af902e"
+      }
+    },
+    {
+      "index": 4,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38207
+      },
+      "protocol": "A",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/multifold-2042f0b3/fold4/request.json",
+        "sha256": "19850e55ef4ede70a9b12acdf6b1c7f61eb0b601caf3cef9e09640ef50a349c4"
+      },
+      "review": null,
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3",
+      "source_sha256": "2042f0b3c777f1e51ecb261b4e18c28e32a62f8b13feb1ba7cd5498ff5a5d9a0",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3/scripts/cluster/protocol_a_study.sh",
+        "sha256": "4a97d876337a9bdafbe39ee6e51aea34ba687e0b37f911d8a412f35e21af902e"
+      }
+    },
+    {
+      "index": 5,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38208
+      },
+      "protocol": "A",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/multifold-2042f0b3/fold5/request.json",
+        "sha256": "130ed153a5a0fdc19f1fa5c5972bd0ade9ca934473748e4c0703a15a941847de"
+      },
+      "review": null,
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3",
+      "source_sha256": "2042f0b3c777f1e51ecb261b4e18c28e32a62f8b13feb1ba7cd5498ff5a5d9a0",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3/scripts/cluster/protocol_a_study.sh",
+        "sha256": "4a97d876337a9bdafbe39ee6e51aea34ba687e0b37f911d8a412f35e21af902e"
+      }
+    },
+    {
+      "index": 6,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38209
+      },
+      "protocol": "A",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/multifold-2042f0b3/fold6/request.json",
+        "sha256": "d1630a81ff52ef827f9c035d0b843a1e6d799ff674490cf45523db212ad79486"
+      },
+      "review": null,
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3",
+      "source_sha256": "2042f0b3c777f1e51ecb261b4e18c28e32a62f8b13feb1ba7cd5498ff5a5d9a0",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3/scripts/cluster/protocol_a_study.sh",
+        "sha256": "4a97d876337a9bdafbe39ee6e51aea34ba687e0b37f911d8a412f35e21af902e"
+      }
+    },
+    {
+      "index": 7,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38210
+      },
+      "protocol": "A",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/multifold-2042f0b3/fold7/request.json",
+        "sha256": "61a8a3769336479b81ff0edcb60b27d239cfd37099cb5dd7ea4db9f8e072d39b"
+      },
+      "review": null,
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3",
+      "source_sha256": "2042f0b3c777f1e51ecb261b4e18c28e32a62f8b13feb1ba7cd5498ff5a5d9a0",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3/scripts/cluster/protocol_a_study.sh",
+        "sha256": "4a97d876337a9bdafbe39ee6e51aea34ba687e0b37f911d8a412f35e21af902e"
+      }
+    },
+    {
+      "index": 8,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38211
+      },
+      "protocol": "A",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/multifold-2042f0b3/fold8/request.json",
+        "sha256": "bb9cb304dee327fe3999213f90898e55c189c73420e383f32843265633bad21b"
+      },
+      "review": null,
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3",
+      "source_sha256": "2042f0b3c777f1e51ecb261b4e18c28e32a62f8b13feb1ba7cd5498ff5a5d9a0",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3/scripts/cluster/protocol_a_study.sh",
+        "sha256": "4a97d876337a9bdafbe39ee6e51aea34ba687e0b37f911d8a412f35e21af902e"
+      }
+    },
+    {
+      "index": 9,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38212
+      },
+      "protocol": "A",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/multifold-2042f0b3/fold9/request.json",
+        "sha256": "e207d228e7164ffaf9e2d5b466096da2973a228ca065852070d5f8ce32fd62a4"
+      },
+      "review": null,
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3",
+      "source_sha256": "2042f0b3c777f1e51ecb261b4e18c28e32a62f8b13feb1ba7cd5498ff5a5d9a0",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-study-2042f0b3/scripts/cluster/protocol_a_study.sh",
+        "sha256": "4a97d876337a9bdafbe39ee6e51aea34ba687e0b37f911d8a412f35e21af902e"
+      }
+    },
+    {
+      "index": 1,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38186
+      },
+      "protocol": "B",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/group1-study-63d6788.json",
+        "sha256": "1116e8c97d0cc2fabe7dffd23918baebe146b67417ff5f05db1c652136f91524"
+      },
+      "review": {
+        "path": "/shared/b00090279/refer-or-clear/results/monitoring/replication-reviews/B1-63d6788.json",
+        "sha256": "84d7d9562b23ba60e9acafcadb96f15405fa02577488d9837924bb30c07db33d"
+      },
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788",
+      "source_sha256": "a404e2f98333b03633ef81782a97da9fc89674f14b8cd29d4ddebe042a804865",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788/scripts/cluster/protocol_b_study.sh",
+        "sha256": "9d4282bb5a15c07a11973110c5267643685a06fb027ca1c3200fdce114611ee6"
+      }
+    },
+    {
+      "index": 2,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38187
+      },
+      "protocol": "B",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/group2-study-63d6788.json",
+        "sha256": "a4c4065b6c7651abc8eb1a688078481e802d62fae8e31f19c07c9a43bd4fdeae"
+      },
+      "review": {
+        "path": "/shared/b00090279/refer-or-clear/results/monitoring/replication-reviews/B2-63d6788.json",
+        "sha256": "9f5d90892ad23b9aa55011688d567ebad7ec6b28df78c96b77be57dd06bfe981"
+      },
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788",
+      "source_sha256": "a404e2f98333b03633ef81782a97da9fc89674f14b8cd29d4ddebe042a804865",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788/scripts/cluster/protocol_b_study.sh",
+        "sha256": "9d4282bb5a15c07a11973110c5267643685a06fb027ca1c3200fdce114611ee6"
+      }
+    },
+    {
+      "index": 3,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38188
+      },
+      "protocol": "B",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/group3-study-63d6788.json",
+        "sha256": "e3011c6ba555d0eedb430da0081d6b0bd64b7c692ef783cc0a6a73f9eb9689aa"
+      },
+      "review": {
+        "path": "/shared/b00090279/refer-or-clear/results/monitoring/replication-reviews/B3-63d6788.json",
+        "sha256": "fef80f32bb812579e41cd2cf266c0db6ea24dd9e8be830882adb1bc37f5b5639"
+      },
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788",
+      "source_sha256": "a404e2f98333b03633ef81782a97da9fc89674f14b8cd29d4ddebe042a804865",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788/scripts/cluster/protocol_b_study.sh",
+        "sha256": "9d4282bb5a15c07a11973110c5267643685a06fb027ca1c3200fdce114611ee6"
+      }
+    },
+    {
+      "index": 4,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38189
+      },
+      "protocol": "B",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/group4-study-63d6788.json",
+        "sha256": "e2d1b78674753e96e039bfb6589342d641bb21f3e329f49a585dee878ed30c7f"
+      },
+      "review": {
+        "path": "/shared/b00090279/refer-or-clear/results/monitoring/replication-reviews/B4-63d6788.json",
+        "sha256": "4aa49e4a6bdd5fd66dc1e202dd2910453a983b1d5f2a2741077a3b7260c887eb"
+      },
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788",
+      "source_sha256": "a404e2f98333b03633ef81782a97da9fc89674f14b8cd29d4ddebe042a804865",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788/scripts/cluster/protocol_b_study.sh",
+        "sha256": "9d4282bb5a15c07a11973110c5267643685a06fb027ca1c3200fdce114611ee6"
+      }
+    },
+    {
+      "index": 5,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38190
+      },
+      "protocol": "B",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/group5-study-63d6788.json",
+        "sha256": "14498c3e8d7f7500dceb6a0169f00c95144b3b44e50c943f3ea2e546543bd97d"
+      },
+      "review": {
+        "path": "/shared/b00090279/refer-or-clear/results/monitoring/replication-reviews/B5-63d6788.json",
+        "sha256": "b073de6c64d5f94e0cd7930342b46670121c819ea04e25ba3307c37909af91d9"
+      },
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788",
+      "source_sha256": "a404e2f98333b03633ef81782a97da9fc89674f14b8cd29d4ddebe042a804865",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788/scripts/cluster/protocol_b_study.sh",
+        "sha256": "9d4282bb5a15c07a11973110c5267643685a06fb027ca1c3200fdce114611ee6"
+      }
+    },
+    {
+      "index": 6,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38191
+      },
+      "protocol": "B",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/group6-study-63d6788.json",
+        "sha256": "354a96273c58fa535d9a0e9fe1a1b404d29b840dbeed91d8d8b67b7afbe2d04b"
+      },
+      "review": null,
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788",
+      "source_sha256": "a404e2f98333b03633ef81782a97da9fc89674f14b8cd29d4ddebe042a804865",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788/scripts/cluster/protocol_b_study.sh",
+        "sha256": "9d4282bb5a15c07a11973110c5267643685a06fb027ca1c3200fdce114611ee6"
+      }
+    },
+    {
+      "index": 7,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38192
+      },
+      "protocol": "B",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/group7-study-63d6788.json",
+        "sha256": "85dea10e657fc7371025081df3282cdf39c92ff3a29dece5b7d63b8bc377dc35"
+      },
+      "review": null,
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788",
+      "source_sha256": "a404e2f98333b03633ef81782a97da9fc89674f14b8cd29d4ddebe042a804865",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788/scripts/cluster/protocol_b_study.sh",
+        "sha256": "9d4282bb5a15c07a11973110c5267643685a06fb027ca1c3200fdce114611ee6"
+      }
+    },
+    {
+      "index": 8,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38193
+      },
+      "protocol": "B",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/group8-study-63d6788.json",
+        "sha256": "a333c02389135adba630884539c523338d3ba09b7e82371b95b618708094ed2c"
+      },
+      "review": null,
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788",
+      "source_sha256": "a404e2f98333b03633ef81782a97da9fc89674f14b8cd29d4ddebe042a804865",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788/scripts/cluster/protocol_b_study.sh",
+        "sha256": "9d4282bb5a15c07a11973110c5267643685a06fb027ca1c3200fdce114611ee6"
+      }
+    },
+    {
+      "index": 9,
+      "jobs": {
+        "evaluate": null,
+        "off": null,
+        "on": null,
+        "smoke": 38194
+      },
+      "protocol": "B",
+      "request": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/group9-study-63d6788.json",
+        "sha256": "3918ea4aa75c6ee52190a6f756e17860825767efad18360172d7c839b9df2a10"
+      },
+      "review": null,
+      "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788",
+      "source_sha256": "a404e2f98333b03633ef81782a97da9fc89674f14b8cd29d4ddebe042a804865",
+      "wrapper": {
+        "path": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788/scripts/cluster/protocol_b_study.sh",
+        "sha256": "9d4282bb5a15c07a11973110c5267643685a06fb027ca1c3200fdce114611ee6"
+      }
+    }
+  ],
+  "user": "b00090279"
+}

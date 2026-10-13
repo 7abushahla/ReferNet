@@ -1,0 +1,28 @@
+{
+  "gate": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group2-study-63d6788/gate/gate.json",
+    "sha256": "419d79c3be11afa0347863b4e2f7bf2e24844d386a7cbac10590809fec3017b0"
+  },
+  "independent_review": true,
+  "note": {
+    "path": "/shared/b00090279/refer-or-clear/evidence/protocol-b-smokes-groups1-4-review-2026-10-13.md",
+    "sha256": "b0774b45a6394b46938eaf0f4443eff9f328d6e6971d034e801377b50892f7e7"
+  },
+  "passed": true,
+  "reviewer": "Galileo",
+  "schema_version": "protocol_replication_review_v1",
+  "unit": {
+    "index": 2,
+    "protocol": "B",
+    "request": {
+      "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/group2-study-63d6788.json",
+      "sha256": "a4c4065b6c7651abc8eb1a688078481e802d62fae8e31f19c07c9a43bd4fdeae"
+    },
+    "source_dir": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788",
+    "source_sha256": "a404e2f98333b03633ef81782a97da9fc89674f14b8cd29d4ddebe042a804865",
+    "wrapper": {
+      "path": "/shared/b00090279/refer-or-clear/results/source/protocol-b-study-63d6788/scripts/cluster/protocol_b_study.sh",
+      "sha256": "9d4282bb5a15c07a11973110c5267643685a06fb027ca1c3200fdce114611ee6"
+    }
+  }
+}
