@@ -1,0 +1,73 @@
+{
+  "archive": {
+    "path": "/private/tmp/replication-monitor-13e44bd2-tools.tar",
+    "sha256": "e9929aaa54f069ac547b1a9b89b6210bcbc562e39c4e52d3be3e62f4f0a0935c"
+  },
+  "local_ledger": "/Users/hamza/Documents/GitHub/refer-or-clear/results/monitoring/replication-bootstrap-13e44bd2.jsonl",
+  "metadata_files": [
+    {
+      "binding": {
+        "path": "/Users/hamza/Documents/GitHub/refer-or-clear/results/monitoring/replication-queue-reviewed-b1-5.json",
+        "sha256": "fddd90ba211a32b075443d897816b4a29480e307170e9b382bcadd8d3940871a"
+      },
+      "destination": "/shared/b00090279/refer-or-clear/results/monitoring/replication-queue-reviewed-b1-5.json"
+    },
+    {
+      "binding": {
+        "path": "/Users/hamza/Documents/GitHub/refer-or-clear/results/monitoring/replication-reviews/B1-63d6788.json",
+        "sha256": "84d7d9562b23ba60e9acafcadb96f15405fa02577488d9837924bb30c07db33d"
+      },
+      "destination": "/shared/b00090279/refer-or-clear/results/monitoring/replication-reviews/B1-63d6788.json"
+    },
+    {
+      "binding": {
+        "path": "/Users/hamza/Documents/GitHub/refer-or-clear/results/monitoring/replication-reviews/B2-63d6788.json",
+        "sha256": "9f5d90892ad23b9aa55011688d567ebad7ec6b28df78c96b77be57dd06bfe981"
+      },
+      "destination": "/shared/b00090279/refer-or-clear/results/monitoring/replication-reviews/B2-63d6788.json"
+    },
+    {
+      "binding": {
+        "path": "/Users/hamza/Documents/GitHub/refer-or-clear/results/monitoring/replication-reviews/B3-63d6788.json",
+        "sha256": "fef80f32bb812579e41cd2cf266c0db6ea24dd9e8be830882adb1bc37f5b5639"
+      },
+      "destination": "/shared/b00090279/refer-or-clear/results/monitoring/replication-reviews/B3-63d6788.json"
+    },
+    {
+      "binding": {
+        "path": "/Users/hamza/Documents/GitHub/refer-or-clear/results/monitoring/replication-reviews/B4-63d6788.json",
+        "sha256": "4aa49e4a6bdd5fd66dc1e202dd2910453a983b1d5f2a2741077a3b7260c887eb"
+      },
+      "destination": "/shared/b00090279/refer-or-clear/results/monitoring/replication-reviews/B4-63d6788.json"
+    },
+    {
+      "binding": {
+        "path": "/Users/hamza/Documents/GitHub/refer-or-clear/results/monitoring/replication-reviews/B5-63d6788.json",
+        "sha256": "b073de6c64d5f94e0cd7930342b46670121c819ea04e25ba3307c37909af91d9"
+      },
+      "destination": "/shared/b00090279/refer-or-clear/results/monitoring/replication-reviews/B5-63d6788.json"
+    },
+    {
+      "binding": {
+        "path": "/Users/hamza/Documents/GitHub/refer-or-clear/evidence/protocol-b-smokes-groups1-4-review-2026-10-13.md",
+        "sha256": "b0774b45a6394b46938eaf0f4443eff9f328d6e6971d034e801377b50892f7e7"
+      },
+      "destination": "/shared/b00090279/refer-or-clear/evidence/protocol-b-smokes-groups1-4-review-2026-10-13.md"
+    },
+    {
+      "binding": {
+        "path": "/Users/hamza/Documents/GitHub/refer-or-clear/evidence/protocol-b-smoke-38190-review-2026-10-13.md",
+        "sha256": "b740c29eaf2f67f989649d84d7dec663a9f5c328a89062d0b38a3490a24f358c"
+      },
+      "destination": "/shared/b00090279/refer-or-clear/evidence/protocol-b-smoke-38190-review-2026-10-13.md"
+    }
+  ],
+  "remote_authority": "/shared/b00090279/refer-or-clear/results/monitoring/replication-queue-reviewed-b1-5.json",
+  "remote_root": "/shared/b00090279/refer-or-clear/results/monitoring/replication-tools-13e44bd2",
+  "schema_version": "reviewed_replication_resume_v1",
+  "tool_files": {
+    "scripts/anchor_job_manifest.py": "d2766022d4601bcedd270fed0a8ff0e8c2bc96f5979c386e5b21530ca26ba93c",
+    "scripts/queue_protocol_a_evaluation.py": "ee11f77aad2c685aac282b8fd9a6b453be11579c877eb987d68d0a8cdacf91ad",
+    "scripts/queue_protocol_replications.py": "13e44bd2b970db47c430ac92626743fbfae3598a573b06641f100ac59e9a1ba7"
+  }
+}
