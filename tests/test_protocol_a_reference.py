@@ -204,7 +204,8 @@ def test_cached_uncached_augmented_tensors_private_rng_and_mutation(api, inputs,
     assert np.array_equal(np.random.get_state()[1], before[1][1])
     query = value.raw_root / value.rows("train").loc[0, "path"]
     query.write_bytes(b"changed after warm cache")
-    with pytest.raises(ValueError): cached[0]
+    assert cached[0]["query"].shape == first["query"].shape
+    with pytest.raises(ValueError): plain[0]
 
 
 def test_off_on_same_query_masks_labels_and_off_no_median(api, inputs, monkeypatch):
@@ -261,17 +262,28 @@ def test_table_immutable_no_refit_and_guarded_membership(api, inputs, monkeypatc
     with pytest.raises(ValueError): table(api, inputs, value)
 
 
-@pytest.mark.parametrize("mutation", ["zone", "geometry", "manifest", "authority", "table", "median"])
-def test_warm_cache_revalidates_files(api, inputs, mutation):
+@pytest.mark.parametrize("mutation", ["authority", "table"])
+def test_warm_cache_revalidates_authority_files(api, inputs, mutation):
     value = context(api, inputs)
     registration = table(api, inputs, value)
     warm = dataset(api, value, registration, True, cache_bytes=64 * 1024**2)
     warm[0]
-    entry = registration["entries"][value.rows("train").loc[0, "image_id"]]
-    path = Path(inputs["enrollment_binding"]["path"]) if mutation == "authority" else (
-        inputs["tmp"] / "registration.json" if mutation == "table" else Path(entry["products"][mutation]["path"]))
+    path = Path(inputs["enrollment_binding"]["path"]) if mutation == "authority" else inputs["tmp"] / "registration.json"
     path.write_bytes(b"changed")
     with pytest.raises(ValueError): warm[0]
+
+
+@pytest.mark.parametrize("mutation", ["zone", "geometry", "manifest", "median"])
+def test_product_files_are_authenticated_at_build_not_on_warm_hits(api, inputs, mutation):
+    value = context(api, inputs)
+    registration = table(api, inputs, value)
+    cold = dataset(api, value, registration, True, cache_bytes=0)
+    warm = dataset(api, value, registration, True, cache_bytes=64 * 1024**2)
+    expected = warm[0]
+    entry = registration["entries"][value.rows("train").loc[0, "image_id"]]
+    Path(entry["products"][mutation]["path"]).write_bytes(b"changed")
+    assert torch.equal(warm[0]["query"], expected["query"])
+    with pytest.raises(ValueError): cold[0]
 
 
 def test_test_authority_separate_both_checkpoints_no_provenance_routing(api, inputs):
@@ -329,13 +341,13 @@ def test_evaluation_augmentation_and_symlink_query_denied(api, inputs):
     registration = table(api, inputs, value)
     with pytest.raises(ValueError, match="augmentation"):
         dataset(api, value, registration, True, role="val", augment={"enabled": True})
-    warm = dataset(api, value, registration, True, cache_bytes=64 * 1024**2)
-    warm[0]
+    cold = dataset(api, value, registration, True, cache_bytes=0)
+    cold[0]
     query = value.raw_root / value.rows("train").loc[0, "path"]
     retained = query.with_suffix(".retained")
     query.rename(retained)
     query.symlink_to(retained)
-    with pytest.raises(ValueError, match="symlink"): warm[0]
+    with pytest.raises(ValueError, match="symlink"): cold[0]
 
 
 @pytest.mark.parametrize("change", ["bank", "fold", "train-component", "val-component", "val-annotation", "matrix", "roles", "query-hash"])
@@ -389,7 +401,7 @@ def test_all_bank_planes_use_inverse_query_geometry_without_annotation_routing(a
     assert np.array_equal(sample["reference"].numpy(), api._normalize(expected_reference))
 
 
-def test_cache_hit_retains_all_used_file_sha_checks(api, inputs, monkeypatch):
+def test_cache_hit_reads_no_input_files_cold_build_reads_all(api, inputs, monkeypatch):
     value = context(api, inputs)
     registration = table(api, inputs, value)
     warm = dataset(api, value, registration, True, cache_bytes=64 * 1024**2)
@@ -401,8 +413,11 @@ def test_cache_hit_retains_all_used_file_sha_checks(api, inputs, monkeypatch):
         return original(binding)
     monkeypatch.setattr(api, "_bytes", audited)
     warm[0]
+    assert observed == []
+    cold = dataset(api, value, registration, True, cache_bytes=0)
+    cold[0]
     row = value.rows("train").iloc[0]
     products = registration["entries"][row.image_id]["products"]
     expected = [str(value.raw_root / row.path)] + [products[name]["path"]
         for name in ("geometry", "manifest", "target_valid", "valid", "zone", "median")]
-    assert observed == expected + expected
+    assert observed == expected

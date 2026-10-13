@@ -66,6 +66,29 @@ def test_hit_is_byte_identical_and_validates_before_lookup(cache_type):
         assert first[name].tobytes() == second[name].tobytes() == original[name].tobytes()
 
 
+def test_validate_hits_false_authenticates_only_before_cold_build(cache_type):
+    cache = cache_type(max_bytes=128)
+    events = []
+
+    def validate():
+        events.append("validate")
+
+    def build():
+        events.append("build")
+        return canvases()
+
+    cache.fetch(binding(), validate=validate, build=build, validate_hits=False)
+    cache.fetch(binding(), validate=validate, build=build, validate_hits=False)
+    assert events == ["validate", "build"]
+    with pytest.raises(TypeError):
+        cache.fetch(binding(), validate=validate, build=build, validate_hits=0)
+    disabled = cache_type(max_bytes=0)
+    events.clear()
+    disabled.fetch(binding(), validate=validate, build=build, validate_hits=False)
+    disabled.fetch(binding(), validate=validate, build=build, validate_hits=False)
+    assert events == ["validate", "build", "validate", "build"]
+
+
 def test_builder_and_augmentation_writes_cannot_poison_cache(cache_type):
     cache = cache_type(max_bytes=128)
     original = canvases()

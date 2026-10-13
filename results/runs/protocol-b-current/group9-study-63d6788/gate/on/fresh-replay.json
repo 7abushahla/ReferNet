@@ -1,0 +1,85 @@
+{
+  "checkpoint": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group9-study-63d6788/gate/on/selected.pt",
+    "sha256": "44fd2a0b71b2a31917e41dd9a424055162e39cb17dabb2fe2160fc57b0f3d256"
+  },
+  "comparison": {
+    "atol": 1e-05,
+    "max_abs_difference": 0.0,
+    "n_images": 32,
+    "passed": true,
+    "rtol": 0.0001
+  },
+  "fresh_process": true,
+  "identities": {
+    "config_sha256": "15569b6ab735be45035091f40f4ad121a6aac4c81dc6d495b7c58650ae113707",
+    "enrollment_sha256": "b8f81ff0b332564382a76c41d29298ba03922b1368a6338cbe3ded6e9880a976",
+    "initialization_sha256": "ff73a53b9a96fd19ea14a7c9a47138e0fa5d5be962317cc6ee3aff5b6b5fad33",
+    "phase_authority_sha256": "3918ea4aa75c6ee52190a6f756e17860825767efad18360172d7c839b9df2a10",
+    "preprocess_sha256": "63e9128f2ff3ff67f107cef288144a03a005b01ffa8084ac58a17b76a69dcfda",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "registration_sha256": "a27950a68a70ac6a88fb9faa53113f16acc0f766d2ab3b4c8b9c3a28fab23c63",
+    "source_sha256": "a404e2f98333b03633ef81782a97da9fc89674f14b8cd29d4ddebe042a804865",
+    "split_sha256": "49012ce73acc55d3e7b402ea1913c6c11f4f8f34c8eb0a823811f75c47f22840",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "n_images": 32,
+  "no_test_open": true,
+  "parent_result": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group9-study-63d6788/gate/on/smoke.json",
+    "sha256": "1e394b2e817e52ba226138498c3ab0b7af3dad4e0f5b976ca062e133f9987d9c"
+  },
+  "passed": true,
+  "pid": 3348,
+  "request": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/group9-study-63d6788.json",
+    "sha256": "3918ea4aa75c6ee52190a6f756e17860825767efad18360172d7c839b9df2a10"
+  },
+  "summary": {
+    "accuracy": 0.4375,
+    "altered_misses": [
+      "sidtd_aze_passport_05_fake_3_28",
+      "sidtd_aze_passport_05_fake_3_40",
+      "sidtd_aze_passport_18_fake_3_10",
+      "sidtd_aze_passport_41_fake_3_57",
+      "sidtd_aze_passport_43_fake_3_74",
+      "sidtd_aze_passport_51_fake_3_69",
+      "sidtd_aze_passport_60_fake_3_102",
+      "sidtd_aze_passport_60_fake_3_103",
+      "sidtd_aze_passport_70_fake_3_108",
+      "sidtd_aze_passport_70_fake_3_51",
+      "sidtd_aze_passport_70_fake_3_67",
+      "sidtd_aze_passport_76_fake_3_110",
+      "sidtd_aze_passport_76_fake_3_66",
+      "sidtd_aze_passport_79_fake_3_111",
+      "sidtd_aze_passport_79_fake_3_112",
+      "sidtd_aze_passport_86_fake_3_54",
+      "sidtd_aze_passport_86_fake_3_61",
+      "sidtd_aze_passport_86_fake_3_93"
+    ],
+    "auc": 0.4603174603174603,
+    "buffers_unchanged": true,
+    "genuine_false_positives": [],
+    "image_loss": 0.6948978658765554,
+    "n_altered": 18,
+    "n_context_available": 32,
+    "n_context_unavailable": 0,
+    "n_genuine": 14,
+    "n_images": 32,
+    "referral_ids": [],
+    "subgroups": {
+      "copy": {
+        "accuracy": 0.7777777777777778,
+        "auc": 0.625,
+        "n_altered": 4,
+        "n_genuine": 14
+      },
+      "inpainting": {
+        "accuracy": 0.5,
+        "auc": 0.413265306122449,
+        "n_altered": 14,
+        "n_genuine": 14
+      }
+    }
+  }
+}

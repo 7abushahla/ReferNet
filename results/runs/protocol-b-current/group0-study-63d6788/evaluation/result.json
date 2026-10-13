@@ -1,0 +1,25 @@
+{
+  "authorization": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-study-63d6788/evaluation/authorization.json",
+    "sha256": "510e38709aa25db869521ec638efc5340b536ed6a607d56aba37a329f409a3be"
+  },
+  "group": 0,
+  "passed": true,
+  "protocol": "B",
+  "request": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/group0-study-63d6788.json",
+    "sha256": "8527e13f897c2347b1f4f103647eb0f917492d7bb109a4c2961cc57ad24b80e0"
+  },
+  "same_query_population": true,
+  "schema_version": "protocol_b_evaluation_result_v1",
+  "summaries": {
+    "off": {
+      "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-study-63d6788/evaluation/off/test_summary.json",
+      "sha256": "1aa4048103493b3a1e833388ebf7eff2e1fa6ce963c13647692bc8636f0962a6"
+    },
+    "on": {
+      "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-study-63d6788/evaluation/on/test_summary.json",
+      "sha256": "22b299195a19605bf99313b3ef4c63e9a473bd19e83272ce76d771c71c11c85a"
+    }
+  }
+}

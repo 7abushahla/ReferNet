@@ -1,0 +1,18 @@
+{
+  "enrollment_manifest_sha256": "7691452ecb4d160e8767d277ba3ccf209355f16b3f49f85e52ff596c8a2719e8",
+  "fold": 0,
+  "protocol": "A",
+  "relocations": {
+    "records": {
+      "original_path": "/tmp/b00090279/anchor-enrollment-fold0-37973/inputs/records.csv",
+      "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-eval-assets/inputs/records.csv",
+      "sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276"
+    },
+    "split": {
+      "original_path": "/tmp/b00090279/anchor-enrollment-fold0-37973/inputs/split.csv",
+      "path": "/shared/b00090279/refer-or-clear/results/source/protocol-a-eval-assets/inputs/split.csv",
+      "sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9"
+    }
+  },
+  "schema_version": "protocol_a_metadata_relocation_v1"
+}

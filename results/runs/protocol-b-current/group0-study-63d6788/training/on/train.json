@@ -1,0 +1,1169 @@
+{
+  "arm": "on",
+  "batches_per_epoch": 150,
+  "cache_bytes": {
+    "total": 4294967296,
+    "train": 3875473872,
+    "val": 419493424
+  },
+  "checkpoint": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-study-63d6788/training/on/best.pt",
+    "sha256": "050d6cb8e2db607b7a947c29f764b60f80db96ecea20eba20c6b4f9ee288ceb1"
+  },
+  "diagnostic_gate": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-study-63d6788/gate/gate.json",
+    "sha256": "e50e9f4ea15e1cbda4bc7d4507b85cd40656755cf7479722d7f1d37dc76f5830"
+  },
+  "diagnostic_only": false,
+  "epochs_completed": 100,
+  "fresh_initial_state_sha256": "2678d5c9ec79a13a4ae012f398485bd32495ea64f1667dfbf29969103b8a2736",
+  "group": 0,
+  "group_name": "svk_alb_aze_lva",
+  "history": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-study-63d6788/training/on/log.csv",
+    "sha256": "9cf60934cae93a0779b413529121dc089791a5b29006a7c78afa112e263a8c48"
+  },
+  "identities": {
+    "config_sha256": "7fa739b3a149d2b5807fbc784467259f8b6ef32850e204e34a2c49c97d4e988d",
+    "enrollment_sha256": "57daaeb66ab563443a3f4c6f1bdaf7e1b651144fdcef53e69a1b50c963da8ab0",
+    "initialization_sha256": "ff73a53b9a96fd19ea14a7c9a47138e0fa5d5be962317cc6ee3aff5b6b5fad33",
+    "phase_authority_sha256": "e50e9f4ea15e1cbda4bc7d4507b85cd40656755cf7479722d7f1d37dc76f5830",
+    "preprocess_sha256": "fd656ef63194826877e0e8a4db2c1b1d44a45d0d78cd5eccd33634530bd56f76",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "registration_sha256": "15d04ed0741a5c7f06a549059898466cdc1d37a32e6754da850000f445ca6bac",
+    "source_sha256": "a404e2f98333b03633ef81782a97da9fc89674f14b8cd29d4ddebe042a804865",
+    "split_sha256": "58ea2994181c6bbf4b819ed81b4ae73195912a29611977aea00c4247266a82d1",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "images_per_epoch": 1200,
+  "in_process_replay": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-study-63d6788/training/on/replay.json",
+    "sha256": "49fb4c2b3e3425b45b627459e5511207b730dd9a0ba47608df6af046f539ed41"
+  },
+  "initialization": {
+    "adapter_seed": 42,
+    "adapter_tensor_sha256": "fb19185c58739d9e41e9e3538189a354c14c741cdac700c339d8b281325e88e1",
+    "architecture_id": "anchor_direct_reference_ia18_v1",
+    "base": {
+      "active_parameter_count": 11261825,
+      "active_pretrained_keys": [
+        "backbone.layer1.0.bn1.bias",
+        "backbone.layer1.0.bn1.num_batches_tracked",
+        "backbone.layer1.0.bn1.running_mean",
+        "backbone.layer1.0.bn1.running_var",
+        "backbone.layer1.0.bn1.weight",
+        "backbone.layer1.0.bn2.bias",
+        "backbone.layer1.0.bn2.num_batches_tracked",
+        "backbone.layer1.0.bn2.running_mean",
+        "backbone.layer1.0.bn2.running_var",
+        "backbone.layer1.0.bn2.weight",
+        "backbone.layer1.0.conv1.weight",
+        "backbone.layer1.0.conv2.weight",
+        "backbone.layer1.1.bn1.bias",
+        "backbone.layer1.1.bn1.num_batches_tracked",
+        "backbone.layer1.1.bn1.running_mean",
+        "backbone.layer1.1.bn1.running_var",
+        "backbone.layer1.1.bn1.weight",
+        "backbone.layer1.1.bn2.bias",
+        "backbone.layer1.1.bn2.num_batches_tracked",
+        "backbone.layer1.1.bn2.running_mean",
+        "backbone.layer1.1.bn2.running_var",
+        "backbone.layer1.1.bn2.weight",
+        "backbone.layer1.1.conv1.weight",
+        "backbone.layer1.1.conv2.weight",
+        "backbone.layer2.0.bn1.bias",
+        "backbone.layer2.0.bn1.num_batches_tracked",
+        "backbone.layer2.0.bn1.running_mean",
+        "backbone.layer2.0.bn1.running_var",
+        "backbone.layer2.0.bn1.weight",
+        "backbone.layer2.0.bn2.bias",
+        "backbone.layer2.0.bn2.num_batches_tracked",
+        "backbone.layer2.0.bn2.running_mean",
+        "backbone.layer2.0.bn2.running_var",
+        "backbone.layer2.0.bn2.weight",
+        "backbone.layer2.0.conv1.weight",
+        "backbone.layer2.0.conv2.weight",
+        "backbone.layer2.0.downsample.0.weight",
+        "backbone.layer2.0.downsample.1.bias",
+        "backbone.layer2.0.downsample.1.num_batches_tracked",
+        "backbone.layer2.0.downsample.1.running_mean",
+        "backbone.layer2.0.downsample.1.running_var",
+        "backbone.layer2.0.downsample.1.weight",
+        "backbone.layer2.1.bn1.bias",
+        "backbone.layer2.1.bn1.num_batches_tracked",
+        "backbone.layer2.1.bn1.running_mean",
+        "backbone.layer2.1.bn1.running_var",
+        "backbone.layer2.1.bn1.weight",
+        "backbone.layer2.1.bn2.bias",
+        "backbone.layer2.1.bn2.num_batches_tracked",
+        "backbone.layer2.1.bn2.running_mean",
+        "backbone.layer2.1.bn2.running_var",
+        "backbone.layer2.1.bn2.weight",
+        "backbone.layer2.1.conv1.weight",
+        "backbone.layer2.1.conv2.weight",
+        "backbone.layer3.0.bn1.bias",
+        "backbone.layer3.0.bn1.num_batches_tracked",
+        "backbone.layer3.0.bn1.running_mean",
+        "backbone.layer3.0.bn1.running_var",
+        "backbone.layer3.0.bn1.weight",
+        "backbone.layer3.0.bn2.bias",
+        "backbone.layer3.0.bn2.num_batches_tracked",
+        "backbone.layer3.0.bn2.running_mean",
+        "backbone.layer3.0.bn2.running_var",
+        "backbone.layer3.0.bn2.weight",
+        "backbone.layer3.0.conv1.weight",
+        "backbone.layer3.0.conv2.weight",
+        "backbone.layer3.0.downsample.0.weight",
+        "backbone.layer3.0.downsample.1.bias",
+        "backbone.layer3.0.downsample.1.num_batches_tracked",
+        "backbone.layer3.0.downsample.1.running_mean",
+        "backbone.layer3.0.downsample.1.running_var",
+        "backbone.layer3.0.downsample.1.weight",
+        "backbone.layer3.1.bn1.bias",
+        "backbone.layer3.1.bn1.num_batches_tracked",
+        "backbone.layer3.1.bn1.running_mean",
+        "backbone.layer3.1.bn1.running_var",
+        "backbone.layer3.1.bn1.weight",
+        "backbone.layer3.1.bn2.bias",
+        "backbone.layer3.1.bn2.num_batches_tracked",
+        "backbone.layer3.1.bn2.running_mean",
+        "backbone.layer3.1.bn2.running_var",
+        "backbone.layer3.1.bn2.weight",
+        "backbone.layer3.1.conv1.weight",
+        "backbone.layer3.1.conv2.weight",
+        "backbone.layer4.0.bn1.bias",
+        "backbone.layer4.0.bn1.num_batches_tracked",
+        "backbone.layer4.0.bn1.running_mean",
+        "backbone.layer4.0.bn1.running_var",
+        "backbone.layer4.0.bn1.weight",
+        "backbone.layer4.0.bn2.bias",
+        "backbone.layer4.0.bn2.num_batches_tracked",
+        "backbone.layer4.0.bn2.running_mean",
+        "backbone.layer4.0.bn2.running_var",
+        "backbone.layer4.0.bn2.weight",
+        "backbone.layer4.0.conv1.weight",
+        "backbone.layer4.0.conv2.weight",
+        "backbone.layer4.0.downsample.0.weight",
+        "backbone.layer4.0.downsample.1.bias",
+        "backbone.layer4.0.downsample.1.num_batches_tracked",
+        "backbone.layer4.0.downsample.1.running_mean",
+        "backbone.layer4.0.downsample.1.running_var",
+        "backbone.layer4.0.downsample.1.weight",
+        "backbone.layer4.1.bn1.bias",
+        "backbone.layer4.1.bn1.num_batches_tracked",
+        "backbone.layer4.1.bn1.running_mean",
+        "backbone.layer4.1.bn1.running_var",
+        "backbone.layer4.1.bn1.weight",
+        "backbone.layer4.1.bn2.bias",
+        "backbone.layer4.1.bn2.num_batches_tracked",
+        "backbone.layer4.1.bn2.running_mean",
+        "backbone.layer4.1.bn2.running_var",
+        "backbone.layer4.1.bn2.weight",
+        "backbone.layer4.1.conv1.weight",
+        "backbone.layer4.1.conv2.weight",
+        "backbone.stem.0.weight",
+        "backbone.stem.1.bias",
+        "backbone.stem.1.num_batches_tracked",
+        "backbone.stem.1.running_mean",
+        "backbone.stem.1.running_var",
+        "backbone.stem.1.weight",
+        "backbone.stem.3.weight",
+        "backbone.stem.4.bias",
+        "backbone.stem.4.num_batches_tracked",
+        "backbone.stem.4.running_mean",
+        "backbone.stem.4.running_var",
+        "backbone.stem.4.weight",
+        "backbone.stem.6.weight",
+        "backbone.stem.7.bias",
+        "backbone.stem.7.num_batches_tracked",
+        "backbone.stem.7.running_mean",
+        "backbone.stem.7.running_var",
+        "backbone.stem.7.weight"
+      ],
+      "bn_policy": "running",
+      "checkpoint_loading_policy": "official_hash_bound_pickle_v1",
+      "checkpoint_path": "/shared/b00090279/refer-or-clear/results/source/study-shared-assets/weights.pth",
+      "checkpoint_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618",
+      "head_seed": 42,
+      "historical_pretrained_tensor_sha256": "1283f34343b41b2a5e27d55ec9654bf1e7dae47e1959adab4f403c4e0884ef44",
+      "loaded_keys": [
+        "backbone.layer1.0.bn1.bias",
+        "backbone.layer1.0.bn1.num_batches_tracked",
+        "backbone.layer1.0.bn1.running_mean",
+        "backbone.layer1.0.bn1.running_var",
+        "backbone.layer1.0.bn1.weight",
+        "backbone.layer1.0.bn2.bias",
+        "backbone.layer1.0.bn2.num_batches_tracked",
+        "backbone.layer1.0.bn2.running_mean",
+        "backbone.layer1.0.bn2.running_var",
+        "backbone.layer1.0.bn2.weight",
+        "backbone.layer1.0.conv1.weight",
+        "backbone.layer1.0.conv2.weight",
+        "backbone.layer1.1.bn1.bias",
+        "backbone.layer1.1.bn1.num_batches_tracked",
+        "backbone.layer1.1.bn1.running_mean",
+        "backbone.layer1.1.bn1.running_var",
+        "backbone.layer1.1.bn1.weight",
+        "backbone.layer1.1.bn2.bias",
+        "backbone.layer1.1.bn2.num_batches_tracked",
+        "backbone.layer1.1.bn2.running_mean",
+        "backbone.layer1.1.bn2.running_var",
+        "backbone.layer1.1.bn2.weight",
+        "backbone.layer1.1.conv1.weight",
+        "backbone.layer1.1.conv2.weight",
+        "backbone.layer2.0.bn1.bias",
+        "backbone.layer2.0.bn1.num_batches_tracked",
+        "backbone.layer2.0.bn1.running_mean",
+        "backbone.layer2.0.bn1.running_var",
+        "backbone.layer2.0.bn1.weight",
+        "backbone.layer2.0.bn2.bias",
+        "backbone.layer2.0.bn2.num_batches_tracked",
+        "backbone.layer2.0.bn2.running_mean",
+        "backbone.layer2.0.bn2.running_var",
+        "backbone.layer2.0.bn2.weight",
+        "backbone.layer2.0.conv1.weight",
+        "backbone.layer2.0.conv2.weight",
+        "backbone.layer2.0.downsample.0.weight",
+        "backbone.layer2.0.downsample.1.bias",
+        "backbone.layer2.0.downsample.1.num_batches_tracked",
+        "backbone.layer2.0.downsample.1.running_mean",
+        "backbone.layer2.0.downsample.1.running_var",
+        "backbone.layer2.0.downsample.1.weight",
+        "backbone.layer2.1.bn1.bias",
+        "backbone.layer2.1.bn1.num_batches_tracked",
+        "backbone.layer2.1.bn1.running_mean",
+        "backbone.layer2.1.bn1.running_var",
+        "backbone.layer2.1.bn1.weight",
+        "backbone.layer2.1.bn2.bias",
+        "backbone.layer2.1.bn2.num_batches_tracked",
+        "backbone.layer2.1.bn2.running_mean",
+        "backbone.layer2.1.bn2.running_var",
+        "backbone.layer2.1.bn2.weight",
+        "backbone.layer2.1.conv1.weight",
+        "backbone.layer2.1.conv2.weight",
+        "backbone.layer3.0.bn1.bias",
+        "backbone.layer3.0.bn1.num_batches_tracked",
+        "backbone.layer3.0.bn1.running_mean",
+        "backbone.layer3.0.bn1.running_var",
+        "backbone.layer3.0.bn1.weight",
+        "backbone.layer3.0.bn2.bias",
+        "backbone.layer3.0.bn2.num_batches_tracked",
+        "backbone.layer3.0.bn2.running_mean",
+        "backbone.layer3.0.bn2.running_var",
+        "backbone.layer3.0.bn2.weight",
+        "backbone.layer3.0.conv1.weight",
+        "backbone.layer3.0.conv2.weight",
+        "backbone.layer3.0.downsample.0.weight",
+        "backbone.layer3.0.downsample.1.bias",
+        "backbone.layer3.0.downsample.1.num_batches_tracked",
+        "backbone.layer3.0.downsample.1.running_mean",
+        "backbone.layer3.0.downsample.1.running_var",
+        "backbone.layer3.0.downsample.1.weight",
+        "backbone.layer3.1.bn1.bias",
+        "backbone.layer3.1.bn1.num_batches_tracked",
+        "backbone.layer3.1.bn1.running_mean",
+        "backbone.layer3.1.bn1.running_var",
+        "backbone.layer3.1.bn1.weight",
+        "backbone.layer3.1.bn2.bias",
+        "backbone.layer3.1.bn2.num_batches_tracked",
+        "backbone.layer3.1.bn2.running_mean",
+        "backbone.layer3.1.bn2.running_var",
+        "backbone.layer3.1.bn2.weight",
+        "backbone.layer3.1.conv1.weight",
+        "backbone.layer3.1.conv2.weight",
+        "backbone.layer4.0.bn1.bias",
+        "backbone.layer4.0.bn1.num_batches_tracked",
+        "backbone.layer4.0.bn1.running_mean",
+        "backbone.layer4.0.bn1.running_var",
+        "backbone.layer4.0.bn1.weight",
+        "backbone.layer4.0.bn2.bias",
+        "backbone.layer4.0.bn2.num_batches_tracked",
+        "backbone.layer4.0.bn2.running_mean",
+        "backbone.layer4.0.bn2.running_var",
+        "backbone.layer4.0.bn2.weight",
+        "backbone.layer4.0.conv1.weight",
+        "backbone.layer4.0.conv2.weight",
+        "backbone.layer4.0.downsample.0.weight",
+        "backbone.layer4.0.downsample.1.bias",
+        "backbone.layer4.0.downsample.1.num_batches_tracked",
+        "backbone.layer4.0.downsample.1.running_mean",
+        "backbone.layer4.0.downsample.1.running_var",
+        "backbone.layer4.0.downsample.1.weight",
+        "backbone.layer4.1.bn1.bias",
+        "backbone.layer4.1.bn1.num_batches_tracked",
+        "backbone.layer4.1.bn1.running_mean",
+        "backbone.layer4.1.bn1.running_var",
+        "backbone.layer4.1.bn1.weight",
+        "backbone.layer4.1.bn2.bias",
+        "backbone.layer4.1.bn2.num_batches_tracked",
+        "backbone.layer4.1.bn2.running_mean",
+        "backbone.layer4.1.bn2.running_var",
+        "backbone.layer4.1.bn2.weight",
+        "backbone.layer4.1.conv1.weight",
+        "backbone.layer4.1.conv2.weight",
+        "backbone.stem.0.weight",
+        "backbone.stem.1.bias",
+        "backbone.stem.1.num_batches_tracked",
+        "backbone.stem.1.running_mean",
+        "backbone.stem.1.running_var",
+        "backbone.stem.1.weight",
+        "backbone.stem.3.weight",
+        "backbone.stem.4.bias",
+        "backbone.stem.4.num_batches_tracked",
+        "backbone.stem.4.running_mean",
+        "backbone.stem.4.running_var",
+        "backbone.stem.4.weight",
+        "backbone.stem.6.weight",
+        "backbone.stem.7.bias",
+        "backbone.stem.7.num_batches_tracked",
+        "backbone.stem.7.running_mean",
+        "backbone.stem.7.running_var",
+        "backbone.stem.7.weight",
+        "decode_head.conv_seg.bias",
+        "decode_head.conv_seg.weight",
+        "decode_head.convs.0.bn.bias",
+        "decode_head.convs.0.bn.num_batches_tracked",
+        "decode_head.convs.0.bn.running_mean",
+        "decode_head.convs.0.bn.running_var",
+        "decode_head.convs.0.bn.weight",
+        "decode_head.convs.0.conv.weight",
+        "decode_head.convs.1.bn.bias",
+        "decode_head.convs.1.bn.num_batches_tracked",
+        "decode_head.convs.1.bn.running_mean",
+        "decode_head.convs.1.bn.running_var",
+        "decode_head.convs.1.bn.weight",
+        "decode_head.convs.1.conv.weight",
+        "decode_head.convs.2.bn.bias",
+        "decode_head.convs.2.bn.num_batches_tracked",
+        "decode_head.convs.2.bn.running_mean",
+        "decode_head.convs.2.bn.running_var",
+        "decode_head.convs.2.bn.weight",
+        "decode_head.convs.2.conv.weight",
+        "decode_head.convs.3.bn.bias",
+        "decode_head.convs.3.bn.num_batches_tracked",
+        "decode_head.convs.3.bn.running_mean",
+        "decode_head.convs.3.bn.running_var",
+        "decode_head.convs.3.bn.weight",
+        "decode_head.convs.3.conv.weight",
+        "decode_head.discriminator.layers.0.bias",
+        "decode_head.discriminator.layers.0.weight",
+        "decode_head.discriminator.layers.1.bias",
+        "decode_head.discriminator.layers.1.weight",
+        "decode_head.discriminator.layers.4.bias",
+        "decode_head.discriminator.layers.4.weight",
+        "decode_head.fusion_conv.bn.bias",
+        "decode_head.fusion_conv.bn.num_batches_tracked",
+        "decode_head.fusion_conv.bn.running_mean",
+        "decode_head.fusion_conv.bn.running_var",
+        "decode_head.fusion_conv.bn.weight",
+        "decode_head.fusion_conv.conv.weight",
+        "decode_head.neck_layer.flow_make.0.bias",
+        "decode_head.neck_layer.flow_make.0.weight",
+        "decode_head.neck_layer.flow_make.3.weight"
+      ],
+      "missing_keys": [
+        "referral.fc1.bias",
+        "referral.fc1.weight",
+        "referral.fc2.bias",
+        "referral.fc2.weight"
+      ],
+      "new_parameter_count": 65793,
+      "normalization_audit": [
+        {
+          "name": "backbone.stem.1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.stem.4",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.stem.7",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer1.0.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer1.0.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer1.1.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer1.1.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer2.0.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer2.0.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer2.0.downsample.1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer2.1.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer2.1.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer3.0.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer3.0.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer3.0.downsample.1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer3.1.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer3.1.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer4.0.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer4.0.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer4.0.downsample.1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer4.1.bn1",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer4.1.bn2",
+          "track_running_stats": true,
+          "type": "BatchNorm2d"
+        }
+      ],
+      "pretrained_tensor_sha256": "9ab72d0bbe12d81de9034b1b44e5d037576a8e83f45addf0ba9d339382e59c42",
+      "requested_initialization": "levir",
+      "surgeries": {
+        "conv_seg_log_odds": {
+          "source_shape": [
+            2,
+            128,
+            1,
+            1
+          ],
+          "target_shape": [
+            1,
+            128,
+            1,
+            1
+          ]
+        },
+        "stem_zero_padding": {
+          "source_shape": [
+            32,
+            3,
+            3,
+            3
+          ],
+          "target_shape": [
+            32,
+            4,
+            3,
+            3
+          ]
+        }
+      },
+      "tensor_hash_format": "sorted_name_shape_dtype_compact_json_newline_then_c_order_bytes_v1",
+      "unexpected_keys": []
+    },
+    "base_architecture_id": "anchor_direct_running_ia18_pilot_v1",
+    "normalization_policy": "shared_sequential_train_bn_stored_eval_v1",
+    "reference_enabled": true
+  },
+  "n_train": 1201,
+  "n_val": 130,
+  "no_test_open": true,
+  "omitted_train_ids": [
+    {
+      "epoch": 1,
+      "image_ids": [
+        "sidtd_fin_id_41_fake_7_90"
+      ]
+    },
+    {
+      "epoch": 2,
+      "image_ids": [
+        "sidtd_srb_passport_90_fake_5_95"
+      ]
+    },
+    {
+      "epoch": 3,
+      "image_ids": [
+        "sidtd_est_id_76"
+      ]
+    },
+    {
+      "epoch": 4,
+      "image_ids": [
+        "sidtd_fin_id_12_fake_7_57"
+      ]
+    },
+    {
+      "epoch": 5,
+      "image_ids": [
+        "sidtd_est_id_42_fake_9_111"
+      ]
+    },
+    {
+      "epoch": 6,
+      "image_ids": [
+        "sidtd_grc_passport_69"
+      ]
+    },
+    {
+      "epoch": 7,
+      "image_ids": [
+        "sidtd_fin_id_13_fake_7_20"
+      ]
+    },
+    {
+      "epoch": 8,
+      "image_ids": [
+        "sidtd_rus_internalpassport_85_fake_1_38"
+      ]
+    },
+    {
+      "epoch": 9,
+      "image_ids": [
+        "sidtd_esp_id_29_fake_2_52"
+      ]
+    },
+    {
+      "epoch": 10,
+      "image_ids": [
+        "sidtd_fin_id_67"
+      ]
+    },
+    {
+      "epoch": 11,
+      "image_ids": [
+        "sidtd_grc_passport_38_fake_4_110"
+      ]
+    },
+    {
+      "epoch": 12,
+      "image_ids": [
+        "sidtd_rus_internalpassport_65"
+      ]
+    },
+    {
+      "epoch": 13,
+      "image_ids": [
+        "sidtd_fin_id_68"
+      ]
+    },
+    {
+      "epoch": 14,
+      "image_ids": [
+        "sidtd_srb_passport_62_fake_5_56"
+      ]
+    },
+    {
+      "epoch": 15,
+      "image_ids": [
+        "sidtd_grc_passport_04_fake_4_95"
+      ]
+    },
+    {
+      "epoch": 16,
+      "image_ids": [
+        "sidtd_fin_id_79_fake_7_106"
+      ]
+    },
+    {
+      "epoch": 17,
+      "image_ids": [
+        "sidtd_rus_internalpassport_27_fake_1_107"
+      ]
+    },
+    {
+      "epoch": 18,
+      "image_ids": [
+        "sidtd_rus_internalpassport_35"
+      ]
+    },
+    {
+      "epoch": 19,
+      "image_ids": [
+        "sidtd_srb_passport_43"
+      ]
+    },
+    {
+      "epoch": 20,
+      "image_ids": [
+        "sidtd_rus_internalpassport_17"
+      ]
+    },
+    {
+      "epoch": 21,
+      "image_ids": [
+        "sidtd_esp_id_86"
+      ]
+    },
+    {
+      "epoch": 22,
+      "image_ids": [
+        "sidtd_est_id_29"
+      ]
+    },
+    {
+      "epoch": 23,
+      "image_ids": [
+        "sidtd_est_id_86_fake_9_19"
+      ]
+    },
+    {
+      "epoch": 24,
+      "image_ids": [
+        "sidtd_rus_internalpassport_18"
+      ]
+    },
+    {
+      "epoch": 25,
+      "image_ids": [
+        "sidtd_fin_id_62_fake_7_0"
+      ]
+    },
+    {
+      "epoch": 26,
+      "image_ids": [
+        "sidtd_est_id_27_fake_9_14"
+      ]
+    },
+    {
+      "epoch": 27,
+      "image_ids": [
+        "sidtd_rus_internalpassport_05"
+      ]
+    },
+    {
+      "epoch": 28,
+      "image_ids": [
+        "sidtd_fin_id_37_fake_7_30"
+      ]
+    },
+    {
+      "epoch": 29,
+      "image_ids": [
+        "sidtd_rus_internalpassport_85"
+      ]
+    },
+    {
+      "epoch": 30,
+      "image_ids": [
+        "sidtd_rus_internalpassport_81_fake_1_56"
+      ]
+    },
+    {
+      "epoch": 31,
+      "image_ids": [
+        "sidtd_srb_passport_44"
+      ]
+    },
+    {
+      "epoch": 32,
+      "image_ids": [
+        "sidtd_rus_internalpassport_53_fake_1_68"
+      ]
+    },
+    {
+      "epoch": 33,
+      "image_ids": [
+        "sidtd_fin_id_26_fake_7_68"
+      ]
+    },
+    {
+      "epoch": 34,
+      "image_ids": [
+        "sidtd_esp_id_66_fake_2_67"
+      ]
+    },
+    {
+      "epoch": 35,
+      "image_ids": [
+        "sidtd_grc_passport_50_fake_4_91"
+      ]
+    },
+    {
+      "epoch": 36,
+      "image_ids": [
+        "sidtd_srb_passport_87_fake_5_100"
+      ]
+    },
+    {
+      "epoch": 37,
+      "image_ids": [
+        "sidtd_srb_passport_21"
+      ]
+    },
+    {
+      "epoch": 38,
+      "image_ids": [
+        "sidtd_est_id_20_fake_9_101"
+      ]
+    },
+    {
+      "epoch": 39,
+      "image_ids": [
+        "sidtd_rus_internalpassport_65_fake_1_17"
+      ]
+    },
+    {
+      "epoch": 40,
+      "image_ids": [
+        "sidtd_grc_passport_34"
+      ]
+    },
+    {
+      "epoch": 41,
+      "image_ids": [
+        "sidtd_fin_id_26_fake_7_1"
+      ]
+    },
+    {
+      "epoch": 42,
+      "image_ids": [
+        "sidtd_srb_passport_10"
+      ]
+    },
+    {
+      "epoch": 43,
+      "image_ids": [
+        "sidtd_srb_passport_15_fake_5_113"
+      ]
+    },
+    {
+      "epoch": 44,
+      "image_ids": [
+        "sidtd_esp_id_37_fake_2_20"
+      ]
+    },
+    {
+      "epoch": 45,
+      "image_ids": [
+        "sidtd_fin_id_89"
+      ]
+    },
+    {
+      "epoch": 46,
+      "image_ids": [
+        "sidtd_rus_internalpassport_66_fake_1_90"
+      ]
+    },
+    {
+      "epoch": 47,
+      "image_ids": [
+        "sidtd_est_id_20_fake_9_102"
+      ]
+    },
+    {
+      "epoch": 48,
+      "image_ids": [
+        "sidtd_srb_passport_35_fake_5_39"
+      ]
+    },
+    {
+      "epoch": 49,
+      "image_ids": [
+        "sidtd_fin_id_51"
+      ]
+    },
+    {
+      "epoch": 50,
+      "image_ids": [
+        "sidtd_grc_passport_09_fake_4_96"
+      ]
+    },
+    {
+      "epoch": 51,
+      "image_ids": [
+        "sidtd_fin_id_36_fake_7_61"
+      ]
+    },
+    {
+      "epoch": 52,
+      "image_ids": [
+        "sidtd_rus_internalpassport_77_fake_1_24"
+      ]
+    },
+    {
+      "epoch": 53,
+      "image_ids": [
+        "sidtd_grc_passport_02_fake_4_113"
+      ]
+    },
+    {
+      "epoch": 54,
+      "image_ids": [
+        "sidtd_fin_id_12_fake_7_14"
+      ]
+    },
+    {
+      "epoch": 55,
+      "image_ids": [
+        "sidtd_fin_id_79"
+      ]
+    },
+    {
+      "epoch": 56,
+      "image_ids": [
+        "sidtd_rus_internalpassport_77_fake_1_101"
+      ]
+    },
+    {
+      "epoch": 57,
+      "image_ids": [
+        "sidtd_grc_passport_68"
+      ]
+    },
+    {
+      "epoch": 58,
+      "image_ids": [
+        "sidtd_rus_internalpassport_99"
+      ]
+    },
+    {
+      "epoch": 59,
+      "image_ids": [
+        "sidtd_rus_internalpassport_09"
+      ]
+    },
+    {
+      "epoch": 60,
+      "image_ids": [
+        "sidtd_rus_internalpassport_14_fake_1_113"
+      ]
+    },
+    {
+      "epoch": 61,
+      "image_ids": [
+        "sidtd_grc_passport_53_fake_4_14"
+      ]
+    },
+    {
+      "epoch": 62,
+      "image_ids": [
+        "sidtd_fin_id_06_fake_7_37"
+      ]
+    },
+    {
+      "epoch": 63,
+      "image_ids": [
+        "sidtd_esp_id_83_fake_2_14"
+      ]
+    },
+    {
+      "epoch": 64,
+      "image_ids": [
+        "sidtd_fin_id_17"
+      ]
+    },
+    {
+      "epoch": 65,
+      "image_ids": [
+        "sidtd_fin_id_49_fake_7_108"
+      ]
+    },
+    {
+      "epoch": 66,
+      "image_ids": [
+        "sidtd_fin_id_94"
+      ]
+    },
+    {
+      "epoch": 67,
+      "image_ids": [
+        "sidtd_rus_internalpassport_59"
+      ]
+    },
+    {
+      "epoch": 68,
+      "image_ids": [
+        "sidtd_est_id_22"
+      ]
+    },
+    {
+      "epoch": 69,
+      "image_ids": [
+        "sidtd_srb_passport_41"
+      ]
+    },
+    {
+      "epoch": 70,
+      "image_ids": [
+        "sidtd_esp_id_08_fake_2_106"
+      ]
+    },
+    {
+      "epoch": 71,
+      "image_ids": [
+        "sidtd_grc_passport_79"
+      ]
+    },
+    {
+      "epoch": 72,
+      "image_ids": [
+        "sidtd_est_id_48"
+      ]
+    },
+    {
+      "epoch": 73,
+      "image_ids": [
+        "sidtd_esp_id_96_fake_2_24"
+      ]
+    },
+    {
+      "epoch": 74,
+      "image_ids": [
+        "sidtd_grc_passport_90"
+      ]
+    },
+    {
+      "epoch": 75,
+      "image_ids": [
+        "sidtd_grc_passport_13_fake_4_17"
+      ]
+    },
+    {
+      "epoch": 76,
+      "image_ids": [
+        "sidtd_fin_id_26_fake_7_78"
+      ]
+    },
+    {
+      "epoch": 77,
+      "image_ids": [
+        "sidtd_srb_passport_15_fake_5_113"
+      ]
+    },
+    {
+      "epoch": 78,
+      "image_ids": [
+        "sidtd_esp_id_38_fake_2_4"
+      ]
+    },
+    {
+      "epoch": 79,
+      "image_ids": [
+        "sidtd_est_id_32_fake_9_60"
+      ]
+    },
+    {
+      "epoch": 80,
+      "image_ids": [
+        "sidtd_srb_passport_10"
+      ]
+    },
+    {
+      "epoch": 81,
+      "image_ids": [
+        "sidtd_grc_passport_42"
+      ]
+    },
+    {
+      "epoch": 82,
+      "image_ids": [
+        "sidtd_est_id_55_fake_9_90"
+      ]
+    },
+    {
+      "epoch": 83,
+      "image_ids": [
+        "sidtd_grc_passport_58"
+      ]
+    },
+    {
+      "epoch": 84,
+      "image_ids": [
+        "sidtd_rus_internalpassport_60_fake_1_73"
+      ]
+    },
+    {
+      "epoch": 85,
+      "image_ids": [
+        "sidtd_grc_passport_02_fake_4_113"
+      ]
+    },
+    {
+      "epoch": 86,
+      "image_ids": [
+        "sidtd_rus_internalpassport_77_fake_1_102"
+      ]
+    },
+    {
+      "epoch": 87,
+      "image_ids": [
+        "sidtd_srb_passport_47"
+      ]
+    },
+    {
+      "epoch": 88,
+      "image_ids": [
+        "sidtd_rus_internalpassport_12"
+      ]
+    },
+    {
+      "epoch": 89,
+      "image_ids": [
+        "sidtd_esp_id_96_fake_2_24"
+      ]
+    },
+    {
+      "epoch": 90,
+      "image_ids": [
+        "sidtd_est_id_01_fake_9_38"
+      ]
+    },
+    {
+      "epoch": 91,
+      "image_ids": [
+        "sidtd_fin_id_95"
+      ]
+    },
+    {
+      "epoch": 92,
+      "image_ids": [
+        "sidtd_esp_id_86_fake_2_54"
+      ]
+    },
+    {
+      "epoch": 93,
+      "image_ids": [
+        "sidtd_grc_passport_94"
+      ]
+    },
+    {
+      "epoch": 94,
+      "image_ids": [
+        "sidtd_est_id_10_fake_9_67"
+      ]
+    },
+    {
+      "epoch": 95,
+      "image_ids": [
+        "sidtd_srb_passport_04_fake_5_19"
+      ]
+    },
+    {
+      "epoch": 96,
+      "image_ids": [
+        "sidtd_est_id_66_fake_9_5"
+      ]
+    },
+    {
+      "epoch": 97,
+      "image_ids": [
+        "sidtd_esp_id_88"
+      ]
+    },
+    {
+      "epoch": 98,
+      "image_ids": [
+        "sidtd_est_id_52"
+      ]
+    },
+    {
+      "epoch": 99,
+      "image_ids": [
+        "sidtd_srb_passport_54"
+      ]
+    },
+    {
+      "epoch": 100,
+      "image_ids": [
+        "sidtd_est_id_13"
+      ]
+    }
+  ],
+  "optimizer_steps": 15000,
+  "passed": true,
+  "phase": "train",
+  "pid": 3585,
+  "predictions": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-study-63d6788/training/on/val_predictions.csv",
+    "sha256": "a0ddd6493d58811a26a3ea3d0ab5e900cebc29d7fcb258bcc63ed95bd3c46bf6"
+  },
+  "protocol": "B",
+  "reference_enabled": true,
+  "registration": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-study-63d6788/registration.json",
+    "sha256": "15d04ed0741a5c7f06a549059898466cdc1d37a32e6754da850000f445ca6bac"
+  },
+  "replay": {
+    "atol": 1e-05,
+    "fresh_process": false,
+    "max_abs_difference": 0.0,
+    "n_images": 130,
+    "passed": true,
+    "phase": "train",
+    "rtol": 0.0001
+  },
+  "request": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/group0-study-63d6788.json",
+    "sha256": "8527e13f897c2347b1f4f103647eb0f917492d7bb109a4c2961cc57ad24b80e0"
+  },
+  "role": "val",
+  "scheduler": {
+    "total_updates": 15000,
+    "warmup_updates": 1000
+  },
+  "schema_version": "protocol_b_train_v1",
+  "selected_epoch": 33,
+  "selection_key": [
+    0.9769230769230769,
+    0.9980606060606061
+  ],
+  "summary": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-study-63d6788/training/on/val_summary.json",
+    "sha256": "0830e4018b87122949a553c5d151bbcffa7feafb81cfb5c0fe3417341ed76d05"
+  }
+}

@@ -1,0 +1,79 @@
+gui/501/org.refer-or-clear.replication-resume-faa8a0e2 = {
+	active count = 1
+	path = /Users/hamza/Documents/GitHub/refer-or-clear/results/monitoring/replication-resume-faa8a0e2.launchd.plist
+	type = LaunchAgent
+	state = running
+
+	program = /private/tmp/roc-anchor-dev/bin/python
+	arguments = {
+		/private/tmp/roc-anchor-dev/bin/python
+		-B
+		/private/tmp/roc-replication-tools.ghSmEn/scripts/resume_reviewed_replications.py
+		--manifest
+		/Users/hamza/Documents/GitHub/refer-or-clear/results/monitoring/replication-resume-faa8a0e2.json
+		--manifest-sha256
+		2bbdea093e81bd266c1a9c3bcb06ebe47bbadb976e872eb303ff27738b830ecc
+		--watch
+	}
+
+	working directory = /Users/hamza/Documents/GitHub/refer-or-clear
+
+	stdout path = /Users/hamza/Documents/GitHub/refer-or-clear/results/monitoring/replication-resume-launchd-faa8a0e2.oneshot.log
+	stderr path = /Users/hamza/Documents/GitHub/refer-or-clear/results/monitoring/replication-resume-launchd-faa8a0e2.oneshot.err
+	inherited environment = {
+		SSH_AUTH_SOCK => /var/run/com.apple.launchd.mgbfp1L2F2/Listeners
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		OSLogRateLimit => 64
+		XPC_SERVICE_NAME => org.refer-or-clear.replication-resume-faa8a0e2
+	}
+
+	domain = gui/501 [100003]
+	asid = 100003
+	minimum runtime = 10
+	exit timeout = 5
+	runs = 1
+	pid = 96386
+	immediate reason = speculative
+	forks = 0
+	execs = 1
+	initialized = 1
+	trampolined = 1
+	started suspended = 0
+	proxy started suspended = 0
+	checked allocations = 0 (queried = 1)
+	checked allocations reason = no host
+	checked allocations flags = 0x0
+	last exit code = (never exited)
+
+	resource coalition = {
+		ID = 47574
+		type = resource
+		state = active
+		active count = 1
+		name = org.refer-or-clear.replication-resume-faa8a0e2
+	}
+
+	jetsam coalition = {
+		ID = 47575
+		type = jetsam
+		state = active
+		active count = 1
+		name = org.refer-or-clear.replication-resume-faa8a0e2
+	}
+
+	spawn type = daemon (3)
+	jetsam priority = 40
+	jetsam memory limit (active) = (unlimited)
+	jetsam memory limit (inactive) = (unlimited)
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+
+	properties = runatload | inferred program
+}

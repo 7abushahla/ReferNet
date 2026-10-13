@@ -455,8 +455,8 @@ class ProtocolAReferenceDataset(Dataset):
             return arrays
 
         arrays = self.cache.fetch(dict(entry=entry, reference_enabled=self.reference_enabled,
-                                       identities=json.loads(self.context.identities)), validate=validate, build=build)
-        validate()
+                                       identities=json.loads(self.context.identities)), validate=validate, build=build,
+                                   validate_hits=False)
         query, zone, overlap = arrays["query"], arrays["zone"], arrays["overlap"]
         reference = arrays.get("reference")
         if self.train and self.augment["enabled"]:

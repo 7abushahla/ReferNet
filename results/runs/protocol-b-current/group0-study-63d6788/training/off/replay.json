@@ -1,0 +1,9 @@
+{
+  "atol": 1e-05,
+  "fresh_process": false,
+  "max_abs_difference": 0.0,
+  "n_images": 130,
+  "passed": true,
+  "phase": "train",
+  "rtol": 0.0001
+}

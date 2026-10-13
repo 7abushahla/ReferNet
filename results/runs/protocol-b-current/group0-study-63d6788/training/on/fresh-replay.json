@@ -1,0 +1,71 @@
+{
+  "checkpoint": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-study-63d6788/training/on/best.pt",
+    "sha256": "050d6cb8e2db607b7a947c29f764b60f80db96ecea20eba20c6b4f9ee288ceb1"
+  },
+  "comparison": {
+    "atol": 1e-05,
+    "max_abs_difference": 0.0,
+    "n_images": 130,
+    "passed": true,
+    "rtol": 0.0001
+  },
+  "fresh_process": true,
+  "identities": {
+    "config_sha256": "7fa739b3a149d2b5807fbc784467259f8b6ef32850e204e34a2c49c97d4e988d",
+    "enrollment_sha256": "57daaeb66ab563443a3f4c6f1bdaf7e1b651144fdcef53e69a1b50c963da8ab0",
+    "initialization_sha256": "ff73a53b9a96fd19ea14a7c9a47138e0fa5d5be962317cc6ee3aff5b6b5fad33",
+    "phase_authority_sha256": "e50e9f4ea15e1cbda4bc7d4507b85cd40656755cf7479722d7f1d37dc76f5830",
+    "preprocess_sha256": "fd656ef63194826877e0e8a4db2c1b1d44a45d0d78cd5eccd33634530bd56f76",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "registration_sha256": "15d04ed0741a5c7f06a549059898466cdc1d37a32e6754da850000f445ca6bac",
+    "source_sha256": "a404e2f98333b03633ef81782a97da9fc89674f14b8cd29d4ddebe042a804865",
+    "split_sha256": "58ea2994181c6bbf4b819ed81b4ae73195912a29611977aea00c4247266a82d1",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "n_images": 130,
+  "no_test_open": true,
+  "parent_result": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group0-study-63d6788/training/on/train.json",
+    "sha256": "dafe994e01129bb69cca570c280681f0da421a7158397fcb0ac09e3b8c75086e"
+  },
+  "passed": true,
+  "pid": 10157,
+  "request": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/group0-study-63d6788.json",
+    "sha256": "8527e13f897c2347b1f4f103647eb0f917492d7bb109a4c2961cc57ad24b80e0"
+  },
+  "summary": {
+    "accuracy": 0.9769230769230769,
+    "altered_misses": [
+      "sidtd_srb_passport_82_fake_5_20",
+      "sidtd_srb_passport_99_fake_5_106"
+    ],
+    "auc": 0.9980606060606061,
+    "buffers_unchanged": true,
+    "genuine_false_positives": [
+      "sidtd_grc_passport_44"
+    ],
+    "image_loss": 0.06642051108219015,
+    "n_altered": 75,
+    "n_context_available": 130,
+    "n_context_unavailable": 0,
+    "n_genuine": 55,
+    "n_images": 130,
+    "referral_ids": [],
+    "subgroups": {
+      "copy": {
+        "accuracy": 0.9655172413793104,
+        "auc": 0.9575757575757576,
+        "n_altered": 3,
+        "n_genuine": 55
+      },
+      "inpainting": {
+        "accuracy": 0.984251968503937,
+        "auc": 0.9997474747474748,
+        "n_altered": 72,
+        "n_genuine": 55
+      }
+    }
+  }
+}

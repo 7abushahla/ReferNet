@@ -1,0 +1,2170 @@
+{
+  "architecture_id": "anchor_direct_ia18_v1",
+  "bn_training": [
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    },
+    {
+      "expected_forward_calls": 2,
+      "increments": {},
+      "passed": true
+    }
+  ],
+  "config": {
+    "accumulation_steps": 1,
+    "architecture_id": "anchor_direct_ia18_v1",
+    "augment": {
+      "affine_border": "constant_zero",
+      "affine_px": 8,
+      "binary_interpolation": "opencv_inter_nearest",
+      "crop": null,
+      "enabled": true,
+      "interpolation": "opencv_inter_linear",
+      "jitter_p": 0.25,
+      "jitter_px": 2,
+      "jitter_rgb_border": "replicate",
+      "jitter_target_border": "constant_zero",
+      "jitter_zone": false,
+      "jpeg_quality": null,
+      "photometric": true,
+      "photometric_strength": 0.2,
+      "preset": "legacy_query_v1",
+      "rotation_degrees": 1.0
+    },
+    "batch_size": 8,
+    "bn_policy": "batch_stats",
+    "comparison": "non_stream_matched",
+    "data_contract": "legacy_geometry_diagnostic",
+    "drop_last": true,
+    "epochs": 100,
+    "eval_batch_size": 1,
+    "eval_drop_last": false,
+    "fold": 0,
+    "mask_weight": 0.0,
+    "normalization": {
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "optimizer": {
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "lr_backbone": 0.0001,
+      "lr_new": 0.001,
+      "name": "adamw",
+      "weight_decay": 0.05
+    },
+    "precision": {
+      "amp": false,
+      "cudnn_tf32": false,
+      "dtype": "float32",
+      "matmul_tf32": false
+    },
+    "records_csv": "data/processed/records.csv",
+    "scheduler": {
+      "name": "warmup_cosine",
+      "warmup_cap_fraction": 0.1,
+      "warmup_iters": 1000
+    },
+    "schema_version": "anchor_pilot_v1",
+    "seed": 42,
+    "selection": {
+      "exact_tie": "earlier_epoch",
+      "primary": "accuracy",
+      "tie_break": "auc"
+    },
+    "split_csv": "data/processed/splits/protocol_a_it0.csv",
+    "track": "D",
+    "wrong_design_fraction": 0.0
+  },
+  "cuda_backward_probe": {
+    "operation": "grid_sample_cuda_backward",
+    "performed": false,
+    "warnings": []
+  },
+  "device": "cuda",
+  "fresh_initialization": {
+    "buffer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "checkpoint_supplied": false,
+    "passed": true,
+    "pretrained_tensor_sha256": "fa5acd71c1a1d7504a38be3c8a64729d3c2398f854fa11b3f86539b0ae8859e9",
+    "source": "original_offline_weights_and_seeded_head",
+    "state_sha256": "cca5429e481ee96edcfd9f65c46c0b5e8e2e3398c1a400b2200a24ea6c01cf48"
+  },
+  "identities": {
+    "config_sha256": "0d1a21db4757a31597cb096487210e37d780f9d4008d1a48f9c24756db77a4d0",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "source_sha256": "2f8a833e5cb3450fdccd8c58dba8f07f58af330747a69cca7363d1a21528da9a",
+    "split_sha256": "985d10b47461e0fa41d5502fbb51cd6fc03f8c7e8ec8cd1040b21be318efc1d9",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "initialization": {
+    "optimizer_coverage": {
+      "groups": [
+        [
+          "backbone.stem.0.weight",
+          "backbone.stem.1.weight",
+          "backbone.stem.1.bias",
+          "backbone.stem.3.weight",
+          "backbone.stem.4.weight",
+          "backbone.stem.4.bias",
+          "backbone.stem.6.weight",
+          "backbone.stem.7.weight",
+          "backbone.stem.7.bias",
+          "backbone.layer1.0.conv1.weight",
+          "backbone.layer1.0.bn1.weight",
+          "backbone.layer1.0.bn1.bias",
+          "backbone.layer1.0.conv2.weight",
+          "backbone.layer1.0.bn2.weight",
+          "backbone.layer1.0.bn2.bias",
+          "backbone.layer1.1.conv1.weight",
+          "backbone.layer1.1.bn1.weight",
+          "backbone.layer1.1.bn1.bias",
+          "backbone.layer1.1.conv2.weight",
+          "backbone.layer1.1.bn2.weight",
+          "backbone.layer1.1.bn2.bias",
+          "backbone.layer2.0.conv1.weight",
+          "backbone.layer2.0.bn1.weight",
+          "backbone.layer2.0.bn1.bias",
+          "backbone.layer2.0.conv2.weight",
+          "backbone.layer2.0.bn2.weight",
+          "backbone.layer2.0.bn2.bias",
+          "backbone.layer2.0.downsample.0.weight",
+          "backbone.layer2.0.downsample.1.weight",
+          "backbone.layer2.0.downsample.1.bias",
+          "backbone.layer2.1.conv1.weight",
+          "backbone.layer2.1.bn1.weight",
+          "backbone.layer2.1.bn1.bias",
+          "backbone.layer2.1.conv2.weight",
+          "backbone.layer2.1.bn2.weight",
+          "backbone.layer2.1.bn2.bias",
+          "backbone.layer3.0.conv1.weight",
+          "backbone.layer3.0.bn1.weight",
+          "backbone.layer3.0.bn1.bias",
+          "backbone.layer3.0.conv2.weight",
+          "backbone.layer3.0.bn2.weight",
+          "backbone.layer3.0.bn2.bias",
+          "backbone.layer3.0.downsample.0.weight",
+          "backbone.layer3.0.downsample.1.weight",
+          "backbone.layer3.0.downsample.1.bias",
+          "backbone.layer3.1.conv1.weight",
+          "backbone.layer3.1.bn1.weight",
+          "backbone.layer3.1.bn1.bias",
+          "backbone.layer3.1.conv2.weight",
+          "backbone.layer3.1.bn2.weight",
+          "backbone.layer3.1.bn2.bias",
+          "backbone.layer4.0.conv1.weight",
+          "backbone.layer4.0.bn1.weight",
+          "backbone.layer4.0.bn1.bias",
+          "backbone.layer4.0.conv2.weight",
+          "backbone.layer4.0.bn2.weight",
+          "backbone.layer4.0.bn2.bias",
+          "backbone.layer4.0.downsample.0.weight",
+          "backbone.layer4.0.downsample.1.weight",
+          "backbone.layer4.0.downsample.1.bias",
+          "backbone.layer4.1.conv1.weight",
+          "backbone.layer4.1.bn1.weight",
+          "backbone.layer4.1.bn1.bias",
+          "backbone.layer4.1.conv2.weight",
+          "backbone.layer4.1.bn2.weight",
+          "backbone.layer4.1.bn2.bias"
+        ],
+        [
+          "classifier.0.weight",
+          "classifier.0.bias",
+          "classifier.2.weight",
+          "classifier.2.bias"
+        ]
+      ],
+      "n_tensors": 70,
+      "passed": true
+    },
+    "passed": true,
+    "provenance": {
+      "active_parameter_count": 11261825,
+      "active_pretrained_keys": [
+        "backbone.layer1.0.bn1.bias",
+        "backbone.layer1.0.bn1.weight",
+        "backbone.layer1.0.bn2.bias",
+        "backbone.layer1.0.bn2.weight",
+        "backbone.layer1.0.conv1.weight",
+        "backbone.layer1.0.conv2.weight",
+        "backbone.layer1.1.bn1.bias",
+        "backbone.layer1.1.bn1.weight",
+        "backbone.layer1.1.bn2.bias",
+        "backbone.layer1.1.bn2.weight",
+        "backbone.layer1.1.conv1.weight",
+        "backbone.layer1.1.conv2.weight",
+        "backbone.layer2.0.bn1.bias",
+        "backbone.layer2.0.bn1.weight",
+        "backbone.layer2.0.bn2.bias",
+        "backbone.layer2.0.bn2.weight",
+        "backbone.layer2.0.conv1.weight",
+        "backbone.layer2.0.conv2.weight",
+        "backbone.layer2.0.downsample.0.weight",
+        "backbone.layer2.0.downsample.1.bias",
+        "backbone.layer2.0.downsample.1.weight",
+        "backbone.layer2.1.bn1.bias",
+        "backbone.layer2.1.bn1.weight",
+        "backbone.layer2.1.bn2.bias",
+        "backbone.layer2.1.bn2.weight",
+        "backbone.layer2.1.conv1.weight",
+        "backbone.layer2.1.conv2.weight",
+        "backbone.layer3.0.bn1.bias",
+        "backbone.layer3.0.bn1.weight",
+        "backbone.layer3.0.bn2.bias",
+        "backbone.layer3.0.bn2.weight",
+        "backbone.layer3.0.conv1.weight",
+        "backbone.layer3.0.conv2.weight",
+        "backbone.layer3.0.downsample.0.weight",
+        "backbone.layer3.0.downsample.1.bias",
+        "backbone.layer3.0.downsample.1.weight",
+        "backbone.layer3.1.bn1.bias",
+        "backbone.layer3.1.bn1.weight",
+        "backbone.layer3.1.bn2.bias",
+        "backbone.layer3.1.bn2.weight",
+        "backbone.layer3.1.conv1.weight",
+        "backbone.layer3.1.conv2.weight",
+        "backbone.layer4.0.bn1.bias",
+        "backbone.layer4.0.bn1.weight",
+        "backbone.layer4.0.bn2.bias",
+        "backbone.layer4.0.bn2.weight",
+        "backbone.layer4.0.conv1.weight",
+        "backbone.layer4.0.conv2.weight",
+        "backbone.layer4.0.downsample.0.weight",
+        "backbone.layer4.0.downsample.1.bias",
+        "backbone.layer4.0.downsample.1.weight",
+        "backbone.layer4.1.bn1.bias",
+        "backbone.layer4.1.bn1.weight",
+        "backbone.layer4.1.bn2.bias",
+        "backbone.layer4.1.bn2.weight",
+        "backbone.layer4.1.conv1.weight",
+        "backbone.layer4.1.conv2.weight",
+        "backbone.stem.0.weight",
+        "backbone.stem.1.bias",
+        "backbone.stem.1.weight",
+        "backbone.stem.3.weight",
+        "backbone.stem.4.bias",
+        "backbone.stem.4.weight",
+        "backbone.stem.6.weight",
+        "backbone.stem.7.bias",
+        "backbone.stem.7.weight"
+      ],
+      "bn_policy": "batch_stats",
+      "checkpoint_loading_policy": "official_hash_bound_pickle_v1",
+      "checkpoint_path": "/scratch/b00090279/anchor-pilot-37963/inputs/weights.pth",
+      "checkpoint_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618",
+      "head_seed": 42,
+      "historical_pretrained_tensor_sha256": "1283f34343b41b2a5e27d55ec9654bf1e7dae47e1959adab4f403c4e0884ef44",
+      "loaded_keys": [
+        "backbone.layer1.0.bn1.bias",
+        "backbone.layer1.0.bn1.num_batches_tracked",
+        "backbone.layer1.0.bn1.running_mean",
+        "backbone.layer1.0.bn1.running_var",
+        "backbone.layer1.0.bn1.weight",
+        "backbone.layer1.0.bn2.bias",
+        "backbone.layer1.0.bn2.num_batches_tracked",
+        "backbone.layer1.0.bn2.running_mean",
+        "backbone.layer1.0.bn2.running_var",
+        "backbone.layer1.0.bn2.weight",
+        "backbone.layer1.0.conv1.weight",
+        "backbone.layer1.0.conv2.weight",
+        "backbone.layer1.1.bn1.bias",
+        "backbone.layer1.1.bn1.num_batches_tracked",
+        "backbone.layer1.1.bn1.running_mean",
+        "backbone.layer1.1.bn1.running_var",
+        "backbone.layer1.1.bn1.weight",
+        "backbone.layer1.1.bn2.bias",
+        "backbone.layer1.1.bn2.num_batches_tracked",
+        "backbone.layer1.1.bn2.running_mean",
+        "backbone.layer1.1.bn2.running_var",
+        "backbone.layer1.1.bn2.weight",
+        "backbone.layer1.1.conv1.weight",
+        "backbone.layer1.1.conv2.weight",
+        "backbone.layer2.0.bn1.bias",
+        "backbone.layer2.0.bn1.num_batches_tracked",
+        "backbone.layer2.0.bn1.running_mean",
+        "backbone.layer2.0.bn1.running_var",
+        "backbone.layer2.0.bn1.weight",
+        "backbone.layer2.0.bn2.bias",
+        "backbone.layer2.0.bn2.num_batches_tracked",
+        "backbone.layer2.0.bn2.running_mean",
+        "backbone.layer2.0.bn2.running_var",
+        "backbone.layer2.0.bn2.weight",
+        "backbone.layer2.0.conv1.weight",
+        "backbone.layer2.0.conv2.weight",
+        "backbone.layer2.0.downsample.0.weight",
+        "backbone.layer2.0.downsample.1.bias",
+        "backbone.layer2.0.downsample.1.num_batches_tracked",
+        "backbone.layer2.0.downsample.1.running_mean",
+        "backbone.layer2.0.downsample.1.running_var",
+        "backbone.layer2.0.downsample.1.weight",
+        "backbone.layer2.1.bn1.bias",
+        "backbone.layer2.1.bn1.num_batches_tracked",
+        "backbone.layer2.1.bn1.running_mean",
+        "backbone.layer2.1.bn1.running_var",
+        "backbone.layer2.1.bn1.weight",
+        "backbone.layer2.1.bn2.bias",
+        "backbone.layer2.1.bn2.num_batches_tracked",
+        "backbone.layer2.1.bn2.running_mean",
+        "backbone.layer2.1.bn2.running_var",
+        "backbone.layer2.1.bn2.weight",
+        "backbone.layer2.1.conv1.weight",
+        "backbone.layer2.1.conv2.weight",
+        "backbone.layer3.0.bn1.bias",
+        "backbone.layer3.0.bn1.num_batches_tracked",
+        "backbone.layer3.0.bn1.running_mean",
+        "backbone.layer3.0.bn1.running_var",
+        "backbone.layer3.0.bn1.weight",
+        "backbone.layer3.0.bn2.bias",
+        "backbone.layer3.0.bn2.num_batches_tracked",
+        "backbone.layer3.0.bn2.running_mean",
+        "backbone.layer3.0.bn2.running_var",
+        "backbone.layer3.0.bn2.weight",
+        "backbone.layer3.0.conv1.weight",
+        "backbone.layer3.0.conv2.weight",
+        "backbone.layer3.0.downsample.0.weight",
+        "backbone.layer3.0.downsample.1.bias",
+        "backbone.layer3.0.downsample.1.num_batches_tracked",
+        "backbone.layer3.0.downsample.1.running_mean",
+        "backbone.layer3.0.downsample.1.running_var",
+        "backbone.layer3.0.downsample.1.weight",
+        "backbone.layer3.1.bn1.bias",
+        "backbone.layer3.1.bn1.num_batches_tracked",
+        "backbone.layer3.1.bn1.running_mean",
+        "backbone.layer3.1.bn1.running_var",
+        "backbone.layer3.1.bn1.weight",
+        "backbone.layer3.1.bn2.bias",
+        "backbone.layer3.1.bn2.num_batches_tracked",
+        "backbone.layer3.1.bn2.running_mean",
+        "backbone.layer3.1.bn2.running_var",
+        "backbone.layer3.1.bn2.weight",
+        "backbone.layer3.1.conv1.weight",
+        "backbone.layer3.1.conv2.weight",
+        "backbone.layer4.0.bn1.bias",
+        "backbone.layer4.0.bn1.num_batches_tracked",
+        "backbone.layer4.0.bn1.running_mean",
+        "backbone.layer4.0.bn1.running_var",
+        "backbone.layer4.0.bn1.weight",
+        "backbone.layer4.0.bn2.bias",
+        "backbone.layer4.0.bn2.num_batches_tracked",
+        "backbone.layer4.0.bn2.running_mean",
+        "backbone.layer4.0.bn2.running_var",
+        "backbone.layer4.0.bn2.weight",
+        "backbone.layer4.0.conv1.weight",
+        "backbone.layer4.0.conv2.weight",
+        "backbone.layer4.0.downsample.0.weight",
+        "backbone.layer4.0.downsample.1.bias",
+        "backbone.layer4.0.downsample.1.num_batches_tracked",
+        "backbone.layer4.0.downsample.1.running_mean",
+        "backbone.layer4.0.downsample.1.running_var",
+        "backbone.layer4.0.downsample.1.weight",
+        "backbone.layer4.1.bn1.bias",
+        "backbone.layer4.1.bn1.num_batches_tracked",
+        "backbone.layer4.1.bn1.running_mean",
+        "backbone.layer4.1.bn1.running_var",
+        "backbone.layer4.1.bn1.weight",
+        "backbone.layer4.1.bn2.bias",
+        "backbone.layer4.1.bn2.num_batches_tracked",
+        "backbone.layer4.1.bn2.running_mean",
+        "backbone.layer4.1.bn2.running_var",
+        "backbone.layer4.1.bn2.weight",
+        "backbone.layer4.1.conv1.weight",
+        "backbone.layer4.1.conv2.weight",
+        "backbone.stem.0.weight",
+        "backbone.stem.1.bias",
+        "backbone.stem.1.num_batches_tracked",
+        "backbone.stem.1.running_mean",
+        "backbone.stem.1.running_var",
+        "backbone.stem.1.weight",
+        "backbone.stem.3.weight",
+        "backbone.stem.4.bias",
+        "backbone.stem.4.num_batches_tracked",
+        "backbone.stem.4.running_mean",
+        "backbone.stem.4.running_var",
+        "backbone.stem.4.weight",
+        "backbone.stem.6.weight",
+        "backbone.stem.7.bias",
+        "backbone.stem.7.num_batches_tracked",
+        "backbone.stem.7.running_mean",
+        "backbone.stem.7.running_var",
+        "backbone.stem.7.weight",
+        "decode_head.conv_seg.bias",
+        "decode_head.conv_seg.weight",
+        "decode_head.convs.0.bn.bias",
+        "decode_head.convs.0.bn.num_batches_tracked",
+        "decode_head.convs.0.bn.running_mean",
+        "decode_head.convs.0.bn.running_var",
+        "decode_head.convs.0.bn.weight",
+        "decode_head.convs.0.conv.weight",
+        "decode_head.convs.1.bn.bias",
+        "decode_head.convs.1.bn.num_batches_tracked",
+        "decode_head.convs.1.bn.running_mean",
+        "decode_head.convs.1.bn.running_var",
+        "decode_head.convs.1.bn.weight",
+        "decode_head.convs.1.conv.weight",
+        "decode_head.convs.2.bn.bias",
+        "decode_head.convs.2.bn.num_batches_tracked",
+        "decode_head.convs.2.bn.running_mean",
+        "decode_head.convs.2.bn.running_var",
+        "decode_head.convs.2.bn.weight",
+        "decode_head.convs.2.conv.weight",
+        "decode_head.convs.3.bn.bias",
+        "decode_head.convs.3.bn.num_batches_tracked",
+        "decode_head.convs.3.bn.running_mean",
+        "decode_head.convs.3.bn.running_var",
+        "decode_head.convs.3.bn.weight",
+        "decode_head.convs.3.conv.weight",
+        "decode_head.discriminator.layers.0.bias",
+        "decode_head.discriminator.layers.0.weight",
+        "decode_head.discriminator.layers.1.bias",
+        "decode_head.discriminator.layers.1.weight",
+        "decode_head.discriminator.layers.4.bias",
+        "decode_head.discriminator.layers.4.weight",
+        "decode_head.fusion_conv.bn.bias",
+        "decode_head.fusion_conv.bn.num_batches_tracked",
+        "decode_head.fusion_conv.bn.running_mean",
+        "decode_head.fusion_conv.bn.running_var",
+        "decode_head.fusion_conv.bn.weight",
+        "decode_head.fusion_conv.conv.weight",
+        "decode_head.neck_layer.flow_make.0.bias",
+        "decode_head.neck_layer.flow_make.0.weight",
+        "decode_head.neck_layer.flow_make.3.weight"
+      ],
+      "missing_keys": [
+        "referral.fc1.bias",
+        "referral.fc1.weight",
+        "referral.fc2.bias",
+        "referral.fc2.weight"
+      ],
+      "new_parameter_count": 65793,
+      "normalization_audit": [
+        {
+          "name": "backbone.stem.1",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.stem.4",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.stem.7",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer1.0.bn1",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer1.0.bn2",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer1.1.bn1",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer1.1.bn2",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer2.0.bn1",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer2.0.bn2",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer2.0.downsample.1",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer2.1.bn1",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer2.1.bn2",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer3.0.bn1",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer3.0.bn2",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer3.0.downsample.1",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer3.1.bn1",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer3.1.bn2",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer4.0.bn1",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer4.0.bn2",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer4.0.downsample.1",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer4.1.bn1",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        },
+        {
+          "name": "backbone.layer4.1.bn2",
+          "track_running_stats": false,
+          "type": "BatchNorm2d"
+        }
+      ],
+      "pretrained_tensor_sha256": "fa5acd71c1a1d7504a38be3c8a64729d3c2398f854fa11b3f86539b0ae8859e9",
+      "requested_initialization": "levir",
+      "surgeries": {
+        "conv_seg_log_odds": {
+          "source_shape": [
+            2,
+            128,
+            1,
+            1
+          ],
+          "target_shape": [
+            1,
+            128,
+            1,
+            1
+          ]
+        },
+        "stem_zero_padding": {
+          "source_shape": [
+            32,
+            3,
+            3,
+            3
+          ],
+          "target_shape": [
+            32,
+            4,
+            3,
+            3
+          ]
+        }
+      },
+      "tensor_hash_format": "sorted_name_shape_dtype_compact_json_newline_then_c_order_bytes_v1",
+      "unexpected_keys": []
+    }
+  },
+  "membership": {
+    "train": [
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_00",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_00",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_00.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_01",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_01",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_01.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_01",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_01_fake_6_56",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_01_fake_6_56.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_01",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_01_fake_6_61",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_01_fake_6_61.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_02",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_02",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_02.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_02",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_02_fake_6_44",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_02_fake_6_44.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_02",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_02_fake_6_49",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_02_fake_6_49.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_02",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_02_fake_6_88",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_02_fake_6_88.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_03",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_03",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_03.jpg"
+      },
+      {
+        "attack_family": "text_inpaint",
+        "component_id": "sidtd/alb_id_03",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_03_fake_6_69",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_03_fake_6_69.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_04",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_04",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_04.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_05",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_05",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_05.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_06",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_06",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_06.jpg"
+      },
+      {
+        "attack_family": "",
+        "component_id": "sidtd/alb_id_07",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_07",
+        "label": 0,
+        "path": "sidtd/templates/Images/reals/alb_id_07.jpg"
+      },
+      {
+        "attack_family": "text_copy",
+        "component_id": "sidtd/alb_id_23",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_23_fake_6_105",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_23_fake_6_105.jpg"
+      },
+      {
+        "attack_family": "text_copy",
+        "component_id": "sidtd/alb_id_23",
+        "design_id": "sidtd/alb_id",
+        "image_id": "sidtd_alb_id_23_fake_6_106",
+        "label": 1,
+        "path": "sidtd/templates/Images/fakes/alb_id_23_fake_6_106.jpg"
+      }
+    ]
+  },
+  "n_active_parameters": 11261825,
+  "n_images": {
+    "train": 16
+  },
+  "n_total_parameters": 11261825,
+  "no_test_open": true,
+  "omitted_train_ids": [],
+  "opened_roles": [
+    "train"
+  ],
+  "optimizer": {
+    "groups": [
+      {
+        "lr": 0.001,
+        "n_tensors": 70,
+        "weight_decay": 0.0
+      }
+    ],
+    "initial_state_empty": true,
+    "name": "adamw"
+  },
+  "optimizer_coverage": {
+    "groups": [
+      [
+        "backbone.stem.0.weight",
+        "backbone.stem.1.weight",
+        "backbone.stem.1.bias",
+        "backbone.stem.3.weight",
+        "backbone.stem.4.weight",
+        "backbone.stem.4.bias",
+        "backbone.stem.6.weight",
+        "backbone.stem.7.weight",
+        "backbone.stem.7.bias",
+        "backbone.layer1.0.conv1.weight",
+        "backbone.layer1.0.bn1.weight",
+        "backbone.layer1.0.bn1.bias",
+        "backbone.layer1.0.conv2.weight",
+        "backbone.layer1.0.bn2.weight",
+        "backbone.layer1.0.bn2.bias",
+        "backbone.layer1.1.conv1.weight",
+        "backbone.layer1.1.bn1.weight",
+        "backbone.layer1.1.bn1.bias",
+        "backbone.layer1.1.conv2.weight",
+        "backbone.layer1.1.bn2.weight",
+        "backbone.layer1.1.bn2.bias",
+        "backbone.layer2.0.conv1.weight",
+        "backbone.layer2.0.bn1.weight",
+        "backbone.layer2.0.bn1.bias",
+        "backbone.layer2.0.conv2.weight",
+        "backbone.layer2.0.bn2.weight",
+        "backbone.layer2.0.bn2.bias",
+        "backbone.layer2.0.downsample.0.weight",
+        "backbone.layer2.0.downsample.1.weight",
+        "backbone.layer2.0.downsample.1.bias",
+        "backbone.layer2.1.conv1.weight",
+        "backbone.layer2.1.bn1.weight",
+        "backbone.layer2.1.bn1.bias",
+        "backbone.layer2.1.conv2.weight",
+        "backbone.layer2.1.bn2.weight",
+        "backbone.layer2.1.bn2.bias",
+        "backbone.layer3.0.conv1.weight",
+        "backbone.layer3.0.bn1.weight",
+        "backbone.layer3.0.bn1.bias",
+        "backbone.layer3.0.conv2.weight",
+        "backbone.layer3.0.bn2.weight",
+        "backbone.layer3.0.bn2.bias",
+        "backbone.layer3.0.downsample.0.weight",
+        "backbone.layer3.0.downsample.1.weight",
+        "backbone.layer3.0.downsample.1.bias",
+        "backbone.layer3.1.conv1.weight",
+        "backbone.layer3.1.bn1.weight",
+        "backbone.layer3.1.bn1.bias",
+        "backbone.layer3.1.conv2.weight",
+        "backbone.layer3.1.bn2.weight",
+        "backbone.layer3.1.bn2.bias",
+        "backbone.layer4.0.conv1.weight",
+        "backbone.layer4.0.bn1.weight",
+        "backbone.layer4.0.bn1.bias",
+        "backbone.layer4.0.conv2.weight",
+        "backbone.layer4.0.bn2.weight",
+        "backbone.layer4.0.bn2.bias",
+        "backbone.layer4.0.downsample.0.weight",
+        "backbone.layer4.0.downsample.1.weight",
+        "backbone.layer4.0.downsample.1.bias",
+        "backbone.layer4.1.conv1.weight",
+        "backbone.layer4.1.bn1.weight",
+        "backbone.layer4.1.bn1.bias",
+        "backbone.layer4.1.conv2.weight",
+        "backbone.layer4.1.bn2.weight",
+        "backbone.layer4.1.bn2.bias"
+      ],
+      [
+        "classifier.0.weight",
+        "classifier.0.bias",
+        "classifier.2.weight",
+        "classifier.2.bias"
+      ]
+    ],
+    "n_tensors": 70,
+    "passed": true
+  },
+  "overfit": {
+    "accuracy": 0.5,
+    "altered_misses": [],
+    "auc": 0.453125,
+    "bce_map": null,
+    "buffers_unchanged": true,
+    "criterion": "n_correct>=15 and mean_image_loss<0.15",
+    "dice_map": null,
+    "genuine_false_positives": [
+      "sidtd_alb_id_00",
+      "sidtd_alb_id_01",
+      "sidtd_alb_id_02",
+      "sidtd_alb_id_03",
+      "sidtd_alb_id_04",
+      "sidtd_alb_id_05",
+      "sidtd_alb_id_06",
+      "sidtd_alb_id_07"
+    ],
+    "image_loss": 0.7106871232390404,
+    "n_altered": 8,
+    "n_correct": 8,
+    "n_genuine": 8,
+    "n_images": 16,
+    "subgroups": {
+      "copy": {
+        "accuracy": 0.2,
+        "auc": 0.375,
+        "n_altered": 2,
+        "n_genuine": 8
+      },
+      "inpainting": {
+        "accuracy": 0.42857142857142855,
+        "auc": 0.47916666666666663,
+        "n_altered": 6,
+        "n_genuine": 8
+      }
+    },
+    "total_training_loss": 4.7683518005214864e-06
+  },
+  "passed": false,
+  "paths": {
+    "config": "/scratch/b00090279/anchor-pilot-37963/inputs/config.yaml",
+    "legacy_root": "/scratch/b00090279/anchor-pilot-37963/legacy",
+    "raw_root": "/scratch/b00090279/anchor-pilot-37963/raw",
+    "records": "/scratch/b00090279/anchor-pilot-37963/inputs/records.csv",
+    "split": "/scratch/b00090279/anchor-pilot-37963/inputs/split.csv",
+    "weights": "/scratch/b00090279/anchor-pilot-37963/inputs/weights.pth"
+  },
+  "phase": "overfit",
+  "phase_recipe": {
+    "accumulation_steps": 1,
+    "augment": {
+      "enabled": false
+    },
+    "batch_size": 8,
+    "drop_last": false,
+    "epochs": null,
+    "evaluation_interval_updates": 50,
+    "gradient_clip_norm": null,
+    "max_updates": 500
+  },
+  "pid": 3421,
+  "precision": {
+    "amp": false,
+    "cublas_workspace_config": ":4096:8",
+    "cudnn_tf32": false,
+    "deterministic_algorithms": true,
+    "deterministic_warn_only": false,
+    "dtype": "float32",
+    "known_nondeterministic_ops": [],
+    "matmul_tf32": false,
+    "training_bit_reproducible": false
+  },
+  "rng": {
+    "head_rng_isolated": true,
+    "persistent_workers": false,
+    "sampler_initial_state_sha256": "72772952dea975c85940f7e2fdf714de96c26b3eb0fc80f91ca9435bbd061e01",
+    "sampler_seed": 1043,
+    "seed": 42,
+    "worker_seed": 2043,
+    "workers": 0
+  },
+  "scheduler": {
+    "effective_warmup_iters": 0,
+    "name": "none",
+    "total_iters": null
+  },
+  "schema_version": "anchor_pilot_v1",
+  "selected_checkpoint_sha256": "c78d0b4a06b5dbde434d77f34ffa14ea437dbde4e1d3eafbd2d8aadfff72c47f",
+  "track": "D",
+  "updates": 500,
+  "versions": {
+    "numpy": "1.26.4",
+    "python": "3.10.22",
+    "torch": "2.1.2+cu121"
+  }
+}

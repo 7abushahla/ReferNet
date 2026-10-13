@@ -1,0 +1,57 @@
+{
+  "accounting": {
+    "batches_per_epoch": 222,
+    "effective_warmup_iters": 1000,
+    "images_per_epoch": 1776,
+    "n_target_test": 222,
+    "n_train": 1778,
+    "n_val": 222,
+    "omitted_per_epoch": 2,
+    "total_optimizer_steps": 22200
+  },
+  "arm_reports": {
+    "off": {
+      "replay": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/fold6-study-2042f0b3/gate/off/fresh-replay.json",
+        "sha256": "c596bfee6531ffbbaab2790a90ae3feef0d4c39c2b59d41ee7c5c57b8c221202"
+      },
+      "smoke": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/fold6-study-2042f0b3/gate/off/smoke.json",
+        "sha256": "06738ee6ef811a1110599b7398a7928ff2efbaa4fd74748f53b83789f8a3290d"
+      }
+    },
+    "on": {
+      "replay": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/fold6-study-2042f0b3/gate/on/fresh-replay.json",
+        "sha256": "8d50599754a1696c4f140a5de4e1ef07adebd6f13bc12b63ecc1e811eef1b7ee"
+      },
+      "smoke": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/fold6-study-2042f0b3/gate/on/smoke.json",
+        "sha256": "b7209b53d10a71a30c460b0651c3669d390b5e5d0cd04742ceef3fd9cfc4d08e"
+      }
+    }
+  },
+  "batch_invariance": true,
+  "both_arm_smoke": true,
+  "enrollment_sha256": "c9e70c702443bcd3f02b30b5e93b8896811a0c12f9dabb23a0b77a2ebe2bc4b1",
+  "fold": 6,
+  "no_test_open": true,
+  "passed": true,
+  "protocol": "A",
+  "recipe_sha256": "55c6bb83db2bf3ee4a6d9737d6cc37a3daa519a64b9c47c9df128d7a3978027e",
+  "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+  "registration": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/fold6-study-2042f0b3/registration.json",
+    "sha256": "461e8eb74229df2123c262a8738d17734be7c637b19d679b2218e42515501b81"
+  },
+  "registration_sha256": "461e8eb74229df2123c262a8738d17734be7c637b19d679b2218e42515501b81",
+  "replay": true,
+  "request": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/multifold-2042f0b3/fold6/request.json",
+    "sha256": "d1630a81ff52ef827f9c035d0b843a1e6d799ff674490cf45523db212ad79486"
+  },
+  "schema_version": "protocol_a_training_gate_v1",
+  "source_sha256": "2042f0b3c777f1e51ecb261b4e18c28e32a62f8b13feb1ba7cd5498ff5a5d9a0",
+  "split_sha256": "9d23bed233cba5f4bc77671e9a8f738919f994b42e7c17138d6a9c680529edc1",
+  "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+}

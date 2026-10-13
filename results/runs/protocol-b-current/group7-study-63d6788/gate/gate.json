@@ -1,0 +1,57 @@
+{
+  "accounting": {
+    "batches_per_epoch": 148,
+    "effective_warmup_iters": 1000,
+    "images_per_epoch": 1184,
+    "n_target_test": 894,
+    "n_train": 1184,
+    "n_val": 144,
+    "omitted_per_epoch": 0,
+    "total_optimizer_steps": 14800
+  },
+  "arm_reports": {
+    "off": {
+      "replay": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group7-study-63d6788/gate/off/fresh-replay.json",
+        "sha256": "01d026ffd729803ff07fccd6382daa51a5c9f5533e7623be8ce4678c96dd0c8f"
+      },
+      "smoke": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group7-study-63d6788/gate/off/smoke.json",
+        "sha256": "cb8f2ddd9d973a6e86dbb4443c67c89c0c81390ea8ceda1aa278cb83608b3f2a"
+      }
+    },
+    "on": {
+      "replay": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group7-study-63d6788/gate/on/fresh-replay.json",
+        "sha256": "c432001a1403d800db201ae87daa0dd925d13b9aba1e3950855ffd10cc288583"
+      },
+      "smoke": {
+        "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group7-study-63d6788/gate/on/smoke.json",
+        "sha256": "0745ddb4dc6bf728a001e9b952485709b6ae0aeb2af7a8123e5a8fcd512af383"
+      }
+    }
+  },
+  "batch_invariance": true,
+  "both_arm_smoke": true,
+  "enrollment_sha256": "3220821e7640aa49bb70b1ab59001217e3296f847954e2da0d79a048ef295ddc",
+  "group": 7,
+  "no_test_open": true,
+  "passed": true,
+  "protocol": "B",
+  "recipe_sha256": "b42ebac9cd2d85d1a7137ac0abb38e2721d5f3751a2c9035217fc056518d7c01",
+  "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+  "registration": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/group7-study-63d6788/registration.json",
+    "sha256": "35c3e6fbd4f3bf1994b6ed985f7bcf052a6041e975d58e1e05dad631310c91b2"
+  },
+  "registration_sha256": "35c3e6fbd4f3bf1994b6ed985f7bcf052a6041e975d58e1e05dad631310c91b2",
+  "replay": true,
+  "request": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-b-current/requests/group7-study-63d6788.json",
+    "sha256": "85dea10e657fc7371025081df3282cdf39c92ff3a29dece5b7d63b8bc377dc35"
+  },
+  "schema_version": "protocol_b_training_gate_v1",
+  "source_sha256": "a404e2f98333b03633ef81782a97da9fc89674f14b8cd29d4ddebe042a804865",
+  "split_sha256": "64d41caab2d0158955b9c6c7f09db9ad3f40fc2fe49443f95ddf59de8a2b7fea",
+  "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+}

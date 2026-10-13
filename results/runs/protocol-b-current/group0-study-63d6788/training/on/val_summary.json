@@ -1,0 +1,37 @@
+{
+  "accuracy": 0.9769230769230769,
+  "altered_misses": [
+    "sidtd_srb_passport_82_fake_5_20",
+    "sidtd_srb_passport_99_fake_5_106"
+  ],
+  "auc": 0.9980606060606061,
+  "buffers_unchanged": true,
+  "genuine_false_positives": [
+    "sidtd_grc_passport_44"
+  ],
+  "group": 0,
+  "image_loss": 0.06642051108219015,
+  "n_altered": 75,
+  "n_context_available": 130,
+  "n_context_unavailable": 0,
+  "n_genuine": 55,
+  "n_images": 130,
+  "protocol": "B",
+  "referral_ids": [],
+  "role": "val",
+  "selected_epoch": 33,
+  "subgroups": {
+    "copy": {
+      "accuracy": 0.9655172413793104,
+      "auc": 0.9575757575757576,
+      "n_altered": 3,
+      "n_genuine": 55
+    },
+    "inpainting": {
+      "accuracy": 0.984251968503937,
+      "auc": 0.9997474747474748,
+      "n_altered": 72,
+      "n_genuine": 55
+    }
+  }
+}

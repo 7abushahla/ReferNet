@@ -72,14 +72,24 @@ class ImmutableArrayCache:
         *,
         validate: Callable[[], object],
         build: Callable[[], Mapping[str, np.ndarray]],
+        validate_hits: bool = True,
     ) -> dict[str, np.ndarray]:
-        """Validate before lookup, then return defensive copies of all planes."""
+        """Return defensive copies of all planes.
+
+        ``validate`` always runs before a cold build. With ``validate_hits``
+        (the default) it also runs before every warm lookup; with
+        ``validate_hits=False`` a warm hit trusts the inputs authenticated at
+        build time, so the caller must guard its authorities separately.
+        """
+        if type(validate_hits) is not bool:
+            raise TypeError("validate_hits must be a boolean")
         key = _binding_key(binding)
-        validation = validate()
-        if validation is not None and validation is not True:
-            raise ValueError("input validation must succeed explicitly or raise")
-        if _binding_key(binding) != key:
-            raise ValueError("binding changed during validation")
+        if validate_hits or key not in self._entries:
+            validation = validate()
+            if validation is not None and validation is not True:
+                raise ValueError("input validation must succeed explicitly or raise")
+            if _binding_key(binding) != key:
+                raise ValueError("binding changed during validation")
 
         if key in self._entries:
             frozen = self._entries[key]

@@ -1,0 +1,86 @@
+{
+  "checkpoint": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/fold6-study-2042f0b3/gate/on/selected.pt",
+    "sha256": "aac049f83b08c77857b9928a752758d0bd3d7bf6ade86e3ae8f1d51fde950123"
+  },
+  "comparison": {
+    "atol": 1e-05,
+    "max_abs_difference": 0.0,
+    "n_images": 32,
+    "passed": true,
+    "rtol": 0.0001
+  },
+  "fresh_process": true,
+  "identities": {
+    "config_sha256": "23a45e9c957b7e938d1d7ee04d742fa8c52a8292cc14f49307af4ec7056f79c5",
+    "enrollment_sha256": "c9e70c702443bcd3f02b30b5e93b8896811a0c12f9dabb23a0b77a2ebe2bc4b1",
+    "initialization_sha256": "ff73a53b9a96fd19ea14a7c9a47138e0fa5d5be962317cc6ee3aff5b6b5fad33",
+    "phase_authority_sha256": "d1630a81ff52ef827f9c035d0b843a1e6d799ff674490cf45523db212ad79486",
+    "preprocess_sha256": "b712c1a04b5c73aa528c7c94694368c3f673daa928752503f747700eec908743",
+    "records_sha256": "afd661819fe9be97c83d2ee5123a7ce60869437c61d1e9029c4b8a96175aa276",
+    "registration_sha256": "461e8eb74229df2123c262a8738d17734be7c637b19d679b2218e42515501b81",
+    "source_sha256": "2042f0b3c777f1e51ecb261b4e18c28e32a62f8b13feb1ba7cd5498ff5a5d9a0",
+    "split_sha256": "9d23bed233cba5f4bc77671e9a8f738919f994b42e7c17138d6a9c680529edc1",
+    "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+  },
+  "n_images": 32,
+  "no_test_open": true,
+  "parent_result": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/fold6-study-2042f0b3/gate/on/smoke.json",
+    "sha256": "b7209b53d10a71a30c460b0651c3669d390b5e5d0cd04742ceef3fd9cfc4d08e"
+  },
+  "passed": true,
+  "pid": 25361,
+  "request": {
+    "path": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/requests/multifold-2042f0b3/fold6/request.json",
+    "sha256": "d1630a81ff52ef827f9c035d0b843a1e6d799ff674490cf45523db212ad79486"
+  },
+  "summary": {
+    "accuracy": 0.40625,
+    "altered_misses": [
+      "sidtd_alb_id_01_fake_6_61",
+      "sidtd_alb_id_02_fake_6_49",
+      "sidtd_alb_id_02_fake_6_88",
+      "sidtd_alb_id_03_fake_6_69",
+      "sidtd_alb_id_18_fake_6_78",
+      "sidtd_alb_id_19_fake_6_16",
+      "sidtd_alb_id_38_fake_6_107",
+      "sidtd_alb_id_54_fake_6_40",
+      "sidtd_alb_id_80_fake_6_84",
+      "sidtd_alb_id_88_fake_6_58",
+      "sidtd_alb_id_94_fake_6_50",
+      "sidtd_alb_id_98_fake_6_113",
+      "sidtd_aze_passport_00_fake_3_41",
+      "sidtd_aze_passport_05_fake_3_28",
+      "sidtd_aze_passport_14_fake_3_32",
+      "sidtd_aze_passport_18_fake_3_10",
+      "sidtd_aze_passport_26_fake_3_59",
+      "sidtd_aze_passport_31_fake_3_25",
+      "sidtd_aze_passport_47_fake_3_0"
+    ],
+    "auc": 0.6639676113360324,
+    "buffers_unchanged": true,
+    "genuine_false_positives": [],
+    "image_loss": 0.6957122664898634,
+    "n_altered": 19,
+    "n_context_available": 32,
+    "n_context_unavailable": 0,
+    "n_genuine": 13,
+    "n_images": 32,
+    "referral_ids": [],
+    "subgroups": {
+      "copy": {
+        "accuracy": null,
+        "auc": null,
+        "n_altered": 0,
+        "n_genuine": 13
+      },
+      "inpainting": {
+        "accuracy": 0.40625,
+        "auc": 0.6639676113360324,
+        "n_altered": 19,
+        "n_genuine": 13
+      }
+    }
+  }
+}

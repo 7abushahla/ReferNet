@@ -1,0 +1,65 @@
+schema_version: anchor_pilot_v1
+track: R
+architecture_id: anchor_rgb_r50_v1
+data_contract: raw_rgb_299_v1
+seed: 42
+fold: 0
+epochs: 100
+batch_size: 32
+eval_batch_size: 32
+mask_weight: 0.0
+bn_policy: running
+records_csv: data/processed/records.csv
+split_csv: data/processed/splits/protocol_a_it0.csv
+normalization:
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+optimizer:
+  name: sgd
+  lr: 0.01
+  momentum: 0.9
+  weight_decay: 0.0
+  nesterov: false
+scheduler:
+  name: reduce_on_plateau
+  monitor: val_ce
+  mode: min
+  factor: 0.9
+  patience: 1
+  threshold: 0.0001
+  threshold_mode: rel
+  cooldown: 0
+  min_lr: 0.0
+  eps: 0.000001
+augment:
+  preset: raw_rgb_299_v1
+  enabled: true
+  crop_scale: [0.8, 1.0]
+  crop_ratio: [0.75, 1.3333333333333333]
+  crop_ratio_sampling: log_uniform
+  crop_attempts: 10
+  crop_fallback: bounded_center
+  horizontal_flip_p: 0.5
+  vertical_flip_p: 0.5
+  brightness_contrast_p: 0.2
+  contrast_factor: [0.8, 1.2]
+  brightness_offset: [-0.2, 0.2]
+  brightness_units: '255'
+  contrast_semantics: multiply_pixels
+  clip: uint8_0_255
+  interpolation: opencv_inter_linear
+  jpeg_quality: null
+precision:
+  dtype: float32
+  amp: false
+  cudnn_tf32: false
+  matmul_tf32: false
+selection:
+  primary: accuracy
+  tie_break: auc
+  exact_tie: earlier_epoch
+accumulation_steps: 2
+drop_last: false
+eval_drop_last: false
+wrong_design_fraction: 0.0
+comparison: candidate_package
