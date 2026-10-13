@@ -45,6 +45,9 @@ SCHEMA = 'protocol_c_v2_score_v1'
 RESULT_SCHEMA = 'protocol_c_v2_score_result_v1'
 FIELDS = {'source_sha256', 'a_request', 'a_gate_sha256', 'target_split', 'target_enrollment',
           'enrollment', 'root', 'raw_root', 'output_root'}
+# optional: the frozen source this scorer runs from, when it is a later revision than the A training source
+# (source_sha256 stays the training source that the A request, receipts and checkpoints are bound to)
+OPTIONAL_FIELDS = {'scoring_source_sha256'}
 MATCHED_IDENTITIES = ('source_sha256', 'weights_sha256', 'records_sha256', 'split_sha256', 'enrollment_sha256',
                       'registration_sha256', 'phase_authority_sha256', 'preprocess_sha256')
 
@@ -67,8 +70,13 @@ def binding_shape(value):
     return value
 
 
+def scoring_source_sha256(request):
+    return checksum(request.get('scoring_source_sha256', request['source_sha256']))
+
+
 def validate_source(request):
-    require(checksum(request['source_sha256']) == object_sha256(source_entries(ROOT)),
+    checksum(request['source_sha256'])
+    require(scoring_source_sha256(request) == object_sha256(source_entries(ROOT)),
             'frozen scientific source differs from request')
     for name, module in tuple(sys.modules.items()):
         if name == 'refer_or_clear' or name.startswith('refer_or_clear.'):
@@ -81,7 +89,8 @@ def load_request(binding):
     """Metadata-only request validation: no A receipt, C authority or product is opened."""
     request = driver.document(binding)
     fixed = dict(schema_version=SCHEMA, protocol='C', seed=42, eval_batch_size=1)
-    require(set(request) == set(fixed) | FIELDS, 'strict C v2 scoring request fields required')
+    require(set(request) - OPTIONAL_FIELDS == set(fixed) | FIELDS and set(request) <= set(fixed) | FIELDS | OPTIONAL_FIELDS,
+            'strict C v2 scoring request fields required')
     require(all(type(request.get(key)) is type(value) and request[key] == value for key, value in fixed.items()),
             'fixed C transfer contract mismatch')
     validate_source(request)
@@ -213,6 +222,7 @@ def score(binding, device='cuda'):
     models = {arm: arm_model(a_request, arms[arm], device) for arm in ('off', 'on')}
     evaluation = dict(schema_version='protocol_c_evaluation_v1', protocol='C', deployment=consumer.DEPLOYMENT,
         source_protocol='A', source_fold=0, source_validation_selected=True, source_sha256=request['source_sha256'],
+        scoring_source_sha256=scoring_source_sha256(request),
         records_sha256=contract.records_sha256, source_split_sha256=contract.source_split_sha256,
         target_split_sha256=contract.target_split_sha256, target_enrollment_sha256=request['target_enrollment']['sha256'],
         enrollment_manifest_sha256=request['enrollment']['sha256'], authorized_image_ids=identifiers,

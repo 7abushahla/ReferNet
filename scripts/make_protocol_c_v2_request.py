@@ -50,7 +50,7 @@ def document(path):
     return value
 
 
-def build(source_dir, source_sha, a_request, a_gate, output_root, template=TEMPLATE):
+def build(source_dir, source_sha, a_request, a_gate, output_root, template=TEMPLATE, scoring_source=None):
     require(re.fullmatch('[0-9a-f]{64}', source_sha) is not None, 'lowercase SOURCE_SHA required')
     require(object_sha256(source_entries(Path(source_dir))) == source_sha, 'SOURCE_SHA differs from SOURCE_DIR inventory')
     a_request = absolute(a_request)
@@ -80,6 +80,12 @@ def build(source_dir, source_sha, a_request, a_gate, output_root, template=TEMPL
                 and re.fullmatch('[0-9a-f]{64}', request[name]['sha256']) is not None, f'template {name} binding required')
     require(isinstance(request['raw_root'], str) and request['raw_root'].startswith('/'), 'template raw_root required')
     request['output_root'] = str(output_root)
+    if scoring_source is not None:
+        scoring_source = Path(scoring_source).resolve()
+        require((scoring_source / 'scripts/score_protocol_c_v2.py').is_file(), 'scoring source must hold the C v2 scorer')
+        require(not output_root.is_relative_to(scoring_source) and not scoring_source.is_relative_to(output_root),
+                'output root overlaps the scoring source')
+        request['scoring_source_sha256'] = object_sha256(source_entries(scoring_source))
     return request
 
 
@@ -92,8 +98,11 @@ def main(argv=None):
     parser.add_argument('output_root')
     parser.add_argument('--template', default=str(TEMPLATE))
     parser.add_argument('--output', required=True, help='new request JSON path (must not exist)')
+    parser.add_argument('--scoring-source', default=None,
+                        help='frozen source the scorer runs from when it is a later revision than the A training source')
     args = parser.parse_args(argv)
-    request = build(args.source_dir, args.source_sha, args.a_request, args.a_gate, args.output_root, args.template)
+    request = build(args.source_dir, args.source_sha, args.a_request, args.a_gate, args.output_root, args.template,
+                    scoring_source=args.scoring_source)
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open('x') as stream:

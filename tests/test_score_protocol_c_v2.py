@@ -401,3 +401,35 @@ def test_consumer_inputs_must_hash_to_the_a_study(ready, monkeypatch, name):
     Path(manifest["contract"][key]).write_text(json.dumps({"synthetic": "other content"}))
     with pytest.raises(ValueError, match=f"C enrollment {key} must hash to the A study {name}"):
         module.score(ready["binding"], device="cpu")
+
+
+def test_scoring_source_may_differ_from_the_training_source(ready, monkeypatch):
+    """A later frozen source may score, bound by scoring_source_sha256; source_sha256 stays the A training source."""
+    module = ready["module"]
+    ready["request"]["scoring_source_sha256"] = "b" * 64
+    with pytest.raises(ValueError, match="frozen scientific source differs"):
+        module.load_request(rebind(ready))
+    monkeypatch.setattr(module, "object_sha256", lambda entries: "b" * 64)
+    request = module.load_request(rebind(ready))
+    assert request["scoring_source_sha256"] == "b" * 64 and request["source_sha256"] == ready["a_request"]["source_sha256"]
+    ready["request"]["unknown_field"] = 1
+    with pytest.raises(ValueError, match="strict C v2 scoring request fields"):
+        module.load_request(rebind(ready))
+
+
+def test_request_generator_records_the_scoring_source(ready, tmp_path, monkeypatch):
+    generator = load(GENERATOR, "make_protocol_c_v2_request_scoring_source")
+    source = tmp_path / "frozen-source"; source.mkdir()
+    scoring = tmp_path / "scoring-source"; (scoring / "scripts").mkdir(parents=True)
+    # the training source inventories to [] (its hash is the A request's source); the scoring source to a different inventory
+    monkeypatch.setattr(generator, "source_entries", lambda root: [] if Path(root).resolve() == source.resolve() else ["scorer"])
+    with pytest.raises(ValueError, match="must hold the C v2 scorer"):
+        generator.build(source, generator.object_sha256([]), ready["a_binding"]["path"], ready["gate"]["path"],
+                        str(tmp_path / "c-v2-output"), scoring_source=scoring)
+    (scoring / "scripts/score_protocol_c_v2.py").write_text("")
+    output = tmp_path / "requests/c-v2.json"
+    assert generator.main([str(source), generator.object_sha256([]), ready["a_binding"]["path"], ready["gate"]["path"],
+                           str(tmp_path / "c-v2-output"), "--output", str(output), "--scoring-source", str(scoring)]) == 0
+    written = json.loads(output.read_text())
+    assert written["scoring_source_sha256"] == generator.object_sha256(["scorer"]) != written["source_sha256"]
+    assert written["source_sha256"] == generator.object_sha256([])
