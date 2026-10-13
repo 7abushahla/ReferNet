@@ -370,7 +370,7 @@ def test_arm_recipe_defaults_and_overrides(runtime, enabled):
 
 @pytest.mark.parametrize("name", ["direct_reference_study_v2.yaml", "direct_reference_study_v2_storedbn.yaml",
                                   "direct_reference_study_v2_storedbn_noaux.yaml", "direct_reference_study_v2_corronly.yaml",
-                                  "direct_reference_study_v2_corronly_noaux.yaml"])
+                                  "direct_reference_study_v2_corronly_noaux.yaml", "direct_reference_study_v2_noaux.yaml"])
 def test_v2_configs_resolve_arm_recipes_after_yaml_parsing(runtime, name):
     base = yaml.safe_load((Path(__file__).resolve().parents[1] / "configs" / name).read_text())
     off, on = runtime.arm_recipe(base, False), runtime.arm_recipe(base, True)
