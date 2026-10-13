@@ -140,7 +140,8 @@ def fresh_model(a_request, config, device):
     _bytes(a_request['weights'])
     return build_direct_reference_model(Path(a_request['weights']['path']), a_request['weights']['sha256'],
                                         reference_enabled=config['reference_enabled'], head_seed=42, adapter_seed=42,
-                                        local_enabled=recipe['local_branch'], reference_bn=recipe['reference_bn']).to(device)
+                                        local_enabled=recipe['local_branch'], reference_bn=recipe['reference_bn'],
+                                        fused_query_weight=recipe['fused_query_weight']).to(device)
 
 
 def arm_model(a_request, arm, device):

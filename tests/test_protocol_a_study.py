@@ -488,7 +488,7 @@ def test_fresh_factory_isolated_between_arms_with_official_fixed_seeds(cli, monk
     for enabled, invocation in zip((False, True), factories):
         assert invocation[:3] == (Path(request["weights"]["path"]), "a" * 64,
                                  dict(reference_enabled=enabled, head_seed=42, adapter_seed=42,
-                                      local_enabled=True, reference_bn="shared"))
+                                      local_enabled=True, reference_bn="shared", fused_query_weight=1.))
     assert factories[0][3:] == factories[1][3:]
 
 

@@ -91,8 +91,16 @@ class DirectReferenceClassifier(nn.Module):
         adapter_seed: int = 42,
         local_enabled: bool = True,
         reference_bn: str = "shared",
+        fused_query_weight: float = 1.,
     ):
         """Global query classifier with an optional local reference correction.
+
+        ``fused_query_weight`` scales the query logit inside the fused attack
+        logit for rows whose reference context is available: 1 keeps
+        ``query + correction``; 0 scores those rows on the correction alone, so
+        the reference comparison carries the decision and the query logit is
+        used only when no context exists (referral fallback). It must be 1
+        unless the local branch is enabled.
 
         ``local_enabled=False`` keeps the adapter tensors (same seeded
         initialization, so both arms share identical initial state) but
@@ -114,6 +122,11 @@ class DirectReferenceClassifier(nn.Module):
             raise ValueError("reference_bn must be 'shared' or 'stored'")
         if reference_enabled and not local_enabled:
             raise ValueError("a reference-enabled arm requires the local branch")
+        if type(fused_query_weight) not in (int, float) or not 0. <= float(fused_query_weight) <= 1.:
+            raise ValueError("fused_query_weight must be a number in [0, 1]")
+        if not local_enabled and float(fused_query_weight) != 1.:
+            raise ValueError("fused_query_weight must be 1 without the local branch")
+        self.fused_query_weight = float(fused_query_weight)
         self.base = base
         self.reference_enabled = reference_enabled
         self.local_enabled = local_enabled
@@ -131,6 +144,7 @@ class DirectReferenceClassifier(nn.Module):
             "reference_enabled": reference_enabled,
             "local_enabled": local_enabled,
             "reference_bn": reference_bn,
+            "fused_query_weight": self.fused_query_weight,
             "adapter_seed": adapter_seed,
             "adapter_tensor_sha256": _tensor_sha256(self.adapter.state_dict()),
         }
@@ -207,6 +221,7 @@ class DirectReferenceClassifier(nn.Module):
         stages = encode_query(self.base.backbone, query)
         query_logit = self.base.classifier(stages[-1].mean(dim=(2, 3))).squeeze(1)
         correction_logit = torch.zeros_like(query_logit)
+        query_scale = torch.ones_like(query_logit)
         if self.local_enabled and available.any():
             indices = available.nonzero(as_tuple=True)[0]
             projected_query = self.adapter.projection(stages[1][available])
@@ -220,8 +235,9 @@ class DirectReferenceClassifier(nn.Module):
             zone = functional.interpolate(query[available, 3:4].clamp(0, 1), size=projected_query.shape[2:], mode="nearest")
             correction = self.adapter(projected_query, projected_reference, difference, zone, mask[available])
             correction_logit = correction_logit.index_copy(0, indices, correction)
+            query_scale = query_scale.index_fill(0, indices, self.fused_query_weight)
         return {
-            "attack_logit": query_logit + correction_logit,
+            "attack_logit": query_scale * query_logit + correction_logit,
             "query_logit": query_logit,
             "correction_logit": correction_logit,
         }
@@ -236,7 +252,9 @@ def build_direct_reference_model(
     adapter_seed: int = 42,
     local_enabled: bool = True,
     reference_bn: str = "shared",
+    fused_query_weight: float = 1.,
 ) -> DirectReferenceClassifier:
     base = build_anchor_changer("D_running_pilot", levir_path, expected_sha256, head_seed)
     return DirectReferenceClassifier(base, reference_enabled=reference_enabled, adapter_seed=adapter_seed,
-                                     local_enabled=local_enabled, reference_bn=reference_bn)
+                                     local_enabled=local_enabled, reference_bn=reference_bn,
+                                     fused_query_weight=fused_query_weight)

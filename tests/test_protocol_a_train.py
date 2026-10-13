@@ -100,7 +100,7 @@ def setup(service, tmp_path, monkeypatch):
 
     monkeypatch.setattr(service, "ProtocolAReferenceDataset", dataset)
 
-    def fresh(path, sha, *, reference_enabled, head_seed, adapter_seed, local_enabled=True, reference_bn="shared"):
+    def fresh(path, sha, *, reference_enabled, head_seed, adapter_seed, local_enabled=True, reference_bn="shared", fused_query_weight=1.):
         events.append("fresh-model")
         assert Path(path) == weights_path and sha == weights["sha256"]
         assert head_seed == adapter_seed == 42

@@ -29,7 +29,7 @@ IDENTITY_FIELDS = (
 )
 
 
-ARM_RECIPE_DEFAULTS = dict(local_branch=True, auxiliary_query_weight=0., reference_bn="shared")
+ARM_RECIPE_DEFAULTS = dict(local_branch=True, auxiliary_query_weight=0., reference_bn="shared", fused_query_weight=1.)
 
 
 def arm_recipe(base, enabled):
@@ -63,6 +63,12 @@ def arm_recipe(base, enabled):
         values["auxiliary_query_weight"] = float(weight)
         if values["reference_bn"] not in ("shared", "stored"):
             raise ValueError("reference_bn must be 'shared' or 'stored'")
+        fused = values["fused_query_weight"]
+        if type(fused) not in (int, float) or not 0. <= float(fused) <= 1.:
+            raise ValueError("fused_query_weight must be a number in [0, 1]")
+        values["fused_query_weight"] = float(fused)
+        if not values["local_branch"] and values["fused_query_weight"] != 1.:
+            raise ValueError("fused_query_weight must be 1 without local_branch")
         if arm == "on" and not values["local_branch"]:
             raise ValueError("the reference-enabled arm requires local_branch")
         resolved[arm] = values

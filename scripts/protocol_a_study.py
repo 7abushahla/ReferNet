@@ -89,7 +89,7 @@ def load_request(binding, *, evaluation_binding=None):
     return request, context, config, output
 
 
-def fresh_model(request, enabled, *, local_branch=True, reference_bn="shared"):
+def fresh_model(request, enabled, *, local_branch=True, reference_bn="shared", fused_query_weight=1.):
     random.seed(42)
     np.random.seed(42)
     torch.manual_seed(42)
@@ -98,13 +98,14 @@ def fresh_model(request, enabled, *, local_branch=True, reference_bn="shared"):
     _bytes(request["weights"])
     return build_direct_reference_model(Path(request["weights"]["path"]), request["weights"]["sha256"],
                                         reference_enabled=enabled, head_seed=42, adapter_seed=42,
-                                        local_enabled=local_branch, reference_bn=reference_bn).cuda()
+                                        local_enabled=local_branch, reference_bn=reference_bn,
+                                        fused_query_weight=fused_query_weight).cuda()
 
 
 def arm_model(request, config):
     recipe = dict(core.ARM_RECIPE_DEFAULTS, **{key: config[key] for key in core.ARM_RECIPE_DEFAULTS if key in config})
     return fresh_model(request, config["reference_enabled"], local_branch=recipe["local_branch"],
-                       reference_bn=recipe["reference_bn"])
+                       reference_bn=recipe["reference_bn"], fused_query_weight=recipe["fused_query_weight"])
 
 
 def checkpoint_ids(request, context, config, registration, phase_binding, model):

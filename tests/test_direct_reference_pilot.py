@@ -350,11 +350,15 @@ def test_auxiliary_query_loss_is_added_to_fused_loss_and_logged(runtime):
 
 @pytest.mark.parametrize("enabled", [False, True])
 def test_arm_recipe_defaults_and_overrides(runtime, enabled):
-    assert runtime.arm_recipe({}, enabled) == dict(local_branch=True, auxiliary_query_weight=0., reference_bn="shared")
-    base = dict(arm_recipe=dict(off=dict(local_branch=False), on=dict(auxiliary_query_weight=.5, reference_bn="stored")))
-    expected = dict(local_branch=True, auxiliary_query_weight=.5, reference_bn="stored") if enabled else \
-        dict(local_branch=False, auxiliary_query_weight=0., reference_bn="shared")
+    assert runtime.arm_recipe({}, enabled) == dict(local_branch=True, auxiliary_query_weight=0., reference_bn="shared",
+                                                   fused_query_weight=1.)
+    base = dict(arm_recipe=dict(off=dict(local_branch=False), on=dict(auxiliary_query_weight=.5, reference_bn="stored",
+                                                                       fused_query_weight=0.)))
+    expected = dict(local_branch=True, auxiliary_query_weight=.5, reference_bn="stored", fused_query_weight=0.) if enabled else \
+        dict(local_branch=False, auxiliary_query_weight=0., reference_bn="shared", fused_query_weight=1.)
     assert runtime.arm_recipe(base, enabled) == expected
+    with pytest.raises(ValueError):
+        runtime.arm_recipe(dict(arm_recipe=dict(off=dict(local_branch=False, fused_query_weight=0.))), enabled)
     for bad in (dict(arm_recipe=dict(both=dict())), dict(arm_recipe=dict(off=dict(dropout=.1))),
                 dict(arm_recipe=dict(off=dict(reference_bn="x"))), dict(arm_recipe=dict(off=dict(auxiliary_query_weight=-1.))),
                 dict(arm_recipe=dict(off=dict(local_branch=1))), dict(arm_recipe=[])):
@@ -365,12 +369,14 @@ def test_arm_recipe_defaults_and_overrides(runtime, enabled):
 
 
 @pytest.mark.parametrize("name", ["direct_reference_study_v2.yaml", "direct_reference_study_v2_storedbn.yaml",
-                                  "direct_reference_study_v2_storedbn_noaux.yaml"])
+                                  "direct_reference_study_v2_storedbn_noaux.yaml", "direct_reference_study_v2_corronly.yaml",
+                                  "direct_reference_study_v2_corronly_noaux.yaml"])
 def test_v2_configs_resolve_arm_recipes_after_yaml_parsing(runtime, name):
     base = yaml.safe_load((Path(__file__).resolve().parents[1] / "configs" / name).read_text())
     off, on = runtime.arm_recipe(base, False), runtime.arm_recipe(base, True)
-    assert off == dict(local_branch=False, auxiliary_query_weight=0., reference_bn="shared")
+    assert off == dict(local_branch=False, auxiliary_query_weight=0., reference_bn="shared", fused_query_weight=1.)
     assert on["local_branch"] is True
-    assert on["reference_bn"] == ("shared" if name == "direct_reference_study_v2.yaml" else "stored")
+    assert on["reference_bn"] == ("stored" if "storedbn" in name else "shared")
     assert on["auxiliary_query_weight"] == (0. if name.endswith("noaux.yaml") else .5)
+    assert on["fused_query_weight"] == (0. if "corronly" in name else 1.)
     assert runtime.arm_recipe(dict(arm_recipe={False: dict(local_branch=False), True: {}}), False)["local_branch"] is False

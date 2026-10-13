@@ -242,7 +242,7 @@ def validate_training_gate(gate_binding, context, config, weights_binding, regis
             _sha(smoke.get("fresh_initial_state_sha256"))
             initial_states.append(smoke["fresh_initial_state_sha256"])
             initial_provenance.append({name: value for name, value in smoke["initialization"].items()
-                                       if name not in ("reference_enabled", "local_enabled", "reference_bn")})
+                                       if name not in ("reference_enabled", "local_enabled", "reference_bn", "fused_query_weight")})
             for role in ("train", "val"):
                 _require(smoke.get(f"source_{role}_ids") == rows[role].image_id.tolist(), "smoke exact source membership mismatch")
             stats = smoke["stats"]

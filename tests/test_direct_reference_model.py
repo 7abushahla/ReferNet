@@ -694,3 +694,25 @@ def test_stored_reference_bn_keeps_prefix_statistics_query_only(checkpoint):
         before = buffers(stored)
         stored(**batch)
     assert_tensors_equal(buffers(stored), before)
+
+
+def test_fused_query_weight_scores_available_rows_on_the_correction_alone(checkpoint):
+    path, digest, _ = checkpoint
+    model = direct().build_direct_reference_model(path, digest, reference_enabled=True, fused_query_weight=0.)
+    assert model.initialization_provenance["fused_query_weight"] == 0.
+    default = build(checkpoint, True)
+    assert default.initialization_provenance["fused_query_weight"] == 1.
+    with torch.no_grad():
+        model.adapter.correction_head.bias.fill_(3.)
+    model.eval()
+    batch = inputs(batch=3)
+    batch["context_available"][1] = False
+    with torch.no_grad():
+        output = model(**batch)
+    torch.testing.assert_close(output["attack_logit"][[0, 2]], output["correction_logit"][[0, 2]], atol=0, rtol=0)
+    torch.testing.assert_close(output["attack_logit"][1], output["query_logit"][1], atol=0, rtol=0)
+    assert output["correction_logit"][1] == 0
+    with pytest.raises(ValueError):
+        direct().build_direct_reference_model(path, digest, reference_enabled=False, local_enabled=False, fused_query_weight=0.)
+    with pytest.raises(ValueError):
+        direct().build_direct_reference_model(path, digest, reference_enabled=True, fused_query_weight=1.5)

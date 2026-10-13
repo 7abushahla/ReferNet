@@ -77,7 +77,7 @@ def effective_config(base, context, enabled):
              "Protocol B context and boolean arm required")
     _require(isinstance(base, dict), "base config must be a mapping")
     permitted = set(_FIXED) | {"protocol", "group", "fold", "arm", "reference_enabled", "data_contract",
-                              "arm_recipe", "local_branch", "auxiliary_query_weight", "reference_bn",
+                              "arm_recipe", "local_branch", "auxiliary_query_weight", "reference_bn", "fused_query_weight",
                               "records_csv", "split_csv", "records_sha256", "split_sha256", "enrollment_sha256"}
     _require(set(base) <= permitted, "unknown recipe fields or checkpoint/resume inputs")
     for key, value in _FIXED.items():
@@ -103,7 +103,7 @@ def effective_config(base, context, enabled):
              and bindings[3]["sha256"] == _sha(metadata.get("enrollment_manifest_sha256")),
              "context authorities mismatch")
     result = copy.deepcopy(base)
-    for key in ("arm_recipe", "local_branch", "auxiliary_query_weight", "reference_bn"):
+    for key in ("arm_recipe", "local_branch", "auxiliary_query_weight", "reference_bn", "fused_query_weight"):
         result.pop(key, None)
     result.update(arm_recipe(base, enabled))
     result.pop("fold", None)
@@ -222,7 +222,8 @@ def run_training(context, config, weights_binding, registration_binding, output_
         return build_direct_reference_model(Path(weights_binding["path"]), weights_binding["sha256"],
                     reference_enabled=reference_enabled, head_seed=effective["head_seed"],
                     adapter_seed=effective["adapter_seed"], local_enabled=effective["local_branch"],
-                    reference_bn=effective["reference_bn"]).to(device)
+                    reference_bn=effective["reference_bn"],
+                    fused_query_weight=effective["fused_query_weight"]).to(device)
 
     model = fresh_model()
     checkpoint_ids = dict(source_sha256=source_sha256, config_sha256=json_sha256(effective),
