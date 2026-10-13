@@ -341,9 +341,50 @@ def evaluate(binding, gate_sha256=None):
                  same_query_population=True, summaries=results, authorization=evaluation_binding))
 
 
+def evaluate_reencoded(binding, gate_sha256=None, quality=75):
+    """Score the frozen arms on queries re-encoded at one JPEG quality; native evaluation must exist first."""
+    from refer_or_clear.data.reencode import reencoded_queries
+    request, source_context, base, output = load_request(binding)
+    native = _json(bind(output / "evaluation/result.json"))
+    _require(native.get("passed") is True and native.get("request") == binding, "native locked evaluation required first")
+    directory = output / f"evaluation-q{int(quality)}"
+    _require(not directory.exists(), "re-encoded evaluation already exists")
+    gate_binding = pinned_gate(output, gate_sha256)
+    completed = {arm: completed_arm(request, source_context, base, output, arm, gate_binding, binding) for arm in ("off", "on")}
+    evaluation_binding = bind(output / "evaluation/authorization.json")
+    _require(native.get("authorization") == evaluation_binding, "native authorization binding mismatch")
+    request, context, base, output = load_request(binding, evaluation_binding=evaluation_binding)
+    registration = bind(output / "evaluation/registration.json")
+    table = bridge.load_protocol_b_registration(context, registration, roles=["test"])
+    results = {}
+    with reencoded_queries(bridge, request["raw_root"], int(quality)) as treatment:
+        for arm, (receipt, config) in completed.items():
+            model = arm_model(request, config)
+            checkpoint = core.read_direct_reference_checkpoint(Path(receipt["checkpoint"]["path"]), config, receipt["identities"])
+            model.load_state_dict(checkpoint["state_dict"], strict=True)
+            data = bridge.ProtocolBReferenceDataset(context, table, role="test", reference_enabled=arm == "on",
+                                 augment=dict(config["augment"], enabled=False), cache_bytes=0)
+            loader = DataLoader(data, batch_size=1, shuffle=False, num_workers=0)
+            summary, actual = core.evaluate_direct_reference(model, loader, "cuda")
+            _require([row["image_id"] for row in actual] == sorted(context.target.query_ids), "target scoring population drift")
+            arm_directory = directory / arm
+            arm_directory.mkdir(parents=True, exist_ok=False)
+            _write_csv(arm_directory / "test_predictions.csv", actual)
+            results[arm] = write(arm_directory / "test_summary.json", dict(summary, role="test", protocol="B", group=context.contract.group,
+                selected_epoch=receipt["selected_epoch"], source_checkpoint=receipt["checkpoint"], authorization=evaluation_binding,
+                registration=registration, treatment=treatment, native_summary=native["summaries"][arm],
+                threshold_policy="fixed_bonafide_threshold_0.5", predictions=bind(arm_directory / "test_predictions.csv")))
+            del model, checkpoint, data, loader
+            torch.cuda.empty_cache()
+    return write(directory / "result.json", dict(schema_version="protocol_b_reencoded_evaluation_result_v1",
+                 passed=True, protocol="B", group=context.contract.group, request=binding, treatment=treatment,
+                 native=bind(output / "evaluation/result.json"), summaries=results, authorization=evaluation_binding))
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("smoke", "train", "replay", "evaluate"))
+    parser.add_argument("command", choices=("smoke", "train", "replay", "evaluate", "evaluate-reencoded"))
+    parser.add_argument("--quality", type=int, default=75)
     parser.add_argument("--request", required=True)
     parser.add_argument("--request-sha256", required=True)
     parser.add_argument("--arm", choices=("off", "on"), default="off")
@@ -358,6 +399,8 @@ def main(argv=None):
         result = train(binding, args.arm, args.gate_sha256)
     elif args.command == "evaluate":
         result = evaluate(binding, args.gate_sha256)
+    elif args.command == "evaluate-reencoded":
+        result = evaluate_reencoded(binding, args.gate_sha256, args.quality)
     else:
         result = replay(binding, args.arm, args.phase, args.gate_sha256)
     print(json.dumps(result, sort_keys=True, allow_nan=False))

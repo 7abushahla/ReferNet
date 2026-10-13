@@ -16,7 +16,7 @@ if [[ $# -ne 6 ]]; then
     exit 2
 fi
 [[ "$3" =~ ^[0-9a-f]{64}$ ]] || { echo 'Lowercase request SHA256 required' >&2; exit 2; }
-case "$4" in smoke|train|replay|evaluate) ;; *) echo 'Command must be smoke, train, replay or evaluate' >&2; exit 2 ;; esac
+case "$4" in smoke|train|replay|evaluate|evaluate-reencoded) ;; *) echo 'Command must be smoke, train, replay, evaluate or evaluate-reencoded' >&2; exit 2 ;; esac
 case "$5" in off|on) ;; *) echo 'Arm must be off or on' >&2; exit 2 ;; esac
 if [[ "$4" != smoke || "$6" != - ]]; then
     [[ "$6" =~ ^[0-9a-f]{64}$ ]] || { echo 'Lowercase external gate SHA256 required' >&2; exit 2; }

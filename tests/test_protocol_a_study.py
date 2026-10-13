@@ -559,3 +559,12 @@ def test_actual_consumer_service_and_parent_request_share_durable_bindings(cli, 
     assert cli.service.effective_config(base, context, False)["fold"] == inputs["fold"]
     verified, root_path = cli.receipts._request(binding, context, base, weights, request["source_sha256"])
     assert verified == request and root_path == output
+
+
+def test_reencoded_evaluation_requires_native_evaluation_first(cli, tmp_path, monkeypatch):
+    output = tmp_path / "run"
+    output.mkdir()
+    monkeypatch.setattr(cli, "load_request", lambda binding, evaluation_binding=None: (dict(raw_root=str(tmp_path)), None, {}, output))
+    with pytest.raises((ValueError, FileNotFoundError)):
+        cli.evaluate_reencoded(dict(path=str(tmp_path / "request.json"), sha256="a" * 64), "b" * 64, 75)
+    assert not (output / "evaluation-q75").exists()

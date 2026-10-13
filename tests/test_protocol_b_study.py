@@ -91,3 +91,12 @@ def test_incomplete_training_receipt_is_rejected_before_checkpoint_inference(cli
     monkeypatch.setattr(cli.core, "read_direct_reference_checkpoint", lambda *args: pytest.fail("unsafe checkpoint opened"))
     with pytest.raises(ValueError, match="complete matched source training"):
         cli.completed_arm({}, context, {}, tmp_path, "off")
+
+
+def test_reencoded_evaluation_requires_native_evaluation_first(cli, tmp_path, monkeypatch):
+    output = tmp_path / "run"
+    output.mkdir()
+    monkeypatch.setattr(cli, "load_request", lambda binding, evaluation_binding=None: (dict(raw_root=str(tmp_path)), None, {}, output))
+    with pytest.raises((ValueError, FileNotFoundError)):
+        cli.evaluate_reencoded(dict(path=str(tmp_path / "request.json"), sha256="a" * 64), "b" * 64, 75)
+    assert not (output / "evaluation-q75").exists()
