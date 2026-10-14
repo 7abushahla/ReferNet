@@ -41,12 +41,22 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 from refer_or_clear.data.dataset import _normalize  # noqa: E402
 from refer_or_clear.data.enrollment import _fit, _similarity, _warp  # noqa: E402
-from refer_or_clear.data.direct_reference import _overlap, _available  # noqa: E402
 from refer_or_clear.data.rectify import to_canvas  # noqa: E402
 from refer_or_clear.data.register import _features  # noqa: E402
 from refer_or_clear.models.direct_reference import build_direct_reference_model  # noqa: E402
 
 WEIGHTS_SHA256 = "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+
+
+def _overlap(query_valid, masks, matrix):
+    """Same as refer_or_clear.data.direct_reference._overlap (copied so the bench needs no enrollment verifier)."""
+    inverse = _similarity(np.linalg.inv(_similarity(matrix)))
+    overlap = (query_valid > 0) & (_warp(masks["target_valid"], inverse, True) > 0) & (_warp(masks["valid"], inverse, True) > 0)
+    return inverse, overlap.astype(np.uint8)
+
+
+def _available(overlap):
+    return bool(overlap.any() and cv2.resize(overlap, (100, 64), interpolation=cv2.INTER_NEAREST).any())
 
 
 def cpu_name():
