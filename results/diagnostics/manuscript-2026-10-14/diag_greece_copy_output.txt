@@ -1,0 +1,73 @@
+
+=== Protocol B, evaluation-q75: per held-out design, mean over the groups that hold it out
+arm design groups | AUC inpaint copy | genRef@0.5 caught@10% copyCaught@10% | q:gen q:inp q:copy | c:gen c:inp c:copy
+off sidtd/alb_id                 6 | 0.769 0.809 0.429 | 1.00 0.55 0.10 | +29.9 +37.0 +28.3 | +0.0 +0.0 +0.0
+off sidtd/aze_passport           3 | 0.771 0.800 0.643 | 1.00 0.55 0.25 | +37.2 +43.6 +39.1 | +0.0 +0.0 +0.0
+off sidtd/esp_id                 2 | 0.755 0.780 0.563 | 0.88 0.47 0.12 | +11.1 +19.6 +12.2 | +0.0 +0.0 +0.0
+off sidtd/est_id                 2 | 0.913 0.916 0.859 | 0.96 0.80 0.50 | +7.1 +15.3 +11.8 | +0.0 +0.0 +0.0
+off sidtd/fin_id                 5 | 0.752 0.777 0.537 | 0.57 0.59 0.30 | +7.7 +16.3 +8.1 | +0.0 +0.0 +0.0
+off sidtd/grc_passport           4 | 0.827 0.860 0.448 | 1.00 0.61 0.09 | +17.5 +29.2 +17.3 | +0.0 +0.0 +0.0
+off sidtd/lva_passport           5 | 0.817 0.864 0.537 | 1.00 0.62 0.17 | +21.2 +30.7 +22.0 | +0.0 +0.0 +0.0
+off sidtd/rus_internalpassport   6 | 0.617 0.625 0.582 | 0.75 0.15 0.09 | +23.4 +29.6 +28.2 | +0.0 +0.0 +0.0
+off sidtd/srb_passport           1 | 0.709 0.735 0.434 | 0.97 0.12 0.00 | +16.8 +28.0 +9.6 | +0.0 +0.0 +0.0
+off sidtd/svk_id                 6 | 0.768 0.805 0.493 | 1.00 0.52 0.12 | +29.1 +36.4 +29.1 | +0.0 +0.0 +0.0
+on  sidtd/alb_id                 6 | 0.965 0.989 0.765 | 0.17 0.92 0.40 | -3.5 -3.6 -3.4 | +1.0 +20.0 +3.6
+on  sidtd/aze_passport           3 | 0.910 0.976 0.623 | 0.16 0.81 0.22 | -5.3 -5.2 -5.5 | +2.9 +15.1 +4.0
+on  sidtd/esp_id                 2 | 0.848 0.874 0.651 | 0.34 0.58 0.21 | -3.4 -3.4 -3.5 | +2.3 +14.3 +5.9
+on  sidtd/est_id                 2 | 0.983 0.999 0.697 | 0.06 0.97 0.40 | -3.7 -3.6 -3.8 | -2.2 +20.1 +2.0
+on  sidtd/fin_id                 5 | 0.945 0.969 0.733 | 0.06 0.87 0.38 | -5.2 -5.0 -5.3 | -1.4 +17.9 +4.3
+on  sidtd/grc_passport           4 | 0.923 0.949 0.630 | 0.41 0.81 0.16 | -4.5 -4.6 -4.5 | +3.0 +14.3 +4.5
+on  sidtd/lva_passport           5 | 0.924 0.979 0.593 | 0.52 0.85 0.27 | -4.3 -4.3 -4.3 | +5.1 +22.8 +7.8
+on  sidtd/rus_internalpassport   6 | 0.783 0.826 0.601 | 0.57 0.54 0.21 | -4.1 -4.1 -4.1 | +6.9 +16.4 +9.0
+on  sidtd/srb_passport           1 | 0.727 0.743 0.558 | 0.42 0.33 0.00 | -3.0 -3.0 -3.0 | +3.3 +7.6 +3.5
+on  sidtd/svk_id                 6 | 0.927 0.956 0.701 | 0.06 0.85 0.44 | -4.9 -4.9 -4.8 | +0.7 +17.3 +3.7
+
+=== Protocol B, evaluation: per held-out design, mean over the groups that hold it out
+arm design groups | AUC inpaint copy | genRef@0.5 caught@10% copyCaught@10% | q:gen q:inp q:copy | c:gen c:inp c:copy
+off sidtd/alb_id                 6 | 0.776 0.814 0.449 | 1.00 0.54 0.10 | +29.4 +36.7 +28.1 | +0.0 +0.0 +0.0
+off sidtd/aze_passport           3 | 0.779 0.808 0.652 | 1.00 0.56 0.32 | +36.9 +43.4 +38.9 | +0.0 +0.0 +0.0
+off sidtd/esp_id                 2 | 0.805 0.826 0.642 | 0.86 0.58 0.25 | +10.2 +19.5 +12.1 | +0.0 +0.0 +0.0
+off sidtd/est_id                 2 | 0.967 0.968 0.958 | 0.79 0.89 0.80 | +3.6 +14.1 +10.5 | +0.0 +0.0 +0.0
+off sidtd/fin_id                 5 | 0.826 0.846 0.650 | 0.53 0.64 0.34 | +6.4 +16.1 +7.9 | +0.0 +0.0 +0.0
+off sidtd/grc_passport           4 | 0.904 0.928 0.640 | 0.93 0.75 0.19 | +15.1 +29.1 +17.2 | +0.0 +0.0 +0.0
+off sidtd/lva_passport           5 | 0.856 0.893 0.633 | 1.00 0.69 0.29 | +20.3 +30.7 +22.0 | +0.0 +0.0 +0.0
+off sidtd/rus_internalpassport   6 | 0.623 0.631 0.590 | 0.76 0.14 0.08 | +23.2 +29.6 +28.2 | +0.0 +0.0 +0.0
+off sidtd/srb_passport           1 | 0.712 0.737 0.444 | 0.97 0.12 0.00 | +16.8 +28.0 +9.6 | +0.0 +0.0 +0.0
+off sidtd/svk_id                 6 | 0.815 0.845 0.592 | 1.00 0.61 0.24 | +27.7 +36.0 +28.9 | +0.0 +0.0 +0.0
+on  sidtd/alb_id                 6 | 0.972 0.991 0.808 | 0.11 0.92 0.45 | -3.5 -3.5 -3.4 | +0.4 +20.0 +3.5
+on  sidtd/aze_passport           3 | 0.916 0.978 0.648 | 0.14 0.82 0.25 | -5.3 -5.2 -5.4 | +2.7 +15.1 +3.9
+on  sidtd/esp_id                 2 | 0.864 0.890 0.669 | 0.33 0.62 0.29 | -3.4 -3.4 -3.5 | +1.9 +14.3 +5.8
+on  sidtd/est_id                 2 | 0.983 0.999 0.706 | 0.06 0.97 0.40 | -3.8 -3.6 -3.8 | -2.3 +20.0 +1.7
+on  sidtd/fin_id                 5 | 0.948 0.972 0.740 | 0.05 0.88 0.42 | -5.6 -5.2 -5.4 | -1.3 +18.0 +4.3
+on  sidtd/grc_passport           4 | 0.923 0.950 0.623 | 0.41 0.81 0.16 | -4.5 -4.6 -4.5 | +3.0 +14.2 +4.5
+on  sidtd/lva_passport           5 | 0.925 0.980 0.596 | 0.52 0.86 0.29 | -4.3 -4.3 -4.3 | +5.1 +22.7 +7.8
+on  sidtd/rus_internalpassport   6 | 0.782 0.825 0.600 | 0.57 0.53 0.20 | -4.2 -4.1 -4.1 | +7.0 +16.4 +9.0
+on  sidtd/srb_passport           1 | 0.725 0.741 0.551 | 0.44 0.31 0.00 | -3.0 -3.0 -2.9 | +3.4 +7.6 +3.5
+on  sidtd/svk_id                 6 | 0.934 0.961 0.722 | 0.05 0.87 0.49 | -4.9 -4.9 -4.8 | +0.4 +17.2 +3.7
+
+=== Protocol C, deployment model (fold 0), equalized files: per design and class
+design arm | n_gen genRef@0.5 | family: n meanQuery meanCorr meanFused | AUC(query) AUC(corr) AUC(fused) vs genuine
+AZ   off | 300 1.00 | genuine q+46.8 c+0.0 f+46.8 || face_morph: q+46.6 c+0.0 f+46.6 AUCq 0.49 AUCc 0.50 AUCf 0.49 || face_replace: q+46.3 c+0.0 f+46.3 AUCq 0.47 AUCc 0.50 AUCf 0.47 || text_copy: q+49.0 c+0.0 f+49.0 AUCq 0.60 AUCc 0.50 AUCf 0.60 || text_inpaint: q+48.3 c+0.0 f+48.3 AUCq 0.57 AUCc 0.50 AUCf 0.57 || text_replace: q+29.9 c+0.0 f+29.9 AUCq 0.04 AUCc 0.50 AUCf 0.04
+AZ   on  | 300 0.00 | genuine q-4.2 c-0.1 f-4.3 || face_morph: q-4.3 c-0.0 f-4.3 AUCq 0.45 AUCc 0.51 AUCf 0.49 || face_replace: q-4.1 c-0.1 f-4.2 AUCq 0.53 AUCc 0.52 AUCf 0.53 || text_copy: q-4.2 c+5.8 f+1.7 AUCq 0.51 AUCc 0.85 AUCf 0.85 || text_inpaint: q-4.2 c+3.7 f-0.4 AUCq 0.51 AUCc 0.83 AUCf 0.82 || text_replace: q-3.7 c+6.8 f+3.0 AUCq 0.77 AUCc 1.00 AUCf 1.00
+     AZ ON genuine correction quantiles 10/50/90%: -1.3 -0.5 +1.5
+ALB  off | 300 0.89 | genuine q+5.2 c+0.0 f+5.2 || text_copy: q+6.3 c+0.0 f+6.3 AUCq 0.56 AUCc 0.50 AUCf 0.56 || text_inpaint: q+7.7 c+0.0 f+7.7 AUCq 0.62 AUCc 0.50 AUCf 0.62 || text_replace: q+22.1 c+0.0 f+22.1 AUCq 0.95 AUCc 0.50 AUCf 0.95
+ALB  on  | 300 0.00 | genuine q-3.3 c-1.9 f-5.2 || text_copy: q-3.3 c+5.2 f+1.9 AUCq 0.48 AUCc 0.91 AUCf 0.91 || text_inpaint: q-3.3 c+3.8 f+0.5 AUCq 0.50 AUCc 0.86 AUCf 0.86 || text_replace: q-3.4 c+15.1 f+11.7 AUCq 0.38 AUCc 1.00 AUCf 1.00
+     ALB ON genuine correction quantiles 10/50/90%: -2.6 -2.0 -1.0
+ESP  off | 300 1.00 | genuine q+11.6 c+0.0 f+11.6 || text_copy: q+13.3 c+0.0 f+13.3 AUCq 0.64 AUCc 0.50 AUCf 0.64 || text_inpaint: q+12.9 c+0.0 f+12.9 AUCq 0.65 AUCc 0.50 AUCf 0.65 || text_replace: q+17.2 c+0.0 f+17.2 AUCq 0.94 AUCc 0.50 AUCf 0.94
+ESP  on  | 300 0.00 | genuine q-3.6 c-2.9 f-6.6 || text_copy: q-3.6 c+6.3 f+2.7 AUCq 0.50 AUCc 0.93 AUCf 0.92 || text_inpaint: q-3.6 c+4.1 f+0.5 AUCq 0.50 AUCc 0.95 AUCf 0.95 || text_replace: q-3.5 c+16.7 f+13.2 AUCq 0.61 AUCc 1.00 AUCf 1.00
+     ESP ON genuine correction quantiles 10/50/90%: -3.7 -3.3 -1.0
+FIN  off | 300 1.00 | genuine q+12.7 c+0.0 f+12.7 || text_copy: q+15.1 c+0.0 f+15.1 AUCq 0.65 AUCc 0.50 AUCf 0.65 || text_inpaint: q+15.9 c+0.0 f+15.9 AUCq 0.70 AUCc 0.50 AUCf 0.70 || text_replace: q+14.0 c+0.0 f+14.0 AUCq 0.61 AUCc 0.50 AUCf 0.61
+FIN  on  | 300 0.00 | genuine q-3.8 c-2.1 f-6.0 || text_copy: q-3.8 c+7.6 f+3.8 AUCq 0.51 AUCc 0.90 AUCf 0.90 || text_inpaint: q-3.9 c+5.1 f+1.3 AUCq 0.48 AUCc 0.88 AUCf 0.88 || text_replace: q-3.9 c+4.9 f+1.0 AUCq 0.47 AUCc 0.90 AUCf 0.89
+     FIN ON genuine correction quantiles 10/50/90%: -4.0 -1.7 -0.5
+GRC  off | 300 1.00 | genuine q+10.3 c+0.0 f+10.3 || text_copy: q+11.6 c+0.0 f+11.6 AUCq 0.59 AUCc 0.50 AUCf 0.59 || text_inpaint: q+14.3 c+0.0 f+14.3 AUCq 0.73 AUCc 0.50 AUCf 0.73 || text_replace: q+23.9 c+0.0 f+23.9 AUCq 1.00 AUCc 0.50 AUCf 1.00
+GRC  on  | 300 0.52 | genuine q-3.9 c+3.2 f-0.7 || text_copy: q-3.9 c+6.6 f+2.7 AUCq 0.49 AUCc 0.68 AUCf 0.69 || text_inpaint: q-3.9 c+5.4 f+1.5 AUCq 0.48 AUCc 0.62 AUCf 0.63 || text_replace: q-3.7 c+12.2 f+8.6 AUCq 0.62 AUCc 0.99 AUCf 0.99
+     GRC ON genuine correction quantiles 10/50/90%: -0.9 +5.4 +6.3
+NV   off | 300 1.00 | genuine q+27.7 c+0.0 f+27.7 || text_copy: q+28.7 c+0.0 f+28.7 AUCq 0.54 AUCc 0.50 AUCf 0.54 || text_inpaint: q+28.5 c+0.0 f+28.5 AUCq 0.52 AUCc 0.50 AUCf 0.52 || text_replace: q+43.8 c+0.0 f+43.8 AUCq 0.99 AUCc 0.50 AUCf 0.99
+NV   on  | 300 0.07 | genuine q-3.9 c-0.1 f-4.0 || text_copy: q-3.9 c+6.2 f+2.3 AUCq 0.47 AUCc 0.88 AUCf 0.87 || text_inpaint: q-3.9 c+7.5 f+3.6 AUCq 0.47 AUCc 0.91 AUCf 0.91 || text_replace: q-3.9 c+10.3 f+6.4 AUCq 0.57 AUCc 1.00 AUCf 1.00
+     NV ON genuine correction quantiles 10/50/90%: -1.6 -1.0 +3.0
+SD   off | 300 1.00 | genuine q+9.9 c+0.0 f+9.9 || text_copy: q+9.8 c+0.0 f+9.8 AUCq 0.49 AUCc 0.50 AUCf 0.49 || text_inpaint: q+10.5 c+0.0 f+10.5 AUCq 0.54 AUCc 0.50 AUCf 0.54 || text_replace: q+5.2 c+0.0 f+5.2 AUCq 0.06 AUCc 0.50 AUCf 0.06
+SD   on  | 300 0.00 | genuine q-3.9 c-1.4 f-5.4 || text_copy: q-3.9 c+6.2 f+2.3 AUCq 0.52 AUCc 0.93 AUCf 0.93 || text_inpaint: q-3.9 c+3.2 f-0.8 AUCq 0.50 AUCc 0.87 AUCf 0.86 || text_replace: q-3.9 c+8.6 f+4.7 AUCq 0.51 AUCc 1.00 AUCf 1.00
+     SD ON genuine correction quantiles 10/50/90%: -2.1 -1.7 -0.7
+WV   off | 300 1.00 | genuine q+34.6 c+0.0 f+34.6 || text_copy: q+36.3 c+0.0 f+36.3 AUCq 0.61 AUCc 0.50 AUCf 0.61 || text_inpaint: q+36.9 c+0.0 f+36.9 AUCq 0.63 AUCc 0.50 AUCf 0.63 || text_replace: q+37.6 c+0.0 f+37.6 AUCq 0.75 AUCc 0.50 AUCf 0.75
+WV   on  | 300 0.07 | genuine q-3.3 c-0.3 f-3.6 || text_copy: q-3.3 c+6.4 f+3.0 AUCq 0.49 AUCc 0.87 AUCf 0.87 || text_inpaint: q-3.4 c+2.8 f-0.6 AUCq 0.45 AUCc 0.77 AUCf 0.76 || text_replace: q-3.0 c+9.5 f+6.6 AUCq 0.97 AUCc 1.00 AUCf 1.00
+     WV ON genuine correction quantiles 10/50/90%: -2.0 -1.2 +2.7
