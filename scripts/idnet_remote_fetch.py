@@ -18,7 +18,7 @@ from pathlib import Path
 from urllib.request import Request, urlopen
 
 SEED = 20261014
-SPAN = 24 << 20   # max bytes per range request
+SPAN = 8 << 20   # max bytes per range request
 GAP = 512 << 10   # max unused bytes between two members fetched in one span
 DEFAULT_FAMILIES = ("fraud1_copy_and_move", "fraud5_inpaint_and_rewrite", "fraud6_crop_and_replace",
                     "fraud2_face_morphing", "fraud3_face_replacement")
@@ -88,7 +88,7 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--record", required=True); ap.add_argument("--design", required=True)
     ap.add_argument("--out", required=True); ap.add_argument("--list", action="store_true")
     ap.add_argument("--n-genuine", type=int, default=450); ap.add_argument("--n-per-family", type=int, default=350)
-    ap.add_argument("--families", default=",".join(DEFAULT_FAMILIES)); ap.add_argument("--seed", type=int, default=SEED)
+    ap.add_argument("--families", default=",".join(DEFAULT_FAMILIES)); ap.add_argument("--seed", type=int, default=SEED); ap.add_argument("--workers", type=int, default=4)
     a = ap.parse_args()
     url = f"https://zenodo.org/api/records/{a.record}/files/{a.design}.zip/content"
     f = HttpRangeFile(url); print(f"{a.design}.zip {f.size / 1e9:.2f} GB at {f.url}", flush=True)
@@ -105,17 +105,22 @@ def main():
         print(f"  {d:32s} {len(items):6d} members {sum(i.file_size for _, i in items) / 1e6:9.1f} MB", flush=True)
     if a.list: return
     rng = random.Random(a.seed)
-    pos = sorted(by_dir.get("positive", []), key=lambda t: t[0].name)
-    genuine = pos[:]; rng.shuffle(genuine); genuine = genuine[: a.n_genuine]
+
+    def block(items, n):
+        """A seeded contiguous run of n members in archive order: one byte span instead of n scattered requests.
+        Archive order is unrelated to identity or content, so the run is as random a sample as a scattered one."""
+        items = sorted(items, key=lambda t: t[1].header_offset)
+        if n >= len(items): return items
+        start = rng.randrange(0, len(items) - n + 1); return items[start:start + n]
+
+    genuine = block(by_dir.get("positive", []), a.n_genuine)
     chosen = list(by_dir.get("meta", [])) + genuine
     for d, items in by_dir.items():  # small auxiliary folders (e.g. SIDTD_Generated) are taken whole
         if d not in ("meta", "positive") and not d.startswith("fraud") and len(items) < 200: chosen += items
-    stems = {stem_of(r.name) for r, _ in genuine}
     for fam in a.families.split(","):
-        items = sorted(by_dir.get(fam, []), key=lambda t: t[0].name)
+        items = by_dir.get(fam, [])
         if not items: print(f"  family {fam} absent", flush=True); continue
-        pref = [t for t in items if stem_of(t[0].name) in stems]; rest = [t for t in items if stem_of(t[0].name) not in stems]
-        rng.shuffle(pref); rng.shuffle(rest); chosen += (pref + rest)[: a.n_per_family]
+        chosen += block(items, a.n_per_family)
     out = Path(a.out); todo = [(r, i) for r, i in chosen if not (out / r).exists()]
     total = sum(i.file_size for _, i in todo)
     print(f"fetching {len(todo)} members, {total / 1e6:.1f} MB ({len(chosen) - len(todo)} already present)", flush=True)
@@ -129,8 +134,11 @@ def main():
         cur.append((rel, info, end))
     if cur: batches.append(cur)
     print(f"{len(batches)} range requests", flush=True)
-    for batch in batches:
-        start = batch[0][1].header_offset; span = f.read_span(start, batch[-1][2] - start)
+    from concurrent.futures import ThreadPoolExecutor
+    def fetch_batch(batch):
+        start = batch[0][1].header_offset; return batch, start, f.read_span(start, batch[-1][2] - start)
+    pool = ThreadPoolExecutor(max_workers=a.workers)
+    for batch, start, span in pool.map(fetch_batch, batches):
         for rel, info, _ in batch:
             o = info.header_offset - start; lh = span[o:o + 30]
             if lh[:4] != b"PK\x03\x04": raise RuntimeError(f"bad local header for {info.filename}")
