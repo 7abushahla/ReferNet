@@ -1,0 +1,112 @@
+{
+ "machine": "laptop CPU (Intel i7-12700H), 4 threads",
+ "hostname": "aric-Vector-GP66-12UH",
+ "cpu": "12th Gen Intel(R) Core(TM) i7-12700H",
+ "threads": 4,
+ "logical_cpus": 20,
+ "platform": "Linux-6.8.0-146-generic-x86_64-with-glibc2.39",
+ "python": "3.10.22",
+ "torch": "2.1.2+cu121",
+ "opencv": "4.11.0",
+ "batch_size": 1,
+ "dtype": "float32",
+ "device": "cpu",
+ "gpu": null,
+ "n": 200,
+ "warmup": 20,
+ "population": "SIDTD fold-0 test files, first n by image_id",
+ "designs": [
+  "sidtd/alb_id",
+  "sidtd/aze_passport",
+  "sidtd/esp_id",
+  "sidtd/est_id",
+  "sidtd/fin_id",
+  "sidtd/grc_passport",
+  "sidtd/lva_passport",
+  "sidtd/rus_internalpassport",
+  "sidtd/srb_passport",
+  "sidtd/svk_id"
+ ],
+ "registration_failed": 0,
+ "context_unavailable": 0,
+ "checkpoints": {
+  "off": {
+   "path": "ckpt/off/best.pt",
+   "epoch": 34,
+   "local_enabled": false,
+   "reference_bn": "shared",
+   "fused_query_weight": 1.0,
+   "n_params": 11303586,
+   "checkpoint_mb": 45.31726
+  },
+  "on": {
+   "path": "ckpt/on/best.pt",
+   "epoch": 26,
+   "local_enabled": true,
+   "reference_bn": "shared",
+   "fused_query_weight": 1.0,
+   "n_params": 11303586,
+   "checkpoint_mb": 45.31726
+  }
+ },
+ "timing": {
+  "decode": {
+   "median_ms": 5.9,
+   "p95_ms": 26.33,
+   "mean_ms": 8.34,
+   "n": 200
+  },
+  "canvas": {
+   "median_ms": 1.92,
+   "p95_ms": 3.54,
+   "mean_ms": 2.34,
+   "n": 200
+  },
+  "registration": {
+   "median_ms": 60.12,
+   "p95_ms": 83.19,
+   "mean_ms": 63.69,
+   "n": 200
+  },
+  "reference": {
+   "median_ms": 0.68,
+   "p95_ms": 0.76,
+   "mean_ms": 0.69,
+   "n": 200
+  },
+  "tensor": {
+   "median_ms": 10.56,
+   "p95_ms": 11.84,
+   "mean_ms": 10.71,
+   "n": 200
+  },
+  "forward_off": {
+   "median_ms": 117.76,
+   "p95_ms": 145.24,
+   "mean_ms": 120.2,
+   "n": 200
+  },
+  "forward_on": {
+   "median_ms": 189.72,
+   "p95_ms": 207.43,
+   "mean_ms": 192.81,
+   "n": 200
+  },
+  "e2e_off": {
+   "median_ms": 206.41,
+   "p95_ms": 235.31,
+   "mean_ms": 205.28,
+   "n": 200
+  },
+  "e2e_on": {
+   "median_ms": 277.63,
+   "p95_ms": 305.72,
+   "mean_ms": 278.58,
+   "n": 200
+  },
+  "documents_per_second": {
+   "off": 4.84,
+   "on": 3.6
+  }
+ }
+}
