@@ -584,9 +584,9 @@ Deployment model = the fold-0 OFF/ON pair of Protocol A (the first of the ten SI
 | equalized | ON | 9 | 0.913 | 0.897 | 0.855 | 0.986 | 0.838 | 17/300 | 81.0 |
 | equalized | ON | mean ± sd | 0.906 ± 0.021 |  |  |  |  |  |  |
 
-## S4. Protocol C: Finland identity card, full release (deployment model)
+## S4a. Protocol C: Finland identity card, full release (deployment model)
 
-Every released genuine image outside the 100 enrolled (5,879) and every text-family image of identities outside the support, scored by the fold-0 checkpoints. `all` = genuine + inpaint-and-rewrite + crop-and-replace + in-place replacement (23,346 documents); `sidtd_families` = genuine + the two SIDTD-style families (17,497), the population of IDNet's Tables II/III (SIDTD-trained CNNs: 67.2%).
+Every released genuine image outside the 100 enrolled (5,879) and every text-family image of identities outside the support, scored by the deployment model (`scripts/protocol_c_full_metrics.py`). `all` = genuine + inpaint-and-rewrite + crop-and-replace + in-place replacement (23,346 documents); `sidtd_families` = genuine + the two SIDTD-style families (17,497), the population of IDNet's Tables II/III (SIDTD-trained CNNs: 67.2%).
 
 | condition | files | population | n | genuine | AUC | accuracy at 0.5 (%) | balanced accuracy (%) | genuine referred | caught at 10% |
 |---|---|---|---|---|---|---|---|---|---|
@@ -598,3 +598,18 @@ Every released genuine image outside the 100 enrolled (5,879) and every text-fam
 | ON | as released | sidtd_families | 17497 | 5879 | 0.929 | 74.2 | 80.6 | 0/5879 | 0.855 |
 | ON | equalized | all | 23346 | 5879 | 0.936 | 70.7 | 80.4 | 0/5879 | 0.860 |
 | ON | equalized | sidtd_families | 17497 | 5879 | 0.931 | 74.2 | 80.6 | 0/5879 | 0.854 |
+
+## S4b. Protocol C: Greece passport, full release (deployment model)
+
+Every released genuine image outside the 100 enrolled (5,879) and every text-family image of identities outside the support, scored by the deployment model (`scripts/protocol_c_full_metrics.py`). `all` = genuine + inpaint-and-rewrite + crop-and-replace + in-place replacement (23,397 documents); `sidtd_families` = genuine + the two SIDTD-style families (17,518), the population of IDNet's Tables II/III (SIDTD-trained CNNs: 67.7%).
+
+| condition | files | population | n | genuine | AUC | accuracy at 0.5 (%) | balanced accuracy (%) | genuine referred | caught at 10% |
+|---|---|---|---|---|---|---|---|---|---|
+| OFF | as released | all | 23397 | 5879 | 0.717 | 74.9 | 50.0 | 5879/5879 | 0.516 |
+| OFF | as released | sidtd_families | 17518 | 5879 | 0.575 | 66.4 | 50.0 | 5879/5879 | 0.274 |
+| OFF | equalized | all | 23397 | 5879 | 0.785 | 74.9 | 50.0 | 5879/5879 | 0.579 |
+| OFF | equalized | sidtd_families | 17518 | 5879 | 0.678 | 66.4 | 50.0 | 5879/5879 | 0.368 |
+| ON | as released | all | 23397 | 5879 | 0.781 | 72.9 | 65.2 | 2964/5879 | 0.538 |
+| ON | as released | sidtd_families | 17518 | 5879 | 0.674 | 63.8 | 60.3 | 2964/5879 | 0.316 |
+| ON | equalized | all | 23397 | 5879 | 0.765 | 73.2 | 65.4 | 2958/5879 | 0.516 |
+| ON | equalized | sidtd_families | 17518 | 5879 | 0.653 | 64.2 | 60.6 | 2958/5879 | 0.289 |

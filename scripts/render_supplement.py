@@ -111,15 +111,18 @@ def protocol_c():
 
 
 def protocol_c_full():
-    p = TAB / "protocol_c_idnet_FIN_full.json"
-    if not p.exists():
-        return ""
-    d = json.loads(p.read_text())
-    out = ["## S4. Protocol C: Finland identity card, full release (deployment model)\n",
-           "Every released genuine image outside the 100 enrolled (5,879) and every text-family image of identities outside the support, scored by the fold-0 checkpoints. "
-           "`all` = genuine + inpaint-and-rewrite + crop-and-replace + in-place replacement (23,346 documents); `sidtd_families` = genuine + the two SIDTD-style families (17,497), the population of IDNet's Tables II/III (SIDTD-trained CNNs: 67.2%).\n"]
-    rows = [[k.split(":")[0].upper(), k.split(":")[1].replace("native", "as released").replace("q75", "equalized"), k.split(":")[2], v["n"], v["n_genuine"], f3(v["auc"]), f"{100 * v['acc_fixed']:.1f}", f"{100 * v['balanced_acc']:.1f}", f"{v['genuine_referred']}/{v['n_genuine']}", f3(v["tpr_fpr10"])] for k, v in d.items()]
-    out.append(table(["condition", "files", "population", "n", "genuine", "AUC", "accuracy at 0.5 (%)", "balanced accuracy (%)", "genuine referred", "caught at 10%"], rows))
+    out = []
+    for sec, (key, label, published) in zip("ab", (("FIN", "Finland identity card", "67.2%"), ("GRC", "Greece passport", "67.7%"))):
+        p = TAB / f"protocol_c_idnet_{key}_full.json"
+        if not p.exists():
+            continue
+        d = json.loads(p.read_text())
+        n_all, n_sf = d["off:native:all"]["n"], d["off:native:sidtd_families"]["n"]
+        out += [f"## S4{sec}. Protocol C: {label}, full release (deployment model)\n",
+                f"Every released genuine image outside the 100 enrolled ({d['off:native:all']['n_genuine']:,}) and every text-family image of identities outside the support, scored by the deployment model (`scripts/protocol_c_full_metrics.py`). "
+                f"`all` = genuine + inpaint-and-rewrite + crop-and-replace + in-place replacement ({n_all:,} documents); `sidtd_families` = genuine + the two SIDTD-style families ({n_sf:,}), the population of IDNet's Tables II/III (SIDTD-trained CNNs: {published}).\n"]
+        rows = [[k.split(":")[0].upper(), k.split(":")[1].replace("native", "as released").replace("q75", "equalized"), k.split(":")[2], v["n"], v["n_genuine"], f3(v["auc"]), f"{100 * v['acc_fixed']:.1f}", f"{100 * v['balanced_acc']:.1f}", f"{v['genuine_referred']}/{v['n_genuine']}", f3(v["tpr_fpr10"])] for k, v in d.items()]
+        out.append(table(["condition", "files", "population", "n", "genuine", "AUC", "accuracy at 0.5 (%)", "balanced accuracy (%)", "genuine referred", "caught at 10%"], rows))
     return "\n".join(out)
 
 
