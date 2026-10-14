@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TAB = ROOT / "results/tables/v2-sweep"
 DESIGNS = [("FIN", "Finland identity card", 1), ("GRC", "Greece passport", 1), ("ESP", "Spain identity card", 1), ("ALB", "Albania identity card", 1),
-           ("AZ", "Arizona licence", 2), ("SD", "South Dakota licence", 2), ("WV", "West Virginia licence", 2), ("NV", "Nevada licence", 2)]
+           ("AZ", "Arizona license", 2), ("SD", "South Dakota license", 2), ("WV", "West Virginia license", 2), ("NV", "Nevada license", 2)]
 CUE_KEPT = {"native": (91.9, 0.982, 0.969, 0.984), "q75": (57.7, 0.548, 0.517, 0.554)}  # OFF network trained on raw fold-0 files at 320x320
 
 

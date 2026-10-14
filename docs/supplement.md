@@ -388,7 +388,7 @@ Deployment model = the fold-0 OFF/ON pair of Protocol A (the first of the ten SI
 | equalized | ON | 9 | 0.910 | 0.851 | 0.879 | 1.000 | 0.818 | 0/300 | 74.8 |
 | equalized | ON | mean ± sd | 0.897 ± 0.025 |  |  |  |  |  |  |
 
-### Arizona licence (level 2)
+### Arizona license (level 2)
 
 | files | condition | split iteration | text AUC | inpaint AUC | copy AUC | in-place replacement AUC | caught at 10% | genuine referred | accuracy at 0.5 (%) |
 |---|---|---|---|---|---|---|---|---|---|
@@ -437,7 +437,7 @@ Deployment model = the fold-0 OFF/ON pair of Protocol A (the first of the ten SI
 | equalized | ON | 9 | 0.908 | 0.850 | 0.874 | 0.999 | 0.791 | 12/300 | 52.8 |
 | equalized | ON | mean ± sd | 0.910 ± 0.013 |  |  |  |  |  |  |
 
-### South Dakota licence (level 2)
+### South Dakota license (level 2)
 
 | files | condition | split iteration | text AUC | inpaint AUC | copy AUC | in-place replacement AUC | caught at 10% | genuine referred | accuracy at 0.5 (%) |
 |---|---|---|---|---|---|---|---|---|---|
@@ -486,7 +486,7 @@ Deployment model = the fold-0 OFF/ON pair of Protocol A (the first of the ten SI
 | equalized | ON | 9 | 0.932 | 0.854 | 0.942 | 1.000 | 0.864 | 0/300 | 76.2 |
 | equalized | ON | mean ± sd | 0.902 ± 0.025 |  |  |  |  |  |  |
 
-### West Virginia licence (level 2)
+### West Virginia license (level 2)
 
 | files | condition | split iteration | text AUC | inpaint AUC | copy AUC | in-place replacement AUC | caught at 10% | genuine referred | accuracy at 0.5 (%) |
 |---|---|---|---|---|---|---|---|---|---|
@@ -535,7 +535,7 @@ Deployment model = the fold-0 OFF/ON pair of Protocol A (the first of the ten SI
 | equalized | ON | 9 | 0.931 | 0.875 | 0.917 | 1.000 | 0.869 | 0/300 | 73.2 |
 | equalized | ON | mean ± sd | 0.900 ± 0.024 |  |  |  |  |  |  |
 
-### Nevada licence (level 2)
+### Nevada license (level 2)
 
 | files | condition | split iteration | text AUC | inpaint AUC | copy AUC | in-place replacement AUC | caught at 10% | genuine referred | accuracy at 0.5 (%) |
 |---|---|---|---|---|---|---|---|---|---|
