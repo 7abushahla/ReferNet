@@ -1,0 +1,130 @@
+{
+ "FIN:off:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 0.5,
+  "apcer_fixed": 0.0,
+  "bpcer_fixed": 1.0,
+  "auc": 0.6077
+ },
+ "FIN:on:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 0.8233333333333334,
+  "apcer_fixed": 0.35333333333333333,
+  "bpcer_fixed": 0.0,
+  "auc": 0.8916777777777778
+ },
+ "GRC:off:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 0.5,
+  "apcer_fixed": 0.0,
+  "bpcer_fixed": 1.0,
+  "auc": 0.9977777777777778
+ },
+ "GRC:on:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 0.74,
+  "apcer_fixed": 0.0,
+  "bpcer_fixed": 0.52,
+  "auc": 0.9912222222222222
+ },
+ "ESP:off:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 0.5,
+  "apcer_fixed": 0.0,
+  "bpcer_fixed": 1.0,
+  "auc": 0.9442111111111111
+ },
+ "ESP:on:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 1.0,
+  "apcer_fixed": 0.0,
+  "bpcer_fixed": 0.0,
+  "auc": 1.0
+ },
+ "ALB:off:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 0.5533333333333333,
+  "apcer_fixed": 0.0,
+  "bpcer_fixed": 0.8933333333333333,
+  "auc": 0.9468222222222222
+ },
+ "ALB:on:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 1.0,
+  "apcer_fixed": 0.0,
+  "bpcer_fixed": 0.0,
+  "auc": 1.0
+ },
+ "AZ:off:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 0.5,
+  "apcer_fixed": 0.0,
+  "bpcer_fixed": 1.0,
+  "auc": 0.040855555555555555
+ },
+ "AZ:on:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 0.97,
+  "apcer_fixed": 0.056666666666666664,
+  "bpcer_fixed": 0.0033333333333333335,
+  "auc": 0.9987888888888888
+ },
+ "SD:off:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 0.5,
+  "apcer_fixed": 0.0,
+  "bpcer_fixed": 1.0,
+  "auc": 0.0642888888888889
+ },
+ "SD:on:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 0.9833333333333333,
+  "apcer_fixed": 0.03,
+  "bpcer_fixed": 0.0033333333333333335,
+  "auc": 0.9996777777777778
+ },
+ "WV:off:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 0.5,
+  "apcer_fixed": 0.0,
+  "bpcer_fixed": 1.0,
+  "auc": 0.7497111111111111
+ },
+ "WV:on:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 0.965,
+  "apcer_fixed": 0.0,
+  "bpcer_fixed": 0.07,
+  "auc": 0.9982666666666666
+ },
+ "NV:off:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 0.5,
+  "apcer_fixed": 0.0,
+  "bpcer_fixed": 1.0,
+  "auc": 0.9896
+ },
+ "NV:on:q75": {
+  "n_genuine": 300,
+  "n_replace": 300,
+  "acc_fixed": 0.965,
+  "apcer_fixed": 0.0,
+  "bpcer_fixed": 0.07,
+  "auc": 0.9965777777777778
+ }
+}
