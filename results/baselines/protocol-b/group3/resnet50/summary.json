@@ -1,0 +1,49 @@
+{
+ "group": 3,
+ "group_name": "svk_alb_grc_est",
+ "model": "resnet50",
+ "native": {
+  "accuracy": 0.635077793493635,
+  "altered_misses": 99,
+  "auc": 0.7930842028633827,
+  "genuine_fp": 159,
+  "n": 707,
+  "n_genuine": 317,
+  "text_copy": {
+   "auc": 0.8279405137449302,
+   "misses": 8,
+   "n": 35,
+   "tpr_fpr10": 0.5714285714285714
+  },
+  "text_inpaint": {
+   "auc": 0.7896476651708357,
+   "misses": 91,
+   "n": 355,
+   "tpr_fpr10": 0.4535211267605634
+  },
+  "tpr_fpr10": 0.4641025641025641
+ },
+ "q75": {
+  "accuracy": 0.5233380480905233,
+  "altered_misses": 99,
+  "auc": 0.523440912399903,
+  "genuine_fp": 238,
+  "n": 707,
+  "n_genuine": 317,
+  "text_copy": {
+   "auc": 0.5533123028391167,
+   "misses": 8,
+   "n": 35,
+   "tpr_fpr10": 0.05714285714285714
+  },
+  "text_inpaint": {
+   "auc": 0.5204958457368819,
+   "misses": 91,
+   "n": 355,
+   "tpr_fpr10": 0.13802816901408452
+  },
+  "tpr_fpr10": 0.13076923076923078
+ },
+ "selected_epoch": 81,
+ "val_acc": 0.7894736842105263
+}

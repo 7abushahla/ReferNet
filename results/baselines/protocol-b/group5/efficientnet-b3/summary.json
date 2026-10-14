@@ -1,0 +1,49 @@
+{
+ "group": 5,
+ "group_name": "alb_grc_est_rus",
+ "model": "efficientnet-b3",
+ "native": {
+  "accuracy": 0.5690140845070423,
+  "altered_misses": 0,
+  "auc": 0.7923004107303299,
+  "genuine_fp": 306,
+  "n": 710,
+  "n_genuine": 318,
+  "text_copy": {
+   "auc": 0.8115401491882405,
+   "misses": 0,
+   "n": 43,
+   "tpr_fpr10": 0.37209302325581395
+  },
+  "text_inpaint": {
+   "auc": 0.7899298985421059,
+   "misses": 0,
+   "n": 349,
+   "tpr_fpr10": 0.34097421203438394
+  },
+  "tpr_fpr10": 0.34438775510204084
+ },
+ "q75": {
+  "accuracy": 0.5521126760563381,
+  "altered_misses": 0,
+  "auc": 0.5695433833910923,
+  "genuine_fp": 318,
+  "n": 710,
+  "n_genuine": 318,
+  "text_copy": {
+   "auc": 0.5968992248062015,
+   "misses": 0,
+   "n": 43,
+   "tpr_fpr10": 0.023255813953488372
+  },
+  "text_inpaint": {
+   "auc": 0.5661728929015516,
+   "misses": 0,
+   "n": 349,
+   "tpr_fpr10": 0.10315186246418338
+  },
+  "tpr_fpr10": 0.09438775510204081
+ },
+ "selected_epoch": 10,
+ "val_acc": 1.0
+}

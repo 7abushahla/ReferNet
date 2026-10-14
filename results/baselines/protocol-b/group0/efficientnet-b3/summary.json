@@ -1,0 +1,49 @@
+{
+ "group": 0,
+ "group_name": "svk_alb_aze_lva",
+ "model": "efficientnet-b3",
+ "native": {
+  "accuracy": 0.7375690607734806,
+  "altered_misses": 15,
+  "auc": 0.6637001328759927,
+  "genuine_fp": 175,
+  "n": 724,
+  "n_genuine": 322,
+  "text_copy": {
+   "auc": 0.6324312333629104,
+   "misses": 2,
+   "n": 56,
+   "tpr_fpr10": 0.07142857142857142
+  },
+  "text_inpaint": {
+   "auc": 0.6687609952249309,
+   "misses": 13,
+   "n": 346,
+   "tpr_fpr10": 0.09826589595375723
+  },
+  "tpr_fpr10": 0.0945273631840796
+ },
+ "q75": {
+  "accuracy": 0.5524861878453039,
+  "altered_misses": 13,
+  "auc": 0.5296576125583263,
+  "genuine_fp": 311,
+  "n": 724,
+  "n_genuine": 322,
+  "text_copy": {
+   "auc": 0.4628438331854481,
+   "misses": 2,
+   "n": 56,
+   "tpr_fpr10": 0.08928571428571429
+  },
+  "text_inpaint": {
+   "auc": 0.5404714034394859,
+   "misses": 11,
+   "n": 346,
+   "tpr_fpr10": 0.10404624277456648
+  },
+  "tpr_fpr10": 0.10199004975124377
+ },
+ "selected_epoch": 12,
+ "val_acc": 1.0
+}

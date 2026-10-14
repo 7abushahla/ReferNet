@@ -1,0 +1,49 @@
+{
+ "group": 8,
+ "group_name": "svk_alb_lva_fin",
+ "model": "efficientnet-b3",
+ "native": {
+  "accuracy": 0.5955056179775281,
+  "altered_misses": 0,
+  "auc": 0.7197775493781422,
+  "genuine_fp": 288,
+  "n": 712,
+  "n_genuine": 321,
+  "text_copy": {
+   "auc": 0.7245022348638764,
+   "misses": 0,
+   "n": 46,
+   "tpr_fpr10": 0.13043478260869565
+  },
+  "text_inpaint": {
+   "auc": 0.7191475913133776,
+   "misses": 0,
+   "n": 345,
+   "tpr_fpr10": 0.14782608695652175
+  },
+  "tpr_fpr10": 0.14578005115089515
+ },
+ "q75": {
+  "accuracy": 0.5491573033707865,
+  "altered_misses": 0,
+  "auc": 0.5303917584912876,
+  "genuine_fp": 321,
+  "n": 712,
+  "n_genuine": 321,
+  "text_copy": {
+   "auc": 0.5496410673168088,
+   "misses": 0,
+   "n": 46,
+   "tpr_fpr10": 0.08695652173913043
+  },
+  "text_inpaint": {
+   "auc": 0.5278251839812181,
+   "misses": 0,
+   "n": 345,
+   "tpr_fpr10": 0.12173913043478261
+  },
+  "tpr_fpr10": 0.11764705882352941
+ },
+ "selected_epoch": 17,
+ "val_acc": 1.0
+}

@@ -1,0 +1,49 @@
+{
+ "group": 0,
+ "group_name": "svk_alb_aze_lva",
+ "model": "resnet50",
+ "native": {
+  "accuracy": 0.5607734806629834,
+  "altered_misses": 158,
+  "auc": 0.6362983220543247,
+  "genuine_fp": 160,
+  "n": 724,
+  "n_genuine": 322,
+  "text_copy": {
+   "auc": 0.6202861579414375,
+   "misses": 25,
+   "n": 56,
+   "tpr_fpr10": 0.19642857142857142
+  },
+  "text_inpaint": {
+   "auc": 0.6388898861882023,
+   "misses": 133,
+   "n": 346,
+   "tpr_fpr10": 0.18208092485549132
+  },
+  "tpr_fpr10": 0.18407960199004975
+ },
+ "q75": {
+  "accuracy": 0.5317679558011049,
+  "altered_misses": 148,
+  "auc": 0.5638809060288619,
+  "genuine_fp": 191,
+  "n": 724,
+  "n_genuine": 322,
+  "text_copy": {
+   "auc": 0.5306122448979592,
+   "misses": 23,
+   "n": 56,
+   "tpr_fpr10": 0.21428571428571427
+  },
+  "text_inpaint": {
+   "auc": 0.5692654292176785,
+   "misses": 125,
+   "n": 346,
+   "tpr_fpr10": 0.2398843930635838
+  },
+  "tpr_fpr10": 0.236318407960199
+ },
+ "selected_epoch": 47,
+ "val_acc": 1.0
+}

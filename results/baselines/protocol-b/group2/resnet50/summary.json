@@ -1,0 +1,49 @@
+{
+ "group": 2,
+ "group_name": "grc_esp_fin_srb",
+ "model": "resnet50",
+ "native": {
+  "accuracy": 0.5197183098591549,
+  "altered_misses": 104,
+  "auc": 0.7414934861656272,
+  "genuine_fp": 237,
+  "n": 710,
+  "n_genuine": 317,
+  "text_copy": {
+   "auc": 0.71600531296696,
+   "misses": 12,
+   "n": 38,
+   "tpr_fpr10": 0.5263157894736842
+  },
+  "text_inpaint": {
+   "auc": 0.7442217976629493,
+   "misses": 92,
+   "n": 355,
+   "tpr_fpr10": 0.5605633802816902
+  },
+  "tpr_fpr10": 0.5572519083969466
+ },
+ "q75": {
+  "accuracy": 0.5197183098591549,
+  "altered_misses": 104,
+  "auc": 0.5035197983641165,
+  "genuine_fp": 237,
+  "n": 710,
+  "n_genuine": 317,
+  "text_copy": {
+   "auc": 0.48854391499252864,
+   "misses": 12,
+   "n": 38,
+   "tpr_fpr10": 0.13157894736842105
+  },
+  "text_inpaint": {
+   "auc": 0.5051228506686809,
+   "misses": 92,
+   "n": 355,
+   "tpr_fpr10": 0.18309859154929578
+  },
+  "tpr_fpr10": 0.178117048346056
+ },
+ "selected_epoch": 44,
+ "val_acc": 1.0
+}

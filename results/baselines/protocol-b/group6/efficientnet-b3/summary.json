@@ -1,0 +1,49 @@
+{
+ "group": 6,
+ "group_name": "svk_rus_lva_fin",
+ "model": "efficientnet-b3",
+ "native": {
+  "accuracy": 0.663448275862069,
+  "altered_misses": 0,
+  "auc": 0.5970490440565254,
+  "genuine_fp": 244,
+  "n": 725,
+  "n_genuine": 324,
+  "text_copy": {
+   "auc": 0.5674603174603174,
+   "misses": 0,
+   "n": 56,
+   "tpr_fpr10": 0.125
+  },
+  "text_inpaint": {
+   "auc": 0.6018518518518519,
+   "misses": 0,
+   "n": 345,
+   "tpr_fpr10": 0.12173913043478261
+  },
+  "tpr_fpr10": 0.12219451371571072
+ },
+ "q75": {
+  "accuracy": 0.5531034482758621,
+  "altered_misses": 0,
+  "auc": 0.5332579046211632,
+  "genuine_fp": 324,
+  "n": 725,
+  "n_genuine": 324,
+  "text_copy": {
+   "auc": 0.5040233686067019,
+   "misses": 0,
+   "n": 56,
+   "tpr_fpr10": 0.125
+  },
+  "text_inpaint": {
+   "auc": 0.5380032206119163,
+   "misses": 0,
+   "n": 345,
+   "tpr_fpr10": 0.11594202898550725
+  },
+  "tpr_fpr10": 0.1172069825436409
+ },
+ "selected_epoch": 10,
+ "val_acc": 1.0
+}

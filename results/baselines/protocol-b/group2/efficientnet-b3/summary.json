@@ -1,0 +1,49 @@
+{
+ "group": 2,
+ "group_name": "grc_esp_fin_srb",
+ "model": "efficientnet-b3",
+ "native": {
+  "accuracy": 0.6014084507042253,
+  "altered_misses": 274,
+  "auc": 0.6827927212014673,
+  "genuine_fp": 9,
+  "n": 710,
+  "n_genuine": 317,
+  "text_copy": {
+   "auc": 0.6905196745807737,
+   "misses": 27,
+   "n": 38,
+   "tpr_fpr10": 0.42105263157894735
+  },
+  "text_inpaint": {
+   "auc": 0.6819656106988937,
+   "misses": 247,
+   "n": 355,
+   "tpr_fpr10": 0.36619718309859156
+  },
+  "tpr_fpr10": 0.37150127226463103
+ },
+ "q75": {
+  "accuracy": 0.476056338028169,
+  "altered_misses": 274,
+  "auc": 0.4897054928119055,
+  "genuine_fp": 98,
+  "n": 710,
+  "n_genuine": 317,
+  "text_copy": {
+   "auc": 0.4991698489125021,
+   "misses": 27,
+   "n": 38,
+   "tpr_fpr10": 0.05263157894736842
+  },
+  "text_inpaint": {
+   "auc": 0.48869240680677123,
+   "misses": 247,
+   "n": 355,
+   "tpr_fpr10": 0.07042253521126761
+  },
+  "tpr_fpr10": 0.06870229007633588
+ },
+ "selected_epoch": 13,
+ "val_acc": 1.0
+}

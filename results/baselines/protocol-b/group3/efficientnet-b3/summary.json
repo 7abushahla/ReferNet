@@ -1,0 +1,49 @@
+{
+ "group": 3,
+ "group_name": "svk_alb_grc_est",
+ "model": "efficientnet-b3",
+ "native": {
+  "accuracy": 0.5544554455445545,
+  "altered_misses": 0,
+  "auc": 0.6913370541130793,
+  "genuine_fp": 315,
+  "n": 707,
+  "n_genuine": 317,
+  "text_copy": {
+   "auc": 0.682018927444795,
+   "misses": 0,
+   "n": 35,
+   "tpr_fpr10": 0.22857142857142856
+  },
+  "text_inpaint": {
+   "auc": 0.6922557426578397,
+   "misses": 0,
+   "n": 355,
+   "tpr_fpr10": 0.22253521126760564
+  },
+  "tpr_fpr10": 0.2230769230769231
+ },
+ "q75": {
+  "accuracy": 0.5516265912305516,
+  "altered_misses": 0,
+  "auc": 0.5385262476745126,
+  "genuine_fp": 317,
+  "n": 707,
+  "n_genuine": 317,
+  "text_copy": {
+   "auc": 0.521586300135196,
+   "misses": 0,
+   "n": 35,
+   "tpr_fpr10": 0.08571428571428572
+  },
+  "text_inpaint": {
+   "auc": 0.540196383347403,
+   "misses": 0,
+   "n": 355,
+   "tpr_fpr10": 0.12112676056338029
+  },
+  "tpr_fpr10": 0.11794871794871795
+ },
+ "selected_epoch": 20,
+ "val_acc": 1.0
+}
