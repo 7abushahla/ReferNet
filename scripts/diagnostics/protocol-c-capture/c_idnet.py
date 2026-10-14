@@ -59,6 +59,7 @@ def main():
     for n in q_gen:
         entries.append(dict(image_id=f"{a.design}_genuine_{Path(n).stem}", path=f"positive/{n}", label=0, family="genuine"))
     for folder, fam in FAMILIES.items():
+        if not (root / folder).exists(): print(f"family folder {folder} absent, skipped", flush=True); continue
         files = sorted(p.name for p in (root / folder).iterdir())
         ok = []
         for f in files:
