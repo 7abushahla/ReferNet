@@ -1,0 +1,200 @@
+{
+ "a_test": {
+  "accuracy": 0.8873873873873874,
+  "altered_misses": 23,
+  "auc": 0.9442307692307692,
+  "auc_correction": 0.5,
+  "auc_query": 0.9442307692307692,
+  "capture:template": {
+   "accuracy": 0.8873873873873874,
+   "auc": 0.9442307692307692,
+   "n": 222
+  },
+  "family:text_copy": {
+   "accuracy": 0.8407079646017699,
+   "auc": 0.7686335403726708,
+   "n": 113
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.9552238805970149,
+   "auc": 0.9780614280015956,
+   "n": 201
+  },
+  "genuine_false_positives": 2,
+  "n": 222,
+  "n_genuine": 92,
+  "unavailable": 0
+ },
+ "a_test_q75": {
+  "accuracy": 0.7792792792792793,
+  "altered_misses": 20,
+  "auc": 0.8010869565217391,
+  "auc_correction": 0.5,
+  "auc_query": 0.8010869565217391,
+  "capture:template": {
+   "accuracy": 0.7792792792792793,
+   "auc": 0.8010869565217391,
+   "n": 222
+  },
+  "family:text_copy": {
+   "accuracy": 0.6194690265486725,
+   "auc": 0.47101449275362317,
+   "n": 113
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.8258706467661692,
+   "auc": 0.8646788990825688,
+   "n": 201
+  },
+  "genuine_false_positives": 29,
+  "n": 222,
+  "n_genuine": 92,
+  "unavailable": 0
+ },
+ "align": true,
+ "arm": "off",
+ "batch": 8,
+ "c_fixed": {
+  "accuracy": 0.4989293361884368,
+  "altered_misses": 0,
+  "auc": 0.490352518249514,
+  "auc_correction": 0.5,
+  "auc_query": 0.490352518249514,
+  "capture:huawei": {
+   "accuracy": 0.4967741935483871,
+   "auc": 0.513986013986014,
+   "n": 155
+  },
+  "capture:iphone15": {
+   "accuracy": 0.5,
+   "auc": 0.4710716633793557,
+   "n": 156
+  },
+  "capture:scan": {
+   "accuracy": 0.5,
+   "auc": 0.5009861932938856,
+   "n": 156
+  },
+  "family:face_swap": {
+   "accuracy": 0.3256484149855908,
+   "auc": 0.4905831631495348,
+   "n": 347
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.3389830508474576,
+   "auc": 0.49013532763532763,
+   "n": 354
+  },
+  "genuine_false_positives": 234,
+  "n": 467,
+  "n_genuine": 234,
+  "unavailable": 0
+ },
+ "c_fixed_q75": {
+  "accuracy": 0.4989293361884368,
+  "altered_misses": 0,
+  "auc": 0.49097611973148453,
+  "auc_correction": 0.5,
+  "auc_query": 0.49097611973148453,
+  "capture:huawei": {
+   "accuracy": 0.4967741935483871,
+   "auc": 0.5138195138195139,
+   "n": 155
+  },
+  "capture:iphone15": {
+   "accuracy": 0.5,
+   "auc": 0.4641683103221565,
+   "n": 156
+  },
+  "capture:scan": {
+   "accuracy": 0.5,
+   "auc": 0.504930966469428,
+   "n": 156
+  },
+  "family:face_swap": {
+   "accuracy": 0.3256484149855908,
+   "auc": 0.49126389834354434,
+   "n": 347
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.3389830508474576,
+   "auc": 0.4907051282051282,
+   "n": 354
+  },
+  "genuine_false_positives": 234,
+  "n": 467,
+  "n_genuine": 234,
+  "unavailable": 0
+ },
+ "c_locked": {
+  "accuracy": 0.5117773019271948,
+  "altered_misses": 5,
+  "auc": 0.48556545981438687,
+  "auc_correction": 0.5,
+  "auc_query": 0.48556545981438687,
+  "capture:huawei": {
+   "accuracy": 0.5161290322580645,
+   "auc": 0.49567099567099565,
+   "n": 155
+  },
+  "capture:iphone15": {
+   "accuracy": 0.5192307692307693,
+   "auc": 0.4797830374753452,
+   "n": 156
+  },
+  "capture:scan": {
+   "accuracy": 0.5,
+   "auc": 0.49474030243261014,
+   "n": 156
+  },
+  "family:face_swap": {
+   "accuracy": 0.345821325648415,
+   "auc": 0.49882762272142805,
+   "n": 347
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.3672316384180791,
+   "auc": 0.47307692307692306,
+   "n": 354
+  },
+  "genuine_false_positives": 223,
+  "n": 467,
+  "n_genuine": 234,
+  "unavailable": 0
+ },
+ "c_registration_sha256": "9183976af7524ffab33e58cfab4d0e97bb1b86808df52e29df9e3d2a984ae81b",
+ "capture_aug": true,
+ "checkpoint": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/fold0-v2noaux-fdb7351/training/off/best.pt",
+ "epochs": 40,
+ "n_train": 1778,
+ "n_val": 222,
+ "score_only": true,
+ "selected_epoch": 34,
+ "val": {
+  "accuracy": 0.9504504504504504,
+  "altered_misses": 9,
+  "auc": 0.976639344262295,
+  "auc_correction": 0.5,
+  "auc_query": 0.976639344262295,
+  "capture:template": {
+   "accuracy": 0.9504504504504504,
+   "auc": 0.976639344262295,
+   "n": 222
+  },
+  "family:text_copy": {
+   "accuracy": 0.9224137931034483,
+   "auc": 0.890625,
+   "n": 116
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.9805825242718447,
+   "auc": 0.9896226415094339,
+   "n": 206
+  },
+  "genuine_false_positives": 2,
+  "n": 222,
+  "n_genuine": 100,
+  "unavailable": 0
+ },
+ "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+}

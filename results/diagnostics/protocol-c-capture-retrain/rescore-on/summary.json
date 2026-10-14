@@ -1,0 +1,200 @@
+{
+ "a_test": {
+  "accuracy": 0.9234234234234234,
+  "altered_misses": 16,
+  "auc": 0.953428093645485,
+  "auc_correction": 0.9594481605351171,
+  "auc_query": 0.49046822742474916,
+  "capture:template": {
+   "accuracy": 0.9234234234234234,
+   "auc": 0.953428093645485,
+   "n": 222
+  },
+  "family:text_copy": {
+   "accuracy": 0.8495575221238938,
+   "auc": 0.7116977225672878,
+   "n": 113
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.9950248756218906,
+   "auc": 1.0,
+   "n": 201
+  },
+  "genuine_false_positives": 1,
+  "n": 222,
+  "n_genuine": 92,
+  "unavailable": 0
+ },
+ "a_test_q75": {
+  "accuracy": 0.9234234234234234,
+  "altered_misses": 16,
+  "auc": 0.9507525083612041,
+  "auc_correction": 0.9586956521739131,
+  "auc_query": 0.45484949832775917,
+  "capture:template": {
+   "accuracy": 0.9234234234234234,
+   "auc": 0.9507525083612041,
+   "n": 222
+  },
+  "family:text_copy": {
+   "accuracy": 0.8495575221238938,
+   "auc": 0.6951345755693582,
+   "n": 113
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.9950248756218906,
+   "auc": 1.0,
+   "n": 201
+  },
+  "genuine_false_positives": 1,
+  "n": 222,
+  "n_genuine": 92,
+  "unavailable": 0
+ },
+ "align": true,
+ "arm": "on",
+ "batch": 8,
+ "c_fixed": {
+  "accuracy": 0.5053533190578159,
+  "altered_misses": 181,
+  "auc": 0.5170573346539011,
+  "auc_correction": 0.5293276108726752,
+  "auc_query": 0.4742489270386266,
+  "capture:huawei": {
+   "accuracy": 0.5161290322580645,
+   "auc": 0.5469530469530469,
+   "n": 155
+  },
+  "capture:iphone15": {
+   "accuracy": 0.47435897435897434,
+   "auc": 0.4807692307692308,
+   "n": 156
+  },
+  "capture:scan": {
+   "accuracy": 0.5256410256410257,
+   "auc": 0.5213675213675214,
+   "n": 156
+  },
+  "family:face_swap": {
+   "accuracy": 0.5965417867435159,
+   "auc": 0.4835110808562136,
+   "n": 347
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.6016949152542372,
+   "auc": 0.5486467236467236,
+   "n": 354
+  },
+  "genuine_false_positives": 50,
+  "n": 467,
+  "n_genuine": 234,
+  "unavailable": 0
+ },
+ "c_fixed_q75": {
+  "accuracy": 0.5032119914346895,
+  "altered_misses": 182,
+  "auc": 0.5126187593998753,
+  "auc_correction": 0.5271083232456623,
+  "auc_query": 0.471002531088368,
+  "capture:huawei": {
+   "accuracy": 0.5096774193548387,
+   "auc": 0.5451215451215451,
+   "n": 155
+  },
+  "capture:iphone15": {
+   "accuracy": 0.4807692307692308,
+   "auc": 0.4737015121630506,
+   "n": 156
+  },
+  "capture:scan": {
+   "accuracy": 0.5192307692307693,
+   "auc": 0.5177514792899408,
+   "n": 156
+  },
+  "family:face_swap": {
+   "accuracy": 0.5965417867435159,
+   "auc": 0.4797670372891612,
+   "n": 347
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.5988700564971752,
+   "auc": 0.5435541310541311,
+   "n": 354
+  },
+  "genuine_false_positives": 50,
+  "n": 467,
+  "n_genuine": 234,
+  "unavailable": 0
+ },
+ "c_locked": {
+  "accuracy": 0.5117773019271948,
+  "altered_misses": 176,
+  "auc": 0.5217343457686805,
+  "auc_correction": 0.5341146693078024,
+  "auc_query": 0.4760647078243645,
+  "capture:huawei": {
+   "accuracy": 0.5483870967741935,
+   "auc": 0.5631035631035631,
+   "n": 155
+  },
+  "capture:iphone15": {
+   "accuracy": 0.47435897435897434,
+   "auc": 0.44592373438527283,
+   "n": 156
+  },
+  "capture:scan": {
+   "accuracy": 0.5128205128205128,
+   "auc": 0.5328731097961867,
+   "n": 156
+  },
+  "family:face_swap": {
+   "accuracy": 0.5878962536023055,
+   "auc": 0.47311095983662355,
+   "n": 347
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.6129943502824858,
+   "auc": 0.5675213675213675,
+   "n": 354
+  },
+  "genuine_false_positives": 52,
+  "n": 467,
+  "n_genuine": 234,
+  "unavailable": 0
+ },
+ "c_registration_sha256": "9183976af7524ffab33e58cfab4d0e97bb1b86808df52e29df9e3d2a984ae81b",
+ "capture_aug": true,
+ "checkpoint": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/fold0-v2noaux-fdb7351/training/on/best.pt",
+ "epochs": 40,
+ "n_train": 1778,
+ "n_val": 222,
+ "score_only": true,
+ "selected_epoch": 26,
+ "val": {
+  "accuracy": 0.9684684684684685,
+  "altered_misses": 5,
+  "auc": 0.9858196721311475,
+  "auc_correction": 0.9878688524590163,
+  "auc_query": 0.514672131147541,
+  "capture:template": {
+   "accuracy": 0.9684684684684685,
+   "auc": 0.9858196721311475,
+   "n": 222
+  },
+  "family:text_copy": {
+   "accuracy": 0.9482758620689655,
+   "auc": 0.908125,
+   "n": 116
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.9854368932038835,
+   "auc": 0.9975471698113207,
+   "n": 206
+  },
+  "genuine_false_positives": 2,
+  "n": 222,
+  "n_genuine": 100,
+  "unavailable": 0
+ },
+ "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+}

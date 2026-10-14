@@ -1,0 +1,200 @@
+{
+ "a_test": {
+  "accuracy": 0.8918918918918919,
+  "altered_misses": 22,
+  "auc": 0.9201505016722408,
+  "auc_correction": 0.9221571906354515,
+  "auc_query": 0.411371237458194,
+  "capture:template": {
+   "accuracy": 0.8918918918918919,
+   "auc": 0.9201505016722408,
+   "n": 222
+  },
+  "family:text_copy": {
+   "accuracy": 0.8053097345132744,
+   "auc": 0.5388198757763976,
+   "n": 113
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.9800995024875622,
+   "auc": 0.9936178699641005,
+   "n": 201
+  },
+  "genuine_false_positives": 2,
+  "n": 222,
+  "n_genuine": 92,
+  "unavailable": 0
+ },
+ "a_test_q75": {
+  "accuracy": 0.8918918918918919,
+  "altered_misses": 22,
+  "auc": 0.9210702341137124,
+  "auc_correction": 0.9233277591973245,
+  "auc_query": 0.3943979933110368,
+  "capture:template": {
+   "accuracy": 0.8918918918918919,
+   "auc": 0.9210702341137124,
+   "n": 222
+  },
+  "family:text_copy": {
+   "accuracy": 0.8053097345132744,
+   "auc": 0.5419254658385093,
+   "n": 113
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.9800995024875622,
+   "auc": 0.9941164738731552,
+   "n": 201
+  },
+  "genuine_false_positives": 2,
+  "n": 222,
+  "n_genuine": 92,
+  "unavailable": 0
+ },
+ "align": true,
+ "arm": "on",
+ "batch": 8,
+ "c_fixed": {
+  "accuracy": 0.5374732334047109,
+  "altered_misses": 200,
+  "auc": 0.5625435603976376,
+  "auc_correction": 0.559774036168886,
+  "auc_query": 0.4895638457870218,
+  "capture:huawei": {
+   "accuracy": 0.5483870967741935,
+   "auc": 0.583916083916084,
+   "n": 155
+  },
+  "capture:iphone15": {
+   "accuracy": 0.5448717948717948,
+   "auc": 0.5637738330046023,
+   "n": 156
+  },
+  "capture:scan": {
+   "accuracy": 0.5192307692307693,
+   "auc": 0.537146614069691,
+   "n": 156
+  },
+  "family:face_swap": {
+   "accuracy": 0.6512968299711815,
+   "auc": 0.4920202707813327,
+   "n": 347
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.6864406779661016,
+   "auc": 0.6289529914529914,
+   "n": 354
+  },
+  "genuine_false_positives": 16,
+  "n": 467,
+  "n_genuine": 234,
+  "unavailable": 0
+ },
+ "c_fixed_q75": {
+  "accuracy": 0.5396145610278372,
+  "altered_misses": 199,
+  "auc": 0.5649462602252302,
+  "auc_correction": 0.5623051245368842,
+  "auc_query": 0.4896922343274275,
+  "capture:huawei": {
+   "accuracy": 0.5483870967741935,
+   "auc": 0.585081585081585,
+   "n": 155
+  },
+  "capture:iphone15": {
+   "accuracy": 0.5448717948717948,
+   "auc": 0.564595660749507,
+   "n": 156
+  },
+  "capture:scan": {
+   "accuracy": 0.5256410256410257,
+   "auc": 0.5427350427350427,
+   "n": 156
+  },
+  "family:face_swap": {
+   "accuracy": 0.6512968299711815,
+   "auc": 0.49413811360714016,
+   "n": 347
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.6892655367231638,
+   "auc": 0.6316239316239316,
+   "n": 354
+  },
+  "genuine_false_positives": 16,
+  "n": 467,
+  "n_genuine": 234,
+  "unavailable": 0
+ },
+ "c_locked": {
+  "accuracy": 0.5353319057815846,
+  "altered_misses": 208,
+  "auc": 0.5452477898829831,
+  "auc_correction": 0.5455045669637945,
+  "auc_query": 0.488573419903892,
+  "capture:huawei": {
+   "accuracy": 0.5806451612903226,
+   "auc": 0.5925740925740925,
+   "n": 155
+  },
+  "capture:iphone15": {
+   "accuracy": 0.5064102564102564,
+   "auc": 0.5340236686390533,
+   "n": 156
+  },
+  "capture:scan": {
+   "accuracy": 0.5192307692307693,
+   "auc": 0.5161078238001315,
+   "n": 156
+  },
+  "family:face_swap": {
+   "accuracy": 0.659942363112392,
+   "auc": 0.4880493154829438,
+   "n": 347
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.6949152542372882,
+   "auc": 0.5991096866096867,
+   "n": 354
+  },
+  "genuine_false_positives": 9,
+  "n": 467,
+  "n_genuine": 234,
+  "unavailable": 0
+ },
+ "c_registration_sha256": "9183976af7524ffab33e58cfab4d0e97bb1b86808df52e29df9e3d2a984ae81b",
+ "capture_aug": true,
+ "checkpoint": null,
+ "epochs": 40,
+ "n_train": 1778,
+ "n_val": 222,
+ "score_only": false,
+ "selected_epoch": 23,
+ "val": {
+  "accuracy": 0.9279279279279279,
+  "altered_misses": 15,
+  "auc": 0.9517213114754098,
+  "auc_correction": 0.9526229508196721,
+  "auc_query": 0.48778688524590164,
+  "capture:template": {
+   "accuracy": 0.9279279279279279,
+   "auc": 0.9517213114754098,
+   "n": 222
+  },
+  "family:text_copy": {
+   "accuracy": 0.896551724137931,
+   "auc": 0.696875,
+   "n": 116
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.9757281553398058,
+   "auc": 0.990188679245283,
+   "n": 206
+  },
+  "genuine_false_positives": 1,
+  "n": 222,
+  "n_genuine": 100,
+  "unavailable": 0
+ },
+ "weights_sha256": "da3f569306dadd1fac5b64abc2a3d484571cd0ecf6410e1f152275cfe49a3618"
+}
