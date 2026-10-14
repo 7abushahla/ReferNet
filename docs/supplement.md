@@ -534,3 +534,18 @@ Production model = the fold-0 checkpoints (SIDTD published split iteration 0). `
 | equalized | ON | 8 | 0.901 | 0.888 | 0.833 | 0.983 | 0.754 | 64/300 | 83.1 |
 | equalized | ON | 9 | 0.913 | 0.897 | 0.855 | 0.986 | 0.838 | 17/300 | 81.0 |
 | equalized | ON | mean ± sd | 0.906 ± 0.021 |  |  |  |  |  |  |
+
+## S4. Protocol C: Finland identity card, full release (production model)
+
+Every released genuine image outside the 100 enrolled (5,879) and every text-family image of identities outside the support, scored by the fold-0 checkpoints. `all` = genuine + inpaint-and-rewrite + crop-and-replace + in-place replacement (23,346 documents); `sidtd_families` = genuine + the two SIDTD-style families (17,497), the population of IDNet's Tables II/III (SIDTD-trained CNNs: 67.2%).
+
+| condition | files | population | n | genuine | AUC | accuracy at 0.5 (%) | balanced accuracy (%) | genuine referred | caught at 10% |
+|---|---|---|---|---|---|---|---|---|---|
+| OFF | as released | all | 23346 | 5879 | 0.675 | 74.8 | 50.0 | 5879/5879 | 0.342 |
+| OFF | as released | sidtd_families | 17497 | 5879 | 0.681 | 66.4 | 50.0 | 5879/5879 | 0.373 |
+| OFF | equalized | all | 23346 | 5879 | 0.654 | 74.8 | 50.0 | 5879/5879 | 0.314 |
+| OFF | equalized | sidtd_families | 17497 | 5879 | 0.683 | 66.4 | 50.0 | 5879/5879 | 0.374 |
+| ON | as released | all | 23346 | 5879 | 0.934 | 70.4 | 80.2 | 0/5879 | 0.860 |
+| ON | as released | sidtd_families | 17497 | 5879 | 0.929 | 74.2 | 80.6 | 0/5879 | 0.855 |
+| ON | equalized | all | 23346 | 5879 | 0.936 | 70.7 | 80.4 | 0/5879 | 0.860 |
+| ON | equalized | sidtd_families | 17497 | 5879 | 0.931 | 74.2 | 80.6 | 0/5879 | 0.854 |

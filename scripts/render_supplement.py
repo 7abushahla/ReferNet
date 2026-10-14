@@ -110,6 +110,19 @@ def protocol_c():
     return "\n".join(out)
 
 
+def protocol_c_full():
+    p = TAB / "protocol_c_idnet_FIN_full.json"
+    if not p.exists():
+        return ""
+    d = json.loads(p.read_text())
+    out = ["## S4. Protocol C: Finland identity card, full release (production model)\n",
+           "Every released genuine image outside the 100 enrolled (5,879) and every text-family image of identities outside the support, scored by the fold-0 checkpoints. "
+           "`all` = genuine + inpaint-and-rewrite + crop-and-replace + in-place replacement (23,346 documents); `sidtd_families` = genuine + the two SIDTD-style families (17,497), the population of IDNet's Tables II/III (SIDTD-trained CNNs: 67.2%).\n"]
+    rows = [[k.split(":")[0].upper(), k.split(":")[1].replace("native", "as released").replace("q75", "equalized"), k.split(":")[2], v["n"], v["n_genuine"], f3(v["auc"]), f"{100 * v['acc_fixed']:.1f}", f"{100 * v['balanced_acc']:.1f}", f"{v['genuine_referred']}/{v['n_genuine']}", f3(v["tpr_fpr10"])] for k, v in d.items()]
+    out.append(table(["condition", "files", "population", "n", "genuine", "AUC", "accuracy at 0.5 (%)", "balanced accuracy (%)", "genuine referred", "caught at 10%"], rows))
+    return "\n".join(out)
+
+
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--out", default=str(ROOT / "docs/supplement.md")); a = ap.parse_args()
     d = json.loads((TAB / "digest.json").read_text()); ops = json.loads((TAB / "protocol_b_operating_points.json").read_text())
@@ -118,7 +131,7 @@ def main():
             "per-fold Protocol A records and the compression control, per-group Protocol B records including the development group, the retrained published baselines, and Protocol C on both file settings for all ten split iterations.\n",
             "Sources: `results/tables/v2-sweep/digest.json` (A and B), `results/tables/v2-sweep/protocol_b_operating_points.json` (B operating points), `results/baselines/protocol-b/group*/*/summary.json` (baselines), "
             "`results/tables/v2-sweep/protocol_c_idnet*.json` (C), with the prediction files under `results/runs/` and `results/diagnostics/protocol-c-idnet/`.\n"]
-    Path(a.out).write_text("\n".join(head + [protocol_a(d), protocol_b(ops), protocol_c()])); print(f"wrote {a.out}")
+    Path(a.out).write_text("\n".join(head + [protocol_a(d), protocol_b(ops), protocol_c(), protocol_c_full()])); print(f"wrote {a.out}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,130 @@
+{
+ "fold0:off:native": {
+  "accuracy": 0.7480938918872612,
+  "altered_misses": 2,
+  "auc": 0.6748324176887083,
+  "auc_correction": 0.5,
+  "auc_query": 0.6748324176887083,
+  "capture:render": {
+   "accuracy": 0.7480938918872612,
+   "auc": 0.6748324176887083,
+   "n": 23346
+  },
+  "epoch": 34,
+  "family:text_copy": {
+   "accuracy": 0.49493127147766325,
+   "auc": 0.6447008243752923,
+   "n": 11640
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.49897750511247446,
+   "auc": 0.7171239715225692,
+   "n": 11736
+  },
+  "family:text_replace": {
+   "accuracy": 0.49863574351978174,
+   "auc": 0.6621612736082956,
+   "n": 11728
+  },
+  "genuine_false_positives": 5879,
+  "n": 23346,
+  "n_genuine": 5879,
+  "unavailable": 0
+ },
+ "fold0:off:q75": {
+  "accuracy": 0.7480938918872612,
+  "altered_misses": 2,
+  "auc": 0.6540859013287886,
+  "auc_correction": 0.5,
+  "auc_query": 0.6540859013287886,
+  "capture:render": {
+   "accuracy": 0.7480938918872612,
+   "auc": 0.6540859013287886,
+   "n": 23346
+  },
+  "epoch": 34,
+  "family:text_copy": {
+   "accuracy": 0.49493127147766325,
+   "auc": 0.647454071386217,
+   "n": 11640
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.49897750511247446,
+   "auc": 0.7178280573315897,
+   "n": 11736
+  },
+  "family:text_replace": {
+   "accuracy": 0.49863574351978174,
+   "auc": 0.5967886136882944,
+   "n": 11728
+  },
+  "genuine_false_positives": 5879,
+  "n": 23346,
+  "n_genuine": 5879,
+  "unavailable": 0
+ },
+ "fold0:on:native": {
+  "accuracy": 0.7038464833376167,
+  "altered_misses": 6914,
+  "auc": 0.9336656639804812,
+  "auc_correction": 0.9432589491794373,
+  "auc_query": 0.4737458947810248,
+  "capture:render": {
+   "accuracy": 0.7038464833376167,
+   "auc": 0.9336656639804812,
+   "n": 23346
+  },
+  "epoch": 26,
+  "family:text_copy": {
+   "accuracy": 0.8234536082474226,
+   "auc": 0.9374629140067919,
+   "n": 11640
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.7904737559645535,
+   "auc": 0.9202155250688555,
+   "n": 11736
+  },
+  "family:text_replace": {
+   "accuracy": 0.7953615279672579,
+   "auc": 0.9433940801548386,
+   "n": 11728
+  },
+  "genuine_false_positives": 0,
+  "n": 23346,
+  "n_genuine": 5879,
+  "unavailable": 0
+ },
+ "fold0:on:q75": {
+  "accuracy": 0.7065878523087467,
+  "altered_misses": 6850,
+  "auc": 0.9357158742216618,
+  "auc_correction": 0.9452291115032724,
+  "auc_query": 0.47838714996041476,
+  "capture:render": {
+   "accuracy": 0.7065878523087467,
+   "auc": 0.9357158742216618,
+   "n": 23346
+  },
+  "epoch": 26,
+  "family:text_copy": {
+   "accuracy": 0.8230240549828178,
+   "auc": 0.9386113858549782,
+   "n": 11640
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.7911554192229039,
+   "auc": 0.9228513889591132,
+   "n": 11736
+  },
+  "family:text_replace": {
+   "accuracy": 0.80056275579809,
+   "auc": 0.9457460071782718,
+   "n": 11728
+  },
+  "genuine_false_positives": 0,
+  "n": 23346,
+  "n_genuine": 5879,
+  "unavailable": 0
+ }
+}
