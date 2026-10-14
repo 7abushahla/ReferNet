@@ -53,8 +53,8 @@ def protocol_a(d):
 
 
 def protocol_b(ops):
-    out = ["## S2. Protocol B: per-group records, including the development group\n",
-           "Group 0 is the development group on which the ON recipe was fixed (see the manuscript, recipe contrast); it is excluded from every mean in the manuscript and listed here for completeness. "
+    out = ["## S2. Protocol B: per-group records\n",
+           "All ten groups enter the manuscript means; group 0 is also the held-out group of the objective ablation (manuscript Section 5.1). "
            "`fixed` is the 0.5 alteration-probability threshold (logit 0); `calibrated` is the logit threshold with the highest accuracy on the group's own source validation partition; "
            "`caught at 10%` is the fraction of attacks above the threshold that refers 10% of the group's genuine queries.\n"]
     units = sorted(ops["units"], key=lambda u: u["group"])
@@ -90,7 +90,7 @@ def protocol_b(ops):
 
 def protocol_c():
     out = ["## S3. Protocol C: IDNet designs, both file settings, all ten split iterations\n",
-           "Production model = the fold-0 checkpoints (SIDTD published split iteration 0). `as released` scores the IDNet files as distributed (genuine PNG; inpaint-and-rewrite and crop-and-replace JPEG; in-place replacement PNG); "
+           "Deployment model = the fold-0 OFF/ON pair of Protocol A (the first of the ten SIDTD official partitions, fixed before any IDNet image was scored). `as released` scores the IDNet files as distributed (genuine PNG; inpaint-and-rewrite and crop-and-replace JPEG; in-place replacement PNG); "
            "`equalized` re-saves every query at JPEG quality 75. 100 enrolled genuine images per design; 1,200 queries (300 genuine, 300 per text family) of identities outside the support. "
            "`genuine referred` counts genuine queries above the fixed 0.5 threshold; `caught at 10%` is the fraction of text attacks above the threshold that refers 10% of the genuine queries.\n"]
     for key, label, level in DESIGNS:
@@ -115,7 +115,7 @@ def protocol_c_full():
     if not p.exists():
         return ""
     d = json.loads(p.read_text())
-    out = ["## S4. Protocol C: Finland identity card, full release (production model)\n",
+    out = ["## S4. Protocol C: Finland identity card, full release (deployment model)\n",
            "Every released genuine image outside the 100 enrolled (5,879) and every text-family image of identities outside the support, scored by the fold-0 checkpoints. "
            "`all` = genuine + inpaint-and-rewrite + crop-and-replace + in-place replacement (23,346 documents); `sidtd_families` = genuine + the two SIDTD-style families (17,497), the population of IDNet's Tables II/III (SIDTD-trained CNNs: 67.2%).\n"]
     rows = [[k.split(":")[0].upper(), k.split(":")[1].replace("native", "as released").replace("q75", "equalized"), k.split(":")[2], v["n"], v["n_genuine"], f3(v["auc"]), f"{100 * v['acc_fixed']:.1f}", f"{100 * v['balanced_acc']:.1f}", f"{v['genuine_referred']}/{v['n_genuine']}", f3(v["tpr_fpr10"])] for k, v in d.items()]

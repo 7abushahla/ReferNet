@@ -72,9 +72,9 @@ OFF network trained on the raw fold-0 files resized to 320×320 (the published S
 | as released | 91.9 | 0.982 | 0.969 | 0.984 |
 | equalized | 57.7 | 0.548 | 0.517 | 0.554 |
 
-## S2. Protocol B: per-group records, including the development group
+## S2. Protocol B: per-group records
 
-Group 0 is the development group on which the ON recipe was fixed (see the manuscript, recipe contrast); it is excluded from every mean in the manuscript and listed here for completeness. `fixed` is the 0.5 alteration-probability threshold (logit 0); `calibrated` is the logit threshold with the highest accuracy on the group's own source validation partition; `caught at 10%` is the fraction of attacks above the threshold that refers 10% of the group's genuine queries.
+All ten groups enter the manuscript means; group 0 is also the held-out group of the objective ablation (manuscript Section 5.1). `fixed` is the 0.5 alteration-probability threshold (logit 0); `calibrated` is the logit threshold with the highest accuracy on the group's own source validation partition; `caught at 10%` is the fraction of attacks above the threshold that refers 10% of the group's genuine queries.
 
 ### Populations
 
@@ -190,7 +190,7 @@ ImageNet-initialized ResNet50 and EfficientNet-B3, 299×299 input, random resize
 
 ## S3. Protocol C: IDNet designs, both file settings, all ten split iterations
 
-Production model = the fold-0 checkpoints (SIDTD published split iteration 0). `as released` scores the IDNet files as distributed (genuine PNG; inpaint-and-rewrite and crop-and-replace JPEG; in-place replacement PNG); `equalized` re-saves every query at JPEG quality 75. 100 enrolled genuine images per design; 1,200 queries (300 genuine, 300 per text family) of identities outside the support. `genuine referred` counts genuine queries above the fixed 0.5 threshold; `caught at 10%` is the fraction of text attacks above the threshold that refers 10% of the genuine queries.
+Deployment model = the fold-0 OFF/ON pair of Protocol A (the first of the ten SIDTD official partitions, fixed before any IDNet image was scored). `as released` scores the IDNet files as distributed (genuine PNG; inpaint-and-rewrite and crop-and-replace JPEG; in-place replacement PNG); `equalized` re-saves every query at JPEG quality 75. 100 enrolled genuine images per design; 1,200 queries (300 genuine, 300 per text family) of identities outside the support. `genuine referred` counts genuine queries above the fixed 0.5 threshold; `caught at 10%` is the fraction of text attacks above the threshold that refers 10% of the genuine queries.
 
 ### Finland identity card (level 1)
 
@@ -584,7 +584,7 @@ Production model = the fold-0 checkpoints (SIDTD published split iteration 0). `
 | equalized | ON | 9 | 0.913 | 0.897 | 0.855 | 0.986 | 0.838 | 17/300 | 81.0 |
 | equalized | ON | mean ± sd | 0.906 ± 0.021 |  |  |  |  |  |  |
 
-## S4. Protocol C: Finland identity card, full release (production model)
+## S4. Protocol C: Finland identity card, full release (deployment model)
 
 Every released genuine image outside the 100 enrolled (5,879) and every text-family image of identities outside the support, scored by the fold-0 checkpoints. `all` = genuine + inpaint-and-rewrite + crop-and-replace + in-place replacement (23,346 documents); `sidtd_families` = genuine + the two SIDTD-style families (17,497), the population of IDNet's Tables II/III (SIDTD-trained CNNs: 67.2%).
 
