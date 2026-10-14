@@ -1,0 +1,282 @@
+{
+ "off:fantasy_support_copymove": {
+  "accuracy": 0.5,
+  "altered_misses": 0,
+  "auc": 0.5029843893480257,
+  "auc_correction": 0.5,
+  "auc_query": 0.5029843893480257,
+  "capture:huawei": {
+   "accuracy": 0.5,
+   "auc": 0.518595041322314,
+   "n": 44
+  },
+  "capture:iphone15": {
+   "accuracy": 0.5,
+   "auc": 0.493801652892562,
+   "n": 44
+  },
+  "capture:scan": {
+   "accuracy": 0.5,
+   "auc": 0.5144628099173554,
+   "n": 44
+  },
+  "family:text_copy": {
+   "accuracy": 0.5,
+   "auc": 0.5029843893480257,
+   "n": 132
+  },
+  "genuine_false_positives": 66,
+  "n": 132,
+  "n_genuine": 66,
+  "unavailable": 0
+ },
+ "off:fantasy_support_copymove_noalign": {
+  "accuracy": 0.5,
+  "altered_misses": 0,
+  "auc": 0.5029843893480257,
+  "auc_correction": 0.5,
+  "auc_query": 0.5029843893480257,
+  "capture:huawei": {
+   "accuracy": 0.5,
+   "auc": 0.518595041322314,
+   "n": 44
+  },
+  "capture:iphone15": {
+   "accuracy": 0.5,
+   "auc": 0.493801652892562,
+   "n": 44
+  },
+  "capture:scan": {
+   "accuracy": 0.5,
+   "auc": 0.5144628099173554,
+   "n": 44
+  },
+  "family:text_copy": {
+   "accuracy": 0.5,
+   "auc": 0.5029843893480257,
+   "n": 132
+  },
+  "genuine_false_positives": 66,
+  "n": 132,
+  "n_genuine": 66,
+  "unavailable": 0
+ },
+ "off:sidtd_capture_sim": {
+  "accuracy": 0.6846846846846847,
+  "altered_misses": 23,
+  "auc": 0.7505016722408027,
+  "auc_correction": 0.5,
+  "auc_query": 0.7505016722408027,
+  "capture:template": {
+   "accuracy": 0.6846846846846847,
+   "auc": 0.7505016722408027,
+   "n": 222
+  },
+  "family:text_copy": {
+   "accuracy": 0.46017699115044247,
+   "auc": 0.4446169772256729,
+   "n": 113
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.7213930348258707,
+   "auc": 0.8094335859593139,
+   "n": 201
+  },
+  "genuine_false_positives": 47,
+  "n": 222,
+  "n_genuine": 92,
+  "unavailable": 0
+ },
+ "off:sidtd_capture_sim_noalign": {
+  "accuracy": 0.6846846846846847,
+  "altered_misses": 23,
+  "auc": 0.7505016722408027,
+  "auc_correction": 0.5,
+  "auc_query": 0.7505016722408027,
+  "capture:template": {
+   "accuracy": 0.6846846846846847,
+   "auc": 0.7505016722408027,
+   "n": 222
+  },
+  "family:text_copy": {
+   "accuracy": 0.46017699115044247,
+   "auc": 0.4446169772256729,
+   "n": 113
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.7213930348258707,
+   "auc": 0.8094335859593139,
+   "n": 201
+  },
+  "genuine_false_positives": 47,
+  "n": 222,
+  "n_genuine": 92,
+  "unavailable": 0
+ },
+ "off:sidtd_native": {
+  "accuracy": 0.8873873873873874,
+  "altered_misses": 23,
+  "auc": 0.9442307692307692,
+  "auc_correction": 0.5,
+  "auc_query": 0.9442307692307692,
+  "capture:template": {
+   "accuracy": 0.8873873873873874,
+   "auc": 0.9442307692307692,
+   "n": 222
+  },
+  "family:text_copy": {
+   "accuracy": 0.8407079646017699,
+   "auc": 0.7686335403726708,
+   "n": 113
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.9552238805970149,
+   "auc": 0.9780614280015956,
+   "n": 201
+  },
+  "genuine_false_positives": 2,
+  "n": 222,
+  "n_genuine": 92,
+  "unavailable": 0
+ },
+ "on:fantasy_support_copymove": {
+  "accuracy": 0.5075757575757576,
+  "altered_misses": 53,
+  "auc": 0.5009182736455464,
+  "auc_correction": 0.4965564738292011,
+  "auc_query": 0.5002295684113865,
+  "capture:huawei": {
+   "accuracy": 0.5227272727272727,
+   "auc": 0.4690082644628099,
+   "n": 44
+  },
+  "capture:iphone15": {
+   "accuracy": 0.4772727272727273,
+   "auc": 0.5041322314049587,
+   "n": 44
+  },
+  "capture:scan": {
+   "accuracy": 0.5227272727272727,
+   "auc": 0.5206611570247934,
+   "n": 44
+  },
+  "family:text_copy": {
+   "accuracy": 0.5075757575757576,
+   "auc": 0.5009182736455464,
+   "n": 132
+  },
+  "genuine_false_positives": 12,
+  "n": 132,
+  "n_genuine": 66,
+  "unavailable": 0
+ },
+ "on:fantasy_support_copymove_noalign": {
+  "accuracy": 0.5,
+  "altered_misses": 50,
+  "auc": 0.501147842056933,
+  "auc_correction": 0.494949494949495,
+  "auc_query": 0.5002295684113865,
+  "capture:huawei": {
+   "accuracy": 0.5,
+   "auc": 0.47520661157024796,
+   "n": 44
+  },
+  "capture:iphone15": {
+   "accuracy": 0.5,
+   "auc": 0.49793388429752067,
+   "n": 44
+  },
+  "capture:scan": {
+   "accuracy": 0.5,
+   "auc": 0.5268595041322314,
+   "n": 44
+  },
+  "family:text_copy": {
+   "accuracy": 0.5,
+   "auc": 0.501147842056933,
+   "n": 132
+  },
+  "genuine_false_positives": 16,
+  "n": 132,
+  "n_genuine": 66,
+  "unavailable": 0
+ },
+ "on:sidtd_capture_sim": {
+  "accuracy": 0.6936936936936937,
+  "altered_misses": 18,
+  "auc": 0.7852006688963211,
+  "auc_correction": 0.80376254180602,
+  "auc_query": 0.4092809364548495,
+  "capture:template": {
+   "accuracy": 0.6936936936936937,
+   "auc": 0.7852006688963211,
+   "n": 222
+  },
+  "family:text_copy": {
+   "accuracy": 0.46017699115044247,
+   "auc": 0.4906832298136646,
+   "n": 113
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.7164179104477612,
+   "auc": 0.8419425608296769,
+   "n": 201
+  },
+  "genuine_false_positives": 50,
+  "n": 222,
+  "n_genuine": 92,
+  "unavailable": 0
+ },
+ "on:sidtd_capture_sim_noalign": {
+  "accuracy": 0.6486486486486487,
+  "altered_misses": 16,
+  "auc": 0.7694816053511706,
+  "auc_correction": 0.7904682274247492,
+  "auc_query": 0.4092809364548495,
+  "capture:template": {
+   "accuracy": 0.6486486486486487,
+   "auc": 0.7694816053511706,
+   "n": 222
+  },
+  "family:text_copy": {
+   "accuracy": 0.3805309734513274,
+   "auc": 0.45703933747412007,
+   "n": 113
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.6517412935323383,
+   "auc": 0.8296769046669326,
+   "n": 201
+  },
+  "genuine_false_positives": 62,
+  "n": 222,
+  "n_genuine": 92,
+  "unavailable": 0
+ },
+ "on:sidtd_native": {
+  "accuracy": 0.9234234234234234,
+  "altered_misses": 16,
+  "auc": 0.953428093645485,
+  "auc_correction": 0.9594481605351171,
+  "auc_query": 0.49046822742474916,
+  "capture:template": {
+   "accuracy": 0.9234234234234234,
+   "auc": 0.953428093645485,
+   "n": 222
+  },
+  "family:text_copy": {
+   "accuracy": 0.8495575221238938,
+   "auc": 0.7116977225672878,
+   "n": 113
+  },
+  "family:text_inpaint": {
+   "accuracy": 0.9950248756218906,
+   "auc": 1.0,
+   "n": 201
+  },
+  "genuine_false_positives": 1,
+  "n": 222,
+  "n_genuine": 92,
+  "unavailable": 0
+ }
+}
