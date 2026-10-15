@@ -22,11 +22,6 @@ At passport-control counters and smart gates, officers must clear or refer a doc
 - We isolate the reference's contribution through matched comparisons and examine compression cues and attack families.
 - We estimate that ReferNet would cut the referrals of Dubai's DEC by **94.0%**, **69.8%**, and **89.0%** on seen designs, unseen nationalities, and unseen designs, at **280 milliseconds** per document on a laptop.
 
-<div align="center">
-  <img src="figures/attack_families.png" width="650px" alt="Attack families" />
-</div>
-<p align="center"><em>Figure 2: The three text attack families evaluated in this study, on one IDNet Arizona license. Inpaint-and-rewrite and copy-and-replace occur in both datasets, and in-place text replacement only in IDNet.</em></p>
-
 ---
 
 ## 📊 Key Results
