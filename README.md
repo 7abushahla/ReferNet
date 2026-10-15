@@ -56,12 +56,12 @@ The samples come from the paper's locked fold-0 test predictions, so none was se
   - training, evaluation and metrics (`*_train.py`, `evaluate.py`, `metrics.py`, `policy_metrics.py`)
 - `configs/`: training and protocol configurations
 - `scripts/`: data preparation, training and scoring drivers, benchmarks (`bench_cpu_deploy.py` measures the inference time)
-  - `cluster/`: environment setup, data staging and Slurm launchers for each protocol
+  - `cluster/`: environment setup, data staging and launchers for each protocol
 - `results/`: result tables, locked predictions behind every table, timing records, figures
 - `demo/` and `site/`: the tools that build the browser demo and the demo itself (GitHub Pages)
 - `tests/`: unit tests for the data pipeline, model, protocols and demo tools
 - `data/`: dataset folders (not committed; see [`data/README.md`](data/README.md))
-- `docs/`: cluster guide, data decisions, conventions and design notes
+- `docs/`: data decisions, conventions and design notes
 - `proposal/`, `experiments/`, `sweeps/`, `notebooks/`: the research proposal, experiment notes, generated launchers and exploration
 
 ---
@@ -75,8 +75,6 @@ conda env create -f environment.yml
 conda activate refer-or-clear
 ```
 
-On the cluster, `scripts/cluster/setup-env.sh` creates the same environment (see [`docs/cluster.md`](docs/cluster.md)).
-
 ## 2) Data
 
 The study uses two public datasets of synthetic identity documents:
@@ -88,14 +86,13 @@ The study uses two public datasets of synthetic identity documents:
 
 ## 3) Reproducing the Experiments
 
-Training and evaluation run on Slurm GPU nodes:
+Training and evaluation need a GPU. Prepare the data once:
 
 ```bash
-ENV_PREFIX=/shared/$USER/conda/envs/refer-or-clear bash scripts/cluster/setup-env.sh   # once, on the login node
-bash scripts/cluster/stage-data.sh                                                      # download and build data/processed
+bash scripts/cluster/stage-data.sh    # download the datasets and build data/processed
 ```
 
-Each protocol has its own launcher in `scripts/cluster/` (`protocol_a_study.sh`, `protocol_b_study.sh`, `prepare_protocol_c.sh` and `score_protocol_c_v2.sh`), and [`docs/cluster.md`](docs/cluster.md) describes the cluster workflow. The inference time is measured with:
+Each protocol has its own launcher in `scripts/cluster/` (`protocol_a_study.sh`, `protocol_b_study.sh`, `prepare_protocol_c.sh` and `score_protocol_c_v2.sh`). The inference time is measured with:
 
 ```bash
 python scripts/bench_cpu_deploy.py --off <off/best.pt> --on <on/best.pt> --weights <weights.pth> --n 200 --threads 4
@@ -105,7 +102,7 @@ python scripts/bench_cpu_deploy.py --off <off/best.pt> --on <on/best.pt> --weigh
 
 ```bash
 python demo/export_onnx.py        # export the fold-0 OFF and ON checkpoints to ONNX
-python demo/dump_inputs.py        # on a GPU node: dump each sample's inputs and check them against the paper
+python demo/dump_inputs.py        # on a GPU machine: dump each sample's inputs and check them against the paper
 python demo/build_site_data.py    # write site/manifest.json and the sample images
 node --test site/tests/*.test.mjs
 ```
