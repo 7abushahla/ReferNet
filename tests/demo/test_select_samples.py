@@ -30,5 +30,5 @@ def test_labels_ids_and_paper_logits():
 
 def test_mismatch_samples():
     m = select_mismatch(select_samples())
-    assert [s["design_id"] for s in m] == ["sidtd_esp_id", "sidtd_srb_passport", "idnet_AZ"]
+    assert [s["design_id"] for s in m] == ["sidtd_svk_id", "sidtd_srb_passport", "idnet_AZ"]
     assert all(s["family"] == "genuine" and s["mismatch_demo"] for s in m)

@@ -88,7 +88,7 @@ def select_samples(seed: int = 20261015, per_family: int = 1) -> list[dict]:
 
 def select_mismatch(samples: list[dict]) -> list[dict]:
     first = {s["design_id"]: s for s in samples if s["family"] == "genuine" and s["sample_id"].endswith("__1")}
-    return [dict(first[d], mismatch_demo=True) for d in ("sidtd_esp_id", "sidtd_srb_passport", "idnet_AZ")]
+    return [dict(first[d], mismatch_demo=True) for d in ("sidtd_svk_id", "sidtd_srb_passport", "idnet_AZ")]
 
 
 if __name__ == "__main__":

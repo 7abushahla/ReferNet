@@ -3,7 +3,11 @@
  "quality": 75,
  "a": {
   "registration": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/fold0-v2noaux-fdb7351/evaluation/registration.json",
-  "raw_root": "/shared/b00090279/refer-or-clear/data/raw"
+  "raw_root": "/shared/b00090279/refer-or-clear/data/raw",
+  "source": "/shared/b00090279/refer-or-clear/results/source/study-v2-fdb7351",
+  "diag_align": "/shared/b00090279/diag-align",
+  "runs": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/fold0-v2noaux-fdb7351/training",
+  "weights": "/shared/b00090279/refer-or-clear/results/source/study-shared-assets/weights.pth"
  },
  "c": {
   "FIN": {

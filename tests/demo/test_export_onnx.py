@@ -3,7 +3,8 @@ import os, sys
 from pathlib import Path
 import numpy as np
 import pytest
-import torch
+
+torch = pytest.importorskip("torch")
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT / "src"), str(ROOT / "scripts"), str(ROOT / "demo")]

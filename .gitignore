@@ -45,3 +45,4 @@ checkpoints/
 .worktrees/
 .superpowers/
 demo/ckpt/
+demo/out/
