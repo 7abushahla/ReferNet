@@ -1,13 +1,13 @@
 // site/js/main.js
 import { buildQuery, buildOverlap, rgbToNormalizedCHW, decodePng } from "./tensors.js";
-import { sigmoid, decide, decideMismatch, percent } from "./decision.js";
+import { sigmoid, decide, decideMismatch, percent, showMap } from "./decision.js";
 import { differenceMap, downsampleOverlap } from "./heatmap.js";
 import { documentOptions, findSample } from "./library.js";
 import { pickProviders, RunGate, loadSession, runOnce } from "./runner.js";
 
 const W = 800, H = 512, ORT_DIST = "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/";
 const $ = (id) => document.getElementById(id);
-const state = { manifest: null, sessions: {}, loading: {}, withRef: true, gate: new RunGate() };
+const state = { manifest: null, sessions: {}, loading: {}, withRef: true, busy: false, gate: new RunGate() };
 
 async function png(url) { return decodePng(await (await fetch(url)).arrayBuffer(), window.UPNG); }
 
@@ -48,7 +48,25 @@ function setCondition(withRef) {
   $("with").setAttribute("aria-checked", String(withRef)); $("without").setAttribute("aria-checked", String(!withRef));
   $("schematic").classList.toggle("off", !withRef);
   clearResult();
+  updateRun();
   if (!withRef) ensureSession("off");
+}
+
+const currentArm = () => (state.withRef ? "on" : "off");
+
+/** Run is usable only when the current condition's model is loaded and no run is in flight. */
+function updateRun() {
+  const ready = !!state.sessions[currentArm()];
+  $("run").disabled = !ready || state.busy;
+  $("run").textContent = ready ? "▶ Run" : "Loading model…";
+}
+
+/** Inputs stay fixed during a run, so a result always belongs to the document and condition on screen. */
+function setBusy(busy) {
+  state.busy = busy;
+  for (const id of ["design", "document", "with", "without"]) $(id).disabled = busy;
+  $("schematic").classList.toggle("running", busy);
+  updateRun();
 }
 
 function feeds(arm, q, r, ov) {
@@ -57,17 +75,29 @@ function feeds(arm, q, r, ov) {
   return f;
 }
 
+/** Loads (and warms up) one condition's model once; on failure it says so, forgets the attempt so a later
+ *  click retries, and leaves the other condition usable. Resolves to the session, or null on failure. */
 function ensureSession(arm) {
   if (!state.loading[arm]) {
     state.loading[arm] = (async () => {
-      $("run").disabled = true; $("run").textContent = "Loading model…"; $("bar").style.width = "0";
-      const { session, backend } = await loadSession(window.ort, `model/refernet_${arm}.onnx`, pickProviders(navigator),
-        (f) => ($("bar").style.width = `${Math.round(f * 100)}%`));
-      await runOnce(session, feeds(arm, new Float32Array(4 * H * W), new Float32Array(3 * H * W), new Float32Array(H * W).fill(1)));
-      state.sessions[arm] = session;
-      $("backend").textContent = `runs in your browser · ${backend === "webgpu" ? "WebGPU" : "WebAssembly"}`;
-      $("run").disabled = false; $("run").textContent = "▶ Run";
-      return session;
+      updateRun(); $("bar").style.width = "0";
+      try {
+        const warm = () => feeds(arm, new Float32Array(4 * H * W), new Float32Array(3 * H * W), new Float32Array(H * W).fill(1));
+        const { session, backend } = await loadSession(window.ort, `model/refernet_${arm}.onnx`, pickProviders(navigator),
+          (f) => ($("bar").style.width = `${Math.round(f * 100)}%`), warm);
+        state.sessions[arm] = session;
+        $("backend").textContent = `runs in your browser · ${backend === "webgpu" ? "WebGPU" : "WebAssembly"}`;
+        return session;
+      } catch (e) {
+        delete state.loading[arm];
+        if (currentArm() === arm) {
+          $("result").className = "";
+          $("result").textContent = `The ReferNet model could not load (${e.message}). Check your connection and choose the condition again to retry.`;
+        }
+        return null;
+      } finally {
+        updateRun();
+      }
     })();
   }
   return state.loading[arm];
@@ -85,7 +115,7 @@ function drawHeat(map, querySrc) {
   ctx.putImageData(img, 0, 0);
 }
 
-function showResult({ p, ms, label, mismatch }) {
+function showResult({ p, ms, label, mismatch, arm, noMapNote }) {
   const truth = label === 1 ? "altered" : "genuine";
   $("result").className = "";
   if (mismatch) {
@@ -93,35 +123,38 @@ function showResult({ p, ms, label, mismatch }) {
       <div class="kv"><span>Ground truth</span><span>${truth} · document of another design</span></div>`;
   } else {
     const d = decide(p, state.manifest.threshold), correct = (d === "REFER") === (label === 1);
-    $("result").innerHTML = `<p class="hint">${state.withRef ? "With reference" : "Without reference"}</p>
+    $("result").innerHTML = `<p class="hint">${arm === "on" ? "With reference" : "Without reference"}</p>
       <div class="pct" style="color:var(--${d === "REFER" ? "red" : "green"})">${percent(p)}<small>likelihood of alteration</small></div>
       <div class="verdict ${d}">${d}</div>
       <div class="kv"><span>Inference time</span><b>${Math.round(ms)} ms</b></div>
-      <div class="kv"><span>Ground truth</span><span>${truth} · <span class="${correct ? "ok" : "bad"}">${correct ? "correct ✓" : "wrong ✗"}</span></span></div>`;
+      <div class="kv"><span>Ground truth</span><span>${truth} · <span class="${correct ? "ok" : "bad"}">${correct ? "correct ✓" : "wrong ✗"}</span></span></div>`
+      + (noMapNote ? `<p class="hint">The reference found no difference that raised the score, so no map is shown.</p>` : "");
   }
   $("truth-hint").textContent = `Ground truth: ${truth}`;
 }
 
 async function onRun() {
   if (!state.gate.tryEnter()) return;
-  $("run").disabled = true; $("schematic").classList.add("running");
+  clearResult(); setBusy(true);
   try {
     const f = findSample(state.manifest, $("document").value);
     if (f.kind === "mismatch") { showResult({ label: f.sample.label, mismatch: true }); return; }
-    const s = f.sample, arm = state.withRef ? "on" : "off";
+    const s = f.sample, arm = currentArm();
     const session = await ensureSession(arm);
+    if (!session) return;
     const [q, m, r] = await Promise.all([png(s.query), png(s.masks), arm === "on" ? png(s.reference) : null]);
     const qt = buildQuery(q.rgba, m.rgba, W, H), ov = buildOverlap(m.rgba, W, H);
     const rt = r ? rgbToNormalizedCHW(r.rgba, W, H) : null;
     const { outputs, ms } = await runOnce(session, feeds(arm, qt, rt, ov));
-    const logit = outputs.query_logit.data[0] + (arm === "on" ? outputs.correction.data[0] : 0);
-    showResult({ p: sigmoid(logit), ms, label: s.label });
-    if (arm === "on") drawHeat(differenceMap(outputs.local.data, downsampleOverlap(ov), state.manifest.head), s.query);
+    const correction = arm === "on" ? outputs.correction.data[0] : 0;
+    const mapShown = arm === "on" && showMap(correction);
+    showResult({ p: sigmoid(outputs.query_logit.data[0] + correction), ms, label: s.label, arm, noMapNote: arm === "on" && !mapShown });
+    if (mapShown) drawHeat(differenceMap(outputs.local.data, downsampleOverlap(ov), state.manifest.head), s.query);
   } catch (e) {
     $("result").className = "";
     $("result").textContent = `This browser could not run the model (${e.message}). Try a recent Chrome, Edge, Firefox or Safari.`;
   } finally {
-    $("schematic").classList.remove("running"); $("run").disabled = false; state.gate.leave();
+    state.gate.leave(); setBusy(false);
   }
 }
 

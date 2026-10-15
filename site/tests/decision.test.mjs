@@ -13,3 +13,10 @@ test("a document of another design is always referred", () => {
 test("percent formatting", () => {
   assert.equal(percent(0.968), "97%"); assert.equal(percent(0.002), "<1%"); assert.equal(percent(0.9995), ">99%");
 });
+
+test("the difference map is shown only when the reference raised the alteration score", async () => {
+  const { showMap } = await import("../js/decision.js");
+  assert.equal(showMap(2.5), true);
+  assert.equal(showMap(0), false);
+  assert.equal(showMap(-6.1), false);
+});

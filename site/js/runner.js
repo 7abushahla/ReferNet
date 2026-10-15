@@ -7,8 +7,9 @@ export class RunGate {
   leave() { this.#busy = false; }
 }
 
-/** Download with progress, then create the session with the first provider that works; reports which one. */
-export async function loadSession(ort, url, providers, onProgress) {
+/** Download with progress, then create the session with the first provider that works, including one warm-up run
+ *  with warmFeeds() when given (a provider that creates a session but cannot run it falls through); reports which one. */
+export async function loadSession(ort, url, providers, onProgress, warmFeeds = null) {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`model download failed (${res.status})`);
   const total = Number(res.headers.get("content-length")) || 0;
@@ -23,8 +24,11 @@ export async function loadSession(ort, url, providers, onProgress) {
   let o = 0;
   for (const c of chunks) { bytes.set(c, o); o += c.length; }
   for (const p of providers) {
-    try { return { session: await ort.InferenceSession.create(bytes, { executionProviders: [p] }), backend: p }; }
-    catch (e) { console.warn(`provider ${p} failed`, e); }
+    try {
+      const session = await ort.InferenceSession.create(bytes, { executionProviders: [p] });
+      if (warmFeeds) await session.run(warmFeeds());
+      return { session, backend: p };
+    } catch (e) { console.warn(`provider ${p} failed`, e); }
   }
   throw new Error("no execution provider could load the model");
 }

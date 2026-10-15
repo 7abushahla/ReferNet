@@ -8,3 +8,4 @@ export function percent(p) {
   if (p > 0.995) return ">99%";
   return `${Math.round(p * 100)}%`;
 }
+export const showMap = (correction) => correction > 0;

@@ -13,3 +13,13 @@ test("one run at a time", () => {
   assert.equal(g.tryEnter(), true); assert.equal(g.tryEnter(), false);
   g.leave(); assert.equal(g.tryEnter(), true);
 });
+
+test("a provider whose warm-up run fails falls back to the next one", async () => {
+  const { loadSession } = await import("../js/runner.js");
+  globalThis.fetch = async () => new Response(new Uint8Array([1, 2, 3]));
+  const ort = { InferenceSession: { create: async (_bytes, { executionProviders: [p] }) => ({
+    run: async () => { if (p === "webgpu") throw new Error("kernel not supported"); return { ok: true }; } }) } };
+  const warm = () => ({ x: 1 });
+  const { backend } = await loadSession(ort, "model.onnx", ["webgpu", "wasm"], () => {}, warm);
+  assert.equal(backend, "wasm");
+});
