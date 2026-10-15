@@ -20,7 +20,7 @@ is precomputed and what is not.
 | Hosting | GitHub Pages, deployed from `site/` by a GitHub Actions workflow |
 | What runs live | The network only, in the browser with ONNX Runtime Web (WebGPU, else WebAssembly) |
 | What is precomputed | Registration (SIFT + RANSAC) of every sample to its design reference, with the paper's code |
-| Model | Fold-0 deployment pair of Protocol A, one ONNX graph with a reference switch, FP32 (about 45 MB) |
+| Model | Fold-0 deployment pair of Protocol A, two ONNX files (OFF and ON checkpoints), FP32, about 45 MB each; ON loads first, OFF on first use |
 | Sample library | All 18 designs of the paper (10 SIDTD, 8 IDNet); per design 2 genuine and 2 per attack family, picked by a fixed seed, about 110 samples, failures kept |
 | Page layout | Left-to-right storyboard of four steps (stacked on phones) |
 | Condition | Chosen by a toggle in step 3, "With reference" or "Without reference"; one condition per run |
@@ -62,8 +62,8 @@ precomputed with the paper's code", "fold-0 deployment model, FP32", "scores ver
 ### `demo/export_onnx.py`
 
 Loads the fold-0 OFF and ON checkpoints with `build_direct_reference_model` (as in
-`scripts/bench_cpu_deploy.py`) and exports one ONNX graph per condition, or one graph with a boolean input that
-bypasses the local path, whichever exports cleanly. Outputs: `query_logit` (ℓ_q), `correction` (Δℓ, zero without
+`scripts/bench_cpu_deploy.py`) and exports one ONNX file per condition, `refernet_on.onnx` and `refernet_off.onnx`,
+since the two conditions are separately trained checkpoints. Outputs: `query_logit` (ℓ_q), `correction` (Δℓ, zero without
 the reference), and `comparison_map` (the 32×64×100 local features before masked pooling). Inputs: the
 four-channel query `[x; z]`, the four-channel reference `[r; z]`, and the overlap mask, all 512×800. The OFF
 condition uses the OFF checkpoint, so its scores equal the paper's ReferNet (OFF).
@@ -86,7 +86,7 @@ family, index, ground truth, altered-field box, file paths, registration status,
 
 ### `site/`
 
-`index.html`, `style.css`, `app.js`, `manifest.json`, `model/refernet*.onnx`, `samples/<design>/<id>/*.png`.
+`index.html`, `style.css`, `app.js`, `manifest.json`, `model/refernet_on.onnx`, `model/refernet_off.onnx`, `samples/<design>/<id>/*.png`.
 `app.js` loads the manifest, populates the drop-downs, assembles the input tensors with the paper's ImageNet
 normalization, runs ONNX Runtime Web, times the run with `performance.now()` after one silent warm-up run, and
 draws the result and the difference map.
@@ -102,13 +102,14 @@ to within 1e-3 and that every Refer/Clear decision is identical. Prints a pass/f
 
 ### `.github/workflows/pages.yml`
 
-On push to `main`, uploads `site/` as the Pages artifact and deploys it. The model is committed as a regular file
-(under GitHub's 100 MB limit); Git LFS is not used, because Pages does not serve LFS content.
+On push to `main`, uploads `site/` as the Pages artifact and deploys it. The two models are committed as regular files
+(each under GitHub's 100 MB limit); Git LFS is not used, because Pages does not serve LFS content.
 
 ## Error handling
 
 - No WebGPU: fall back to WebAssembly and show the backend actually used.
-- First visit: progress bar while the model downloads; Run stays disabled until the model is loaded and warmed up.
+- First visit: progress bar while the ON model downloads; Run stays disabled until it is loaded and warmed up. The OFF
+  model downloads the first time "Without reference" is selected, with the same progress bar.
 - Document of another design: registration failed, so there is no reference context. Both toggle states show
   REFER, "no reference context, sent to the second line", as the deployed system does (the zone is an input of
   both conditions).
