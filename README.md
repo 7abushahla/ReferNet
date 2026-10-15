@@ -50,7 +50,7 @@ The samples come from the paper's locked fold-0 test predictions, so none was se
 
 ## 📁 Repository Structure
 
-- `src/refer_or_clear/`: the implementation
+- `src/`: the implementation
   - `models/`: ReferNet (`direct_reference.py`), the ResNet-18 encoder initialized from ChangerEx (`anchor_changer.py`, `changerex.py`)
   - `data/`: rectification to the 512×800 input, registration, design references and personal-data zones, compression re-encoding, protocol datasets
   - training, evaluation and metrics (`*_train.py`, `evaluate.py`, `metrics.py`, `policy_metrics.py`)
@@ -72,7 +72,7 @@ The samples come from the paper's locked fold-0 test predictions, so none was se
 git clone https://github.com/7abushahla/ReferNet.git
 cd ReferNet
 conda env create -f environment.yml
-conda activate refer-or-clear
+conda activate refernet
 ```
 
 ## 2) Data

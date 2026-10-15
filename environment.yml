@@ -1,6 +1,6 @@
 # Mirrors scripts/cluster/setup-env.sh, which is the version actually run on the login node; keep the
 # two in sync. torch 2.1.2 cu121 because Open-CD needs mmcv 2.1 with compiled ops (see setup-env.sh).
-name: refer-or-clear
+name: refernet
 channels:
   - conda-forge
 dependencies:
