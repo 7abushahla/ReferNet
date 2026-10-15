@@ -51,62 +51,71 @@
  },
  "timing": {
   "decode": {
-   "median_ms": 5.9,
-   "p95_ms": 26.33,
-   "mean_ms": 8.34,
+   "median_ms": 5.95,
+   "p95_ms": 26.7,
+   "mean_ms": 8.37,
+   "std_ms": 6.78,
    "n": 200
   },
   "canvas": {
-   "median_ms": 1.92,
-   "p95_ms": 3.54,
-   "mean_ms": 2.34,
+   "median_ms": 2.04,
+   "p95_ms": 3.63,
+   "mean_ms": 2.36,
+   "std_ms": 0.87,
    "n": 200
   },
   "registration": {
-   "median_ms": 60.12,
-   "p95_ms": 83.19,
-   "mean_ms": 63.69,
+   "median_ms": 62.17,
+   "p95_ms": 83.34,
+   "mean_ms": 64.37,
+   "std_ms": 13.15,
    "n": 200
   },
   "reference": {
-   "median_ms": 0.68,
-   "p95_ms": 0.76,
+   "median_ms": 0.69,
+   "p95_ms": 0.75,
    "mean_ms": 0.69,
+   "std_ms": 0.04,
    "n": 200
   },
   "tensor": {
-   "median_ms": 10.56,
-   "p95_ms": 11.84,
-   "mean_ms": 10.71,
+   "median_ms": 10.74,
+   "p95_ms": 11.79,
+   "mean_ms": 10.81,
+   "std_ms": 0.53,
    "n": 200
   },
   "forward_off": {
-   "median_ms": 117.76,
-   "p95_ms": 145.24,
-   "mean_ms": 120.2,
+   "median_ms": 117.63,
+   "p95_ms": 142.56,
+   "mean_ms": 120.11,
+   "std_ms": 11.08,
    "n": 200
   },
   "forward_on": {
-   "median_ms": 189.72,
-   "p95_ms": 207.43,
-   "mean_ms": 192.81,
+   "median_ms": 190.71,
+   "p95_ms": 206.11,
+   "mean_ms": 192.97,
+   "std_ms": 7.21,
    "n": 200
   },
   "e2e_off": {
-   "median_ms": 206.41,
-   "p95_ms": 235.31,
-   "mean_ms": 205.28,
+   "median_ms": 204.0,
+   "p95_ms": 240.41,
+   "mean_ms": 206.02,
+   "std_ms": 20.99,
    "n": 200
   },
   "e2e_on": {
-   "median_ms": 277.63,
-   "p95_ms": 305.72,
-   "mean_ms": 278.58,
+   "median_ms": 280.06,
+   "p95_ms": 308.53,
+   "mean_ms": 279.56,
+   "std_ms": 17.48,
    "n": 200
   },
   "documents_per_second": {
-   "off": 4.84,
-   "on": 3.6
+   "off": 4.9,
+   "on": 3.57
   }
  }
 }

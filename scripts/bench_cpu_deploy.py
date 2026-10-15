@@ -15,7 +15,7 @@ hold it:
   forward ON    the same network with the reference pass and the local correction
   end to end    decode + canvas + registration + tensor + forward (ON also includes reference)
 
-Median and p95 over --n documents after --warmup warm-ups; documents per second from the median end-to-end time;
+Median, p95, mean and standard deviation over --n documents after --warmup warm-ups; documents per second from the median end-to-end time;
 parameter count and checkpoint size. The tensor transfer to the device is outside the timed forward. Writes results/timing/deploy-<host>-<device>.json.
 
     python scripts/bench_cpu_deploy.py --off <off/best.pt> --on <on/best.pt> --weights <weights.pth> [--n 200 --threads 4]
@@ -106,7 +106,7 @@ def design_library(data, design):
 def stats(ms):
     s = sorted(ms)
     return dict(median_ms=round(statistics.median(s), 2), p95_ms=round(s[min(len(s) - 1, int(round(0.95 * (len(s) - 1))))], 2),
-                mean_ms=round(statistics.fmean(s), 2), n=len(s))
+                mean_ms=round(statistics.fmean(s), 2), std_ms=round(statistics.stdev(s), 2) if len(s) > 1 else 0.0, n=len(s))
 
 
 def main(argv=None):
