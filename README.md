@@ -1,8 +1,6 @@
 # Refer or Clear
 
-Reference-conditioned detection of altered travel documents on designs never seen. Entry for the GDRFA Dubai Scientific Research Award, second cycle (Digital Innovation Award, artificial intelligence theme). Deadline 15 October 2026.
-
-**Keep this repository private.** The award requires work that is original, unpublished, and not submitted elsewhere, and it screens submissions for originality. Do not make the repository public before the award decision.
+Reference-conditioned detection of altered travel documents on designs never seen. Entry for the GDRFA Dubai Scientific Research Award, second cycle (Digital Innovation Award, artificial intelligence theme). 
 
 ## Layout
 
