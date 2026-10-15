@@ -39,6 +39,7 @@ function clearResult() {
   $("result").className = "empty"; $("result").textContent = "Run ReferNet to see its decision.";
   $("truth-hint").textContent = "Ground truth hidden until the run";
   const c = $("heat"); c.getContext("2d").clearRect(0, 0, c.width, c.height);
+  $("map-wrap").hidden = true;
 }
 
 function setCondition(withRef) {
@@ -72,13 +73,14 @@ function ensureSession(arm) {
   return state.loading[arm];
 }
 
-function drawHeat(map) {
+function drawHeat(map, querySrc) {
+  $("map-img").src = querySrc; $("map-wrap").hidden = false;
   const c = $("heat"); c.width = 100; c.height = 64;
   const ctx = c.getContext("2d"), img = ctx.createImageData(100, 64);
   for (let i = 0; i < 6400; i++) {
     const v = map[i];
     img.data[4 * i] = 255; img.data[4 * i + 1] = Math.round(220 * (1 - v)); img.data[4 * i + 2] = 0;
-    img.data[4 * i + 3] = v > 0.15 ? Math.round(170 * v) : 0;
+    img.data[4 * i + 3] = v > 0.1 ? Math.round(60 + 150 * v) : 0;
   }
   ctx.putImageData(img, 0, 0);
 }
@@ -114,7 +116,7 @@ async function onRun() {
     const { outputs, ms } = await runOnce(session, feeds(arm, qt, rt, ov));
     const logit = outputs.query_logit.data[0] + (arm === "on" ? outputs.correction.data[0] : 0);
     showResult({ p: sigmoid(logit), ms, label: s.label });
-    if (arm === "on") drawHeat(differenceMap(outputs.local.data, downsampleOverlap(ov), state.manifest.head));
+    if (arm === "on") drawHeat(differenceMap(outputs.local.data, downsampleOverlap(ov), state.manifest.head), s.query);
   } catch (e) {
     $("result").className = "";
     $("result").textContent = `This browser could not run the model (${e.message}). Try a recent Chrome, Edge, Firefox or Safari.`;
