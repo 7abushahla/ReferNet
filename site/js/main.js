@@ -65,7 +65,14 @@ function updateRun() {
 function setBusy(busy) {
   state.busy = busy;
   for (const id of ["design", "document", "with", "without"]) $(id).disabled = busy;
-  $("schematic").classList.toggle("running", busy);
+  clearTimeout(state.flowTimer);
+  if (busy) {
+    state.runStart = performance.now();
+    $("schematic").classList.add("running");
+  } else {   // a WebGPU run can take a quarter of a second: keep the fast flow on screen for at least a second
+    state.flowTimer = setTimeout(() => $("schematic").classList.remove("running"),
+      Math.max(0, 1000 - (performance.now() - state.runStart)));
+  }
   updateRun();
 }
 
