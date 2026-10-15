@@ -53,6 +53,12 @@ cd proposal && bash build.sh     # pdfLaTeX + BibTeX
 
 Notes in `proposal/README.md` and `proposal/DESIGN.md` refer to evidence files as `exa-results/<name>.md`; in this repository they are in `evidence/`.
 
+## Demo
+
+A live demo runs the paper's fold-0 deployment model in the browser: https://7abushahla.github.io/ReferNet/ (source in
+`site/`). Its data are rebuilt with `python demo/export_onnx.py`, `python demo/dump_inputs.py` (cluster, GPU) and
+`python demo/build_site_data.py`; `/verify.html` checks every browser score against PyTorch.
+
 ## Authors
 
 Hamza A. Abushahla, Ariel Justine N. Panopio, [researcher 3], Mohamed I. AlHajri. Department of Computer Science and Engineering, American University of Sharjah.

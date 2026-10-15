@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ReferNet Demo</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/pako@1.0.11/dist/pako.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/upng-js@2.1.0/UPNG.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/ort.webgpu.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+<header>
+  <div>
+    <h1>ReferNet <span>· reference-assisted document forgery detection</span></h1>
+    <p>Pick a design and a document. The paper's deployment model runs in your browser, with or without the design reference.</p>
+  </div>
+  <nav><a href="https://github.com/7abushahla/ReferNet">Code</a><a href="#how">How it works ↓</a></nav>
+</header>
+<main>
+  <section class="story">
+    <div class="card">
+      <h2><span class="n">1</span>Design reference</h2>
+      <select id="design" aria-label="Design reference"></select>
+      <div class="frame" id="ref-frame"><img id="ref-img" alt="Design reference"><img id="zone-img" class="zone" alt=""></div>
+      <p class="hint">Median of genuine documents · hover to see the personal-data zone</p>
+    </div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="card">
+      <h2><span class="n">2</span>Presented document</h2>
+      <select id="document" aria-label="Presented document"></select>
+      <div class="frame"><img id="doc-img" alt="Presented document"></div>
+      <p class="hint" id="truth-hint">Ground truth hidden until the run</p>
+    </div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="card">
+      <h2><span class="n">3</span>ReferNet</h2>
+      <svg id="schematic" viewBox="0 0 230 250" role="img" aria-label="ReferNet schematic">
+        <defs>
+          <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="#1f4e79"/></marker>
+          <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="#c8102e"/></marker>
+        </defs>
+        <rect x="8" y="66" width="214" height="30" rx="5" class="enc"/>
+        <text x="115" y="79" class="t1">Shared encoder, early stages</text><text x="115" y="90" class="t2">same weights for both inputs</text>
+        <g>
+          <rect x="8" y="8" width="88" height="34" rx="5" class="qbox"/><text x="52" y="23" class="t1 qt">Document</text><text x="52" y="35" class="t2">+ data zone</text>
+          <line x1="52" y1="42" x2="52" y2="64" class="ql flow" marker-end="url(#ab)"/>
+          <rect x="8" y="122" width="88" height="32" rx="5" class="qbox"/><text x="52" y="136" class="t1 qt">Deeper stages</text><text x="52" y="147" class="t2">judge alone</text>
+          <line x1="52" y1="96" x2="52" y2="120" class="ql flow" marker-end="url(#ab)"/>
+          <line x1="52" y1="154" x2="103" y2="184" class="ql flow" marker-end="url(#ab)"/><text x="58" y="178" class="t2 qt">score</text>
+        </g>
+        <g class="r">
+          <rect x="134" y="8" width="88" height="34" rx="5" class="rbox"/><text x="178" y="23" class="t1 rt">Design reference</text><text x="178" y="35" class="t2">median of genuine</text>
+          <line x1="178" y1="42" x2="178" y2="64" class="rl flow" marker-end="url(#ar)"/>
+          <rect x="134" y="122" width="88" height="32" rx="5" class="rbox"/><text x="178" y="136" class="t1 rt">Compare</text><text x="178" y="147" class="t2">vs the reference</text>
+          <line x1="178" y1="96" x2="178" y2="120" class="rl flow" marker-end="url(#ar)"/>
+          <line x1="110" y1="96" x2="150" y2="120" class="ql flow" marker-end="url(#ab)" opacity=".7"/>
+          <line x1="178" y1="154" x2="127" y2="184" class="rl flow" marker-end="url(#ar)"/><text x="190" y="178" class="t2 rt">correction</text>
+        </g>
+        <circle cx="115" cy="190" r="13" class="plus"/><text x="115" y="195" class="t3">+</text>
+        <line x1="115" y1="203" x2="115" y2="218" class="out"/>
+        <rect x="70" y="220" width="90" height="24" rx="12" class="decide"/><text x="115" y="236" class="t1 w">Refer / Clear</text>
+      </svg>
+      <div class="seg" role="radiogroup" aria-label="Condition">
+        <button id="with" class="on" role="radio" aria-checked="true">With reference</button>
+        <button id="without" role="radio" aria-checked="false">Without reference</button>
+      </div>
+      <button id="run" disabled>Loading model…</button>
+      <div class="progress"><div id="bar"></div></div>
+      <p class="hint" id="backend"></p>
+    </div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="card" id="step4">
+      <h2><span class="n">4</span>Decision</h2>
+      <div id="result" class="empty" aria-live="polite">Run ReferNet to see its decision.</div>
+      <div id="map-wrap" hidden>
+        <p class="hint">Where the reference saw a difference</p>
+        <div class="frame"><img id="map-img" alt="Presented document with the difference map"><canvas id="heat"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="how">
+    <h2>How it works</h2>
+    <p>A design reference is the pixel-wise median of genuine documents of one design, registered to each other. Personal data differ from document to document and fade in the median, while the printed design stays sharp. The personal-data zone marks where a document is allowed to differ from its design.</p>
+    <p>ReferNet judges the presented document on its own, through a single-image path, and, with the reference, compares it with the design reference through a second path that shares the same encoder. The comparison produces a correction that can raise or lower the single-image decision. Without the reference, ReferNet is a single-image classifier like the published baselines.</p>
+    <p>In this demo, each document has already been registered to its design reference with the paper's code, and its compression equalized as in the paper. The network itself runs live in your browser. Inference times are measured on your device, whereas the paper's 280 ms is end to end on a laptop processor.</p>
+    <div class="note"><b>About the difference map.</b> The map in step 4 is not part of the paper. It is shown for demonstration only. It is computed in your browser from the same run, from the comparison features weighted by the correction layer, to indicate which region drove the reference's correction, and it has not been evaluated as a localization method.</div>
+  </section>
+</main>
+<footer>Samples from SIDTD (CC BY 4.0; MIDV-2020 images CC BY-SA 2.5) and IDNet (CC0) · registration precomputed with the paper's code · fold-0 deployment model, FP32 · scores verified against PyTorch (<a href="verify.html">check</a>)</footer>
+</body>
+</html>

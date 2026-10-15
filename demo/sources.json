@@ -1,0 +1,46 @@
+{
+ "_note": "Artifacts that produced the paper's locked fold-0 q75 predictions (SHA256 of each on/q75 predictions file matches the copy in results/).",
+ "quality": 75,
+ "a": {
+  "registration": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/fold0-v2noaux-fdb7351/evaluation/registration.json",
+  "raw_root": "/shared/b00090279/refer-or-clear/data/raw",
+  "source": "/shared/b00090279/refer-or-clear/results/source/study-v2-fdb7351",
+  "diag_align": "/shared/b00090279/diag-align",
+  "runs": "/shared/b00090279/refer-or-clear/results/runs/protocol-a-current/fold0-v2noaux-fdb7351/training",
+  "weights": "/shared/b00090279/refer-or-clear/results/source/study-shared-assets/weights.pth"
+ },
+ "c": {
+  "FIN": {
+   "run_dir": "/shared/b00090279/diag-align/c-idnet/fin-f0-9",
+   "design_root": "/shared/b00090279/refer-or-clear/data/raw/idnet/FIN"
+  },
+  "GRC": {
+   "run_dir": "/shared/b00090279/diag-align/c-idnet/grc-f0-9",
+   "design_root": "/shared/b00090279/refer-or-clear/data/raw/idnet/GRC"
+  },
+  "ESP": {
+   "run_dir": "/shared/b00090279/diag-align/c-idnet/esp-f0-9",
+   "design_root": "/shared/b00090279/refer-or-clear/data/raw/idnet/ESP"
+  },
+  "ALB": {
+   "run_dir": "/shared/b00090279/diag-align/c-idnet/alb-f0-9",
+   "design_root": "/shared/b00090279/refer-or-clear/data/raw/idnet/ALB"
+  },
+  "AZ": {
+   "run_dir": "/shared/b00090279/diag-align/c-idnet/az-fold0",
+   "design_root": "/shared/b00090279/refer-or-clear/data/raw/idnet/AZ"
+  },
+  "SD": {
+   "run_dir": "/shared/b00090279/diag-align/c-idnet/sd-f0-9",
+   "design_root": "/shared/b00090279/refer-or-clear/data/raw/idnet/SD"
+  },
+  "WV": {
+   "run_dir": "/shared/b00090279/diag-align/c-idnet/wv-f0-9",
+   "design_root": "/shared/b00090279/refer-or-clear/data/raw/idnet/WV"
+  },
+  "NV": {
+   "run_dir": "/shared/b00090279/diag-align/c-idnet/nv-f0-9",
+   "design_root": "/shared/b00090279/refer-or-clear/data/raw/idnet/NV"
+  }
+ }
+}

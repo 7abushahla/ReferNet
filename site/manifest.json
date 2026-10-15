@@ -1,0 +1,1434 @@
+{
+ "threshold": 0.5,
+ "head": {
+  "w_mean": [
+   0.01425287313759327,
+   -0.10547390580177307,
+   0.015100373886525631,
+   -0.06866689026355743,
+   -0.005533669143915176,
+   -0.0738486722111702,
+   -0.07551521807909012,
+   -0.022688578814268112,
+   -0.04507371410727501,
+   -0.05174178257584572,
+   -0.07927454262971878,
+   -0.044473886489868164,
+   -0.04208751395344734,
+   -0.025074515491724014,
+   -0.2566537857055664,
+   -0.0309867262840271,
+   -0.11924223601818085,
+   -0.011214311234652996,
+   -0.004839231260120869,
+   0.003265168284997344,
+   -0.050503116101026535,
+   -0.044816840440034866,
+   -0.09709622710943222,
+   -0.042444195598363876,
+   -0.03910689800977707,
+   -0.051848042756319046,
+   -0.0523570291697979,
+   -0.08696233481168747,
+   -0.04717452451586723,
+   -0.04591890797019005,
+   -0.1480691134929657,
+   -0.047527823597192764
+  ],
+  "w_max": [
+   -0.04350977763533592,
+   0.08134382963180542,
+   -0.04671621695160866,
+   0.07797527313232422,
+   -0.04232277348637581,
+   0.09700518846511841,
+   0.08299873769283295,
+   0.04344765469431877,
+   -0.0499391183257103,
+   -0.039849162101745605,
+   -0.12530656158924103,
+   0.08698689937591553,
+   -0.04813433438539505,
+   -0.05555585399270058,
+   0.09027250856161118,
+   -0.054572444409132004,
+   0.0949995368719101,
+   -0.044548213481903076,
+   -0.032890770584344864,
+   -0.024878783151507378,
+   0.06960578262805939,
+   -0.08794181793928146,
+   0.07771042734384537,
+   -0.06250176578760147,
+   -0.06671226024627686,
+   -0.04541416093707085,
+   -0.06994534283876419,
+   0.09251292794942856,
+   -0.0461094044148922,
+   -0.05836797133088112,
+   0.08531726151704788,
+   -0.0417742021381855
+  ],
+  "bias": -0.05662081390619278
+ },
+ "designs": [
+  {
+   "id": "sidtd_alb_id",
+   "name": "Albania identity card",
+   "dataset": "SIDTD",
+   "reference": "designs/sidtd_alb_id/reference.png",
+   "zone": "designs/sidtd_alb_id/zone.png"
+  },
+  {
+   "id": "sidtd_aze_passport",
+   "name": "Azerbaijan passport",
+   "dataset": "SIDTD",
+   "reference": "designs/sidtd_aze_passport/reference.png",
+   "zone": "designs/sidtd_aze_passport/zone.png"
+  },
+  {
+   "id": "sidtd_esp_id",
+   "name": "Spain identity card",
+   "dataset": "SIDTD",
+   "reference": "designs/sidtd_esp_id/reference.png",
+   "zone": "designs/sidtd_esp_id/zone.png"
+  },
+  {
+   "id": "sidtd_est_id",
+   "name": "Estonia identity card",
+   "dataset": "SIDTD",
+   "reference": "designs/sidtd_est_id/reference.png",
+   "zone": "designs/sidtd_est_id/zone.png"
+  },
+  {
+   "id": "sidtd_fin_id",
+   "name": "Finland identity card",
+   "dataset": "SIDTD",
+   "reference": "designs/sidtd_fin_id/reference.png",
+   "zone": "designs/sidtd_fin_id/zone.png"
+  },
+  {
+   "id": "sidtd_grc_passport",
+   "name": "Greece passport",
+   "dataset": "SIDTD",
+   "reference": "designs/sidtd_grc_passport/reference.png",
+   "zone": "designs/sidtd_grc_passport/zone.png"
+  },
+  {
+   "id": "sidtd_lva_passport",
+   "name": "Latvia passport",
+   "dataset": "SIDTD",
+   "reference": "designs/sidtd_lva_passport/reference.png",
+   "zone": "designs/sidtd_lva_passport/zone.png"
+  },
+  {
+   "id": "sidtd_rus_internalpassport",
+   "name": "Russia passport",
+   "dataset": "SIDTD",
+   "reference": "designs/sidtd_rus_internalpassport/reference.png",
+   "zone": "designs/sidtd_rus_internalpassport/zone.png"
+  },
+  {
+   "id": "sidtd_srb_passport",
+   "name": "Serbia passport",
+   "dataset": "SIDTD",
+   "reference": "designs/sidtd_srb_passport/reference.png",
+   "zone": "designs/sidtd_srb_passport/zone.png"
+  },
+  {
+   "id": "sidtd_svk_id",
+   "name": "Slovakia identity card",
+   "dataset": "SIDTD",
+   "reference": "designs/sidtd_svk_id/reference.png",
+   "zone": "designs/sidtd_svk_id/zone.png"
+  },
+  {
+   "id": "idnet_FIN",
+   "name": "Finland identity card",
+   "dataset": "IDNet",
+   "reference": "designs/idnet_FIN/reference.png",
+   "zone": "designs/idnet_FIN/zone.png"
+  },
+  {
+   "id": "idnet_GRC",
+   "name": "Greece passport",
+   "dataset": "IDNet",
+   "reference": "designs/idnet_GRC/reference.png",
+   "zone": "designs/idnet_GRC/zone.png"
+  },
+  {
+   "id": "idnet_ESP",
+   "name": "Spain identity card",
+   "dataset": "IDNet",
+   "reference": "designs/idnet_ESP/reference.png",
+   "zone": "designs/idnet_ESP/zone.png"
+  },
+  {
+   "id": "idnet_ALB",
+   "name": "Albania identity card",
+   "dataset": "IDNet",
+   "reference": "designs/idnet_ALB/reference.png",
+   "zone": "designs/idnet_ALB/zone.png"
+  },
+  {
+   "id": "idnet_AZ",
+   "name": "Arizona license",
+   "dataset": "IDNet",
+   "reference": "designs/idnet_AZ/reference.png",
+   "zone": "designs/idnet_AZ/zone.png"
+  },
+  {
+   "id": "idnet_SD",
+   "name": "South Dakota license",
+   "dataset": "IDNet",
+   "reference": "designs/idnet_SD/reference.png",
+   "zone": "designs/idnet_SD/zone.png"
+  },
+  {
+   "id": "idnet_WV",
+   "name": "West Virginia license",
+   "dataset": "IDNet",
+   "reference": "designs/idnet_WV/reference.png",
+   "zone": "designs/idnet_WV/zone.png"
+  },
+  {
+   "id": "idnet_NV",
+   "name": "Nevada license",
+   "dataset": "IDNet",
+   "reference": "designs/idnet_NV/reference.png",
+   "zone": "designs/idnet_NV/zone.png"
+  }
+ ],
+ "samples": [
+  {
+   "id": "sidtd_alb_id__genuine__1",
+   "design": "sidtd_alb_id",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/sidtd_alb_id__genuine__1/query.png",
+   "reference": "samples/sidtd_alb_id__genuine__1/reference.png",
+   "masks": "samples/sidtd_alb_id__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.00675771103120582
+    },
+    "off": {
+     "p": 0.9820486585558342
+    }
+   }
+  },
+  {
+   "id": "sidtd_alb_id__text_inpaint__1",
+   "design": "sidtd_alb_id",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_alb_id__text_inpaint__1/query.png",
+   "reference": "samples/sidtd_alb_id__text_inpaint__1/reference.png",
+   "masks": "samples/sidtd_alb_id__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9999752611863981
+    },
+    "off": {
+     "p": 0.9999987213592569
+    }
+   }
+  },
+  {
+   "id": "sidtd_alb_id__text_copy__1",
+   "design": "sidtd_alb_id",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_alb_id__text_copy__1/query.png",
+   "reference": "samples/sidtd_alb_id__text_copy__1/reference.png",
+   "masks": "samples/sidtd_alb_id__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.0036627252582193477
+    },
+    "off": {
+     "p": 0.10683051280039578
+    }
+   }
+  },
+  {
+   "id": "sidtd_aze_passport__genuine__1",
+   "design": "sidtd_aze_passport",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/sidtd_aze_passport__genuine__1/query.png",
+   "reference": "samples/sidtd_aze_passport__genuine__1/reference.png",
+   "masks": "samples/sidtd_aze_passport__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.09505508901464477
+    },
+    "off": {
+     "p": 0.21711055697695802
+    }
+   }
+  },
+  {
+   "id": "sidtd_aze_passport__text_inpaint__1",
+   "design": "sidtd_aze_passport",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_aze_passport__text_inpaint__1/query.png",
+   "reference": "samples/sidtd_aze_passport__text_inpaint__1/reference.png",
+   "masks": "samples/sidtd_aze_passport__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9999994044390182
+    },
+    "off": {
+     "p": 0.9999990114017089
+    }
+   }
+  },
+  {
+   "id": "sidtd_aze_passport__text_copy__1",
+   "design": "sidtd_aze_passport",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_aze_passport__text_copy__1/query.png",
+   "reference": "samples/sidtd_aze_passport__text_copy__1/reference.png",
+   "masks": "samples/sidtd_aze_passport__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.26211569775655186
+    },
+    "off": {
+     "p": 0.8859762548146806
+    }
+   }
+  },
+  {
+   "id": "sidtd_esp_id__genuine__1",
+   "design": "sidtd_esp_id",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/sidtd_esp_id__genuine__1/query.png",
+   "reference": "samples/sidtd_esp_id__genuine__1/reference.png",
+   "masks": "samples/sidtd_esp_id__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.0018917783387502793
+    },
+    "off": {
+     "p": 0.9999998489903775
+    }
+   }
+  },
+  {
+   "id": "sidtd_esp_id__text_inpaint__1",
+   "design": "sidtd_esp_id",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_esp_id__text_inpaint__1/query.png",
+   "reference": "samples/sidtd_esp_id__text_inpaint__1/reference.png",
+   "masks": "samples/sidtd_esp_id__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9999997826166078
+    },
+    "off": {
+     "p": 0.9999996216187044
+    }
+   }
+  },
+  {
+   "id": "sidtd_esp_id__text_copy__1",
+   "design": "sidtd_esp_id",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_esp_id__text_copy__1/query.png",
+   "reference": "samples/sidtd_esp_id__text_copy__1/reference.png",
+   "masks": "samples/sidtd_esp_id__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.002081231510926041
+    },
+    "off": {
+     "p": 0.9999991392039465
+    }
+   }
+  },
+  {
+   "id": "sidtd_est_id__genuine__1",
+   "design": "sidtd_est_id",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/sidtd_est_id__genuine__1/query.png",
+   "reference": "samples/sidtd_est_id__genuine__1/reference.png",
+   "masks": "samples/sidtd_est_id__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.0005647928730728145
+    },
+    "off": {
+     "p": 0.8605557052664935
+    }
+   }
+  },
+  {
+   "id": "sidtd_est_id__text_inpaint__1",
+   "design": "sidtd_est_id",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_est_id__text_inpaint__1/query.png",
+   "reference": "samples/sidtd_est_id__text_inpaint__1/reference.png",
+   "masks": "samples/sidtd_est_id__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9999999974891254
+    },
+    "off": {
+     "p": 0.9999996387576425
+    }
+   }
+  },
+  {
+   "id": "sidtd_est_id__text_copy__1",
+   "design": "sidtd_est_id",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_est_id__text_copy__1/query.png",
+   "reference": "samples/sidtd_est_id__text_copy__1/reference.png",
+   "masks": "samples/sidtd_est_id__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.020336908178693193
+    },
+    "off": {
+     "p": 0.9516918881566767
+    }
+   }
+  },
+  {
+   "id": "sidtd_fin_id__genuine__1",
+   "design": "sidtd_fin_id",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/sidtd_fin_id__genuine__1/query.png",
+   "reference": "samples/sidtd_fin_id__genuine__1/reference.png",
+   "masks": "samples/sidtd_fin_id__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.0009159265889013098
+    },
+    "off": {
+     "p": 0.9692885117947037
+    }
+   }
+  },
+  {
+   "id": "sidtd_fin_id__text_inpaint__1",
+   "design": "sidtd_fin_id",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_fin_id__text_inpaint__1/query.png",
+   "reference": "samples/sidtd_fin_id__text_inpaint__1/reference.png",
+   "masks": "samples/sidtd_fin_id__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.998252020371634
+    },
+    "off": {
+     "p": 0.998349592485473
+    }
+   }
+  },
+  {
+   "id": "sidtd_grc_passport__genuine__1",
+   "design": "sidtd_grc_passport",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/sidtd_grc_passport__genuine__1/query.png",
+   "reference": "samples/sidtd_grc_passport__genuine__1/reference.png",
+   "masks": "samples/sidtd_grc_passport__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.010204442675432338
+    },
+    "off": {
+     "p": 0.021298108570124392
+    }
+   }
+  },
+  {
+   "id": "sidtd_grc_passport__text_inpaint__1",
+   "design": "sidtd_grc_passport",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_grc_passport__text_inpaint__1/query.png",
+   "reference": "samples/sidtd_grc_passport__text_inpaint__1/reference.png",
+   "masks": "samples/sidtd_grc_passport__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9999939761633408
+    },
+    "off": {
+     "p": 0.9999999468513759
+    }
+   }
+  },
+  {
+   "id": "sidtd_grc_passport__text_copy__1",
+   "design": "sidtd_grc_passport",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_grc_passport__text_copy__1/query.png",
+   "reference": "samples/sidtd_grc_passport__text_copy__1/reference.png",
+   "masks": "samples/sidtd_grc_passport__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.0032314177311063446
+    },
+    "off": {
+     "p": 0.03692512974892265
+    }
+   }
+  },
+  {
+   "id": "sidtd_lva_passport__genuine__1",
+   "design": "sidtd_lva_passport",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/sidtd_lva_passport__genuine__1/query.png",
+   "reference": "samples/sidtd_lva_passport__genuine__1/reference.png",
+   "masks": "samples/sidtd_lva_passport__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.0334119420484603
+    },
+    "off": {
+     "p": 0.08285480966126721
+    }
+   }
+  },
+  {
+   "id": "sidtd_lva_passport__text_inpaint__1",
+   "design": "sidtd_lva_passport",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_lva_passport__text_inpaint__1/query.png",
+   "reference": "samples/sidtd_lva_passport__text_inpaint__1/reference.png",
+   "masks": "samples/sidtd_lva_passport__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.999999999395444
+    },
+    "off": {
+     "p": 0.9999999823685642
+    }
+   }
+  },
+  {
+   "id": "sidtd_lva_passport__text_copy__1",
+   "design": "sidtd_lva_passport",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_lva_passport__text_copy__1/query.png",
+   "reference": "samples/sidtd_lva_passport__text_copy__1/reference.png",
+   "masks": "samples/sidtd_lva_passport__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.010887212112774413
+    },
+    "off": {
+     "p": 0.05759141544160282
+    }
+   }
+  },
+  {
+   "id": "sidtd_rus_internalpassport__genuine__1",
+   "design": "sidtd_rus_internalpassport",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/sidtd_rus_internalpassport__genuine__1/query.png",
+   "reference": "samples/sidtd_rus_internalpassport__genuine__1/reference.png",
+   "masks": "samples/sidtd_rus_internalpassport__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.0024234935881494645
+    },
+    "off": {
+     "p": 0.09801784089297819
+    }
+   }
+  },
+  {
+   "id": "sidtd_rus_internalpassport__text_inpaint__1",
+   "design": "sidtd_rus_internalpassport",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_rus_internalpassport__text_inpaint__1/query.png",
+   "reference": "samples/sidtd_rus_internalpassport__text_inpaint__1/reference.png",
+   "masks": "samples/sidtd_rus_internalpassport__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9999999999545326
+    },
+    "off": {
+     "p": 0.9998189044036654
+    }
+   }
+  },
+  {
+   "id": "sidtd_rus_internalpassport__text_copy__1",
+   "design": "sidtd_rus_internalpassport",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_rus_internalpassport__text_copy__1/query.png",
+   "reference": "samples/sidtd_rus_internalpassport__text_copy__1/reference.png",
+   "masks": "samples/sidtd_rus_internalpassport__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.011775219230200957
+    },
+    "off": {
+     "p": 0.12894780670741265
+    }
+   }
+  },
+  {
+   "id": "sidtd_srb_passport__genuine__1",
+   "design": "sidtd_srb_passport",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/sidtd_srb_passport__genuine__1/query.png",
+   "reference": "samples/sidtd_srb_passport__genuine__1/reference.png",
+   "masks": "samples/sidtd_srb_passport__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.8460229266787137
+    },
+    "off": {
+     "p": 0.22773542797378368
+    }
+   }
+  },
+  {
+   "id": "sidtd_srb_passport__text_inpaint__1",
+   "design": "sidtd_srb_passport",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_srb_passport__text_inpaint__1/query.png",
+   "reference": "samples/sidtd_srb_passport__text_inpaint__1/reference.png",
+   "masks": "samples/sidtd_srb_passport__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9999579586012278
+    },
+    "off": {
+     "p": 0.9988812389717107
+    }
+   }
+  },
+  {
+   "id": "sidtd_srb_passport__text_copy__1",
+   "design": "sidtd_srb_passport",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_srb_passport__text_copy__1/query.png",
+   "reference": "samples/sidtd_srb_passport__text_copy__1/reference.png",
+   "masks": "samples/sidtd_srb_passport__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.029248090059814796
+    },
+    "off": {
+     "p": 0.18864006249112142
+    }
+   }
+  },
+  {
+   "id": "sidtd_svk_id__genuine__1",
+   "design": "sidtd_svk_id",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/sidtd_svk_id__genuine__1/query.png",
+   "reference": "samples/sidtd_svk_id__genuine__1/reference.png",
+   "masks": "samples/sidtd_svk_id__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.007668221942070282
+    },
+    "off": {
+     "p": 0.11432641702894364
+    }
+   }
+  },
+  {
+   "id": "sidtd_svk_id__text_inpaint__1",
+   "design": "sidtd_svk_id",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_svk_id__text_inpaint__1/query.png",
+   "reference": "samples/sidtd_svk_id__text_inpaint__1/reference.png",
+   "masks": "samples/sidtd_svk_id__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9999999999991662
+    },
+    "off": {
+     "p": 0.9999976590770897
+    }
+   }
+  },
+  {
+   "id": "sidtd_svk_id__text_copy__1",
+   "design": "sidtd_svk_id",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/sidtd_svk_id__text_copy__1/query.png",
+   "reference": "samples/sidtd_svk_id__text_copy__1/reference.png",
+   "masks": "samples/sidtd_svk_id__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.24521984386634535
+    },
+    "off": {
+     "p": 0.09293217896224745
+    }
+   }
+  },
+  {
+   "id": "idnet_FIN__genuine__1",
+   "design": "idnet_FIN",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/idnet_FIN__genuine__1/query.png",
+   "reference": "samples/idnet_FIN__genuine__1/reference.png",
+   "masks": "samples/idnet_FIN__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.00024112632764806537
+    },
+    "off": {
+     "p": 0.999894567816953
+    }
+   }
+  },
+  {
+   "id": "idnet_FIN__text_inpaint__1",
+   "design": "idnet_FIN",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_FIN__text_inpaint__1/query.png",
+   "reference": "samples/idnet_FIN__text_inpaint__1/reference.png",
+   "masks": "samples/idnet_FIN__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.025577449517086286
+    },
+    "off": {
+     "p": 0.999999999818802
+    }
+   }
+  },
+  {
+   "id": "idnet_FIN__text_copy__1",
+   "design": "idnet_FIN",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_FIN__text_copy__1/query.png",
+   "reference": "samples/idnet_FIN__text_copy__1/reference.png",
+   "masks": "samples/idnet_FIN__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9990986996712368
+    },
+    "off": {
+     "p": 0.9999985145073604
+    }
+   }
+  },
+  {
+   "id": "idnet_FIN__text_replace__1",
+   "design": "idnet_FIN",
+   "family": "text_replace",
+   "family_name": "In-place text replacement",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_FIN__text_replace__1/query.png",
+   "reference": "samples/idnet_FIN__text_replace__1/reference.png",
+   "masks": "samples/idnet_FIN__text_replace__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.007976843385469902
+    },
+    "off": {
+     "p": 0.9999395452156787
+    }
+   }
+  },
+  {
+   "id": "idnet_GRC__genuine__1",
+   "design": "idnet_GRC",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/idnet_GRC__genuine__1/query.png",
+   "reference": "samples/idnet_GRC__genuine__1/reference.png",
+   "masks": "samples/idnet_GRC__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.04181832891719954
+    },
+    "off": {
+     "p": 0.989682077826411
+    }
+   }
+  },
+  {
+   "id": "idnet_GRC__text_inpaint__1",
+   "design": "idnet_GRC",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_GRC__text_inpaint__1/query.png",
+   "reference": "samples/idnet_GRC__text_inpaint__1/reference.png",
+   "masks": "samples/idnet_GRC__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9363034930884354
+    },
+    "off": {
+     "p": 0.9999099462589708
+    }
+   }
+  },
+  {
+   "id": "idnet_GRC__text_copy__1",
+   "design": "idnet_GRC",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_GRC__text_copy__1/query.png",
+   "reference": "samples/idnet_GRC__text_copy__1/reference.png",
+   "masks": "samples/idnet_GRC__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9999050026801813
+    },
+    "off": {
+     "p": 0.9999966249024215
+    }
+   }
+  },
+  {
+   "id": "idnet_GRC__text_replace__1",
+   "design": "idnet_GRC",
+   "family": "text_replace",
+   "family_name": "In-place text replacement",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_GRC__text_replace__1/query.png",
+   "reference": "samples/idnet_GRC__text_replace__1/reference.png",
+   "masks": "samples/idnet_GRC__text_replace__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9649387504510611
+    },
+    "off": {
+     "p": 0.9999999937936548
+    }
+   }
+  },
+  {
+   "id": "idnet_ESP__genuine__1",
+   "design": "idnet_ESP",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/idnet_ESP__genuine__1/query.png",
+   "reference": "samples/idnet_ESP__genuine__1/reference.png",
+   "masks": "samples/idnet_ESP__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.0005405480602569535
+    },
+    "off": {
+     "p": 0.9999976192110389
+    }
+   }
+  },
+  {
+   "id": "idnet_ESP__text_inpaint__1",
+   "design": "idnet_ESP",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_ESP__text_inpaint__1/query.png",
+   "reference": "samples/idnet_ESP__text_inpaint__1/reference.png",
+   "masks": "samples/idnet_ESP__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.17417109193075855
+    },
+    "off": {
+     "p": 0.9999985178441247
+    }
+   }
+  },
+  {
+   "id": "idnet_ESP__text_copy__1",
+   "design": "idnet_ESP",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_ESP__text_copy__1/query.png",
+   "reference": "samples/idnet_ESP__text_copy__1/reference.png",
+   "masks": "samples/idnet_ESP__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9997797004785502
+    },
+    "off": {
+     "p": 0.9999998635377387
+    }
+   }
+  },
+  {
+   "id": "idnet_ESP__text_replace__1",
+   "design": "idnet_ESP",
+   "family": "text_replace",
+   "family_name": "In-place text replacement",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_ESP__text_replace__1/query.png",
+   "reference": "samples/idnet_ESP__text_replace__1/reference.png",
+   "masks": "samples/idnet_ESP__text_replace__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.999998265156636
+    },
+    "off": {
+     "p": 0.999999998289447
+    }
+   }
+  },
+  {
+   "id": "idnet_ALB__genuine__1",
+   "design": "idnet_ALB",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/idnet_ALB__genuine__1/query.png",
+   "reference": "samples/idnet_ALB__genuine__1/reference.png",
+   "masks": "samples/idnet_ALB__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.0029977466013332336
+    },
+    "off": {
+     "p": 0.5633009406508188
+    }
+   }
+  },
+  {
+   "id": "idnet_ALB__text_inpaint__1",
+   "design": "idnet_ALB",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_ALB__text_inpaint__1/query.png",
+   "reference": "samples/idnet_ALB__text_inpaint__1/reference.png",
+   "masks": "samples/idnet_ALB__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.00458150172812786
+    },
+    "off": {
+     "p": 0.9989759565603601
+    }
+   }
+  },
+  {
+   "id": "idnet_ALB__text_copy__1",
+   "design": "idnet_ALB",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_ALB__text_copy__1/query.png",
+   "reference": "samples/idnet_ALB__text_copy__1/reference.png",
+   "masks": "samples/idnet_ALB__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.3790936490048796
+    },
+    "off": {
+     "p": 0.9994779603179258
+    }
+   }
+  },
+  {
+   "id": "idnet_ALB__text_replace__1",
+   "design": "idnet_ALB",
+   "family": "text_replace",
+   "family_name": "In-place text replacement",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_ALB__text_replace__1/query.png",
+   "reference": "samples/idnet_ALB__text_replace__1/reference.png",
+   "masks": "samples/idnet_ALB__text_replace__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9999620966544764
+    },
+    "off": {
+     "p": 1.0
+    }
+   }
+  },
+  {
+   "id": "idnet_AZ__genuine__1",
+   "design": "idnet_AZ",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/idnet_AZ__genuine__1/query.png",
+   "reference": "samples/idnet_AZ__genuine__1/reference.png",
+   "masks": "samples/idnet_AZ__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.005379356713184811
+    },
+    "off": {
+     "p": 1.0
+    }
+   }
+  },
+  {
+   "id": "idnet_AZ__text_inpaint__1",
+   "design": "idnet_AZ",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_AZ__text_inpaint__1/query.png",
+   "reference": "samples/idnet_AZ__text_inpaint__1/reference.png",
+   "masks": "samples/idnet_AZ__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.33999168539926117
+    },
+    "off": {
+     "p": 1.0
+    }
+   }
+  },
+  {
+   "id": "idnet_AZ__text_copy__1",
+   "design": "idnet_AZ",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_AZ__text_copy__1/query.png",
+   "reference": "samples/idnet_AZ__text_copy__1/reference.png",
+   "masks": "samples/idnet_AZ__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9473437145797737
+    },
+    "off": {
+     "p": 1.0
+    }
+   }
+  },
+  {
+   "id": "idnet_AZ__text_replace__1",
+   "design": "idnet_AZ",
+   "family": "text_replace",
+   "family_name": "In-place text replacement",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_AZ__text_replace__1/query.png",
+   "reference": "samples/idnet_AZ__text_replace__1/reference.png",
+   "masks": "samples/idnet_AZ__text_replace__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9510447517442181
+    },
+    "off": {
+     "p": 0.999999999932498
+    }
+   }
+  },
+  {
+   "id": "idnet_SD__genuine__1",
+   "design": "idnet_SD",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/idnet_SD__genuine__1/query.png",
+   "reference": "samples/idnet_SD__genuine__1/reference.png",
+   "masks": "samples/idnet_SD__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.003910905890731774
+    },
+    "off": {
+     "p": 0.9996238192655772
+    }
+   }
+  },
+  {
+   "id": "idnet_SD__text_inpaint__1",
+   "design": "idnet_SD",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_SD__text_inpaint__1/query.png",
+   "reference": "samples/idnet_SD__text_inpaint__1/reference.png",
+   "masks": "samples/idnet_SD__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.3784967785086877
+    },
+    "off": {
+     "p": 0.9994505959626412
+    }
+   }
+  },
+  {
+   "id": "idnet_SD__text_copy__1",
+   "design": "idnet_SD",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_SD__text_copy__1/query.png",
+   "reference": "samples/idnet_SD__text_copy__1/reference.png",
+   "masks": "samples/idnet_SD__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.07512774172216852
+    },
+    "off": {
+     "p": 0.9999804644853754
+    }
+   }
+  },
+  {
+   "id": "idnet_SD__text_replace__1",
+   "design": "idnet_SD",
+   "family": "text_replace",
+   "family_name": "In-place text replacement",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_SD__text_replace__1/query.png",
+   "reference": "samples/idnet_SD__text_replace__1/reference.png",
+   "masks": "samples/idnet_SD__text_replace__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9695078939132576
+    },
+    "off": {
+     "p": 0.9963779221806147
+    }
+   }
+  },
+  {
+   "id": "idnet_WV__genuine__1",
+   "design": "idnet_WV",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/idnet_WV__genuine__1/query.png",
+   "reference": "samples/idnet_WV__genuine__1/reference.png",
+   "masks": "samples/idnet_WV__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.0057144310352457255
+    },
+    "off": {
+     "p": 0.9999999999999958
+    }
+   }
+  },
+  {
+   "id": "idnet_WV__text_inpaint__1",
+   "design": "idnet_WV",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_WV__text_inpaint__1/query.png",
+   "reference": "samples/idnet_WV__text_inpaint__1/reference.png",
+   "masks": "samples/idnet_WV__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.6580534261377682
+    },
+    "off": {
+     "p": 0.9999999999999969
+    }
+   }
+  },
+  {
+   "id": "idnet_WV__text_copy__1",
+   "design": "idnet_WV",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_WV__text_copy__1/query.png",
+   "reference": "samples/idnet_WV__text_copy__1/reference.png",
+   "masks": "samples/idnet_WV__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9027837938018435
+    },
+    "off": {
+     "p": 1.0
+    }
+   }
+  },
+  {
+   "id": "idnet_WV__text_replace__1",
+   "design": "idnet_WV",
+   "family": "text_replace",
+   "family_name": "In-place text replacement",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_WV__text_replace__1/query.png",
+   "reference": "samples/idnet_WV__text_replace__1/reference.png",
+   "masks": "samples/idnet_WV__text_replace__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9999878685959054
+    },
+    "off": {
+     "p": 1.0
+    }
+   }
+  },
+  {
+   "id": "idnet_NV__genuine__1",
+   "design": "idnet_NV",
+   "family": "genuine",
+   "family_name": "Genuine",
+   "n": 1,
+   "label": 0,
+   "query": "samples/idnet_NV__genuine__1/query.png",
+   "reference": "samples/idnet_NV__genuine__1/reference.png",
+   "masks": "samples/idnet_NV__genuine__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.0072041935476925174
+    },
+    "off": {
+     "p": 0.9999999999997122
+    }
+   }
+  },
+  {
+   "id": "idnet_NV__text_inpaint__1",
+   "design": "idnet_NV",
+   "family": "text_inpaint",
+   "family_name": "Inpaint-and-rewrite",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_NV__text_inpaint__1/query.png",
+   "reference": "samples/idnet_NV__text_inpaint__1/reference.png",
+   "masks": "samples/idnet_NV__text_inpaint__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.999958718846404
+    },
+    "off": {
+     "p": 0.9999999999967375
+    }
+   }
+  },
+  {
+   "id": "idnet_NV__text_copy__1",
+   "design": "idnet_NV",
+   "family": "text_copy",
+   "family_name": "Copy-and-replace",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_NV__text_copy__1/query.png",
+   "reference": "samples/idnet_NV__text_copy__1/reference.png",
+   "masks": "samples/idnet_NV__text_copy__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.10702492517925538
+    },
+    "off": {
+     "p": 0.9999999999858789
+    }
+   }
+  },
+  {
+   "id": "idnet_NV__text_replace__1",
+   "design": "idnet_NV",
+   "family": "text_replace",
+   "family_name": "In-place text replacement",
+   "n": 1,
+   "label": 1,
+   "query": "samples/idnet_NV__text_replace__1/query.png",
+   "reference": "samples/idnet_NV__text_replace__1/reference.png",
+   "masks": "samples/idnet_NV__text_replace__1/masks.png",
+   "pytorch": {
+    "on": {
+     "p": 0.9975506214474913
+    },
+    "off": {
+     "p": 1.0
+    }
+   }
+  }
+ ],
+ "mismatch": [
+  {
+   "sample": "sidtd_svk_id__genuine__1",
+   "label": "Slovakia identity card \u00b7 genuine",
+   "fits": {
+    "sidtd_alb_id": false,
+    "sidtd_aze_passport": false,
+    "sidtd_esp_id": false,
+    "sidtd_est_id": false,
+    "sidtd_fin_id": false,
+    "sidtd_grc_passport": false,
+    "sidtd_lva_passport": false,
+    "sidtd_rus_internalpassport": false,
+    "sidtd_srb_passport": false,
+    "idnet_FIN": false,
+    "idnet_GRC": false,
+    "idnet_ESP": false,
+    "idnet_ALB": false,
+    "idnet_AZ": false,
+    "idnet_SD": false,
+    "idnet_WV": false,
+    "idnet_NV": false
+   }
+  },
+  {
+   "sample": "sidtd_srb_passport__genuine__1",
+   "label": "Serbia passport \u00b7 genuine",
+   "fits": {
+    "sidtd_alb_id": false,
+    "sidtd_aze_passport": false,
+    "sidtd_esp_id": false,
+    "sidtd_est_id": false,
+    "sidtd_fin_id": false,
+    "sidtd_grc_passport": false,
+    "sidtd_lva_passport": false,
+    "sidtd_rus_internalpassport": false,
+    "sidtd_svk_id": false,
+    "idnet_FIN": false,
+    "idnet_GRC": false,
+    "idnet_ESP": false,
+    "idnet_ALB": false,
+    "idnet_AZ": false,
+    "idnet_SD": false,
+    "idnet_WV": false,
+    "idnet_NV": false
+   }
+  },
+  {
+   "sample": "idnet_AZ__genuine__1",
+   "label": "Arizona license \u00b7 genuine",
+   "fits": {
+    "sidtd_alb_id": false,
+    "sidtd_aze_passport": false,
+    "sidtd_esp_id": false,
+    "sidtd_est_id": false,
+    "sidtd_fin_id": false,
+    "sidtd_grc_passport": false,
+    "sidtd_lva_passport": false,
+    "sidtd_rus_internalpassport": false,
+    "sidtd_srb_passport": false,
+    "sidtd_svk_id": false,
+    "idnet_FIN": false,
+    "idnet_GRC": false,
+    "idnet_ESP": false,
+    "idnet_ALB": false,
+    "idnet_SD": false,
+    "idnet_WV": false,
+    "idnet_NV": false
+   }
+  }
+ ]
+}

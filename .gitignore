@@ -44,3 +44,5 @@ checkpoints/
 # Local git worktrees and agent scratch
 .worktrees/
 .superpowers/
+demo/ckpt/
+demo/out/
