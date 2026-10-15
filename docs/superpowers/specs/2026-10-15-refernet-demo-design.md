@@ -21,7 +21,7 @@ is precomputed and what is not.
 | What runs live | The network only, in the browser with ONNX Runtime Web (WebGPU, else WebAssembly) |
 | What is precomputed | Registration (SIFT + RANSAC) of every sample to its design reference, with the paper's code |
 | Model | Fold-0 deployment pair of Protocol A, two ONNX files (OFF and ON checkpoints), FP32, about 45 MB each; ON loads first, OFF on first use |
-| Sample library | All 18 designs of the paper (10 SIDTD, 8 IDNet); per design 2 genuine and 2 per attack family, picked by a fixed seed, about 110 samples, failures kept |
+| Sample library | Proof of concept: all 18 designs of the paper (10 SIDTD, 8 IDNet); per design 1 genuine and 1 per attack family, picked by a fixed seed from the paper's locked fold-0 test predictions, 61 samples (SIDTD Finland has no copy-and-replace in that partition), failures kept |
 | Page layout | Left-to-right storyboard of four steps (stacked on phones) |
 | Condition | Chosen by a toggle in step 3, "With reference" or "Without reference"; one condition per run |
 | Result | One percentage (likelihood of alteration), Refer or Clear at 50%, inference time, ground truth with a tick or cross |
@@ -35,7 +35,7 @@ the code, and "How it works".
 
 1. **Design reference.** Drop-down of the 18 designs ("Azerbaijan passport · SIDTD", "Arizona license · IDNet",
    ...). Shows the design reference (median of genuine documents). Hover shows the personal-data zone.
-2. **Presented document.** Drop-down grouped under the chosen design: Genuine #1–2, then each attack family #1–2
+2. **Presented document.** Drop-down grouped under the chosen design: Genuine, then each attack family
    (inpaint-and-rewrite, copy-and-replace, and for IDNet in-place text replacement). A last group, "Another design
    (no reference match)", lists a few documents of other designs. The ground truth stays hidden until the run.
 3. **ReferNet.** A small animated schematic of the architecture (document and design reference into the shared
@@ -75,7 +75,7 @@ Runs where the data are (SIDTD locally; IDNet on the AUS cluster). For each of t
 - Builds the design reference as in the paper: SIDTD from the fold-0 training documents of the design (Protocol A),
   IDNet from the 100 genuine images of its Protocol C reference set.
 - Picks samples with a fixed seed from images the deployment model never trained on (SIDTD fold-0 test partition;
-  IDNet images outside the reference set), 2 genuine and 2 per text attack family.
+  IDNet images outside the reference set), 1 genuine and 1 per text attack family.
 - Equalizes compression as in the paper, letterboxes to 512×800, registers each sample to its reference, and writes
   `query.png`, `reference.png` (warped into the query frame), `zone.png`, `overlap.png`.
 - Tries each "another design" sample against the selected references and records the registration outcome.
